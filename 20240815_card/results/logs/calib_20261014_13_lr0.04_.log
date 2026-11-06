@@ -1,0 +1,65 @@
+[init] day layer 44 <- 43 (t15.2025.03.30)
+[pool] replay 1980 trials from 44 history sessions (35s)
+[trial   0] block 8 ed 6/31 cum PER 19.35%
+[trial   1] block 8 ed 7/34 cum PER 20.00%
+[trial   2] block 8 ed 2/31 cum PER 15.62%
+[trial   3] block 8 ed 5/28 cum PER 16.13%
+[trial   4] block 8 ed 8/21 cum PER 19.31%
+  [ft] 200 steps, loss 32.25 -> 5.78 (87s)
+[trial   5] block 8 ed 10/14 cum PER 23.90%
+  [ft] 200 steps, loss 11.97 -> 6.88 (87s)
+[trial   6] block 8 ed 14/20 cum PER 29.05%
+  [ft] 200 steps, loss 12.08 -> 3.81 (88s)
+[trial   7] block 8 ed 11/25 cum PER 30.88%
+  [ft] 200 steps, loss 7.96 -> 5.14 (86s)
+[trial   8] block 8 ed 11/35 cum PER 30.96%
+  [ft] 200 steps, loss 8.75 -> 5.54 (88s)
+[trial   9] block 8 ed 4/22 cum PER 29.89%
+  [ft] 200 steps, loss 6.28 -> 4.26 (94s)
+[trial  10] block 8 ed 7/22 cum PER 30.04%
+  [ft] 200 steps, loss 5.17 -> 3.03 (92s)
+[trial  11] block 8 ed 22/33 cum PER 33.86%
+  [ft] 200 steps, loss 11.04 -> 3.56 (91s)
+[trial  12] block 8 ed 8/21 cum PER 34.12%
+  [ft] 200 steps, loss 4.47 -> 3.37 (91s)
+[trial  13] block 8 ed 17/26 cum PER 36.36%
+  [ft] 200 steps, loss 7.53 -> 2.58 (92s)
+[trial  14] block 8 ed 16/33 cum PER 37.37%
+  [ft] 200 steps, loss 2.07 -> 4.19 (92s)
+[trial  15] block 8 ed 4/25 cum PER 36.10%
+  [ft] 200 steps, loss 3.30 -> 2.73 (90s)
+[trial  16] block 8 ed 11/39 cum PER 35.43%
+  [ft] 200 steps, loss 5.70 -> 2.84 (92s)
+[trial  17] block 8 ed 8/35 cum PER 34.55%
+  [ft] 200 steps, loss 4.02 -> 2.49 (92s)
+[trial  18] block 8 ed 11/33 cum PER 34.47%
+  [ft] 200 steps, loss 7.19 -> 1.78 (94s)
+[trial  19] block 8 ed 9/18 cum PER 34.98%
+  [ft] 200 steps, loss 3.88 -> 3.17 (91s)
+[trial  20] block 8 ed 2/29 cum PER 33.57%
+  [ft] 200 steps, loss 3.18 -> 2.16 (90s)
+[trial  21] block 8 ed 11/25 cum PER 34.00%
+  [ft] 200 steps, loss 5.27 -> 3.69 (92s)
+[trial  22] block 8 ed 24/39 cum PER 35.68%
+  [ft] 200 steps, loss 4.87 -> 2.30 (93s)
+[trial  23] block 8 ed 7/29 cum PER 35.18%
+  [ft] 200 steps, loss 2.46 -> 1.79 (93s)
+[trial  24] block 8 ed 10/33 cum PER 34.95%
+  [ft] 200 steps, loss 2.66 -> 1.96 (91s)
+{
+  "session": "t15.2025.04.13",
+  "lr": 0.04,
+  "arm": "copy",
+  "k": 5,
+  "cur_frac": 0.6,
+  "min_steps": 32,
+  "max_steps": 200,
+  "loss_stop": 0.55,
+  "n_trials": 25,
+  "online_PER": 0.34950071326676174,
+  "endpoint_PER": 0.0,
+  "total_ft_steps": 4200,
+  "day0_weight_max_delta (0 expected in smoke only)": 0.18151144683361053,
+  "wall_min": 31.8221754749616
+}
+[done] outputs in .\20240815_card\data\20241009_card_BtoT25\run_calib_20261014\t15.2025.04.13_lr0.04_armcopy

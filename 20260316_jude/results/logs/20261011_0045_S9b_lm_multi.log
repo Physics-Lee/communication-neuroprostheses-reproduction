@@ -1,0 +1,4 @@
+  File "./20260316_jude/code/pytorch_port/s9a_lm_decode_multi.py", line 35
+    true_c = trues[i].replace('.', '').replace('?',').replace(',', '').strip()
+                                                                    ^
+SyntaxError: unterminated string literal (detected at line 35)

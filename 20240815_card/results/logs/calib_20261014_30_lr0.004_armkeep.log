@@ -1,0 +1,74 @@
+[pool] replay 1978 trials from 43 history sessions (34s)
+[trial   0] block 10 ed 2/35 cum PER 5.71%
+[trial   1] block 10 ed 1/23 cum PER 5.17%
+[trial   2] block 10 ed 1/25 cum PER 4.82%
+[trial   3] block 10 ed 3/34 cum PER 5.98%
+[trial   4] block 10 ed 1/33 cum PER 5.33%
+  [ft] 32 steps, loss 9.91 -> 0.04 (14s)
+[trial   5] block 10 ed 6/39 cum PER 7.41%
+  [ft] 32 steps, loss 4.62 -> 0.01 (13s)
+[trial   6] block 13 ed 4/25 cum PER 8.41%
+  [ft] 32 steps, loss 4.27 -> 0.03 (14s)
+[trial   7] block 13 ed 13/27 cum PER 12.86%
+  [ft] 32 steps, loss 15.82 -> 0.08 (13s)
+[trial   8] block 13 ed 3/15 cum PER 13.28%
+  [ft] 32 steps, loss 0.93 -> 0.06 (13s)
+[trial   9] block 13 ed 9/30 cum PER 15.03%
+  [ft] 32 steps, loss 7.86 -> 0.07 (14s)
+[trial  10] block 13 ed 10/34 cum PER 16.56%
+  [ft] 32 steps, loss 4.24 -> 0.12 (14s)
+[trial  11] block 13 ed 17/41 cum PER 19.39%
+  [ft] 32 steps, loss 9.38 -> 0.10 (14s)
+[trial  12] block 13 ed 12/30 cum PER 20.97%
+  [ft] 32 steps, loss 4.73 -> 0.10 (14s)
+[trial  13] block 13 ed 18/30 cum PER 23.75%
+  [ft] 32 steps, loss 8.25 -> 0.09 (14s)
+[trial  14] block 13 ed 9/26 cum PER 24.38%
+  [ft] 32 steps, loss 5.53 -> 0.04 (14s)
+[trial  15] block 13 ed 9/22 cum PER 25.16%
+  [ft] 32 steps, loss 2.66 -> 0.08 (13s)
+[trial  16] block 13 ed 2/14 cum PER 24.84%
+  [ft] 32 steps, loss 0.12 -> 0.04 (14s)
+[trial  17] block 13 ed 11/29 cum PER 25.59%
+  [ft] 32 steps, loss 1.29 -> 0.07 (13s)
+[trial  18] block 13 ed 10/28 cum PER 26.11%
+  [ft] 32 steps, loss 0.13 -> 0.09 (14s)
+[trial  19] block 13 ed 8/39 cum PER 25.73%
+  [ft] 32 steps, loss 2.70 -> 0.09 (14s)
+[trial  20] block 13 ed 8/37 cum PER 25.49%
+  [ft] 32 steps, loss 4.33 -> 0.13 (14s)
+[trial  21] block 13 ed 8/19 cum PER 25.98%
+  [ft] 32 steps, loss 0.09 -> 0.12 (14s)
+[trial  22] block 13 ed 9/29 cum PER 26.20%
+  [ft] 32 steps, loss 2.12 -> 0.34 (14s)
+[trial  23] block 13 ed 5/22 cum PER 26.09%
+  [ft] 32 steps, loss 1.39 -> 0.06 (14s)
+[trial  24] block 13 ed 2/14 cum PER 25.86%
+  [ft] 32 steps, loss 0.15 -> 0.13 (14s)
+[trial  25] block 13 ed 5/17 cum PER 25.94%
+  [ft] 32 steps, loss 1.38 -> 0.22 (14s)
+[trial  26] block 13 ed 14/47 cum PER 26.18%
+  [ft] 32 steps, loss 1.31 -> 0.36 (14s)
+[trial  27] block 13 ed 2/43 cum PER 25.03%
+  [ft] 32 steps, loss 1.06 -> 0.40 (14s)
+[trial  28] block 13 ed 2/31 cum PER 24.34%
+  [ft] 32 steps, loss 0.09 -> 0.19 (15s)
+[trial  29] block 13 ed 11/32 cum PER 24.71%
+  [ft] 32 steps, loss 4.48 -> 0.18 (18s)
+{
+  "session": "t15.2025.03.30",
+  "lr": 0.004,
+  "arm": "keep",
+  "k": 5,
+  "cur_frac": 0.6,
+  "min_steps": 32,
+  "max_steps": 200,
+  "loss_stop": 0.55,
+  "n_trials": 30,
+  "online_PER": 0.2471264367816092,
+  "endpoint_PER": 0.0,
+  "total_ft_steps": 832,
+  "day0_weight_max_delta (0 expected in smoke only)": 0.0027336478233337402,
+  "wall_min": 6.149971266587575
+}
+[done] outputs in .\20240815_card\data\20241009_card_BtoT25\run_calib_20261014\t15.2025.03.30_lr0.004_armkeep

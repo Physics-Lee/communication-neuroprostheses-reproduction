@@ -1,0 +1,233 @@
+t5.2019.11.25 #50: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2019.11.25 #51: mine='imagine all the people living ko in peace' match=False
+t5.2019.11.25 #52: mine='ask not what your country can do for you' match=True
+t5.2019.11.25 #53: mine='i heard my friend is going into town today' match=True
+t5.2019.11.25 #54: mine='you must be the change you wish to see in the world' match=False
+t5.2019.11.25 #55: mine='when the sunlight strikes raindrops in the air' match=False
+t5.2019.11.25 #56: mine="'s like when you sit with me and read the paper." match=False
+t5.2019.11.25 #57: mine="i'm waiting for you to settle down." match=True
+t5.2019.11.25 #59: mine='were marked for extermination, like so many rats' match=True
+t5.2019.11.25 #60: mine="well they've got no choice" match=True
+t5.2019.11.25 #61: mine='his pot was in his hand still if preceded him like the torch of justice.' match=True
+t5.2019.11.25 #62: mine='because he had slowed the man behind struck him a low' match=False
+t5.2019.11.25 #63: mine="and recent events hadn't helped much, either." match=False
+t5.2019.11.25 #64: mine='had a final draft beer posted' match=True
+t5.2019.11.25 #65: mine='that hurt, especialy after all they had been through together.' match=False
+t5.2019.11.25 #66: mine="it's quite a wide brief actually." match=True
+t5.2019.11.25 #67: mine='a vast mirror still covered the whole of one wall.' match=True
+t5.2019.11.25 #68: mine='otherwise you end up with some very very strange results.' match=True
+t5.2019.11.25 #69: mine='philip put his finger to his lips.' match=True
+t5.2019.11.25 #70: mine='the magician woke up with a yell of pain.' match=True
+t5.2019.11.25 #71: mine="adrian who's responsible for resettlement is here of members have an questions." match=False
+t5.2019.11.25 #73: mine="yes, we've been expecting you." match=True
+t5.2019.11.25 #74: DECODE_FAIL
+t5.2019.11.25 #75: mine='i got next to nothing from' match=True
+t5.2019.11.25 #76: mine="i mean you're lucky to get that one mate, mean you must have been caught him or a real good day." match=True
+t5.2019.11.25 #77: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2019.11.25 #78: mine='imagine all the people living life in peace' match=True
+t5.2019.11.25 #79: mine='ask not what your country can do for you' match=True
+t5.2019.11.25 #80: mine='i heard my friend is going into town today' match=True
+t5.2019.11.25 #81: mine='you must be the change you wish to see in the world' match=True
+t5.2019.11.25 #82: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2019.11.25 #83: mine='i like when you sit with m and read the paper' match=False
+t5.2019.12.09 #50: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2019.12.09 #51: DECODE_FAIL
+t5.2019.12.09 #53: mine='i heard my friend s going into town today' match=False
+t5.2019.12.09 #54: DECODE_FAIL
+t5.2019.12.09 #55: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2019.12.09 #56: mine='i like when you sit with me and read the paper' match=False
+t5.2019.12.09 #57: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2019.12.09 #58: DECODE_FAIL
+t5.2019.12.09 #59: mine='was not what your country ca do for you' match=False
+t5.2019.12.09 #60: mine='i heard my friend is going into town today' match=True
+t5.2019.12.09 #61: mine='you must be the change you wish to see in the world' match=True
+t5.2019.12.09 #62: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2019.12.09 #63: mine='i like when you sit with me and read the paper' match=False
+t5.2019.12.09 #64: mine='these are like miniature straws which suck water up the stem.' match=True
+t5.2019.12.09 #65: mine='this produces annual rings in the run' match=True
+t5.2019.12.09 #66: mine='put the objects that physicists study are stil basically simple c objects.' match=False
+t5.2019.12.09 #67: mine='we reach the port twenty minutes before the ferry is set to sail.' match=True
+t5.2019.12.09 #68: mine='at that moment she heard rapid footsteps.' match=True
+t5.2019.12.09 #69: mine="if you're so intent on keeping the young alive then why don't you pa rock climbing." match=True
+t5.2019.12.09 #70: mine='the meat within was garnished with herbs and cooked in a rich onion sauce' match=True
+t5.2019.12.09 #71: mine='four of the coach passengers are still critically il' match=False
+t5.2019.12.09 #72: mine='with typical bad grace they did not attend the barbecue.' match=True
+t5.2019.12.09 #73: mine='he could have bailed out, h was a stranger m a strange land he owed us nothing' match=False
+t5.2019.12.09 #74: mine="there's a pineapple in the refrigerator" match=False
+t5.2019.12.09 #75: mine="'l have to pray for guidance." match=False
+t5.2019.12.09 #76: mine='it would be criminal not to get him proper attention.' match=True
+t5.2019.12.09 #77: mine='you know that was a brand new passport.' match=True
+t5.2019.12.09 #78: mine='the scene was all set for a pitched battle' match=False
+t5.2019.12.09 #79: mine='he hesitated for a moment before replying.' match=True
+t5.2019.12.09 #80: mine='is that standard operating procedure?' match=True
+t5.2019.12.09 #81: mine='the aim was to build a classic bike.' match=True
+t5.2019.12.09 #82: mine="if they're playing another show tune, i'd like to dance." match=True
+t5.2019.12.09 #83: mine='he cast a furtive glance to left and to right' match=False
+t5.2019.12.11 #50: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2019.12.11 #51: mine='imagine all the people living life in peace' match=True
+t5.2019.12.11 #52: mine='ask not what your country can do for you' match=True
+t5.2019.12.11 #53: mine='i heard my friend is going into town today' match=True
+t5.2019.12.11 #54: mine='you must b the change you wish to see in the world' match=False
+t5.2019.12.11 #55: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2019.12.11 #56: mine='i like when you sit with me and read the paper' match=False
+t5.2019.12.11 #57: mine='he fumbled in the pocket of his jacket with staff frozen fingers.' match=True
+t5.2019.12.11 #58: mine='she is proud and wise and speaks with authority of many things' match=True
+t5.2019.12.11 #59: mine='and you must remember that this aunt of mine is a much respected figure in the community.' match=True
+t5.2019.12.11 #61: mine='thrown in nuts and carots and blend.' match=False
+t5.2019.12.11 #62: mine='rex removed the crocodile clips and disconnected the car battery.' match=True
+t5.2019.12.11 #63: mine='soon the baskets were unpacked' match=False
+t5.2019.12.11 #64: mine='would you like me to make you some eggs and bacon?' match=True
+t5.2019.12.11 #65: mine='with the pipe drained you can attempt a repair.' match=True
+t5.2019.12.11 #66: mine='it was almost like turning the clock back a couple of centuries.' match=True
+t5.2019.12.11 #67: mine='her new coat was now firmly wrapped round her as she waited for her meal.' match=False
+t5.2019.12.11 #68: DECODE_FAIL
+t5.2019.12.11 #69: mine='a thicker shell presumably protects the snail better.' match=True
+t5.2019.12.11 #70: mine='are the mi sergeants aware that they are guilty of trespass and criminal damage.' match=True
+t5.2019.12.11 #71: mine='the nervous system is becoming exhausted' match=True
+t5.2019.12.11 #72: mine='the ruby in her bely button stayed put.' match=False
+t5.2019.12.11 #73: mine='there are hazards associated with sharp equipment.' match=True
+t5.2019.12.11 #74: mine='he dashed without a lamp to light his way.' match=True
+t5.2019.12.11 #75: mine='i stil recognize that poem as being utterly my own.' match=False
+t5.2019.12.11 #76: mine='the chief inspector kicked off her shoes and poured a slug of single malt whisky.' match=True
+t5.2019.12.11 #77: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2019.12.11 #78: mine='imagine all the people living life in peace' match=False
+t5.2019.12.11 #79: mine='ask not what our country can do for you' match=False
+t5.2019.12.11 #80: DECODE_FAIL
+t5.2019.12.11 #82: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2019.12.11 #83: mine='i like when you sit with me and read the paper' match=False
+t5.2019.12.18 #50: DECODE_FAIL
+t5.2019.12.18 #51: mine='imagine all the people living life in peace' match=True
+t5.2019.12.18 #52: mine='ask not what your county can do for you' match=False
+t5.2019.12.18 #53: mine='i heard my friend is going into town today' match=True
+t5.2019.12.18 #54: mine='you must be the change you wish to see in the world' match=True
+t5.2019.12.18 #55: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2019.12.18 #56: mine='i like when you sit with me and read the paper' match=True
+t5.2019.12.18 #57: mine='quiet, secluded places often attract ghost stories.' match=True
+t5.2019.12.18 #58: mine='lean times were getting leaner.' match=True
+t5.2019.12.18 #59: mine='his sunny yellow room is instantly cheering.' match=True
+t5.2019.12.18 #60: mine='strawberry plants should be on sale next month' match=True
+t5.2019.12.18 #61: mine='he reckons his success on the field depends on learning the lingo.' match=True
+t5.2019.12.18 #62: mine='he required a minimum of fifty yards for safety.' match=False
+t5.2019.12.18 #63: mine='the blade snapped open with a soft click.' match=True
+t5.2019.12.18 #64: mine='he promised to forward my mail and wished me luck.' match=True
+t5.2019.12.18 #65: mine='there were dozens, but in essence they boiled down to only one.' match=True
+t5.2019.12.18 #66: mine=', tried to reason but succeeded only in further shuffling her feathers.' match=True
+t5.2019.12.18 #67: mine='each file has a unique name by which it is accessed.' match=True
+t5.2019.12.18 #68: mine='if there is any sign of cracking during operation we are ready' match=True
+t5.2019.12.18 #69: mine='an you make the blind see?' match=False
+t5.2019.12.18 #70: mine='her whole life had been directed towards this one task.' match=True
+t5.2019.12.18 #71: mine='ce was getting bored with her laser duel.' match=True
+t5.2019.12.18 #72: mine='seems to me you could grab him and save the dough.' match=True
+t5.2019.12.18 #73: mine='although speech is immediate and flexible, it lacks permanence.' match=True
+t5.2019.12.18 #74: mine='he silenced him before he could speak, shaking her head and putting her finger before her lips.' match=True
+t5.2019.12.18 #75: mine='when were you pregnant?' match=True
+t5.2019.12.18 #76: mine='a few minutes after eight, as they watched, a black flag moved slowly up the post.' match=False
+t5.2019.12.18 #77: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2019.12.18 #78: mine='imagine all the people living life in peace' match=True
+t5.2019.12.18 #79: mine="as' not what your country can do for you" match=False
+t5.2019.12.18 #80: mine='i heard my friend is going into town today.' match=True
+t5.2019.12.18 #81: mine='you must be the change you wish to see in the world' match=True
+t5.2019.12.18 #82: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2019.12.18 #83: mine='is like when you sit with me and read the paper' match=False
+t5.2019.12.20 #50: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2019.12.20 #51: mine='imagine all the people living life in peace' match=True
+t5.2019.12.20 #52: mine='ask not what your country can do for you' match=False
+t5.2019.12.20 #53: mine='i heard my friend is going into town today' match=True
+t5.2019.12.20 #54: mine='you must be the change you wish to see in the world' match=False
+t5.2019.12.20 #55: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2019.12.20 #56: mine='i like when you sit with me addresed the paper' match=False
+t5.2019.12.20 #57: mine='infected adults develop a cough and their skin and ears turn blue' match=False
+t5.2019.12.20 #58: mine=', interrupted unable to keep silent.' match=True
+t5.2019.12.20 #59: mine='i dumped the tools in the hutt.' match=False
+t5.2019.12.20 #60: mine='within thirty seconds the army had landed' match=True
+t5.2019.12.20 #61: mine="that's when i threw up on the carpet." match=True
+t5.2019.12.20 #62: mine="he didn't want to rob salt into her wounds." match=False
+t5.2019.12.20 #63: mine='shutting and swearing, i yeled for an epidermal' match=False
+t5.2019.12.20 #64: mine='you wish to purchase something?' match=True
+t5.2019.12.20 #65: mine='lowell felt like a soldier on a battlefield, stripped off ammunition.' match=False
+t5.2019.12.20 #66: mine='there are only one or two minor casualties.' match=True
+t5.2019.12.20 #67: mine="he slipped out and went to his tent, got his revolver, and emptied it in the direction off wooley's tent" match=False
+t5.2019.12.20 #68: mine='the people are very frightened, and only the bravest man will cross the moon at night.' match=True
+t5.2019.12.20 #69: mine='her words were barely audible, so light that they threatened to float away on the breeze.' match=True
+t5.2019.12.20 #70: mine='his orders were quite specific.' match=True
+t5.2019.12.20 #71: mine='they feed some material through the printer' match=True
+t5.2019.12.20 #72: mine='if you concentrate on maintaining the correct heading your feet will look after themselves.' match=True
+t5.2019.12.20 #73: mine="i'm cooking vegetable curry for them" match=False
+t5.2019.12.20 #74: mine='her energetic reader is invited to supply the details' match=False
+t5.2019.12.20 #75: mine='put i have never seen such a total lack of staff discipline in my entire career in the howell business.' match=False
+t5.2019.12.20 #76: mine=', wounded, elephant is a dangerous elephant.' match=False
+t5.2019.12.20 #77: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2019.12.20 #78: mine='imagine all the people living life in peace' match=True
+t5.2019.12.20 #79: mine='ask not what your county can do for you' match=False
+t5.2019.12.20 #80: mine='i heard my friend is going into town today' match=True
+t5.2019.12.20 #81: mine='you must be the change you wish to see in the world' match=True
+t5.2019.12.20 #82: mine=', when the sunlight strikes raindrops in the air' match=False
+t5.2019.12.20 #83: mine='i like when you sit with me and read the paper' match=True
+t5.2020.01.06 #51: mine='magee all the people living life in peace' match=False
+t5.2020.01.06 #52: mine='ask at what you county can do for you' match=False
+t5.2020.01.06 #53: mine='is heard my friend is going into town today' match=False
+t5.2020.01.06 #54: mine='you must be the change you wish to see in the world' match=True
+t5.2020.01.06 #55: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2020.01.06 #56: mine='i like when you sit with me and read the paper' match=False
+t5.2020.01.06 #58: mine='earnings per share for the quarter were negligible.' match=True
+t5.2020.01.06 #59: mine='he was fourteen teen tin and very deny with the intensity of adolescence' match=False
+t5.2020.01.06 #60: mine='the proffered messing around with wines and bolts and things' match=False
+t5.2020.01.06 #61: mine='the other battalions were infected by the panic and also feed.' match=True
+t5.2020.01.06 #62: mine='and particular immune to crocodile tears' match=False
+t5.2020.01.06 #63: mine='the access door was somewhere in that square.' match=True
+t5.2020.01.06 #64: mine='on the world that he created there were no wars political disputes e daggers' match=False
+t5.2020.01.06 #65: mine="who's liable to pay the funeral expenses?" match=True
+t5.2020.01.06 #66: mine='this time cheering broke out in the ranks.' match=True
+t5.2020.01.06 #68: mine='did you win your hat trick?' match=False
+t5.2020.01.06 #69: mine='this tale he was telling was surely alies.' match=False
+t5.2020.01.06 #70: mine=', and she marched off without looking back' match=False
+t5.2020.01.06 #71: mine='its was obvious that she was very upset and alarmed' match=False
+t5.2020.01.06 #72: mine='has the furniture been in store for very long?' match=True
+t5.2020.01.06 #73: mine="now three colonial era has gone, at least in name, but things haven't changed." match=False
+t5.2020.01.06 #74: mine='the countryside he was so different from the native does and moors' match=False
+t5.2020.01.06 #75: mine='he walked briskly to the door teen halted.' match=True
+t5.2020.01.06 #76: mine='for to long years i lived the life of a save.' match=False
+t5.2020.01.06 #78: mine='imagine all the people living life in peace' match=True
+t5.2020.01.06 #79: mine='ask not what your country down do for you' match=False
+t5.2020.01.06 #80: mine='i heard my friend is going into town today' match=True
+t5.2020.01.06 #81: mine='you must be the change you wish to see in the world' match=True
+t5.2020.01.06 #82: mine='when the sunlight strikes raindrops in the ar' match=False
+t5.2020.01.06 #83: mine='i like when you sit with me undead the paper' match=False
+t5.2020.01.08 #50: mine='the quick brown fox jumps over the lazy dog' match=True
+t5.2020.01.08 #51: mine='imagine all the people living life in peace' match=False
+t5.2020.01.08 #52: mine='mask not what your country can do for you' match=False
+t5.2020.01.08 #54: mine='you must be the change you wish to see in the world' match=False
+t5.2020.01.08 #55: mine='when the sunlight strikes raindrops in the air' match=True
+t5.2020.01.08 #56: mine="'m like when you sit with me and read the paper" match=False
+t5.2020.01.08 #57: mine='the water was ruining his leather jacket.' match=True
+t5.2020.01.08 #58: mine='the victims lay dead in the apartment.' match=True
+t5.2020.01.08 #59: mine='newman held the automatic in the palm of his hand.' match=True
+t5.2020.01.08 #60: mine='you could both stay on in your respective jobs.' match=True
+t5.2020.01.08 #61: mine='celia constantly referee to her mothers drowning accident.' match=False
+t5.2020.01.08 #62: mine='which market segments in each country will be selected' match=False
+t5.2020.01.08 #63: mine="there's a vote across the board on any increase." match=False
+t5.2020.01.08 #64: mine='put as often happened, fate dealt out a different hand.' match=False
+t5.2020.01.08 #65: mine='suspicion was inherent in the super rich.' match=True
+t5.2020.01.08 #66: mine='the eye either functions as a whole, or not at all.' match=False
+t5.2020.01.08 #67: mine="he'd spent te last few days bouncing from escort to escort." match=False
+t5.2020.01.08 #68: mine="but now i thought, he's a worm, he's squash be" match=False
+t5.2020.01.08 #69: mine='it was found abandoned a short distance away with the engine still running.' match=True
+t5.2020.01.08 #70: mine='on the lower slopes was a large end of cows.' match=True
+t5.2020.01.08 #71: mine='the mother snapped back at him and frowned.' match=True
+t5.2020.01.08 #72: mine='hein patient was still alive but his condition was deteriorating visibly.' match=False
+t5.2020.01.08 #73: mine='is tone had developed an edge to it.' match=True
+t5.2020.01.08 #74: mine='daisy leaned forward, at once horrified and fascinated.' match=True
+t5.2020.01.08 #75: mine='the tiny cabin offered no opportunity for retreat.' match=True
+t5.2020.01.08 #76: mine='why did i have to fal for a suicidal maniac?' match=False
+t5.2020.01.08 #77: mine='the quick brown fox jumps we the lazy dog' match=False
+t5.2020.01.08 #78: mine='imagine al the people living life in peace' match=False
+t5.2020.01.08 #79: mine='ask not what your county can do for you' match=False
+t5.2020.01.08 #80: mine='i heard my friend is going into town today' match=True
+t5.2020.01.08 #81: mine='you must be the change you wish to see in the world' match=True
+t5.2020.01.08 #82: mine='when the sunlight strikes raindrops in the a' match=False
+t5.2020.01.08 #83: mine=', like where you sit with me and read the paper' match=True
+
+HeldOutBlocks: 自解码 bigram CER=2.0930% WER=7.5000% n=221 (27.9 min)
+与包内官方选句完全一致: 135/221
+官方对照: Blocks 1.69/6.10, Trials 0.80/3.64
+saved -> .\20210512_willett\result\m1b_own_decode_HeldOutBlocks.csv

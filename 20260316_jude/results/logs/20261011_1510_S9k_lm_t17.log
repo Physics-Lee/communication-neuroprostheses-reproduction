@@ -1,0 +1,8 @@
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I1011 14:35:19.843600   461 brain_speech_decoder.h:52] Reading fst ./20260316_jude/data/20260316_jude/LanguageModels/Typing5gramPunc/TLG.fst
+I1011 14:46:28.583664   461 brain_speech_decoder.h:81] Reading symbol table ./20260316_jude/data/20260316_jude/LanguageModels/Typing5gramPunc/words.txt
+LM loaded in 669s
+t17.2024.06.03: n=20 post-LM CER 0.0571 WER 0.1149
+t17.2024.06.04: n=20 post-LM CER 0.1680 WER 0.3810
+t17.2024.07.09: n=20 post-LM CER 0.0997 WER 0.2705
+MULTI_DONE {'t17.2024.06.03': {'n': 20, 'cer': np.float64(0.0571), 'wer': np.float64(0.1149)}, 't17.2024.06.04': {'n': 20, 'cer': np.float64(0.168), 'wer': np.float64(0.381)}, 't17.2024.07.09': {'n': 20, 'cer': np.float64(0.0997), 'wer': np.float64(0.2705)}}

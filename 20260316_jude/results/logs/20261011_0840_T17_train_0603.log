@@ -1,0 +1,14 @@
+device: cuda (NVIDIA GeForce RTX 5060 Ti)
+Traceback (most recent call last):
+  File ".\20260316_jude\code\pytorch_port\train.py", line 158, in <module>
+    main()
+  File ".\20260316_jude\code\pytorch_port\train.py", line 79, in main
+    train_ds = TypingDataset(npz_path, 'train')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".\20260316_jude\code\pytorch_port\dataset.py", line 40, in __init__
+    z = np.load(npz_path, allow_pickle=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".\20260910_reproduce_20260629_levy\.venv312\Lib\site-packages\numpy\lib\_npyio_impl.py", line 451, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\repositories\\20260316_jude\\data\\20260316_jude\\Data\\t17\\t17.2024.06.03\\Typing\\m1_torch_data.npz'

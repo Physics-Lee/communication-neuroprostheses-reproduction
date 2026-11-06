@@ -1,0 +1,66 @@
+# M1 训练配置：t18.2024.12.04 单会话（2026-10-09 夜）
+# 完整照抄官方 notebook 25 的 T18_trainArgs.yaml，仅改：sessions/dataDir（指向本仓 tfdata_20ms）、
+# outputDir/loadDir（指向本仓 result/runs）。模型与训练超参不动。
+dataset:
+  name: typing
+  sessions:
+  - t18.2024.12.04
+  datasetProbabilityVal: [1.0]
+  dataDir:
+  - '.\20260316_jude\data\20260316_jude\Data\t18\t18.2024.12.04\Typing\tfdata_20ms'
+  whiteNoiseSD: 1.5
+  constantOffsetSD: 0.22
+  randomWalkSD: 0
+  nInputFeatures: 768
+  sampledElectrodes: null
+  staticGainSD: 0
+  randomCut: 0
+  nClasses: 30
+  maxSeqElements: 60
+  bufferSize: 1024
+model:
+  nUnits: 512
+  inputLayerSize: 768
+  subsampleFactor: 1
+  weightReg: 1.0e-05
+  actReg: 0.0
+  dropout: 0.6
+  trainable: true
+  nLayers: 5
+  patch_size: 15
+  patch_stride: 6
+  inputNetwork:
+    nInputLayers: 1
+    inputLayerSizes:
+    - 768
+    trainable: true
+    activation: softsign
+    dropout: 0.2
+gpuNumber: '0'
+mode: train
+outputDir: '.\20260316_jude\result\runs\m1_t18_20241204'
+loadDir: '.\20260316_jude\result\runs\m1_t18_20241204'
+loadCheckpointIdx: null
+smoothInputs: 1
+smoothKernelSD: 2
+learnRateStart: 0.02
+learnRateEnd: 0.0
+learnRateDecaySteps: 10000
+learnRatePower: 1.0
+trainableInput: true
+trainableBackend: true
+seed: -1
+batchesPerSave: 0
+batchesPerVal: 50
+nBatchesToTrain: 10000
+batchSize: 64
+inputScale: 1.0
+inferenceOutputFileName: null
+inputLayerForInference: null
+gradClipValue: 10
+lossType: ctc
+normLayer: false
+randomWalkAxis: -1
+warmUpSteps: 0
+early_stopping_num_batches: 1000
+EndCER: 0

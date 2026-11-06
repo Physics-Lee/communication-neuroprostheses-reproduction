@@ -1,0 +1,4 @@
+part	n	per_session_PER	per_session_WER(final)	WER_3gram	WER_5gram	WER_final	WER_bp1+OPT	WER_bp1+OPT+Qwen	bp1_WER_5gram	bp1_WER_final
+t12	100	t12.2023.11.28_imagined=61.4%(n=100)	t12.2023.11.28_imagined=136.9%(n=100)	92.9	106.9	136.9	97.3	-	106.9	136.9
+t15	105	t15.2024.03.03_imagined=51.5%(n=50); t15.2024.12.15_imagined_125kwords=54.4%(n=15); t15.2025.01.05_imagined_125kwords=67.2%(n=40)	t15.2024.03.03_imagined=102.1%(n=50); t15.2024.12.15_imagined_125kwords=96.9%(n=15); t15.2025.01.05_imagined_125kwords=112.4%(n=40)	78.8	78.4	105.9	78.8	82.3	78.4	105.9
+t16	85	t16.2024.04.29_imagined=52.2%(n=50); t16.2024.12.18_imagined_125kwords=69.4%(n=35)	t16.2024.04.29_imagined=99.5%(n=50); t16.2024.12.18_imagined_125kwords=135.5%(n=35)	78.2	87.6	118.6	83.1	-	87.6	118.6

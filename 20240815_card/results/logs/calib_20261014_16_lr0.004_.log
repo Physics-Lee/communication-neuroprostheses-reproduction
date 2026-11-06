@@ -1,0 +1,63 @@
+[init] day layer 42 <- 41 (t15.2025.03.14)
+[pool] replay 1974 trials from 42 history sessions (33s)
+[trial   0] block 5 ed 6/21 cum PER 28.57%
+[trial   1] block 5 ed 14/47 cum PER 29.41%
+[trial   2] block 5 ed 17/41 cum PER 33.94%
+[trial   3] block 5 ed 11/34 cum PER 33.57%
+[trial   4] block 5 ed 20/35 cum PER 38.20%
+  [ft] 32 steps, loss 68.37 -> 0.34 (15s)
+[trial   5] block 5 ed 10/44 cum PER 35.14%
+  [ft] 32 steps, loss 6.62 -> 0.09 (15s)
+[trial   6] block 5 ed 12/27 cum PER 36.14%
+  [ft] 32 steps, loss 7.76 -> 0.11 (15s)
+[trial   7] block 5 ed 3/23 cum PER 34.19%
+  [ft] 32 steps, loss 3.68 -> 0.02 (15s)
+[trial   8] block 5 ed 4/20 cum PER 33.22%
+  [ft] 32 steps, loss 0.86 -> 0.01 (15s)
+[trial   9] block 5 ed 10/30 cum PER 33.23%
+  [ft] 32 steps, loss 4.38 -> 0.08 (15s)
+[trial  10] block 5 ed 5/23 cum PER 32.46%
+  [ft] 32 steps, loss 1.97 -> 0.06 (15s)
+[trial  11] block 5 ed 7/41 cum PER 30.83%
+  [ft] 32 steps, loss 3.70 -> 0.06 (15s)
+[trial  12] block 5 ed 10/39 cum PER 30.35%
+  [ft] 32 steps, loss 3.10 -> 0.03 (15s)
+[trial  13] block 5 ed 7/43 cum PER 29.06%
+  [ft] 32 steps, loss 3.90 -> 0.02 (15s)
+[trial  14] block 5 ed 1/28 cum PER 27.62%
+  [ft] 32 steps, loss 0.70 -> 0.06 (15s)
+[trial  15] block 5 ed 5/38 cum PER 26.59%
+  [ft] 32 steps, loss 2.27 -> 0.02 (15s)
+[trial  16] block 5 ed 4/37 cum PER 25.57%
+  [ft] 32 steps, loss 0.07 -> 0.09 (14s)
+[trial  17] block 5 ed 0/13 cum PER 25.00%
+  [ft] 32 steps, loss 0.19 -> 0.06 (14s)
+[trial  18] block 5 ed 14/43 cum PER 25.52%
+  [ft] 32 steps, loss 0.11 -> 0.18 (15s)
+[trial  19] block 5 ed 8/26 cum PER 25.73%
+  [ft] 32 steps, loss 2.60 -> 0.03 (15s)
+[trial  20] block 5 ed 0/20 cum PER 24.96%
+  [ft] 32 steps, loss 0.62 -> 0.08 (14s)
+[trial  21] block 5 ed 5/24 cum PER 24.82%
+  [ft] 32 steps, loss 0.02 -> 0.06 (15s)
+[trial  22] block 5 ed 6/31 cum PER 24.59%
+  [ft] 32 steps, loss 0.83 -> 0.02 (15s)
+[trial  23] block 5 ed 3/36 cum PER 23.82%
+  [ft] 32 steps, loss 0.92 -> 0.09 (15s)
+{
+  "session": "t15.2025.03.16",
+  "lr": 0.004,
+  "arm": "copy",
+  "k": 5,
+  "cur_frac": 0.6,
+  "min_steps": 32,
+  "max_steps": 200,
+  "loss_stop": 0.55,
+  "n_trials": 24,
+  "online_PER": 0.23821989528795812,
+  "endpoint_PER": 0.0,
+  "total_ft_steps": 640,
+  "day0_weight_max_delta (0 expected in smoke only)": 0.0075838603079319,
+  "wall_min": 4.971944228808085
+}
+[done] outputs in .\20240815_card\data\20241009_card_BtoT25\run_calib_20261014\t15.2025.03.16_lr0.004_armcopy

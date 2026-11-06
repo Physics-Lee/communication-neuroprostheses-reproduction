@@ -1,0 +1,11 @@
+t5.2019.05.08: 全集 raw CER=5.83% WER=18.31% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+t5.2019.11.25: 全集 raw CER=6.65% WER=17.29% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+t5.2019.12.09: 全集 raw CER=3.32% WER=12.34% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+t5.2019.12.11: 全集 raw CER=3.39% WER=10.74% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+t5.2019.12.18: 全集 raw CER=2.87% WER=10.48% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+t5.2019.12.20: 全集 raw CER=3.63% WER=10.58% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+t5.2020.01.06: 全集 raw CER=5.25% WER=18.03% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+t5.2020.01.08: 全集 raw CER=3.78% WER=16.30% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+t5.2020.01.13: 全集 raw CER=30.37% WER=48.57% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+t5.2020.01.15: 全集 raw CER=36.47% WER=70.00% (val 子集指标用 step5_eval_from_errcounts.py 汇总)
+推理完成 -> .\20210512_willett\data\20210512_willett\runs\HeldOutTrials_synth\step5_inference

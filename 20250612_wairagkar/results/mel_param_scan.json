@@ -1,0 +1,14 @@
+{
+ "t15_day179 slaney_fft512 (tier-2 default)": 0.532,
+ "t15_day179 htk_fft512": 0.538,
+ "t15_day179 htk_fft400": 0.553,
+ "t15_day179 htk_fft1024": 0.492,
+ "t15_day179 slaney_fft1024": 0.491,
+ "t15_day179 htk_fft512_fmin40": 0.538,
+ "t15_day195 slaney_fft512 (tier-2 default)": 0.646,
+ "t15_day195 htk_fft512": 0.654,
+ "t15_day195 htk_fft400": 0.674,
+ "t15_day195 htk_fft1024": 0.599,
+ "t15_day195 slaney_fft1024": 0.597,
+ "t15_day195 htk_fft512_fmin40": 0.653
+}

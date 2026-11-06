@@ -1,0 +1,10 @@
++ cd '.\20260316_jude'
++ mkdir -p data/20260316_jude
++ unzip -q -o data/raw/20260316_jude/Data.zip -x '*.png' -d data/20260316_jude/
+caution: excluded filename not matched:  *.png
+++ find data/20260316_jude/Data -name '*.mat'
+++ wc -l
++ echo 'mat files: 165'
+mat files: 165
++ echo S2_DONE
+S2_DONE

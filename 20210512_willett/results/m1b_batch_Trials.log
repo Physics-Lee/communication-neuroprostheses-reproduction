@@ -1,0 +1,68 @@
+t5.2019.05.08 #2: mine='you want me to sing?' match=True
+t5.2019.05.08 #5: mine='have you ever seen a large cat fold itself into a tiny shoe box?' match=True
+t5.2019.05.08 #21: mine='the jeep was thirsty so i stopped for gas on the edge of town.' match=True
+t5.2019.05.08 #33: mine="because less than a quarter mile from where i'm standing right now is where alla's body was dumped." match=False
+t5.2019.05.08 #34: mine='there are moments when gentle background singing brings the song close to gospel.' match=True
+t5.2019.05.08 #39: mine="so you could literally see here's what every single person in the company gets paid." match=True
+t5.2019.05.08 #54: mine='i told you we were going to bring this sucker home, and we brought it home.' match=True
+t5.2019.05.08 #90: mine='what rent do you pay for your housing?' match=False
+t5.2019.05.08 #91: mine='plainly, there is a clear and present need to secure information in the public and private sectors.' match=True
+t5.2019.05.08 #98: mine='i thought i could fix it but got trapped by my ego and refusal to fail.' match=True
+t5.2019.11.25 #5: mine='then it wobble d under her weight and tilted forwards.' match=False
+t5.2019.11.25 #21: mine="and any brother's in hong kong all that week." match=False
+t5.2019.11.25 #31: mine='then we slipped into the kitchen , got up on the sink, and raced ourselves into the little attic.' match=False
+t5.2019.11.25 #33: mine="he didn't like being tied up to the women." match=True
+t5.2019.11.25 #34: mine='you can rent money.' match=True
+t5.2019.11.25 #39: mine="the only peace that you'll find here lies in a kind of pagan solitude." match=True
+t5.2019.11.25 #61: mine='his pot was in his hand still, if preceded him like the torch of justice.' match=True
+t5.2019.12.09 #5: mine='may be get your horses to swim across.' match=True
+t5.2019.12.09 #21: mine='i thought they were staying the night.' match=True
+t5.2019.12.09 #31: mine='it seemed a poor thing to have descended to.' match=True
+t5.2019.12.09 #33: mine='this sudden talk of alibi is made the whole thing sound serious.' match=False
+t5.2019.12.09 #34: mine='is the policy still to sit it out and wait rather than try and force your way into the prison?' match=True
+t5.2019.12.09 #39: mine='i accept that it precludes class a development.' match=True
+t5.2019.12.09 #68: mine='at that moment she heard rapid footsteps.' match=True
+t5.2019.12.11 #5: mine='but i have to hear the whole tale.' match=False
+t5.2019.12.11 #21: mine='this fuzzy, probabilistic approach is a sensible one.' match=True
+t5.2019.12.11 #31: mine='he needed to develop his mind.' match=True
+t5.2019.12.11 #33: mine='people here are also adopting a healthier diet.' match=True
+t5.2019.12.11 #34: mine='the royal navy had left its mark.' match=True
+t5.2019.12.11 #39: mine=', along shower relayed her still further.' match=False
+t5.2019.12.11 #61: mine='thrown in nuts and carrots and blend.' match=True
+t5.2019.12.18 #5: mine='he lifted his hand out of the water to smooth his hair.' match=True
+t5.2019.12.18 #21: mine='the servants would know whether it was possible to get back down the valley.' match=True
+t5.2019.12.18 #31: mine='why are you prepared to play such a desperate game, to put your whole future in jeopardy like this?' match=True
+t5.2019.12.18 #33: mine='you had round red cheeks, just like a wooden doll.' match=True
+t5.2019.12.18 #34: mine='i have seven apples, seven oranges and seen bananas.' match=False
+t5.2019.12.18 #39: mine='grumpy wizards make a toxic brew for the jovial queen.' match=True
+t5.2019.12.18 #61: mine='he reckons his success on the field depends on learning the lingo.' match=True
+t5.2019.12.20 #5: mine='im not tough enough to toe the line.' match=False
+t5.2019.12.20 #21: mine='a lot of old folk are getting caught and we must stamp it out.' match=True
+t5.2019.12.20 #31: mine='these agents are now being tested in clinical trials with pope at risk.' match=False
+t5.2019.12.20 #33: mine='the way he said it made the name sound like orchids and honey.' match=True
+t5.2019.12.20 #34: mine='pack my box with five dozen liquor jugs.' match=True
+t5.2019.12.20 #39: mine='state officials area always under threat, always being kidnapped.' match=False
+t5.2019.12.20 #61: mine="that's when i threw up on the carpet." match=True
+t5.2020.01.06 #5: mine='they breathe hair and they carrot swim.' match=False
+t5.2020.01.06 #21: mine='from the terrace, a broad flight of central steps led down to lawns and formal flower beds.' match=True
+t5.2020.01.06 #31: mine='the corpses lay uncovered in the open on plastic sheets.' match=True
+t5.2020.01.06 #39: mine='shame on us for not caring.' match=True
+t5.2020.01.06 #61: mine='the other battalions were infected by the panic and a also feed.' match=False
+t5.2020.01.08 #5: mine='on the eve of the council the worst of horrors was revealed.' match=True
+t5.2020.01.08 #21: mine='a small coal fire burned in the grate' match=False
+t5.2020.01.08 #31: mine='the result is a lighter weight fabric, but one which still shows off the yarn.' match=True
+t5.2020.01.08 #33: mine='perhaps they would accept his old currency.' match=True
+t5.2020.01.08 #34: mine='already the grass was becoming crisp with frost.' match=True
+t5.2020.01.08 #39: mine='it is the necessary foundation for growth of small businesses.' match=True
+t5.2020.01.08 #61: mine='celia constantly refere to her mothers drowning accident.' match=False
+t5.2020.01.13 #22: mine='crazy frederick brought many very exquisite opal jewels.' match=True
+t5.2020.01.13 #25: mine='sphinx of black quartz,, judge my vow.' match=False
+t5.2020.01.13 #121: mine='residents were warned to prepare flood defences.' match=True
+t5.2020.01.15 #22: mine='imagine a star with a mass ten times that of the sun.' match=True
+t5.2020.01.15 #25: mine='the elder boys are not detered, however.' match=False
+t5.2020.01.15 #121: mine='you never used to swear you know.' match=True
+
+HeldOutTrials: 自解码 bigram CER=0.9472% WER=4.5455% n=63 (7.3 min)
+与包内官方选句完全一致: 45/63
+官方对照: Blocks 1.69/6.10, Trials 0.80/3.64
+saved -> .\20210512_willett\result\m1b_own_decode_HeldOutTrials.csv

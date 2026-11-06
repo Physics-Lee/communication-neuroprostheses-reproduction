@@ -1,0 +1,674 @@
+hardware_spec:
+  gpu: 1x NVIDIA RTX 5060 Ti (16 GB VRAM)
+  host_ram_gb: 64.0
+  gpu_vram_gb: 16.0
+panel_a_vocab_funnel:
+- label: Angrick et al., 2024 (CC01)
+  vocab_num: 6
+  vocab_display: '6'
+  study_key: Angrick et al., 2024
+  is_open_vocab: false
+  openness_code: 2
+- label: Wandelt et al., 2024 (P1/P2)
+  vocab_num: 8
+  vocab_display: '8'
+  study_key: Wandelt et al., 2024
+  is_open_vocab: false
+  openness_code: 2
+- label: Brosler et al., 2026 (B1r/B3/B6)
+  vocab_num: 10
+  vocab_display: 5–10
+  study_key: Brosler et al., 2026
+  is_open_vocab: false
+  openness_code: 1
+- label: Moses et al., 2021 (B1)
+  vocab_num: 50
+  vocab_display: '50'
+  study_key: Moses et al., 2021
+  is_open_vocab: false
+  openness_code: 0
+- label: Silva et al., 2024b (B1)
+  vocab_num: 178
+  vocab_display: '178'
+  study_key: Silva et al., 2024b
+  is_open_vocab: false
+  openness_code: 1
+- label: Metzger et al., 2023 (B3)
+  vocab_num: 1024
+  vocab_display: 1,024
+  study_key: Metzger et al., 2023
+  is_open_vocab: false
+  openness_code: 1
+- label: Littlejohn et al., 2025 (B3)
+  vocab_num: 1024
+  vocab_display: 1,024
+  study_key: Littlejohn et al., 2025
+  is_open_vocab: false
+  openness_code: 1
+- label: Metzger et al., 2022 (B1)
+  vocab_num: 1152
+  vocab_display: 1,152
+  study_key: Metzger et al., 2022
+  is_open_vocab: false
+  openness_code: 1
+- label: Feghhi et al., 2026 (T12/T15)
+  vocab_num: 100000
+  vocab_display: 100k
+  study_key: Feghhi et al., 2026
+  is_open_vocab: false
+  openness_code: R
+- label: Willett et al., 2023 (T12)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Willett et al., 2023
+  is_open_vocab: false
+  openness_code: 2
+- label: Card et al., 2024 (T15)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Card et al., 2024
+  is_open_vocab: false
+  openness_code: 2
+- label: Feng et al., 2024 (T12)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Feng et al., 2024
+  is_open_vocab: false
+  openness_code: R
+- label: Kunz et al., 2025 (T12/T15/T16)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Kunz et al., 2025
+  is_open_vocab: false
+  openness_code: 2
+- label: Li et al., 2025 (T12)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Li et al., 2025
+  is_open_vocab: false
+  openness_code: R
+- label: Feghhi et al., 2025 (T12)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Feghhi et al., 2025
+  is_open_vocab: false
+  openness_code: R
+- label: Levin et al., 2026 (T12/T15/T16)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Levin et al., 2026
+  is_open_vocab: false
+  openness_code: P
+- label: Y. Zhang et al., 2026 (T12/T15)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Y. Zhang et al., 2026
+  is_open_vocab: false
+  openness_code: R
+- label: 'Nason-Tomaszewski
+
+    et al., 2026 (T16)'
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Nason-Tomaszewski et al., 2026
+  is_open_vocab: false
+  openness_code: P
+- label: 'Boccato et al., 2026
+
+    (T12/T15/T16/T17)'
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Boccato et al., 2026
+  is_open_vocab: false
+  openness_code: R
+- label: Jude et al., 2026a (T17/T18)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Jude et al., 2026a
+  is_open_vocab: false
+  openness_code: 2
+- label: Jude et al., 2026b (T17)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Jude et al., 2026b
+  is_open_vocab: false
+  openness_code: 2
+- label: Yoon et al., 2026 (T12)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Yoon et al., 2026
+  is_open_vocab: false
+  openness_code: P
+- label: Card et al., 2026 (T15)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Card et al., 2026
+  is_open_vocab: false
+  openness_code: 0
+- label: 'Fogg et al., 2026
+
+    (T12/T15/T16/T17/T21/T22)'
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Fogg et al., 2026
+  is_open_vocab: false
+  openness_code: P
+- label: Z. Zhang et al., 2026 (T12/T15)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Z. Zhang et al., 2026
+  is_open_vocab: false
+  openness_code: R
+- label: Pouratian et al., 2026 (V1/V2/V3)
+  vocab_num: 125000
+  vocab_display: 125k
+  study_key: Pouratian et al., 2026
+  is_open_vocab: false
+  openness_code: 0
+- label: Fan et al., 2023 (T5)
+  vocab_num: 130000
+  vocab_display: 130k
+  study_key: Fan et al., 2023
+  is_open_vocab: false
+  openness_code: 2
+- label: Karpowicz et al., 2024 (T5)
+  vocab_num: 130000
+  vocab_display: 130k
+  study_key: Karpowicz et al., 2024
+  is_open_vocab: false
+  openness_code: R
+- label: Willett et al., 2021 (T5)
+  vocab_num: 300000
+  vocab_display: open
+  study_key: Willett et al., 2021
+  is_open_vocab: true
+  openness_code: 2
+- label: Wairagkar et al., 2025 (T15)
+  vocab_num: 300000
+  vocab_display: open
+  study_key: Wairagkar et al., 2025
+  is_open_vocab: true
+  openness_code: 2
+- label: Levin et al., 2026 (T5/T12/T18)
+  vocab_num: 300000
+  vocab_display: open
+  study_key: Levin et al., 2026
+  is_open_vocab: true
+  openness_code: P
+- label: Wairagkar et al., 2026 (T15)
+  vocab_num: 300000
+  vocab_display: open
+  study_key: Wairagkar et al., 2026
+  is_open_vocab: true
+  openness_code: P
+panel_b_dataset_size:
+- label: Willett et al., 2021 (T5)
+  released_sentences: 1000
+  sentences_display: 1,000
+  study_key: Willett et al., 2021
+  span_note: '10 d/sess
+
+    95 blks
+
+    span 253 d'
+  openness_code: 2
+- label: Willett et al., 2023 (T12)
+  released_sentences: 9680
+  sentences_display: 9,680
+  study_key: Willett et al., 2023
+  span_note: '24 d/sess
+
+    275 blks
+
+    span 120 d'
+  openness_code: 2
+- label: Fan et al., 2023 (T5)
+  released_sentences: 1315
+  sentences_display: 1,315
+  study_key: Fan et al., 2023
+  span_note: '21 d/sess
+
+    105 blks
+
+    span 287 d'
+  openness_code: 2
+- label: Card et al., 2024 (T15)
+  released_sentences: 9498
+  sentences_display: 9,498
+  study_key: Card et al., 2024
+  span_note: '45 d/sess
+
+    265 blks
+
+    span 612 d'
+  openness_code: 2
+- label: Wairagkar et al., 2025 (T15)
+  released_sentences: 8489
+  sentences_display: 8,489
+  study_key: Wairagkar et al., 2025
+  span_note: '37 d/sess
+
+    blks n/a
+
+    span 171 d'
+  openness_code: 2
+- label: Kunz et al., 2025 (T12)
+  released_sentences: 500
+  sentences_display: '500'
+  study_key: Kunz et al., 2025
+  span_note: '1 d/sess
+
+    12 blks
+
+    span 1 d'
+  openness_code: 2
+- label: Kunz et al., 2025 (T15)
+  released_sentences: 720
+  sentences_display: '720'
+  study_key: Kunz et al., 2025
+  span_note: '3 d/sess
+
+    18 blks
+
+    span 309 d'
+  openness_code: 2
+- label: Kunz et al., 2025 (T16)
+  released_sentences: 450
+  sentences_display: '450'
+  study_key: Kunz et al., 2025
+  span_note: '2 d/sess
+
+    14 blks
+
+    span 234 d'
+  openness_code: 2
+- label: Jude et al., 2026a (T17)
+  released_sentences: 668
+  sentences_display: '668'
+  study_key: Jude et al., 2026a
+  span_note: '8 d/sess
+
+    46 blks
+
+    span 89 d'
+  openness_code: 2
+- label: Jude et al., 2026a (T18)
+  released_sentences: 1033
+  sentences_display: 1,033
+  study_key: Jude et al., 2026a
+  span_note: '9 d/sess
+
+    98 blks
+
+    span 119 d'
+  openness_code: 2
+- label: Jude et al., 2026b (T17)
+  released_sentences: 3674
+  sentences_display: 3,674
+  study_key: Jude et al., 2026b
+  span_note: '13 d/sess
+
+    96 blks
+
+    span 141 d'
+  openness_code: 2
+panel_cd_online_wer_speed:
+- label: Willett et al., 2021 (T5)
+  wer_mean: 25.1
+  wer_sd: 8.6
+  speed_wpm_mean: 15.4
+  speed_wpm_sd: 2.2
+  speed_note: 15.4±2.2
+  study_key: Willett et al., 2021
+  vocab_tag: open
+  wer_caliber: 'mean±SD†
+
+    5 of 10 d'
+  speed_caliber: 'mean±SD†
+
+    5 of 10 d'
+  openness_code: 2
+- label: Willett et al., 2023 (T12)
+  wer_mean: 23.9
+  wer_sd: 1.8
+  speed_wpm_mean: 65.3
+  speed_wpm_sd: 0.9
+  speed_note: 65.3±0.9
+  study_key: Willett et al., 2023
+  vocab_tag: 125k
+  wer_caliber: 'mean±SD‡
+
+    5 of 24 d'
+  speed_caliber: 'mean±SD‡
+
+    5 of 24 d'
+  openness_code: 2
+- label: Fan et al., 2023 (T5)
+  wer_mean: 4.0
+  wer_sd: 1.2
+  speed_wpm_mean: 14.6
+  speed_wpm_sd: 2.2
+  speed_note: 14.6±2.2
+  study_key: Fan et al., 2023
+  vocab_tag: 130k
+  wer_caliber: 'mean±SD†
+
+    10 of 21 d'
+  speed_caliber: 'mean±SD
+
+    15 eval d (10 released)'
+  openness_code: 2
+- label: Card et al., 2024 (T15)
+  wer_mean: 4.9
+  wer_sd: 3.3
+  speed_wpm_mean: 32.5
+  speed_wpm_sd: 2.7
+  speed_note: 32.5±2.7
+  study_key: Card et al., 2024
+  vocab_tag: 125k
+  wer_caliber: 'mean±SD
+
+    14 of 45 d'
+  speed_caliber: 'mean±SD
+
+    14 of 45 d'
+  openness_code: 2
+- label: Wairagkar et al., 2025 (T15)
+  wer_mean: 43.8
+  wer_sd: null
+  speed_wpm_mean: null
+  speed_wpm_sd: null
+  speed_note: n/a
+  study_key: Wairagkar et al., 2025
+  vocab_tag: open
+  wer_caliber: 'listener median
+
+    8 of 37 d'
+  speed_caliber: n/r
+  openness_code: 2
+- label: Kunz et al., 2025 (T12)
+  wer_mean: 23.7
+  wer_sd: 0.0
+  speed_wpm_mean: null
+  speed_wpm_sd: null
+  speed_note: n/a
+  study_key: Kunz et al., 2025
+  vocab_tag: 50-w
+  wer_caliber: 'mean±SD†
+
+    1 of 1 d'
+  speed_caliber: n/r
+  openness_code: 2
+- label: Kunz et al., 2025 (T15)
+  wer_mean: 51.3
+  wer_sd: 33.1
+  speed_wpm_mean: null
+  speed_wpm_sd: null
+  speed_note: n/a
+  study_key: Kunz et al., 2025
+  vocab_tag: 125k
+  wer_caliber: 'mean±SD†
+
+    2 of 3 d'
+  speed_caliber: n/r
+  openness_code: 2
+- label: Kunz et al., 2025 (T16)
+  wer_mean: 46.6
+  wer_sd: 0.0
+  speed_wpm_mean: null
+  speed_wpm_sd: null
+  speed_note: n/a
+  study_key: Kunz et al., 2025
+  vocab_tag: 125k
+  wer_caliber: 'mean±SD†
+
+    1 of 2 d'
+  speed_caliber: n/r
+  openness_code: 2
+- label: Jude et al., 2026a (T17)
+  wer_mean: 12.5
+  wer_sd: 2.5
+  speed_wpm_mean: 6.8
+  speed_wpm_sd: 1.8
+  speed_note: 6.8±1.8
+  study_key: Jude et al., 2026a
+  vocab_tag: 125k
+  wer_caliber: 'mean±SD†
+
+    6 of 8 d'
+  speed_caliber: 'mean±SD†
+
+    6 of 8 d'
+  openness_code: 2
+- label: Jude et al., 2026a (T18)
+  wer_mean: 3.4
+  wer_sd: 0.8
+  speed_wpm_mean: 14.0
+  speed_wpm_sd: 4.5
+  speed_note: 14.0±4.5
+  study_key: Jude et al., 2026a
+  vocab_tag: 125k
+  wer_caliber: 'mean±SD†
+
+    7 of 9 d'
+  speed_caliber: 'mean±SD†
+
+    7 of 9 d'
+  openness_code: 2
+- label: Jude et al., 2026b (T17)
+  wer_mean: 66.5
+  wer_sd: 18.1
+  speed_wpm_mean: 34.1
+  speed_wpm_sd: 7.7
+  speed_note: 34.1±7.7
+  study_key: Jude et al., 2026b
+  vocab_tag: 125k
+  wer_caliber: 'mean±SD†
+
+    4 of 13 d'
+  speed_caliber: 'mean±SD†
+
+    8 of 13 d'
+  openness_code: 2
+panel_e_repro_acoustic:
+- label: 'Willett et al., 2021
+
+    (T5, raw CER)'
+  ours: 4.71
+  paper: 2.78
+  note: null
+- label: 'Willett et al., 2023
+
+    (T12, greedy PER)'
+  ours: 23.42
+  paper: 19.7
+  note: null
+- label: 'Fan et al., 2023
+
+    (T5, CORP v6 CER)'
+  ours: 6.2
+  paper: 6.16
+  note: 'seed: 2.65'
+- label: 'Card et al., 2024
+
+    (T15, greedy PER)'
+  ours: 10.19
+  paper: 9.54
+  note: null
+- label: 'Wairagkar et al., 2025
+
+    (T15, 1−mel r %)'
+  ours: 31.4
+  paper: 17.0
+  note: 'r: 0.69 vs 0.83'
+- label: 'Kunz et al., 2025
+
+    (T12, greedy PER)'
+  ours: 61.4
+  paper: 24.0
+  note: 50-w sess.
+- label: 'Kunz et al., 2025
+
+    (T15, greedy PER)'
+  ours: 59.7
+  paper: 54.0
+  note: 3-sess. subset
+- label: 'Kunz et al., 2025
+
+    (T16, greedy PER)'
+  ours: 61.5
+  paper: 52.0
+  note: 2-sess. subset
+- label: 'Jude et al., 2026a
+
+    (T17, raw CER)'
+  ours: 16.5
+  paper: 18.6
+  note: best; SrcData
+- label: 'Jude et al., 2026a
+
+    (T18, raw CER)'
+  ours: 5.3
+  paper: 12.0
+  note: paper <12%
+- label: 'Jude et al., 2026b
+
+    (T17, greedy PER)'
+  ours: 39.97
+  paper: 34.0
+  note: null
+panel_f_repro_full_wer:
+- label: Willett et al., 2021 (T5)
+  ours: 10.0
+  paper: 3.64
+  note: 'bigram
+
+    63-tr. pool'
+- label: Willett et al., 2023 (T12)
+  ours: 23.58
+  paper: 23.8
+  note: 'day med.
+
+    5-gram'
+- label: Fan et al., 2023 (T5)
+  ours: 4.1
+  paper: 6.16
+  note: 'recal. arm
+
+    10 sess.'
+- label: Card et al., 2024 (T15)
+  ours: 6.25
+  paper: 6.7
+  note: '41-s pool
+
+    biGRU-48k'
+- label: Wairagkar et al., 2025 (T15)
+  ours: null
+  paper: null
+  note: 'WER n/r
+
+    (voice; see e)'
+- label: Kunz et al., 2025 (T12)
+  ours: 94.35
+  paper: 24.0
+  note: '50-w sess.
+
+    gap attr.'
+- label: Kunz et al., 2025 (T15)
+  ours: 78.07
+  paper: 54.0
+  note: '125k
+
+    gap attr.'
+- label: Kunz et al., 2025 (T16)
+  ours: 82.38
+  paper: 52.0
+  note: '125k
+
+    gap attr.'
+- label: Jude et al., 2026a (T17)
+  ours: 11.5
+  paper: 15.0
+  note: best sess.
+- label: Jude et al., 2026a (T18)
+  ours: 5.7
+  paper: 7.0
+  note: best; paper <7%
+- label: Jude et al., 2026b (T17)
+  ours: 44.37
+  paper: 50.0
+  note: conv. day-68
+panel_g_host_ram_walls:
+- category: '125k 5-gram WFST LM
+
+    (host RAM; 4 studies)'
+  official_gb: 300.0
+  ours_gb: 19.6
+  note: '300 → 19.6 GB
+
+    (mmap + .idx; 15.3×)'
+- category: '125k 3-gram WFST LM
+
+    (host RAM; 3 studies)'
+  official_gb: 60.0
+  ours_gb: 1.46
+  note: '40–60 → 1.46 GB
+
+    (KenLM trie; 41×)'
+- category: 'Typing 5-gram WFST
+
+    (host RAM; Jude 2026a)'
+  official_gb: 64.0
+  ours_gb: 22.5
+  note: '64+ → 22.5 GB (2.8×)
+
+    (drop unpruned FST)'
+- category: 'Handwriting fold + FST
+
+    (host RAM; Willett 2021)'
+  official_gb: 56.0
+  ours_gb: 26.9
+  note: '56 → 26.9 GB (2.1×)
+
+    (mmap + lazy FST)'
+panel_h_gpu_vram_walls:
+- category: 'Speech RNN + OPT-6.7B
+
+    (A100 80G; Willett 2023)'
+  official_gb: 80.0
+  ours_gb: 13.0
+  note: '80 GB A100
+
+    → 13.0 GB (OPT fp16)'
+- category: 'Speech RNN + OPT-6.7B
+
+    (1–2× 4090; 3 studies)'
+  official_gb: 48.0
+  ours_gb: 13.0
+  note: '24–48 GB 4090
+
+    → 13.0 GB (accum + OPT)'
+- category: 'Voice synthesis
+
+    (3× 3090; Wairagkar 2025)'
+  official_gb: 72.0
+  ours_gb: 1.5
+  note: '3×24 GB 3090 + A6000
+
+    → 0–1.5 GB (CPU / .h5)'
+- category: 'Handwriting GRU + GPT-2
+
+    (1080 Ti / A100; 2 studies)'
+  official_gb: 44.0
+  ours_gb: 4.0
+  note: '40–44 GB rig
+
+    → 3.5–4.0 GB (GRU + GPT-2)'
+- category: 'Typing GRU + 5-gram
+
+    (RTX 4090; Jude 2026a)'
+  official_gb: 24.0
+  ours_gb: 11.5
+  note: '24 GB 4090
+
+    → 11.5 GB (bf16 port)'

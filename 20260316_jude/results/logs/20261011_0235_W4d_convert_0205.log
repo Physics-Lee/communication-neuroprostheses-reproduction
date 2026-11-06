@@ -1,0 +1,1090 @@
+mat_to_tfrecord_V3.py input parameters:
+	Session mat path: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing
+	Block numbers: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+	Number of test trials: 20
+	Trials to remove: {1: [0, 1]}
+	Channels to exclude: []
+	Channels to zero: []
+	Include threshold crossings: True
+	Include spike power: True
+	Spike power max: 50000
+	Z-score data: True
+	Global std: True
+	Bin compression factor: 2
+	Save path: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\tfdata_20ms
+
+
+RedisMat file for block 1: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_125842_(1).mat
+Removed block 1's trial 0 because it was manually specified as bad.
+Removed block 1's trial 1 because it was manually specified as bad.
+RedisMat file for block 2: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_131410_(2).mat
+RedisMat file for block 3: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_132822_(3).mat
+RedisMat file for block 4: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_140940_(4).mat
+RedisMat file for block 5: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_142428_(5).mat
+RedisMat file for block 6: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_144731_(6).mat
+RedisMat file for block 8: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_150418_(8).mat
+RedisMat file for block 9: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_153239_(9).mat
+RedisMat file for block 10: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_155621_(10).mat
+RedisMat file for block 11: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_162342_(11).mat
+RedisMat file for block 12: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_163020_(12).mat
+RedisMat file for block 13: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_164105_(13).mat
+RedisMat file for block 14: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_164731_(14).mat
+RedisMat file for block 15: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_165805_(15).mat
+RedisMat file for block 16: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\RedisMat\20250205_170414_(16).mat
+Saved neural features plot to: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\tfdata_20ms/trial_5_neural_features.png
+Trial 0 (16709068800.0 seconds): Hundred and two sometimes.            
+Trial 1 (20101119232.0 seconds): Where we make the safety bags.        
+Trial 2 (23909103360.0 seconds): Was it a vision, or a waking dream?   
+Trial 3 (18221074944.0 seconds): I suppose you could use that.         
+Trial 4 (21661094144.0 seconds): Since I do a lot of projects.         
+Trial 5 (27301114624.0 seconds): I'm very much in favor of gun control.
+Trial 6 (28333125120.0 seconds): The story was a very dramatic story.  
+Trial 7 (23621086720.0 seconds): That's kind of understandable.        
+Trial 8 (17867099136.0 seconds): And see that's another thing.       
+Trial 9 (23756112384.0 seconds): You know more and more of them are. 
+Trial 10 (16093084672.0 seconds): Sometimes it doesn't work.          
+Trial 11 (17110082816.0 seconds): That will work out just fine.       
+Trial 12 (19756105216.0 seconds): What do you think of the spoilers?  
+Trial 13 (16542085120.0 seconds): It's almost four years old.         
+Trial 14 (22861107968.0 seconds): The status quo for Puerto Rico.     
+Trial 15 (18733087744.0 seconds): We really had a good time.          
+Trial 16 (26206117120.0 seconds): Has affected a lot of social change.
+Trial 17 (20973091328.0 seconds): Getting away with the cards is easy.
+Trial 18 (29554153984.0 seconds): My dad is a big blue grass fan.       
+Trial 19 (22293102080.0 seconds): Build and deploy manually.            
+Trial 20 (22678110464.0 seconds): It's not a decision that comes easy.  
+Trial 21 (24053138176.0 seconds): It's hard for me to imagine that.     
+Trial 22 (26301134592.0 seconds): It was an interesting experience.     
+Trial 23 (22301108736.0 seconds): They had to abide by the rules.       
+Trial 24 (25085122304.0 seconds): I can understand their viewpoint.     
+Trial 25 (19701110016.0 seconds): That's an interesting notion.         
+Trial 26 (28757139200.0 seconds): Ranging from progressive rock to jazz.
+Trial 27 (24772115200.0 seconds): It cost her three hundred dollars.    
+Trial 28 (19723107840.0 seconds): I will start doing it well.     
+Trial 29 (19365113088.0 seconds): The food comes out fresh.       
+Trial 30 (23936132352.0 seconds): We both came out of our shells. 
+Trial 31 (22561125376.0 seconds): I don't know how hard it is.    
+Trial 32 (20268110080.0 seconds): You have their basic needs met. 
+Trial 33 (14870076672.0 seconds): The days were nice and warm.    
+Trial 34 (22017123328.0 seconds): You can always heat it up again.
+Trial 35 (20287111936.0 seconds): But not as much as we should.   
+Trial 36 (12839073536.0 seconds): From what I can tell.           
+Trial 37 (16882109184.0 seconds): When you stop to think about it.
+Trial 38 (11461064448.0 seconds): I need to be there.             
+Trial 39 (15074077184.0 seconds): Bring the pot to a boil.        
+Trial 40 (20537115392.0 seconds): I love this country too much.   
+Trial 41 (14481080832.0 seconds): Pick that car out.              
+Trial 42 (25406135552.0 seconds): You can always say no thank you.
+Trial 43 (20956131072.0 seconds): It really adds up after a while.
+Trial 44 (19547124736.0 seconds): Tree bark all over her lawn.    
+Trial 45 (13176081920.0 seconds): I like that one too.            
+Trial 46 (20272107008.0 seconds): I think it's such a fun sport.  
+Trial 47 (16451104512.0 seconds): I was the one to tell her that. 
+Trial 48 (24163131648.0 seconds): As soon as things get public.        
+Trial 49 (20117126912.0 seconds): I bought this shirt on sale.         
+Trial 50 (22893133568.0 seconds): It shows how much you really care.   
+Trial 51 (22102120960.0 seconds): I enjoy this time of the year.       
+Trial 52 (14128081408.0 seconds): Half of it is gone.                  
+Trial 53 (23961134592.0 seconds): Do you have a phone that I can use?  
+Trial 54 (26460154368.0 seconds): I am starting to think we were right.
+Trial 55 (18701107456.0 seconds): Play your best cards.                
+Trial 56 (18259106816.0 seconds): We grew more every year.             
+Trial 57 (17453105152.0 seconds): The road was clear ahead.            
+Trial 58 (25787148800.0 seconds): I have a lot of stuff with me.        
+Trial 59 (29158160640.0 seconds): I read this with my family every week.
+Trial 60 (24316140288.0 seconds): He has been a good child so far.      
+Trial 61 (22865123328.0 seconds): I was the one to tell her that.       
+Trial 62 (27903156736.0 seconds): This is a hard problem to work on.    
+Trial 63 (24801142784.0 seconds): We hope there will be more next week. 
+Trial 64 (17851091200.0 seconds): I am able to go this week.            
+Trial 65 (22388118784.0 seconds): Now you are just making stuff up.     
+Trial 66 (20969112320.0 seconds): You should enjoy your time there.     
+Trial 67 (21926127360.0 seconds): I really feel that we can make it.    
+Trial 68 (25467135232.0 seconds): I don't know if I will be able to come.
+Trial 69 (21793134080.0 seconds): I used to love it when I was young.    
+Trial 70 (20271108864.0 seconds): She is just a little girl.             
+Trial 71 (21900126208.0 seconds): The class was only half full.          
+Trial 72 (16866097152.0 seconds): I want to watch this play.             
+Trial 73 (18004137728.0 seconds): You need help more than I do.          
+Trial 74 (18293105408.0 seconds): Keep the car with you for now.         
+Trial 75 (22274127360.0 seconds): The joy of an early morning walk.      
+Trial 76 (14155081728.0 seconds): Take the next right turn.              
+Trial 77 (18691111168.0 seconds): I lived in Dallas for a while.         
+Trial 78 (18291091968.0 seconds): My real home is right here.        
+Trial 79 (15167078656.0 seconds): I knew this would happen.          
+Trial 80 (23743137280.0 seconds): I have not heard back from them.   
+Trial 81 (20567129344.0 seconds): If you haven't done it in a while. 
+Trial 82 (21727136000.0 seconds): He came to my house the other day. 
+Trial 83 (25070139648.0 seconds): Small things can make you happy.   
+Trial 84 (19250097920.0 seconds): I need more room for my things.    
+Trial 85 (13142066176.0 seconds): I hope you feel heard.             
+Trial 86 (19375106304.0 seconds): I hope I can meet your family.     
+Trial 87 (22908134144.0 seconds): They seem to be getting along well.
+Trial 88 (17659101696.0 seconds): That's how they suck you in.       
+Trial 89 (19193111040.0 seconds): It's collecting dust right now.    
+Trial 90 (16028082176.0 seconds): Let your voice be heard.           
+Trial 91 (13421077248.0 seconds): Only four days to go.              
+Trial 92 (20510125056.0 seconds): Running is great for some people.  
+Trial 93 (17540108032.0 seconds): You have to work around it.        
+Trial 94 (16243092992.0 seconds): I like to mow the lawn.            
+Trial 95 (14626079232.0 seconds): I am already very late.            
+Trial 96 (19984114944.0 seconds): It just depends on where you go.   
+Trial 97 (20636104704.0 seconds): They do take up a lot of your time.
+Trial 98 (22731130880.0 seconds): It just depends on where you go.   
+Trial 99 (26373152000.0 seconds): I don't know what you are thinking.
+Trial 100 (18693102592.0 seconds): That's how they suck you in.       
+Trial 101 (20357122560.0 seconds): It takes a lot more planning.      
+Trial 102 (12582082560.0 seconds): I like to mow the lawn.            
+Trial 103 (21025112576.0 seconds): I know you are going to be great.  
+Trial 104 (15960087552.0 seconds): I have changed my mind.            
+Trial 105 (14803083520.0 seconds): We should cook more food.          
+Trial 106 (20178122240.0 seconds): I will work on the budget today.   
+Trial 107 (17881107968.0 seconds): I have not been there since.       
+Trial 108 (16562099200.0 seconds): Not for the job I have now.            
+Trial 109 (18984108544.0 seconds): She was looking into this last week.   
+Trial 110 (19612127232.0 seconds): That makes me feel better of course.   
+Trial 111 (23669133824.0 seconds): I had to make sure I was there on time.
+Trial 112 (20886134528.0 seconds): They've had to do that all year.       
+Trial 113 (19399106816.0 seconds): I just got back from Dayton.           
+Trial 114 (17565104640.0 seconds): I am going from here to there.         
+Trial 115 (17486103808.0 seconds): I hope this is what you need.          
+Trial 116 (22859131136.0 seconds): See what you feel is best for you.     
+Trial 117 (13021075200.0 seconds): His side of the family.                
+Trial 118 (11275056896.0 seconds): I made this for you.                  
+Trial 119 (15963105536.0 seconds): If you want to play tennis.           
+Trial 120 (19418105600.0 seconds): That was a turning point in the war.  
+Trial 121 (19256110848.0 seconds): I have done some bow hunting.         
+Trial 122 (18163089408.0 seconds): I can hear it in your voice.          
+Trial 123 (18287108352.0 seconds): I had a class on physics.             
+Trial 124 (17406088192.0 seconds): I called him the other day.           
+Trial 125 (22874135296.0 seconds): Your feedback is welcome as usual.    
+Trial 126 (21667138560.0 seconds): Some people like to work all the time.
+Trial 127 (24359136000.0 seconds): The first day of any job can be hard. 
+Trial 128 (14938094080.0 seconds): I own less stuff than you.         
+Trial 129 (15361088000.0 seconds): We live next to the school.        
+Trial 130 (26535149568.0 seconds): I would love to be a part of this. 
+Trial 131 (17918118656.0 seconds): Your voice seems better now.       
+Trial 132 (17031099904.0 seconds): Most of these are quite old.       
+Trial 133 (15099086592.0 seconds): We should go different way.        
+Trial 134 (18965113344.0 seconds): There's a lot of snow under my car.
+Trial 135 (17311111168.0 seconds): Our needs change over time.        
+Trial 136 (19434104320.0 seconds): All the work we can get done.      
+Trial 137 (10445059840.0 seconds): I will think about it.             
+Trial 138 (13084078080.0 seconds): I want to come with you.        
+Trial 139 (17460109056.0 seconds): I feel that we should help them.
+Trial 140 (22528129280.0 seconds): You must own your problems.     
+Trial 141 (17125094912.0 seconds): I am talking to my family.      
+Trial 142 (18307105280.0 seconds): I will pay you for your work.   
+Trial 143 (18854095104.0 seconds): Those kids are really something.
+Trial 144 (10205051904.0 seconds): Keep the change.                
+Trial 145 (18217104896.0 seconds): I would like to buy this car.   
+Trial 146 (14956090112.0 seconds): This is looking very good.      
+Trial 147 (20706109440.0 seconds): This deal depends on employees. 
+train trials: [ 51 121  96 133  47  76  70 122  94  27  68  43 100   3 135 127  28 134
+  26  25  45  20  87  69  37  73   8  31  95  83 142  53  44  39 105   7
+  17 107 115  86   6  67  35  89  55  10 131  79 114  60 113 106  38   2
+  81 112  11  88 132  97  90  23  78  21  57  75 118 146 116  36  32  85
+  14 103 145 102 137  48  82  84  42  41  98  61 111  29  66  46  15  71
+ 138  34   1  64  72 101 110  30 130  24   5 109  16 143  74   0 136  52
+  99   4 139  50 141 123  54 108  93  77  33  58 140  13 104  63  49 144
+  80   9]
+test trials: [119  19 129  18  12 120 124  62 128  91 117  40  59  22  65 125  56 147
+  92 126]
+
+
+Transcription: i enjoy this time of the year.
+Characters: ['I', '>', 'E', 'N', 'J', 'O', 'Y', '>', 'T', 'H', 'I', 'S', '>', 'T', 'I', 'M', 'E', '>', 'O', 'F', '>', 'T', 'H', 'E', '>', 'Y', 'E', 'A', 'R', '.']
+Character seq length: 30
+Data size: (1105, 768)
+inputFeatures shape: (848640,)
+seqClassIDs shape: (60,)
+nTimeSteps: 1105
+seqLen: 30
+ceMask shape: (1105,)
+transcription shape: (60,)
+
+
+Transcription: i have done some bow hunting.
+Characters: ['I', '>', 'H', 'A', 'V', 'E', '>', 'D', 'O', 'N', 'E', '>', 'S', 'O', 'M', 'E', '>', 'B', 'O', 'W', '>', 'H', 'U', 'N', 'T', 'I', 'N', 'G', '.']
+Character seq length: 29
+Data size: (962, 768)
+
+
+Transcription: it just depends on where you go.
+Characters: ['I', 'T', '>', 'J', 'U', 'S', 'T', '>', 'D', 'E', 'P', 'E', 'N', 'D', 'S', '>', 'O', 'N', '>', 'W', 'H', 'E', 'R', 'E', '>', 'Y', 'O', 'U', '>', 'G', 'O', '.']
+Character seq length: 32
+Data size: (999, 768)
+
+
+Transcription: we should go different way.
+Characters: ['W', 'E', '>', 'S', 'H', 'O', 'U', 'L', 'D', '>', 'G', 'O', '>', 'D', 'I', 'F', 'F', 'E', 'R', 'E', 'N', 'T', '>', 'W', 'A', 'Y', '.']
+Character seq length: 27
+Data size: (755, 768)
+
+
+Transcription: i was the one to tell her that.
+Characters: ['I', '>', 'W', 'A', 'S', '>', 'T', 'H', 'E', '>', 'O', 'N', 'E', '>', 'T', 'O', '>', 'T', 'E', 'L', 'L', '>', 'H', 'E', 'R', '>', 'T', 'H', 'A', 'T', '.']
+Character seq length: 31
+Data size: (822, 768)
+
+
+Transcription: take the next right turn.
+Characters: ['T', 'A', 'K', 'E', '>', 'T', 'H', 'E', '>', 'N', 'E', 'X', 'T', '>', 'R', 'I', 'G', 'H', 'T', '>', 'T', 'U', 'R', 'N', '.']
+Character seq length: 25
+Data size: (707, 768)
+
+
+Transcription: she is just a little girl.
+Characters: ['S', 'H', 'E', '>', 'I', 'S', '>', 'J', 'U', 'S', 'T', '>', 'A', '>', 'L', 'I', 'T', 'T', 'L', 'E', '>', 'G', 'I', 'R', 'L', '.']
+Character seq length: 26
+Data size: (1013, 768)
+
+
+Transcription: i can hear it in your voice.
+Characters: ['I', '>', 'C', 'A', 'N', '>', 'H', 'E', 'A', 'R', '>', 'I', 'T', '>', 'I', 'N', '>', 'Y', 'O', 'U', 'R', '>', 'V', 'O', 'I', 'C', 'E', '.']
+Character seq length: 28
+Data size: (908, 768)
+
+
+Transcription: i like to mow the lawn.
+Characters: ['I', '>', 'L', 'I', 'K', 'E', '>', 'T', 'O', '>', 'M', 'O', 'W', '>', 'T', 'H', 'E', '>', 'L', 'A', 'W', 'N', '.']
+Character seq length: 23
+Data size: (812, 768)
+
+
+Transcription: it cost her three hundred dollars.
+Characters: ['I', 'T', '>', 'C', 'O', 'S', 'T', '>', 'H', 'E', 'R', '>', 'T', 'H', 'R', 'E', 'E', '>', 'H', 'U', 'N', 'D', 'R', 'E', 'D', '>', 'D', 'O', 'L', 'L', 'A', 'R', 'S', '.']
+Character seq length: 34
+Data size: (1238, 768)
+
+
+Transcription: i don't know if i will be able to come.
+Characters: ['I', '>', 'D', 'O', 'N', 'T', '>', 'K', 'N', 'O', 'W', '>', 'I', 'F', '>', 'I', '>', 'W', 'I', 'L', 'L', '>', 'B', 'E', '>', 'A', 'B', 'L', 'E', '>', 'T', 'O', '>', 'C', 'O', 'M', 'E', '.']
+Character seq length: 38
+Data size: (1273, 768)
+
+
+Transcription: it really adds up after a while.
+Characters: ['I', 'T', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'A', 'D', 'D', 'S', '>', 'U', 'P', '>', 'A', 'F', 'T', 'E', 'R', '>', 'A', '>', 'W', 'H', 'I', 'L', 'E', '.']
+Character seq length: 32
+Data size: (1048, 768)
+
+
+Transcription: that's how they suck you in.
+Characters: ['T', 'H', 'A', 'T', 'S', '>', 'H', 'O', 'W', '>', 'T', 'H', 'E', 'Y', '>', 'S', 'U', 'C', 'K', '>', 'Y', 'O', 'U', '>', 'I', 'N', '.']
+Character seq length: 27
+Data size: (934, 768)
+
+
+Transcription: i suppose you could use that.
+Characters: ['I', '>', 'S', 'U', 'P', 'P', 'O', 'S', 'E', '>', 'Y', 'O', 'U', '>', 'C', 'O', 'U', 'L', 'D', '>', 'U', 'S', 'E', '>', 'T', 'H', 'A', 'T', '.']
+Character seq length: 29
+Data size: (911, 768)
+
+
+Transcription: our needs change over time.
+Characters: ['O', 'U', 'R', '>', 'N', 'E', 'E', 'D', 'S', '>', 'C', 'H', 'A', 'N', 'G', 'E', '>', 'O', 'V', 'E', 'R', '>', 'T', 'I', 'M', 'E', '.']
+Character seq length: 27
+Data size: (865, 768)
+
+
+Transcription: the first day of any job can be hard.
+Characters: ['T', 'H', 'E', '>', 'F', 'I', 'R', 'S', 'T', '>', 'D', 'A', 'Y', '>', 'O', 'F', '>', 'A', 'N', 'Y', '>', 'J', 'O', 'B', '>', 'C', 'A', 'N', '>', 'B', 'E', '>', 'H', 'A', 'R', 'D', '.']
+Character seq length: 37
+Data size: (1217, 768)
+
+
+Transcription: i will start doing it well.
+Characters: ['I', '>', 'W', 'I', 'L', 'L', '>', 'S', 'T', 'A', 'R', 'T', '>', 'D', 'O', 'I', 'N', 'G', '>', 'I', 'T', '>', 'W', 'E', 'L', 'L', '.']
+Character seq length: 27
+Data size: (986, 768)
+
+
+Transcription: there's a lot of snow under my car.
+Characters: ['T', 'H', 'E', 'R', 'E', 'S', '>', 'A', '>', 'L', 'O', 'T', '>', 'O', 'F', '>', 'S', 'N', 'O', 'W', '>', 'U', 'N', 'D', 'E', 'R', '>', 'M', 'Y', '>', 'C', 'A', 'R', '.']
+Character seq length: 34
+Data size: (948, 768)
+
+
+Transcription: ranging from progressive rock to jazz.
+Characters: ['R', 'A', 'N', 'G', 'I', 'N', 'G', '>', 'F', 'R', 'O', 'M', '>', 'P', 'R', 'O', 'G', 'R', 'E', 'S', 'S', 'I', 'V', 'E', '>', 'R', 'O', 'C', 'K', '>', 'T', 'O', '>', 'J', 'A', 'Z', 'Z', '.']
+Character seq length: 38
+Data size: (1438, 768)
+
+
+Transcription: that's an interesting notion.
+Characters: ['T', 'H', 'A', 'T', 'S', '>', 'A', 'N', '>', 'I', 'N', 'T', 'E', 'R', 'E', 'S', 'T', 'I', 'N', 'G', '>', 'N', 'O', 'T', 'I', 'O', 'N', '.']
+Character seq length: 28
+Data size: (985, 768)
+
+
+Transcription: i like that one too.
+Characters: ['I', '>', 'L', 'I', 'K', 'E', '>', 'T', 'H', 'A', 'T', '>', 'O', 'N', 'E', '>', 'T', 'O', 'O', '.']
+Character seq length: 20
+Data size: (659, 768)
+
+
+Transcription: it's not a decision that comes easy.
+Characters: ['I', 'T', 'S', '>', 'N', 'O', 'T', '>', 'A', '>', 'D', 'E', 'C', 'I', 'S', 'I', 'O', 'N', '>', 'T', 'H', 'A', 'T', '>', 'C', 'O', 'M', 'E', 'S', '>', 'E', 'A', 'S', 'Y', '.']
+Character seq length: 35
+Data size: (1134, 768)
+
+
+Transcription: they seem to be getting along well.
+Characters: ['T', 'H', 'E', 'Y', '>', 'S', 'E', 'E', 'M', '>', 'T', 'O', '>', 'B', 'E', '>', 'G', 'E', 'T', 'T', 'I', 'N', 'G', '>', 'A', 'L', 'O', 'N', 'G', '>', 'W', 'E', 'L', 'L', '.']
+Character seq length: 35
+Data size: (1144, 768)
+
+
+Transcription: i used to love it when i was young.
+Characters: ['I', '>', 'U', 'S', 'E', 'D', '>', 'T', 'O', '>', 'L', 'O', 'V', 'E', '>', 'I', 'T', '>', 'W', 'H', 'E', 'N', '>', 'I', '>', 'W', 'A', 'S', '>', 'Y', 'O', 'U', 'N', 'G', '.']
+Character seq length: 35
+Data size: (1089, 768)
+
+
+Transcription: when you stop to think about it.
+Characters: ['W', 'H', 'E', 'N', '>', 'Y', 'O', 'U', '>', 'S', 'T', 'O', 'P', '>', 'T', 'O', '>', 'T', 'H', 'I', 'N', 'K', '>', 'A', 'B', 'O', 'U', 'T', '>', 'I', 'T', '.']
+Character seq length: 32
+Data size: (843, 768)
+
+
+Transcription: you need help more than i do.
+Characters: ['Y', 'O', 'U', '>', 'N', 'E', 'E', 'D', '>', 'H', 'E', 'L', 'P', '>', 'M', 'O', 'R', 'E', '>', 'T', 'H', 'A', 'N', '>', 'I', '>', 'D', 'O', '.']
+Character seq length: 29
+Data size: (900, 768)
+
+
+Transcription: and see that's another thing.
+Characters: ['A', 'N', 'D', '>', 'S', 'E', 'E', '>', 'T', 'H', 'A', 'T', 'S', '>', 'A', 'N', 'O', 'T', 'H', 'E', 'R', '>', 'T', 'H', 'I', 'N', 'G', '.']
+Character seq length: 28
+Data size: (893, 768)
+
+
+Transcription: i don't know how hard it is.
+Characters: ['I', '>', 'D', 'O', 'N', 'T', '>', 'K', 'N', 'O', 'W', '>', 'H', 'O', 'W', '>', 'H', 'A', 'R', 'D', '>', 'I', 'T', '>', 'I', 'S', '.']
+Character seq length: 27
+Data size: (1128, 768)
+
+
+Transcription: i am already very late.
+Characters: ['I', '>', 'A', 'M', '>', 'A', 'L', 'R', 'E', 'A', 'D', 'Y', '>', 'V', 'E', 'R', 'Y', '>', 'L', 'A', 'T', 'E', '.']
+Character seq length: 23
+Data size: (731, 768)
+
+
+Transcription: small things can make you happy.
+Characters: ['S', 'M', 'A', 'L', 'L', '>', 'T', 'H', 'I', 'N', 'G', 'S', '>', 'C', 'A', 'N', '>', 'M', 'A', 'K', 'E', '>', 'Y', 'O', 'U', '>', 'H', 'A', 'P', 'P', 'Y', '.']
+Character seq length: 32
+Data size: (1253, 768)
+
+
+Transcription: i will pay you for your work.
+Characters: ['I', '>', 'W', 'I', 'L', 'L', '>', 'P', 'A', 'Y', '>', 'Y', 'O', 'U', '>', 'F', 'O', 'R', '>', 'Y', 'O', 'U', 'R', '>', 'W', 'O', 'R', 'K', '.']
+Character seq length: 29
+Data size: (915, 768)
+
+
+Transcription: do you have a phone that i can use?
+Characters: ['D', 'O', '>', 'Y', 'O', 'U', '>', 'H', 'A', 'V', 'E', '>', 'A', '>', 'P', 'H', 'O', 'N', 'E', '>', 'T', 'H', 'A', 'T', '>', 'I', '>', 'C', 'A', 'N', '>', 'U', 'S', 'E', '?']
+Character seq length: 35
+Data size: (1198, 768)
+
+
+Transcription: tree bark all over her lawn.
+Characters: ['T', 'R', 'E', 'E', '>', 'B', 'A', 'R', 'K', '>', 'A', 'L', 'L', '>', 'O', 'V', 'E', 'R', '>', 'H', 'E', 'R', '>', 'L', 'A', 'W', 'N', '.']
+Character seq length: 28
+Data size: (977, 768)
+
+
+Transcription: bring the pot to a boil.
+Characters: ['B', 'R', 'I', 'N', 'G', '>', 'T', 'H', 'E', '>', 'P', 'O', 'T', '>', 'T', 'O', '>', 'A', '>', 'B', 'O', 'I', 'L', '.']
+Character seq length: 24
+Data size: (754, 768)
+
+
+Transcription: we should cook more food.
+Characters: ['W', 'E', '>', 'S', 'H', 'O', 'U', 'L', 'D', '>', 'C', 'O', 'O', 'K', '>', 'M', 'O', 'R', 'E', '>', 'F', 'O', 'O', 'D', '.']
+Character seq length: 25
+Data size: (740, 768)
+
+
+Transcription: that's kind of understandable.
+Characters: ['T', 'H', 'A', 'T', 'S', '>', 'K', 'I', 'N', 'D', '>', 'O', 'F', '>', 'U', 'N', 'D', 'E', 'R', 'S', 'T', 'A', 'N', 'D', 'A', 'B', 'L', 'E', '.']
+Character seq length: 29
+Data size: (1180, 768)
+
+
+Transcription: getting away with the cards is easy.
+Characters: ['G', 'E', 'T', 'T', 'I', 'N', 'G', '>', 'A', 'W', 'A', 'Y', '>', 'W', 'I', 'T', 'H', '>', 'T', 'H', 'E', '>', 'C', 'A', 'R', 'D', 'S', '>', 'I', 'S', '>', 'E', 'A', 'S', 'Y', '.']
+Character seq length: 36
+Data size: (1048, 768)
+
+
+Transcription: i have not been there since.
+Characters: ['I', '>', 'H', 'A', 'V', 'E', '>', 'N', 'O', 'T', '>', 'B', 'E', 'E', 'N', '>', 'T', 'H', 'E', 'R', 'E', '>', 'S', 'I', 'N', 'C', 'E', '.']
+Character seq length: 28
+Data size: (893, 768)
+
+
+Transcription: i hope this is what you need.
+Characters: ['I', '>', 'H', 'O', 'P', 'E', '>', 'T', 'H', 'I', 'S', '>', 'I', 'S', '>', 'W', 'H', 'A', 'T', '>', 'Y', 'O', 'U', '>', 'N', 'E', 'E', 'D', '.']
+Character seq length: 29
+Data size: (874, 768)
+
+
+Transcription: i hope i can meet your family.
+Characters: ['I', '>', 'H', 'O', 'P', 'E', '>', 'I', '>', 'C', 'A', 'N', '>', 'M', 'E', 'E', 'T', '>', 'Y', 'O', 'U', 'R', '>', 'F', 'A', 'M', 'I', 'L', 'Y', '.']
+Character seq length: 30
+Data size: (968, 768)
+
+
+Transcription: the story was a very dramatic story.
+Characters: ['T', 'H', 'E', '>', 'S', 'T', 'O', 'R', 'Y', '>', 'W', 'A', 'S', '>', 'A', '>', 'V', 'E', 'R', 'Y', '>', 'D', 'R', 'A', 'M', 'A', 'T', 'I', 'C', '>', 'S', 'T', 'O', 'R', 'Y', '.']
+Character seq length: 36
+Data size: (1416, 768)
+
+
+Transcription: i really feel that we can make it.
+Characters: ['I', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'F', 'E', 'E', 'L', '>', 'T', 'H', 'A', 'T', '>', 'W', 'E', '>', 'C', 'A', 'N', '>', 'M', 'A', 'K', 'E', '>', 'I', 'T', '.']
+Character seq length: 34
+Data size: (1096, 768)
+
+
+Transcription: but not as much as we should.
+Characters: ['B', 'U', 'T', '>', 'N', 'O', 'T', '>', 'A', 'S', '>', 'M', 'U', 'C', 'H', '>', 'A', 'S', '>', 'W', 'E', '>', 'S', 'H', 'O', 'U', 'L', 'D', '.']
+Character seq length: 29
+Data size: (1014, 768)
+
+
+Transcription: it's collecting dust right now.
+Characters: ['I', 'T', 'S', '>', 'C', 'O', 'L', 'L', 'E', 'C', 'T', 'I', 'N', 'G', '>', 'D', 'U', 'S', 'T', '>', 'R', 'I', 'G', 'H', 'T', '>', 'N', 'O', 'W', '.']
+Character seq length: 30
+Data size: (959, 768)
+
+
+Transcription: play your best cards.
+Characters: ['P', 'L', 'A', 'Y', '>', 'Y', 'O', 'U', 'R', '>', 'B', 'E', 'S', 'T', '>', 'C', 'A', 'R', 'D', 'S', '.']
+Character seq length: 21
+Data size: (935, 768)
+
+
+Transcription: sometimes it doesn't work.
+Characters: ['S', 'O', 'M', 'E', 'T', 'I', 'M', 'E', 'S', '>', 'I', 'T', '>', 'D', 'O', 'E', 'S', 'N', 'T', '>', 'W', 'O', 'R', 'K', '.']
+Character seq length: 25
+Data size: (804, 768)
+
+
+Transcription: your voice seems better now.
+Characters: ['Y', 'O', 'U', 'R', '>', 'V', 'O', 'I', 'C', 'E', '>', 'S', 'E', 'E', 'M', 'S', '>', 'B', 'E', 'T', 'T', 'E', 'R', '>', 'N', 'O', 'W', '.']
+Character seq length: 28
+Data size: (896, 768)
+
+
+Transcription: i knew this would happen.
+Characters: ['I', '>', 'K', 'N', 'E', 'W', '>', 'T', 'H', 'I', 'S', '>', 'W', 'O', 'U', 'L', 'D', '>', 'H', 'A', 'P', 'P', 'E', 'N', '.']
+Character seq length: 25
+Data size: (758, 768)
+
+
+Transcription: i am going from here to there.
+Characters: ['I', '>', 'A', 'M', '>', 'G', 'O', 'I', 'N', 'G', '>', 'F', 'R', 'O', 'M', '>', 'H', 'E', 'R', 'E', '>', 'T', 'O', '>', 'T', 'H', 'E', 'R', 'E', '.']
+Character seq length: 30
+Data size: (878, 768)
+
+
+Transcription: he has been a good child so far.
+Characters: ['H', 'E', '>', 'H', 'A', 'S', '>', 'B', 'E', 'E', 'N', '>', 'A', '>', 'G', 'O', 'O', 'D', '>', 'C', 'H', 'I', 'L', 'D', '>', 'S', 'O', '>', 'F', 'A', 'R', '.']
+Character seq length: 32
+Data size: (1216, 768)
+
+
+Transcription: i just got back from dayton.
+Characters: ['I', '>', 'J', 'U', 'S', 'T', '>', 'G', 'O', 'T', '>', 'B', 'A', 'C', 'K', '>', 'F', 'R', 'O', 'M', '>', 'D', 'A', 'Y', 'T', 'O', 'N', '.']
+Character seq length: 28
+Data size: (970, 768)
+
+
+Transcription: i will work on the budget today.
+Characters: ['I', '>', 'W', 'I', 'L', 'L', '>', 'W', 'O', 'R', 'K', '>', 'O', 'N', '>', 'T', 'H', 'E', '>', 'B', 'U', 'D', 'G', 'E', 'T', '>', 'T', 'O', 'D', 'A', 'Y', '.']
+Character seq length: 32
+Data size: (1009, 768)
+
+
+Transcription: i need to be there.
+Characters: ['I', '>', 'N', 'E', 'E', 'D', '>', 'T', 'O', '>', 'B', 'E', '>', 'T', 'H', 'E', 'R', 'E', '.']
+Character seq length: 19
+Data size: (573, 768)
+
+
+Transcription: was it a vision, or a waking dream?
+Characters: ['W', 'A', 'S', '>', 'I', 'T', '>', 'A', '>', 'V', 'I', 'S', 'I', 'O', 'N', ',', '>', 'O', 'R', '>', 'A', '>', 'W', 'A', 'K', 'I', 'N', 'G', '>', 'D', 'R', 'E', 'A', 'M', '?']
+Character seq length: 35
+Data size: (1195, 768)
+
+
+Transcription: if you haven't done it in a while.
+Characters: ['I', 'F', '>', 'Y', 'O', 'U', '>', 'H', 'A', 'V', 'E', 'N', 'T', '>', 'D', 'O', 'N', 'E', '>', 'I', 'T', '>', 'I', 'N', '>', 'A', '>', 'W', 'H', 'I', 'L', 'E', '.']
+Character seq length: 33
+Data size: (1028, 768)
+
+
+Transcription: they've had to do that all year.
+Characters: ['T', 'H', 'E', 'Y', 'V', 'E', '>', 'H', 'A', 'D', '>', 'T', 'O', '>', 'D', 'O', '>', 'T', 'H', 'A', 'T', '>', 'A', 'L', 'L', '>', 'Y', 'E', 'A', 'R', '.']
+Character seq length: 31
+Data size: (1044, 768)
+
+
+Transcription: that will work out just fine.
+Characters: ['T', 'H', 'A', 'T', '>', 'W', 'I', 'L', 'L', '>', 'W', 'O', 'R', 'K', '>', 'O', 'U', 'T', '>', 'J', 'U', 'S', 'T', '>', 'F', 'I', 'N', 'E', '.']
+Character seq length: 29
+Data size: (855, 768)
+
+
+Transcription: that's how they suck you in.
+Characters: ['T', 'H', 'A', 'T', 'S', '>', 'H', 'O', 'W', '>', 'T', 'H', 'E', 'Y', '>', 'S', 'U', 'C', 'K', '>', 'Y', 'O', 'U', '>', 'I', 'N', '.']
+Character seq length: 27
+Data size: (883, 768)
+
+
+Transcription: most of these are quite old.
+Characters: ['M', 'O', 'S', 'T', '>', 'O', 'F', '>', 'T', 'H', 'E', 'S', 'E', '>', 'A', 'R', 'E', '>', 'Q', 'U', 'I', 'T', 'E', '>', 'O', 'L', 'D', '.']
+Character seq length: 28
+Data size: (851, 768)
+
+
+Transcription: they do take up a lot of your time.
+Characters: ['T', 'H', 'E', 'Y', '>', 'D', 'O', '>', 'T', 'A', 'K', 'E', '>', 'U', 'P', '>', 'A', '>', 'L', 'O', 'T', '>', 'O', 'F', '>', 'Y', 'O', 'U', 'R', '>', 'T', 'I', 'M', 'E', '.']
+Character seq length: 35
+Data size: (1031, 768)
+
+
+Transcription: let your voice be heard.
+Characters: ['L', 'E', 'T', '>', 'Y', 'O', 'U', 'R', '>', 'V', 'O', 'I', 'C', 'E', '>', 'B', 'E', '>', 'H', 'E', 'A', 'R', 'D', '.']
+Character seq length: 24
+Data size: (801, 768)
+
+
+Transcription: they had to abide by the rules.
+Characters: ['T', 'H', 'E', 'Y', '>', 'H', 'A', 'D', '>', 'T', 'O', '>', 'A', 'B', 'I', 'D', 'E', '>', 'B', 'Y', '>', 'T', 'H', 'E', '>', 'R', 'U', 'L', 'E', 'S', '.']
+Character seq length: 31
+Data size: (1115, 768)
+
+
+Transcription: my real home is right here.
+Characters: ['M', 'Y', '>', 'R', 'E', 'A', 'L', '>', 'H', 'O', 'M', 'E', '>', 'I', 'S', '>', 'R', 'I', 'G', 'H', 'T', '>', 'H', 'E', 'R', 'E', '.']
+Character seq length: 27
+Data size: (914, 768)
+
+
+Transcription: it's hard for me to imagine that.
+Characters: ['I', 'T', 'S', '>', 'H', 'A', 'R', 'D', '>', 'F', 'O', 'R', '>', 'M', 'E', '>', 'T', 'O', '>', 'I', 'M', 'A', 'G', 'I', 'N', 'E', '>', 'T', 'H', 'A', 'T', '.']
+Character seq length: 32
+Data size: (1203, 768)
+
+
+Transcription: the road was clear ahead.
+Characters: ['T', 'H', 'E', '>', 'R', 'O', 'A', 'D', '>', 'W', 'A', 'S', '>', 'C', 'L', 'E', 'A', 'R', '>', 'A', 'H', 'E', 'A', 'D', '.']
+Character seq length: 25
+Data size: (872, 768)
+
+
+Transcription: the joy of an early morning walk.
+Characters: ['T', 'H', 'E', '>', 'J', 'O', 'Y', '>', 'O', 'F', '>', 'A', 'N', '>', 'E', 'A', 'R', 'L', 'Y', '>', 'M', 'O', 'R', 'N', 'I', 'N', 'G', '>', 'W', 'A', 'L', 'K', '.']
+Character seq length: 33
+Data size: (1113, 768)
+
+
+Transcription: i made this for you.
+Characters: ['I', '>', 'M', 'A', 'D', 'E', '>', 'T', 'H', 'I', 'S', '>', 'F', 'O', 'R', '>', 'Y', 'O', 'U', '.']
+Character seq length: 20
+Data size: (563, 768)
+
+
+Transcription: this is looking very good.
+Characters: ['T', 'H', 'I', 'S', '>', 'I', 'S', '>', 'L', 'O', 'O', 'K', 'I', 'N', 'G', '>', 'V', 'E', 'R', 'Y', '>', 'G', 'O', 'O', 'D', '.']
+Character seq length: 26
+Data size: (747, 768)
+
+
+Transcription: see what you feel is best for you.
+Characters: ['S', 'E', 'E', '>', 'W', 'H', 'A', 'T', '>', 'Y', 'O', 'U', '>', 'F', 'E', 'E', 'L', '>', 'I', 'S', '>', 'B', 'E', 'S', 'T', '>', 'F', 'O', 'R', '>', 'Y', 'O', 'U', '.']
+Character seq length: 34
+Data size: (1143, 768)
+
+
+Transcription: from what i can tell.
+Characters: ['F', 'R', 'O', 'M', '>', 'W', 'H', 'A', 'T', '>', 'I', '>', 'C', 'A', 'N', '>', 'T', 'E', 'L', 'L', '.']
+Character seq length: 21
+Data size: (642, 768)
+
+
+Transcription: you have their basic needs met.
+Characters: ['Y', 'O', 'U', '>', 'H', 'A', 'V', 'E', '>', 'T', 'H', 'E', 'I', 'R', '>', 'B', 'A', 'S', 'I', 'C', '>', 'N', 'E', 'E', 'D', 'S', '>', 'M', 'E', 'T', '.']
+Character seq length: 31
+Data size: (1013, 768)
+
+
+Transcription: i hope you feel heard.
+Characters: ['I', '>', 'H', 'O', 'P', 'E', '>', 'Y', 'O', 'U', '>', 'F', 'E', 'E', 'L', '>', 'H', 'E', 'A', 'R', 'D', '.']
+Character seq length: 22
+Data size: (657, 768)
+
+
+Transcription: the status quo for puerto rico.
+Characters: ['T', 'H', 'E', '>', 'S', 'T', 'A', 'T', 'U', 'S', '>', 'Q', 'U', 'O', '>', 'F', 'O', 'R', '>', 'P', 'U', 'E', 'R', 'T', 'O', '>', 'R', 'I', 'C', 'O', '.']
+Character seq length: 31
+Data size: (1143, 768)
+
+
+Transcription: i know you are going to be great.
+Characters: ['I', '>', 'K', 'N', 'O', 'W', '>', 'Y', 'O', 'U', '>', 'A', 'R', 'E', '>', 'G', 'O', 'I', 'N', 'G', '>', 'T', 'O', '>', 'B', 'E', '>', 'G', 'R', 'E', 'A', 'T', '.']
+Character seq length: 33
+Data size: (1051, 768)
+
+
+Transcription: i would like to buy this car.
+Characters: ['I', '>', 'W', 'O', 'U', 'L', 'D', '>', 'L', 'I', 'K', 'E', '>', 'T', 'O', '>', 'B', 'U', 'Y', '>', 'T', 'H', 'I', 'S', '>', 'C', 'A', 'R', '.']
+Character seq length: 29
+Data size: (911, 768)
+
+
+Transcription: i like to mow the lawn.
+Characters: ['I', '>', 'L', 'I', 'K', 'E', '>', 'T', 'O', '>', 'M', 'O', 'W', '>', 'T', 'H', 'E', '>', 'L', 'A', 'W', 'N', '.']
+Character seq length: 23
+Data size: (629, 768)
+
+
+Transcription: i will think about it.
+Characters: ['I', '>', 'W', 'I', 'L', 'L', '>', 'T', 'H', 'I', 'N', 'K', '>', 'A', 'B', 'O', 'U', 'T', '>', 'I', 'T', '.']
+Character seq length: 22
+Data size: (521, 768)
+
+
+Transcription: as soon as things get public.
+Characters: ['A', 'S', '>', 'S', 'O', 'O', 'N', '>', 'A', 'S', '>', 'T', 'H', 'I', 'N', 'G', 'S', '>', 'G', 'E', 'T', '>', 'P', 'U', 'B', 'L', 'I', 'C', '.']
+Character seq length: 29
+Data size: (1208, 768)
+
+
+Transcription: he came to my house the other day.
+Characters: ['H', 'E', '>', 'C', 'A', 'M', 'E', '>', 'T', 'O', '>', 'M', 'Y', '>', 'H', 'O', 'U', 'S', 'E', '>', 'T', 'H', 'E', '>', 'O', 'T', 'H', 'E', 'R', '>', 'D', 'A', 'Y', '.']
+Character seq length: 34
+Data size: (1086, 768)
+
+
+Transcription: i need more room for my things.
+Characters: ['I', '>', 'N', 'E', 'E', 'D', '>', 'M', 'O', 'R', 'E', '>', 'R', 'O', 'O', 'M', '>', 'F', 'O', 'R', '>', 'M', 'Y', '>', 'T', 'H', 'I', 'N', 'G', 'S', '.']
+Character seq length: 31
+Data size: (962, 768)
+
+
+Transcription: you can always say no thank you.
+Characters: ['Y', 'O', 'U', '>', 'C', 'A', 'N', '>', 'A', 'L', 'W', 'A', 'Y', 'S', '>', 'S', 'A', 'Y', '>', 'N', 'O', '>', 'T', 'H', 'A', 'N', 'K', '>', 'Y', 'O', 'U', '.']
+Character seq length: 32
+Data size: (1270, 768)
+
+
+Transcription: pick that car out.
+Characters: ['P', 'I', 'C', 'K', '>', 'T', 'H', 'A', 'T', '>', 'C', 'A', 'R', '>', 'O', 'U', 'T', '.']
+Character seq length: 18
+Data size: (724, 768)
+
+
+Transcription: it just depends on where you go.
+Characters: ['I', 'T', '>', 'J', 'U', 'S', 'T', '>', 'D', 'E', 'P', 'E', 'N', 'D', 'S', '>', 'O', 'N', '>', 'W', 'H', 'E', 'R', 'E', '>', 'Y', 'O', 'U', '>', 'G', 'O', '.']
+Character seq length: 32
+Data size: (1136, 768)
+
+
+Transcription: i was the one to tell her that.
+Characters: ['I', '>', 'W', 'A', 'S', '>', 'T', 'H', 'E', '>', 'O', 'N', 'E', '>', 'T', 'O', '>', 'T', 'E', 'L', 'L', '>', 'H', 'E', 'R', '>', 'T', 'H', 'A', 'T', '.']
+Character seq length: 31
+Data size: (1143, 768)
+
+
+Transcription: i had to make sure i was there on time.
+Characters: ['I', '>', 'H', 'A', 'D', '>', 'T', 'O', '>', 'M', 'A', 'K', 'E', '>', 'S', 'U', 'R', 'E', '>', 'I', '>', 'W', 'A', 'S', '>', 'T', 'H', 'E', 'R', 'E', '>', 'O', 'N', '>', 'T', 'I', 'M', 'E', '.']
+Character seq length: 39
+Data size: (1183, 768)
+
+
+Transcription: the food comes out fresh.
+Characters: ['T', 'H', 'E', '>', 'F', 'O', 'O', 'D', '>', 'C', 'O', 'M', 'E', 'S', '>', 'O', 'U', 'T', '>', 'F', 'R', 'E', 'S', 'H', '.']
+Character seq length: 25
+Data size: (968, 768)
+
+
+Transcription: you should enjoy your time there.
+Characters: ['Y', 'O', 'U', '>', 'S', 'H', 'O', 'U', 'L', 'D', '>', 'E', 'N', 'J', 'O', 'Y', '>', 'Y', 'O', 'U', 'R', '>', 'T', 'I', 'M', 'E', '>', 'T', 'H', 'E', 'R', 'E', '.']
+Character seq length: 33
+Data size: (1048, 768)
+
+
+Transcription: i think it's such a fun sport.
+Characters: ['I', '>', 'T', 'H', 'I', 'N', 'K', '>', 'I', 'T', 'S', '>', 'S', 'U', 'C', 'H', '>', 'A', '>', 'F', 'U', 'N', '>', 'S', 'P', 'O', 'R', 'T', '.']
+Character seq length: 29
+Data size: (1013, 768)
+
+
+Transcription: we really had a good time.
+Characters: ['W', 'E', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'H', 'A', 'D', '>', 'A', '>', 'G', 'O', 'O', 'D', '>', 'T', 'I', 'M', 'E', '.']
+Character seq length: 26
+Data size: (937, 768)
+
+
+Transcription: the class was only half full.
+Characters: ['T', 'H', 'E', '>', 'C', 'L', 'A', 'S', 'S', '>', 'W', 'A', 'S', '>', 'O', 'N', 'L', 'Y', '>', 'H', 'A', 'L', 'F', '>', 'F', 'U', 'L', 'L', '.']
+Character seq length: 29
+Data size: (1095, 768)
+
+
+Transcription: i want to come with you.
+Characters: ['I', '>', 'W', 'A', 'N', 'T', '>', 'T', 'O', '>', 'C', 'O', 'M', 'E', '>', 'W', 'I', 'T', 'H', '>', 'Y', 'O', 'U', '.']
+Character seq length: 24
+Data size: (654, 768)
+
+
+Transcription: you can always heat it up again.
+Characters: ['Y', 'O', 'U', '>', 'C', 'A', 'N', '>', 'A', 'L', 'W', 'A', 'Y', 'S', '>', 'H', 'E', 'A', 'T', '>', 'I', 'T', '>', 'U', 'P', '>', 'A', 'G', 'A', 'I', 'N', '.']
+Character seq length: 32
+Data size: (1101, 768)
+
+
+Transcription: where we make the safety bags.
+Characters: ['W', 'H', 'E', 'R', 'E', '>', 'W', 'E', '>', 'M', 'A', 'K', 'E', '>', 'T', 'H', 'E', '>', 'S', 'A', 'F', 'E', 'T', 'Y', '>', 'B', 'A', 'G', 'S', '.']
+Character seq length: 30
+Data size: (1005, 768)
+
+
+Transcription: i am able to go this week.
+Characters: ['I', '>', 'A', 'M', '>', 'A', 'B', 'L', 'E', '>', 'T', 'O', '>', 'G', 'O', '>', 'T', 'H', 'I', 'S', '>', 'W', 'E', 'E', 'K', '.']
+Character seq length: 26
+Data size: (892, 768)
+
+
+Transcription: i want to watch this play.
+Characters: ['I', '>', 'W', 'A', 'N', 'T', '>', 'T', 'O', '>', 'W', 'A', 'T', 'C', 'H', '>', 'T', 'H', 'I', 'S', '>', 'P', 'L', 'A', 'Y', '.']
+Character seq length: 26
+Data size: (843, 768)
+
+
+Transcription: it takes a lot more planning.
+Characters: ['I', 'T', '>', 'T', 'A', 'K', 'E', 'S', '>', 'A', '>', 'L', 'O', 'T', '>', 'M', 'O', 'R', 'E', '>', 'P', 'L', 'A', 'N', 'N', 'I', 'N', 'G', '.']
+Character seq length: 29
+Data size: (1018, 768)
+
+
+Transcription: that makes me feel better of course.
+Characters: ['T', 'H', 'A', 'T', '>', 'M', 'A', 'K', 'E', 'S', '>', 'M', 'E', '>', 'F', 'E', 'E', 'L', '>', 'B', 'E', 'T', 'T', 'E', 'R', '>', 'O', 'F', '>', 'C', 'O', 'U', 'R', 'S', 'E', '.']
+Character seq length: 36
+Data size: (980, 768)
+
+
+Transcription: we both came out of our shells.
+Characters: ['W', 'E', '>', 'B', 'O', 'T', 'H', '>', 'C', 'A', 'M', 'E', '>', 'O', 'U', 'T', '>', 'O', 'F', '>', 'O', 'U', 'R', '>', 'S', 'H', 'E', 'L', 'L', 'S', '.']
+Character seq length: 31
+Data size: (1197, 768)
+
+
+Transcription: i would love to be a part of this.
+Characters: ['I', '>', 'W', 'O', 'U', 'L', 'D', '>', 'L', 'O', 'V', 'E', '>', 'T', 'O', '>', 'B', 'E', '>', 'A', '>', 'P', 'A', 'R', 'T', '>', 'O', 'F', '>', 'T', 'H', 'I', 'S', '.']
+Character seq length: 34
+Data size: (1327, 768)
+
+
+Transcription: i can understand their viewpoint.
+Characters: ['I', '>', 'C', 'A', 'N', '>', 'U', 'N', 'D', 'E', 'R', 'S', 'T', 'A', 'N', 'D', '>', 'T', 'H', 'E', 'I', 'R', '>', 'V', 'I', 'E', 'W', 'P', 'O', 'I', 'N', 'T', '.']
+Character seq length: 33
+Data size: (1254, 768)
+
+
+Transcription: i'm very much in favor of gun control.
+Characters: ['I', 'M', '>', 'V', 'E', 'R', 'Y', '>', 'M', 'U', 'C', 'H', '>', 'I', 'N', '>', 'F', 'A', 'V', 'O', 'R', '>', 'O', 'F', '>', 'G', 'U', 'N', '>', 'C', 'O', 'N', 'T', 'R', 'O', 'L', '.']
+Character seq length: 37
+Data size: (1365, 768)
+
+
+Transcription: she was looking into this last week.
+Characters: ['S', 'H', 'E', '>', 'W', 'A', 'S', '>', 'L', 'O', 'O', 'K', 'I', 'N', 'G', '>', 'I', 'N', 'T', 'O', '>', 'T', 'H', 'I', 'S', '>', 'L', 'A', 'S', 'T', '>', 'W', 'E', 'E', 'K', '.']
+Character seq length: 36
+Data size: (949, 768)
+
+
+Transcription: has affected a lot of social change.
+Characters: ['H', 'A', 'S', '>', 'A', 'F', 'F', 'E', 'C', 'T', 'E', 'D', '>', 'A', '>', 'L', 'O', 'T', '>', 'O', 'F', '>', 'S', 'O', 'C', 'I', 'A', 'L', '>', 'C', 'H', 'A', 'N', 'G', 'E', '.']
+Character seq length: 36
+Data size: (1310, 768)
+
+
+Transcription: those kids are really something.
+Characters: ['T', 'H', 'O', 'S', 'E', '>', 'K', 'I', 'D', 'S', '>', 'A', 'R', 'E', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'S', 'O', 'M', 'E', 'T', 'H', 'I', 'N', 'G', '.']
+Character seq length: 32
+Data size: (942, 768)
+
+
+Transcription: keep the car with you for now.
+Characters: ['K', 'E', 'E', 'P', '>', 'T', 'H', 'E', '>', 'C', 'A', 'R', '>', 'W', 'I', 'T', 'H', '>', 'Y', 'O', 'U', '>', 'F', 'O', 'R', '>', 'N', 'O', 'W', '.']
+Character seq length: 30
+Data size: (914, 768)
+
+
+Transcription: hundred and two sometimes.
+Characters: ['H', 'U', 'N', 'D', 'R', 'E', 'D', '>', 'A', 'N', 'D', '>', 'T', 'W', 'O', '>', 'S', 'O', 'M', 'E', 'T', 'I', 'M', 'E', 'S', '.']
+Character seq length: 26
+Data size: (835, 768)
+
+
+Transcription: all the work we can get done.
+Characters: ['A', 'L', 'L', '>', 'T', 'H', 'E', '>', 'W', 'O', 'R', 'K', '>', 'W', 'E', '>', 'C', 'A', 'N', '>', 'G', 'E', 'T', '>', 'D', 'O', 'N', 'E', '.']
+Character seq length: 29
+Data size: (971, 768)
+
+
+Transcription: half of it is gone.
+Characters: ['H', 'A', 'L', 'F', '>', 'O', 'F', '>', 'I', 'T', '>', 'I', 'S', '>', 'G', 'O', 'N', 'E', '.']
+Character seq length: 19
+Data size: (706, 768)
+
+
+Transcription: i don't know what you are thinking.
+Characters: ['I', '>', 'D', 'O', 'N', 'T', '>', 'K', 'N', 'O', 'W', '>', 'W', 'H', 'A', 'T', '>', 'Y', 'O', 'U', '>', 'A', 'R', 'E', '>', 'T', 'H', 'I', 'N', 'K', 'I', 'N', 'G', '.']
+Character seq length: 34
+Data size: (1318, 768)
+
+
+Transcription: since i do a lot of projects.
+Characters: ['S', 'I', 'N', 'C', 'E', '>', 'I', '>', 'D', 'O', '>', 'A', '>', 'L', 'O', 'T', '>', 'O', 'F', '>', 'P', 'R', 'O', 'J', 'E', 'C', 'T', 'S', '.']
+Character seq length: 29
+Data size: (1083, 768)
+
+
+Transcription: i feel that we should help them.
+Characters: ['I', '>', 'F', 'E', 'E', 'L', '>', 'T', 'H', 'A', 'T', '>', 'W', 'E', '>', 'S', 'H', 'O', 'U', 'L', 'D', '>', 'H', 'E', 'L', 'P', '>', 'T', 'H', 'E', 'M', '.']
+Character seq length: 32
+Data size: (873, 768)
+
+
+Transcription: it shows how much you really care.
+Characters: ['I', 'T', '>', 'S', 'H', 'O', 'W', 'S', '>', 'H', 'O', 'W', '>', 'M', 'U', 'C', 'H', '>', 'Y', 'O', 'U', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'C', 'A', 'R', 'E', '.']
+Character seq length: 34
+Data size: (1145, 768)
+
+
+Transcription: i am talking to my family.
+Characters: ['I', '>', 'A', 'M', '>', 'T', 'A', 'L', 'K', 'I', 'N', 'G', '>', 'T', 'O', '>', 'M', 'Y', '>', 'F', 'A', 'M', 'I', 'L', 'Y', '.']
+Character seq length: 26
+Data size: (856, 768)
+
+
+Transcription: i had a class on physics.
+Characters: ['I', '>', 'H', 'A', 'D', '>', 'A', '>', 'C', 'L', 'A', 'S', 'S', '>', 'O', 'N', '>', 'P', 'H', 'Y', 'S', 'I', 'C', 'S', '.']
+Character seq length: 25
+Data size: (914, 768)
+
+
+Transcription: i am starting to think we were right.
+Characters: ['I', '>', 'A', 'M', '>', 'S', 'T', 'A', 'R', 'T', 'I', 'N', 'G', '>', 'T', 'O', '>', 'T', 'H', 'I', 'N', 'K', '>', 'W', 'E', '>', 'W', 'E', 'R', 'E', '>', 'R', 'I', 'G', 'H', 'T', '.']
+Character seq length: 37
+Data size: (1323, 768)
+
+
+Transcription: not for the job i have now.
+Characters: ['N', 'O', 'T', '>', 'F', 'O', 'R', '>', 'T', 'H', 'E', '>', 'J', 'O', 'B', '>', 'I', '>', 'H', 'A', 'V', 'E', '>', 'N', 'O', 'W', '.']
+Character seq length: 27
+Data size: (828, 768)
+
+
+Transcription: you have to work around it.
+Characters: ['Y', 'O', 'U', '>', 'H', 'A', 'V', 'E', '>', 'T', 'O', '>', 'W', 'O', 'R', 'K', '>', 'A', 'R', 'O', 'U', 'N', 'D', '>', 'I', 'T', '.']
+Character seq length: 27
+Data size: (877, 768)
+
+
+Transcription: i lived in dallas for a while.
+Characters: ['I', '>', 'L', 'I', 'V', 'E', 'D', '>', 'I', 'N', '>', 'D', 'A', 'L', 'L', 'A', 'S', '>', 'F', 'O', 'R', '>', 'A', '>', 'W', 'H', 'I', 'L', 'E', '.']
+Character seq length: 30
+Data size: (934, 768)
+
+
+Transcription: the days were nice and warm.
+Characters: ['T', 'H', 'E', '>', 'D', 'A', 'Y', 'S', '>', 'W', 'E', 'R', 'E', '>', 'N', 'I', 'C', 'E', '>', 'A', 'N', 'D', '>', 'W', 'A', 'R', 'M', '.']
+Character seq length: 28
+Data size: (743, 768)
+
+
+Transcription: i have a lot of stuff with me.
+Characters: ['I', '>', 'H', 'A', 'V', 'E', '>', 'A', '>', 'L', 'O', 'T', '>', 'O', 'F', '>', 'S', 'T', 'U', 'F', 'F', '>', 'W', 'I', 'T', 'H', '>', 'M', 'E', '.']
+Character seq length: 30
+Data size: (1289, 768)
+
+
+Transcription: you must own your problems.
+Characters: ['Y', 'O', 'U', '>', 'M', 'U', 'S', 'T', '>', 'O', 'W', 'N', '>', 'Y', 'O', 'U', 'R', '>', 'P', 'R', 'O', 'B', 'L', 'E', 'M', 'S', '.']
+Character seq length: 27
+Data size: (1126, 768)
+
+
+Transcription: it's almost four years old.
+Characters: ['I', 'T', 'S', '>', 'A', 'L', 'M', 'O', 'S', 'T', '>', 'F', 'O', 'U', 'R', '>', 'Y', 'E', 'A', 'R', 'S', '>', 'O', 'L', 'D', '.']
+Character seq length: 26
+Data size: (827, 768)
+
+
+Transcription: i have changed my mind.
+Characters: ['I', '>', 'H', 'A', 'V', 'E', '>', 'C', 'H', 'A', 'N', 'G', 'E', 'D', '>', 'M', 'Y', '>', 'M', 'I', 'N', 'D', '.']
+Character seq length: 23
+Data size: (798, 768)
+
+
+Transcription: we hope there will be more next week.
+Characters: ['W', 'E', '>', 'H', 'O', 'P', 'E', '>', 'T', 'H', 'E', 'R', 'E', '>', 'W', 'I', 'L', 'L', '>', 'B', 'E', '>', 'M', 'O', 'R', 'E', '>', 'N', 'E', 'X', 'T', '>', 'W', 'E', 'E', 'K', '.']
+Character seq length: 37
+Data size: (1240, 768)
+
+
+Transcription: i bought this shirt on sale.
+Characters: ['I', '>', 'B', 'O', 'U', 'G', 'H', 'T', '>', 'T', 'H', 'I', 'S', '>', 'S', 'H', 'I', 'R', 'T', '>', 'O', 'N', '>', 'S', 'A', 'L', 'E', '.']
+Character seq length: 28
+Data size: (1005, 768)
+
+
+Transcription: keep the change.
+Characters: ['K', 'E', 'E', 'P', '>', 'T', 'H', 'E', '>', 'C', 'H', 'A', 'N', 'G', 'E', '.']
+Character seq length: 16
+Data size: (510, 768)
+
+
+Transcription: i have not heard back from them.
+Characters: ['I', '>', 'H', 'A', 'V', 'E', '>', 'N', 'O', 'T', '>', 'H', 'E', 'A', 'R', 'D', '>', 'B', 'A', 'C', 'K', '>', 'F', 'R', 'O', 'M', '>', 'T', 'H', 'E', 'M', '.']
+Character seq length: 32
+Data size: (1187, 768)
+
+
+Transcription: you know more and more of them are.
+Characters: ['Y', 'O', 'U', '>', 'K', 'N', 'O', 'W', '>', 'M', 'O', 'R', 'E', '>', 'A', 'N', 'D', '>', 'M', 'O', 'R', 'E', '>', 'O', 'F', '>', 'T', 'H', 'E', 'M', '>', 'A', 'R', 'E', '.']
+Character seq length: 35
+Data size: (1187, 768)
+
+
+Transcription: if you want to play tennis.
+Characters: ['I', 'F', '>', 'Y', 'O', 'U', '>', 'W', 'A', 'N', 'T', '>', 'T', 'O', '>', 'P', 'L', 'A', 'Y', '>', 'T', 'E', 'N', 'N', 'I', 'S', '.']
+Character seq length: 27
+Data size: (798, 768)
+
+
+Transcription: build and deploy manually.
+Characters: ['B', 'U', 'I', 'L', 'D', '>', 'A', 'N', 'D', '>', 'D', 'E', 'P', 'L', 'O', 'Y', '>', 'M', 'A', 'N', 'U', 'A', 'L', 'L', 'Y', '.']
+Character seq length: 26
+Data size: (1114, 768)
+
+
+Transcription: we live next to the school.
+Characters: ['W', 'E', '>', 'L', 'I', 'V', 'E', '>', 'N', 'E', 'X', 'T', '>', 'T', 'O', '>', 'T', 'H', 'E', '>', 'S', 'C', 'H', 'O', 'O', 'L', '.']
+Character seq length: 27
+Data size: (768, 768)
+
+
+Transcription: my dad is a big blue grass fan.
+Characters: ['M', 'Y', '>', 'D', 'A', 'D', '>', 'I', 'S', '>', 'A', '>', 'B', 'I', 'G', '>', 'B', 'L', 'U', 'E', '>', 'G', 'R', 'A', 'S', 'S', '>', 'F', 'A', 'N', '.']
+Character seq length: 31
+Data size: (1477, 768)
+
+
+Transcription: what do you think of the spoilers?
+Characters: ['W', 'H', 'A', 'T', '>', 'D', 'O', '>', 'Y', 'O', 'U', '>', 'T', 'H', 'I', 'N', 'K', '>', 'O', 'F', '>', 'T', 'H', 'E', '>', 'S', 'P', 'O', 'I', 'L', 'E', 'R', 'S', '?']
+Character seq length: 34
+Data size: (987, 768)
+
+
+Transcription: that was a turning point in the war.
+Characters: ['T', 'H', 'A', 'T', '>', 'W', 'A', 'S', '>', 'A', '>', 'T', 'U', 'R', 'N', 'I', 'N', 'G', '>', 'P', 'O', 'I', 'N', 'T', '>', 'I', 'N', '>', 'T', 'H', 'E', '>', 'W', 'A', 'R', '.']
+Character seq length: 36
+Data size: (971, 768)
+
+
+Transcription: i called him the other day.
+Characters: ['I', '>', 'C', 'A', 'L', 'L', 'E', 'D', '>', 'H', 'I', 'M', '>', 'T', 'H', 'E', '>', 'O', 'T', 'H', 'E', 'R', '>', 'D', 'A', 'Y', '.']
+Character seq length: 27
+Data size: (870, 768)
+
+
+Transcription: this is a hard problem to work on.
+Characters: ['T', 'H', 'I', 'S', '>', 'I', 'S', '>', 'A', '>', 'H', 'A', 'R', 'D', '>', 'P', 'R', 'O', 'B', 'L', 'E', 'M', '>', 'T', 'O', '>', 'W', 'O', 'R', 'K', '>', 'O', 'N', '.']
+Character seq length: 34
+Data size: (1395, 768)
+
+
+Transcription: i own less stuff than you.
+Characters: ['I', '>', 'O', 'W', 'N', '>', 'L', 'E', 'S', 'S', '>', 'S', 'T', 'U', 'F', 'F', '>', 'T', 'H', 'A', 'N', '>', 'Y', 'O', 'U', '.']
+Character seq length: 26
+Data size: (747, 768)
+
+
+Transcription: only four days to go.
+Characters: ['O', 'N', 'L', 'Y', '>', 'F', 'O', 'U', 'R', '>', 'D', 'A', 'Y', 'S', '>', 'T', 'O', '>', 'G', 'O', '.']
+Character seq length: 21
+Data size: (671, 768)
+
+
+Transcription: his side of the family.
+Characters: ['H', 'I', 'S', '>', 'S', 'I', 'D', 'E', '>', 'O', 'F', '>', 'T', 'H', 'E', '>', 'F', 'A', 'M', 'I', 'L', 'Y', '.']
+Character seq length: 23
+Data size: (651, 768)
+
+
+Transcription: i love this country too much.
+Characters: ['I', '>', 'L', 'O', 'V', 'E', '>', 'T', 'H', 'I', 'S', '>', 'C', 'O', 'U', 'N', 'T', 'R', 'Y', '>', 'T', 'O', 'O', '>', 'M', 'U', 'C', 'H', '.']
+Character seq length: 29
+Data size: (1027, 768)
+
+
+Transcription: i read this with my family every week.
+Characters: ['I', '>', 'R', 'E', 'A', 'D', '>', 'T', 'H', 'I', 'S', '>', 'W', 'I', 'T', 'H', '>', 'M', 'Y', '>', 'F', 'A', 'M', 'I', 'L', 'Y', '>', 'E', 'V', 'E', 'R', 'Y', '>', 'W', 'E', 'E', 'K', '.']
+Character seq length: 38
+Data size: (1458, 768)
+
+
+Transcription: it was an interesting experience.
+Characters: ['I', 'T', '>', 'W', 'A', 'S', '>', 'A', 'N', '>', 'I', 'N', 'T', 'E', 'R', 'E', 'S', 'T', 'I', 'N', 'G', '>', 'E', 'X', 'P', 'E', 'R', 'I', 'E', 'N', 'C', 'E', '.']
+Character seq length: 33
+Data size: (1315, 768)
+
+
+Transcription: now you are just making stuff up.
+Characters: ['N', 'O', 'W', '>', 'Y', 'O', 'U', '>', 'A', 'R', 'E', '>', 'J', 'U', 'S', 'T', '>', 'M', 'A', 'K', 'I', 'N', 'G', '>', 'S', 'T', 'U', 'F', 'F', '>', 'U', 'P', '.']
+Character seq length: 33
+Data size: (1119, 768)
+
+
+Transcription: your feedback is welcome as usual.
+Characters: ['Y', 'O', 'U', 'R', '>', 'F', 'E', 'E', 'D', 'B', 'A', 'C', 'K', '>', 'I', 'S', '>', 'W', 'E', 'L', 'C', 'O', 'M', 'E', '>', 'A', 'S', '>', 'U', 'S', 'U', 'A', 'L', '.']
+Character seq length: 34
+Data size: (1143, 768)
+
+
+Transcription: we grew more every year.
+Characters: ['W', 'E', '>', 'G', 'R', 'E', 'W', '>', 'M', 'O', 'R', 'E', '>', 'E', 'V', 'E', 'R', 'Y', '>', 'Y', 'E', 'A', 'R', '.']
+Character seq length: 24
+Data size: (913, 768)
+
+
+Transcription: this deal depends on employees.
+Characters: ['T', 'H', 'I', 'S', '>', 'D', 'E', 'A', 'L', '>', 'D', 'E', 'P', 'E', 'N', 'D', 'S', '>', 'O', 'N', '>', 'E', 'M', 'P', 'L', 'O', 'Y', 'E', 'E', 'S', '.']
+Character seq length: 31
+Data size: (1035, 768)
+
+
+Transcription: running is great for some people.
+Characters: ['R', 'U', 'N', 'N', 'I', 'N', 'G', '>', 'I', 'S', '>', 'G', 'R', 'E', 'A', 'T', '>', 'F', 'O', 'R', '>', 'S', 'O', 'M', 'E', '>', 'P', 'E', 'O', 'P', 'L', 'E', '.']
+Character seq length: 33
+Data size: (1025, 768)
+
+
+Transcription: some people like to work all the time.
+Characters: ['S', 'O', 'M', 'E', '>', 'P', 'E', 'O', 'P', 'L', 'E', '>', 'L', 'I', 'K', 'E', '>', 'T', 'O', '>', 'W', 'O', 'R', 'K', '>', 'A', 'L', 'L', '>', 'T', 'H', 'E', '>', 'T', 'I', 'M', 'E', '.']
+Character seq length: 38
+Data size: (1083, 768)
+
+
+Saved .tfrecord data and normalization stats to: .\20260316_jude\data\20260316_jude\Data\t18\t18.2025.02.05\Typing\tfdata_20ms
+CONVERT_DONE

@@ -1,0 +1,489 @@
+mat_to_tfrecord_V3.py input parameters:
+	Session mat path: .\20260316_jude\data\20260316_jude\Data\t17\t17.2024.07.09\Typing
+	Block numbers: [1, 2, 3, 6]
+	Number of test trials: 20
+	Trials to remove: {}
+	Channels to exclude: []
+	Channels to zero: []
+	Include threshold crossings: True
+	Include spike power: True
+	Spike power max: 50000
+	Z-score data: True
+	Global std: True
+	Bin compression factor: 2
+	Save path: .\20260316_jude\data\20260316_jude\Data\t17\t17.2024.07.09\Typing\tfdata_20ms
+
+
+RedisMat file for block 1: .\20260316_jude\data\20260316_jude\Data\t17\t17.2024.07.09\Typing\RedisMat\20240709_130549_(1).mat
+RedisMat file for block 2: .\20260316_jude\data\20260316_jude\Data\t17\t17.2024.07.09\Typing\RedisMat\20240709_133343_(2).mat
+RedisMat file for block 3: .\20260316_jude\data\20260316_jude\Data\t17\t17.2024.07.09\Typing\RedisMat\20240709_135722_(3).mat
+RedisMat file for block 6: .\20260316_jude\data\20260316_jude\Data\t17\t17.2024.07.09\Typing\RedisMat\20240709_162516_(6).mat
+Saved neural features plot to: .\20260316_jude\data\20260316_jude\Data\t17\t17.2024.07.09\Typing\tfdata_20ms/trial_5_neural_features.png
+Trial 0 (51198177280.0 seconds): They recently released him.           
+Trial 1 (68417228800.0 seconds): Spray it in one part of your lawn.    
+Trial 2 (60640193024.0 seconds): Whatever you would call it.           
+Trial 3 (48473155584.0 seconds): It is a beautiful country.            
+Trial 4 (80530273024.0 seconds): But now I realize that it was better. 
+Trial 5 (49601177088.0 seconds): It's actually my wife's dog.          
+Trial 6 (65081214976.0 seconds): Maybe that will be an option.         
+Trial 7 (56609179136.0 seconds): We used to try to get together.       
+Trial 8 (49760167680.0 seconds): I didn't want somebody to come.       
+Trial 9 (63753212416.0 seconds): Before they took off this time.       
+Trial 10 (53345192192.0 seconds): It's quick reading you know.          
+Trial 11 (64658282240.0 seconds): That certainly could happen.          
+Trial 12 (57641231104.0 seconds): In some of the critical things.       
+Trial 13 (66985223168.0 seconds): Add appointments to your calendar.    
+Trial 14 (55145251328.0 seconds): A really good companion for me.       
+Trial 15 (46561160960.0 seconds): The equation of the party.            
+Trial 16 (58658200576.0 seconds): This is like judo on steroids.        
+Trial 17 (59529202688.0 seconds): That's one of those little exclusions.
+Trial 18 (53394189568.0 seconds): It was boneless and we tried it.      
+Trial 19 (41105136384.0 seconds): A lot of people choose to.            
+Trial 20 (44263137280.0 seconds): I seem to feel the same way.          
+Trial 21 (52337175296.0 seconds): She's really a good fisher woman.     
+Trial 22 (67050256896.0 seconds): I don't have too much on credit cards.
+Trial 23 (54009185536.0 seconds): That's my boy, you made my day.       
+Trial 24 (42026141440.0 seconds): I don't really know for sure.         
+Trial 25 (46041144576.0 seconds): My parents used to have dogs.         
+Trial 26 (56401218304.0 seconds): That's got to be beautiful territory. 
+Trial 27 (53497185024.0 seconds): What's my role in this thing?         
+Trial 28 (51177177600.0 seconds): That's a thing to consider.           
+Trial 29 (48457236480.0 seconds): Which is unfortunate for them.        
+Trial 30 (48073198336.0 seconds): It really makes it easier.            
+Trial 31 (55434199040.0 seconds): I think people generally volunteer.   
+Trial 32 (51825177600.0 seconds): A lot of people have well water.      
+Trial 33 (51993179136.0 seconds): I guess we're kind of fortunate.      
+Trial 34 (51985176064.0 seconds): The freshwater tank's just dirty.     
+Trial 35 (48378149376.0 seconds): You're invading their border.         
+Trial 36 (61297199616.0 seconds): They bought their home in the suburbs.
+Trial 37 (58993190400.0 seconds): We have two Toyotas in the family.    
+Trial 38 (61840217344.0 seconds): Caught up with a class I was taking.  
+Trial 39 (53233211648.0 seconds): We had the same type of situation.    
+Trial 40 (45198160640.0 seconds): They said it was really riveting.     
+Trial 41 (57138185728.0 seconds): Did the drug testing thing after that.
+Trial 42 (55057183232.0 seconds): For me, I had no choice but to move.  
+Trial 43 (44298135296.0 seconds): I've never served on the jury.        
+Trial 44 (57857196288.0 seconds): Convincing him to write all this down.
+Trial 45 (45530158848.0 seconds): Beware of minor spoilers though.      
+Trial 46 (47601164800.0 seconds): The only thing that sticks.           
+Trial 47 (45937177344.0 seconds): Well maybe I'll get you next time.    
+Trial 48 (43697158656.0 seconds): I really can't say for certain.       
+Trial 49 (41273135360.0 seconds): Drunk drivers kill people.            
+Trial 50 (44482135040.0 seconds): They called nuclear winner.           
+Trial 51 (53921175040.0 seconds): I get most of my news from the paper. 
+Trial 52 (53481176832.0 seconds): Go over there and rebuild all those.  
+Trial 53 (41417133056.0 seconds): Maybe five or six years ago.          
+Trial 54 (46433229312.0 seconds): That forces you to pay for it.        
+Trial 55 (57721213440.0 seconds): Is he teaching speech pathology there?
+Trial 56 (49290175232.0 seconds): People have to be involved.           
+Trial 57 (49865232384.0 seconds): Well probably something like that.    
+Trial 58 (47625191424.0 seconds): They're in school down the street.    
+Trial 59 (46441157632.0 seconds): So, strap in and enjoy the ride!      
+Trial 60 (43742130944.0 seconds): That there was absolutely true.    
+Trial 61 (48290207232.0 seconds): These are the ages of the kids.    
+Trial 62 (58465181440.0 seconds): Boil the sugar and water briefly.  
+Trial 63 (53129203712.0 seconds): Which is a lovely place to grow up.
+Trial 64 (51665198592.0 seconds): That's just an extreme example.    
+train trials: [38  6  7 36 30 31  2 41 23 39 14 32 64 25 17  5 15 48 57 47 50 20  3 21
+  4  8 43 51 45 26 44 63 34 55 13 16  9 19 37 11 35 60 62 18 12]
+test trials: [42 58 10 24 46  0 28 29 33 27 53 49 40 52 61  1 22 59 56 54]
+
+
+Transcription: caught up with a class i was taking.
+Characters: ['C', 'A', 'U', 'G', 'H', 'T', '>', 'U', 'P', '>', 'W', 'I', 'T', 'H', '>', 'A', '>', 'C', 'L', 'A', 'S', 'S', '>', 'I', '>', 'W', 'A', 'S', '>', 'T', 'A', 'K', 'I', 'N', 'G', '.']
+Character seq length: 36
+Data size: (3092, 768)
+inputFeatures shape: (2374656,)
+seqClassIDs shape: (60,)
+nTimeSteps: 3092
+seqLen: 36
+ceMask shape: (3092,)
+transcription shape: (60,)
+
+
+Transcription: maybe that will be an option.
+Characters: ['M', 'A', 'Y', 'B', 'E', '>', 'T', 'H', 'A', 'T', '>', 'W', 'I', 'L', 'L', '>', 'B', 'E', '>', 'A', 'N', '>', 'O', 'P', 'T', 'I', 'O', 'N', '.']
+Character seq length: 29
+Data size: (3254, 768)
+
+
+Transcription: we used to try to get together.
+Characters: ['W', 'E', '>', 'U', 'S', 'E', 'D', '>', 'T', 'O', '>', 'T', 'R', 'Y', '>', 'T', 'O', '>', 'G', 'E', 'T', '>', 'T', 'O', 'G', 'E', 'T', 'H', 'E', 'R', '.']
+Character seq length: 31
+Data size: (2830, 768)
+
+
+Transcription: they bought their home in the suburbs.
+Characters: ['T', 'H', 'E', 'Y', '>', 'B', 'O', 'U', 'G', 'H', 'T', '>', 'T', 'H', 'E', 'I', 'R', '>', 'H', 'O', 'M', 'E', '>', 'I', 'N', '>', 'T', 'H', 'E', '>', 'S', 'U', 'B', 'U', 'R', 'B', 'S', '.']
+Character seq length: 38
+Data size: (3065, 768)
+
+
+Transcription: it really makes it easier.
+Characters: ['I', 'T', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'M', 'A', 'K', 'E', 'S', '>', 'I', 'T', '>', 'E', 'A', 'S', 'I', 'E', 'R', '.']
+Character seq length: 26
+Data size: (2403, 768)
+
+
+Transcription: i think people generally volunteer.
+Characters: ['I', '>', 'T', 'H', 'I', 'N', 'K', '>', 'P', 'E', 'O', 'P', 'L', 'E', '>', 'G', 'E', 'N', 'E', 'R', 'A', 'L', 'L', 'Y', '>', 'V', 'O', 'L', 'U', 'N', 'T', 'E', 'E', 'R', '.']
+Character seq length: 35
+Data size: (2772, 768)
+
+
+Transcription: whatever you would call it.
+Characters: ['W', 'H', 'A', 'T', 'E', 'V', 'E', 'R', '>', 'Y', 'O', 'U', '>', 'W', 'O', 'U', 'L', 'D', '>', 'C', 'A', 'L', 'L', '>', 'I', 'T', '.']
+Character seq length: 27
+Data size: (3032, 768)
+
+
+Transcription: did the drug testing thing after that.
+Characters: ['D', 'I', 'D', '>', 'T', 'H', 'E', '>', 'D', 'R', 'U', 'G', '>', 'T', 'E', 'S', 'T', 'I', 'N', 'G', '>', 'T', 'H', 'I', 'N', 'G', '>', 'A', 'F', 'T', 'E', 'R', '>', 'T', 'H', 'A', 'T', '.']
+Character seq length: 38
+Data size: (2856, 768)
+
+
+Transcription: that's my boy, you made my day.
+Characters: ['T', 'H', 'A', 'T', 'S', '>', 'M', 'Y', '>', 'B', 'O', 'Y', ',', '>', 'Y', 'O', 'U', '>', 'M', 'A', 'D', 'E', '>', 'M', 'Y', '>', 'D', 'A', 'Y', '.']
+Character seq length: 30
+Data size: (2700, 768)
+
+
+Transcription: we had the same type of situation.
+Characters: ['W', 'E', '>', 'H', 'A', 'D', '>', 'T', 'H', 'E', '>', 'S', 'A', 'M', 'E', '>', 'T', 'Y', 'P', 'E', '>', 'O', 'F', '>', 'S', 'I', 'T', 'U', 'A', 'T', 'I', 'O', 'N', '.']
+Character seq length: 34
+Data size: (2661, 768)
+
+
+Transcription: a really good companion for me.
+Characters: ['A', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'G', 'O', 'O', 'D', '>', 'C', 'O', 'M', 'P', 'A', 'N', 'I', 'O', 'N', '>', 'F', 'O', 'R', '>', 'M', 'E', '.']
+Character seq length: 31
+Data size: (2757, 768)
+
+
+Transcription: a lot of people have well water.
+Characters: ['A', '>', 'L', 'O', 'T', '>', 'O', 'F', '>', 'P', 'E', 'O', 'P', 'L', 'E', '>', 'H', 'A', 'V', 'E', '>', 'W', 'E', 'L', 'L', '>', 'W', 'A', 'T', 'E', 'R', '.']
+Character seq length: 32
+Data size: (2591, 768)
+
+
+Transcription: that's just an extreme example.
+Characters: ['T', 'H', 'A', 'T', 'S', '>', 'J', 'U', 'S', 'T', '>', 'A', 'N', '>', 'E', 'X', 'T', 'R', 'E', 'M', 'E', '>', 'E', 'X', 'A', 'M', 'P', 'L', 'E', '.']
+Character seq length: 30
+Data size: (2583, 768)
+
+
+Transcription: my parents used to have dogs.
+Characters: ['M', 'Y', '>', 'P', 'A', 'R', 'E', 'N', 'T', 'S', '>', 'U', 'S', 'E', 'D', '>', 'T', 'O', '>', 'H', 'A', 'V', 'E', '>', 'D', 'O', 'G', 'S', '.']
+Character seq length: 29
+Data size: (2302, 768)
+
+
+Transcription: that's one of those little exclusions.
+Characters: ['T', 'H', 'A', 'T', 'S', '>', 'O', 'N', 'E', '>', 'O', 'F', '>', 'T', 'H', 'O', 'S', 'E', '>', 'L', 'I', 'T', 'T', 'L', 'E', '>', 'E', 'X', 'C', 'L', 'U', 'S', 'I', 'O', 'N', 'S', '.']
+Character seq length: 37
+Data size: (2976, 768)
+
+
+Transcription: it's actually my wife's dog.
+Characters: ['I', 'T', 'S', '>', 'A', 'C', 'T', 'U', 'A', 'L', 'L', 'Y', '>', 'M', 'Y', '>', 'W', 'I', 'F', 'E', 'S', '>', 'D', 'O', 'G', '.']
+Character seq length: 26
+Data size: (2480, 768)
+
+
+Transcription: the equation of the party.
+Characters: ['T', 'H', 'E', '>', 'E', 'Q', 'U', 'A', 'T', 'I', 'O', 'N', '>', 'O', 'F', '>', 'T', 'H', 'E', '>', 'P', 'A', 'R', 'T', 'Y', '.']
+Character seq length: 26
+Data size: (2328, 768)
+
+
+Transcription: i really can't say for certain.
+Characters: ['I', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'C', 'A', 'N', 'T', '>', 'S', 'A', 'Y', '>', 'F', 'O', 'R', '>', 'C', 'E', 'R', 'T', 'A', 'I', 'N', '.']
+Character seq length: 30
+Data size: (2185, 768)
+
+
+Transcription: well probably something like that.
+Characters: ['W', 'E', 'L', 'L', '>', 'P', 'R', 'O', 'B', 'A', 'B', 'L', 'Y', '>', 'S', 'O', 'M', 'E', 'T', 'H', 'I', 'N', 'G', '>', 'L', 'I', 'K', 'E', '>', 'T', 'H', 'A', 'T', '.']
+Character seq length: 34
+Data size: (2493, 768)
+
+
+Transcription: well maybe i'll get you next time.
+Characters: ['W', 'E', 'L', 'L', '>', 'M', 'A', 'Y', 'B', 'E', '>', 'I', 'L', 'L', '>', 'G', 'E', 'T', '>', 'Y', 'O', 'U', '>', 'N', 'E', 'X', 'T', '>', 'T', 'I', 'M', 'E', '.']
+Character seq length: 33
+Data size: (2297, 768)
+
+
+Transcription: they called nuclear winner.
+Characters: ['T', 'H', 'E', 'Y', '>', 'C', 'A', 'L', 'L', 'E', 'D', '>', 'N', 'U', 'C', 'L', 'E', 'A', 'R', '>', 'W', 'I', 'N', 'N', 'E', 'R', '.']
+Character seq length: 27
+Data size: (2224, 768)
+
+
+Transcription: i seem to feel the same way.
+Characters: ['I', '>', 'S', 'E', 'E', 'M', '>', 'T', 'O', '>', 'F', 'E', 'E', 'L', '>', 'T', 'H', 'E', '>', 'S', 'A', 'M', 'E', '>', 'W', 'A', 'Y', '.']
+Character seq length: 28
+Data size: (2213, 768)
+
+
+Transcription: it is a beautiful country.
+Characters: ['I', 'T', '>', 'I', 'S', '>', 'A', '>', 'B', 'E', 'A', 'U', 'T', 'I', 'F', 'U', 'L', '>', 'C', 'O', 'U', 'N', 'T', 'R', 'Y', '.']
+Character seq length: 26
+Data size: (2423, 768)
+
+
+Transcription: she's really a good fisher woman.
+Characters: ['S', 'H', 'E', 'S', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'A', '>', 'G', 'O', 'O', 'D', '>', 'F', 'I', 'S', 'H', 'E', 'R', '>', 'W', 'O', 'M', 'A', 'N', '.']
+Character seq length: 32
+Data size: (2617, 768)
+
+
+Transcription: but now i realize that it was better.
+Characters: ['B', 'U', 'T', '>', 'N', 'O', 'W', '>', 'I', '>', 'R', 'E', 'A', 'L', 'I', 'Z', 'E', '>', 'T', 'H', 'A', 'T', '>', 'I', 'T', '>', 'W', 'A', 'S', '>', 'B', 'E', 'T', 'T', 'E', 'R', '.']
+Character seq length: 37
+Data size: (4026, 768)
+
+
+Transcription: i didn't want somebody to come.
+Characters: ['I', '>', 'D', 'I', 'D', 'N', 'T', '>', 'W', 'A', 'N', 'T', '>', 'S', 'O', 'M', 'E', 'B', 'O', 'D', 'Y', '>', 'T', 'O', '>', 'C', 'O', 'M', 'E', '.']
+Character seq length: 30
+Data size: (2488, 768)
+
+
+Transcription: i've never served on the jury.
+Characters: ['I', 'V', 'E', '>', 'N', 'E', 'V', 'E', 'R', '>', 'S', 'E', 'R', 'V', 'E', 'D', '>', 'O', 'N', '>', 'T', 'H', 'E', '>', 'J', 'U', 'R', 'Y', '.']
+Character seq length: 29
+Data size: (2214, 768)
+
+
+Transcription: i get most of my news from the paper.
+Characters: ['I', '>', 'G', 'E', 'T', '>', 'M', 'O', 'S', 'T', '>', 'O', 'F', '>', 'M', 'Y', '>', 'N', 'E', 'W', 'S', '>', 'F', 'R', 'O', 'M', '>', 'T', 'H', 'E', '>', 'P', 'A', 'P', 'E', 'R', '.']
+Character seq length: 37
+Data size: (2696, 768)
+
+
+Transcription: beware of minor spoilers though.
+Characters: ['B', 'E', 'W', 'A', 'R', 'E', '>', 'O', 'F', '>', 'M', 'I', 'N', 'O', 'R', '>', 'S', 'P', 'O', 'I', 'L', 'E', 'R', 'S', '>', 'T', 'H', 'O', 'U', 'G', 'H', '.']
+Character seq length: 32
+Data size: (2276, 768)
+
+
+Transcription: that's got to be beautiful territory.
+Characters: ['T', 'H', 'A', 'T', 'S', '>', 'G', 'O', 'T', '>', 'T', 'O', '>', 'B', 'E', '>', 'B', 'E', 'A', 'U', 'T', 'I', 'F', 'U', 'L', '>', 'T', 'E', 'R', 'R', 'I', 'T', 'O', 'R', 'Y', '.']
+Character seq length: 36
+Data size: (2820, 768)
+
+
+Transcription: convincing him to write all this down.
+Characters: ['C', 'O', 'N', 'V', 'I', 'N', 'C', 'I', 'N', 'G', '>', 'H', 'I', 'M', '>', 'T', 'O', '>', 'W', 'R', 'I', 'T', 'E', '>', 'A', 'L', 'L', '>', 'T', 'H', 'I', 'S', '>', 'D', 'O', 'W', 'N', '.']
+Character seq length: 38
+Data size: (2892, 768)
+
+
+Transcription: which is a lovely place to grow up.
+Characters: ['W', 'H', 'I', 'C', 'H', '>', 'I', 'S', '>', 'A', '>', 'L', 'O', 'V', 'E', 'L', 'Y', '>', 'P', 'L', 'A', 'C', 'E', '>', 'T', 'O', '>', 'G', 'R', 'O', 'W', '>', 'U', 'P', '.']
+Character seq length: 35
+Data size: (2656, 768)
+
+
+Transcription: the freshwater tank's just dirty.
+Characters: ['T', 'H', 'E', '>', 'F', 'R', 'E', 'S', 'H', 'W', 'A', 'T', 'E', 'R', '>', 'T', 'A', 'N', 'K', 'S', '>', 'J', 'U', 'S', 'T', '>', 'D', 'I', 'R', 'T', 'Y', '.']
+Character seq length: 32
+Data size: (2599, 768)
+
+
+Transcription: is he teaching speech pathology there?
+Characters: ['I', 'S', '>', 'H', 'E', '>', 'T', 'E', 'A', 'C', 'H', 'I', 'N', 'G', '>', 'S', 'P', 'E', 'E', 'C', 'H', '>', 'P', 'A', 'T', 'H', 'O', 'L', 'O', 'G', 'Y', '>', 'T', 'H', 'E', 'R', 'E', '?']
+Character seq length: 38
+Data size: (2886, 768)
+
+
+Transcription: add appointments to your calendar.
+Characters: ['A', 'D', 'D', '>', 'A', 'P', 'P', 'O', 'I', 'N', 'T', 'M', 'E', 'N', 'T', 'S', '>', 'T', 'O', '>', 'Y', 'O', 'U', 'R', '>', 'C', 'A', 'L', 'E', 'N', 'D', 'A', 'R', '.']
+Character seq length: 34
+Data size: (3349, 768)
+
+
+Transcription: this is like judo on steroids.
+Characters: ['T', 'H', 'I', 'S', '>', 'I', 'S', '>', 'L', 'I', 'K', 'E', '>', 'J', 'U', 'D', 'O', '>', 'O', 'N', '>', 'S', 'T', 'E', 'R', 'O', 'I', 'D', 'S', '.']
+Character seq length: 30
+Data size: (2933, 768)
+
+
+Transcription: before they took off this time.
+Characters: ['B', 'E', 'F', 'O', 'R', 'E', '>', 'T', 'H', 'E', 'Y', '>', 'T', 'O', 'O', 'K', '>', 'O', 'F', 'F', '>', 'T', 'H', 'I', 'S', '>', 'T', 'I', 'M', 'E', '.']
+Character seq length: 31
+Data size: (3187, 768)
+
+
+Transcription: a lot of people choose to.
+Characters: ['A', '>', 'L', 'O', 'T', '>', 'O', 'F', '>', 'P', 'E', 'O', 'P', 'L', 'E', '>', 'C', 'H', 'O', 'O', 'S', 'E', '>', 'T', 'O', '.']
+Character seq length: 26
+Data size: (2054, 768)
+
+
+Transcription: we have two toyotas in the family.
+Characters: ['W', 'E', '>', 'H', 'A', 'V', 'E', '>', 'T', 'W', 'O', '>', 'T', 'O', 'Y', 'O', 'T', 'A', 'S', '>', 'I', 'N', '>', 'T', 'H', 'E', '>', 'F', 'A', 'M', 'I', 'L', 'Y', '.']
+Character seq length: 34
+Data size: (2949, 768)
+
+
+Transcription: that certainly could happen.
+Characters: ['T', 'H', 'A', 'T', '>', 'C', 'E', 'R', 'T', 'A', 'I', 'N', 'L', 'Y', '>', 'C', 'O', 'U', 'L', 'D', '>', 'H', 'A', 'P', 'P', 'E', 'N', '.']
+Character seq length: 28
+Data size: (3233, 768)
+
+
+Transcription: you're invading their border.
+Characters: ['Y', 'O', 'U', 'R', 'E', '>', 'I', 'N', 'V', 'A', 'D', 'I', 'N', 'G', '>', 'T', 'H', 'E', 'I', 'R', '>', 'B', 'O', 'R', 'D', 'E', 'R', '.']
+Character seq length: 28
+Data size: (2419, 768)
+
+
+Transcription: that there was absolutely true.
+Characters: ['T', 'H', 'A', 'T', '>', 'T', 'H', 'E', 'R', 'E', '>', 'W', 'A', 'S', '>', 'A', 'B', 'S', 'O', 'L', 'U', 'T', 'E', 'L', 'Y', '>', 'T', 'R', 'U', 'E', '.']
+Character seq length: 31
+Data size: (2187, 768)
+
+
+Transcription: boil the sugar and water briefly.
+Characters: ['B', 'O', 'I', 'L', '>', 'T', 'H', 'E', '>', 'S', 'U', 'G', 'A', 'R', '>', 'A', 'N', 'D', '>', 'W', 'A', 'T', 'E', 'R', '>', 'B', 'R', 'I', 'E', 'F', 'L', 'Y', '.']
+Character seq length: 33
+Data size: (2923, 768)
+
+
+Transcription: it was boneless and we tried it.
+Characters: ['I', 'T', '>', 'W', 'A', 'S', '>', 'B', 'O', 'N', 'E', 'L', 'E', 'S', 'S', '>', 'A', 'N', 'D', '>', 'W', 'E', '>', 'T', 'R', 'I', 'E', 'D', '>', 'I', 'T', '.']
+Character seq length: 32
+Data size: (2669, 768)
+
+
+Transcription: in some of the critical things.
+Characters: ['I', 'N', '>', 'S', 'O', 'M', 'E', '>', 'O', 'F', '>', 'T', 'H', 'E', '>', 'C', 'R', 'I', 'T', 'I', 'C', 'A', 'L', '>', 'T', 'H', 'I', 'N', 'G', 'S', '.']
+Character seq length: 31
+Data size: (2882, 768)
+
+
+Transcription: for me, i had no choice but to move.
+Characters: ['F', 'O', 'R', '>', 'M', 'E', ',', '>', 'I', '>', 'H', 'A', 'D', '>', 'N', 'O', '>', 'C', 'H', 'O', 'I', 'C', 'E', '>', 'B', 'U', 'T', '>', 'T', 'O', '>', 'M', 'O', 'V', 'E', '.']
+Character seq length: 36
+Data size: (2752, 768)
+
+
+Transcription: they're in school down the street.
+Characters: ['T', 'H', 'E', 'Y', 'R', 'E', '>', 'I', 'N', '>', 'S', 'C', 'H', 'O', 'O', 'L', '>', 'D', 'O', 'W', 'N', '>', 'T', 'H', 'E', '>', 'S', 'T', 'R', 'E', 'E', 'T', '.']
+Character seq length: 33
+Data size: (2381, 768)
+
+
+Transcription: it's quick reading you know.
+Characters: ['I', 'T', 'S', '>', 'Q', 'U', 'I', 'C', 'K', '>', 'R', 'E', 'A', 'D', 'I', 'N', 'G', '>', 'Y', 'O', 'U', '>', 'K', 'N', 'O', 'W', '.']
+Character seq length: 27
+Data size: (2667, 768)
+
+
+Transcription: i don't really know for sure.
+Characters: ['I', '>', 'D', 'O', 'N', 'T', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'K', 'N', 'O', 'W', '>', 'F', 'O', 'R', '>', 'S', 'U', 'R', 'E', '.']
+Character seq length: 28
+Data size: (2101, 768)
+
+
+Transcription: the only thing that sticks.
+Characters: ['T', 'H', 'E', '>', 'O', 'N', 'L', 'Y', '>', 'T', 'H', 'I', 'N', 'G', '>', 'T', 'H', 'A', 'T', '>', 'S', 'T', 'I', 'C', 'K', 'S', '.']
+Character seq length: 27
+Data size: (2380, 768)
+
+
+Transcription: they recently released him.
+Characters: ['T', 'H', 'E', 'Y', '>', 'R', 'E', 'C', 'E', 'N', 'T', 'L', 'Y', '>', 'R', 'E', 'L', 'E', 'A', 'S', 'E', 'D', '>', 'H', 'I', 'M', '.']
+Character seq length: 27
+Data size: (2560, 768)
+
+
+Transcription: that's a thing to consider.
+Characters: ['T', 'H', 'A', 'T', 'S', '>', 'A', '>', 'T', 'H', 'I', 'N', 'G', '>', 'T', 'O', '>', 'C', 'O', 'N', 'S', 'I', 'D', 'E', 'R', '.']
+Character seq length: 26
+Data size: (2559, 768)
+
+
+Transcription: which is unfortunate for them.
+Characters: ['W', 'H', 'I', 'C', 'H', '>', 'I', 'S', '>', 'U', 'N', 'F', 'O', 'R', 'T', 'U', 'N', 'A', 'T', 'E', '>', 'F', 'O', 'R', '>', 'T', 'H', 'E', 'M', '.']
+Character seq length: 30
+Data size: (2422, 768)
+
+
+Transcription: i guess we're kind of fortunate.
+Characters: ['I', '>', 'G', 'U', 'E', 'S', 'S', '>', 'W', 'E', 'R', 'E', '>', 'K', 'I', 'N', 'D', '>', 'O', 'F', '>', 'F', 'O', 'R', 'T', 'U', 'N', 'A', 'T', 'E', '.']
+Character seq length: 31
+Data size: (2599, 768)
+
+
+Transcription: what's my role in this thing?
+Characters: ['W', 'H', 'A', 'T', 'S', '>', 'M', 'Y', '>', 'R', 'O', 'L', 'E', '>', 'I', 'N', '>', 'T', 'H', 'I', 'S', '>', 'T', 'H', 'I', 'N', 'G', '?']
+Character seq length: 28
+Data size: (2675, 768)
+
+
+Transcription: maybe five or six years ago.
+Characters: ['M', 'A', 'Y', 'B', 'E', '>', 'F', 'I', 'V', 'E', '>', 'O', 'R', '>', 'S', 'I', 'X', '>', 'Y', 'E', 'A', 'R', 'S', '>', 'A', 'G', 'O', '.']
+Character seq length: 28
+Data size: (2070, 768)
+
+
+Transcription: drunk drivers kill people.
+Characters: ['D', 'R', 'U', 'N', 'K', '>', 'D', 'R', 'I', 'V', 'E', 'R', 'S', '>', 'K', 'I', 'L', 'L', '>', 'P', 'E', 'O', 'P', 'L', 'E', '.']
+Character seq length: 26
+Data size: (2063, 768)
+
+
+Transcription: they said it was really riveting.
+Characters: ['T', 'H', 'E', 'Y', '>', 'S', 'A', 'I', 'D', '>', 'I', 'T', '>', 'W', 'A', 'S', '>', 'R', 'E', 'A', 'L', 'L', 'Y', '>', 'R', 'I', 'V', 'E', 'T', 'I', 'N', 'G', '.']
+Character seq length: 33
+Data size: (2259, 768)
+
+
+Transcription: go over there and rebuild all those.
+Characters: ['G', 'O', '>', 'O', 'V', 'E', 'R', '>', 'T', 'H', 'E', 'R', 'E', '>', 'A', 'N', 'D', '>', 'R', 'E', 'B', 'U', 'I', 'L', 'D', '>', 'A', 'L', 'L', '>', 'T', 'H', 'O', 'S', 'E', '.']
+Character seq length: 36
+Data size: (2674, 768)
+
+
+Transcription: these are the ages of the kids.
+Characters: ['T', 'H', 'E', 'S', 'E', '>', 'A', 'R', 'E', '>', 'T', 'H', 'E', '>', 'A', 'G', 'E', 'S', '>', 'O', 'F', '>', 'T', 'H', 'E', '>', 'K', 'I', 'D', 'S', '.']
+Character seq length: 31
+Data size: (2414, 768)
+
+
+Transcription: spray it in one part of your lawn.
+Characters: ['S', 'P', 'R', 'A', 'Y', '>', 'I', 'T', '>', 'I', 'N', '>', 'O', 'N', 'E', '>', 'P', 'A', 'R', 'T', '>', 'O', 'F', '>', 'Y', 'O', 'U', 'R', '>', 'L', 'A', 'W', 'N', '.']
+Character seq length: 34
+Data size: (3421, 768)
+
+
+Transcription: i don't have too much on credit cards.
+Characters: ['I', '>', 'D', 'O', 'N', 'T', '>', 'H', 'A', 'V', 'E', '>', 'T', 'O', 'O', '>', 'M', 'U', 'C', 'H', '>', 'O', 'N', '>', 'C', 'R', 'E', 'D', 'I', 'T', '>', 'C', 'A', 'R', 'D', 'S', '.']
+Character seq length: 37
+Data size: (3352, 768)
+
+
+Transcription: so, strap in and enjoy the ride
+Characters: ['S', 'O', ',', '>', 'S', 'T', 'R', 'A', 'P', '>', 'I', 'N', '>', 'A', 'N', 'D', '>', 'E', 'N', 'J', 'O', 'Y', '>', 'T', 'H', 'E', '>', 'R', 'I', 'D', 'E']
+Character seq length: 31
+Data size: (2321, 768)
+
+
+Transcription: people have to be involved.
+Characters: ['P', 'E', 'O', 'P', 'L', 'E', '>', 'H', 'A', 'V', 'E', '>', 'T', 'O', '>', 'B', 'E', '>', 'I', 'N', 'V', 'O', 'L', 'V', 'E', 'D', '.']
+Character seq length: 27
+Data size: (2464, 768)
+
+
+Transcription: that forces you to pay for it.
+Characters: ['T', 'H', 'A', 'T', '>', 'F', 'O', 'R', 'C', 'E', 'S', '>', 'Y', 'O', 'U', '>', 'T', 'O', '>', 'P', 'A', 'Y', '>', 'F', 'O', 'R', '>', 'I', 'T', '.']
+Character seq length: 30
+Data size: (2322, 768)
+
+
+Saved .tfrecord data and normalization stats to: .\20260316_jude\data\20260316_jude\Data\t17\t17.2024.07.09\Typing\tfdata_20ms
+CONVERT_DONE

@@ -1,0 +1,101 @@
+1426 trials
+loading rescoring LM from ./20260710_Design_of_Large_Corpus/LLM/opt-6.7b (float16)...
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/516 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/516 [00:00<01:13,  7.04it/s]
+Loading weights:   0%|          | 2/516 [00:00<01:01,  8.40it/s]
+Loading weights:   3%|▎         | 18/516 [00:00<00:07, 70.40it/s]
+Loading weights:   6%|▌         | 32/516 [00:00<00:05, 94.35it/s]
+Loading weights:  10%|▉         | 50/516 [00:00<00:03, 121.09it/s]
+Loading weights:  12%|█▏        | 63/516 [00:00<00:03, 121.83it/s]
+Loading weights:  16%|█▌        | 82/516 [00:00<00:03, 139.94it/s]
+Loading weights:  19%|█▉        | 98/516 [00:00<00:02, 144.05it/s]
+Loading weights:  22%|██▏       | 114/516 [00:00<00:02, 147.94it/s]
+Loading weights:  25%|██▌       | 130/516 [00:01<00:02, 150.60it/s]
+Loading weights:  28%|██▊       | 146/516 [00:01<00:02, 151.70it/s]
+Loading weights:  31%|███▏      | 162/516 [00:01<00:02, 151.47it/s]
+Loading weights:  34%|███▍      | 178/516 [00:01<00:02, 137.43it/s]
+Loading weights:  39%|███▉      | 200/516 [00:01<00:02, 148.21it/s]
+Loading weights:  42%|████▏     | 219/516 [00:01<00:01, 158.65it/s]
+Loading weights:  46%|████▌     | 238/516 [00:01<00:01, 165.05it/s]
+Loading weights:  50%|████▉     | 256/516 [00:01<00:01, 167.52it/s]
+Loading weights:  53%|█████▎    | 274/516 [00:01<00:01, 169.13it/s]
+Loading weights:  57%|█████▋    | 294/516 [00:02<00:01, 163.88it/s]
+Loading weights:  60%|██████    | 312/516 [00:02<00:01, 154.76it/s]
+Loading weights:  64%|██████▍   | 332/516 [00:02<00:01, 163.28it/s]
+Loading weights:  68%|██████▊   | 350/516 [00:02<00:01, 165.12it/s]
+Loading weights:  71%|███████   | 367/516 [00:02<00:00, 163.31it/s]
+Loading weights:  75%|███████▍  | 386/516 [00:02<00:00, 168.60it/s]
+Loading weights:  78%|███████▊  | 403/516 [00:02<00:00, 168.62it/s]
+Loading weights:  82%|████████▏ | 422/516 [00:02<00:00, 160.70it/s]
+Loading weights:  85%|████████▌ | 440/516 [00:03<00:00, 154.51it/s]
+Loading weights:  89%|████████▉ | 460/516 [00:03<00:00, 165.32it/s]
+Loading weights:  93%|█████████▎| 478/516 [00:03<00:00, 166.60it/s]
+Loading weights:  96%|█████████▌| 496/516 [00:03<00:00, 169.86it/s]
+Loading weights: 100%|█████████▉| 514/516 [00:03<00:00, 170.79it/s]
+Loading weights: 100%|██████████| 516/516 [00:03<00:00, 150.28it/s]
+model ready
+scoring 131509 candidates with OPT...
+  scored 2400/131509
+  scored 4800/131509
+  scored 7200/131509
+  scored 9600/131509
+  scored 12000/131509
+  scored 14400/131509
+  scored 16800/131509
+  scored 19200/131509
+  scored 21600/131509
+  scored 24000/131509
+  scored 26400/131509
+  scored 28800/131509
+  scored 31200/131509
+  scored 33600/131509
+  scored 36000/131509
+  scored 38400/131509
+  scored 40800/131509
+  scored 43200/131509
+  scored 45600/131509
+  scored 48000/131509
+  scored 50400/131509
+  scored 52800/131509
+  scored 55200/131509
+  scored 57600/131509
+  scored 60000/131509
+  scored 62400/131509
+  scored 64800/131509
+  scored 67200/131509
+  scored 69600/131509
+  scored 72000/131509
+  scored 74400/131509
+  scored 76800/131509
+  scored 79200/131509
+  scored 81600/131509
+  scored 84000/131509
+  scored 86400/131509
+  scored 88800/131509
+  scored 91200/131509
+  scored 93600/131509
+  scored 96000/131509
+  scored 98400/131509
+  scored 100800/131509
+  scored 103200/131509
+  scored 105600/131509
+  scored 108000/131509
+  scored 110400/131509
+  scored 112800/131509
+  scored 115200/131509
+  scored 117600/131509
+  scored 120000/131509
+  scored 122400/131509
+  scored 124800/131509
+  scored 127200/131509
+  scored 129600/131509
+  scored 131509/131509
+alpha=0.55: WER = 2037/9445 = 21.57% over 1426
+alpha=0.6: WER = 2037/9445 = 21.57% over 1426
+alpha=0.65: WER = 2022/9445 = 21.41% over 1426
+alpha=0.7: WER = 2013/9445 = 21.31% over 1426
+alpha=0.75: WER = 2016/9445 = 21.34% over 1426
+alpha=0.8: WER = 2022/9445 = 21.41% over 1426
+best alpha=0.7 saved -> data/20241009_card_BtoT25/run_120k/opt_fx_aext_repro.tsv

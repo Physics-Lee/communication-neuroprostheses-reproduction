@@ -1,0 +1,21 @@
+{
+ "days": {
+  "t15_day179": {
+   "model": "brain2voice_t15_day174.h5",
+   "n_trials_total": 296,
+   "n_eval_trials_scored": 139,
+   "pearson_r_mean_per_trial": 0.4583,
+   "pearson_r_sd_across_trials": 0.073
+  },
+  "t15_day195": {
+   "model": "brain2voice_t15_day193.h5",
+   "n_trials_total": 305,
+   "n_eval_trials_scored": 147,
+   "pearson_r_mean_per_trial": 0.4881,
+   "pearson_r_sd_across_trials": 0.0733
+  }
+ },
+ "protocol": "official h5 decoder, reordered channels, sliding window 60 bins; Pearson r per mel band on non-silent frames (word_indices from speech_indices.mat)",
+ "grand_mean_r": 0.4732,
+ "grand_sd_across_days": 0.0211
+}

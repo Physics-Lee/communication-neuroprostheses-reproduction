@@ -1,0 +1,14 @@
++ cd '.\20260316_jude'
++ unzip -q -o data/raw/20260316_jude/LanguageModels.zip LanguageModels/Typing5gramPunc/TLG.fst LanguageModels/Typing5gramPunc/G.fst LanguageModels/Typing5gramPunc/words.txt LanguageModels/Typing5gramPunc/lexicon_numbers.txt LanguageModels/Typing5gramPunc/units.txt LanguageModels/Typing5gramPunc/tokens.txt -d data/20260316_jude/
++ ls -la data/20260316_jude/LanguageModels/Typing5gramPunc/
+total 18284214
+drwxr-xr-x 1 12432 197609           0 Oct  9 18:03 .
+drwxr-xr-x 1 12432 197609           0 Oct  9 18:02 ..
+-rw-r--r-- 1 12432 197609  2181246718 May  2  2024 G.fst
+-rw-r--r-- 1 12432 197609 16535900230 May  2  2024 TLG.fst
+-rw-r--r-- 1 12432 197609     3878410 May  2  2024 lexicon_numbers.txt
+-rw-r--r-- 1 12432 197609         239 May  2  2024 tokens.txt
+-rw-r--r-- 1 12432 197609         141 May  2  2024 units.txt
+-rw-r--r-- 1 12432 197609     2000963 May  2  2024 words.txt
++ echo S3_DONE
+S3_DONE

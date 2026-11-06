@@ -1,0 +1,7 @@
+1 trials loaded
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I1010 22:33:08.033450   459 brain_speech_decoder.h:52] Reading fst ./20260316_jude/data/20260316_jude/LanguageModels/Typing5gramPunc/TLG.fst
+I1010 22:43:08.791751   459 brain_speech_decoder.h:81] Reading symbol table ./20260316_jude/data/20260316_jude/LanguageModels/Typing5gramPunc/words.txt
+LM loaded in 601s
+trial 0: decode 0.5s | true: 'fifty to a hundred miles every sunday' | lm: 'fifty to a hundred miles every sunday' | char_err 0/37 word_err 0/7
+S9A_DONE post-LM CER 0.0000 WER 0.0000 (1 trials)

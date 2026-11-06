@@ -1,0 +1,45 @@
+[init] day layer 18 <- 17 (t15.2023.11.03)
+[pool] replay 1962 trials from 18 history sessions (16s)
+[trial   0] block 4 ed 0/14 cum PER 0.00%
+[trial   1] block 4 ed 0/22 cum PER 0.00%
+[trial   2] block 4 ed 0/20 cum PER 0.00%
+[trial   3] block 4 ed 1/19 cum PER 1.33%
+[trial   4] block 4 ed 0/26 cum PER 0.99%
+  [ft] 32 steps, loss 2.98 -> 0.06 (12s)
+[trial   5] block 4 ed 0/17 cum PER 0.85%
+  [ft] 32 steps, loss 0.06 -> 0.00 (12s)
+[trial   6] block 4 ed 0/9 cum PER 0.79%
+  [ft] 32 steps, loss 0.01 -> 0.01 (12s)
+[trial   7] block 4 ed 0/19 cum PER 0.68%
+  [ft] 32 steps, loss 0.03 -> 0.01 (12s)
+[trial   8] block 4 ed 0/23 cum PER 0.59%
+  [ft] 32 steps, loss 0.01 -> 0.04 (12s)
+[trial   9] block 4 ed 0/19 cum PER 0.53%
+  [ft] 32 steps, loss 0.01 -> 0.01 (13s)
+[trial  10] block 4 ed 2/21 cum PER 1.44%
+  [ft] 32 steps, loss 0.81 -> 0.01 (13s)
+[trial  11] block 4 ed 2/25 cum PER 2.14%
+  [ft] 32 steps, loss 1.03 -> 0.02 (12s)
+[trial  12] block 4 ed 0/22 cum PER 1.95%
+  [ft] 32 steps, loss 0.02 -> 0.01 (12s)
+[trial  13] block 4 ed 0/17 cum PER 1.83%
+  [ft] 32 steps, loss 0.02 -> 0.04 (12s)
+[trial  14] block 4 ed 0/20 cum PER 1.71%
+  [ft] 32 steps, loss 0.01 -> 0.01 (12s)
+{
+  "session": "t15.2023.11.04",
+  "lr": 0.004,
+  "arm": "copy",
+  "k": 5,
+  "cur_frac": 0.6,
+  "min_steps": 32,
+  "max_steps": 200,
+  "loss_stop": 0.55,
+  "n_trials": 15,
+  "online_PER": 0.017064846416382253,
+  "endpoint_PER": 0.0,
+  "total_ft_steps": 352,
+  "day0_weight_max_delta (0 expected in smoke only)": 0.0025629810988903046,
+  "wall_min": 2.269162146250407
+}
+[done] outputs in .\20240815_card\data\20241009_card_BtoT25\run_calib_20261014\t15.2023.11.04_lr0.004_armcopy

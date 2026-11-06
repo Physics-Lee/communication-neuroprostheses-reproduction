@@ -1,0 +1,773 @@
++ date
+Sat Oct 10 16:38:06 CST 2026
++ cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src
++ autoreconf -fi
++ tail -20
+libtoolize: putting auxiliary files in '.'.
+libtoolize: copying file './ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+configure.ac:13: warning: The macro 'AC_PROG_LIBTOOL' is obsolete.
+configure.ac:13: You should run autoupdate.
+m4/libtool.m4:100: AC_PROG_LIBTOOL is expanded from...
+configure.ac:13: the top level
+configure.ac:111: warning: The macro 'AC_TRY_LINK' is obsolete.
+configure.ac:111: You should run autoupdate.
+./lib/autoconf/general.m4:2918: AC_TRY_LINK is expanded from...
+m4/ac_python_devel.m4:38: AC_PYTHON_DEVEL is expanded from...
+configure.ac:111: the top level
+configure.ac:3: installing './compile'
+configure.ac:2: installing './missing'
+src/bin/Makefile.am: installing './depcomp'
++ ec=0
++ echo autoreconf_exit_0
+autoreconf_exit_0
++ '[' 0 -ne 0 ']'
++ cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86
++ export CMAKE_POLICY_VERSION_MINIMUM=3.5
++ CMAKE_POLICY_VERSION_MINIMUM=3.5
++ P=/root/miniconda3/envs/py310lm/bin/python
++ /root/miniconda3/envs/py310lm/bin/python setup.py install
+running install
+/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/cmd.py:90: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        This deprecation is overdue, please update your project and remove deprecated
+        calls to avoid build errors in the future.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+running build
+running build_ext
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:33 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating gflags
+-- Configuring done (0.3s)
+-- Generating done (0.2s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-subbuild
+[100%] Built target gflags-populate
+CMake Deprecation Warning at fc_base/gflags-src/CMakeLists.txt:73 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:41 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating glog
+-- Configuring done (0.4s)
+-- Generating done (0.2s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-subbuild
+[100%] Built target glog-populate
+CMake Deprecation Warning at fc_base/glog-src/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning at fc_base/glog-src/CMakeLists.txt:51 (find_package):
+  By not providing "Findgflags.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "gflags", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "gflags" (requested
+  version 2.2.0) with any of the following names:
+
+    gflagsConfig.cmake
+    gflags-config.cmake
+
+  Add the installation prefix of "gflags" to CMAKE_PREFIX_PATH or set
+  "gflags_DIR" to a directory containing one of the above files.  If "gflags"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+
+
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:49 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating googletest
+-- Configuring done (0.3s)
+-- Generating done (0.3s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/googletest-subbuild
+[100%] Built target googletest-populate
+CMake Deprecation Warning at fc_base/googletest-src/CMakeLists.txt:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at fc_base/googletest-src/googlemock/CMakeLists.txt:45 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at fc_base/googletest-src/googletest/CMakeLists.txt:56 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning (dev) at fc_base/googletest-src/googletest/cmake/internal_utils.cmake:243 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  fc_base/googletest-src/googletest/CMakeLists.txt:91 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:56 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating boost
+-- Configuring done (0.3s)
+-- Generating done (0.3s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-subbuild
+[100%] Built target boost-populate
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:64 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating cnpy
+-- Configuring done (0.3s)
+-- Generating done (0.3s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-subbuild
+[100%] Built target cnpy-populate
+CMake Deprecation Warning at fc_base/cnpy-src/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at third_party/hiredis/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+Detected version: 1.0.1
+CMake Deprecation Warning at third_party/redis-plus-plus/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- redis-plus-plus version: 1.3.1
+-- redis-plus-plus build type: Release
+-- redis-plus-plus build with CXX standard: c++14
+-- redis-plus-plus TLS support: OFF
+-- redis-plus-plus build static library: ON
+-- redis-plus-plus build static library with position independent code: ON
+-- redis-plus-plus build shared library: ON
+-- redis-plus-plus build test: ON
+CMake Deprecation Warning at third_party/redis-plus-plus/test/CMakeLists.txt:3 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Debian package name: .deb
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:88 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating libtorch
+-- Configuring done (0.3s)
+-- Generating done (0.2s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-subbuild
+[100%] Built target libtorch-populate
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/ExternalProject/shared_internal_commands.cmake:1261 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  /usr/share/cmake-4.2/Modules/ExternalProject.cmake:3258 (_ep_add_download_command)
+  CMakeLists.txt:111 (ExternalProject_Add)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Deprecation Warning at pybind11/CMakeLists.txt:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.9.0 dev1
+CMake Warning (dev) at pybind11/tools/FindPythonLibsNew.cmake:98 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  pybind11/tools/pybind11Tools.cmake:50 (find_package)
+  pybind11/tools/pybind11Common.cmake:206 (include)
+  pybind11/CMakeLists.txt:198 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done (52.3s)
+-- Generating done (11.0s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310
+/usr/bin/cmake -S./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -B./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/gmake  -f CMakeFiles/Makefile2 lm_decoder
+gmake[1]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/cmake -S./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -B./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles 29
+/usr/bin/gmake  -f CMakeFiles/Makefile2 CMakeFiles/lm_decoder.dir/all
+gmake[2]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/DependInfo.cmake "--color=" glog
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake[3]: Nothing to be done for './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build'.
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 17%] Built target glog
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-src ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/DependInfo.cmake "--color=" gflags_nothreads_static
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake[3]: Nothing to be done for './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build'.
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 27%] Built target gflags_nothreads_static
+/usr/bin/gmake  -f CMakeFiles/openfst.dir/build.make CMakeFiles/openfst.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles/openfst.dir/DependInfo.cmake "--color=" openfst
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f CMakeFiles/openfst.dir/build.make CMakeFiles/openfst.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 27%] Performing build step for 'openfst'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build && make -j 4
+make[4]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build'
+/bin/bash ./config.status --recheck
+running CONFIG_SHELL=/bin/bash /bin/bash ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/configure --prefix=./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-subbuild/openfst-populate-prefix CPPFLAGS=-I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 LDFLAGS=-L./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build -L./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build LIBS=-lgflags_nothreads -lglog -lpthread --no-create --no-recursion
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether sleep supports fractional seconds... yes
+checking filesystem timestamp resolution... 0.01
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking xargs -n works... yes
+checking whether UID '0' is supported by ustar format... yes
+checking whether GID '0' is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking whether make supports the include directive... yes (GNU style)
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking dependency style of gcc... gcc3
+checking for ar... ar
+checking the archiver (ar) interface... ar
+checking for g++... g++
+checking whether the compiler supports GNU C++... yes
+checking whether g++ accepts -g... yes
+checking for g++ option to enable C++11 features... unsupported
+checking for g++ option to enable C++98 features... unsupported
+checking dependency style of g++... gcc3
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/x86_64-linux-gnu-ld
+checking if the linker (/usr/bin/x86_64-linux-gnu-ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/x86_64-linux-gnu-ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ranlib... ranlib
+checking for archiver @FILE support... @
+checking for strip... strip
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... no
+checking if : is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/x86_64-linux-gnu-ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking how to run the C++ preprocessor... g++ -E
+checking for ld used by g++... /usr/bin/x86_64-linux-gnu-ld -m elf_x86_64
+checking if the linker (/usr/bin/x86_64-linux-gnu-ld -m elf_x86_64) is GNU ld... yes
+checking whether the g++ linker (/usr/bin/x86_64-linux-gnu-ld -m elf_x86_64) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/bin/x86_64-linux-gnu-ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for dlopen in -ldl... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+ /bin/bash ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/include/Makefile
+config.status: creating src/lib/Makefile
+config.status: creating src/bin/Makefile
+config.status: creating src/test/Makefile
+config.status: creating src/extensions/Makefile
+config.status: creating src/extensions/compact/Makefile
+config.status: creating src/extensions/compress/Makefile
+config.status: creating src/extensions/const/Makefile
+config.status: creating src/extensions/far/Makefile
+config.status: creating src/extensions/linear/Makefile
+config.status: creating src/extensions/lookahead/Makefile
+config.status: creating src/extensions/mpdt/Makefile
+config.status: creating src/extensions/ngram/Makefile
+config.status: creating src/extensions/pdt/Makefile
+config.status: creating src/extensions/python/Makefile
+config.status: creating src/extensions/special/Makefile
+config.status: creating src/script/Makefile
+config.status: creating config.h
+config.status: creating src/include/fst/config.h
+config.status: src/include/fst/config.h is unchanged
+config.status: executing depfiles commands
+/usr/bin/cmake -S./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -B./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 --check-build-system CMakeFiles/Makefile.cmake 0
+config.status: executing libtool commands
+/usr/bin/gmake  -f CMakeFiles/Makefile2 lm_decoder
+gmake[1]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/cmake -S./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -B./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 --check-build-system CMakeFiles/Makefile.cmake 0
+make  all-recursive
+make[5]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build'
+Making all in src
+make[6]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src'
+Making all in include
+/usr/bin/cmake -E cmake_progress_start ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles 29
+/usr/bin/gmake  -f CMakeFiles/Makefile2 CMakeFiles/lm_decoder.dir/all
+gmake[2]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/DependInfo.cmake "--color=" glog
+make[7]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src/include'
+make[7]: Nothing to be done for 'all'.
+make[7]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src/include'
+Making all in lib
+make[7]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src/lib'
+depbase=`echo compat.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT compat.lo -MD -MP -MF $depbase.Tpo -c -o compat.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/compat.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+depbase=`echo flags.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT flags.lo -MD -MP -MF $depbase.Tpo -c -o flags.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/flags.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+depbase=`echo fst.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT fst.lo -MD -MP -MF $depbase.Tpo -c -o fst.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/fst.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+depbase=`echo mapped-file.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT mapped-file.lo -MD -MP -MF $depbase.Tpo -c -o mapped-file.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/mapped-file.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT fst.lo -MD -MP -MF .deps/fst.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/fst.cc  -fPIC -DPIC -o .libs/fst.o
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT flags.lo -MD -MP -MF .deps/flags.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/flags.cc  -fPIC -DPIC -o .libs/flags.o
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT compat.lo -MD -MP -MF .deps/compat.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/compat.cc  -fPIC -DPIC -o .libs/compat.o
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT mapped-file.lo -MD -MP -MF .deps/mapped-file.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/mapped-file.cc  -fPIC -DPIC -o .libs/mapped-file.o
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake[3]: Nothing to be done for './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build'.
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 17%] Built target glog
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-src ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/DependInfo.cmake "--color=" gflags_nothreads_static
+depbase=`echo properties.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT properties.lo -MD -MP -MF $depbase.Tpo -c -o properties.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/properties.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT properties.lo -MD -MP -MF .deps/properties.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/properties.cc  -fPIC -DPIC -o .libs/properties.o
+depbase=`echo symbol-table.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT symbol-table.lo -MD -MP -MF $depbase.Tpo -c -o symbol-table.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/symbol-table.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+depbase=`echo symbol-table-ops.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT symbol-table-ops.lo -MD -MP -MF $depbase.Tpo -c -o symbol-table-ops.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/symbol-table-ops.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT symbol-table.lo -MD -MP -MF .deps/symbol-table.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/symbol-table.cc  -fPIC -DPIC -o .libs/symbol-table.o
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT symbol-table-ops.lo -MD -MP -MF .deps/symbol-table-ops.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/symbol-table-ops.cc  -fPIC -DPIC -o .libs/symbol-table-ops.o
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake[3]: Nothing to be done for './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build'.
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 27%] Built target gflags_nothreads_static
+/usr/bin/gmake  -f CMakeFiles/openfst.dir/build.make CMakeFiles/openfst.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles/openfst.dir/DependInfo.cmake "--color=" openfst
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f CMakeFiles/openfst.dir/build.make CMakeFiles/openfst.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 27%] Performing build step for 'openfst'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build && make -j 4
+make[4]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build'
+make  all-recursive
+make[5]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build'
+Making all in src
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/state-table.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/replace.h:23,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/accumulator.h:20,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/label-reachable.h:16,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/lookahead-matcher.h:20,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/matcher-fst.h:14,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/fst.cc:17:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/bi-table.h: In copy constructor 'fst::VectorHashBiTable<I, T, S, FP, H, HS>::VectorHashBiTable(const fst::VectorHashBiTable<I, T, S, FP, H, HS>&)':
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/bi-table.h:313:31: error: 'const class fst::VectorHashBiTable<I, T, S, FP, H, HS>' has no member named 's_'; did you mean 'h_'? [-Wtemplate-body]
+  313 |       : selector_(new S(table.s_)), fp_(new FP(*table.fp_)),
+      |                               ^~
+      |                               h_
+make[6]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src'
+Making all in include
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/replace.h: In member function 'bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)':
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/replace.h:803:32: warning: expected 'template' keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+make[7]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src/include'
+make[7]: Nothing to be done for 'all'.
+make[7]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src/include'
+Making all in lib
+make[7]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src/lib'
+depbase=`echo fst.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT fst.lo -MD -MP -MF $depbase.Tpo -c -o fst.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/fst.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+depbase=`echo properties.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT properties.lo -MD -MP -MF $depbase.Tpo -c -o properties.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/properties.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+depbase=`echo symbol-table.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT symbol-table.lo -MD -MP -MF $depbase.Tpo -c -o symbol-table.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/symbol-table.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+depbase=`echo symbol-table-ops.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT symbol-table-ops.lo -MD -MP -MF $depbase.Tpo -c -o symbol-table-ops.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/symbol-table-ops.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT fst.lo -MD -MP -MF .deps/fst.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/fst.cc  -fPIC -DPIC -o .libs/fst.o
+mv: cannot stat 'properties.loT': No such file or directory
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT properties.lo -MD -MP -MF .deps/properties.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/properties.cc  -fPIC -DPIC -o .libs/properties.o
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT symbol-table.lo -MD -MP -MF .deps/symbol-table.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/symbol-table.cc  -fPIC -DPIC -o .libs/symbol-table.o
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT symbol-table-ops.lo -MD -MP -MF .deps/symbol-table-ops.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/symbol-table-ops.cc  -fPIC -DPIC -o .libs/symbol-table-ops.o
+depbase=`echo weight.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT weight.lo -MD -MP -MF $depbase.Tpo -c -o weight.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/weight.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT weight.lo -MD -MP -MF .deps/weight.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/weight.cc  -fPIC -DPIC -o .libs/weight.o
+make[7]: *** [Makefile:471: fst.lo] Error 1
+make[7]: *** Waiting for unfinished jobs....
+depbase=`echo weight.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT weight.lo -MD -MP -MF $depbase.Tpo -c -o weight.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/weight.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT weight.lo -MD -MP -MF .deps/weight.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/weight.cc  -fPIC -DPIC -o .libs/weight.o
+make[7]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src/lib'
+make[6]: *** [Makefile:375: all-recursive] Error 1
+make[6]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src'
+make[5]: *** [Makefile:433: all-recursive] Error 1
+make[5]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build'
+make[4]: *** [Makefile:357: all] Error 2
+make[4]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build'
+gmake[3]: *** [CMakeFiles/openfst.dir/build.make:89: openfst-prefix/src/openfst-stamp/openfst-build] Error 2
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake[2]: *** [CMakeFiles/Makefile2:518: CMakeFiles/openfst.dir/all] Error 2
+gmake[2]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake[1]: *** [CMakeFiles/Makefile2:639: CMakeFiles/lm_decoder.dir/rule] Error 2
+gmake[1]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake: *** [Makefile:244: lm_decoder] Error 2
+Traceback (most recent call last):
+  File "./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/setup.py", line 124, in <module>
+    setup(
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/__init__.py", line 117, in setup
+    return distutils.core.setup(**attrs)  # type: ignore[return-value]
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/core.py", line 186, in setup
+    return run_commands(dist)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/core.py", line 202, in run_commands
+    dist.run_commands()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1001, in run_commands
+    self.run_command(cmd)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/install.py", line 689, in run
+    self.run_command('build')
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/cmd.py", line 341, in run_command
+    self.distribution.run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/build.py", line 135, in run
+    self.run_command(cmd_name)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/cmd.py", line 341, in run_command
+    self.distribution.run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/command/build_ext.py", line 97, in run
+    _build_ext.run(self)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/build_ext.py", line 367, in run
+    self.build_extensions()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/build_ext.py", line 483, in build_extensions
+    self._build_extensions_serial()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/build_ext.py", line 509, in _build_extensions_serial
+    self.build_extension(ext)
+  File "./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/setup.py", line 117, in build_extension
+    subprocess.check_call(
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/subprocess.py", line 369, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['cmake', '--build', '.', '--target', 'lm_decoder']' returned non-zero exit status 2.
++ ec2=1
++ echo setup_exit_1
+setup_exit_1
++ /root/miniconda3/envs/py310lm/bin/python -c 'import lm_decoder; print("lm_decoder OK")'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'lm_decoder'
++ echo W2_FAILED_BUILD
+W2_FAILED_BUILD
++ date
+Sat Oct 10 16:39:23 CST 2026
+depbase=`echo util.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+/bin/bash ../../libtool  --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H   -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include  -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char  -std=c++11 -MT util.lo -MD -MP -MF $depbase.Tpo -c -o util.lo ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/util.cc &&\
+mv -f $depbase.Tpo $depbase.Plo
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/state-table.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/replace.h:23,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/accumulator.h:20,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/label-reachable.h:16,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/lookahead-matcher.h:20,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/matcher-fst.h:14,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/fst.cc:17:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/bi-table.h: In copy constructor 'fst::VectorHashBiTable<I, T, S, FP, H, HS>::VectorHashBiTable(const fst::VectorHashBiTable<I, T, S, FP, H, HS>&)':
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/bi-table.h:313:31: error: 'const class fst::VectorHashBiTable<I, T, S, FP, H, HS>' has no member named 's_'; did you mean 'h_'? [-Wtemplate-body]
+  313 |       : selector_(new S(table.s_)), fp_(new FP(*table.fp_)),
+      |                               ^~
+      |                               h_
+libtool: compile:  g++ -DHAVE_CONFIG_H -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -D_GLIBCXX_USE_CXX11_ABI=0 -fno-exceptions -funsigned-char -std=c++11 -MT util.lo -MD -MP -MF .deps/util.Tpo -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/util.cc  -fPIC -DPIC -o .libs/util.o
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/replace.h: In member function 'bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)':
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/lib/../include/fst/replace.h:803:32: warning: expected 'template' keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+make[7]: *** [Makefile:471: fst.lo] Error 1
+make[7]: *** Waiting for unfinished jobs....
+make[7]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src/lib'
+make[6]: *** [Makefile:375: all-recursive] Error 1
+make[6]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build/src'
+make[5]: *** [Makefile:433: all-recursive] Error 1
+make[5]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build'
+make[4]: *** [Makefile:357: all] Error 2
+make[4]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-build'
+gmake[3]: *** [CMakeFiles/openfst.dir/build.make:89: openfst-prefix/src/openfst-stamp/openfst-build] Error 2
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake[2]: *** [CMakeFiles/Makefile2:518: CMakeFiles/openfst.dir/all] Error 2
+gmake[2]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake[1]: *** [CMakeFiles/Makefile2:639: CMakeFiles/lm_decoder.dir/rule] Error 2
+gmake[1]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake: *** [Makefile:244: lm_decoder] Error 2
+Traceback (most recent call last):
+  File "./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/setup.py", line 124, in <module>
+    setup(
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/__init__.py", line 117, in setup
+    return distutils.core.setup(**attrs)  # type: ignore[return-value]
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/core.py", line 186, in setup
+    return run_commands(dist)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/core.py", line 202, in run_commands
+    dist.run_commands()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1001, in run_commands
+    self.run_command(cmd)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/install.py", line 689, in run
+    self.run_command('build')
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/cmd.py", line 341, in run_command
+    self.distribution.run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/build.py", line 135, in run
+    self.run_command(cmd_name)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/cmd.py", line 341, in run_command
+    self.distribution.run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/command/build_ext.py", line 97, in run
+    _build_ext.run(self)
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/build_ext.py", line 367, in run
+    self.build_extensions()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/build_ext.py", line 483, in build_extensions
+    self._build_extensions_serial()
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/command/build_ext.py", line 509, in _build_extensions_serial
+    self.build_extension(ext)
+  File "./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/setup.py", line 117, in build_extension
+    subprocess.check_call(
+  File "/root/miniconda3/envs/py310lm/lib/python3.10/subprocess.py", line 369, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['cmake', '--build', '.', '--target', 'lm_decoder']' returned non-zero exit status 2.
++ ec2=1
++ echo setup_exit_1
+setup_exit_1
++ /root/miniconda3/envs/py310lm/bin/python -c 'import lm_decoder; print("lm_decoder OK")'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'lm_decoder'
++ echo W2_FAILED_BUILD
+W2_FAILED_BUILD
++ date
+Sat Oct 10 16:39:25 CST 2026

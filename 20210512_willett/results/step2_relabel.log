@@ -1,0 +1,67 @@
+Labeling t5.2019.05.08
+  HeldOutBlocks: 已存在，跳过
+  HeldOutTrials: 已存在，跳过
+Labeling t5.2019.11.25
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutBlocks: letterStarts中位差=0.0 bins (≤2帧一致率 100.00%, n=4154), charProb argmax一致率=100.00%, charStart一致率=100.00%, ignoreError一致率=100.00%
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutTrials: letterStarts中位差=0.0 bins (≤2帧一致率 73.24%, n=3532), charProb argmax一致率=94.03%, charStart一致率=97.64%, ignoreError一致率=99.86%
+Labeling t5.2019.12.09
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutBlocks: letterStarts中位差=0.0 bins (≤2帧一致率 100.00%, n=4361), charProb argmax一致率=100.00%, charStart一致率=100.00%, ignoreError一致率=100.00%
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutTrials: letterStarts中位差=0.0 bins (≤2帧一致率 77.08%, n=3779), charProb argmax一致率=92.27%, charStart一致率=97.53%, ignoreError一致率=99.95%
+Labeling t5.2019.12.11
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutBlocks: letterStarts中位差=0.0 bins (≤2帧一致率 100.00%, n=4297), charProb argmax一致率=100.00%, charStart一致率=100.00%, ignoreError一致率=100.00%
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutTrials: letterStarts中位差=0.0 bins (≤2帧一致率 77.29%, n=3726), charProb argmax一致率=92.32%, charStart一致率=96.74%, ignoreError一致率=99.91%
+Labeling t5.2019.12.18
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutBlocks: letterStarts中位差=0.0 bins (≤2帧一致率 100.00%, n=4570), charProb argmax一致率=100.00%, charStart一致率=100.00%, ignoreError一致率=100.00%
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutTrials: letterStarts中位差=0.0 bins (≤2帧一致率 81.76%, n=3948), charProb argmax一致率=93.67%, charStart一致率=97.29%, ignoreError一致率=99.86%
+Labeling t5.2019.12.20
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutBlocks: letterStarts中位差=0.0 bins (≤2帧一致率 100.00%, n=4514), charProb argmax一致率=100.00%, charStart一致率=100.00%, ignoreError一致率=100.00%
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutTrials: letterStarts中位差=0.0 bins (≤2帧一致率 80.11%, n=3892), charProb argmax一致率=93.55%, charStart一致率=96.78%, ignoreError一致率=99.89%
+Labeling t5.2020.01.06
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutBlocks: letterStarts中位差=0.0 bins (≤2帧一致率 100.00%, n=3955), charProb argmax一致率=100.00%, charStart一致率=100.00%, ignoreError一致率=100.00%
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutTrials: letterStarts中位差=0.0 bins (≤2帧一致率 78.27%, n=3419), charProb argmax一致率=93.11%, charStart一致率=96.08%, ignoreError一致率=99.92%
+Labeling t5.2020.01.08
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutBlocks: letterStarts中位差=0.0 bins (≤2帧一致率 100.00%, n=4328), charProb argmax一致率=100.00%, charStart一致率=100.00%, ignoreError一致率=100.00%
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutTrials: letterStarts中位差=0.0 bins (≤2帧一致率 78.39%, n=3748), charProb argmax一致率=93.97%, charStart一致率=96.48%, ignoreError一致率=99.89%
+Labeling t5.2020.01.13
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutBlocks: letterStarts中位差=0.0 bins (≤2帧一致率 100.00%, n=1360), charProb argmax一致率=100.00%, charStart一致率=100.00%, ignoreError一致率=100.00%
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutTrials: letterStarts中位差=0.0 bins (≤2帧一致率 89.34%, n=1360), charProb argmax一致率=99.87%, charStart一致率=99.79%, ignoreError一致率=100.00%
+Labeling t5.2020.01.15
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutBlocks: letterStarts中位差=0.0 bins (≤2帧一致率 100.00%, n=1370), charProb argmax一致率=100.00%, charStart一致率=100.00%, ignoreError一致率=100.00%
+HMM Iteration 0
+HMM Iteration 1
+  HeldOutTrials: letterStarts中位差=0.0 bins (≤2帧一致率 87.08%, n=1370), charProb argmax一致率=99.86%, charStart一致率=99.77%, ignoreError一致率=100.00%
+report -> .\20210512_willett\result\m2_step2_relabel_report.csv

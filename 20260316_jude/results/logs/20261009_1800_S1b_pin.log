@@ -1,0 +1,96 @@
++ PY='/c/Users/user\.conda\envs\reproduce_20260316_jude\python.exe'
++ '/c/Users/user\.conda\envs\reproduce_20260316_jude\python.exe' -m pip install scikit-learn==1.2.2 scipy==1.11.3 pandas==2.2.2 numba==0.58.1 matplotlib==3.8.4 omegaconf==2.3.0 pyyaml==6.0.1 redis==5.0.1
+Collecting scikit-learn==1.2.2
+  Downloading scikit_learn-1.2.2-cp311-cp311-win_amd64.whl.metadata (11 kB)
+Collecting scipy==1.11.3
+  Downloading scipy-1.11.3-cp311-cp311-win_amd64.whl.metadata (60 kB)
+Collecting pandas==2.2.2
+  Downloading pandas-2.2.2-cp311-cp311-win_amd64.whl.metadata (19 kB)
+Collecting numba==0.58.1
+  Downloading numba-0.58.1-cp311-cp311-win_amd64.whl.metadata (2.8 kB)
+Collecting matplotlib==3.8.4
+  Downloading matplotlib-3.8.4-cp311-cp311-win_amd64.whl.metadata (5.9 kB)
+Collecting omegaconf==2.3.0
+  Downloading omegaconf-2.3.0-py3-none-any.whl.metadata (3.9 kB)
+Collecting pyyaml==6.0.1
+  Downloading PyYAML-6.0.1-cp311-cp311-win_amd64.whl.metadata (2.1 kB)
+Collecting redis==5.0.1
+  Downloading redis-5.0.1-py3-none-any.whl.metadata (8.9 kB)
+Requirement already satisfied: numpy>=1.17.3 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from scikit-learn==1.2.2) (1.26.0)
+Requirement already satisfied: joblib>=1.1.1 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from scikit-learn==1.2.2) (1.6.0)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from scikit-learn==1.2.2) (3.7.0)
+Requirement already satisfied: python-dateutil>=2.8.2 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from pandas==2.2.2) (2.9.0.post0)
+Collecting pytz>=2020.1 (from pandas==2.2.2)
+  Downloading pytz-2026.5-py2.py3-none-any.whl.metadata (22 kB)
+Requirement already satisfied: tzdata>=2022.7 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from pandas==2.2.2) (2026.5)
+Collecting llvmlite<0.42,>=0.41.0dev0 (from numba==0.58.1)
+  Downloading llvmlite-0.41.1-cp311-cp311-win_amd64.whl.metadata (4.9 kB)
+Requirement already satisfied: contourpy>=1.0.1 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from matplotlib==3.8.4) (1.3.3)
+Requirement already satisfied: cycler>=0.10 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from matplotlib==3.8.4) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from matplotlib==3.8.4) (4.66.1)
+Requirement already satisfied: kiwisolver>=1.3.1 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from matplotlib==3.8.4) (1.5.1)
+Requirement already satisfied: packaging>=20.0 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from matplotlib==3.8.4) (26.3)
+Requirement already satisfied: pillow>=8 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from matplotlib==3.8.4) (12.3.0)
+Requirement already satisfied: pyparsing>=2.3.1 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from matplotlib==3.8.4) (3.3.3)
+Requirement already satisfied: antlr4-python3-runtime==4.9.* in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from omegaconf==2.3.0) (4.9.3)
+Requirement already satisfied: cloudpickle>=3.0 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from joblib>=1.1.1->scikit-learn==1.2.2) (3.1.2)
+Requirement already satisfied: six>=1.5 in /c/Users/user\.conda\envs\reproduce_20260316_jude\Lib\site-packages (from python-dateutil>=2.8.2->pandas==2.2.2) (1.17.0)
+Downloading scikit_learn-1.2.2-cp311-cp311-win_amd64.whl (8.3 MB)
+   ---------------------------------------- 8.3/8.3 MB 18.3 MB/s  0:00:00
+Downloading scipy-1.11.3-cp311-cp311-win_amd64.whl (44.1 MB)
+   ---------------------------------------- 44.1/44.1 MB 12.9 MB/s  0:00:03
+Downloading pandas-2.2.2-cp311-cp311-win_amd64.whl (11.6 MB)
+   ---------------------------------------- 11.6/11.6 MB 33.1 MB/s  0:00:00
+Downloading numba-0.58.1-cp311-cp311-win_amd64.whl (2.6 MB)
+   ---------------------------------------- 2.6/2.6 MB 11.5 MB/s  0:00:00
+Downloading matplotlib-3.8.4-cp311-cp311-win_amd64.whl (7.7 MB)
+   ---------------------------------------- 7.7/7.7 MB 26.2 MB/s  0:00:00
+Downloading omegaconf-2.3.0-py3-none-any.whl (79 kB)
+Downloading PyYAML-6.0.1-cp311-cp311-win_amd64.whl (144 kB)
+Downloading redis-5.0.1-py3-none-any.whl (250 kB)
+Downloading llvmlite-0.41.1-cp311-cp311-win_amd64.whl (28.1 MB)
+   ---------------------------------------- 28.1/28.1 MB 18.2 MB/s  0:00:01
+Downloading pytz-2026.5-py2.py3-none-any.whl (506 kB)
+Installing collected packages: pytz, scipy, redis, pyyaml, llvmlite, scikit-learn, pandas, omegaconf, numba, matplotlib
+  Attempting uninstall: scipy
+    Found existing installation: scipy 1.16.3
+    Uninstalling scipy-1.16.3:
+      Successfully uninstalled scipy-1.16.3
+  Attempting uninstall: redis
+    Found existing installation: redis 8.1.0
+    Uninstalling redis-8.1.0:
+      Successfully uninstalled redis-8.1.0
+  Attempting uninstall: pyyaml
+    Found existing installation: PyYAML 6.0.3
+    Uninstalling PyYAML-6.0.3:
+      Successfully uninstalled PyYAML-6.0.3
+  Attempting uninstall: llvmlite
+    Found existing installation: llvmlite 0.50.0
+    Uninstalling llvmlite-0.50.0:
+      Successfully uninstalled llvmlite-0.50.0
+  Attempting uninstall: scikit-learn
+    Found existing installation: scikit-learn 1.9.1
+    Uninstalling scikit-learn-1.9.1:
+      Successfully uninstalled scikit-learn-1.9.1
+  Attempting uninstall: pandas
+    Found existing installation: pandas 3.0.6
+    Uninstalling pandas-3.0.6:
+      Successfully uninstalled pandas-3.0.6
+  Attempting uninstall: omegaconf
+    Found existing installation: omegaconf 2.3.1
+    Uninstalling omegaconf-2.3.1:
+      Successfully uninstalled omegaconf-2.3.1
+  Attempting uninstall: numba
+    Found existing installation: numba 0.68.0
+    Uninstalling numba-0.68.0:
+      Successfully uninstalled numba-0.68.0
+  Attempting uninstall: matplotlib
+    Found existing installation: matplotlib 3.11.2
+    Uninstalling matplotlib-3.11.2:
+      Successfully uninstalled matplotlib-3.11.2
+
+Successfully installed llvmlite-0.41.1 matplotlib-3.8.4 numba-0.58.1 omegaconf-2.3.0 pandas-2.2.2 pytz-2026.5 pyyaml-6.0.1 redis-5.0.1 scikit-learn-1.2.2 scipy-1.11.3
++ '/c/Users/user\.conda\envs\reproduce_20260316_jude\python.exe' -c 'import tensorflow as tf; import scipy, numpy, sklearn, numba, pandas, matplotlib, omegaconf, yaml, redis; print('\''TF'\'', tf.__version__, '\''| scipy'\'', scipy.__version__, '\''| numpy'\'', numpy.__version__, '\''| sklearn'\'', sklearn.__version__, '\''| numba'\'', numba.__version__, '\''| pandas'\'', pandas.__version__, '\''| mpl'\'', matplotlib.__version__, '\''| omegaconf'\'', omegaconf.__version__, '\''| pyyaml'\'', yaml.__version__, '\''| redis'\'', redis.__version__)'
+TF 2.14.0 | scipy 1.11.3 | numpy 1.26.0 | sklearn 1.2.2 | numba 0.58.1 | pandas 2.2.2 | mpl 3.8.4 | omegaconf 2.3.0 | pyyaml 6.0.1 | redis 5.0.1
++ echo S1B_DONE
+S1B_DONE

@@ -1,0 +1,3 @@
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I1011 04:31:28.589848   446 brain_speech_decoder.h:52] Reading fst ./20260316_jude/data/20260316_jude/LanguageModels/Typing5gramPunc/TLG.fst
+Terminated                 /root/miniconda3/envs/py310lm/bin/python /tmp/s9multi.py

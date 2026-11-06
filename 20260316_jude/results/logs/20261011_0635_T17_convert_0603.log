@@ -1,0 +1,26 @@
+mat_to_tfrecord_V3.py input parameters:
+	Session mat path: .\20260316_jude\data\20260316_jude\Data\t18\t17.2024.06.03\Typing
+	Block numbers: [4, 5, 7, 8, 9, 11, 12]
+	Number of test trials: 20
+	Trials to remove: {}
+	Channels to exclude: []
+	Channels to zero: []
+	Include threshold crossings: True
+	Include spike power: True
+	Spike power max: 50000
+	Z-score data: True
+	Global std: True
+	Bin compression factor: 2
+	Save path: .\20260316_jude\data\20260316_jude\Data\t18\t17.2024.06.03\Typing\tfdata_20ms
+
+
+Traceback (most recent call last):
+  File ".\20260316_jude\code\window_W4_convert.py", line 37, in <module>
+    mat_to_tfrecord.main(args)
+  File ".\20260316_jude\open_source_code_for_reference\20260316_jude_typingBCI\utils\mat_to_tfrecord.py", line 366, in main
+    sessionData = formatSessionData(
+                  ^^^^^^^^^^^^^^^^^^
+  File ".\20260316_jude\open_source_code_for_reference\20260316_jude_typingBCI\utils\mat_to_tfrecord.py", line 57, in formatSessionData
+    redisFile = redisFile[-1]
+                ~~~~~~~~~^^^^
+IndexError: list index out of range

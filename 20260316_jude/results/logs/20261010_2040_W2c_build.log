@@ -1,0 +1,619 @@
++ date
+Sat Oct 10 20:31:21 CST 2026
++ export CMAKE_POLICY_VERSION_MINIMUM=3.5
++ CMAKE_POLICY_VERSION_MINIMUM=3.5
++ cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86
++ P=/root/miniconda3/envs/py310lm/bin/python
++ /root/miniconda3/envs/py310lm/bin/python setup.py install
+running install
+/root/miniconda3/envs/py310lm/lib/python3.10/site-packages/setuptools/_distutils/cmd.py:90: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        This deprecation is overdue, please update your project and remove deprecated
+        calls to avoid build errors in the future.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+running build
+running build_ext
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:33 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating gflags
+-- Configuring done (1.7s)
+-- Generating done (0.7s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-subbuild
+[100%] Built target gflags-populate
+CMake Deprecation Warning at fc_base/gflags-src/CMakeLists.txt:73 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:41 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating glog
+-- Configuring done (0.7s)
+-- Generating done (0.4s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-subbuild
+[100%] Built target glog-populate
+CMake Deprecation Warning at fc_base/glog-src/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning at fc_base/glog-src/CMakeLists.txt:51 (find_package):
+  By not providing "Findgflags.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "gflags", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "gflags" (requested
+  version 2.2.0) with any of the following names:
+
+    gflagsConfig.cmake
+    gflags-config.cmake
+
+  Add the installation prefix of "gflags" to CMAKE_PREFIX_PATH or set
+  "gflags_DIR" to a directory containing one of the above files.  If "gflags"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+
+
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:49 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating googletest
+-- Configuring done (0.3s)
+-- Generating done (0.2s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/googletest-subbuild
+[100%] Built target googletest-populate
+CMake Deprecation Warning at fc_base/googletest-src/CMakeLists.txt:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at fc_base/googletest-src/googlemock/CMakeLists.txt:45 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at fc_base/googletest-src/googletest/CMakeLists.txt:56 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning (dev) at fc_base/googletest-src/googletest/cmake/internal_utils.cmake:243 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  fc_base/googletest-src/googletest/CMakeLists.txt:91 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:56 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating boost
+-- Configuring done (0.4s)
+-- Generating done (0.2s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-subbuild
+[100%] Built target boost-populate
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:64 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating cnpy
+-- Configuring done (0.2s)
+-- Generating done (0.2s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-subbuild
+[100%] Built target cnpy-populate
+CMake Deprecation Warning at fc_base/cnpy-src/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at third_party/hiredis/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+Detected version: 1.0.1
+CMake Deprecation Warning at third_party/redis-plus-plus/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- redis-plus-plus version: 1.3.1
+-- redis-plus-plus build type: Release
+-- redis-plus-plus build with CXX standard: c++14
+-- redis-plus-plus TLS support: OFF
+-- redis-plus-plus build static library: ON
+-- redis-plus-plus build static library with position independent code: ON
+-- redis-plus-plus build shared library: ON
+-- redis-plus-plus build test: ON
+CMake Deprecation Warning at third_party/redis-plus-plus/test/CMakeLists.txt:3 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Debian package name: .deb
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/FetchContent.cmake:1383 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  CMakeLists.txt:88 (FetchContent_Declare)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Populating libtorch
+-- Configuring done (0.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-subbuild
+[100%] Built target libtorch-populate
+CMake Warning (dev) at /usr/share/cmake-4.2/Modules/ExternalProject/shared_internal_commands.cmake:1261 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  /usr/share/cmake-4.2/Modules/ExternalProject.cmake:3258 (_ep_add_download_command)
+  CMakeLists.txt:111 (ExternalProject_Add)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Deprecation Warning at pybind11/CMakeLists.txt:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.9.0 dev1
+CMake Warning (dev) at pybind11/tools/FindPythonLibsNew.cmake:98 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  pybind11/tools/pybind11Tools.cmake:50 (find_package)
+  pybind11/tools/pybind11Common.cmake:206 (include)
+  pybind11/CMakeLists.txt:198 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done (114.9s)
+-- Generating done (8.9s)
+-- Build files have been written to: ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310
+/usr/bin/cmake -S./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -B./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/gmake  -f CMakeFiles/Makefile2 lm_decoder
+gmake[1]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/cmake -S./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -B./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles 29
+/usr/bin/gmake  -f CMakeFiles/Makefile2 CMakeFiles/lm_decoder.dir/all
+gmake[2]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/DependInfo.cmake "--color=" glog
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[  3%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/demangle.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build && /usr/bin/c++ -DGOOGLE_GLOG_DLL_DECL="" -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -fPIC -fvisibility=default -fvisibility-inlines-hidden -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/demangle.cc.o -MF CMakeFiles/glog.dir/src/demangle.cc.o.d -o CMakeFiles/glog.dir/src/demangle.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src/demangle.cc
+[  3%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/logging.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build && /usr/bin/c++ -DGOOGLE_GLOG_DLL_DECL="" -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -fPIC -fvisibility=default -fvisibility-inlines-hidden -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/logging.cc.o -MF CMakeFiles/glog.dir/src/logging.cc.o.d -o CMakeFiles/glog.dir/src/logging.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src/logging.cc
+[  6%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/raw_logging.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build && /usr/bin/c++ -DGOOGLE_GLOG_DLL_DECL="" -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -fPIC -fvisibility=default -fvisibility-inlines-hidden -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/raw_logging.cc.o -MF CMakeFiles/glog.dir/src/raw_logging.cc.o.d -o CMakeFiles/glog.dir/src/raw_logging.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src/raw_logging.cc
+[ 10%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/symbolize.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build && /usr/bin/c++ -DGOOGLE_GLOG_DLL_DECL="" -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -fPIC -fvisibility=default -fvisibility-inlines-hidden -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/symbolize.cc.o -MF CMakeFiles/glog.dir/src/symbolize.cc.o.d -o CMakeFiles/glog.dir/src/symbolize.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src/symbolize.cc
+[ 10%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/utilities.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build && /usr/bin/c++ -DGOOGLE_GLOG_DLL_DECL="" -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -fPIC -fvisibility=default -fvisibility-inlines-hidden -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/utilities.cc.o -MF CMakeFiles/glog.dir/src/utilities.cc.o.d -o CMakeFiles/glog.dir/src/utilities.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src/utilities.cc
+[ 13%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/vlog_is_on.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build && /usr/bin/c++ -DGOOGLE_GLOG_DLL_DECL="" -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -fPIC -fvisibility=default -fvisibility-inlines-hidden -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/vlog_is_on.cc.o -MF CMakeFiles/glog.dir/src/vlog_is_on.cc.o.d -o CMakeFiles/glog.dir/src/vlog_is_on.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src/vlog_is_on.cc
+[ 13%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/signalhandler.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build && /usr/bin/c++ -DGOOGLE_GLOG_DLL_DECL="" -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -fPIC -fvisibility=default -fvisibility-inlines-hidden -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build/CMakeFiles/glog.dir/src/signalhandler.cc.o -MF CMakeFiles/glog.dir/src/signalhandler.cc.o.d -o CMakeFiles/glog.dir/src/signalhandler.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src/signalhandler.cc
+[ 17%] Linking CXX static library libglog.a
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build && /usr/bin/cmake -P CMakeFiles/glog.dir/cmake_clean_target.cmake
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build && /usr/bin/cmake -E cmake_link_script CMakeFiles/glog.dir/link.txt --verbose=1
+/usr/bin/ar qc libglog.a CMakeFiles/glog.dir/src/demangle.cc.o CMakeFiles/glog.dir/src/logging.cc.o CMakeFiles/glog.dir/src/raw_logging.cc.o CMakeFiles/glog.dir/src/symbolize.cc.o CMakeFiles/glog.dir/src/utilities.cc.o CMakeFiles/glog.dir/src/vlog_is_on.cc.o CMakeFiles/glog.dir/src/signalhandler.cc.o
+/usr/bin/ranlib libglog.a
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 17%] Built target glog
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-src ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/DependInfo.cmake "--color=" gflags_nothreads_static
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build.make ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 20%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/src/gflags.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build && /usr/bin/c++ -DGFLAGS_IS_A_DLL=0 -DNO_THREADS -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include/gflags -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/src/gflags.cc.o -MF CMakeFiles/gflags_nothreads_static.dir/src/gflags.cc.o.d -o CMakeFiles/gflags_nothreads_static.dir/src/gflags.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-src/src/gflags.cc
+[ 24%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/src/gflags_reporting.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build && /usr/bin/c++ -DGFLAGS_IS_A_DLL=0 -DNO_THREADS -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include/gflags -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/src/gflags_reporting.cc.o -MF CMakeFiles/gflags_nothreads_static.dir/src/gflags_reporting.cc.o.d -o CMakeFiles/gflags_nothreads_static.dir/src/gflags_reporting.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-src/src/gflags_reporting.cc
+[ 24%] Building CXX object ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/src/gflags_completions.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build && /usr/bin/c++ -DGFLAGS_IS_A_DLL=0 -DNO_THREADS -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include/gflags -Wno-template-body -std=c++14 -pthread -fPIC -O3 -DNDEBUG -MD -MT ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/CMakeFiles/gflags_nothreads_static.dir/src/gflags_completions.cc.o -MF CMakeFiles/gflags_nothreads_static.dir/src/gflags_completions.cc.o.d -o CMakeFiles/gflags_nothreads_static.dir/src/gflags_completions.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-src/src/gflags_completions.cc
+[ 27%] Linking CXX static library libgflags_nothreads.a
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build && /usr/bin/cmake -P CMakeFiles/gflags_nothreads_static.dir/cmake_clean_target.cmake
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build && /usr/bin/cmake -E cmake_link_script CMakeFiles/gflags_nothreads_static.dir/link.txt --verbose=1
+/usr/bin/ar qc libgflags_nothreads.a CMakeFiles/gflags_nothreads_static.dir/src/gflags.cc.o CMakeFiles/gflags_nothreads_static.dir/src/gflags_reporting.cc.o CMakeFiles/gflags_nothreads_static.dir/src/gflags_completions.cc.o
+/usr/bin/ranlib libgflags_nothreads.a
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 27%] Built target gflags_nothreads_static
+/usr/bin/gmake  -f CMakeFiles/openfst.dir/build.make CMakeFiles/openfst.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles/openfst.dir/DependInfo.cmake "--color=" openfst
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f CMakeFiles/openfst.dir/build.make CMakeFiles/openfst.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+gmake[3]: Nothing to be done for 'CMakeFiles/openfst.dir/build'.
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 44%] Built target openfst
+/usr/bin/gmake  -f CMakeFiles/utils.dir/build.make CMakeFiles/utils.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles/utils.dir/DependInfo.cmake "--color=" utils
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f CMakeFiles/utils.dir/build.make CMakeFiles/utils.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 44%] Building CXX object CMakeFiles/utils.dir/utils/string.cc.o
+/usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT CMakeFiles/utils.dir/utils/string.cc.o -MF CMakeFiles/utils.dir/utils/string.cc.o.d -o CMakeFiles/utils.dir/utils/string.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/utils/string.cc
+[ 48%] Building CXX object CMakeFiles/utils.dir/utils/utils.cc.o
+/usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT CMakeFiles/utils.dir/utils/utils.cc.o -MF CMakeFiles/utils.dir/utils/utils.cc.o.d -o CMakeFiles/utils.dir/utils/utils.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/utils/utils.cc
+[ 51%] Linking CXX static library libutils.a
+/usr/bin/cmake -P CMakeFiles/utils.dir/cmake_clean_target.cmake
+/usr/bin/cmake -E cmake_link_script CMakeFiles/utils.dir/link.txt --verbose=1
+/usr/bin/ar qc libutils.a CMakeFiles/utils.dir/utils/string.cc.o CMakeFiles/utils.dir/utils/utils.cc.o
+/usr/bin/ranlib libutils.a
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 51%] Built target utils
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-base.dir/build.make kaldi/CMakeFiles/kaldi-base.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi/CMakeFiles/kaldi-base.dir/DependInfo.cmake "--color=" kaldi-base
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-base.dir/build.make kaldi/CMakeFiles/kaldi-base.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 55%] Building CXX object kaldi/CMakeFiles/kaldi-base.dir/base/kaldi-error.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-base.dir/base/kaldi-error.cc.o -MF CMakeFiles/kaldi-base.dir/base/kaldi-error.cc.o.d -o CMakeFiles/kaldi-base.dir/base/kaldi-error.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/base/kaldi-error.cc
+[ 55%] Building CXX object kaldi/CMakeFiles/kaldi-base.dir/base/kaldi-math.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-base.dir/base/kaldi-math.cc.o -MF CMakeFiles/kaldi-base.dir/base/kaldi-math.cc.o.d -o CMakeFiles/kaldi-base.dir/base/kaldi-math.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/base/kaldi-math.cc
+[ 58%] Linking CXX static library libkaldi-base.a
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -P CMakeFiles/kaldi-base.dir/cmake_clean_target.cmake
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -E cmake_link_script CMakeFiles/kaldi-base.dir/link.txt --verbose=1
+/usr/bin/ar qc libkaldi-base.a "CMakeFiles/kaldi-base.dir/base/kaldi-error.cc.o" "CMakeFiles/kaldi-base.dir/base/kaldi-math.cc.o"
+/usr/bin/ranlib libkaldi-base.a
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 58%] Built target kaldi-base
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-util.dir/build.make kaldi/CMakeFiles/kaldi-util.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi/CMakeFiles/kaldi-util.dir/DependInfo.cmake "--color=" kaldi-util
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-util.dir/build.make kaldi/CMakeFiles/kaldi-util.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 62%] Building CXX object kaldi/CMakeFiles/kaldi-util.dir/util/kaldi-io.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-util.dir/util/kaldi-io.cc.o -MF CMakeFiles/kaldi-util.dir/util/kaldi-io.cc.o.d -o CMakeFiles/kaldi-util.dir/util/kaldi-io.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/util/kaldi-io.cc
+[ 65%] Building CXX object kaldi/CMakeFiles/kaldi-util.dir/util/parse-options.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-util.dir/util/parse-options.cc.o -MF CMakeFiles/kaldi-util.dir/util/parse-options.cc.o.d -o CMakeFiles/kaldi-util.dir/util/parse-options.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/util/parse-options.cc
+[ 65%] Building CXX object kaldi/CMakeFiles/kaldi-util.dir/util/simple-io-funcs.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-util.dir/util/simple-io-funcs.cc.o -MF CMakeFiles/kaldi-util.dir/util/simple-io-funcs.cc.o.d -o CMakeFiles/kaldi-util.dir/util/simple-io-funcs.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/util/simple-io-funcs.cc
+[ 68%] Building CXX object kaldi/CMakeFiles/kaldi-util.dir/util/text-utils.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-util.dir/util/text-utils.cc.o -MF CMakeFiles/kaldi-util.dir/util/text-utils.cc.o.d -o CMakeFiles/kaldi-util.dir/util/text-utils.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/util/text-utils.cc
+[ 68%] Linking CXX static library libkaldi-util.a
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -P CMakeFiles/kaldi-util.dir/cmake_clean_target.cmake
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -E cmake_link_script CMakeFiles/kaldi-util.dir/link.txt --verbose=1
+/usr/bin/ar qc libkaldi-util.a "CMakeFiles/kaldi-util.dir/util/kaldi-io.cc.o" "CMakeFiles/kaldi-util.dir/util/parse-options.cc.o" "CMakeFiles/kaldi-util.dir/util/simple-io-funcs.cc.o" "CMakeFiles/kaldi-util.dir/util/text-utils.cc.o"
+/usr/bin/ranlib libkaldi-util.a
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 68%] Built target kaldi-util
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-fstext.dir/build.make kaldi/CMakeFiles/kaldi-fstext.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi/CMakeFiles/kaldi-fstext.dir/DependInfo.cmake "--color=" kaldi-fstext
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-fstext.dir/build.make kaldi/CMakeFiles/kaldi-fstext.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 72%] Building CXX object kaldi/CMakeFiles/kaldi-fstext.dir/fstext/kaldi-fst-io.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-fstext.dir/fstext/kaldi-fst-io.cc.o -MF CMakeFiles/kaldi-fstext.dir/fstext/kaldi-fst-io.cc.o.d -o CMakeFiles/kaldi-fstext.dir/fstext/kaldi-fst-io.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/fstext/kaldi-fst-io.cc
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/rational.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/closure.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/fstlib.h:41,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/fstext/kaldi-fst-io.h:29,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/fstext/kaldi-fst-io.cc:22:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h: In member function ‘bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)’:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h:803:32: warning: expected ‘template’ keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+[ 72%] Linking CXX static library libkaldi-fstext.a
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -P CMakeFiles/kaldi-fstext.dir/cmake_clean_target.cmake
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -E cmake_link_script CMakeFiles/kaldi-fstext.dir/link.txt --verbose=1
+/usr/bin/ar qc libkaldi-fstext.a "CMakeFiles/kaldi-fstext.dir/fstext/kaldi-fst-io.cc.o"
+/usr/bin/ranlib libkaldi-fstext.a
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 72%] Built target kaldi-fstext
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-lat.dir/build.make kaldi/CMakeFiles/kaldi-lat.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi/CMakeFiles/kaldi-lat.dir/DependInfo.cmake "--color=" kaldi-lat
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-lat.dir/build.make kaldi/CMakeFiles/kaldi-lat.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 75%] Building CXX object kaldi/CMakeFiles/kaldi-lat.dir/lat/determinize-lattice-pruned.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-lat.dir/lat/determinize-lattice-pruned.cc.o -MF CMakeFiles/kaldi-lat.dir/lat/determinize-lattice-pruned.cc.o.d -o CMakeFiles/kaldi-lat.dir/lat/determinize-lattice-pruned.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/lat/determinize-lattice-pruned.cc
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/rational.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/closure.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/fstlib.h:41,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/fstext/determinize-lattice.h:23,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/lat/determinize-lattice-pruned.cc:24:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h: In member function ‘bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)’:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h:803:32: warning: expected ‘template’ keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+[ 79%] Building CXX object kaldi/CMakeFiles/kaldi-lat.dir/lat/lattice-functions.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-lat.dir/lat/lattice-functions.cc.o -MF CMakeFiles/kaldi-lat.dir/lat/lattice-functions.cc.o.d -o CMakeFiles/kaldi-lat.dir/lat/lattice-functions.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/lat/lattice-functions.cc
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/rational.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/closure.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/fstlib.h:41,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/fstext/fstext-lib.h:24,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/lat/lattice-functions.h:32,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/lat/lattice-functions.cc:26:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h: In member function ‘bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)’:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h:803:32: warning: expected ‘template’ keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+[ 79%] Linking CXX static library libkaldi-lat.a
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -P CMakeFiles/kaldi-lat.dir/cmake_clean_target.cmake
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -E cmake_link_script CMakeFiles/kaldi-lat.dir/link.txt --verbose=1
+/usr/bin/ar qc libkaldi-lat.a "CMakeFiles/kaldi-lat.dir/lat/determinize-lattice-pruned.cc.o" "CMakeFiles/kaldi-lat.dir/lat/lattice-functions.cc.o"
+/usr/bin/ranlib libkaldi-lat.a
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 79%] Built target kaldi-lat
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-decoder.dir/build.make kaldi/CMakeFiles/kaldi-decoder.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi/CMakeFiles/kaldi-decoder.dir/DependInfo.cmake "--color=" kaldi-decoder
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f kaldi/CMakeFiles/kaldi-decoder.dir/build.make kaldi/CMakeFiles/kaldi-decoder.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 82%] Building CXX object kaldi/CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-decoder.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-decoder.cc.o -MF CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-decoder.cc.o.d -o CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-decoder.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/decoder/lattice-faster-decoder.cc
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/rational.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/closure.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/fstlib.h:41,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/decoder/lattice-faster-decoder.h:31,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/decoder/lattice-faster-decoder.cc:26:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h: In member function ‘bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)’:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h:803:32: warning: expected ‘template’ keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+[ 82%] Building CXX object kaldi/CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-online-decoder.cc.o
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/c++ -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -MD -MT kaldi/CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-online-decoder.cc.o -MF CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-online-decoder.cc.o.d -o CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-online-decoder.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/decoder/lattice-faster-online-decoder.cc
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/rational.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/closure.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/fstlib.h:41,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/decoder/lattice-faster-decoder.h:31,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/decoder/lattice-faster-online-decoder.h:29,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/decoder/lattice-faster-online-decoder.cc:32:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h: In member function ‘bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)’:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h:803:32: warning: expected ‘template’ keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+[ 86%] Linking CXX static library libkaldi-decoder.a
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -P CMakeFiles/kaldi-decoder.dir/cmake_clean_target.cmake
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/kaldi && /usr/bin/cmake -E cmake_link_script CMakeFiles/kaldi-decoder.dir/link.txt --verbose=1
+/usr/bin/ar qc libkaldi-decoder.a "CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-decoder.cc.o" "CMakeFiles/kaldi-decoder.dir/decoder/lattice-faster-online-decoder.cc.o"
+/usr/bin/ranlib libkaldi-decoder.a
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 86%] Built target kaldi-decoder
+/usr/bin/gmake  -f CMakeFiles/decoder.dir/build.make CMakeFiles/decoder.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles/decoder.dir/DependInfo.cmake "--color=" decoder
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f CMakeFiles/decoder.dir/build.make CMakeFiles/decoder.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 86%] Building CXX object CMakeFiles/decoder.dir/decoder/ctc_prefix_beam_search.cc.o
+/usr/bin/c++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -isystem ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/include -isystem ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/include/torch/csrc/api/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -D_GLIBCXX_USE_CXX11_ABI=0 -MD -MT CMakeFiles/decoder.dir/decoder/ctc_prefix_beam_search.cc.o -MF CMakeFiles/decoder.dir/decoder/ctc_prefix_beam_search.cc.o.d -o CMakeFiles/decoder.dir/decoder/ctc_prefix_beam_search.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/ctc_prefix_beam_search.cc
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/rational.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/closure.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/fstlib.h:41,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/fstext/fstext-lib.h:24,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/lat/kaldi-lattice.h:24,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/search_interface.h:11,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/ctc_prefix_beam_search.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/ctc_prefix_beam_search.cc:4:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h: In member function ‘bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)’:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h:803:32: warning: expected ‘template’ keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+[ 89%] Building CXX object CMakeFiles/decoder.dir/decoder/ctc_wfst_beam_search.cc.o
+/usr/bin/c++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -isystem ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/include -isystem ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/include/torch/csrc/api/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -D_GLIBCXX_USE_CXX11_ABI=0 -MD -MT CMakeFiles/decoder.dir/decoder/ctc_wfst_beam_search.cc.o -MF CMakeFiles/decoder.dir/decoder/ctc_wfst_beam_search.cc.o.d -o CMakeFiles/decoder.dir/decoder/ctc_wfst_beam_search.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/ctc_wfst_beam_search.cc
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/rational.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/closure.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/fstlib.h:41,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/fstext/fstext-lib.h:24,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi/lat/kaldi-lattice.h:24,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/search_interface.h:11,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/ctc_wfst_beam_search.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/ctc_wfst_beam_search.cc:4:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h: In member function ‘bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)’:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h:803:32: warning: expected ‘template’ keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+[ 93%] Building CXX object CMakeFiles/decoder.dir/decoder/brain_speech_decoder.cc.o
+/usr/bin/c++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -D_GLIBCXX_USE_CXX11_ABI=0 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -isystem ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/include -isystem ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/include/torch/csrc/api/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -D_GLIBCXX_USE_CXX11_ABI=0 -MD -MT CMakeFiles/decoder.dir/decoder/brain_speech_decoder.cc.o -MF CMakeFiles/decoder.dir/decoder/brain_speech_decoder.cc.o.d -o CMakeFiles/decoder.dir/decoder/brain_speech_decoder.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/brain_speech_decoder.cc
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/rational.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/closure.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/fstlib.h:41,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/brain_speech_decoder.h:9,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/brain_speech_decoder.cc:1:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h: In member function ‘bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)’:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h:803:32: warning: expected ‘template’ keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+[ 93%] Linking CXX static library libdecoder.a
+/usr/bin/cmake -P CMakeFiles/decoder.dir/cmake_clean_target.cmake
+/usr/bin/cmake -E cmake_link_script CMakeFiles/decoder.dir/link.txt --verbose=1
+/usr/bin/ar qc libdecoder.a CMakeFiles/decoder.dir/decoder/ctc_prefix_beam_search.cc.o CMakeFiles/decoder.dir/decoder/ctc_wfst_beam_search.cc.o CMakeFiles/decoder.dir/decoder/brain_speech_decoder.cc.o
+/usr/bin/ranlib libdecoder.a
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 93%] Built target decoder
+/usr/bin/gmake  -f CMakeFiles/lm_decoder.dir/build.make CMakeFiles/lm_decoder.dir/depend
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+cd ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 && /usr/bin/cmake -E cmake_depends "Unix Makefiles" ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310 ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles/lm_decoder.dir/DependInfo.cmake "--color=" lm_decoder
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/gmake  -f CMakeFiles/lm_decoder.dir/build.make CMakeFiles/lm_decoder.dir/build
+gmake[3]: Entering directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[ 96%] Building CXX object CMakeFiles/lm_decoder.dir/python/lm_decoder.cc.o
+/usr/bin/c++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -D_GLIBCXX_USE_CXX11_ABI=0 -Dlm_decoder_EXPORTS -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86 -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/kaldi -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/gflags-build/include -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-src/src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/glog-build -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/boost-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/cnpy-src -I./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include -isystem ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/pybind11/include -isystem /root/miniconda3/envs/py310lm/include/python3.10 -isystem ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/include -isystem ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/include/torch/csrc/api/include -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -fPIC -fvisibility=hidden -flto -fno-fat-lto-objects -D_GLIBCXX_USE_CXX11_ABI=0 -MD -MT CMakeFiles/lm_decoder.dir/python/lm_decoder.cc.o -MF CMakeFiles/lm_decoder.dir/python/lm_decoder.cc.o.d -o CMakeFiles/lm_decoder.dir/python/lm_decoder.cc.o -c ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/python/lm_decoder.cc
+In file included from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/rational.h:15,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/closure.h:13,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/fstlib.h:41,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/decoder/brain_speech_decoder.h:9,
+                 from ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/python/lm_decoder.cc:6:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h: In member function ‘bool fst::internal::ReplaceFstImpl<Arc, StateTable, CacheStore>::ComputeArc(const StateTuple&, const Arc&, Arc*, uint32)’:
+./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-src/src/include/fst/replace.h:803:32: warning: expected ‘template’ keyword before dependent template name [-Wmissing-template-keyword]
+  803 |     if (arc.olabel == 0 || arc.olabel < *nonterminal_set_.begin() ||
+      |                                ^~~~~~
+      |                                template
+[100%] Linking CXX shared module ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/lib.linux-x86_64-cpython-310/lm_decoder.cpython-310-x86_64-linux-gnu.so
+/usr/bin/cmake -E cmake_link_script CMakeFiles/lm_decoder.dir/link.txt --verbose=1
+lto-wrapper: warning: using serial compilation of 5 LTRANS jobs
+lto-wrapper: note: see the ‘-flto’ option documentation for more information
+/usr/bin/c++ -fPIC -Wno-template-body -std=c++14 -pthread -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -DC10_USE_GLOG -O3 -DNDEBUG -shared -flto -Wl,--dependency-file=CMakeFiles/lm_decoder.dir/link.d  -o ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/lib.linux-x86_64-cpython-310/lm_decoder.cpython-310-x86_64-linux-gnu.so CMakeFiles/lm_decoder.dir/python/lm_decoder.cc.o   -L./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-subbuild/openfst-populate-prefix/lib  -Wl,-rpath,./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/openfst-subbuild/openfst-populate-prefix/lib:./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/lib libdecoder.a ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/lib/libtorch.so -Wl,--no-as-needed,"./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/lib/libtorch_cpu.so" -Wl,--as-needed ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/lib/libc10.so -Wl,--no-as-needed,"./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/lib/libtorch.so" -Wl,--as-needed ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/lib/libc10.so ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/fc_base/libtorch-src/lib/libkineto.a kaldi/libkaldi-decoder.a kaldi/libkaldi-lat.a kaldi/libkaldi-fstext.a kaldi/libkaldi-util.a kaldi/libkaldi-base.a libutils.a -lfst -ldl
+/usr/bin/strip ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/lib.linux-x86_64-cpython-310/lm_decoder.cpython-310-x86_64-linux-gnu.so
+gmake[3]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+[100%] Built target lm_decoder
+gmake[2]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+/usr/bin/cmake -E cmake_progress_start ./20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310/CMakeFiles 0
+gmake[1]: Leaving directory './20260316_jude/open_source_code_for_reference/speechBCI/LanguageModelDecoder/runtime/server/x86/build/temp.linux-x86_64-cpython-310'
+running install_lib
+copying build/lib.linux-x86_64-cpython-310/lm_decoder.cpython-310-x86_64-linux-gnu.so -> /root/miniconda3/envs/py310lm/lib/python3.10/site-packages
+running install_egg_info
+running egg_info
+writing lm_decoder.egg-info/PKG-INFO
+writing dependency_links to lm_decoder.egg-info/dependency_links.txt
+writing top-level names to lm_decoder.egg-info/top_level.txt
+reading manifest file 'lm_decoder.egg-info/SOURCES.txt'
+writing manifest file 'lm_decoder.egg-info/SOURCES.txt'
+Copying lm_decoder.egg-info to /root/miniconda3/envs/py310lm/lib/python3.10/site-packages/lm_decoder-0.0.1-py3.10.egg-info
+running install_scripts
++ ec=0
++ echo setup_exit_0
+setup_exit_0
++ '[' 0 -eq 0 ']'
++ /root/miniconda3/envs/py310lm/bin/python -c 'import lm_decoder; print("lm_decoder OK")'
+lm_decoder OK
++ echo S6G_DONE
+S6G_DONE
++ date
+Sat Oct 10 20:48:13 CST 2026

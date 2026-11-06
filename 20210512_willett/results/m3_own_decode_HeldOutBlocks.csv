@@ -1,0 +1,222 @@
+session,sidx,ac,graph,decText,trueText,charErrs,charCounts,wordErrs,wordCounts
+t5.2019.11.25,50,841.976062,132.196443,the quick brown fox jumps over the law doug,the quick brown fox jumps over the lazy dog,3,43,2,9
+t5.2019.11.25,51,704.257885,114.432436,i imagine all the people living life in peace,imagine all the people living life in peace,2,43,1,8
+t5.2019.11.25,52,629.080238,115.31508,task not what your country can do for you,ask not what your country can do for you,1,40,1,9
+t5.2019.11.25,53,835.451425,125.428956,i i heard my friend is going into town today,i heard my friend is going into town today,2,42,1,9
+t5.2019.11.25,54,850.05017,142.916604,ink you must be the change you wish to see in the world,you must be the change you wish to see in the world,4,51,1,12
+t5.2019.11.25,55,669.468594,124.52024,'s when the sunlight strikes raindrops in the air,when the sunlight strikes raindrops in the air,3,46,1,8
+t5.2019.11.25,56,744.942963,122.335445,i like when you sit with me and read the paper.,i like when you sit with me and read the paper,1,46,1,11
+t5.2019.11.25,57,606.290829,90.989041,aim waiting for you to settle down.,i'm waiting for you to settle down.,2,35,1,7
+t5.2019.11.25,59,928.734201,157.215029,", w were marked for extermination, like so many rats","we were marked for extermination, like so many rats.",4,52,3,9
+t5.2019.11.25,60,492.086725,80.152825,", well they've got no choice",well they've got no choice.,3,27,2,5
+t5.2019.11.25,61,1214.742027,204.554695,this pot was in his hand still if preceded him like the torch of justice.,"his pot was in his hand still, it preceded him like the torch of justice.",3,73,3,15
+t5.2019.11.25,62,1173.915147,154.831341,", because he had slowed the man behind struck me a low","because he had slowed, the man behind struck him a blow.",8,56,4,11
+t5.2019.11.25,63,791.191868,123.224167,", and recent events hadn't helped much either.","and recent events hadn't helped much, either.",3,45,2,7
+t5.2019.11.25,64,618.197462,104.335971,", had a final draft peel posted?",had a final draft been posted?,4,30,2,6
+t5.2019.11.25,65,1043.4647,155.645486,"'s that hurt, especially after all they had been through together.","that hurt, especially after all they had been through together.",3,63,1,10
+t5.2019.11.25,66,736.226823,104.025374,"it's quite a wide brief, actually.","it's quite a wide brief, actually.",0,34,0,6
+t5.2019.11.25,67,831.416027,143.330852,", a vast mirror still covered the whole of one wall.",a vast mirror still covered the whole of one wall.,2,50,1,10
+t5.2019.11.25,68,835.179487,142.505904,' otherwise you end up with some very very strange results.,otherwise you end up with some very very strange results.,2,57,1,10
+t5.2019.11.25,69,646.486221,112.111291,", a philip put his finger to his lips.",philip put his finger to his lips.,4,34,2,7
+t5.2019.11.25,70,659.821664,129.456198,a the magician woke up with a yell of pain.,the magician woke up with a yell of pain.,2,41,1,9
+t5.2019.11.25,71,1284.9885,204.191125,adrian who's responsible for resettlement is here of members have an questions.,adrian who's responsible for resettlement is here if members have any questions.,2,80,2,12
+t5.2019.11.25,73,584.749835,90.206603,"oakes, we've been expecting you.","yes, we've been expecting you.",3,30,1,5
+t5.2019.11.25,74,633.390077,100.427757,", a firm therefore becomes a farm",a firm therefore becomes a farm.,3,32,2,6
+t5.2019.11.25,75,749.288812,120.428056,", i got next to nothing from dc iem","i got next to nothing from her, sir.",9,36,3,8
+t5.2019.11.25,76,1799.649095,281.109161,"a i mean you're lucky to get that one mate, mean you must have been caught him or a real good day.","i mean you're lucky to get that one mate, i mean you must have been, caught him on a real good day.",6,99,4,22
+t5.2019.11.25,77,684.727293,125.859002,", the quick brown fox jumps over the lazy dog",the quick brown fox jumps over the lazy dog,2,43,1,9
+t5.2019.11.25,78,680.394044,111.136499,imagine all the people living life in peace,imagine all the people living life in peace,0,43,0,8
+t5.2019.11.25,79,643.695962,115.372367,ask not what your country can do for you,ask not what your country can do for you,0,40,0,9
+t5.2019.11.25,80,747.58295,116.489571,i heard my friend is going into town today,i heard my friend is going into town today,0,42,0,9
+t5.2019.11.25,81,811.949734,129.887498,", you must be the change you wish to see in the world",you must be the change you wish to see in the world,2,51,1,12
+t5.2019.11.25,82,778.375794,136.623671,", when the sunlight strikes raindrops m the air",when the sunlight strikes raindrops in the air,4,46,2,8
+t5.2019.11.25,83,748.229105,136.749361,a i like when you sit with m and read the paper.,i like when you sit with me and read the paper,4,46,3,11
+t5.2019.12.09,50,750.779686,128.893945,", the quick brown fox jumps over the lazy dog",the quick brown fox jumps over the lazy dog,2,43,1,9
+t5.2019.12.09,53,1378.931824,150.424151,dai i heard my friend is going into town today,i heard my friend is going into town today,4,42,1,9
+t5.2019.12.09,54,954.264932,143.131858,i you must be the change you wish to see in the world,you must be the change you wish to see in the world,2,51,1,12
+t5.2019.12.09,55,944.195826,133.310128,when the sunlight strikes raindrops in the air,when the sunlight strikes raindrops in the air,0,46,0,8
+t5.2019.12.09,56,916.019552,140.671677,", i like when you sit with me and read the paper",i like when you sit with me and read the paper,2,46,1,11
+t5.2019.12.09,57,767.437862,131.182124,", the quick brown fox jumps over the lazy dog",the quick brown fox jumps over the lazy dog,2,43,1,9
+t5.2019.12.09,59,710.325842,123.345138,ask not what your country ca do for you.,ask not what your country can do for you,2,40,2,9
+t5.2019.12.09,60,756.259269,124.345686,i i heard my friend is going into town today,i heard my friend is going into town today,2,42,1,9
+t5.2019.12.09,61,781.674495,140.058697,? you must be the change you wish to see in the world,you must be the change you wish to see in the world,2,51,1,12
+t5.2019.12.09,62,773.80203,127.547258,", when the sunlight strikes raindrops in the air",when the sunlight strikes raindrops in the air,2,46,1,8
+t5.2019.12.09,63,799.754716,137.998222,'i like when you sit with me and read the paper,i like when you sit with me and read the paper,1,46,1,11
+t5.2019.12.09,64,927.611516,173.227398,", these are like miniature straws which suck water up the stem.",these are like miniature straws which suck water up the stem.,2,61,1,11
+t5.2019.12.09,65,715.365982,124.162872,i this produces annual rings in the trunk,this produces annual rings in the trunk.,3,40,2,7
+t5.2019.12.09,66,1227.71745,194.716769,' but the objects that physicists study are still basically simple objects.,but the objects that physicists study are still basically simple objects.,2,73,1,11
+t5.2019.12.09,67,998.809766,168.114484,we reach the port twenty minutes before the ferry is set to sail.,we reach the port twenty minutes before the ferry is set to sail.,0,65,0,13
+t5.2019.12.09,68,685.954442,116.888508,", at that moment she heard rapid footsteps.",at that moment she heard rapid footsteps.,2,41,1,7
+t5.2019.12.09,69,1415.901876,237.758722,", if you're so intent on keeping the young alive then why don't you pa rock climbing?",if you're so intent on keeping the young alive then why don't you ban rock climbing?,4,84,2,16
+t5.2019.12.09,70,1251.176405,205.090418,the meat within was garnished with herbs and cooked in a rich onion sauce.,the meat within was garnished with herbs and cooked in a rich onion sauce.,0,74,0,14
+t5.2019.12.09,71,879.112689,145.668968,on four of the coach passengers are still critically il,four of the coach passengers are still critically ill.,5,54,2,9
+t5.2019.12.09,72,926.124074,154.9831,with typical bad grace they did not attend the barbecue.,with typical bad grace they did not attend the barbecue.,0,56,0,10
+t5.2019.12.09,73,1282.916518,241.372198,"it he could have bailed out, h was a stranger m a strange land, he owed us nothing","he could have bailed out, he was a stranger in a strange land, he owed us nothing.",7,82,4,17
+t5.2019.12.09,74,748.207073,102.971871,", there's a pineapple in the refrigerator.",there's a pineapple in the refrigerator.,2,40,1,6
+t5.2019.12.09,75,588.894816,80.983619,i'l have to pray for guidance.,i'll have to pray for guidance.,1,31,1,6
+t5.2019.12.09,76,858.23612,145.426151,", at would be criminal not to get him proper attention.",it would be criminal not to get him proper attention.,3,53,2,10
+t5.2019.12.09,77,689.601794,106.539054,'s you know that was a brand new passport?,you know that was a brand new passport?,3,39,1,8
+t5.2019.12.09,78,717.61123,112.193004,the scene was all set for a pitched battle.,the scene was all set for a pitched battle.,0,43,0,9
+t5.2019.12.09,79,761.428944,115.617527,' he hesitated for a moment before replying.,he hesitated for a moment before replying.,2,42,1,7
+t5.2019.12.09,80,641.68813,91.722377,", is that standard operating procedure?",is that standard operating procedure?,2,37,1,5
+t5.2019.12.09,81,599.316086,101.102129,", the aim was to build a classic bike.",the aim was to build a classic bike.,2,36,1,8
+t5.2019.12.09,82,895.119038,151.533058,"if they're playing another slow tune, i'd like to dance.","if they're playing another slow tune, i'd like to dance.",0,56,0,10
+t5.2019.12.09,83,787.12225,131.04795,the cast a furtive glance to left and to right.,he cast a furtive glance to left and to right.,1,46,1,10
+t5.2019.12.11,50,687.048976,123.913974,the quick brown fox jumps over the lazy dog,the quick brown fox jumps over the lazy dog,0,43,0,9
+t5.2019.12.11,51,669.686308,116.076559,'s imagine all the people living life in peace,imagine all the people living life in peace,3,43,1,8
+t5.2019.12.11,52,651.571579,113.737725,ask not what your country can do for you,ask not what your country can do for you,0,40,0,9
+t5.2019.12.11,53,878.204492,117.407693,i heard my friend is going into town today.,i heard my friend is going into town today,1,42,1,9
+t5.2019.12.11,54,772.380531,146.851232,a you must b the change you wish to see in the world,you must be the change you wish to see in the world,3,51,2,12
+t5.2019.12.11,55,682.275525,122.234672,", when the sunlight strikes raindrops in the air",when the sunlight strikes raindrops in the air,2,46,1,8
+t5.2019.12.11,56,697.11818,126.324173,i like when you sit with me and read the paper,i like when you sit with me and read the paper,0,46,0,11
+t5.2019.12.11,57,883.010734,166.556808,", he fumbled in the pocket of his jacket with staff frozen fingers.",he fumbled in the pocket of his jacket with stiff frozen fingers.,3,65,2,12
+t5.2019.12.11,58,888.114644,165.256949,' she is proud and wise and speaks with authority of many things,she is proud and wise and speaks with authority of many things.,3,63,2,12
+t5.2019.12.11,59,1194.539709,204.839256,and you must remember that this aunt of mine is a much respected figure in the community.,and you must remember that this aunt of mine is a much respected figure in the community.,0,89,0,17
+t5.2019.12.11,61,721.433316,111.032567,is thrown in nuts and carrots and blend.,thrown in nuts and carrots and blend.,3,37,1,7
+t5.2019.12.11,62,919.342044,171.438156,", rex removed the crocodile clips and disconnected the car battery.",rex removed the crocodile clips and disconnected the car battery.,2,65,1,10
+t5.2019.12.11,63,503.281273,97.262756,", soon the baskets were unpacked.",soon the baskets were unpacked.,2,31,1,5
+t5.2019.12.11,64,769.160106,132.160922,would you like me to make you some eggs and bacon?,would you like me to make you some eggs and bacon?,0,50,0,11
+t5.2019.12.11,65,704.468041,131.071186,", with the pipe drained you can attempt a repair.","with the pipe drained, you can attempt a repair.",3,48,2,9
+t5.2019.12.11,66,951.678155,150.808849,it was almost like turning the clock back a couple of centuries.,it was almost like turning the clock back a couple of centuries.,0,64,0,12
+t5.2019.12.11,67,999.884396,191.171413,", her new coat was now firmly wrapped around her as she waited for her meal.",her new coat was now firmly wrapped round her as she waited for her meal.,3,73,2,15
+t5.2019.12.11,68,707.466932,134.20564,", the farmer took off his cap and wiped his brow.",the farmer took off his cap and wiped his brow.,2,47,1,10
+t5.2019.12.11,69,772.488854,142.344068,a thicker shell presumably protects the snail better.,a thicker shell presumably protects the snail better.,0,53,0,8
+t5.2019.12.11,70,1198.19102,201.729827,", are the mi sergeants aware that they are guilty of trespass and criminal damage.",are the miscreants aware that they are guilty of trespass and criminal damage?,6,78,4,13
+t5.2019.12.11,71,593.376311,91.715703,", the nervous system is becoming exhausted.",the nervous system is becoming exhausted.,2,41,1,6
+t5.2019.12.11,72,563.246624,112.070616,", the ruby in her belly buton stayed put.",the ruby in her belly button stayed put.,3,40,2,8
+t5.2019.12.11,73,785.397589,113.417071,there are hazards associated with sharp equipment.,there are hazards associated with sharp equipment.,0,50,0,7
+t5.2019.12.11,74,639.517016,120.915439,the dashed without a lamp to light his way.,"he dashed, without a lamp to light his way.",2,43,2,9
+t5.2019.12.11,75,762.667568,135.021932,i still recognize that poem as being utterly my own.,i still recognize that poem as being utterly my own.,0,52,0,10
+t5.2019.12.11,76,1094.529145,197.070113,the chief inspector kicked off her shoes and poured a slug of single malt whisky.,the chief inspector kicked off her shoes and poured a slug of single malt whisky.,0,81,0,15
+t5.2019.12.11,77,640.614704,127.116036,' the quick brown fox jumps over the lazy dog,the quick brown fox jumps over the lazy dog,2,43,1,9
+t5.2019.12.11,78,650.888537,110.836958,", imagine all the people living life in peace",imagine all the people living life in peace,2,43,1,8
+t5.2019.12.11,79,605.797953,111.84965,i ask not what our country can do for you.,ask not what your country can do for you,4,40,3,9
+t5.2019.12.11,80,617.50074,115.260327,'s i heard my friend is going into town today.,i heard my friend is going into town today,4,42,2,9
+t5.2019.12.11,82,640.468036,121.659617,'s when the sunlight strikes raindrops in the air,when the sunlight strikes raindrops in the air,3,46,1,8
+t5.2019.12.11,83,637.075866,121.390237,i like when you sit with me and read the paper,i like when you sit with me and read the paper,0,46,0,11
+t5.2019.12.18,50,732.369294,137.804771,u the quick brown fox jumps over the lazy dog,the quick brown fox jumps over the lazy dog,2,43,1,9
+t5.2019.12.18,51,589.331329,110.030173,", imagine all the people living life in peace",imagine all the people living life in peace,2,43,1,8
+t5.2019.12.18,52,619.266186,116.00843,", ask not what your country can do for you",ask not what your country can do for you,2,40,1,9
+t5.2019.12.18,53,601.853155,108.714486,i heard my friend is going into town today,i heard my friend is going into town today,0,42,0,9
+t5.2019.12.18,54,708.812713,124.983573,", you must be the change you wish to see in the world",you must be the change you wish to see in the world,2,51,1,12
+t5.2019.12.18,55,647.767872,119.618925,", when the sunlight strikes raindrops in the air",when the sunlight strikes raindrops in the air,2,46,1,8
+t5.2019.12.18,56,701.619618,133.473097,li like when you sit with me and read the paper,i like when you sit with me and read the paper,1,46,1,11
+t5.2019.12.18,57,751.437148,141.736368,"' quiet, secluded places often attract ghost stories.","quiet, secluded places often attract ghost stories.",2,51,1,7
+t5.2019.12.18,58,482.696984,83.926123,lean times were getting leaner.,lean times were getting leaner.,0,31,0,5
+t5.2019.12.18,59,675.036188,128.835923,' this sunny yellow room is instantly cheering.,this sunny yellow room is instantly cheering.,2,45,1,7
+t5.2019.12.18,60,679.560798,116.18158,a strawberry plants should be on sale next month,strawberry plants should be on sale next month.,3,47,2,8
+t5.2019.12.18,61,1038.430703,175.722405,'s he reckons his success on the field depends on learning the lingo.,he reckons his success on the field depends on learning the lingo.,3,66,1,12
+t5.2019.12.18,62,804.670829,130.923618,'m the required a minimum of fifty yards for safety.,he required a minimum of fifty yards for safety.,4,48,2,9
+t5.2019.12.18,63,653.530457,110.370379,the blade snapped open with a soft click.,the blade snapped open with a soft click.,0,41,0,8
+t5.2019.12.18,64,730.809651,136.542558,", he promised to forward my mail and wished me luck.",he promised to forward my mail and wished me luck.,2,50,1,10
+t5.2019.12.18,65,949.686644,163.714436,", there were dozens, but in essence they boiled down to only one.","there were dozens, but in essence they boiled down to only one.",2,63,1,12
+t5.2019.12.18,66,1451.375699,218.12822,'l tried to reason but succeeded only in further shuffling her feathers.,i tried to reason but succeeded only in further ruffling her feathers.,4,70,2,12
+t5.2019.12.18,67,792.050483,136.624262,each file has a unique name by which it is accessed.,each file has a unique name by which it is accessed.,0,52,0,11
+t5.2019.12.18,68,948.854591,164.948634,'s if there is any sign of cracking during operation we are ready,if there is any sign of cracking during operation we are ready.,4,63,2,12
+t5.2019.12.18,69,467.72837,83.980572,", can you make the blind see?",can you make the blind see?,2,27,1,6
+t5.2019.12.18,70,810.964372,139.026939,' her whole life had been directed towards this one task.,her whole life had been directed towards this one task.,2,55,1,10
+t5.2019.12.18,71,667.253215,121.242503,", race was getting bored with her laser duel.",ace was getting bored with her laser duel.,3,42,2,8
+t5.2019.12.18,72,820.506075,129.329327,seems to me you could grab him and save the dough.,seems to me you could grab him and save the dough.,0,50,0,11
+t5.2019.12.18,73,973.89503,172.387179,"my although speech is immediate and flexible, it lacks permanence.","although speech is immediate and flexible, it lacks permanence.",3,63,1,9
+t5.2019.12.18,74,1379.93858,239.829476,"i see silenced him before he could speak, shaking her head and putting her finger before her lips.","she silenced him before he could speak, shaking her head and putting her finger before her lips.",3,96,2,17
+t5.2019.12.18,75,475.569082,75.18154,", when were you pregnant?",when were you pregnant?,2,23,1,4
+t5.2019.12.18,76,1185.196586,213.312887,"a a few minutes after eight, as they watched, a black flag moved slowly up the post.","a few minutes after eight, as they watched, a black flag moved slowly up the post.",2,82,1,16
+t5.2019.12.18,77,604.649106,117.856221,the quick brown fox jumps over the lazy dog,the quick brown fox jumps over the lazy dog,0,43,0,9
+t5.2019.12.18,78,593.643012,108.650944,", imagine all the people living life in peace",imagine all the people living life in peace,2,43,1,8
+t5.2019.12.18,79,589.203535,116.683777,", ask not what your county can do for you",ask not what your country can do for you,3,40,2,9
+t5.2019.12.18,80,591.382647,107.297187,", i heard my friend is going into town today.",i heard my friend is going into town today,3,42,2,9
+t5.2019.12.18,81,693.098836,127.529512,' you must be the change you wish to see in the world,you must be the change you wish to see in the world,2,51,1,12
+t5.2019.12.18,82,650.772547,116.860467,", when the sunlight strikes raindrops in the air",when the sunlight strikes raindrops in the air,2,46,1,8
+t5.2019.12.18,83,625.440504,122.762771,", i like when you sit with me and read the paper",i like when you sit with me and read the paper,2,46,1,11
+t5.2019.12.20,50,677.628996,124.388144,", the quick brown fox jumps over the lazy dog",the quick brown fox jumps over the lazy dog,2,43,1,9
+t5.2019.12.20,51,679.5567,112.358899,", imagine all the people living life in peace",imagine all the people living life in peace,2,43,1,8
+t5.2019.12.20,52,660.290948,114.282159,", ask not what your country can do for you",ask not what your country can do for you,2,40,1,9
+t5.2019.12.20,53,634.078283,115.414939,'s i heard my friend is going into town today,i heard my friend is going into town today,3,42,1,9
+t5.2019.12.20,54,724.997092,121.071288,", you must be the change you wish to see in the world",you must be the change you wish to see in the world,2,51,1,12
+t5.2019.12.20,55,683.790712,116.626126,", when the sunlight strikes raindrops in the air",when the sunlight strikes raindrops in the air,2,46,1,8
+t5.2019.12.20,56,773.846995,127.479523,bill like when you sit with me addresed the paper,i like when you sit with me and read the paper,7,46,3,11
+t5.2019.12.20,57,953.390111,181.176761,", infected adults develop a cough and their skin and ears turn blue",infected adults develop a cough and their skin and ears turn blue.,3,66,2,12
+t5.2019.12.20,59,464.544968,85.356809,i dumped the tools in the hutt.,i dumped the tools in the hut.,1,30,1,7
+t5.2019.12.20,60,597.391438,107.722255,", within thirty seconds the army had landed",within thirty seconds the army had landed.,3,42,2,7
+t5.2019.12.20,61,572.101398,95.345153,", that's when i threw up on the carpet.",that's when i threw up on the carpet.,2,37,1,8
+t5.2019.12.20,62,587.070183,106.99407,' he didn't want to rub salt into her wounds.,he didn't want to rub salt into her wounds.,2,43,1,9
+t5.2019.12.20,64,547.130624,74.607644,", you wish to purchase something?",you wish to purchase something?,2,31,1,5
+t5.2019.12.20,65,992.862908,160.53304,"lowell felt like a soldier on a battlefield, stripped of ammunition.","lowell felt like a soldier on a battlefield, stripped of ammunition.",0,68,0,11
+t5.2019.12.20,67,1410.665088,289.956361,"anne slipped out and went to his tent, got his reseller, and emptied it in the direction off woolley's tent","he slipped out and went to his tent, got his revolver, and emptied it in the direction of woolley's tent.",8,105,4,20
+t5.2019.12.20,68,1210.596127,196.582192,"'s the people are very frightened, and only the bravest man will cross the moon at night.","the people are very frightened, and only the bravest man will cross the moor at night.",4,86,2,16
+t5.2019.12.20,69,1267.736,214.300628,"'m her words were barely audible, so light that they threatened to float away on the breeze.","her words were barely audible, so light that they threatened to float away on the breeze.",3,89,1,16
+t5.2019.12.20,70,497.824006,86.459341,", this goddess were quite specific.",his orders were quite specific.,6,31,3,5
+t5.2019.12.20,71,806.647797,125.958499,", frey feed some material through the printer.",they feed some material through the printer.,4,44,2,7
+t5.2019.12.20,73,602.916961,99.277594,", i'm cooking vegetable curry for them.",i'm cooking vegetable curry for them.,2,37,1,6
+t5.2019.12.20,74,759.339777,135.935637,", the energetic reader is invited to supply the details",the energetic reader is invited to supply the details.,3,54,2,9
+t5.2019.12.20,75,1467.305303,245.41847,", put i have never seen such a total lack of staff discipline in my entire career in the howell business.",but i have never seen such a total lack of staff discipline in my entire career in the hotel business.,5,102,3,20
+t5.2019.12.20,76,673.740066,108.539237,a wounded elephant is a dangerous elephant.,a wounded elephant is a dangerous elephant.,0,43,0,7
+t5.2019.12.20,77,622.012036,116.027785,the quick brown fox jumps over the lazy dog,the quick brown fox jumps over the lazy dog,0,43,0,9
+t5.2019.12.20,78,635.905484,103.341939,imagine all the people living life in peace,imagine all the people living life in peace,0,43,0,8
+t5.2019.12.20,79,610.875617,124.215352,mask not what your county cr do for you,ask not what your country can do for you,4,40,3,9
+t5.2019.12.20,80,621.048983,103.23835,i heard my friend is going into town today.,i heard my friend is going into town today,1,42,1,9
+t5.2019.12.20,81,728.628782,121.265082,", you must be the change you wish to see in the world",you must be the change you wish to see in the world,2,51,1,12
+t5.2019.12.20,82,719.799422,119.997351,' when the sunlight strikes raindrops in the air,when the sunlight strikes raindrops in the air,2,46,1,8
+t5.2019.12.20,83,742.764319,133.802902,b i like when you sit with me and read the paper,i like when you sit with me and read the paper,2,46,1,11
+t5.2020.01.06,51,658.091611,104.250889,imagine all the people living life in peace,imagine all the people living life in peace,0,43,0,8
+t5.2020.01.06,52,594.615842,115.567957,i ask not what your county can do for you,ask not what your country can do for you,3,40,2,9
+t5.2020.01.06,53,619.7382,117.005688,? i heard my friend is going into town today,i heard my friend is going into town today,2,42,1,9
+t5.2020.01.06,54,708.652629,116.632594,you must be the change you wish to see in the world,you must be the change you wish to see in the world,0,51,0,12
+t5.2020.01.06,55,663.594563,115.981138,", when the sunlight strikes randomnes in the air",when the sunlight strikes raindrops in the air,7,46,2,8
+t5.2020.01.06,56,687.632732,121.138655,", in like when you sit with me and read the paper.",i like when you sit with me and read the paper,4,46,3,11
+t5.2020.01.06,58,744.606795,122.627831,m earnings per share for the quarter were negligible.,earnings per share for the quarter were negligible.,2,51,1,8
+t5.2020.01.06,59,1035.036208,178.635571,", he was fourteen teen thin and very dark with the intensity of adolescence.","he was fourteen then, thin and very dark, with the intensity of adolescence.",5,76,3,13
+t5.2020.01.06,60,897.827005,146.300642,the proffered messing around with wines and bolts and things.,he preferred messing around with wires and bolts and things.,5,60,3,10
+t5.2020.01.06,61,831.944878,144.852424,", the other battalions were infected by the panic and also feed.",the other battalions were infected by the panic and also fled.,3,62,2,11
+t5.2020.01.06,62,685.806093,109.792655,", and i'm particularly immune to crocodile tears.",and i'm particularly immune to crocodile tears.,2,47,1,7
+t5.2020.01.06,63,679.778568,117.173262,on the access door was somewhere in that square.,the access door was somewhere in that square.,3,45,1,8
+t5.2020.01.06,64,1235.612243,196.079875,", in the world that he created, there were no wars the political disputes, no dangers.","in the world that he created, there were no wars, no political disputes, no dangers.",6,84,3,15
+t5.2020.01.06,65,662.563963,104.000863,", who's liable to pay the funeral expenses?",who's liable to pay the funeral expenses?,2,41,1,7
+t5.2020.01.06,66,649.586739,100.658283,this time cheering broke out in the ranks.,this time cheering broke out in the ranks.,0,42,0,8
+t5.2020.01.06,68,450.085196,80.305266,", did you win your hat trick?",did you win your hat trick?,2,27,1,6
+t5.2020.01.06,69,588.105916,114.498274,", this tale he was telling was surely a lie.",this tale he was telling was surely a lie.,2,42,1,9
+t5.2020.01.06,70,678.99089,106.810447,c and she marched off without looking back.,and she marched off without looking back.,2,41,1,7
+t5.2020.01.06,71,805.930754,144.621232,? it was obvious that she was very neat and alarmed.,it was obvious that she was very upset and alarmed.,6,51,2,10
+t5.2020.01.06,72,713.595399,116.226054,has the furniture been in store for very long?,has the furniture been in store for very long?,0,46,0,9
+t5.2020.01.06,73,1148.009282,189.707989,"'s now the colonial era has goes at least in name, but things haven't changed.","now the colonial era has gone, at least in name, but things haven't changed.",5,76,2,14
+t5.2020.01.06,74,989.041443,190.843441,? the countryside here was so different from her native does and moons..,the countryside here was so different from her native dales and moors.,6,70,3,12
+t5.2020.01.06,75,595.997289,110.876008,", he walked briskly to the door teen hated.",he walked briskly to the door then halted.,4,42,3,8
+t5.2020.01.06,76,710.545691,126.219644,", for too long years i lived the life of a save.",for two long years i lived the life of a slave.,4,47,3,11
+t5.2020.01.06,78,654.876966,108.45715,", imagine all the people living life in peace",imagine all the people living life in peace,2,43,1,8
+t5.2020.01.06,79,627.867459,114.379073,desk not what your comunity can do for you,ask not what your country can do for you,5,40,2,9
+t5.2020.01.06,80,629.727234,107.666665,", i heard my friend is going into town today",i heard my friend is going into town today,2,42,1,9
+t5.2020.01.06,81,755.785393,115.866356,you must be the change you wish to see in the world,you must be the change you wish to see in the world,0,51,0,12
+t5.2020.01.06,82,712.645039,114.287941,when the sunlight strikes raindrops in the air,when the sunlight strikes raindrops in the air,0,46,0,8
+t5.2020.01.06,83,679.086312,122.532094,", i like when you sit with me undead the paper.",i like when you sit with me and read the paper,6,46,4,11
+t5.2020.01.08,50,698.098018,122.354239,in the quick brown fox jumps over the lazy dog,the quick brown fox jumps over the lazy dog,3,43,1,9
+t5.2020.01.08,51,677.613544,111.868812,we imagine all the people living life in peace,imagine all the people living life in peace,3,43,1,8
+t5.2020.01.08,52,612.193,107.292384,ask not what your country can do for you,ask not what your country can do for you,0,40,0,9
+t5.2020.01.08,54,761.499127,117.438368,", you must be the change you wish to see in the world.",you must be the change you wish to see in the world,3,51,2,12
+t5.2020.01.08,55,678.883575,124.529158,", when the sunlight strikes raindrops in the cair",when the sunlight strikes raindrops in the air,3,46,2,8
+t5.2020.01.08,56,706.096947,120.893788,", i like when you sit with me and read the paper",i like when you sit with me and read the paper,2,46,1,11
+t5.2020.01.08,57,612.19032,94.101957,the water was ruining his leather jacket.,the water was ruining his leather jacket.,0,41,0,7
+t5.2020.01.08,58,560.159601,86.472344,the victims lay dead in the apartment.,the victims lay dead in the apartment.,0,38,0,7
+t5.2020.01.08,59,932.452268,144.414332,m newman held the automatic in the palm of this card.,newman held the automatic in the palm of his hand.,5,50,3,10
+t5.2020.01.08,60,696.366272,113.548928,you could both stay on in your respective jobs.,you could both stay on in your respective jobs.,0,47,0,9
+t5.2020.01.08,61,780.947591,158.636149,'m celia constantly referee to her mothers downing accident.,celia constantly refers to her mother's drowning accident.,7,58,4,8
+t5.2020.01.08,62,780.269014,124.229065,", which market segments in each country will be selected?",which market segments in each country will be selected?,2,55,1,9
+t5.2020.01.08,63,728.422339,121.008997,", there's a veto across the board on any increase.",there's a veto across the board on any increase.,2,48,1,9
+t5.2020.01.08,64,783.012111,149.283421,", but as often happened, fate dealt out a different hand.","but as often happened, fate dealt out a different hand.",2,55,1,10
+t5.2020.01.08,65,570.586756,105.48032,a suspicion was inherent in the super rich,suspicion was inherent in the super rich.,3,41,2,7
+t5.2020.01.08,66,838.919767,136.046104,"in the eye either functions as a whole, or not at all.","the eye either functions as a whole, or not at all.",3,51,1,11
+t5.2020.01.08,67,884.030456,152.439707,' he'd spent the last few days bouncing from resort to escort.,he'd spent the last few days bouncing from resort to resort.,4,60,2,11
+t5.2020.01.08,68,745.767952,144.867379,", but now i thought, he's a worm, he's quash abe.","but now i thought, he's a worm, he's squashable.",5,48,3,9
+t5.2020.01.08,69,1119.340336,165.902223,", it was found abandoned a short distance away with the engine still running.",it was found abandoned a short distance away with the engine still running.,2,75,1,13
+t5.2020.01.08,70,651.777338,116.835731,on the lower slopes was a large herd of cows.,on the lower slopes was a large herd of cows.,0,45,0,10
+t5.2020.01.08,71,681.596249,108.556106,the mother shipped back at him and frowned.,the mother snapped back at him and frowned.,2,43,1,8
+t5.2020.01.08,72,1054.737579,173.353146,", their patient was still alive but his condition was deteriorating visibly.",their patient was still alive but his condition was deteriorating visibly.,2,74,1,11
+t5.2020.01.08,73,664.800266,104.726678,", his tone had developed an edge to it.",his tone had developed an edge to it.,2,37,1,8
+t5.2020.01.08,74,808.387035,145.56818,", daisy leaned forward, at once horrified and fascinated.","daisy leaned forward, at once horrified and fascinated.",2,55,1,8
+t5.2020.01.08,75,770.84421,125.552773,the tiny cabin offered no opportunity for retreat.,the tiny cabin offered no opportunity for retreat.,0,50,0,8
+t5.2020.01.08,76,685.305859,121.70113,why did i have to fal for a suicidal maniac?,why did i have to fall for a suicidal maniac?,1,45,1,10
+t5.2020.01.08,78,630.333409,107.12763,i imagine all the people living life in peace,imagine all the people living life in peace,2,43,1,8
+t5.2020.01.08,79,585.13258,113.819632,rask not what your country can do for you,ask not what your country can do for you,1,40,1,9
+t5.2020.01.08,80,634.474391,103.535673,i heard my friend is going into town today,i heard my friend is going into town today,0,42,0,9
+t5.2020.01.08,81,713.47341,119.027985,", you must be the change you wish to see in the world",you must be the change you wish to see in the world,2,51,1,12
+t5.2020.01.08,82,650.073528,116.375723,", when the slight strikes raindrops in the a",when the sunlight strikes raindrops in the air,6,46,3,8
+t5.2020.01.08,83,657.229281,127.410184,mp like where you sit with me and read the paper,i like when you sit with me and read the paper,4,46,2,11

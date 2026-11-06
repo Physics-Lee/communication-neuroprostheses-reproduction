@@ -1,0 +1,73 @@
+dataset keys (minus sessions): {'data_transforms': {'white_noise_std': 1.0, 'constant_offset_std': 0.2, 'random_walk_std': 0.0, 'random_walk_axis': -1, 'static_gain_std': 0.0, 'random_cut': 3, 'smooth_kernel_size': 100, 'smooth_data': True, 'smooth_kernel_std': 2}, 'neural_dim': 512, 'batch_size': 32, 'n_classes': 41, 'max_seq_elements': 500, 'days_per_batch': 4, 'seed': 1, 'num_dataloader_workers': 0, 'loader_shuffle': False, 'must_include_days': None, 'test_percentage': 0.1, 'feature_subset': None, 'dataset_dir': 'C:\\bcidata\\hdf5_data_final', 'bad_trials_dict': None, 'dataset_probability_val': [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+device: cuda:0 | torch: 2.7.1+cu128
+checkpoint loaded | saved val_PER in ckpt: 0.10139640420675278
+[16:09:05] t15.2023.08.13: 35 trials, day PER 81/962 = 8.42% (elapsed 1s)
+[16:09:07] t15.2023.08.18: 49 trials, day PER 70/1193 = 5.87% (elapsed 2s)
+[16:09:08] t15.2023.08.20: 48 trials, day PER 59/1259 = 4.69% (elapsed 3s)
+[16:09:08] t15.2023.08.25: 25 trials, day PER 58/664 = 8.73% (elapsed 4s)
+[16:09:09] t15.2023.08.27: 25 trials, day PER 102/622 = 16.40% (elapsed 5s)
+[16:09:10] t15.2023.09.01: 49 trials, day PER 58/1232 = 4.71% (elapsed 6s)
+[16:09:11] t15.2023.09.03: 34 trials, day PER 92/842 = 10.93% (elapsed 6s)
+[16:09:12] t15.2023.09.24: 35 trials, day PER 62/824 = 7.52% (elapsed 7s)
+[16:09:13] t15.2023.09.29: 48 trials, day PER 157/1567 = 10.02% (elapsed 9s)
+[16:09:15] t15.2023.10.01: 44 trials, day PER 195/1514 = 12.88% (elapsed 10s)
+[16:09:16] t15.2023.10.06: 36 trials, day PER 69/929 = 7.43% (elapsed 11s)
+[16:09:16] t15.2023.10.08: 17 trials, day PER 119/739 = 16.10% (elapsed 12s)
+[16:09:17] t15.2023.10.13: 44 trials, day PER 179/1289 = 13.89% (elapsed 13s)
+[16:09:19] t15.2023.10.15: 44 trials, day PER 167/1517 = 11.01% (elapsed 14s)
+[16:09:19] t15.2023.10.20: 9 trials, day PER 53/298 = 17.79% (elapsed 15s)
+[16:09:20] t15.2023.10.22: 33 trials, day PER 84/898 = 9.35% (elapsed 16s)
+[16:09:22] t15.2023.11.03: 50 trials, day PER 213/1474 = 14.45% (elapsed 17s)
+[16:09:22] t15.2023.11.04: 15 trials, day PER 4/293 = 1.37% (elapsed 18s)
+[16:09:23] t15.2023.11.17: 25 trials, day PER 9/643 = 1.40% (elapsed 19s)
+[16:09:24] t15.2023.11.19: 20 trials, day PER 13/501 = 2.59% (elapsed 19s)
+[16:09:25] t15.2023.11.26: 44 trials, day PER 64/1380 = 4.64% (elapsed 21s)
+[16:09:26] t15.2023.12.03: 34 trials, day PER 40/952 = 4.20% (elapsed 22s)
+[16:09:28] t15.2023.12.08: 50 trials, day PER 52/1502 = 3.46% (elapsed 23s)
+[16:09:29] t15.2023.12.10: 25 trials, day PER 29/761 = 3.81% (elapsed 24s)
+[16:09:30] t15.2023.12.17: 30 trials, day PER 63/962 = 6.55% (elapsed 25s)
+[16:09:31] t15.2023.12.29: 50 trials, day PER 102/1457 = 7.00% (elapsed 27s)
+[16:09:32] t15.2024.02.25: 23 trials, day PER 51/712 = 7.16% (elapsed 28s)
+[16:09:32] t15.2024.03.08: 24 trials, day PER 117/703 = 16.64% (elapsed 28s)
+[16:09:34] t15.2024.03.15: 48 trials, day PER 257/1599 = 16.07% (elapsed 30s)
+[16:09:35] t15.2024.03.17: 48 trials, day PER 115/1434 = 8.02% (elapsed 31s)
+[16:09:36] t15.2024.05.10: 25 trials, day PER 81/673 = 12.04% (elapsed 32s)
+[16:09:37] t15.2024.06.14: 25 trials, day PER 76/634 = 11.99% (elapsed 33s)
+[16:09:38] t15.2024.07.19: 48 trials, day PER 224/1517 = 14.77% (elapsed 34s)
+[16:09:40] t15.2024.07.21: 46 trials, day PER 74/1450 = 5.10% (elapsed 36s)
+[16:09:42] t15.2024.07.28: 48 trials, day PER 115/1360 = 8.46% (elapsed 37s)
+[16:09:42] t15.2025.01.10: 23 trials, day PER 174/726 = 23.97% (elapsed 38s)
+[16:09:44] t15.2025.01.12: 47 trials, day PER 119/1299 = 9.16% (elapsed 40s)
+[16:09:44] t15.2025.03.14: 24 trials, day PER 201/676 = 29.73% (elapsed 40s)
+[16:09:46] t15.2025.03.16: 24 trials, day PER 115/764 = 15.05% (elapsed 41s)
+[16:09:46] t15.2025.03.30: 30 trials, day PER 184/870 = 21.15% (elapsed 42s)
+[16:09:47] t15.2025.04.13: 25 trials, day PER 125/701 = 17.83% (elapsed 43s)
+
+=== aggregate val greedy PER: 4222/41392 = 10.20% over 1426 trials ===
+
+PER by corpus:
+corpus
+Freq words      3.63%
+Switchboard    10.65%
+Openwebtext    14.57%
+Random         15.06%
+Harvard        16.76%
+
+Best 5 sessions:
+session
+t15.2023.11.04    1.37%
+t15.2023.11.17    1.40%
+t15.2023.11.19    2.59%
+t15.2023.12.08    3.46%
+t15.2023.12.10    3.81%
+
+Worst 5 sessions:
+session
+t15.2023.10.20    17.79%
+t15.2025.04.13    17.83%
+t15.2025.03.30    21.15%
+t15.2025.01.10    23.97%
+t15.2025.03.14    29.73%
+
+saved: .\20240815_card\data\20241009_card_BtoT25\run_120k\val_greedy_per_trial.csv
+saved: .\20240815_card\data\20241009_card_BtoT25\run_120k\val_greedy_summary.json

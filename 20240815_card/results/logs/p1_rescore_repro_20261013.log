@@ -1,0 +1,99 @@
+1426 trials
+loading rescoring LM from ./20260710_Design_of_Large_Corpus/LLM/opt-6.7b (float16)...
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/516 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/516 [00:00<01:24,  6.06it/s]
+Loading weights:   0%|          | 2/516 [00:00<01:10,  7.31it/s]
+Loading weights:   3%|▎         | 16/516 [00:00<00:08, 55.80it/s]
+Loading weights:   6%|▌         | 30/516 [00:00<00:05, 83.34it/s]
+Loading weights:   9%|▊         | 44/516 [00:00<00:04, 99.92it/s]
+Loading weights:  11%|█         | 56/516 [00:00<00:04, 103.86it/s]
+Loading weights:  14%|█▍        | 72/516 [00:00<00:03, 111.61it/s]
+Loading weights:  17%|█▋        | 88/516 [00:00<00:03, 115.84it/s]
+Loading weights:  20%|██        | 104/516 [00:01<00:03, 120.98it/s]
+Loading weights:  23%|██▎       | 120/516 [00:01<00:03, 125.65it/s]
+Loading weights:  26%|██▋       | 136/516 [00:01<00:02, 128.66it/s]
+Loading weights:  29%|██▉       | 152/516 [00:01<00:02, 132.11it/s]
+Loading weights:  33%|███▎      | 168/516 [00:01<00:02, 134.84it/s]
+Loading weights:  36%|███▌      | 184/516 [00:01<00:02, 137.20it/s]
+Loading weights:  39%|███▉      | 200/516 [00:01<00:02, 138.81it/s]
+Loading weights:  42%|████▏     | 216/516 [00:01<00:02, 138.71it/s]
+Loading weights:  45%|████▍     | 232/516 [00:02<00:02, 139.41it/s]
+Loading weights:  48%|████▊     | 248/516 [00:02<00:01, 138.60it/s]
+Loading weights:  51%|█████     | 264/516 [00:02<00:01, 138.76it/s]
+Loading weights:  54%|█████▍    | 280/516 [00:02<00:01, 139.60it/s]
+Loading weights:  57%|█████▋    | 296/516 [00:02<00:01, 138.73it/s]
+Loading weights:  60%|██████    | 312/516 [00:02<00:01, 139.48it/s]
+Loading weights:  64%|██████▎   | 328/516 [00:02<00:01, 140.84it/s]
+Loading weights:  67%|██████▋   | 344/516 [00:02<00:01, 141.39it/s]
+Loading weights:  70%|██████▉   | 360/516 [00:02<00:01, 141.41it/s]
+Loading weights:  73%|███████▎  | 376/516 [00:03<00:00, 142.21it/s]
+Loading weights:  76%|███████▌  | 392/516 [00:03<00:00, 145.12it/s]
+Loading weights:  79%|███████▉  | 408/516 [00:03<00:00, 145.22it/s]
+Loading weights:  82%|████████▏ | 424/516 [00:03<00:00, 146.89it/s]
+Loading weights:  85%|████████▌ | 440/516 [00:03<00:00, 146.76it/s]
+Loading weights:  88%|████████▊ | 456/516 [00:03<00:00, 146.85it/s]
+Loading weights:  91%|█████████▏| 472/516 [00:03<00:00, 147.23it/s]
+Loading weights:  95%|█████████▍| 488/516 [00:03<00:00, 145.09it/s]
+Loading weights:  98%|█████████▊| 504/516 [00:03<00:00, 140.92it/s]
+Loading weights: 100%|██████████| 516/516 [00:03<00:00, 130.72it/s]
+model ready
+scoring 131509 candidates with OPT...
+  scored 2400/131509
+  scored 4800/131509
+  scored 7200/131509
+  scored 9600/131509
+  scored 12000/131509
+  scored 14400/131509
+  scored 16800/131509
+  scored 19200/131509
+  scored 21600/131509
+  scored 24000/131509
+  scored 26400/131509
+  scored 28800/131509
+  scored 31200/131509
+  scored 33600/131509
+  scored 36000/131509
+  scored 38400/131509
+  scored 40800/131509
+  scored 43200/131509
+  scored 45600/131509
+  scored 48000/131509
+  scored 50400/131509
+  scored 52800/131509
+  scored 55200/131509
+  scored 57600/131509
+  scored 60000/131509
+  scored 62400/131509
+  scored 64800/131509
+  scored 67200/131509
+  scored 69600/131509
+  scored 72000/131509
+  scored 74400/131509
+  scored 76800/131509
+  scored 79200/131509
+  scored 81600/131509
+  scored 84000/131509
+  scored 86400/131509
+  scored 88800/131509
+  scored 91200/131509
+  scored 93600/131509
+  scored 96000/131509
+  scored 98400/131509
+  scored 100800/131509
+  scored 103200/131509
+  scored 105600/131509
+  scored 108000/131509
+  scored 110400/131509
+  scored 112800/131509
+  scored 115200/131509
+  scored 117600/131509
+  scored 120000/131509
+  scored 122400/131509
+  scored 124800/131509
+  scored 127200/131509
+  scored 129600/131509
+  scored 131509/131509
+alpha=0.55: WER = 2037/9445 = 21.57% over 1426
+saved data/20241009_card_BtoT25/run_120k/repro_20261013_opt_fx.tsv

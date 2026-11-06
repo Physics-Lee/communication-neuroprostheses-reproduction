@@ -1,0 +1,45 @@
+[t16/mixed] train sessions: ['t16.2024.04.29_attempted_50words', 't16.2024.04.29_imagined_50words', 't16.2024.12.18_imagined_125kwords']
+[t16/mixed] all sessions: ['t16.2024.04.29_attempted_50words', 't16.2024.04.29_imagined_50words', 't16.2024.04.29_imagined_50words_eval', 't16.2024.12.18_imagined_125kwords', 't16.2024.12.18_imagined_125kwords_eval']
+days_per_batch=3 | batches=6000 | val every 250
+2026-09-01 16:21:12,399: Using device: cuda:0
+2026-09-01 16:21:12,831: Using torch.compile
+2026-09-01 16:21:12,831: Initialized RNN decoding model
+2026-09-01 16:21:12,831: GRUDecoder(
+  (day_layer_activation): Softsign()
+  (day_weights): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 512x512]
+      (1): Parameter containing: [torch.float32 of size 512x512]
+      (2): Parameter containing: [torch.float32 of size 512x512]
+      (3): Parameter containing: [torch.float32 of size 512x512]
+      (4): Parameter containing: [torch.float32 of size 512x512]
+  )
+  (day_biases): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 1x512]
+      (1): Parameter containing: [torch.float32 of size 1x512]
+      (2): Parameter containing: [torch.float32 of size 1x512]
+      (3): Parameter containing: [torch.float32 of size 1x512]
+      (4): Parameter containing: [torch.float32 of size 1x512]
+  )
+  (day_layer_dropout): Dropout(p=0.2, inplace=False)
+  (gru): GRU(7168, 768, num_layers=5, batch_first=True, dropout=0.4)
+  (out): Linear(in_features=768, out_features=41, bias=True)
+)
+2026-09-01 16:21:12,833: Model has 33,808,937 parameters
+2026-09-01 16:21:12,833: Model has 1,313,280 day-specific parameters | 3.88% of total parameters
+2026-09-01 16:21:15,473: Successfully initialized datasets
+Traceback (most recent call last):
+  File "D:\bcirun\train_kunz.py", line 67, in <module>
+    main()
+  File "D:\bcirun\train_kunz.py", line 63, in main
+    trainer.train()
+  File "D:\bcirun\nejm-brain-to-text\model_training\rnn_trainer.py", line 551, in train
+    grad_norm = torch.nn.utils.clip_grad_norm_(self.model.parameters(), 
+  File "/c/Users/user\.conda\envs\decoder\lib\site-packages\torch\nn\utils\clip_grad.py", line 42, in _no_grad_wrapper
+    return func(*args, **kwargs)
+  File "/c/Users/user\.conda\envs\decoder\lib\site-packages\torch\nn\utils\clip_grad.py", line 231, in clip_grad_norm_
+    total_norm = _get_total_norm(grads, norm_type, error_if_nonfinite, foreach)
+  File "/c/Users/user\.conda\envs\decoder\lib\site-packages\torch\nn\utils\clip_grad.py", line 42, in _no_grad_wrapper
+    return func(*args, **kwargs)
+  File "/c/Users/user\.conda\envs\decoder\lib\site-packages\torch\nn\utils\clip_grad.py", line 111, in _get_total_norm
+    raise RuntimeError(
+RuntimeError: The total norm of order 2.0 for gradients from `parameters` is non-finite, so it cannot be clipped. To disable this error and scale the gradients by the non-finite norm anyway, set `error_if_nonfinite=False`

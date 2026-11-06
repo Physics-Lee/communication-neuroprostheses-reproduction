@@ -1,0 +1,86 @@
+session,vocab,sentence_label,pred_phonemes,edit_distance,true_len
+t16.2024.04.29_imagined_50words_eval,50words,They are coming outside, |  AA R  |  R Y UW  |  IH T  |  T  | ,11,18
+t16.2024.04.29_imagined_50words_eval,50words,Are you tired?,AA AA ER R  |  Y UW  |  L AY ER  |  ER  | ,5,11
+t16.2024.04.29_imagined_50words_eval,50words,It is right here,IH  |  AE T  |  AY  |  HH EH IY R  | ,6,14
+t16.2024.04.29_imagined_50words_eval,50words,I am not okay,AY  |  AE M  |  M  |  N M AY T  |  Y UW  |   | ,7,13
+t16.2024.04.29_imagined_50words_eval,50words,My nurse is right outside,R  |  N ER S  |  IH Z M AY  |  HH AH L  |  DH AY  | ,11,20
+t16.2024.04.29_imagined_50words_eval,50words,I am not going,AY  |  M AY  |  M  |  R  |  M AY T  |  T  |  OW  | ,11,14
+t16.2024.04.29_imagined_50words_eval,50words,Are you going outside?,AA R  |  Y UW  |  G OW P  |  IY  |  EH T  |  AY  | ,6,17
+t16.2024.04.29_imagined_50words_eval,50words,It is okay,IH T  |  IH Z  |  OW AY  | ,2,10
+t16.2024.04.29_imagined_50words_eval,50words,Where is it?,R  |  R  |  IH Z  |  IH T  | ,2,10
+t16.2024.04.29_imagined_50words_eval,50words,Hello how are you?,T EH AH  |  EY OW P  |  DH AE EH R  |  R IY,12,14
+t16.2024.04.29_imagined_50words_eval,50words,My glasses are clean,AY  |  K DH AE T  |  AH R  |  G N IY  | ,10,18
+t16.2024.04.29_imagined_50words_eval,50words,My glasses are comfortable,M AY  |  M AY  |  AE T  |  AH  |  R  |  AH ER R ER T AH B L  | ,11,24
+t16.2024.04.29_imagined_50words_eval,50words,I feel very hungry, |  T EH L  |  EH L  |  R IY  |  NG  |  AH ER  | ,11,18
+t16.2024.04.29_imagined_50words_eval,50words,You are not right,Y UW  |  AA R  |  R  |  R T  |  G R AY T  | ,4,14
+t16.2024.04.29_imagined_50words_eval,50words,Do you feel comfortable?,D UW  |  Y UW  |  IH L  |  ER AH L  | ,9,21
+t16.2024.04.29_imagined_50words_eval,50words,Please bring my glasses here,DH EY  |  D UW  |  M AY  |  AE AH Z  |  EH IY,14,24
+t16.2024.04.29_imagined_50words_eval,50words,I am going outside,M  |  AY  |  Y M  |  OW IH  |  AE T  |  AY  | ,8,16
+t16.2024.04.29_imagined_50words_eval,50words,I need my glasses,AY  |  D UW  |  M AY  |  DH AE T  |   | ,8,16
+t16.2024.04.29_imagined_50words_eval,50words,Please tell my family, |  AE T  |  T  |   |  AY  |  AE EH L  | ,11,19
+t16.2024.04.29_imagined_50words_eval,50words,I am okay,AY  |   |  AE M  |  OW P  | ,3,9
+t16.2024.04.29_imagined_50words_eval,50words,How do you like my music?,T AW  |  D  |  D EY  |  Y UW  |  L K  |  K AY K  |  M T  |  D P  |  DH OW  | ,14,23
+t16.2024.04.29_imagined_50words_eval,50words,I hope it is clean, |  AY  |  OW P  |  IH T  |  IH Z  |  AH IY  | ,5,17
+t16.2024.04.29_imagined_50words_eval,50words,What do you do?, |  D UW  |  Y UW  |  D UW  | ,3,13
+t16.2024.04.29_imagined_50words_eval,50words,Bring my glasses please,IH  |  K OW  | ,17,20
+t16.2024.04.29_imagined_50words_eval,50words,How do you feel?,HH AW  |  EH  |  T G EY UW  |  Y UW Y UW  |  IH T  |   | ,10,13
+t16.2024.04.29_imagined_50words_eval,50words,Do not feel bad,D  |  UW  |  T  |  G UH D  |   | ,9,15
+t16.2024.04.29_imagined_50words_eval,50words,That is very clean,IH T  |  IH Z  |  EH R IY  |  IH IY  | ,6,17
+t16.2024.04.29_imagined_50words_eval,50words,They are coming here, |  DH EH R  |  R  |  R AA R  |  K S M AH Z  |  G EH R  | ,11,16
+t16.2024.04.29_imagined_50words_eval,50words,Please clean it,IH  |  AH IH  |  IH T  | ,8,13
+t16.2024.04.29_imagined_50words_eval,50words,I am thirsty,AY  |  M R  |  R ER  |  IY  | ,5,11
+t16.2024.04.29_imagined_50words_eval,50words,My computer is clean,IH  |   |  AH L  |   |  P T  | ,15,20
+t16.2024.04.29_imagined_50words_eval,50words,They have faith,IH T  |  AE  |  OW EY  | ,6,11
+t16.2024.04.29_imagined_50words_eval,50words,Faith is good,EY  |  IH  |  G UH D  | ,3,11
+t16.2024.04.29_imagined_50words_eval,50words,My nurse is outside, |  M AY  |   |   |  R ER  |  IH Z  |  AE AW  |  G AY D  | ,8,16
+t16.2024.04.29_imagined_50words_eval,50words,I do not feel comfortable, |  AY  |  D UW  |  AA T  |  EH R  |  R M ER T L  | ,11,24
+t16.2024.04.29_imagined_50words_eval,50words,Here is my computer,IH  |  HH R  |  IH Z  |  M AY  |  HH M  |  M N  |  N EH IY ER  | ,11,19
+t16.2024.04.29_imagined_50words_eval,50words,They are going outside, |  DH  |  R  |  AH OW EY  |  IH HH P  | ,11,17
+t16.2024.04.29_imagined_50words_eval,50words,I am not hungry,AY  |  AE R  |  L  |  N AY T  |  AE  |  Y AH IY  | ,9,16
+t16.2024.04.29_imagined_50words_eval,50words,No,OW  | ,1,3
+t16.2024.04.29_imagined_50words_eval,50words,I like my nurse, |   |  P OW P  |  M AY  |  M AY  |  ER S  | ,7,13
+t16.2024.04.29_imagined_50words_eval,50words,My family is here,M AY  |  M AH L IY  |  IH NG  |  EH R  | ,5,17
+t16.2024.04.29_imagined_50words_eval,50words,I feel very comfortable,T  |  AY  |  V  |  G UH  |  L  |  EH R IY  |  K AH  |  AH T B AH L  | ,12,22
+t16.2024.04.29_imagined_50words_eval,50words,It is comfortable,IH T  |  IH T  |  ER  |  B T  | ,9,17
+t16.2024.04.29_imagined_50words_eval,50words,My family is outside,AY  |  Y AE EH AH IY  |  IH T  |  AE T  |  AY  | ,8,19
+t16.2024.04.29_imagined_50words_eval,50words,My family is very comfortable, |  HH AE EH AH L IY  |  IH  |  EH R IY  |  AH OW ER ER,15,29
+t16.2024.04.29_imagined_50words_eval,50words,I am outside,AY  |  G AE  |  IH Z  |  EY AY  | ,7,11
+t16.2024.04.29_imagined_50words_eval,50words,Bring my glasses here,UW  |  AH IH  |   |  AY  |  DH AE T  |  EH R  | ,12,19
+t16.2024.04.29_imagined_50words_eval,50words,It is good,IH T  |   |  G UH D  | ,2,10
+t16.2024.04.29_imagined_50words_eval,50words,Yes,Y  | ,2,4
+t16.2024.04.29_imagined_50words_eval,50words,I need you,D  |  IH S  |  G D  | ,6,9
+t16.2024.12.18_imagined_125kwords_eval,125kwords,I think it has the best flavor.,AY  |  AY K  |  IH N  |  AY IH T  |  N N  |  IH T  |  AH IY ER  | ,16,28
+t16.2024.12.18_imagined_125kwords_eval,125kwords,It am enjoying that side of it.,IH N  |  AE AH N  |  T AY L AY ER  |  AH T  |  M AY  |  IH  | ,17,27
+t16.2024.12.18_imagined_125kwords_eval,125kwords,What I see on the newspapers., |  DH AE AH  |  AY  |  AY  |  M AY T  |  AY  |  T UW  |  AH M IY R  | ,18,24
+t16.2024.12.18_imagined_125kwords_eval,125kwords,Android application., |  HH OW L R IY  |  AH AH IY NG  | ,14,17
+t16.2024.12.18_imagined_125kwords_eval,125kwords,"When it's on the line, he delivers.",EH AH N  |  IH N  |  G S AH  |  AY K  |   |  AY  |  M AY T  |  AH IY  |  M T UW  |  R ER  | ,19,29
+t16.2024.12.18_imagined_125kwords_eval,125kwords,We don't have a real strict budget., |  Z  |  IH  |  M AH  |  M R IY  |  R IH Z  |  Z  |  AH N IY  | ,21,31
+t16.2024.12.18_imagined_125kwords_eval,125kwords,That person rushes you.,AH N  |  R UW  |  N  |  Y UW  | ,11,19
+t16.2024.12.18_imagined_125kwords_eval,125kwords,More people call.,AY  |  F ER IY  |  IH  |  N L  |  UW  |  ER  |   | ,13,14
+t16.2024.12.18_imagined_125kwords_eval,125kwords,Want to learn something?,AH N  |  T UW  |  R ER  |  AH K NG  | ,9,19
+t16.2024.12.18_imagined_125kwords_eval,125kwords,More on their level.,L R ER R AY ER AH  |  T R L ER  |  D AH  |   | ,13,17
+t16.2024.12.18_imagined_125kwords_eval,125kwords,How long does it take to get my points back?,AH  |  IH Z  |  M AH  |  M  |   |  IH  |  N  |  T UW  |   |  AY  |   |  P L AY IY  |  AE T  |  N  | ,25,38
+t16.2024.12.18_imagined_125kwords_eval,125kwords,I don't know how long you've been here.,AY  |  OW  |  OW  |  M AY  |  IH  |  M  |  IH N  |  N IY  |  R ER IY  | ,17,29
+t16.2024.12.18_imagined_125kwords_eval,125kwords,How old are you all.,AE L  |  OW L OW S  |  R  |  L ER ER  |  ER  |  ER R IY  |  M UW IY  |  DH EY T  |  AH T  | ,22,16
+t16.2024.12.18_imagined_125kwords_eval,125kwords,Some of the experiments fail.,N  |  AH  |  AH  |  AY  |  AH R  |  R ER IY Z IH Z  |  M N IY  |  ER  | ,20,27
+t16.2024.12.18_imagined_125kwords_eval,125kwords,I'd probably buy another.,AH IY  |  R AH  |   |  UW  |  AY  |  AH OW T ER  | ,12,21
+t16.2024.12.18_imagined_125kwords_eval,125kwords,I think he barely makes it.,T  |  AY  |  AY S  |  L R  |  M D  |  EY  |  IH Z  | ,15,24
+t16.2024.12.18_imagined_125kwords_eval,125kwords,Little coves that I like to fish in.,IH N  |  F AO R D  |  UW OW  |  AY  |  M AY T  |  N  |  N L  |  IH  |   | ,19,31
+t16.2024.12.18_imagined_125kwords_eval,125kwords,To shoot up in that way.,T L  | ,18,20
+t16.2024.12.18_imagined_125kwords_eval,125kwords,I don't know if you like the mayor.,T AH  |  AY  |  UW  |  OW  |  IH  |  IH T  |  AY T  |  M AY IY  |   |  M AH IH ER IY  | ,19,27
+t16.2024.12.18_imagined_125kwords_eval,125kwords,"Today, the decisions are not in their hands.",IH  |   |  M EY  |  AH OW  |   |  IY  |  R R ER  |   |  AY T  |  EH T IH T  |  T R IY ER IY  |  ER M AH N IY  | ,30,37
+t16.2024.12.18_imagined_125kwords_eval,125kwords,Just keeping your senses about you.,AH Z  |  AA T NG  |   |  R  |  S  |   |  T  |  T  |  ER R  | ,19,30
+t16.2024.12.18_imagined_125kwords_eval,125kwords,We like Mexican food.,L IY  |  AY  |  AH S OW N  |   |  Y UW  |  NG IY  | ,14,20
+t16.2024.12.18_imagined_125kwords_eval,125kwords,Be gentle unto all men.,OW N  |  N  |  N OW OY  |   |  AH  |  UW  |  AA T  |  N  | ,13,22
+t16.2024.12.18_imagined_125kwords_eval,125kwords,I've done that before.,N  |  AH  |  UW R ER  | ,13,17
+t16.2024.12.18_imagined_125kwords_eval,125kwords,They have all really got really good jobs., |   |  OW EY  |  AE N  |  IH N  |  AH ER  |  R  |  R IH IY  |  AA AW  |  R IY D  |  EH UW  |  AY  | ,24,33
+t16.2024.12.18_imagined_125kwords_eval,125kwords,In rebellion against the United States.,IH IY  |  R L ER  |  IH NG  |  EH IY  |  T  |   |  T M  |  M IY Z  |  T AH  | ,25,36
+t16.2024.12.18_imagined_125kwords_eval,125kwords,She gave one last sigh of pleasure as she shivered.,UW  |  EY AH EH AH  |   |  UW Z  |  AY  |  M AY AH  |  HH AH  |  DH EY  |  EH AH UW R IY  |  R ER AY Y  |  B AY T  |  N R ER  | ,33,40
+t16.2024.12.18_imagined_125kwords_eval,125kwords,That's probably a good idea.,AE AY  |  ER S  |  M IY  |  OW EY  |  N UW N  |  AA AY  |  D  | ,19,25
+t16.2024.12.18_imagined_125kwords_eval,125kwords,Something that still has a lots of amenities.,AH  |  T  |  IH Z  |  T AH  |  AH EY  |  AY K  |  AH S  |  AH N  |  AY IH NG  | ,25,39
+t16.2024.12.18_imagined_125kwords_eval,125kwords,Whether he is or not.,EH N IY ER  |  L  |  IH AH N  |  T L ER IY  |  AA T  |   | ,13,18
+t16.2024.12.18_imagined_125kwords_eval,125kwords,"If there is a decision to make, they speak first.",IH N D  |  R  |  ER T  |  M AY  |  IH T AH IY  |  UW  |  DH EY  |  AH N  |  R AA ER  | ,26,40
+t16.2024.12.18_imagined_125kwords_eval,125kwords,It's the hard work.,IH  |  R  |  AA R ER  |   | ,9,16
+t16.2024.12.18_imagined_125kwords_eval,125kwords,I did grow up with David Brinkley., |  EH IY  |  R UW  |  DH AH EY  |   |  L S M N  |  R ER T  |  M NG  | ,22,31
+t16.2024.12.18_imagined_125kwords_eval,125kwords,But he was with another company before that., |  AH  |  AY  |   |  AH  |  IH T  |  IY  |  M  |  ER  |  R AY  |  M  |  AY ER IY  |  IH T  | ,26,39
+t16.2024.12.18_imagined_125kwords_eval,125kwords,You might want to attack.,IH  |  AA AY T  |   |  N AH T  |  IH UW  |  AH N IY  | ,10,20

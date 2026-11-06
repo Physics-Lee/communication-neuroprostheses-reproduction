@@ -1,0 +1,101 @@
+session,sentence_label,ref_words,hyp_words,edit_distance,ref_len
+t12.2023.11.28_imagined_50words_eval,I need success.,I NEED SUCCESS,HIS DESK,3,3
+t12.2023.11.28_imagined_50words_eval,Bad music.,BAD MUSIC,AS MS,2,2
+t12.2023.11.28_imagined_50words_eval,Hope you are comfortable.,HOPE YOU ARE COMFORTABLE,PART HARMFUL,4,4
+t12.2023.11.28_imagined_50words_eval,You are good.,YOU ARE GOOD,YOU ARE DOGS,1,3
+t12.2023.11.28_imagined_50words_eval,Do you feel that?,DO YOU FEEL THAT,YOU DO FIRST,3,4
+t12.2023.11.28_imagined_50words_eval,It is very bad.,IT IS VERY BAD,ISRAEL,4,4
+t12.2023.11.28_imagined_50words_eval,Tell my nurse I feel comfortable.,TELL MY NURSE I FEEL COMFORTABLE,HE MINISCRIBE,6,6
+t12.2023.11.28_imagined_50words_eval,Is my music very bad?,IS MY MUSIC VERY BAD,IS RELEASED,4,5
+t12.2023.11.28_imagined_50words_eval,Clean up.,CLEAN UP,FLIP A,2,2
+t12.2023.11.28_imagined_50words_eval,Hope you like it.,HOPE YOU LIKE IT,POOR RANKINGS,4,4
+t12.2023.11.28_imagined_50words_eval,Tell my family goodbye.,TELL MY FAMILY GOODBYE,I REFLAGGED,4,4
+t12.2023.11.28_imagined_50words_eval,Please do it.,PLEASE DO IT,IRAQIS,3,3
+t12.2023.11.28_imagined_50words_eval,I am not okay.,I AM NOT OKAY,RAMPARTS,4,4
+t12.2023.11.28_imagined_50words_eval,They tell you I am hungry.,THEY TELL YOU I AM HUNGRY,THEY ARE HEIRLOOMS,5,6
+t12.2023.11.28_imagined_50words_eval,I need my nurse right here.,I NEED MY NURSE RIGHT HERE,I HAD MEDIOCRITY,5,6
+t12.2023.11.28_imagined_50words_eval,I hope you do that.,I HOPE YOU DO THAT,I HOPE I HEAR YOU THAT,3,5
+t12.2023.11.28_imagined_50words_eval,Need it?,NEED IT,COKE,2,2
+t12.2023.11.28_imagined_50words_eval,Tell my nurse hello.,TELL MY NURSE HELLO,MINEFIELDS HERE,4,4
+t12.2023.11.28_imagined_50words_eval,I am not hungry.,I AM NOT HUNGRY,VICTIMS,4,4
+t12.2023.11.28_imagined_50words_eval,They do have.,THEY DO HAVE,REALITY,3,3
+t12.2023.11.28_imagined_50words_eval,Here that is.,HERE THAT IS,CREATIVE,3,3
+t12.2023.11.28_imagined_50words_eval,I like my faith.,I LIKE MY FAITH,KILCREASE,4,4
+t12.2023.11.28_imagined_50words_eval,Tell my family I do not feel comfortable.,TELL MY FAMILY I DO NOT FEEL COMFORTABLE,LOCALIZATION NOT READABLE,7,8
+t12.2023.11.28_imagined_50words_eval,They clean my glasses.,THEY CLEAN MY GLASSES,LEADING ADDRESSES,4,4
+t12.2023.11.28_imagined_50words_eval,I tell you I do not feel comfortable.,I TELL YOU I DO NOT FEEL COMFORTABLE,IDEALLY RETREATED RECYCLED,8,8
+t12.2023.11.28_imagined_50words_eval,"Yes, I feel very thirsty.",YES I FEEL VERY THIRSTY,SKIER FLUFFY NEST,5,5
+t12.2023.11.28_imagined_50words_eval,I hope I need my music.,I HOPE I NEED MY MUSIC,TIGHTROPE MIND MIGHT FACE,6,6
+t12.2023.11.28_imagined_50words_eval,Tell my nurse I am not thirsty.,TELL MY NURSE I AM NOT THIRSTY,I CREATE A REACT CLEARLY,7,7
+t12.2023.11.28_imagined_50words_eval,I do not clean it up.,I DO NOT CLEAN IT UP,GRIND TO TITTERINGTON,6,6
+t12.2023.11.28_imagined_50words_eval,Faith is not good.,FAITH IS NOT GOOD,IT IS NOT DIGGING,2,4
+t12.2023.11.28_imagined_50words_eval,"No, they do not clean it up.",NO THEY DO NOT CLEAN IT UP,THERE IS NOT UNREALISTIC GOAL,6,7
+t12.2023.11.28_imagined_50words_eval,I hope they help you.,I HOPE THEY HELP YOU,EURO PETIPA,5,5
+t12.2023.11.28_imagined_50words_eval,My nurse is not hungry.,MY NURSE IS NOT HUNGRY,ENCYCLICAL,5,5
+t12.2023.11.28_imagined_50words_eval,I hope they have faith.,I HOPE THEY HAVE FAITH,TYPE THEY SACKED,4,5
+t12.2023.11.28_imagined_50words_eval,They hope my family is closer.,THEY HOPE MY FAMILY IS CLOSER,LOCAL AFFIRMATIVELY,6,6
+t12.2023.11.28_imagined_50words_eval,They clean it.,THEY CLEAN IT,NITPICKY,3,3
+t12.2023.11.28_imagined_50words_eval,Do you have it right?,DO YOU HAVE IT RIGHT,THERE ARE DISASTROUSLY,5,5
+t12.2023.11.28_imagined_50words_eval,I hope you are right.,I HOPE YOU ARE RIGHT,DOPE WHOLEHEARTEDLY,5,5
+t12.2023.11.28_imagined_50words_eval,They need you.,THEY NEED YOU,HE FIELDED,3,3
+t12.2023.11.28_imagined_50words_eval,Is it okay?,IS IT OKAY,ISRAEL,3,3
+t12.2023.11.28_imagined_50words_eval,It is up.,IT IS UP,IT IS HARD TIP,2,3
+t12.2023.11.28_imagined_50words_eval,Faith is okay.,FAITH IS OKAY,THEORY IS REAL,2,3
+t12.2023.11.28_imagined_50words_eval,Do not do that.,DO NOT DO THAT,ARE NOT AT HEART,3,4
+t12.2023.11.28_imagined_50words_eval,Hope you are not hungry.,HOPE YOU ARE NOT HUNGRY,I HOPE THERE ARE MEETING AREA,4,5
+t12.2023.11.28_imagined_50words_eval,I hope they have.,I HOPE THEY HAVE,WE KNOW COMPLETELY,4,4
+t12.2023.11.28_imagined_50words_eval,I have it up.,I HAVE IT UP,I REVISIT IT HERE A,3,4
+t12.2023.11.28_imagined_50words_eval,I feel hope.,I FEEL HOPE,I HEAR YOU FLEW HERE,4,3
+t12.2023.11.28_imagined_50words_eval,I have it like that.,I HAVE IT LIKE THAT,OLIVIERI,5,5
+t12.2023.11.28_imagined_50words_eval,They are not hungry.,THEY ARE NOT HUNGRY,HE IRISES,4,4
+t12.2023.11.28_imagined_50words_eval,What is good?,WHAT IS GOOD,ISRAEL GREAT,3,3
+t12.2023.11.28_imagined_50words_eval,Do you feel comfortable?,DO YOU FEEL COMFORTABLE,YOU ARE FEELING VERY LUCKY,5,4
+t12.2023.11.28_imagined_50words_eval,My nurse is right outside,MY NURSE IS RIGHT OUTSIDE,WE OLD-TIMERS,5,5
+t12.2023.11.28_imagined_50words_eval,I hope it is clean,I HOPE IT IS CLEAN,IT APPEARS EASY,4,5
+t12.2023.11.28_imagined_50words_eval,It is okay,IT IS OKAY,ERRATICALLY DUE RIGHT,3,3
+t12.2023.11.28_imagined_50words_eval,I need you,I NEED YOU,REENTRY,3,3
+t12.2023.11.28_imagined_50words_eval,Bring my glasses please,BRING MY GLASSES PLEASE,ILLITERACY,4,4
+t12.2023.11.28_imagined_50words_eval,What do you do?,WHAT DO YOU DO,IT REPRODUCES,4,4
+t12.2023.11.28_imagined_50words_eval,Hello how are you?,HELLO HOW ARE YOU,THE POOR HERE,4,4
+t12.2023.11.28_imagined_50words_eval,They are coming outside,THEY ARE COMING OUTSIDE,I RACKETEERING,4,4
+t12.2023.11.28_imagined_50words_eval,I am okay,I AM OKAY,RANK,3,3
+t12.2023.11.28_imagined_50words_eval,It is comfortable,IT IS COMFORTABLE,THAT IS VERY COMFORTABLE,2,3
+t12.2023.11.28_imagined_50words_eval,It is right here,IT IS RIGHT HERE,TILT GREER,4,4
+t12.2023.11.28_imagined_50words_eval,My glasses are clean,MY GLASSES ARE CLEAN,RECALCITRANT,4,4
+t12.2023.11.28_imagined_50words_eval,Please clean it,PLEASE CLEAN IT,EASIEST,3,3
+t12.2023.11.28_imagined_50words_eval,How do you feel?,HOW DO YOU FEEL,REROUTE RUSSELL,4,4
+t12.2023.11.28_imagined_50words_eval,They have faith,THEY HAVE FAITH,DEVALUATED,3,3
+t12.2023.11.28_imagined_50words_eval,Faith is good,FAITH IS GOOD,THIS STUDY WERE,3,3
+t12.2023.11.28_imagined_50words_eval,It is good,IT IS GOOD,IT IS VERY EASY GRAB,3,3
+t12.2023.11.28_imagined_50words_eval,My family is here,MY FAMILY IS HERE,LEAFLETS ERDRICH,4,4
+t12.2023.11.28_imagined_50words_eval,No,NO,YOU,1,1
+t12.2023.11.28_imagined_50words_eval,My family is very comfortable,MY FAMILY IS VERY COMFORTABLE,FEASIBILITY HEMOPHILIA,5,5
+t12.2023.11.28_imagined_50words_eval,I am outside,I AM OUTSIDE,CHARACTERS,3,3
+t12.2023.11.28_imagined_50words_eval,I like my nurse,I LIKE MY NURSE,I CARIS,3,4
+t12.2023.11.28_imagined_50words_eval,Bring my glasses here,BRING MY GLASSES HERE,CHRIS HERE,3,4
+t12.2023.11.28_imagined_50words_eval,Yes,YES,YES,0,1
+t12.2023.11.28_imagined_50words_eval,That is very clean,THAT IS VERY CLEAN,LISTERIA,4,4
+t12.2023.11.28_imagined_50words_eval,I need my glasses,I NEED MY GLASSES,THERE NEEDS TO RELEASE,4,4
+t12.2023.11.28_imagined_50words_eval,Please bring my glasses here,PLEASE BRING MY GLASSES HERE,ZACH HIGHFIELD AREA,5,5
+t12.2023.11.28_imagined_50words_eval,I am not okay,I AM NOT OKAY,I IRRESISTIBLE,3,4
+t12.2023.11.28_imagined_50words_eval,I am going outside,I AM GOING OUTSIDE,SIMILIAR DOES,4,4
+t12.2023.11.28_imagined_50words_eval,My glasses are comfortable,MY GLASSES ARE COMFORTABLE,RELEASE DATE IS REALIZED,4,4
+t12.2023.11.28_imagined_50words_eval,I do not feel comfortable,I DO NOT FEEL COMFORTABLE,I NOT NOT ISRAEL,3,5
+t12.2023.11.28_imagined_50words_eval,Do not feel bad,DO NOT FEEL BAD,UTILITY FEES,4,4
+t12.2023.11.28_imagined_50words_eval,My computer is clean,MY COMPUTER IS CLEAN,HE VIEWS AS ME,4,4
+t12.2023.11.28_imagined_50words_eval,I am thirsty,I AM THIRSTY,REACTIVE THAT,3,3
+t12.2023.11.28_imagined_50words_eval,Are you tired?,ARE YOU TIRED,BRUTALIZED,3,3
+t12.2023.11.28_imagined_50words_eval,How do you like my music?,HOW DO YOU LIKE MY MUSIC,DEUTERIUM YIELDS,6,6
+t12.2023.11.28_imagined_50words_eval,They are going outside,THEY ARE GOING OUTSIDE,THREE GUILDS TODAY,4,4
+t12.2023.11.28_imagined_50words_eval,Please tell my family,PLEASE TELL MY FAMILY,MARINELAND ROOMY,4,4
+t12.2023.11.28_imagined_50words_eval,They are coming here,THEY ARE COMING HERE,STREAMING HERE,3,4
+t12.2023.11.28_imagined_50words_eval,I am not hungry,I AM NOT HUNGRY,I AM INTIMATELY,2,4
+t12.2023.11.28_imagined_50words_eval,You are not right,YOU ARE NOT RIGHT,I TRIED NOT TO WEAR,4,4
+t12.2023.11.28_imagined_50words_eval,Are you going outside?,ARE YOU GOING OUTSIDE,YOU FRIEDRICH,3,4
+t12.2023.11.28_imagined_50words_eval,I am not going,I AM NOT GOING,I EVEN NODDED,3,4
+t12.2023.11.28_imagined_50words_eval,I feel very hungry,I FEEL VERY HUNGRY,TO FLAPDOODLE,4,4
+t12.2023.11.28_imagined_50words_eval,Here is my computer,HERE IS MY COMPUTER,HE HEEDED A U,4,4
+t12.2023.11.28_imagined_50words_eval,Where is it?,WHERE IS IT,WE DON'T SERIES,3,3
+t12.2023.11.28_imagined_50words_eval,My family is outside,MY FAMILY IS OUTSIDE,HE MOLASSES,4,4
+t12.2023.11.28_imagined_50words_eval,My nurse is outside,MY NURSE IS OUTSIDE,LEINART CYNICISM,4,4
+t12.2023.11.28_imagined_50words_eval,I feel very comfortable,I FEEL VERY COMFORTABLE,REVIEW CREAMERY,4,4

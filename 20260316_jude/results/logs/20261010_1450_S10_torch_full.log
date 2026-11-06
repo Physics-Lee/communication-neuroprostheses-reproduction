@@ -1,0 +1,25 @@
+device: cuda (NVIDIA GeForce RTX 5060 Ti)
+trials: train=56 test=1
+begin training: 10000 batches, batch_size=64
+batch 0: loss 60.81 (pred 60.67) gradNorm 15.28 lr 0.02000 elapsed 0.0min
+batch 10: loss 3.65 (pred 3.51) gradNorm 6.79 lr 0.01998 elapsed 0.2min
+batch 20: loss 3.54 (pred 3.40) gradNorm 8.38 lr 0.01996 elapsed 0.7min
+batch 30: loss 3.33 (pred 3.18) gradNorm 3.70 lr 0.01994 elapsed 1.4min
+batch 40: loss 3.22 (pred 3.07) gradNorm 1.04 lr 0.01992 elapsed 2.2min
+batch 50: loss 3.22 (pred 3.08) gradNorm 2.13 lr 0.01990 elapsed 2.9min
+Traceback (most recent call last):
+  File ".\20260316_jude\code\pytorch_port\train.py", line 155, in <module>
+    main()
+  File ".\20260316_jude\code\pytorch_port\train.py", line 129, in main
+    cer = validate(model, input_net, val_ds, device)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".\20260910_reproduce_20260629_levy\.venv312\Lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File ".\20260316_jude\code\pytorch_port\train.py", line 44, in validate
+    x, il, _, tl = val_ds.make_batch(batch_idx, augment=False)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".\20260316_jude\code\pytorch_port\dataset.py", line 52, in make_batch
+    feats = [torch.tensor(self.features[i], dtype=torch.float32) for i in idx]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't convert np.ndarray of type numpy.object_. The only supported types are: float64, float32, float16, complex64, complex128, int64, int32, int16, int8, uint64, uint32, uint16, uint8, and bool.

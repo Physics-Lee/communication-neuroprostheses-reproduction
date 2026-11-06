@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File ".\20260316_jude\code\pytorch_port\train.py", line 157, in <module>
+    main()
+  File ".\20260316_jude\code\pytorch_port\train.py", line 58, in main
+    ap.add_argument('--npz', default=str(NPZ))
+                                         ^^^
+UnboundLocalError: cannot access local variable 'NPZ' where it is not associated with a value
