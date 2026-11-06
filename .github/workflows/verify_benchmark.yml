@@ -1,4 +1,4 @@
-name: Verify Decode Outputs & Render Figure 2
+name: Verify Decode Outputs & Render Benchmark Figure
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install "numpy==1.26.4" "matplotlib>=3.8.0" "PyYAML>=6.0.1" "editdistance>=0.8.0"
 
-      - name: Recompute session-level PER vs. WER and render Figure 2
+      - name: Recompute session-level PER vs. WER and render benchmark figure
         run: |
           python build_session_per_vs_wer.py
           python render_figure2.py
@@ -40,6 +40,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reproduction_benchmark.json session_per_vs_wer.json communication_neuroprostheses_reproduction.png communication_neuroprostheses_reproduction.pdf
           if ! git diff --cached --quiet; then
-            git commit -m "chore: auto-render Figure 2 and sync JSON artifacts"
+            git commit -m "chore: auto-render benchmark figure and sync JSON artifacts"
             git push
           fi

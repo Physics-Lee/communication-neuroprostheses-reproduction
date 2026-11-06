@@ -2,7 +2,7 @@
 
 [![Verify & Render Benchmark](https://github.com/Physics-Lee/communication-neuroprostheses-reproduction/actions/workflows/verify_benchmark.yml/badge.svg)](https://github.com/Physics-Lee/communication-neuroprostheses-reproduction/actions/workflows/verify_benchmark.yml)
 
-End-to-end reproduction code, host-RAM / GPU-VRAM wall mitigations, per-trial decode outputs, and benchmark figure generator for all **8 open-data large-vocabulary (>71,400 word forms) communication neuroprosthesis studies** on a single consumer workstation (**1× NVIDIA GeForce RTX 5060 Ti 16 GB VRAM, 64 GB DDR5 RAM**).
+Reproducing **8 open-data speech, typing, and handwriting neuroprosthesis studies** on a single consumer GPU (**1× NVIDIA GeForce RTX 5060 Ti 16 GB VRAM, 64 GB DDR5 RAM**), with end-to-end training/decoding code, memory-wall mitigations, per-trial decode outputs, and benchmark figure scripts.
 
 ![Communication Neuroprostheses Reproduction Benchmark](communication_neuroprostheses_reproduction.png)
 
@@ -68,18 +68,18 @@ communication-neuroprostheses-reproduction/
 ├── shared/                               # Shared C++ TLG/WeNet decoders, KenLM/OPT/Qwen rescorers, plots
 ├── environment.yml                       # Full Conda environment specification (name: bci-repro)
 ├── requirements.txt                      # Full pinned pip package list for bci-repro
-├── reproduction_benchmark.yaml           # Authoritative structured dataset for Figure 2 (a)-(h)
+├── reproduction_benchmark.yaml           # Structured dataset for the benchmark overview figure (panels a–h)
 ├── reproduction_benchmark.json           # Auto-synced JSON mirror of reproduction_benchmark.yaml
-├── session_per_vs_wer.json               # Session-level (PER, post-LM WER) pairs for Figure 2 (i)
+├── session_per_vs_wer.json               # Session-level (PER, post-LM WER) pairs for panel (i)
 ├── build_session_per_vs_wer.py           # Recomputes session_per_vs_wer.json from per-trial decode TSVs
-└── render_figure2.py                     # Standalone renderer + overlap verifier for Figure 2 (.png/.pdf)
+└── render_figure2.py                     # Standalone renderer + overlap verifier for the benchmark figure (.png/.pdf)
 ```
 
 ---
 
 ## Quick Verification
 
-All per-trial decode outputs (`*.tsv`, `*.csv`, `*.json`) produced by our single-GPU runs are archived inside each study's `results/` directory. Anyone can recompute the session-level phase diagram (`session_per_vs_wer.json`), verify WERs, and regenerate Figure 2 in seconds:
+All per-trial decode outputs (`*.tsv`, `*.csv`, `*.json`) produced by our single-GPU runs are archived inside each study's `results/` directory. Anyone can recompute the session-level phase diagram (`session_per_vs_wer.json`), verify WERs, and regenerate the benchmark overview figure in seconds:
 
 ```bash
 conda activate bci-repro
@@ -92,7 +92,7 @@ python render_figure2.py
 
 ## Companion Repository
 
-- **Weekly-Updated Living Timeline (Figure 1)**: [`Physics-Lee/communication-neuroprostheses-timeline`](https://github.com/Physics-Lee/communication-neuroprostheses-timeline)
+- **Weekly-Updated Living Timeline**: [`Physics-Lee/communication-neuroprostheses-timeline`](https://github.com/Physics-Lee/communication-neuroprostheses-timeline)
 
 ## License
 

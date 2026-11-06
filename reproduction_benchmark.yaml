@@ -356,7 +356,9 @@ panel_cd_online_wer_speed:
     10 of 21 d'
   speed_caliber: 'mean±SD
 
-    15 eval d (10 released)'
+    15 eval d
+
+    (10 released)'
   openness_code: 2
 - label: Card et al., 2024 (T15)
   wer_mean: 4.9

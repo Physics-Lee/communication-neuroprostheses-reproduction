@@ -183,8 +183,18 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
                   fontsize=10, fontweight="bold")
 
     # ---- Row 2: (b) Dataset size, (c) WER, (d) Speed ----
+    # 2026-11-06 equal-pillar round (user, review repo: "I want the
+    # pillars in fig2 b c d have the same width ... calculate
+    # [full-width / number-of-pillars]"), blank-space follow-up (user:
+    # "there are a lot blank space between fig2c and fig2d"), and n/r
+    # round (user: "add the kunz25 and wairagkar25 back to fig2d. leave
+    # them as n/r"): with (d) back at the full 11-slot panel-(c) order,
+    # all three panels carry 11 pillars over the same 11.5-unit x-span,
+    # so the three columns are simply equal (1.176 each) with uniform
+    # 0.12 gaps -- pillar = full-width / number-of-pillars is identical
+    # everywhere (~0.43 in / 1.10 cm at bar width 0.76 of the slot).
     gs_r2 = outer[2].subgridspec(
-        1, 5, width_ratios=(1.18, 0.12, 1.02, 0.62, 0.96), wspace=0.0
+        1, 5, width_ratios=(1.176, 0.12, 1.176, 0.12, 1.176), wspace=0.0
     )
     ax_b = fig.add_subplot(gs_r2[0, 0])
     ax2 = fig.add_subplot(gs_r2[0, 2])
@@ -210,7 +220,16 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
                          rotation_mode="anchor")
     ax_b.set_xlim(-0.75, len(rows_b) - 0.25)
     ax_b.set_ylabel("released sentences")
-    ax_b.set_title("(b) Open-sourced dataset size", fontsize=9.8,
+    # 2026-11-06 same-height-title round (user: "for each row of fig2,
+    # make the top of panels of that row have the same height"): the
+    # axes tops already align in every row (same gridspec slots;
+    # (i)'s equal-aspect shrink takes width, not height), but in row 2
+    # the (c)/(d) 2-line titles (series / not-reported qualifiers) top
+    # out ~0.18 in above (b)'s 1-line title. The trailing newline gives
+    # (b) an empty second title line of identical height, so every
+    # panel's title block -- and its first baseline -- sits at one
+    # height per row (rows 3/4 are single-line and already aligned).
+    ax_b.set_title("(b) Open-sourced dataset size\n", fontsize=9.8,
                    fontweight="bold")
 
     # (c) Online WER
@@ -242,19 +261,22 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     # lift as an ascending ladder into the empty band above the left
     # bars' vocab tags (y 62-77: below bar 6's value label at 86.0,
     # above bar 4's tag top at 61.0, right edge 5.5 clears bar 6's
-    # column at 5.62), each with a leader dropping through a corridor
-    # measured between the value labels / vocab tags of bars 1-4
-    # (x = 1.51 / 2.50 / 3.43; the 2.5-leader's 3.43 corridor is the
-    # tightest, ~3 px off bar 3's and bar 4's tags). Badges (alpha 0.88)
-    # mask whatever a leader crosses behind them -- the fig3(d) pattern.
+    # column at 5.62). Follow-up (user: "the annotations of 3 grey
+    # lines in fig2c is not closed to the arrows"): the 11-slot n/r
+    # round narrowed this panel and widened the labels in data units,
+    # detaching two leaders from their annotations -- leaders now drop
+    # through the three measured corridors between value labels / vocab
+    # tags (x = 2.50 / 3.44 / 4.55), each directly under its own label
+    # and tucked into its badge (top at ly - 0.2); badges mask whatever
+    # a leader crosses behind them -- the fig3(d) pattern.
     for asr_v in (2.5, 5.8, 12.8):
         ax2.axhline(asr_v, color=C_NORM, linewidth=0.9, linestyle=(0, (4, 2)))
     for asr_v, asr_lab, ly, lx_lead in (
-            (2.5, "2.5% LibriSpeech (Radford et al., 2022)", 62.6, 3.43),
-            (5.8, "5.8% Switchboard (Xiong et al., 2017)", 68.1, 2.50),
+            (2.5, "2.5% LibriSpeech (Radford et al., 2022)", 62.6, 4.55),
+            (5.8, "5.8% Switchboard (Xiong et al., 2017)", 68.1, 3.44),
             (12.8, "12.8% 14-dataset average (Radford et al., 2022)",
-             73.6, 1.51)):
-        ax2.plot([lx_lead, lx_lead], [asr_v, ly - 0.5], color="#999999",
+             73.6, 2.50)):
+        ax2.plot([lx_lead, lx_lead], [asr_v, ly - 0.2], color="#999999",
                  lw=0.55, linestyle="-", zorder=2)
         ax2.text(5.50, ly, asr_lab, ha="right", va="bottom",
                  fontsize=5.6, color="#666666", zorder=3,
@@ -280,13 +302,23 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
              fontsize=6.0, color="#555555", linespacing="normal")
 
     # (d) Communication speed
-    rows_d = [r for r in rows_cd if r["speed_wpm_mean"] is not None]
-    for x, r in enumerate(rows_d):
+    # 2026-11-06 n/r round (user: "I think we had better add the kunz25
+    # and wairagkar25 back to fig2d. leave them as n/r"): the panel
+    # returns to the full 11-slot panel-(c) order (the one-to-one rule);
+    # the four speed-None rows (Wairagkar et al., 2025; Kunz et al., 2025
+    # T12/T15/T16) draw as explicit gray "n/r" slots at the axis base --
+    # panel (f)'s Wairagkar convention -- instead of leaving the axis,
+    # and the title's name list collapses to the abbreviation key.
+    for x, r in enumerate(rows_cd):
         spd = r["speed_wpm_mean"]
         spdsd = r["speed_wpm_sd"]
         vocab = r["vocab_tag"]
         s_cal = r["speed_caliber"]
         state_c = OPEN_C[r["openness_code"]]
+        if spd is None:
+            ax3.text(x, 1.2, "n/r", ha="center", va="bottom",
+                     fontsize=5.6, color="#777777")
+            continue
         ax3.bar(x, spd, width=0.76,
                 color=(*to_rgb(state_c), 0.35),
                 edgecolor=state_c, linewidth=0.8)
@@ -301,52 +333,60 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
                  f"vocab {vocab}\n{s_cal}",
                  ha="center", va="bottom", fontsize=4.6, color="#555555",
                  linespacing="normal")
-    # 2026-11-06 in-panel round (same user round as panel (c)): the five
-    # speed-anchor labels move inside the axes, white badges fig3(d)/(e)
-    # style. 160 sits directly under its line at the right end (measured
-    # empty band: above Jude-b's tag top 72.7, below the dagger legend's
-    # bottom 177.0); the other four lift as a y = 78/90/102/114 ladder
-    # in the same band -- the eye-typing label cannot sit under its line
-    # at the left end because its badge would cover the bases of the two
-    # tallest bars (Willett 2023 66.2 wpm, Fan 16.8 wpm). Leaders drop
-    # through the corridors measured between value labels / vocab tags
-    # (x = 5.5 / 4.5 / 3.5; the 51.6-leader takes x = 6.42, right of the
-    # ladder's right edge and of Jude-b's value label at 6.32, ending on
-    # its line above the bar fill); badges mask whatever a leader crosses
-    # behind them.
+    # 2026-11-06 in-panel label round, re-seated for the 11-slot axis
+    # (same user round as panel (c)); follow-up (user: "write 160 wpm
+    # natural conversation (Card et al., 2024) on the top of the
+    # y=160"): ALL FOUR line labels now sit directly ON their lines
+    # (badge resting on the dashed line, +0.6 offset) -- the empty n/r
+    # band x 4-7 and the clear strip above Jude-b's tag give every one
+    # a clean on-line seat, 160 included (its badge tops at ~166, the
+    # 3-line dagger legend's bottom sits at ~177); only 8 cannot (its
+    # on-line band is taken by the 10-label above and the n/r texts
+    # below), so it lifts to y = 20 with a short leader at x = 5.5,
+    # dropping between the n/r slots. White badges (alpha 0.88) mask
+    # whatever a leader crosses behind them, the fig3(d) pattern.
+    # 2026-11-06 follow-up (user: "the annotations of 3 grey lines in
+    # fig2d can be written in the same start x-coordinate of 5-10 wpm
+    # eye typing"): all five line annotations left-align at one start
+    # x = 3.92 (the measured left edge of the eye-typing label, mid-way
+    # over the empty n/r band), replacing the staggered right-anchored
+    # seats; each label keeps its on-line / lifted y seat, and every
+    # shifted span re-clears its neighbors (51.6 now ends 2.4 units
+    # clear of Jude-b's value label at 9.61; 36.2 stays clear of the
+    # slot-8/9 vocab tags; the lifted 8-label ends 0.57 left of the
+    # slot-8 tag with its leader still beneath it).
     for spd_v in (160, 51.6, 36.2, 10, 8):
         ax3.axhline(spd_v, color=C_NORM, linewidth=0.9, linestyle=(0, (4, 2)))
-    ax3.text(6.2, 160 / 1.07, "160 wpm natural conversation (Card et al., 2024)",
-             ha="right", va="top", fontsize=5.6, color="#666666",
-             zorder=3,
-             bbox=dict(boxstyle="round,pad=0.12", fc="white",
-                       ec="none", alpha=0.88))
-    for spd_v, spd_lab, ly, lx_lead in (
-            (10, "5\u201310 wpm eye typing (Hamid & Kristensson, 2024)",
-             78.0, 5.5),
-            (8, "8 wpm point-and-click BCI (Willett et al., 2021)",
-             90.0, 4.5),
-            (36.2, "36.2 wpm smartphone typing (Palin et al., 2019)",
-             102.0, 3.5),
-            (51.6, "51.6 wpm keyboard typing (Dhakal et al., 2018)",
-             114.0, 6.42)):
-        ax3.plot([lx_lead, lx_lead], [spd_v, ly - 0.5], color="#999999",
-                 lw=0.55, linestyle="-", zorder=2)
-        ax3.text(6.2, ly, spd_lab, ha="right", va="bottom",
+    LX = 3.92
+    for spd_v, spd_lab in (
+            (160, "160 wpm natural conversation (Card et al., 2024)"),
+            (51.6, "51.6 wpm keyboard typing (Dhakal et al., 2018)"),
+            (36.2, "36.2 wpm smartphone typing (Palin et al., 2019)"),
+            (10, "5\u201310 wpm eye typing (Hamid & Kristensson, 2024)")):
+        ax3.text(LX, spd_v + 0.6, spd_lab, ha="left", va="bottom",
                  fontsize=5.6, color="#666666", zorder=3,
                  bbox=dict(boxstyle="round,pad=0.12", fc="white",
                            ec="none", alpha=0.88))
+    ax3.plot([5.5, 5.5], [8, 19.8], color="#999999",
+             lw=0.55, linestyle="-", zorder=2)
+    ax3.text(LX, 20.0, "8 wpm point-and-click BCI (Willett et al., 2021)",
+             ha="left", va="bottom", fontsize=5.6, color="#666666",
+             zorder=3,
+             bbox=dict(boxstyle="round,pad=0.12", fc="white",
+                       ec="none", alpha=0.88))
     ax3.set_ylim(0, 200)
     ax3.set_yticks(range(0, 201, 50))
-    ax3.set_xticks(range(len(rows_d)))
-    ax3.set_xticklabels([r["label"] for r in rows_d],
+    ax3.set_xticks(range(len(rows_cd)))
+    ax3.set_xticklabels([r["label"] for r in rows_cd],
                         fontsize=6.4, rotation=75, ha="right",
                         rotation_mode="anchor")
-    ax3.set_xlim(-0.75, len(rows_d) - 0.25)
+    ax3.set_xlim(-0.75, len(rows_cd) - 0.25)
     ax3.set_ylabel("words per minute")
+    # second line carries the n/r key (the 2026-10-29 name list retired
+    # with the n/r slots); two lines keep row 2's title tops level with
+    # (c)'s 2-line title and (b)'s padded 1-line title
     ax3.set_title("(d) Communication speed (online)\n"
-                  "speed not reported: Wairagkar et al., 2025; "
-                  "Kunz et al., 2025",
+                  "n/r: speed not reported",
                   fontsize=9.8, fontweight="bold")
     ax3.text(0.98, 0.985,
              "\u2020 recomputed from released data (decode outputs / trial "
@@ -732,8 +772,14 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
         transform=fig.transFigure, color=rep_c,
         linewidth=1.4, alpha=0.92, solid_capstyle="round", zorder=5
     ))
+    # 2026-11-06 (user: "is below the bracket, I want it above of the
+    # bracket"): the label leaves the below-arm band (2026-10-30 v4 had
+    # moved it under the arm so the drop lines owned the band above;
+    # the drops end AT the bus, so the bus-to-arm band is free) and
+    # takes the funnel label's mirrored seat: between bus and arm,
+    # right-aligned just left of the riser
     fig.text(
-        brace_xmr - 0.012, 0.5 * (y_arm_r + y_tip_r),
+        brace_xmr - 0.012, 0.5 * (y_bus_c + y_arm_r),
         "Our reproduction on a 64 GB RAM / RTX 5060 Ti (16 GB) home PC"
         " (8 open-data studies)",
         ha="right", va="center", fontsize=7.4, fontweight="bold",

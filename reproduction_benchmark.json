@@ -389,7 +389,7 @@
       "study_key": "Fan et al., 2023",
       "vocab_tag": "130k",
       "wer_caliber": "mean±SD†\n10 of 21 d",
-      "speed_caliber": "mean±SD\n15 eval d (10 released)",
+      "speed_caliber": "mean±SD\n15 eval d\n(10 released)",
       "openness_code": 2
     },
     {

@@ -10,4 +10,4 @@
 
 ## Reproduction Summary (`results/`)
 - **Greedy PER (From-Scratch on Released Subsets)**: **61.4%** (T12) / **59.7%** (T15) / **61.5%** (T16) vs. paper online anchors **24.0% / 54.0% / 52.0%**.
-- **Gap Attribution (`results/20261028_gap_decomposition.tsv`)**: Demonstrates that acoustic PER $> 25\%$ crosses the LM phase-transition boundary (Figure 2i), causing n-gram + LLM rescoring to hallucinate insertions rather than reduce WER.
+- **Gap Attribution (`results/20261028_gap_decomposition.tsv`)**: Demonstrates that acoustic PER $> 25\%$ crosses the LM phase-transition boundary (panel i of the benchmark overview figure), causing n-gram + LLM rescoring to hallucinate insertions rather than reduce WER.
