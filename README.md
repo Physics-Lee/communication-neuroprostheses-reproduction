@@ -2,7 +2,7 @@
 
 [![Verify & Render Benchmark](https://github.com/Physics-Lee/communication-neuroprostheses-reproduction/actions/workflows/verify_benchmark.yml/badge.svg)](https://github.com/Physics-Lee/communication-neuroprostheses-reproduction/actions/workflows/verify_benchmark.yml)
 
-End-to-end reproduction code, host-RAM / GPU-VRAM wall mitigations, per-trial decode outputs, and benchmark figure generator for all **8 open-data large-vocabulary (>71,400 word forms) communication neuroprosthesis studies** on a single consumer workstation (**1× NVIDIA RTX 5060 Ti 16 GB VRAM, 64 GB DDR5 RAM**).
+End-to-end reproduction code, host-RAM / GPU-VRAM wall mitigations, per-trial decode outputs, and benchmark figure generator for all **8 open-data large-vocabulary (>71,400 word forms) communication neuroprosthesis studies** on a single consumer workstation (**1× NVIDIA GeForce RTX 5060 Ti 16 GB VRAM, 64 GB DDR5 RAM**).
 
 ![Communication Neuroprostheses Reproduction Benchmark](communication_neuroprostheses_reproduction.png)
 
@@ -25,6 +25,34 @@ Each study directory is named by its **official journal issue publication date (
 
 ---
 
+## Conda Environment Setup (`bci-repro`)
+
+All 8 study reproduction pipelines, GPU model ports, rescoring scripts, and figure generators are verified in a unified Conda environment named **`bci-repro`** (**Python 3.11.18, CUDA 12.8**):
+
+```bash
+# Option 1: Create directly from environment.yml
+conda env create -f environment.yml
+conda activate bci-repro
+
+# Option 2: Create via conda + pip requirements.txt
+conda create -n bci-repro python=3.11 -y
+conda activate bci-repro
+pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128
+```
+
+### Core Verified Package Versions (`bci-repro`)
+
+| Category | Packages & Pinned Versions |
+|---|---|
+| **Python & Runtime** | `python==3.11.18`, `pip==26.2.2`, `setuptools==78.1.0` |
+| **Deep Learning & GPU Training** | `torch==2.11.0+cu128`, `torchvision==0.26.0+cu128`, `torchaudio==2.11.0+cu128`, `tensorflow==2.14.0`, `keras==2.14.0`, `einops==0.8.2` |
+| **LLM Second-Pass Rescoring** | `transformers==5.22.1`, `accelerate==1.15.0`, `tokenizers==0.23.3`, `safetensors==0.8.0`, `huggingface_hub==2.4.0` |
+| **Scientific Computing & Audio/HDF5 I/O** | `numpy==1.26.4`, `scipy==1.17.1`, `pandas==3.0.6`, `scikit-learn==1.9.1`, `h5py==3.16.0`, `librosa==0.11.0`, `numba==0.68.1`, `soundfile==0.14.0` |
+| **Phoneme / CTC / WER Decoding** | `editdistance==0.8.1`, `g2p-en==2.1.0`, `pyctcdecode==0.5.0`, `nltk==3.10.4`, `pygtrie==2.6.2` |
+| **Config & Visualization** | `matplotlib==3.11.2`, `PyYAML==6.0.3`, `omegaconf==2.4.0`, `tqdm==4.70.1`, `pymupdf==2.1` |
+
+---
+
 ## Repository Structure
 
 ```text
@@ -38,6 +66,8 @@ communication-neuroprostheses-reproduction/
 ├── 20260316_jude/                        # Jude et al., 2026a (Nat. Neurosci., touch typing T17/T18)
 ├── 20260428_jude/                        # Jude et al., 2026b (Cell Rep., intended speech in LIS T17)
 ├── shared/                               # Shared C++ TLG/WeNet decoders, KenLM/OPT/Qwen rescorers, plots
+├── environment.yml                       # Full Conda environment specification (name: bci-repro)
+├── requirements.txt                      # Full pinned pip package list for bci-repro
 ├── reproduction_benchmark.yaml           # Authoritative structured dataset for Figure 2 (a)-(h)
 ├── reproduction_benchmark.json           # Auto-synced JSON mirror of reproduction_benchmark.yaml
 ├── session_per_vs_wer.json               # Session-level (PER, post-LM WER) pairs for Figure 2 (i)
@@ -47,13 +77,14 @@ communication-neuroprostheses-reproduction/
 
 ---
 
-## Quick Verification (No GPU Required)
+## Quick Verification
 
-All per-trial decode outputs (`*.tsv`, `*.csv`, `*.json`) produced by our single-GPU runs are archived inside each study's `results/` directory. Anyone can recompute the session-level phase diagram (`session_per_vs_wer.json`) and regenerate Figure 2 in seconds:
+All per-trial decode outputs (`*.tsv`, `*.csv`, `*.json`) produced by our single-GPU runs are archived inside each study's `results/` directory. Anyone can recompute the session-level phase diagram (`session_per_vs_wer.json`), verify WERs, and regenerate Figure 2 in seconds:
 
 ```bash
-pip install -r requirements.txt
+conda activate bci-repro
 python build_session_per_vs_wer.py
+python shared/tools/wer_from_tsv.py 20230831_willett/results/decode_outputs/wl_5g_opt_official.tsv
 python render_figure2.py
 ```
 

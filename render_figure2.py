@@ -231,15 +231,35 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
         ax2.text(x, top + 7.0, f"vocab {vocab}\n{w_cal}", ha="center",
                  va="bottom", fontsize=4.6, color="#555555",
                  linespacing="normal")
-    out2 = matplotlib.transforms.blended_transform_factory(
-        ax2.transAxes, ax2.transData)
-    for asr_v, asr_lab, dy in (
-            (2.5, "2.5% LibriSpeech (Radford et al., 2022)", 0.3),
-            (5.8, "5.8% Switchboard (Xiong et al., 2017)", 1.6),
-            (12.8, "12.8% 14-dataset average (Radford et al., 2022)", 0.3)):
+    # 2026-11-06 in-panel round (user, review repo: "write the annotations
+    # of the grey lines inside the panel? like in fig3d and fig3e"): the
+    # three ASR-ruler labels move from the outside-right gutter into the
+    # axes as white-badged grey labels, fig3(d)/(e) style. No on-line or
+    # right-end seat exists in this 11-bar panel (measured furniture:
+    # the 2.5/5.8 lines sit 3.3 WER units apart vs ~3.2 units of 5.6-pt
+    # label height, and every x-position at line height crosses a tall
+    # bar's fill -- a badge there cuts the bar mid-height), so all three
+    # lift as an ascending ladder into the empty band above the left
+    # bars' vocab tags (y 62-77: below bar 6's value label at 86.0,
+    # above bar 4's tag top at 61.0, right edge 5.5 clears bar 6's
+    # column at 5.62), each with a leader dropping through a corridor
+    # measured between the value labels / vocab tags of bars 1-4
+    # (x = 1.51 / 2.50 / 3.43; the 2.5-leader's 3.43 corridor is the
+    # tightest, ~3 px off bar 3's and bar 4's tags). Badges (alpha 0.88)
+    # mask whatever a leader crosses behind them -- the fig3(d) pattern.
+    for asr_v in (2.5, 5.8, 12.8):
         ax2.axhline(asr_v, color=C_NORM, linewidth=0.9, linestyle=(0, (4, 2)))
-        ax2.text(1.012, asr_v + dy, asr_lab, transform=out2,
-                 ha="left", va="bottom", fontsize=6.2, color="#555555")
+    for asr_v, asr_lab, ly, lx_lead in (
+            (2.5, "2.5% LibriSpeech (Radford et al., 2022)", 62.6, 3.43),
+            (5.8, "5.8% Switchboard (Xiong et al., 2017)", 68.1, 2.50),
+            (12.8, "12.8% 14-dataset average (Radford et al., 2022)",
+             73.6, 1.51)):
+        ax2.plot([lx_lead, lx_lead], [asr_v, ly - 0.5], color="#999999",
+                 lw=0.55, linestyle="-", zorder=2)
+        ax2.text(5.50, ly, asr_lab, ha="right", va="bottom",
+                 fontsize=5.6, color="#666666", zorder=3,
+                 bbox=dict(boxstyle="round,pad=0.12", fc="white",
+                           ec="none", alpha=0.88))
     ax2.set_ylim(0, 125)
     ax2.set_yticks(range(0, 101, 25))
     ax2.set_xticks(range(len(rows_cd)))
@@ -281,19 +301,41 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
                  f"vocab {vocab}\n{s_cal}",
                  ha="center", va="bottom", fontsize=4.6, color="#555555",
                  linespacing="normal")
-    out3 = matplotlib.transforms.blended_transform_factory(
-        ax3.transAxes, ax3.transData)
-    for spd_v, spd_lab, above in (
-            (160, "160 wpm natural conversation (Card et al., 2024)", True),
-            (51.6, "51.6 wpm keyboard typing (Dhakal et al., 2018)", True),
-            (36.2, "36.2 wpm smartphone typing (Palin et al., 2019)", False),
-            (10, "5\u201310 wpm eye typing (Hamid & Kristensson, 2024)", True),
-            (8, "8 wpm point-and-click BCI (Willett et al., 2021)", False)):
+    # 2026-11-06 in-panel round (same user round as panel (c)): the five
+    # speed-anchor labels move inside the axes, white badges fig3(d)/(e)
+    # style. 160 sits directly under its line at the right end (measured
+    # empty band: above Jude-b's tag top 72.7, below the dagger legend's
+    # bottom 177.0); the other four lift as a y = 78/90/102/114 ladder
+    # in the same band -- the eye-typing label cannot sit under its line
+    # at the left end because its badge would cover the bases of the two
+    # tallest bars (Willett 2023 66.2 wpm, Fan 16.8 wpm). Leaders drop
+    # through the corridors measured between value labels / vocab tags
+    # (x = 5.5 / 4.5 / 3.5; the 51.6-leader takes x = 6.42, right of the
+    # ladder's right edge and of Jude-b's value label at 6.32, ending on
+    # its line above the bar fill); badges mask whatever a leader crosses
+    # behind them.
+    for spd_v in (160, 51.6, 36.2, 10, 8):
         ax3.axhline(spd_v, color=C_NORM, linewidth=0.9, linestyle=(0, (4, 2)))
-        ax3.text(1.012, spd_v * 1.07 if above else spd_v / 1.07, spd_lab,
-                 transform=out3, ha="left",
-                 va="bottom" if above else "top",
-                 fontsize=6.8, color="#555555")
+    ax3.text(6.2, 160 / 1.07, "160 wpm natural conversation (Card et al., 2024)",
+             ha="right", va="top", fontsize=5.6, color="#666666",
+             zorder=3,
+             bbox=dict(boxstyle="round,pad=0.12", fc="white",
+                       ec="none", alpha=0.88))
+    for spd_v, spd_lab, ly, lx_lead in (
+            (10, "5\u201310 wpm eye typing (Hamid & Kristensson, 2024)",
+             78.0, 5.5),
+            (8, "8 wpm point-and-click BCI (Willett et al., 2021)",
+             90.0, 4.5),
+            (36.2, "36.2 wpm smartphone typing (Palin et al., 2019)",
+             102.0, 3.5),
+            (51.6, "51.6 wpm keyboard typing (Dhakal et al., 2018)",
+             114.0, 6.42)):
+        ax3.plot([lx_lead, lx_lead], [spd_v, ly - 0.5], color="#999999",
+                 lw=0.55, linestyle="-", zorder=2)
+        ax3.text(6.2, ly, spd_lab, ha="right", va="bottom",
+                 fontsize=5.6, color="#666666", zorder=3,
+                 bbox=dict(boxstyle="round,pad=0.12", fc="white",
+                           ec="none", alpha=0.88))
     ax3.set_ylim(0, 200)
     ax3.set_yticks(range(0, 201, 50))
     ax3.set_xticks(range(len(rows_d)))
