@@ -134,6 +134,18 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     )
 
     # ---- Row 1: (a) Vocabulary size ----
+    # 2026-11-07 open-mechanism round (user: "在fig2a的四个open vocab的
+    # 柱子上加简短的灰色小字，介绍他们四个是怎么做到open的"; follow-up:
+    # 统一写法; follow-ups: "加在柱子顶端" -> "横向文字"): the four
+    # is_open_vocab bars all top out at the same 300k "open" value, so the
+    # unified mechanism caption sits horizontally inside each hollow bar,
+    # hanging from just below its top edge.
+    open_how = {
+        "Willett et al., 2021": "brain-to-text\nwith\nlanguage model",
+        "Wairagkar et al., 2025": "brain-to-voice",
+        "Levin et al., 2026": "brain-to-text\nwithout\nlanguage model",
+        "Wairagkar et al., 2026": "brain-to-voice",
+    }
     ax1 = fig.add_subplot(outer[0])
     for x, r in enumerate(rows_a):
         v = r["vocab_num"]
@@ -148,6 +160,10 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
             ax1.bar(x, v, width=0.76, color=(*to_rgb(state_c), 0.35),
                     edgecolor=state_c, linewidth=0.8)
         ax1.text(x, v * 1.15, end, ha="center", va="bottom", fontsize=7.6)
+        how = open_how.get(r["study_key"]) if is_open else None
+        if how is not None:
+            ax1.text(x, v * 0.85, how, ha="center", va="top",
+                     fontsize=4.6, color="#555555", zorder=3)
     for anchor_v, anchor_lab, above in (
             (11100, "11,100 word families", False),
             (42000, "42,000 lemmas", False),
