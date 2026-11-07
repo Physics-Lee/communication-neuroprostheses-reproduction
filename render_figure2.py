@@ -140,8 +140,12 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     # is_open_vocab bars all top out at the same 300k "open" value, so the
     # unified mechanism caption sits horizontally inside each hollow bar,
     # hanging from just below its top edge.
+    # hanging from just below its top edge. 2026-11-07 correction (user:
+    # Willett-2021's online decode is LM-free -- any LM, n-gram or LLM,
+    # would impose a vocabulary ceiling): both brain-to-text bars are
+    # "without language model".
     open_how = {
-        "Willett et al., 2021": "brain-to-text\nwith\nlanguage model",
+        "Willett et al., 2021": "brain-to-text\nwithout\nlanguage model",
         "Wairagkar et al., 2025": "brain-to-voice",
         "Levin et al., 2026": "brain-to-text\nwithout\nlanguage model",
         "Wairagkar et al., 2026": "brain-to-voice",
