@@ -29,6 +29,26 @@ import pandas as pd  # noqa: E402
 
 
 def day_per(model, args, trials, day_idx, device):
+    """Compute greedy PER over a list of trials for one day.
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        The GRUDecoder (put into eval mode for the scan).
+    args : omegaconf.DictConfig
+        Training arguments passed through to ``decode_trial``.
+    trials : list of dict
+        Trial dicts with keys ``x`` and ``y``/``seq_len``.
+    day_idx : int
+        Recording-day index used for the day layer.
+    device : torch.device
+        Device the computation runs on.
+
+    Returns
+    -------
+    tuple of (float, int, int)
+        ``(PER_percent, total_edit_distance, total_reference_length)``.
+    """
     tot_ed = tot_len = 0
     model.eval()
     for t in trials:
@@ -40,6 +60,20 @@ def day_per(model, args, trials, day_idx, device):
 
 
 def main():
+    """Fine-tune the P4 soup on one day's train split and report val PER.
+
+    Loads the P4 checkpoint, evaluates the target day's data_val PER, runs a
+    competition-style offline fine-tune (batch 64 = 38 current-day + 26
+    replay trials, official augmentation, gradient accumulation micro 32 x 2)
+    for the requested number of steps, re-evaluates val PER, and writes a
+    JSON summary under ``run_calib_20261014``.
+
+    Returns
+    -------
+    None
+        Progress and the summary JSON are printed to stdout; results are
+        saved to the output JSON file.
+    """
     session = sys.argv[1]
     lr = float(sys.argv[2]) if len(sys.argv) > 2 else 0.001
     steps = int(sys.argv[3]) if len(sys.argv) > 3 else 1500

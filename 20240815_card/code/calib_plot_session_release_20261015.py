@@ -56,10 +56,43 @@ matplotlib.rcParams["axes.unicode_minus"] = False
 
 
 def d(s):
+    """Parse an ISO date string into a datetime.
+
+    Parameters
+    ----------
+    s : str
+        Date string in ``YYYY-MM-DD`` format.
+
+    Returns
+    -------
+    datetime.datetime
+        The parsed datetime at midnight.
+    """
     return dt.datetime.strptime(s, "%Y-%m-%d")
 
 
 def main():
+    """Draw the paper-84 vs released-45 session timeline figure.
+
+    Builds a two-panel figure (session lanes with release / personal-use
+    coloring, plus cumulative session counts), saves it to ``OUT``, and runs
+    an in-figure pixel self-check that every tick matches its intended color
+    class.
+
+    Returns
+    -------
+    None
+        Summary counts are printed to stdout; the figure is saved to ``OUT``.
+
+    Raises
+    ------
+    AssertionError
+        If released dates do not partition into 45 sessions or an in-window
+        release fails to map to a Table S2 study day.
+    SystemExit
+        If a tick falls outside the rendered canvas or the tick-color
+        self-check fails.
+    """
     paper_dates = [IMPLANT + dt.timedelta(days=v) for v in DAYS.values()]
     win_end = IMPLANT + dt.timedelta(days=251)          # S84 = 2024-03-23
     rel = [d(s) for s in RELEASED]

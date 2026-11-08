@@ -39,7 +39,25 @@ SESSIONS = ['t5.2019.05.08', 't5.2019.11.25', 't5.2019.12.09', 't5.2019.12.11', 
 
 
 def build_default_args(partition, synth_batch_size):
-    """官方 getDefaultRNNArgs + 数据包 args.p 的超参，路径改到本仓解压区。"""
+    """官方 getDefaultRNNArgs + 数据包 args.p 的超参，路径改到本仓解压区。
+
+    Parameters
+    ----------
+    partition : str
+        Cross-validation partition name (``'HeldOutBlocks'`` or
+        ``'HeldOutTrials'``); selects Step2 label and partition files and
+        the run-directory suffix.
+    synth_batch_size : int
+        Synthetic portion of each batch (0 disables synthetic data and
+        gives a ``_real`` run directory suffix).
+
+    Returns
+    -------
+    dict
+        Full training-args dictionary mirroring the official args.p keys
+        (model, augmentation, optimisation and per-session file paths)
+        plus this port's ``randomWalkAxisMode`` key.
+    """
     root = os.path.join(REPO, 'data', '20210512_willett', 'handwritingBCIData')
     args = {
         'mode': 'train', 'nUnits': 512, 'rnnBinSize': 2, 'smoothInputs': 1, 'skipLen': 5,
@@ -67,15 +85,75 @@ def build_default_args(partition, synth_batch_size):
 
 
 class RealDataBatcher:
-    """真数据流：随机截句 + 训练噪声（验证时 add_noise=False），一次产一个 batch 的 numpy 数组。"""
+    """真数据流：随机截句 + 训练噪声（验证时 add_noise=False），一次产一个 batch 的 numpy 数组。
+
+    Parameters
+    ----------
+    neural : numpy.ndarray
+        Per-sentence neural cubes for the split, shape ``(S, T, N)``.
+    targets : numpy.ndarray
+        Per-sentence targets, shape ``(S, T, C)``.
+    err_w : numpy.ndarray
+        Per-sentence error weights, shape ``(S, T)``.
+    bins_per_trial : numpy.ndarray
+        Per-sentence bin counts, shape ``(S,)``.
+    args : dict
+        Training args (timeSteps, directionality, noise SDs, seed,
+        randomWalkAxisMode).
+    add_noise : bool
+        Whether to apply training noise to each snippet (False for
+        validation batches).
+    """
 
     def __init__(self, neural, targets, err_w, bins_per_trial, args, add_noise):
+        """Store the sentence arrays and seed a private RNG.
+
+        Parameters
+        ----------
+        neural : numpy.ndarray
+            Per-sentence neural cubes, shape ``(S, T, N)``.
+        targets : numpy.ndarray
+            Per-sentence targets, shape ``(S, T, C)``.
+        err_w : numpy.ndarray
+            Per-sentence error weights, shape ``(S, T)``.
+        bins_per_trial : numpy.ndarray
+            Per-sentence bin counts, shape ``(S,)``.
+        args : dict
+            Training args used by ``next``.
+        add_noise : bool
+            Whether ``next`` applies training noise; the RNG seed is offset
+            by 10,000,000 in the noise-free (validation) case so train and
+            val streams never share draws.
+
+        Returns
+        -------
+        None
+        """
         self.neural, self.targets, self.err_w = neural, targets, err_w
         self.bins = bins_per_trial
         self.args, self.add_noise = args, add_noise
         self.rng = np.random.default_rng(args['seed'] + (0 if add_noise else 10_000_000))
 
     def next(self, batch_size):
+        """Sample one training/validation batch of random sentence snippets.
+
+        Draws ``batch_size`` sentence indices, extracts a random
+        ``timeSteps``-long snippet from each (recomputing error weights per
+        the official rule), optionally applies training noise, and stacks
+        the results into torch tensors.
+
+        Parameters
+        ----------
+        batch_size : int
+            Number of sentence snippets in the batch.
+
+        Returns
+        -------
+        tuple of (torch.Tensor, torch.Tensor, torch.Tensor)
+            ``(inputs, targets, err_weights)`` float32 tensors of shapes
+            ``(B, timeSteps, N)``, ``(B, timeSteps, C)`` and
+            ``(B, timeSteps)``.
+        """
         n_steps = self.args['timeSteps']
         idx = self.rng.integers(0, self.neural.shape[0], size=batch_size)
         inp, targ, ews = [], [], []
@@ -100,18 +178,72 @@ class PrefetchBatcher:
     背景：合成数据从 D 盘（机械盘）逐批流式 mmap 读 ~22MB，单线程读盘让 GPU 挨饿
     （实测任务管理器 GPU 3%、D 盘 100%）。后台线程提前产出下 1-2 批，与 GPU 计算重叠。
     rng 只被工作线程访问，消耗顺序与串行调用一致，不改变数据分布。
+
+    Parameters
+    ----------
+    inner : object
+        Wrapped batcher exposing ``next(batch_size)`` (RealDataBatcher or
+        SynthDataBatcher).
+    batch_size : int
+        Fixed batch size requested from ``inner`` on every fill.
+    depth : int, optional
+        Queue capacity, i.e. how many batches may be produced ahead of
+        consumption (default 2).
     """
 
     def __init__(self, inner, batch_size, depth=2):
+        """Start the background producer thread.
+
+        Parameters
+        ----------
+        inner : object
+            Wrapped batcher exposing ``next(batch_size)``.
+        batch_size : int
+            Fixed batch size used for every prefetch fill.
+        depth : int, optional
+            Maximum number of prefetched batches (default 2).
+
+        Returns
+        -------
+        None
+        """
         self.inner, self.bs = inner, batch_size
         self._q = queue.Queue(maxsize=depth)
         threading.Thread(target=self._loop, daemon=True).start()
 
     def _loop(self):
+        """Producer thread body: endlessly fill the queue with batches.
+
+        Blocks on the bounded queue when the consumer is slow, which caps
+        memory at ``depth`` batches.
+
+        Returns
+        -------
+        None
+        """
         while True:
             self._q.put(self.inner.next(self.bs))
 
     def next(self, batch_size):
+        """Consume the next prefetched batch.
+
+        Parameters
+        ----------
+        batch_size : int
+            Requested batch size; must equal the fixed size given at
+            construction.
+
+        Returns
+        -------
+        tuple of (torch.Tensor, torch.Tensor, torch.Tensor)
+            The ``(inputs, targets, err_weights)`` batch produced by the
+            background thread.
+
+        Raises
+        ------
+        AssertionError
+            If ``batch_size`` differs from the construction-time size.
+        """
         assert batch_size == self.bs, 'PrefetchBatcher 只支持固定批大小'
         return self._q.get()
 
@@ -122,9 +254,43 @@ class SynthDataBatcher:
     官方语义：当日全部 20 个 bat 文件顺序流式读取 + 弱 shuffle(buffer=4) + batch 24 + 无限 repeat，
     每句加与真数据同款噪声（whiteNoiseSD/constantOffsetSD/randomWalkSD，cumsum 特征轴）。
     本移植：mmap 顺序读（跳过弱 shuffle——官方 buffer=4 的洗牌近似于顺序，统计上等价），文件间循环。
+
+    Parameters
+    ----------
+    synth_dir : str
+        Directory holding the Step3 ``bat_*_inputs/labels/errW.npy``
+        triplets for one session.
+    args : dict
+        Training args (timeSteps, noise SDs, seed, randomWalkAxisMode).
+
+    Raises
+    ------
+    FileNotFoundError
+        If ``synth_dir`` contains no ``bat_*_inputs.npy`` files.
     """
 
     def __init__(self, synth_dir, args):
+        """Discover and sort the batch files, seed the noise RNG.
+
+        Parameters
+        ----------
+        synth_dir : str
+            Directory holding the Step3 ``bat_*_{inputs,labels,errW}.npy``
+            triplets for one session.
+        args : dict
+            Training args; the RNG is seeded with ``args['seed'] +
+            20_000_000`` so this stream never shares draws with the real
+            data streams.
+
+        Returns
+        -------
+        None
+
+        Raises
+        ------
+        FileNotFoundError
+            If ``synth_dir`` contains no ``bat_*_inputs.npy`` files.
+        """
         import glob
         import re
         self.args = args
@@ -138,6 +304,20 @@ class SynthDataBatcher:
         self._mmaps = {}
 
     def _mmap(self, suffix):
+        """Return the memoised mmap view of the current batch file's array.
+
+        Parameters
+        ----------
+        suffix : str
+            Which member of the triplet to load: ``'inputs'``, ``'labels'``
+            or ``'errW'``.
+
+        Returns
+        -------
+        numpy.ndarray
+            Memory-mapped array for the current ``file_idx`` and suffix,
+            cached in ``self._mmaps``.
+        """
         key = (self.file_idx, suffix)
         if key not in self._mmaps:
             path = self.files[self.file_idx].replace('_inputs.npy', f'_{suffix}.npy')
@@ -145,6 +325,25 @@ class SynthDataBatcher:
         return self._mmaps[key]
 
     def next(self, batch_size):
+        """Produce the next noise-augmented batch from the mmap stream.
+
+        Reads rows sequentially from the current batch file, wraps to the
+        next file (cyclically) when exhausted, and applies the official
+        training noise to every sentence as it is read.
+
+        Parameters
+        ----------
+        batch_size : int
+            Number of sentences in the batch; the stream may span file
+            boundaries to fill it.
+
+        Returns
+        -------
+        tuple of (torch.Tensor, torch.Tensor, torch.Tensor)
+            ``(inputs, targets, err_weights)`` float32 tensors of shapes
+            ``(B, timeSteps, N)``, ``(B, timeSteps, C)`` and
+            ``(B, timeSteps)``.
+        """
         inp, targ, ews = [], [], []
         n_steps = self.args['timeSteps']
         while len(inp) < batch_size:
@@ -173,6 +372,24 @@ class SynthDataBatcher:
 
 
 def load_all_days(args):
+    """Load and prepare data cubes for all 10 sessions via the official loader.
+
+    Parameters
+    ----------
+    args : dict
+        Training args providing per-session file paths
+        (``sentencesFile_<d>``, ``singleLettersFile_<d>``, ``labelsFile_<d>``,
+        ``cvPartitionFile_<d>``, ``sessionName_<d>``) plus ``rnnBinSize``
+        and ``timeSteps``.
+
+    Returns
+    -------
+    tuple of (list of dict, int, int)
+        ``(cubes, n_inputs, n_outputs)``: one dict per session with keys
+        ``'neural'``, ``'targets'``, ``'err_w'``, ``'bins'`` and ``'cv'``
+        (train/test indices from the official loader), followed by the
+        input feature count and target channel count.
+    """
     cubes = []
     for d in range(len(SESSIONS)):
         neural, targets, err_w, bins, cv = prepareDataCubesForRNN(
@@ -186,6 +403,29 @@ def load_all_days(args):
 
 
 def main():
+    """Train the CharSeqRNN following the official Step4 training loop.
+
+    Builds/loads the training args, loads all 10 session cubes, constructs
+    the model and the real/synthetic/val batchers (with prefetching), then
+    runs the official-equivalent optimisation loop: multinomial day
+    selection, synthetic-then-real batch concatenation, Adam(eps=0.1) with
+    linearly decaying LR, global grad-norm clip 10, update skipping on
+    non-finite gradients, periodic validation snapshots/stats and rotating
+    checkpoints. Saves ``model_step{n}.pt`` plus stats .mat files to the
+    output directory.
+
+    Parameters
+    ----------
+    None
+        Options come from the command line: ``--partition``,
+        ``--synth`` (enable the synthetic stream), ``--argsFile``
+        (official args pickle, defaults filled in), ``--nBatches``
+        (override batch count) and ``--outputDir``.
+
+    Returns
+    -------
+    None
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--partition', choices=['HeldOutBlocks', 'HeldOutTrials'], default='HeldOutBlocks')
     ap.add_argument('--synth', action='store_true', help='使用合成数据（依赖 Step3 移植，未完成）')

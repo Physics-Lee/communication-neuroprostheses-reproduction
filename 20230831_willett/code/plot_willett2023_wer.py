@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Willett 2023 (T12, 125k vocab) WER reproduction figure.
+r"""Willett 2023 (T12, 125k vocab) WER reproduction figure.
 
 summary/willett2023_wer_3gram_lm
     PER vs WER, paper anchor (solid) vs our reproduction (hollow, bootstrap CI)
@@ -37,10 +37,42 @@ wer_df = pd.read_csv(RUN + r"\word_decode_joint3gram.csv").rename(
 
 
 def agg(df):
+    """Aggregate a per-trial error table into a corpus-level percentage.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        Per-trial table with ``edit_distance`` and ``true_len`` columns.
+
+    Returns
+    -------
+    float
+        100 * sum(edit_distance) / sum(true_len).
+    """
     return 100 * df.edit_distance.sum() / df.true_len.sum()
 
 
 def boot_ci(df, n_boot=2000, seed=0):
+    """Percentile bootstrap 95% CI for the aggregate error rate.
+
+    Resamples trials with replacement (in chunks of 500 replicates for
+    memory) and computes the corpus-level error rate, sum of edit
+    distances over sum of reference lengths, for each replicate.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        Per-trial table with ``edit_distance`` and ``true_len`` columns.
+    n_boot : int, optional
+        Number of bootstrap replicates (default 2000).
+    seed : int, optional
+        Seed for numpy's default_rng (default 0).
+
+    Returns
+    -------
+    tuple(float, float)
+        (2.5th, 97.5th) percentiles of the error rate in percent.
+    """
     rng = np.random.default_rng(seed)
     ed = df.edit_distance.to_numpy()
     ln = df.true_len.to_numpy()

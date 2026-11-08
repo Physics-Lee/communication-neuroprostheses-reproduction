@@ -1,5 +1,15 @@
-# export_tfrecord_to_npz.py — 把官方 tfrecord（已 z-score）一次性导出为 npz，供 PyTorch 训练（2026-10-10）
-# 用 reproduce_20260316_jude 环境（有 TF）运行。解析规格逐字复刻官方 brainToText_trainDecoder.py 的 datasetFeatures。
+"""One-shot export of the official (already z-scored) tfrecords to npz for PyTorch training.
+
+Run with the ``reproduce_20260316_jude`` environment (which has TensorFlow).
+The parsing spec (DATASET_FEATURES below) replicates verbatim the
+``datasetFeatures`` of the official brainToText_trainDecoder.py.
+
+Notes
+-----
+Written 2026-10-10. CLI: ``python export_tfrecord_to_npz.py [session]``
+(default session ``t18.2024.12.04``); writes ``m1_torch_data.npz`` next to
+the session's ``tfdata_20ms`` directory.
+"""
 import sys
 from pathlib import Path
 
@@ -24,10 +34,37 @@ DATASET_FEATURES = {
 
 
 def parse(example_proto):
+    """Parse one serialized tfrecord example with the official feature spec.
+
+    Parameters
+    ----------
+    example_proto : tf.Tensor
+        Serialized ``tf.train.Example`` proto from a TFRecordDataset.
+
+    Returns
+    -------
+    dict
+        Parsed feature tensors keyed by feature name (DATASET_FEATURES).
+    """
     return tf.io.parse_single_example(example_proto, DATASET_FEATURES)
 
 
 def dump_split(split):
+    """Read all tfrecord shards of one split and collect per-trial arrays.
+
+    Parameters
+    ----------
+    split : str
+        ``'train'`` or ``'test'`` subdirectory under TFDATA.
+
+    Returns
+    -------
+    tuple
+        ``(feats, seq_ids, n_ts, n_el, trans)``: list of per-trial float32
+        feature arrays; stacked dense label ids ``(N, MAX_SEQ)``; int64
+        arrays of time-step and sequence-element counts; stacked dense
+        transcriptions ``(N, MAX_SEQ)``.
+    """
     files = sorted(str(x) for x in (TFDATA / split).glob('*.tfrecord'))
     ds = tf.data.TFRecordDataset(files).map(parse)
     feats, seq_ids, n_ts, n_el, trans = [], [], [], [], []
@@ -44,7 +81,19 @@ def dump_split(split):
 
 
 def to_object_array(list_of_arrays):
-    """安全构造 1-D object 数组（np.array([单个二维数组], dtype=object) 会被 numpy 升维，埋验证路径的雷）。"""
+    """安全构造 1-D object 数组（np.array([单个二维数组], dtype=object) 会被 numpy 升维，埋验证路径的雷）。
+
+    Parameters
+    ----------
+    list_of_arrays : list of numpy.ndarray
+        Per-trial arrays of possibly differing shapes.
+
+    Returns
+    -------
+    numpy.ndarray
+        1-D object array of length ``len(list_of_arrays)`` whose elements are
+        the input arrays.
+    """
     arr = np.empty(len(list_of_arrays), dtype=object)
     for i, a in enumerate(list_of_arrays):
         arr[i] = a

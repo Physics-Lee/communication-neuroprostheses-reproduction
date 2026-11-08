@@ -29,8 +29,23 @@ SESSIONS_2025 = ["t15.2025.01.10", "t15.2025.01.12", "t15.2025.03.14",
 
 def word_ed(ref: str, hyp: str) -> tuple:
     """Word-level Levenshtein distance after the official remove_punctuation
-    (evaluate_model_helpers.py): strip non-letters, collapse '- ', lowercase."""
+    (evaluate_model_helpers.py): strip non-letters, collapse '- ', lowercase.
+
+    Parameters
+    ----------
+    ref : str
+        Reference (ground-truth) sentence.
+    hyp : str
+        Hypothesis (decoded) sentence.
+
+    Returns
+    -------
+    tuple of (int, int)
+        Word-level edit distance between cleaned ``ref`` and ``hyp``, and the
+        number of words in the cleaned reference.
+    """
     def clean(s):
+        """Normalize one sentence to a lowercase word list (letters/apostrophes only)."""
         s = re.sub(r"[^a-zA-Z\- \']", "", s)
         return s.replace("- ", " ").lower().split()
     r, h = clean(ref), clean(hyp)
@@ -45,11 +60,42 @@ def word_ed(ref: str, hyp: str) -> tuple:
 
 
 def read_tsv(path):
+    """Read one of the P4 decoding TSV files.
+
+    Parameters
+    ----------
+    path : str
+        Path to a tab-separated file with ``ref``/``hyp`` (and optionally
+        ``ed``) columns.
+
+    Returns
+    -------
+    pandas.DataFrame
+        The TSV contents as a DataFrame.
+    """
     df = pd.read_csv(path, sep="\t", encoding="utf-8")
     return df
 
 
 def main():
+    r"""Compute per-day 5-gram and +OPT WER for the six 2025 sessions.
+
+    Verifies that the logits-hdf5, greedy CSV and TSV row orders agree,
+    recomputes word-level edit distances from the P4 endpoint TSVs, prints
+    per-day and pooled (6-day / last-5 / no-01.12) WERs, and saves the
+    per-day table to ``result\calib_20261014_p0_wer_byday.csv``.
+
+    Returns
+    -------
+    None
+        Results are printed to stdout and saved to the per-day CSV.
+
+    Raises
+    ------
+    AssertionError
+        If per-session trial counts or TSV row counts/orders disagree with
+        the greedy CSV, or a recomputed edit distance mismatches the TSV.
+    """
     import h5py
 
     csv = pd.read_csv(os.path.join(P4, "val_greedy_per_trial.csv"))
@@ -84,6 +130,7 @@ def main():
     ).to_string(index=False))
 
     def pooled(sub, col):
+        """Pooled WER (%) over the given sessions: total edit distance / total ref words."""
         m = df[df.session.isin(sub)]
         return 100 * m[col].sum() / m.ref_words.sum()
 

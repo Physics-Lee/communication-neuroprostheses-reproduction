@@ -12,6 +12,30 @@ import numpy as np
 
 
 def mel_bands(pcm, sr=16000, n_mels=40, n_fft=512, htk=False, fmin=0.0):
+    """Convert int16 PCM audio to a log-power Mel spectrogram.
+
+    Parameters
+    ----------
+    pcm : numpy.ndarray
+        Raw int16 waveform samples.
+    sr : int, optional
+        Sampling rate in Hz. Default 16000.
+    n_mels : int, optional
+        Number of Mel frequency bands. Default 40.
+    n_fft : int, optional
+        FFT window size in samples. Default 512.
+    htk : bool, optional
+        If True, use the HTK Mel scale; otherwise the Slaney scale.
+        Default False.
+    fmin : float, optional
+        Lowest Mel filter frequency in Hz. Default 0.0.
+
+    Returns
+    -------
+    numpy.ndarray
+        Shape (n_mels, n_frames) dB-scale Mel spectrogram
+        (``librosa.power_to_db`` with ``ref=1.0``).
+    """
     import librosa
     m = librosa.feature.melspectrogram(
         y=pcm.astype(np.float32) / 32768.0, sr=sr, n_fft=n_fft,
@@ -20,6 +44,19 @@ def mel_bands(pcm, sr=16000, n_mels=40, n_fft=512, htk=False, fmin=0.0):
 
 
 def main():
+    """Run the Mel-parameter sweep over pre-synthesized PCM pairs.
+
+    Scans ``tmp_mel/*_pred_*.pcm`` / ``*_tgt_*.pcm`` pairs, recomputes Mel
+    spectrograms under six librosa configurations, and reports the mean
+    per-band Pearson correlation between predicted and target audio for
+    each configuration.
+
+    Returns
+    -------
+    None
+        Per-configuration mean correlations are printed to stdout and
+        written to ``result/mel_param_scan.json``.
+    """
     work = ("./20250612_wairagkar/"
             "tmp_mel")
     days = {}

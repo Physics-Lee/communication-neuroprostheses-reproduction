@@ -24,6 +24,18 @@ DAYS = ["t15.2025.01.10", "t15.2025.01.12", "t15.2025.03.14",
 
 
 def main():
+    """Assemble the calibration comparison table and write it to CSV.
+
+    Reads the static per-trial greedy decoding CSV from the P4 run and the
+    per-arm summary/trial files of the simulated online-calibration runs,
+    computes static vs. online PER (including last-5-sentence windows), and
+    writes one row per (session, lr, arm) to ``OUT``.
+
+    Returns
+    -------
+    None
+        Results are printed to stdout and saved to ``OUT``.
+    """
     csv = pd.read_csv(P4CSV)
     static = {}
     static_last5 = {}

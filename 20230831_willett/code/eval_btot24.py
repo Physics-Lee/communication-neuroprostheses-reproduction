@@ -31,6 +31,14 @@ MODEL_ARGS = OmegaConf.create({
 
 
 def main():
+    """Evaluate a BtoT24 checkpoint on the test partition with greedy CTC.
+
+    Rebuilds the GRUDecoder with the training configuration, loads
+    <run_dir>/checkpoint/best_checkpoint, decodes every data_val.hdf5
+    trial with greedy CTC (argmax -> unique_consecutive -> drop blank),
+    aggregates PER = sum(edit distance) / sum(reference length), writes a
+    per-trial csv into run_dir and prints the best/worst 5 sessions.
+    """
     run_dir = sys.argv[1]
     ckpt_path = os.path.join(run_dir, "checkpoint", "best_checkpoint")
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

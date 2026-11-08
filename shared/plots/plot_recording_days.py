@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Recording-day timelines of the four BrainGate speech datasets.
+r"""Recording-day timelines of the four BrainGate speech datasets.
 
 X axis = calendar date in both panels.
 A  one marker per recording day, one row per participant (t12/t15/t16/t17),
@@ -47,6 +47,24 @@ PATIENTS = ["t12", "t15", "t16", "t17"]
 ROW = {p: i for i, p in enumerate(reversed(PATIENTS))}  # t12 top row
 
 def session_dates(folder: Path, patient: str) -> list:
+    """Collect distinct recording dates for a patient from session dirs.
+
+    Scans sub-directories named ``tXX.YYYY.MM.DD[_*]``, keeps those whose
+    patient prefix matches, and deduplicates by date (kunz splits one
+    day into several condition dirs).
+
+    Parameters
+    ----------
+    folder : Path
+        Directory containing the hdf5 session sub-directories.
+    patient : str
+        Patient prefix to match, e.g. ``"t12"``.
+
+    Returns
+    -------
+    list of str
+        Sorted unique dates as ``"YYYY-MM-DD"`` strings.
+    """
     out = []
     for d in sorted(folder.iterdir()):
         parts = d.name.split("_")[0].split(".")

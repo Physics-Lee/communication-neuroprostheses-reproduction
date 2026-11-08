@@ -16,10 +16,52 @@ ROOT = r".\shared\data"
 
 
 def norm(s):
+    """Normalize a transcript for WER scoring.
+
+    Replaces every character other than ASCII letters, apostrophes,
+    ``<``/``>`` and spaces with a space, uppercases, and tokenizes on
+    whitespace.
+
+    Parameters
+    ----------
+    s : str
+        Raw transcript string (reference or hypothesis).
+
+    Returns
+    -------
+    list of str
+        Uppercase word tokens.
+    """
     return re.sub(r"[^A-Za-z'< ]", " ", s).upper().split()
 
 
 def wer_from_tsv(path, meta_csv=None, meta_session=False):
+    """Compute pooled and per-session-median WER from a decode TSV.
+
+    Scores each data row (key TAB ref TAB hyp ...) with a token edit
+    distance against the normalized reference. Optionally joins a
+    per-trial meta CSV by row order to also produce the median of
+    per-session WERs.
+
+    Parameters
+    ----------
+    path : str
+        Path to the decode-output TSV to score.
+    meta_csv : str, optional
+        Path to a per-trial CSV with a ``session`` column, aligned with
+        the TSV rows by position. If None, no per-session breakdown is
+        computed.
+    meta_session : bool, optional
+        Accepted for interface compatibility; not used by the current
+        implementation.
+
+    Returns
+    -------
+    tuple of (float or None, float or None)
+        ``(pooled_wer, day_median_wer)`` in percent. Both are None when
+        the file has no scoreable tokens; ``day_median_wer`` is None when
+        no session metadata was supplied.
+    """
     te = tn = 0
     sess_ed, sess_n = defaultdict(int), defaultdict(int)
     sessions = None

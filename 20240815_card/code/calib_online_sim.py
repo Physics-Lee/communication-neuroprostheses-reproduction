@@ -45,6 +45,22 @@ import editdistance  # noqa: E402
 
 
 def load_trials(session, split):
+    """Load all trials of one session split from the official HDF5 release.
+
+    Parameters
+    ----------
+    session : str
+        Session directory name, e.g. ``t15.2025.01.10``.
+    split : str
+        HDF5 split filename stem, e.g. ``data_val`` or ``data_train``.
+
+    Returns
+    -------
+    list of dict
+        One dict per trial (sorted by key) with keys ``x`` (float32 input
+        features, shape ``(time, 512)``), ``y`` (int64 class-id sequence),
+        ``seq_len`` (int), ``block`` (int) and ``trial`` (int).
+    """
     import h5py
     path = os.path.join(DATA_DIR, session, f"{split}.hdf5")
     trials = []
@@ -62,6 +78,23 @@ def load_trials(session, split):
 
 
 def build_model(args, sessions, device):
+    """Instantiate the official GRUDecoder and load the P4 best checkpoint.
+
+    Parameters
+    ----------
+    args : omegaconf.DictConfig
+        Training arguments loaded from the P4 run's ``args.yaml`` (used for
+        model hyperparameters and dataset metadata).
+    sessions : list of str
+        Ordered session list defining the day-layer count.
+    device : torch.device
+        Device the model is moved to.
+
+    Returns
+    -------
+    rnn_model.GRUDecoder
+        The model in eval-ready state on ``device`` with P4 weights loaded.
+    """
     model = GRUDecoder(
         neural_dim=args["model"]["n_input_features"], n_units=args["model"]["n_units"],
         n_days=len(sessions), n_classes=args["dataset"]["n_classes"],
@@ -80,7 +113,24 @@ def build_model(args, sessions, device):
 
 def make_optimizer(model, lr, args):
     """Trainer's param groups (bias wd 0, day wd 0, rest wd 0.001) but with a
-    single constant LR for every group (Table S5 gives one online LR)."""
+    single constant LR for every group (Table S5 gives one online LR).
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        The GRUDecoder whose parameters are grouped.
+    lr : float
+        Constant learning rate applied to every parameter group.
+    args : omegaconf.DictConfig
+        Training arguments supplying optimizer hyperparameters (weight
+        decays, betas, epsilon).
+
+    Returns
+    -------
+    torch.optim.AdamW
+        Fresh optimizer with ``bias``/``day_layer``/``other`` parameter
+        groups (``fused=True``).
+    """
     bias = [p for n, p in model.named_parameters() if "gru.bias" in n or "out.bias" in n]
     day = [p for n, p in model.named_parameters() if "day_" in n]
     other = [p for n, p in model.named_parameters()
@@ -95,7 +145,25 @@ def make_optimizer(model, lr, args):
 
 def train_transform(features, n_time_steps, ta, device):
     """rnn_trainer.transform_data(mode='train'), official order and scales;
-    static_gain / random_walk are 0 in rnn_args.yaml and skipped like upstream."""
+    static_gain / random_walk are 0 in rnn_args.yaml and skipped like upstream.
+
+    Parameters
+    ----------
+    features : torch.Tensor
+        Input batch of shape ``(batch, time, channels)``.
+    n_time_steps : torch.Tensor
+        Per-sample sequence lengths (adjusted for the random cut).
+    ta : omegaconf.DictConfig or dict
+        Transform hyperparameters (white_noise_std, constant_offset_std,
+        random_cut, smooth_kernel_std, smooth_kernel_size).
+    device : torch.device
+        Device on which random noise tensors are created.
+
+    Returns
+    -------
+    tuple of (torch.Tensor, torch.Tensor)
+        The augmented features and the updated sequence lengths.
+    """
     b, _, c = features.shape
     features = features + torch.randn(features.shape, device=device) * ta["white_noise_std"]
     features = features + torch.randn((b, 1, c), device=device) * ta["constant_offset_std"]
@@ -109,6 +177,23 @@ def train_transform(features, n_time_steps, ta, device):
 
 
 def collate(samples, device):
+    """Pad and stack trials into batched training tensors.
+
+    Parameters
+    ----------
+    samples : list of tuple
+        Each element is ``(trial_dict, day_index)`` where ``trial_dict`` has
+        keys ``x``, ``y``, ``seq_len``.
+    device : torch.device
+        Target device for the returned tensors.
+
+    Returns
+    -------
+    tuple of torch.Tensor
+        ``(x, lens, y, ylens, day)`` — zero-padded inputs, input lengths,
+        zero-padded (to 500) class-id sequences, label lengths, and day
+        indices, all on ``device``.
+    """
     T = max(s["x"].shape[0] for s, _ in samples)
     x = torch.zeros(len(samples), T, 512)
     lens = torch.zeros(len(samples), dtype=torch.long)
@@ -126,6 +211,30 @@ def collate(samples, device):
 
 @torch.no_grad()
 def decode_trial(model, args, trial, day_idx, device):
+    """Greedy-decode a single trial with eval_val_per.py semantics.
+
+    Applies bf16 autocast and 'valid'-mode Gaussian smoothing before the
+    forward pass, then collapses repeats and removes blanks to yield the CTC
+    prediction.
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        The GRUDecoder in eval mode.
+    args : omegaconf.DictConfig
+        Training arguments (transform parameters, use_amp flag).
+    trial : dict
+        Trial dict with key ``x`` (input features).
+    day_idx : int
+        Recording-day index used for the day layer.
+    device : torch.device
+        Device the computation runs on.
+
+    Returns
+    -------
+    numpy.ndarray
+        Array of predicted non-blank class ids for the trial.
+    """
     ta = args["dataset"]["data_transforms"]
     x = torch.tensor(np.expand_dims(trial["x"], 0), device=device, dtype=torch.bfloat16)
     with torch.autocast(device_type="cuda", enabled=args["use_amp"], dtype=torch.bfloat16):
@@ -138,7 +247,36 @@ def decode_trial(model, args, trial, day_idx, device):
 
 def finetune_trigger(model, opt, args, disclosed, day_idx, replay, rng, cfg, device):
     """One post-trial update burst: fresh 60/40 batches per optimizer step,
-    micro 32 x accum 2, min..max steps, early stop below loss-stop."""
+    micro 32 x accum 2, min..max steps, early stop below loss-stop.
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        The GRUDecoder being fine-tuned (must be in train mode).
+    opt : torch.optim.AdamW
+        Optimizer to step.
+    args : omegaconf.DictConfig
+        Training arguments (transform params, grad-norm clip, patching).
+    disclosed : list of dict
+        Current-day trials disclosed so far (sampled with replacement).
+    day_idx : int
+        Day index assigned to current-day trials.
+    replay : list of tuple
+        Replay pool of ``(trial_dict, day_index)`` pairs from history
+        sessions.
+    rng : numpy.random.Generator
+        RNG driving batch sampling and shuffling.
+    cfg : argparse.Namespace
+        CLI config with ``batch``, ``cur_frac``, ``accum``, ``min_steps``,
+        ``max_steps`` and ``loss_stop``.
+    device : torch.device
+        Device the computation runs on.
+
+    Returns
+    -------
+    list of float
+        Mean (per-sentence NLL scale) loss of each optimizer step taken.
+    """
     ta = args["dataset"]["data_transforms"]
     ctc = torch.nn.CTCLoss(blank=0, reduction="none", zero_infinity=True)
     n_cur = int(round(cfg.batch * cfg.cur_frac))
@@ -172,6 +310,19 @@ def finetune_trigger(model, opt, args, disclosed, day_idx, replay, rng, cfg, dev
 
 
 def main():
+    """Run the offline simulation of sentence-by-sentence online fine-tuning.
+
+    Decodes each val trial of the target session before its label is
+    disclosed, fine-tunes after every trial once ``--k`` trials are
+    accumulated, then writes per-trial online PER, endpoint re-decode,
+    a steps log, summary JSON and the final checkpoint under
+    ``OUT_ROOT/<session>_lr<lr>_arm<arm>``.
+
+    Returns
+    -------
+    None
+        Results are printed to stdout and written to the output directory.
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument("session")
     ap.add_argument("lr", type=float)

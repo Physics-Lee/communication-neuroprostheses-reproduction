@@ -57,6 +57,20 @@ EVAL_DAYS = {
 
 
 def main():
+    """Score the official pretrained .h5 decoders on evaluation days.
+
+    For each day in ``EVAL_DAYS``, loads the released neural data, target
+    speech features, and word timings from the Dryad zip, runs the official
+    Keras decoder on the "valuation" trials (with the fixed 63-bin frame
+    alignment), and computes the mean per-band Pearson correlation on
+    non-silent frames.
+
+    Returns
+    -------
+    None
+        Per-day statistics are printed to stdout and the full report is
+        written to ``result/tier1_official_model_inference.json``.
+    """
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
     import tensorflow as tf  # noqa: F401
     from keras.models import load_model

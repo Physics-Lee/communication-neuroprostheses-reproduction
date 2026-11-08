@@ -15,6 +15,16 @@ OUT = r".\shared\result\figs"
 
 
 def rot_labels(ax):
+    """Rotate a figure's x tick labels for readability.
+
+    Sets the x tick labels of ``ax`` to a 30-degree right-anchored
+    rotation.
+
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        Axes whose tick labels should be rotated.
+    """
     plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
 
 

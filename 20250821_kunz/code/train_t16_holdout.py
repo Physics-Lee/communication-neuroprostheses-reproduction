@@ -24,6 +24,24 @@ ROOT = r".\20250821_kunz\data\20250821_kunz\hdf5_t16holdout"
 
 
 def main():
+    """Train one fold of the T16 block-level holdout baseline.
+
+    Discovers the fold's sessions under ``hdf5_t16holdout/fold<F>``
+    (exactly one ``*val`` session, the rest train), overrides the base
+    ``rnn_args.yaml`` configuration accordingly, and launches the
+    nejm-brain-to-text trainer.
+
+    Returns
+    -------
+    None
+        Training runs to completion via ``BrainToTextDecoder_Trainer``.
+
+    Raises
+    ------
+    AssertionError
+        If the fold directory does not contain exactly one ``*val``
+        session.
+    """
     fold, n_batches, out_root = int(sys.argv[1]), int(sys.argv[2]), sys.argv[3]
     val_every = int(sys.argv[4]) if len(sys.argv) > 4 else 100
     data_dir = os.path.join(ROOT, f"fold{fold}")

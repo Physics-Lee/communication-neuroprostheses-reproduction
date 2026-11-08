@@ -58,6 +58,20 @@ COLOR_LEGEND_ITEMS = (
 
 
 def make_color_legend_handles(keys=None):
+    """Build matplotlib patch handles for the data-openness color legend.
+
+    Parameters
+    ----------
+    keys : sequence of str, optional
+        Restrict the legend to entries whose key (e.g. ``"open"``,
+        ``"closed"``) appears in this sequence. If None, all entries of
+        ``COLOR_LEGEND_ITEMS`` are used.
+
+    Returns
+    -------
+    list of matplotlib.patches.Patch
+        Semi-transparent patches carrying the legend labels.
+    """
     items = COLOR_LEGEND_ITEMS if keys is None else [
         it for it in COLOR_LEGEND_ITEMS if it[0] in keys
     ]
@@ -73,7 +87,23 @@ def make_color_legend_handles(keys=None):
 
 
 def check_figure_overlaps(fig, tol_px=1.0):
-    """Verify that no two visible text bounding boxes within an axes overlap."""
+    """Verify that no two visible text bounding boxes within an axes overlap.
+
+    Parameters
+    ----------
+    fig : matplotlib.figure.Figure
+        The figure whose axes will be scanned for colliding text.
+    tol_px : float, optional
+        Overlap tolerance in pixels; overlaps smaller than this in either
+        axis are ignored.
+
+    Returns
+    -------
+    list of tuple of (str, str, float)
+        One entry per overlapping pair: the two texts (newlines replaced
+        by ``" | "``) and the overlap area as a percentage of the smaller
+        bounding box. Empty when no overlaps are found.
+    """
     fig.canvas.draw()
     r = fig.canvas.get_renderer()
     bad = []
@@ -103,6 +133,39 @@ def check_figure_overlaps(fig, tol_px=1.0):
 
 
 def render_figure2(yaml_path=None, session_json_path=None, out_stem="communication_neuroprostheses_reproduction", verify_overlaps=True):
+    """Render the full 8-study benchmark overview figure (Figure 2).
+
+    Loads the benchmark YAML, syncs its JSON mirror, draws panels (a)
+    vocabulary funnel through (i) session-level PER vs WER including the
+    funnel and reproduction curly-brace annotations, optionally verifies
+    that no text bounding boxes collide, and saves the figure as
+    ``<out_stem>.png`` and ``<out_stem>.pdf``.
+
+    Parameters
+    ----------
+    yaml_path : str, optional
+        Path to ``reproduction_benchmark.yaml``. Defaults to the copy in
+        this script's directory.
+    session_json_path : str, optional
+        Path to ``session_per_vs_wer.json`` used by panel (i). Defaults
+        to the copy in this script's directory.
+    out_stem : str, optional
+        Output path stem; ``.png`` and ``.pdf`` are appended.
+    verify_overlaps : bool, optional
+        When True, run ``check_figure_overlaps`` before saving and raise
+        on any collision.
+
+    Returns
+    -------
+    tuple of (int, int)
+        ``(n_open_pillars, n_repro_pairs)``: the number of dataset-size
+        rows (panel b) and reproduction pairs (panel e).
+
+    Raises
+    ------
+    RuntimeError
+        If ``verify_overlaps`` is True and overlapping text is detected.
+    """
     here = os.path.dirname(os.path.abspath(__file__))
     if yaml_path is None:
         yaml_path = os.path.join(here, "reproduction_benchmark.yaml")
@@ -820,6 +883,11 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
 
 
 def main():
+    """Parse CLI arguments and run ``render_figure2``.
+
+    Supports overriding the benchmark YAML, session JSON, output stem,
+    and the text-overlap check via command-line flags.
+    """
     here = os.path.dirname(os.path.abspath(__file__))
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--yaml", default=os.path.join(here, "reproduction_benchmark.yaml"),

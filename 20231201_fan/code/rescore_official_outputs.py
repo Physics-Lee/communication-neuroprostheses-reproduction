@@ -28,6 +28,22 @@ TOK = re.compile(r"[^a-z0-9']+")
 
 
 def words_of(s):
+    """Extract the normalized word list from a sentence string.
+
+    Normalization follows the survey repo convention: '>' word separators
+    become spaces, the text is casefolded, and every character outside
+    ``[a-z0-9']`` is stripped from each token; empty tokens are dropped.
+
+    Parameters
+    ----------
+    s : str
+        Raw sentence string (may contain '>' separators).
+
+    Returns
+    -------
+    list of str
+        Normalized non-empty words.
+    """
     out = []
     for w in str(s).replace(">", " ").casefold().split():
         w = TOK.sub("", w)
@@ -37,6 +53,24 @@ def words_of(s):
 
 
 def wer(ref, hyp):
+    """Word-level edit distance between a reference and a hypothesis.
+
+    Implements Levenshtein distance on word lists with a rolling-row
+    dynamic-programming table (O(len(hyp)) memory).
+
+    Parameters
+    ----------
+    ref : str
+        Reference (ground-truth) sentence.
+    hyp : str
+        Hypothesis (decoded) sentence.
+
+    Returns
+    -------
+    tuple of (int, int)
+        Word-level edit distance and the number of reference words
+        (the WER denominator).
+    """
     a, b = words_of(ref), words_of(hyp)
     m, n = len(a), len(b)
     dp = list(range(n + 1))
@@ -50,6 +84,15 @@ def wer(ref, hyp):
 
 
 def main():
+    """Rescore the official online decoded outputs for both eval arms.
+
+    Iterates every per-session .mat inside the Dryad zip for the
+    recalibration and no_recalibration arms, scores the raw RNN beam
+    (rnn_decoded) and post-LM (lm_decoded) outputs against the ground-
+    truth sentences, aggregates per-session and arm-level WER / accuracy
+    statistics, writes the JSON report to OUT, and prints a summary
+    table.
+    """
     z = zipfile.ZipFile(ZIP)
     report = {"arms": {}}
     for arm in ["recalibration", "no_recalibration"]:

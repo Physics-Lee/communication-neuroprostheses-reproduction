@@ -31,6 +31,26 @@ EXCLUDE = ["t15.2025.01.12", "t15.2025.03.14", "t15.2025.03.16",
 
 
 def main():
+    """Build one rapid-calibration fine-tune config for a target day.
+
+    Creates ``ft_<day>_N<N>`` under ``FT_BASE`` with empty train splits for
+    the 40 kept days, the first N train trials plus full val for the target
+    day, a rewritten ``args.yaml`` (41 sessions, val = target only), and the
+    Step-2 checkpoint expanded with an identity-init day layer at index 40.
+
+    Returns
+    -------
+    None
+        A summary line is printed to stdout.
+
+    Raises
+    ------
+    AssertionError
+        If the target is not an excluded day or the Step-2 session list is
+        not the expected 40 kept days.
+    SystemExit
+        If the output directory already exists (refuses to overwrite).
+    """
     target, n = sys.argv[1], int(sys.argv[2])
     assert target in EXCLUDE, f"{target} not an excluded day"
     out_root = os.path.join(FT_BASE, f"ft_{target.replace('.', '')}_N{n}")

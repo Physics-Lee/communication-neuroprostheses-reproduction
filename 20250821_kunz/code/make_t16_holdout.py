@@ -35,6 +35,26 @@ FOLDS = {  # fold -> held-out (val) block
 
 
 def main():
+    """Build the three block-level T16 holdout fold directories.
+
+    Groups the source trials by ``block_num``, sanity-checks the expected
+    3 x 40-trial block layout, and for each fold writes the train
+    (two blocks) and val (one block) session directories under
+    ``hdf5_t16holdout/foldF``.
+
+    Returns
+    -------
+    None
+        Per-fold split summaries are printed to stdout.
+
+    Raises
+    ------
+    AssertionError
+        If the source block layout differs from blocks 1/4/6 with 40
+        trials each.
+    SystemExit
+        If a fold output directory already exists (idempotent guard).
+    """
     with h5py.File(SRC, "r") as src:
         by_block = {}
         for key in sorted(src.keys()):
@@ -62,6 +82,25 @@ def main():
 
 
 def _write(out_path, keys, session_name):
+    """Copy selected source trial groups into a new hdf5 file.
+
+    Datasets are copied verbatim; the ``session`` attribute is rewritten to
+    ``session_name`` and trial keys are re-indexed sequentially.
+
+    Parameters
+    ----------
+    out_path : str
+        Path of the hdf5 file to create.
+    keys : list of str
+        Source trial group names, in output order.
+    session_name : str
+        Session label to store in each trial's ``session`` attribute.
+
+    Returns
+    -------
+    None
+        The written path and trial count are printed to stdout.
+    """
     with h5py.File(SRC, "r") as src, h5py.File(out_path, "w") as dst:
         for i, key in enumerate(keys):
             g = src[key]

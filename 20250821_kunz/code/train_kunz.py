@@ -26,6 +26,23 @@ DATA_DIR = r".\20250821_kunz\data\20250821_kunz\hdf5"
 
 
 def main():
+    """Train the GRU decoder for one participant and training arm.
+
+    Selects the participant's open-loop sessions for the requested arm
+    (keeping all ``*_eval`` sessions for validation and day indexing),
+    overrides the base ``rnn_args.yaml`` configuration accordingly, and
+    launches the nejm-brain-to-text trainer.
+
+    Returns
+    -------
+    None
+        Training runs to completion via ``BrainToTextDecoder_Trainer``.
+
+    Raises
+    ------
+    AssertionError
+        If no train sessions match the participant/arm combination.
+    """
     subj, arm, n_batches, out_root = sys.argv[1], sys.argv[2], int(sys.argv[3]), sys.argv[4]
     val_every = int(sys.argv[5]) if len(sys.argv) > 5 else 500
 

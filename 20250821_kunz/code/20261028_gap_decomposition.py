@@ -20,20 +20,76 @@ OUT = os.path.join(R, "result", "20261028_gap_decomposition.tsv")
 
 
 def rows(path, delim=","):
+    """Read a delimited text file into a list of rows.
+
+    Parameters
+    ----------
+    path : str
+        Path to the CSV/TSV file to read.
+    delim : str, optional
+        Field delimiter. Default `","`.
+
+    Returns
+    -------
+    list of list of str
+        Rows as parsed by ``csv.reader`` (header included).
+    """
     with open(path, newline="", encoding="utf-8") as f:
         return list(csv.reader(f, delimiter=delim))
 
 
 def wer_pct(ed_list):
+    """Pool per-utterance edit distances into a WER percentage.
+
+    Parameters
+    ----------
+    ed_list : sequence of tuple
+        Each element is ``(n_errors, n_ref_words)`` or a longer tuple whose
+        first two entries are the error count and reference length.
+
+    Returns
+    -------
+    tuple of (float, int)
+        Pooled WER in percent and the number of utterances pooled.
+    """
     e = sum(int(x[0]) for x in ed_list)
     n = sum(int(x[1]) for x in ed_list)
     return 100.0 * e / max(n, 1), len(ed_list)
 
 
 def ed(hyp, ref):
+    """Compute Levenshtein word-edit distance between hypothesis and reference.
+
+    Parameters
+    ----------
+    hyp : str
+        Hypothesis sentence (whitespace-tokenized words).
+    ref : str
+        Reference sentence (whitespace-tokenized words).
+
+    Returns
+    -------
+    tuple of (int, int)
+        Word-level edit distance and the number of reference words.
+    """
     r, h = ref.split(), hyp.split()
 
     def dist(a, b):
+        """Compute the Levenshtein distance between two word lists.
+
+        Parameters
+        ----------
+        a : list of str
+            Reference word sequence.
+        b : list of str
+            Hypothesis word sequence.
+
+        Returns
+        -------
+        int
+            Minimum number of word insertions, deletions, and
+            substitutions transforming ``a`` into ``b``.
+        """
         d = [[0] * (len(b) + 1) for _ in range(len(a) + 1)]
         for i in range(len(a) + 1):
             d[i][0] = i
@@ -48,6 +104,25 @@ def ed(hyp, ref):
 
 
 def analyze(part):
+    """Aggregate per-session PER and per-LM-tier WER for one implant part.
+
+    Reads the decoding artifacts under ``data/20250821_kunz/run_<part>_mixed``
+    (per-trial greedy PER, 3-gram / TLG 5-gram / final-full word decodes,
+    and the bp1+OPT / bp1+OPT+Qwen subsets) and pools them per session and
+    per LM tier, both on the full key set and on the bp1 subset.
+
+    Parameters
+    ----------
+    part : str
+        Implant part identifier, e.g. `"t12"`, `"t15"`, or `"t16"`.
+
+    Returns
+    -------
+    dict
+        Keys include ``"part"``, ``"n"``, ``"per_session_per"``,
+        ``"per_session_wer_final"``, ``"tiers_full"``, and ``"tiers_bp1"``
+        mapping tier names to ``(wer_pct, n)`` tuples.
+    """
     rd = os.path.join(K, f"run_{part}_mixed")
     per = rows(os.path.join(rd, "val_greedy_per_trial.csv"))
     hdr, body = per[0], per[1:]
@@ -152,6 +227,17 @@ def analyze(part):
 
 
 def main():
+    """Build the gap-decomposition summary table for t12/t15/t16.
+
+    Runs :func:`analyze` for each part, prints the per-session and per-tier
+    statistics to stdout, and writes the combined TSV table.
+
+    Returns
+    -------
+    None
+        The summary table is printed and written to
+        ``result/20261028_gap_decomposition.tsv``.
+    """
     lines = []
     lines.append("part\tn\tper_session_PER\tper_session_WER(final)"
                  "\tWER_3gram\tWER_5gram\tWER_final\tWER_bp1+OPT\tWER_bp1+OPT+Qwen"

@@ -36,10 +36,42 @@ ARM_TRIALS = {  # open-loop training trials per (participant, arm)
 
 
 def agg(df):
+    """Compute pooled greedy PER in percent for a per-trial dataframe.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        Per-trial decoding results with ``edit_distance`` and ``true_len``
+        columns.
+
+    Returns
+    -------
+    float
+        Pooled phoneme error rate, ``100 * sum(ed) / sum(len)``.
+    """
     return 100 * df.edit_distance.sum() / df.true_len.sum()
 
 
 def boot_ci(df, n_boot=2000, seed=0):
+    """Bootstrap 95% confidence interval for the pooled PER.
+
+    Resamples trials with replacement (chunked for memory) and computes
+    the pooled PER of each resample.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        Per-trial results with ``edit_distance`` and ``true_len`` columns.
+    n_boot : int, optional
+        Number of bootstrap resamples. Default 2000.
+    seed : int, optional
+        Seed for the resampling RNG. Default 0.
+
+    Returns
+    -------
+    tuple of (float, float)
+        Lower and upper bounds of the 95% percentile CI, in percent.
+    """
     rng = np.random.default_rng(seed)
     ed = df.edit_distance.to_numpy()
     ln = df.true_len.to_numpy()
@@ -55,6 +87,20 @@ def boot_ci(df, n_boot=2000, seed=0):
 
 
 def arm_df(subj, arm):
+    """Load one ablation arm's per-trial greedy decoding results.
+
+    Parameters
+    ----------
+    subj : str
+        Participant identifier, e.g. `"t12"`, `"t15"`, `"t16"`.
+    arm : str
+        Training arm name: `"mixed"`, `"imagined"`, or `"attempted"`.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Contents of ``run_<subj>_<arm>/val_greedy_per_trial.csv``.
+    """
     return pd.read_csv(rf"{KUNZ}\run_{subj}_{arm}\val_greedy_per_trial.csv")
 
 

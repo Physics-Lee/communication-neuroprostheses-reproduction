@@ -32,12 +32,55 @@ M2_NOTE = ('HeldOutBlocks 10 session 逐位复现；HeldOutTrials 直比 92–94
 
 
 def raw_summary(cv):
+    """Compute the raw (no-LM) CER/WER summary for the self-trained model.
+
+    Delegates to ``step5_eval_from_errcounts.summarize`` on the run directory
+    ``runs/<cv>_synth/step5_inference`` with the fixed bootstrap seed, so the
+    confidence intervals are reproducible across reruns.
+
+    Parameters
+    ----------
+    cv : str
+        Cross-validation partition name, ``'HeldOutBlocks'`` or
+        ``'HeldOutTrials'``.
+
+    Returns
+    -------
+    dict
+        Summary produced by ``ev.summarize``; includes at least ``'cer'``,
+        ``'cer_ci'``, ``'wer'`` and ``'wer_ci'`` (CER/WER in percent with
+        bootstrap 95% CI tuples).
+
+    Notes
+    -----
+    Mutates the module-global ``ev.ROOT`` as a side effect to point at the
+    requested run directory before calling ``summarize``.
+    """
     d = os.path.join(RUNS, cv + '_synth', 'step5_inference')
     ev.ROOT = d
     return ev.summarize(cv, 0, np.random.RandomState(ev.SEED), flat=True)
 
 
 def bigram_summary(cv):
+    """Aggregate per-sentence bigram-decode rows into corpus-level CER/WER.
+
+    Reads ``result/m3_own_decode_<cv>.csv`` (one row per validation sentence
+    produced by ``step6_decode_ours.py``) and sums its charErrs/charCounts/
+    wordErrs/wordCounts columns.
+
+    Parameters
+    ----------
+    cv : str
+        Cross-validation partition name, ``'HeldOutBlocks'`` or
+        ``'HeldOutTrials'``.
+
+    Returns
+    -------
+    tuple of (float, float, int)
+        ``(cer_pct, wer_pct, n_sentences)``: character error rate and word
+        error rate in percent, and the number of sentences (CSV rows)
+        aggregated.
+    """
     p = os.path.join(REPO, 'result', f'm3_own_decode_{cv}.csv')
     rows = list(csv.DictReader(open(p, encoding='utf-8')))
     ce = sum(int(r['charErrs']) for r in rows)
@@ -48,6 +91,27 @@ def bigram_summary(cv):
 
 
 def main():
+    """Render the final reproduction report and close out README/PROGRESS.
+
+    Recomputes the self-trained raw and bigram summaries for both
+    cross-validation partitions, fills in the markdown report template with
+    the verified official-number constants, writes it to
+    ``docs/20261020_复现报告.md``, then idempotently updates ``README.md``
+    and appends a closing line to ``result/PROGRESS.md``.
+
+    Parameters
+    ----------
+    None
+        Options are taken from the command line: ``--skipMissing`` allows
+        the report to be produced (with placeholders) even when Blocks
+        artifacts are absent; ``--dryRun`` prints the report prefix to
+        stdout without writing any file.
+
+    Raises
+    ------
+    SystemExit
+        If Blocks artifacts are missing and ``--skipMissing`` was not given.
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--skipMissing', action='store_true')
     ap.add_argument('--dryRun', action='store_true', help='只渲染到 stdout，不写报告/README/PROGRESS')

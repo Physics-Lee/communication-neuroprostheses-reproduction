@@ -33,12 +33,39 @@ INFER_LOG = os.path.join(REPO, 'result', 'infer_HeldOutBlocks.log')
 
 
 def beat(msg):
+    """Append a watchdog heartbeat line to PROGRESS.md and echo it.
+
+    Parameters
+    ----------
+    msg : str
+        Human-readable event text written after the timestamp and the
+        ``看门狗v3`` tag.
+
+    Returns
+    -------
+    None
+    """
     with open(PROGRESS, 'a', encoding='utf-8') as f:
         f.write(f'{time.strftime("%Y-%m-%d %H:%M")} | 看门狗v3 | {msg}\n')
     print(msg, flush=True)
 
 
 def log_fresh_seconds(max_age=1800):
+    """Check whether the Blocks training log was modified recently enough.
+
+    Parameters
+    ----------
+    max_age : float, optional
+        Maximum age in seconds since the last modification of
+        ``result/train_HeldOutBlocks.log`` for the log to count as fresh
+        (default 1800, i.e. 30 minutes).
+
+    Returns
+    -------
+    bool
+        True if the log file's mtime is within ``max_age``; False if it is
+        stale or the file cannot be stat'ed (OSError).
+    """
     try:
         return time.time() - os.path.getmtime(BLOCKS_LOG) < max_age
     except OSError:
@@ -46,6 +73,17 @@ def log_fresh_seconds(max_age=1800):
 
 
 def train_alive():
+    """Check whether any python.exe process running train.py is alive.
+
+    Queries Win32_Process via PowerShell and counts processes whose command
+    line matches ``train.py``.
+
+    Returns
+    -------
+    bool
+        True if at least one such process exists; False if none exist or if
+        the PowerShell probe fails for any reason.
+    """
     try:
         out = subprocess.check_output(
             ['powershell', '-NoProfile', '-Command',
@@ -58,6 +96,15 @@ def train_alive():
 
 
 def gpu_busy():
+    """Check whether the GPU currently holds more than ~2 GB of memory.
+
+    Returns
+    -------
+    bool
+        True if ``nvidia-smi`` reports more than 2000 MiB used (GPU
+        considered busy), or if the query fails (fail-safe: assume busy).
+        False when the GPU looks idle.
+    """
     try:
         out = subprocess.check_output(
             ['nvidia-smi', '--query-gpu=memory.used', '--format=csv,noheader'],
@@ -68,6 +115,17 @@ def gpu_busy():
 
 
 def launch_detached_train():
+    """Relaunch HeldOutBlocks training as a detached hidden PowerShell process.
+
+    Builds a ``Start-Process`` command that runs
+    ``code/torch_port/train.py --partition HeldOutBlocks --synth`` with
+    stdout/stderr redirected to ``result/train_HeldOutBlocks.log``, then
+    sleeps 30 s to let the child process register.
+
+    Returns
+    -------
+    None
+    """
     ps = ("Start-Process -WindowStyle Hidden -FilePath '%s' -ArgumentList "
           "'%s\\code\\torch_port\\train.py','--partition','HeldOutBlocks','--synth' "
           "-RedirectStandardOutput '%s' -RedirectStandardError '%s.err' -WorkingDirectory '%s'"
@@ -77,12 +135,44 @@ def launch_detached_train():
 
 
 def run_step(cmd, log_path):
+    """Run a pipeline step as a subprocess with output captured to a log file.
+
+    Parameters
+    ----------
+    cmd : list of str
+        Command and arguments to execute, with the repository root as the
+        working directory.
+    log_path : str
+        File opened in write mode receiving both stdout and stderr of the
+        subprocess.
+
+    Returns
+    -------
+    int
+        The subprocess return code (0 on success).
+    """
     with open(log_path, 'w', encoding='utf-8') as lf:
         r = subprocess.run(cmd, stdout=lf, stderr=subprocess.STDOUT, cwd=REPO)
     return r.returncode
 
 
 def main():
+    """Drive the HeldOutBlocks tail of the pipeline unattended.
+
+    Guards the Blocks training process (restarting it up to 3 times from
+    batch 0 if it dies without producing a checkpoint), then, once the
+    checkpoint exists and the GPU is free, runs the remaining chain in
+    order: infer.py, step5_eval_from_errcounts.py, step6_make_kaldimat.py,
+    step6_decode_ours.py, fig_perday_cer_ours.py and m4_report.py, logging
+    a heartbeat for each step.
+
+    Returns
+    -------
+    None
+        The watchdog exits early (without running the chain) when the
+        restart limit is reached or inference fails; otherwise it runs the
+        full chain and exits.
+    """
     beat('v4 启动（替代 v3）：守护 Blocks 训练直至 checkpoint → 全链 → 自动生成 M4 复现报告')
     guard_restarts = 0
     while not os.path.isfile(BLOCKS_CKPT):

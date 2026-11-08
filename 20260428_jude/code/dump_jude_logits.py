@@ -26,6 +26,19 @@ OUT = r".\20260428_jude\data\20260428_jude\run_25k\jude_logits.hdf5"
 
 
 def main():
+    """Dump per-trial CTC log-probs for every session that has a val split.
+
+    Rebuilds the GRUDecoder from the run's ``checkpoint/args.yaml``, loads
+    the best checkpoint, decodes each ``data_val.hdf5`` trial through
+    ``runSingleDecodingStep`` (same AMP path as eval), and stores the
+    log-softmax probabilities plus labels under ``<session>/<trial>`` groups
+    in one output hdf5 (OUT).
+
+    Returns
+    -------
+    None
+        Writes the logits hdf5 file and prints progress per session.
+    """
     model_args = OmegaConf.load(os.path.join(MODEL_PATH, "checkpoint/args.yaml"))
     ds = model_args["dataset"]
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

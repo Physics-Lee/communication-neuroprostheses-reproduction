@@ -24,6 +24,13 @@ OUTBASE = os.path.expanduser("~/tlv_t15")
 LAMS = [0.25, 0.5, 0.75, 1.0]
 
 def main():
+    """Write label-free day-adapted logit trials for each lambda.
+
+    Loads every trial logit array, matches it to a session label by row
+    order, computes the global and per-session frame-mean logit vectors,
+    then for each adaptation strength saves each trial with
+    ``lam * (mu_session - mu_global)`` subtracted.
+    """
     sessions = []
     with open(GREEDY, encoding="utf-8", newline="") as f:
         for r in csv.DictReader(f):

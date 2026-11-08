@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Train the nejm-brain-to-text GRU decoder on converted BtoT24 data.
+r"""Train the nejm-brain-to-text GRU decoder on converted BtoT24 data.
 
 Adapts the official rnn_args.yaml programmatically:
 - dataset_dir/sessions -> .\20230831_willett\data\20230616_willett_BtoT24\hdf5 (24 t12 days)
@@ -31,6 +31,14 @@ from rnn_trainer import BrainToTextDecoder_Trainer  # noqa: E402
 
 
 def main():
+    """Configure the official trainer from argv and launch training.
+
+    Overrides the loaded rnn_args.yaml for the converted BtoT24 hdf5
+    dataset (24 t12.* sessions, Windows-safe dataloader/compile settings,
+    lr schedule scaled to the requested run length, optional full
+    checkpoint resume via init_checkpoint) and hands control to
+    BrainToTextDecoder_Trainer.train().
+    """
     n_batches = int(sys.argv[1])
     out_root = sys.argv[2]
     val_every = int(sys.argv[3]) if len(sys.argv) > 3 else 2000

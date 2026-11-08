@@ -29,6 +29,15 @@ MODEL_ARGS = OmegaConf.create({
 
 
 def main():
+    """Run the trained GRUDecoder over the test partition and save log-probs.
+
+    Rebuilds the 5-layer GRU exactly as eval_btot24.py, loads
+    <run_dir>/checkpoint/best_checkpoint, iterates every session/trial of
+    data_val.hdf5 in sorted order under the AMP decoding path, and stores
+    log_softmax(logits) per trial (plus seq_len, block_num,
+    sentence_label and seq_class_ids metadata) to an hdf5 file for
+    downstream word-level beam decoding.
+    """
     run_dir = sys.argv[1]
     out_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join(
         run_dir, "test_logits.hdf5")

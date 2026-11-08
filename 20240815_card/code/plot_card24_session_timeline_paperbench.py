@@ -69,7 +69,28 @@ ax.axvline(S2_DATE, ls="--", c=RED, lw=1.0, alpha=0.7, zorder=2,
 def place_label(text, candidates):
     """Place a (possibly multi-line) label at the first (y, va, x) that
     empirically misses every bubble: render, read the text's real bbox
-    via get_window_extent, test against bubble circles, shift on hit."""
+    via get_window_extent, test against bubble circles, shift on hit.
+
+    Parameters
+    ----------
+    text : str
+        The label text to place (may contain newlines).
+    candidates : list of tuple[float, str]
+        (y_data, vertical_alignment) anchor candidates to try in order,
+        e.g. ``(8.45, "top")``. Each candidate is scanned left-to-right
+        across the x range until a collision-free position is found.
+
+    Returns
+    -------
+    str
+        Human-readable description of the accepted anchor (date, y value,
+        vertical alignment), printed by the caller for QA.
+
+    Raises
+    ------
+    RuntimeError
+        If no candidate yields a position that misses every bubble.
+    """
     pts = [ax.transData.transform((mdates.date2num(d), day25[d]))
            for d in day25.index]
     radii = [np.sqrt(8 * c) * 150 / 72 / 2 + 9 for c in cnt25.values]  # px

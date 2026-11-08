@@ -13,11 +13,51 @@ def extract_sentence_snippet(inputs, targets, err_weight, bins_per_trial, n_step
     起始信号首个上升沿之前的帧权重清零（单向）；双向还要把最后一个不完整字符之后清零。
     输入均为单个样本：inputs (T,N), targets (T,C), err_weight (T,), bins_per_trial int。
     返回 (inputs_snip, targets_snip, ews)，长度均为 n_steps（不足补零）。
+
+    Parameters
+    ----------
+    inputs : numpy.ndarray
+        Neural inputs of one sentence, shape ``(T, N)``.
+    targets : numpy.ndarray
+        Target labels of one sentence, shape ``(T, C)``; the last channel
+        is the character-start signal.
+    err_weight : numpy.ndarray
+        Per-frame error weights of the full sentence, shape ``(T,)``.
+    bins_per_trial : int
+        Number of time bins in the full sentence (drives the official
+        random crop upper bound).
+    n_steps : int
+        Desired snippet length in frames; shorter snippets are zero-padded.
+    directionality : str
+        ``'unidirectional'`` zeroes weights only before the first character
+        start; ``'bidirectional'`` also zeroes after the last one.
+    rng : numpy.random.Generator
+        RNG supplying the random crop start.
+
+    Returns
+    -------
+    tuple of (numpy.ndarray, numpy.ndarray, numpy.ndarray)
+        ``(inputs_snip, targets_snip, ews)`` each of length ``n_steps``.
     """
     hi = max(bins_per_trial + (n_steps - 100) - 400, 1)   # 官方 uniform 上界（排他）
     start = rng.integers(0, hi)
 
     def pad_to(arr, length):
+        """Truncate or zero-pad a leading-axis array to ``length`` frames.
+
+        Parameters
+        ----------
+        arr : numpy.ndarray
+            Array whose first axis is time.
+        length : int
+            Target length of the first axis.
+
+        Returns
+        -------
+        numpy.ndarray
+            ``arr[:length]`` when long enough, otherwise a zero array of
+            shape ``(length,) + arr.shape[1:]`` with ``arr`` copied in.
+        """
         if arr.shape[0] >= length:
             return arr[:length]
         out = np.zeros((length,) + arr.shape[1:], dtype=arr.dtype)
@@ -48,7 +88,29 @@ def extract_sentence_snippet(inputs, targets, err_weight, bins_per_trial, n_step
 
 def add_mean_noise(inputs, constant_offset_sd, random_walk_sd, rng, axis_mode='official'):
     """官方 addMeanNoise：常量偏移 (1,N) + 随机游走。axis_mode='official' 时 cumsum 沿特征轴（axis=1，照抄官方），
-    'time' 沿时间轴（直觉语义）。inputs (T,N)。"""
+    'time' 沿时间轴（直觉语义）。inputs (T,N)。
+
+    Parameters
+    ----------
+    inputs : numpy.ndarray
+        Neural inputs, shape ``(T, N)``.
+    constant_offset_sd : float
+        Standard deviation of the constant per-channel offset.
+    random_walk_sd : float
+        Standard deviation of the per-step random-walk increments.
+    rng : numpy.random.Generator
+        RNG drawing the offset and walk increments.
+    axis_mode : str, optional
+        ``'official'`` accumulates the walk along the feature axis
+        (axis=1, faithfully reproducing the official quirk); ``'time'``
+        accumulates along the time axis (intuitive semantics). Default
+        ``'official'``.
+
+    Returns
+    -------
+    numpy.ndarray
+        ``inputs + noise``, shape ``(T, N)``.
+    """
     noise = rng.normal(0.0, constant_offset_sd, size=(1, inputs.shape[1]))
     walk = rng.normal(0.0, random_walk_sd, size=inputs.shape)
     noise = noise + np.cumsum(walk, axis=1 if axis_mode == 'official' else 0)
@@ -56,12 +118,54 @@ def add_mean_noise(inputs, constant_offset_sd, random_walk_sd, rng, axis_mode='o
 
 
 def add_white_noise(inputs, white_noise_sd, rng):
-    """官方 addWhiteNoise：逐时间步白噪声 (T,N)。"""
+    """官方 addWhiteNoise：逐时间步白噪声 (T,N)。
+
+    Parameters
+    ----------
+    inputs : numpy.ndarray
+        Neural inputs, shape ``(T, N)``.
+    white_noise_sd : float
+        Standard deviation of the i.i.d. Gaussian noise.
+    rng : numpy.random.Generator
+        RNG drawing the noise.
+
+    Returns
+    -------
+    numpy.ndarray
+        ``inputs + noise``, shape ``(T, N)``.
+    """
     return inputs + rng.normal(0.0, white_noise_sd, size=inputs.shape)
 
 
 def apply_train_noise(inputs, targets, err_weight, bins_per_trial, args, rng, axis_mode='official'):
-    """训练噪声总入口：常量偏移 + 随机游走 + 白噪声（参数取自 args，与官方 parseDataset/_makeTrainingDatasetFromRealData 一致）。"""
+    """训练噪声总入口：常量偏移 + 随机游走 + 白噪声（参数取自 args，与官方 parseDataset/_makeTrainingDatasetFromRealData 一致）。
+
+    Parameters
+    ----------
+    inputs : numpy.ndarray
+        Neural inputs, shape ``(T, N)``.
+    targets : numpy.ndarray
+        Target labels, passed through unchanged.
+    err_weight : numpy.ndarray
+        Per-frame error weights, passed through unchanged.
+    bins_per_trial : int
+        Sentence length in bins (unused here; kept for signature parity
+        with the snippet extractor).
+    args : dict
+        Training arguments supplying ``constantOffsetSD``,
+        ``randomWalkSD`` and ``whiteNoiseSD``; an augmentation is applied
+        only when its SD is positive.
+    rng : numpy.random.Generator
+        RNG shared with the rest of the augmentation pipeline.
+    axis_mode : str, optional
+        Passed to :func:`add_mean_noise` (``'official'`` or ``'time'``).
+        Default ``'official'``.
+
+    Returns
+    -------
+    tuple of (numpy.ndarray, numpy.ndarray, numpy.ndarray)
+        ``(noised_inputs, targets, err_weight)``.
+    """
     if args['constantOffsetSD'] > 0 or args['randomWalkSD'] > 0:
         inputs = add_mean_noise(inputs, args['constantOffsetSD'], args['randomWalkSD'], rng, axis_mode)
     if args['whiteNoiseSD'] > 0:

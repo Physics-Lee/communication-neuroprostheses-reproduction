@@ -31,6 +31,19 @@ from keras.models import load_model  # noqa: E402
 
 
 def main():
+    """Run the frame-lag diagnosis on the official tier-1 model.
+
+    Loads the released T15 neural data and the official Keras .h5 encoder,
+    runs per-trial inference on "valuation" trials, and compares the
+    predicted LPCNet features against ``target_speech_feats_word`` at zero
+    lag and over a coarse lag scan (-40..+40 frames, step 2).
+
+    Returns
+    -------
+    None
+        Results are printed to stdout: per-trial zero-lag and best-lag
+        correlations, the lag histogram, and the median |best r|.
+    """
     day, model_name = "t15_day195", "brain2voice_t15_day193.h5"
     with open(OFFICIAL + "/configs/config.yaml") as f:
         cfg = yaml.safe_load(f)

@@ -1,3 +1,13 @@
+"""Export per-trial CTC log-prob matrices from test_logits.hdf5 to .npy files.
+
+Inputs: the dump_btot24_logits.py output hdf5 (default
+./20230831_willett/data/20230616_willett_BtoT24/run_60k/test_logits.hdf5).
+Outputs: one (T, 41) float32 .npy per trial under <out>/trials/ plus a
+meta.tsv mapping each trial id to its reference sentence, feeding the C++
+tlg_viterbi 5-gram decoder in shared/tools.
+
+Usage: export_trials_npy.py <test_logits.hdf5> <output_dir>
+"""
 import os
 import sys
 

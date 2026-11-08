@@ -32,7 +32,26 @@ TARGET = "t15.2025.01.10"
 
 def load_45slot(device):
     """Build a 45-day GRUDecoder and load the 44-session T2a checkpoint with
-    slot 39 (01.10) left fresh identity/zero."""
+    slot 39 (01.10) left fresh identity/zero.
+
+    Parameters
+    ----------
+    device : torch.device
+        Device the model is moved to.
+
+    Returns
+    -------
+    tuple
+        ``(model, args45, sessions45)`` — the 45-slot GRUDecoder with the
+        T2a weights remapped into it (day layers shifted positionally past
+        slot 39), the P4 args config, and the 45-session list.
+
+    Raises
+    ------
+    AssertionError
+        If the 44-session list does not match the 45-session list minus the
+        target day, or unexpected keys appear when loading non-day weights.
+    """
     args45 = OmegaConf.load(os.path.join(P4, "checkpoint", "args.yaml"))
     sessions45 = list(args45["dataset"]["sessions"])
     model = build_model(args45, sessions45, device)  # P4 arch, 45 slots
@@ -56,6 +75,26 @@ def load_45slot(device):
 
 
 def day_per(model, args, trials, day_idx, device):
+    """Compute greedy PER (percent) over a list of trials for one day.
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        The GRUDecoder (put into eval mode for the scan).
+    args : omegaconf.DictConfig
+        Training arguments passed through to ``decode_trial``.
+    trials : list of dict
+        Trial dicts with keys ``x`` and ``y``/``seq_len``.
+    day_idx : int
+        Recording-day index used for the day layer.
+    device : torch.device
+        Device the computation runs on.
+
+    Returns
+    -------
+    float
+        Corpus-level PER in percent (total edit distance / total length).
+    """
     ed = ln = 0
     model.eval()
     for t in trials:
@@ -67,6 +106,19 @@ def day_per(model, args, trials, day_idx, device):
 
 
 def main():
+    """Run the T2a zero-shot / sanity / cross-fit evaluation on 2025.01.10.
+
+    Evaluates zero-shot val PER of the target day with the fresh eye day
+    layer and with copy-of-previous-day weights, sanity-checks PER on four
+    early/late released days, and (only with ``--ft``) sweeps a small
+    LR x steps cross-fit fine-tune grid on the target day's 106 train
+    sentences with 40% history replay.
+
+    Returns
+    -------
+    None
+        Results are printed to stdout.
+    """
     do_ft = "--ft" in sys.argv
     device = torch.device("cuda:0")
     torch.manual_seed(10)

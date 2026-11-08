@@ -54,6 +54,28 @@ CV_PARTS = ['HeldOutBlocks', 'HeldOutTrials']
 
 
 def phase_snippets(data_dirs, cv_parts):
+    """Extract the per-character neural snippet libraries (phase A).
+
+    For each session directory and cross-validation partition, loads
+    sentences/singleLetters/warpedCubes, strips pause markers from prompts,
+    normalizes the neural cube, then runs the official
+    ``extractCharacterSnippets`` + ``addSingleLetterSnippets`` restricted to
+    the training trials, and pickles the snippet dictionary to
+    ``Step3_SyntheticSentences/<cvPart>/<dataDir>_snippets.pkl``.
+
+    Parameters
+    ----------
+    data_dirs : list of str
+        Session directory names to process (e.g. ``'t5.2019.05.08'``).
+    cv_parts : list of str
+        Cross-validation partition names (``'HeldOutBlocks'`` /
+        ``'HeldOutTrials'``).
+
+    Returns
+    -------
+    None
+        Results are written as ``.pkl`` files; nothing is returned.
+    """
     char_def = getHandwritingCharacterDefinitions()
     for data_dir in data_dirs:
         print('Processing ' + data_dir, flush=True)
@@ -90,7 +112,23 @@ def phase_snippets(data_dirs, cv_parts):
 
 
 def _to_mat_style(d):
-    """把 pkl 里的普通 list 转成官方代码期望的 loadmat 风格结构（[0,i] 索引）。"""
+    """把 pkl 里的普通 list 转成官方代码期望的 loadmat 风格结构（[0,i] 索引）。
+
+    Parameters
+    ----------
+    d : dict
+        Snippet dictionary loaded from the ``.pkl`` written by
+        ``phase_snippets``. Keys ending in ``'_penEndState'`` hold scalar
+        lists; other list-valued keys hold per-snippet arrays; non-list
+        values pass through unchanged.
+
+    Returns
+    -------
+    dict
+        Copy of ``d`` with ``'_penEndState'`` lists converted to float64
+        1-D arrays and every other list converted to a ``(1, n)`` object
+        array so the official generation code can index it mat-style.
+    """
     out = {}
     for k, v in d.items():
         if not isinstance(v, list):
@@ -105,6 +143,30 @@ def _to_mat_style(d):
 
 
 def _generate_one(work):
+    """Generate one synthetic training batch (phase B worker).
+
+    Seeds numpy RNG from the per-batch seed, loads the snippet pickle and
+    word lists, calls the official ``makeSyntheticDataFromRawSnippets``,
+    then reproduces the official post-processing: random start truncation,
+    sliding-window time binning, and the error mask that does not punish
+    frames before the first character start. Saves three ``.npy`` arrays
+    (``_inputs`` / ``_labels`` / ``_errW``) named after ``saveFile``.
+
+    Parameters
+    ----------
+    work : tuple of (dict, int)
+        ``(args, bat_idx)`` where ``args`` holds generation settings
+        (nSentences, nSteps, binSize, wordListFile, rareWordFile,
+        snippetFile, accountForPenState, charDef, seed, saveFile) and
+        ``bat_idx`` is the batch index (unused apart from being carried
+        along by the pool).
+
+    Returns
+    -------
+    str
+        The ``saveFile`` base path of the batch just written (used by the
+        caller for progress logging).
+    """
     args, bat_idx = work
     np.random.seed(args['seed'])
 
@@ -165,6 +227,30 @@ def _generate_one(work):
 
 
 def phase_generate(data_dirs, cv_parts, n_parallel):
+    """Generate synthetic sentence batches in parallel (phase B).
+
+    For every (session, partition) pair, builds the per-batch work items for
+    the batches (0..19) whose ``bat_<x>_errW.npy`` does not yet exist, then
+    dispatches ``_generate_one`` over a multiprocessing pool. Batch seeds are
+    derived from ``datetime.now().microsecond`` (matching the official
+    non-deterministic behaviour).
+
+    Parameters
+    ----------
+    data_dirs : list of str
+        Session directory names to process.
+    cv_parts : list of str
+        Cross-validation partition names.
+    n_parallel : int
+        Worker process count for the pool. Intermediate float64 arrays need
+        ~4 GB per worker, so this is capped by available RAM.
+
+    Returns
+    -------
+    None
+        Batches are written to
+        ``Step3_SyntheticSentences/<cvPart>/<dataDir>_syntheticSentences/``.
+    """
     char_def = getHandwritingCharacterDefinitions()
     for data_dir in data_dirs:
         for cv_part in cv_parts:
@@ -197,6 +283,20 @@ def phase_generate(data_dirs, cv_parts, n_parallel):
 
 
 def main():
+    """CLI entry point dispatching to the snippet/generate phases.
+
+    Parameters
+    ----------
+    None
+        Options come from the command line: ``--phase`` (snippets,
+        generate or both), ``--dataDir`` (single session, default all 10),
+        ``--cvPart`` (single partition, default both) and ``--nParallel``
+        (pool size for generation).
+
+    Returns
+    -------
+    None
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--phase', choices=['snippets', 'generate', 'both'], default='both')
     ap.add_argument('--dataDir', default=None, help='只处理一个 session（调试用）')

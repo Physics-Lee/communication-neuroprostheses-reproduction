@@ -22,10 +22,32 @@ SETS = {
 
 
 def norm(s):
+    """Normalize a transcript for vocabulary lookup.
+
+    Replaces every character other than ASCII letters, apostrophes,
+    ``<``/``>`` and spaces with a space, uppercases, and tokenizes on
+    whitespace.
+
+    Parameters
+    ----------
+    s : str
+        Raw transcript string (reference sentence).
+
+    Returns
+    -------
+    list of str
+        Uppercase word tokens.
+    """
     return re.sub(r"[^A-Za-z'< ]", " ", s).upper().split()
 
 
 def main():
+    """Print per-dataset OOV reference-word rates against the TLG vocab.
+
+    Loads the 125k word list, then for each configured dataset TSV
+    reports the number of reference words falling outside the vocabulary
+    (the WER floor) and the most frequent OOV words.
+    """
     vocab = set()
     for line in open(WORDS, encoding="utf-8"):
         w = line.split()[0]

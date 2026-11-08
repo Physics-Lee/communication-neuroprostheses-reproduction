@@ -48,6 +48,36 @@ OFFICIAL_ROOT = r'.\20210512_willett\data\20210512_willett\handwritingBCIData'
 
 
 def summarize(cv_part, result_idx, rng, flat=False):
+    """Aggregate errCounts.mat files into corpus-level CER/WER with bootstrap CI.
+
+    For the given partition and result tier, collects per-sentence
+    (charCounts, charErrors, wordCounts, wordErrors) over all sessions'
+    validation trials, computes corpus-level CER and WER in percent, and a
+    10000-resample sentence-level bootstrap 95% CI using the provided RNG.
+
+    Parameters
+    ----------
+    cv_part : str
+        Cross-validation partition name (``'HeldOutBlocks'`` or
+        ``'HeldOutTrials'``); selects the trainTestPartitions test indices.
+    result_idx : int
+        Index into ``RESULTS_DIRS`` (0=Raw Step5, 1=Bigram Step6,
+        2=GPT-2 Step7). Ignored when ``flat`` is True.
+    rng : numpy.random.RandomState
+        Seeded RNG driving the bootstrap resampling (fixed seed keeps the
+        CI reproducible; the official notebook does not fix its seed).
+    flat : bool, optional
+        When True, read ``<ROOT>/<session>_errCounts.mat`` directly (the
+        self-trained infer.py layout) instead of the official
+        ``<ROOT>/<resultsDir>/<cv_part>/`` two-level layout. Default False.
+
+    Returns
+    -------
+    dict or None
+        Dict with keys ``'n_sentences'``, ``'cer'``, ``'cer_ci'`` (2-list),
+        ``'wer'``, ``'wer_ci'`` (2-list), or None when no errCounts files
+        were found for the requested partition/tier.
+    """
     all_err_counts = []
     for data_dir in DATA_DIRS:
         if flat:
@@ -85,6 +115,31 @@ def summarize(cv_part, result_idx, rng, flat=False):
 
 
 def main():
+    """Recompute CER/WER tables from errCounts files and write a CSV.
+
+    By default re-evaluates the six official numbers (2 partitions x 3
+    tiers) from the packaged errCounts under OFFICIAL_ROOT and compares each
+    against the official README values. When an errCounts directory argument
+    is given, switches to flat self-trained layout (Raw tier only, suffix
+    ``_ours`` on the output CSV). Results are printed as an aligned table
+    and written to ``result/eval_from_errcounts[_ours].csv``.
+
+    Parameters
+    ----------
+    None
+        Arguments are positional: ``sys.argv[1]`` is an optional errCounts
+        root directory (defaults to the official data root), ``sys.argv[2]``
+        an optional partition filter.
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+    Overwrites the module-global ``ROOT`` when a custom errCounts root is
+    supplied; ``summarize`` reads errCounts from that global.
+    """
     rng = np.random.RandomState(SEED)
     root = sys.argv[1] if len(sys.argv) > 1 else OFFICIAL_ROOT
     only_part = sys.argv[2] if len(sys.argv) > 2 else None

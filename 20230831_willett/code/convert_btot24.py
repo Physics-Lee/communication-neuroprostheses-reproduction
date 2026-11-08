@@ -34,6 +34,24 @@ _phoneme_cache = {}
 
 
 def phoneme_ids(sentence):
+    """Convert a sentence string into CTC phoneme class ids.
+
+    Uses the repo's own sentence_to_phonemes() (g2p_en) with a module-level
+    cache so repeated sentences are grapheme-to-phoneme converted only once.
+    Class ids follow the LOGIT_TO_PHONEME order used by the GRU decoder;
+    the SIL token maps to the ' | ' word-separator class at index 40.
+
+    Parameters
+    ----------
+    sentence : str
+        Raw sentence text (surrounding whitespace is stripped).
+
+    Returns
+    -------
+    tuple(list of int, list of str)
+        (ids, phonemes): class ids in LOGIT_TO_PHONEME order (SIL -> 40)
+        and the phoneme sequence returned by sentence_to_phonemes.
+    """
     s = sentence.strip()
     if s not in _phoneme_cache:
         ph, _ = sentence_to_phonemes(s, g2p_instance=G2P)
@@ -44,6 +62,33 @@ def phoneme_ids(sentence):
 
 
 def convert_mat(mat_path, out_h5, session, split):
+    """Convert one day's competitionData .mat file into the hdf5 trial layout.
+
+    Concatenates spikePow and tx1 into (T, 512) float32 features, z-scores
+    features per blockIdx across all trials of the block (readme advice),
+    phonemizes each sentence via phoneme_ids(), and writes one hdf5 group
+    per trial with input_features / seq_class_ids / transcription datasets
+    plus n_time_steps, seq_len, sentence_label, session, block_num and
+    trial_num attributes.
+
+    Parameters
+    ----------
+    mat_path : str
+        Path to the source .mat file (one recording day/session).
+    out_h5 : str
+        Output hdf5 path, e.g. <out>/<session>/data_train.hdf5.
+    session : str
+        Session name derived from the .mat filename; stored as the
+        ``session`` attribute of every trial group.
+    split : str
+        Split label recorded for the description csv ("Train" or "Val").
+
+    Returns
+    -------
+    tuple(list of tuple, int)
+        (csv_rows, n): one (session, block_num, n_phonemes, split) tuple
+        per trial and the number of trials converted.
+    """
     m = loadmat(mat_path)
     n = m["sentenceText"].shape[0]
     blocks = m["blockIdx"].ravel().astype(int)
@@ -96,6 +141,14 @@ def convert_mat(mat_path, out_h5, session, split):
 
 
 def main():
+    """Convert all train/test competitionData days and write the corpus csv.
+
+    Iterates the train/ and test/ .mat files under SRC, writes per-session
+    data_train.hdf5 / data_val.hdf5 files under OUT via convert_mat(), and
+    emits btot24_description.csv (Date, Post-implant day, Block number,
+    Number of sentences, Corpus, Split) summarizing every trial.
+    competitionHoldOut/ is intentionally skipped (no labels).
+    """
     os.makedirs(OUT, exist_ok=True)
     all_rows = []
     totals = {}

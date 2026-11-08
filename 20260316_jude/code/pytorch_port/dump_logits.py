@@ -1,5 +1,15 @@
-# dump_logits.py — 用 best.pt 对 test 集推理并落盘 logits（原生序：blank=30 在末位）（2026-10-10）
-# 供 WSL 侧 lm_decoder 5-gram 解码用（喂解码器前需按官方 rearrange_speech_logits 把 blank 挪到 0）。
+"""Run inference on the test split with best.pt and dump per-trial logits to disk.
+
+Logits are stored in the model's native class order (blank=30 in the last
+position). They feed the WSL-side lm_decoder 5-gram decoding, which moves the
+blank column to index 0 (official rearrange_speech_logits) before feeding the
+decoder.
+
+Notes
+-----
+Written 2026-10-10. CLI: ``python dump_logits.py [ckpt_dir] [npz]`` (defaults:
+run ``m1_t18_20241204_torch`` and its source npz).
+"""
 import sys
 from pathlib import Path
 

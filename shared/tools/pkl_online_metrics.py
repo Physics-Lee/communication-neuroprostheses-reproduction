@@ -12,11 +12,34 @@ import editdistance
 PKL = r".\20260713_Eddie_and_BrainGate_23_24_3_papers\datasets\BtoT25\t15_copyTask.pkl"
 
 def remove_punctuation(s):
+    """Normalize a sentence for WER scoring, paper-style.
+
+    Strips characters other than letters, hyphens, spaces, and
+    apostrophes, tidies hyphen/apostrophe artifacts, lowercases, and
+    collapses whitespace.
+
+    Parameters
+    ----------
+    s : str
+        Raw cue or decoded sentence.
+
+    Returns
+    -------
+    str
+        Normalized sentence with tokens joined by single spaces.
+    """
     s = re.sub(r"[^a-zA-Z\- \']", "", s)
     s = s.replace("- ", " ").lower().replace("--", "").replace(" '", "'").strip()
     return " ".join(w for w in s.split() if w)
 
 def main():
+    """Compute online greedy-PER / LM-PER / LM-WER from the paper pkl.
+
+    Loads ``t15_copyTask.pkl`` and prints, for all trials and for the
+    50-word and 125k-vocabulary subsets, the acoustic-only phoneme error
+    rate, the post-LM phoneme error rate, and the post-LM word error
+    rate.
+    """
     with open(PKL, "rb") as f:
         d = pickle.load(f)
     n = len(d["cue_sentence"])

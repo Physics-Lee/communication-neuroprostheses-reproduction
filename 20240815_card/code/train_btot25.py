@@ -36,6 +36,25 @@ DATA_DIR = r".\20240815_card\nejm-brain-to-text\data\hdf5_data_final"
 
 
 def main():
+    """Train the official-recipe GRU decoder on BtoT25 from scratch.
+
+    Loads rnn_args.yaml, keeps the official 45-session split and
+    dataset_probability_val exactly as-is, sets Windows-local paths/workers,
+    and reproduces the official 64-trial batch via micro-batch x gradient
+    accumulation before running ``BrainToTextDecoder_Trainer.train()``.
+
+    Returns
+    -------
+    None
+        Checkpoints and logs are written under ``out_root``; the run summary
+        is printed to stdout.
+
+    Raises
+    ------
+    AssertionError
+        If the official 45-session / 41-val-day split is not found in the
+        yaml, or if ``accum`` does not divide the official batch size 64.
+    """
     n_opt_batches, out_root = int(sys.argv[1]), sys.argv[2]
     val_every = int(sys.argv[3]) if len(sys.argv) > 3 else 2000
     accum = int(sys.argv[4]) if len(sys.argv) > 4 else 2

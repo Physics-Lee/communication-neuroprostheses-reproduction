@@ -30,6 +30,25 @@ SESSIONS = ['t5.2019.05.08', 't5.2019.11.25', 't5.2019.12.09', 't5.2019.12.11', 
 
 
 def main():
+    """Convert self-trained Step5 RNN outputs into Kaldi probability matrices.
+
+    For each session with an ``<sess>_inferenceOutputs.mat`` in the given
+    inference directory, calls the official ``rnnOutputToKaldiMatrices``
+    (5x downsampling, fake CTC blank from charStart, idxToKaldi reordering)
+    to write ``kaldiMat_<i>.txt`` files under
+    ``step6_kaldimat/<cvPart>/<session>/``, then deletes the non-validation
+    sentence files to save disk while keeping val indices stable.
+
+    Parameters
+    ----------
+    None
+        Required command-line options: ``--inferDir`` (the step5_inference
+        directory produced by infer.py) and ``--cvPart``.
+
+    Returns
+    -------
+    None
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--inferDir', required=True, help='infer.py 输出的 step5_inference 目录')
     ap.add_argument('--cvPart', choices=['HeldOutBlocks', 'HeldOutTrials'], required=True)

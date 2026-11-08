@@ -44,6 +44,29 @@ CV_PARTS = ['HeldOutBlocks', 'HeldOutTrials']
 
 
 def compare(ref_path, my_path):
+    """Compare rerun Step2 HMM labels against the official packaged labels.
+
+    Parameters
+    ----------
+    ref_path : str
+        Path to the official ``<dataDir>_timeSeriesLabels.mat`` under
+        ``RNNTrainingSteps/Step2_HMMLabels``.
+    my_path : str
+        Path to the rerun labels mat written to ``Step2_HMMLabels_rerun``.
+
+    Returns
+    -------
+    dict
+        Agreement statistics with keys:
+        ``'letterStarts_medDiff_bins'`` (median |diff| of per-character
+        starts, in time bins, over characters positive in both files),
+        ``'letterStarts_within2_rate'`` (fraction of those within 2 bins),
+        ``'letterStarts_n'`` (number of compared characters),
+        ``'charProb_argmax_agree'`` (frame-wise argmax agreement of
+        charProbTarget), ``'charStart_agree'`` (frame-wise >0.5 agreement of
+        charStartTarget) and ``'ignoreError_agree'`` (frame-wise >0.5
+        agreement of ignoreErrorHere).
+    """
     ref = scipy.io.loadmat(ref_path)
     mine = scipy.io.loadmat(my_path)
     out = {}
@@ -69,6 +92,27 @@ def compare(ref_path, my_path):
 
 
 def main():
+    """Rerun Step2 HMM labeling for selected sessions/partitions and log agreement.
+
+    For each requested data directory and cross-validation partition, runs
+    the official ``labelDataset`` + ``constructRNNTargets`` pipeline on the
+    Step1 warped cubes, saves the labels to
+    ``RNNTrainingSteps/Step2_HMMLabels_rerun/<cvPart>/`` (skipping files
+    that already exist), compares them against the official labels, prints
+    per-session agreement stats, and appends a summary row per
+    (dataDir, cvPart) to ``result/m2_step2_relabel_report.csv``.
+
+    Parameters
+    ----------
+    None
+        Options come from the command line: ``--dataDir`` restricts to one
+        session directory and ``--cvPart`` to one partition; by default all
+        10 sessions x 2 partitions are processed.
+
+    Returns
+    -------
+    None
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--dataDir', default=None)
     ap.add_argument('--cvPart', default=None, choices=[None, 'HeldOutBlocks', 'HeldOutTrials'])

@@ -29,6 +29,20 @@ OUT = os.path.join(P4, "t15_logits.hdf5")
 
 
 def main():
+    """Decode all val trials of the P4 retrain run and dump CTC log-probs.
+
+    Loads the best checkpoint of run_p4_20261013, runs the GRU decoder over
+    every trial of every session that has a data_val.hdf5 split, converts the
+    logits to log-probs, and writes them to ``OUT`` grouped as
+    ``<session>/tr<NNNN>`` for the wenet_lattice decode chain. Note: the day
+    index passed to the decoder is the position within the val-having subset
+    (legacy semantics kept to mirror dump_t15_logits.py).
+
+    Returns
+    -------
+    None
+        Results are written to ``OUT``; progress is printed to stdout.
+    """
     model_args = OmegaConf.load(os.path.join(MODEL_PATH, "checkpoint/args.yaml"))
     ds = model_args["dataset"]
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

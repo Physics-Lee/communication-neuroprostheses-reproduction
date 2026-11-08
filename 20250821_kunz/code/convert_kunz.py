@@ -43,6 +43,21 @@ _phoneme_cache = {}
 
 
 def phoneme_ids(sentence):
+    """Convert a sentence to phoneme id sequence via grapheme-to-phoneme.
+
+    Uses a module-level cache so repeated sentences are phonemized once.
+
+    Parameters
+    ----------
+    sentence : str
+        Input sentence text.
+
+    Returns
+    -------
+    tuple of (list of int, list of str)
+        Phoneme class ids (40 marks `"SIL"`, others indexed into
+        ``LOGIT_TO_PHONEME``) and the phoneme string sequence.
+    """
     s = sentence.strip()
     if s not in _phoneme_cache:
         ph, _ = sentence_to_phonemes(s, g2p_instance=G2P)
@@ -52,7 +67,19 @@ def phoneme_ids(sentence):
 
 
 def to_str(x):
-    """Recursively unwrap loadmat cell contents into a python str."""
+    """Recursively unwrap loadmat cell contents into a python str.
+
+    Parameters
+    ----------
+    x : numpy.ndarray or object
+        Value loaded by ``scipy.io.loadmat`` (possibly nested arrays,
+        char codes, or unicode cells).
+
+    Returns
+    -------
+    str
+        The decoded string content.
+    """
     while isinstance(x, np.ndarray):
         if x.dtype.kind in "US":
             return "".join(x.ravel().tolist())
@@ -64,7 +91,34 @@ def to_str(x):
 
 
 def compress_to_20ms(tx, sbp, bin_ms):
-    """tx, sbp: (T, 256). Returns (T', 256) each on a 20 ms grid."""
+    """tx, sbp: (T, 256). Returns (T', 256) each on a 20 ms grid.
+
+    Canonicalizes binned features to the 20 ms grid: 10 ms bins are
+    pair-compressed (TX summed, SBP averaged, trailing odd bin trimmed),
+    20 ms bins pass through unchanged, and 33.33 ms bins are per-channel
+    linearly interpolated onto the 20 ms grid.
+
+    Parameters
+    ----------
+    tx : numpy.ndarray
+        Shape (T, 256) threshold-crossing feature matrix at the source
+        bin size.
+    sbp : numpy.ndarray
+        Shape (T, 256) spike-power feature matrix at the source bin size.
+    bin_ms : float
+        Source bin size in milliseconds (10, 20, or 33).
+
+    Returns
+    -------
+    tuple of (numpy.ndarray, numpy.ndarray)
+        The TX and SBP matrices, each shape (T', 256), resampled to the
+        20 ms grid.
+
+    Raises
+    ------
+    ValueError
+        If ``bin_ms`` is not one of the handled values (10, 20, 33).
+    """
     if bin_ms == 20:
         return tx, sbp
     if bin_ms == 10:
@@ -88,6 +142,32 @@ def compress_to_20ms(tx, sbp, bin_ms):
 
 
 def convert_mat(mat_path, out_h5, session, split):
+    """Convert one Kunz sentenceData .mat into the nejm-brain-to-text hdf5.
+
+    For each trial: splits sentenceFeatures into TX/SBP halves, resamples
+    to 20 ms, reorders features to [spikePow, TX], phonemizes the
+    sentence, drops trials failing the official CTC length filter or with
+    non-finite features, z-scores features per block, and writes one hdf5
+    group per trial.
+
+    Parameters
+    ----------
+    mat_path : str
+        Path to the source sentenceData ``.mat`` file.
+    out_h5 : str
+        Path of the hdf5 file to create.
+    session : str
+        Session name (e.g. ``t15.2024.03.03`` or ``..._eval``), stored as
+        a trial attribute.
+    split : str
+        Split label, `"Train"` or `"Val"`, recorded in the CSV rows.
+
+    Returns
+    -------
+    tuple of (list of tuple, int)
+        CSV rows ``(session, block_num, n_phonemes, split)`` and the
+        number of trials written.
+    """
     m = loadmat(mat_path)
     n = m["sentenceText"].shape[0]
     bin_ms = float(m["binSize"].ravel()[0])
@@ -157,6 +237,19 @@ def convert_mat(mat_path, out_h5, session, split):
 
 
 def main():
+    """Convert every sentenceData .mat into hdf5 plus a description CSV.
+
+    Iterates over ``SRC/*.mat`` in sorted order, routes each session to a
+    Train/Val split by filename suffix, and writes the per-trial
+    ``kunz_description.csv`` with date, block, phoneme count, corpus, and
+    split columns.
+
+    Returns
+    -------
+    None
+        Converted hdf5 files, the description CSV, and summary counts are
+        printed to stdout.
+    """
     os.makedirs(OUT, exist_ok=True)
     all_rows = []
     totals = {}

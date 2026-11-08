@@ -29,6 +29,28 @@ RE_TS = re.compile(r"^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})")
 
 
 def parse(path):
+    """Parse a trainer log into val PER points, train loss points, and timestamps.
+
+    Scans the log line by line for the validation line pattern (batch, PER,
+    CTC loss), the train line pattern (batch, loss, grad norm, time), and the
+    leading wall-clock timestamp of each line.
+
+    Parameters
+    ----------
+    path : str
+        Path to the trainer log file (e.g. ``train_p4_20261013.log``).
+
+    Returns
+    -------
+    val : list of tuple[int, float, float]
+        (batch, avg PER, avg CTC loss) per validation entry, in file order.
+    tr : list of tuple[int, float, float]
+        (batch, loss, batch time) per train log entry, in file order.
+    start_ts : datetime.datetime or None
+        Timestamp of the first timestamped line, or None if none found.
+    last_ts : datetime.datetime or None
+        Timestamp of the last timestamped line seen, or None if none found.
+    """
     val, tr, last_ts, start_ts = [], [], None, None
     for line in open(path, encoding="utf-8", errors="replace"):
         m = RE_TS.match(line)
@@ -48,6 +70,20 @@ def parse(path):
 
 
 def main():
+    """Print a side-by-side run_120k vs P4 progress table and write an overlay figure.
+
+    Parses both trainer logs, estimates the new run's ETA from its own
+    measured micro-batch rate, prints val PER (and diff) at matching
+    optimizer steps, and writes a trajectory overlay PNG plus a CSV of the
+    full matched-step comparison.
+
+    Returns
+    -------
+    None
+        Writes ``OUT_CSV`` and ``OUT_PNG``; the table and ETA are printed
+        to stdout. Exits early with a message if the new log has no val
+        points yet.
+    """
     ov, otr, o_start, o_end = parse(OLD_LOG)
     nv, ntr, n_start, n_end = parse(NEW_LOG)
     print(f"run_120k : {len(ov)} val points, {len(otr)} train log lines "

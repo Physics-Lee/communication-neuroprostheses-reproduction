@@ -1,7 +1,15 @@
-# g1_recompute_cpm.py — G1：从 free typing 块的 .mat 重算在线系统速度与 WER（2026-10-11 12:35）
-# 口径：cpm = 60 × len(ngram_decoder_final_output) / (trial_end_redis_time - go_cue_redis_time 秒)
-# 多口径（含/不含空格、均值/峰值）全打印，与论文 110 cpm / 22 wpm / WER 1.6% 对照。
-# WER = LM 最终输出 vs 人工确认真句（cue）。用 reproduce_20260316_jude 环境跑。
+"""G1: recompute the online system's typing speed and WER from free-typing-block .mat files.
+
+Speed convention: cpm = 60 * len(ngram_decoder_final_output) /
+(trial_end_redis_time - go_cue_redis_time, in seconds). Multiple conventions
+(with/without spaces, mean/peak) are all printed, for comparison against the
+paper's 110 cpm / 22 wpm / WER 1.6%. WER compares the LM final output with
+the human-confirmed true sentence (cue).
+
+Notes
+-----
+Written 2026-10-11 12:35. Run with the ``reproduce_20260316_jude`` environment.
+"""
 import glob
 import sys
 
@@ -10,6 +18,21 @@ import scipy.io as sio
 
 
 def calc_wer(r, h):
+    """Compute the token-level Levenshtein distance between two sequences.
+
+    Parameters
+    ----------
+    r : sequence of str
+        Reference tokens (words of the true cue sentence).
+    h : sequence of str
+        Hypothesis tokens (words of the decoded sentence).
+
+    Returns
+    -------
+    int
+        Minimum number of insertions, deletions and substitutions needed to
+        turn ``h`` into ``r``.
+    """
     d = np.zeros((len(r) + 1, len(h) + 1), dtype=np.int64)
     for i in range(len(r) + 1):
         d[i][0] = i
@@ -22,7 +45,22 @@ def calc_wer(r, h):
 
 
 def get_string(el):
-    """元素可能是 [[0]]（该 tick 无输出）或 array(['句子'])。"""
+    """元素可能是 [[0]]（该 tick 无输出）或 array(['句子'])。
+
+    Extract the decoded string from one per-decoding-tick element of the
+    object arrays stored in the ``ngram_decoder_*`` fields of the .mat file.
+
+    Parameters
+    ----------
+    el : numpy.ndarray
+        One element of a per-tick object array from the .mat file.
+
+    Returns
+    -------
+    str
+        The string decoded at that tick, or ``''`` if the element carries no
+        text output.
+    """
     try:
         a = el.reshape(-1)
         if a.size and isinstance(a[0], str):
@@ -33,6 +71,26 @@ def get_string(el):
 
 
 def analyze(pattern, label):
+    """Analyze every .mat matching ``pattern`` and print per-block CPM/WER statistics.
+
+    Per trial, the final LM sentence is recovered from the per-tick partial
+    outputs when the block stores them (windowed by the redis clock between
+    go_cue and trial_end), and otherwise taken from
+    ``ngram_decoder_final_output``; typed speed and token-level WER against
+    the cue sentence are then aggregated per block.
+
+    Parameters
+    ----------
+    pattern : str
+        Glob pattern selecting the RedisMat .mat files of one block.
+    label : str
+        Session/block label prefixed to the printed report lines.
+
+    Returns
+    -------
+    None
+        Statistics are printed to stdout only.
+    """
     for f in sorted(glob.glob(pattern)):
         d = sio.loadmat(f)
         fname = f.split('\\')[-1]

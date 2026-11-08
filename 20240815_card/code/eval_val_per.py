@@ -34,6 +34,22 @@ OUT_SUMMARY = r".\20240815_card\result\val_greedy_summary.json"
 
 
 def main():
+    """Evaluate the pretrained RNN baseline on the val set with greedy CTC decode.
+
+    Rebuilds the GRUDecoder from the checkpoint's args.yaml, decodes every
+    trial of every session that has a data_val.hdf5 split via the official
+    runSingleDecodingStep AMP path, applies the greedy CTC phoneme decode
+    (argmax -> unique_consecutive -> drop blank), aggregates PER as
+    sum(editdistance)/sum(true_seq_len), and writes per-trial and summary
+    outputs. The day index passed to the decoder is the position within the
+    val-having session subset.
+
+    Returns
+    -------
+    None
+        Writes ``OUT_CSV`` and ``OUT_SUMMARY``; per-session and per-corpus
+        PER are printed to stdout.
+    """
     model_args = OmegaConf.load(os.path.join(MODEL_PATH, "checkpoint/args.yaml"))
     ds = model_args["dataset"]
     print("dataset keys (minus sessions):",

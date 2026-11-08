@@ -17,6 +17,22 @@ PASS = []
 
 
 def check(name, cond, detail=''):
+    """Record and print one self-check result.
+
+    Parameters
+    ----------
+    name : str
+        Human-readable name of the check (Chinese labels are used).
+    cond : bool
+        Whether the check passed.
+    detail : str, optional
+        Extra detail appended to the printed line (default '').
+
+    Returns
+    -------
+    None
+        The result is appended to the module-level ``PASS`` list.
+    """
     status = 'PASS' if cond else 'FAIL'
     PASS.append(cond)
     print(f'[{status}] {name} {detail}')

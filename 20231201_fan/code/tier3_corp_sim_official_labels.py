@@ -68,10 +68,40 @@ CH2ID = {c: i + 1 for i, c in enumerate(CHAR_DEF)}
 
 
 def norm(s):
+    """Normalize a sentence string for mat-to-tfrecord joining.
+
+    Replaces '>' word separators with spaces, strips NUL characters, and
+    collapses all whitespace runs to single spaces.
+
+    Parameters
+    ----------
+    s : str
+        Raw sentence text from a .mat field or tfrecord transcription.
+
+    Returns
+    -------
+    str
+        Whitespace-normalized sentence text.
+    """
     return ' '.join(str(s).replace('>', ' ').replace(chr(0), '').split())
 
 
 def text_to_ids(text):
+    """Map a sentence to the official 1-based character-id vocabulary.
+
+    Spaces are converted to the '>' separator token; characters absent
+    from ``CH2ID`` are silently dropped.
+
+    Parameters
+    ----------
+    text : str
+        Normalized sentence text.
+
+    Returns
+    -------
+    list of int
+        1-based character ids (possibly empty if nothing maps).
+    """
     ids = []
     for ch in text:
         if ch == ' ':
@@ -82,7 +112,26 @@ def text_to_ids(text):
 
 
 def load_official_labels(sess):
-    """{norm(true sentence): lm_decoded label ids} for one session."""
+    """{norm(true sentence): lm_decoded label ids} for one session.
+
+    Reads the session's mat from the Dryad zip (recalibration arm) and
+    pairs each ground-truth sentence with the label-id encoding of its
+    LM-corrected online decode -- the exact pseudo-label signal the
+    paper's CORP consumed online.
+
+    Parameters
+    ----------
+    sess : str
+        Session name, e.g. 't5.2022.09.29'; selects
+        ``online_evaluation_data/recalibration/mat/<sess>.mat`` inside
+        the zip.
+
+    Returns
+    -------
+    dict
+        Mapping from normalized ground-truth sentence text to the
+        1-based label id list of the official ``lm_decoded`` output.
+    """
     z = zipfile.ZipFile(ZIP)
     m = sio.loadmat(io.BytesIO(z.read(
         f"CORP_data_release/online_evaluation_data/recalibration/mat/"
@@ -96,6 +145,21 @@ def load_official_labels(sess):
 
 
 def make_args():
+    """Build the v4 simulation's OmegaConf argument block.
+
+    Registers all 11 seed sessions plus the 10 evaluation sessions; each
+    evaluation dataset gets its own input layer initialized as a copy of
+    the previous session's layer (``copyInputLayer``), and everything is
+    served through the package's testOnTrain loader with the backend
+    frozen (``trainableBackend: 0``).
+
+    Returns
+    -------
+    omegaconf.DictConf
+        Fully-populated inference-mode config for
+        ``NeuralSequenceDecoder`` (checkpoint ckpt-12500 of the official
+        pretrained seed model).
+    """
     n_ev = len(EVAL_SESSIONS)
     return OmegaConf.create({
         "mode": "inference", "gpuNumber": "0",
@@ -134,6 +198,28 @@ def make_args():
 
 
 def gather_trials(nsd, sess_idx):
+    """Collect per-trial features, labels, and sentence text for one dataset.
+
+    Iterates the package's validation dataset for session index
+    ``sess_idx``, unpacks each batch into per-trial numpy arrays, trims
+    features to their true ``nTimeSteps``, and decodes the byte-string
+    transcriptions to normalized text.
+
+    Parameters
+    ----------
+    nsd : NeuralSequenceDecoder
+        Decoder whose ``tfValDatasets`` holds the loaded trials.
+    sess_idx : int
+        Dataset index into ``nsd.tfValDatasets`` (0-10 = seed sessions,
+        11-20 = evaluation sessions).
+
+    Returns
+    -------
+    tuple of (list, list, list)
+        Per-trial feature matrices of shape (n_time_steps, 192), 1-based
+        ground-truth label id arrays, and normalized sentence strings
+        (usable as keys into ``load_official_labels`` tables).
+    """
     feats, labels, sents = [], [], []
     for data in nsd.tfValDatasets[sess_idx]:
         f = data["inputFeatures"].numpy()
@@ -151,6 +237,27 @@ def gather_trials(nsd, sess_idx):
 _GAUSS = None
 
 def gauss_smooth_np(x, sd=2.0):
+    """Gaussian-smooth a feature matrix along time, in numpy.
+
+    Numpy mirror of the package's TF input smoothing: the kernel is built
+    once from a unit impulse and cached in the module global ``_GAUSS``,
+    rows are edge-padded, and each feature column is convolved so the
+    output length matches the input.
+
+    Parameters
+    ----------
+    x : numpy.ndarray
+        Feature matrix of shape (n_time_steps, n_features).
+    sd : float, optional
+        Standard deviation of the Gaussian kernel (default 2.0, matching
+        the package's ``smoothKernelSD``). Only the first call's value
+        shapes the cached kernel.
+
+    Returns
+    -------
+    numpy.ndarray
+        Smoothed feature matrix, same shape as ``x``.
+    """
     global _GAUSS
     if _GAUSS is None:
         inp = np.zeros(100); inp[50] = 1
@@ -165,6 +272,24 @@ def gauss_smooth_np(x, sd=2.0):
 
 
 def forward_logits(nsd, layer_idx, feat):
+    """Run one trial through smoothing, an input layer, and the frozen backend.
+
+    Parameters
+    ----------
+    nsd : NeuralSequenceDecoder
+        Decoder providing ``inputLayers`` and the backend ``model``.
+    layer_idx : int
+        Index of the input layer to apply.
+    feat : numpy.ndarray
+        Raw (unsmoothed) per-trial feature matrix of shape
+        (n_time_steps, 192).
+
+    Returns
+    -------
+    numpy.ndarray
+        Frame-wise class logits of shape (n_frames, 32) -- 31 character
+        classes plus the blank class at index 31.
+    """
     x = gauss_smooth_np(feat)
     x = tf.constant(x[np.newaxis, ...], dtype=tf.float32)
     y = nsd.inputLayers[layer_idx](x, training=False)
@@ -172,6 +297,21 @@ def forward_logits(nsd, layer_idx, feat):
 
 
 def greedy_decode(logits):
+    """CTC-greedy-decode frame logits into a 1-based id sequence.
+
+    Collapses repeated frames and drops blank frames (class index 31),
+    then shifts surviving classes to the dataset's 1-based convention.
+
+    Parameters
+    ----------
+    logits : numpy.ndarray
+        Frame-wise class logits of shape (n_frames, 32).
+
+    Returns
+    -------
+    list of int
+        Decoded character ids (1-based); may be empty.
+    """
     ids = np.argmax(logits, axis=-1)
     seq = []
     prev = -1
@@ -183,11 +323,28 @@ def greedy_decode(logits):
 
 
 def ctc_loss(labels1b, logits, logit_len):
-    """labels arrive 1-based (the dataset convention); the official
+    """Compute the CTC loss for one trial.
+
+    labels arrive 1-based (the dataset convention); the official
     _trainStep subtracts 1 before ctc_loss_v2 with blank_index=-1 --
     v1-v4a of this simulation fed 1-based labels directly, shifting every
     character by one class (the real cause of the 'self-training
-    collapse', found 2026-10-26 evening)."""
+    collapse', found 2026-10-26 evening).
+
+    Parameters
+    ----------
+    labels1b : sequence of int
+        1-based target character ids for the single trial.
+    logits : numpy.ndarray
+        Frame-wise class logits of shape (n_frames, 32) for one trial.
+    logit_len : tensorflow.Tensor
+        Scalar int32 count of valid frames in ``logits``.
+
+    Returns
+    -------
+    tensorflow.Tensor
+        Scalar mean CTC loss (0-based labels, blank at the last class).
+    """
     values = [int(v) - 1 for v in labels1b]
     sparse = tf.sparse.SparseTensor(
         indices=[[0, i] for i in range(len(values))],
@@ -200,6 +357,23 @@ def ctc_loss(labels1b, logits, logit_len):
 
 
 def editdist(a, b):
+    """Levenshtein edit distance between two id sequences.
+
+    Uses a rolling-row dynamic-programming table (O(len(b)) memory).
+
+    Parameters
+    ----------
+    a : sequence
+        Reference id sequence.
+    b : sequence
+        Hypothesis id sequence.
+
+    Returns
+    -------
+    tuple of (int, int)
+        Edit distance between ``a`` and ``b``, and ``len(a)`` (the
+        reference length, for CER normalization).
+    """
     m, n = len(a), len(b)
     dp = list(range(n + 1))
     for i in range(1, m + 1):
@@ -213,6 +387,30 @@ def editdist(a, b):
 
 
 def cer_over(nsd, layer_idx, feats, labels, idxs):
+    """Pooled character error rate over selected trials.
+
+    Greedy-decodes each selected trial through the given input layer and
+    pools edit distances and reference lengths before dividing.
+
+    Parameters
+    ----------
+    nsd : NeuralSequenceDecoder
+        Decoder used for the forward passes.
+    layer_idx : int
+        Index of the input layer to evaluate through.
+    feats : list of numpy.ndarray
+        Per-trial raw feature matrices.
+    labels : list of numpy.ndarray
+        Per-trial 1-based ground-truth label id sequences.
+    idxs : sequence of int
+        Trial indices to include in the pooled score.
+
+    Returns
+    -------
+    float
+        100 * summed edit distance / summed reference length
+        (denominator guarded at 1).
+    """
     e = t = 0
     for k in idxs:
         dec = greedy_decode(forward_logits(nsd, layer_idx, feats[k]))
@@ -223,6 +421,15 @@ def cer_over(nsd, layer_idx, feats, labels, idxs):
 
 
 def main():
+    """Run the tier-3 v4 CORP simulation with official pseudo-labels.
+
+    Builds the decoder, fills the seed replay bank, then walks the 10
+    evaluation sessions in order: a fresh input layer per session (a copy
+    of the incoming layer), block-wise fine-tuning on official
+    lm_decoded pseudo-labels interleaved with seed replay, divergence
+    rollback per block, and pre/post CER per session. Writes the JSON
+    report to OUT and prints per-session logs plus the summary.
+    """
     os.makedirs("./20231201_fan/tmp_run4",
                 exist_ok=True)
     args = make_args()

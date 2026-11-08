@@ -42,6 +42,17 @@ GRAD_CLIP = 10.0
 
 
 def main():
+    """Run the tier-3 v7 leakage-free full-decoder CORP simulation.
+
+    Trains exactly like v6 (full decoder = per-session input layer plus
+    shared backend, official lm_decoded pseudo-labels, 500 steps/session
+    at lr 5e-5, global-norm clip 10, 70/30 pseudo/replay split) except
+    the final 6 trials of every session never enter the training pool
+    and serve as the leakage-free post-CER holdout. Adds per-session
+    ``del`` plus ``gc.collect()`` against the ~2 GB/session memory climb
+    seen in v6. Writes the JSON report to OUT and prints per-session
+    logs plus the summary.
+    """
     args = make_args()
     nsd = NeuralSequenceDecoder(args=args)
     seed_bank = []

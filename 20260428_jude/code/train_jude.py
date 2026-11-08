@@ -24,6 +24,17 @@ DATA_DIR = r".\20260428_jude\data\20260428_jude\hdf5"
 
 
 def main():
+    """Train the nejm-brain-to-text GRU decoder on the converted jude data.
+
+    Discovers all 12 t17 session directories under DATA_DIR, overrides the
+    official rnn_args.yaml for the 768-dim jude features, and hands off to
+    ``BrainToTextDecoder_Trainer``. Arguments come from the command line:
+    ``train_jude.py <num_batches> <output_root> [batches_per_val]``.
+
+    Returns
+    -------
+    None
+    """
     n_batches, out_root = int(sys.argv[1]), sys.argv[2]
     val_every = int(sys.argv[3]) if len(sys.argv) > 3 else 1000
 

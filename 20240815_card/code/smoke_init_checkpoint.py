@@ -25,6 +25,20 @@ from rnn_trainer import BrainToTextDecoder_Trainer  # noqa: E402
 
 
 def main():
+    """Run a short finetune-style training smoke test from the 45-day checkpoint.
+
+    Loads the official rnn_args.yaml, overrides it with a short training
+    horizon and finetune-scale learning rates, points
+    ``init_checkpoint_path`` at the run_120k best_checkpoint, and runs
+    ``BrainToTextDecoder_Trainer.train()``. Success is judged by the first
+    logged train loss being low (~0-30) and decreasing.
+
+    Returns
+    -------
+    None
+        Training logs are written under ``out_root``; progress is printed
+        to stdout.
+    """
     n_batches, out_root = int(sys.argv[1]), sys.argv[2]
 
     args = OmegaConf.load(r".\20240815_card\nejm-brain-to-text\model_training\rnn_args.yaml")

@@ -35,6 +35,16 @@ plt.rcParams["axes.unicode_minus"] = False
 
 
 def rot_labels(ax):
+    """Rotate a figure's x tick labels for readability.
+
+    Sets the x tick labels of ``ax`` to a 30-degree right-anchored
+    rotation.
+
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        Axes whose tick labels should be rotated.
+    """
     plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
 
 # ---------------- data ----------------
@@ -47,10 +57,43 @@ B25 = pd.read_csv(r".\20240815_card\result\val_greedy_per_trial.csv")  # BtoT25 
 
 
 def agg(df):
+    """Compute the pooled greedy PER (percent) of a per-trial DataFrame.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        Per-trial frame with ``edit_distance`` and ``true_len`` columns.
+
+    Returns
+    -------
+    float
+        100 * sum(edit_distance) / sum(true_len).
+    """
     return 100 * df.edit_distance.sum() / df.true_len.sum()
 
 
 def boot_ci(df, n_boot=2000, seed=0):
+    """Bootstrap 95% confidence interval for the pooled PER.
+
+    Resamples per-trial rows with replacement and recomputes the pooled
+    ratio each time, processing the replicates in chunks for memory
+    efficiency.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        Per-trial frame with ``edit_distance`` and ``true_len`` columns.
+    n_boot : int, optional
+        Number of bootstrap replicates.
+    seed : int, optional
+        Seed for the numpy random generator (reproducible).
+
+    Returns
+    -------
+    tuple of (float, float)
+        ``(lo, hi)`` percentile-2.5 and percentile-97.5 bounds of the
+        pooled PER in percent.
+    """
     rng = np.random.default_rng(seed)
     ed = df.edit_distance.to_numpy()
     ln = df.true_len.to_numpy()
@@ -241,6 +284,20 @@ plt.close(fig)
 
 # ---------------- J: training trajectories ----------------
 def parse_log(path):
+    """Extract validation PER curve points from a trainer log.
+
+    Parameters
+    ----------
+    path : str
+        Path to a ``training_log`` file containing lines of the form
+        ``Val batch <n>: PER (avg): <x>``.
+
+    Returns
+    -------
+    tuple of numpy.ndarray
+        ``(batches, pers)``: validation batch indices and the
+        corresponding PER values scaled to percent.
+    """
     batches, pers = [], []
     for line in open(path, encoding="utf-8", errors="ignore"):
         m = re.search(r"Val batch (\d+): PER \(avg\): ([\d.]+)", line)
@@ -249,6 +306,22 @@ def parse_log(path):
     return np.array(batches), np.array(pers)
 
 def trajectory_figure(runs, xlim, title, out_png):
+    """Plot validation PER training trajectories for one or more runs.
+
+    Draws one curve per run, star-marks each run's best (minimum) PER,
+    and saves the figure to ``out_png``.
+
+    Parameters
+    ----------
+    runs : list of tuple
+        ``(label, training_log_path, color)`` entries, one per run.
+    xlim : float
+        Right limit of the x axis (training batch).
+    title : str
+        Figure title (may contain Chinese text).
+    out_png : str
+        Output path for the saved PNG.
+    """
     fig, ax = plt.subplots(figsize=(9, 5.4))
     for name, path, c in runs:
         b, p = parse_log(path)

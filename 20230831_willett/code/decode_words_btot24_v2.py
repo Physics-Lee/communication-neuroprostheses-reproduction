@@ -56,27 +56,87 @@ ROOT_ID = 0            # id(root) placeholder; real id()s are never 0
 
 
 def _ladd(a, b):
-    """log-add-exp for python floats."""
+    """log-add-exp for python floats.
+
+    Numerically stable log(exp(a) + exp(b)); -inf operands are handled so
+    that combining with an impossible path returns the other operand.
+
+    Parameters
+    ----------
+    a : float
+        First log-probability (may be -inf).
+    b : float
+        Second log-probability (may be -inf).
+
+    Returns
+    -------
+    float
+        log(exp(a) + exp(b)), or -inf when both inputs are -inf.
+    """
     if a < b:
         a, b = b, a
     return a + math.log1p(math.exp(b - a)) if b > NEG_INF else a
 
 
 def norm_ref(sent):
+    """Normalize a reference sentence for WER scoring.
+
+    Keeps only letters, apostrophes and spaces, upper-cases the result and
+    splits it into words, matching the vocabulary convention of the
+    lexicon and language model.
+
+    Parameters
+    ----------
+    sent : str
+        Raw reference sentence, e.g. an h5 ``sentence_label`` attribute.
+
+    Returns
+    -------
+    list of str
+        Uppercased reference words.
+    """
     return re.sub(r"[^A-Za-z'< ]", " ", sent).upper().split()
 
 
 # ---------------------------------------------------------------- trie / lexicon
 class Node:
+    """Trie node of the pronunciation lexicon.
+
+    Children are keyed by phone class id (1..39), ``words`` holds the
+    homophones whose pronunciations end exactly at this node (None when no
+    word ends here), and ``last_ph`` records the phone leading into this
+    node (None at the root).
+    """
     __slots__ = ("children", "words", "last_ph")
 
     def __init__(self, last_ph=None):
+        """Create an empty trie node.
+
+        Parameters
+        ----------
+        last_ph : int or None, optional
+            Phone class id of the edge leading into this node; None for the
+            trie root (default None).
+        """
         self.children = {}
         self.words = None      # homophones ending here
         self.last_ph = last_ph  # phone leading into this node (None for root)
 
 
 def build_trie():
+    """Build the pronunciation trie from lexicon_numbers.txt.
+
+    Reads <LM_DIR>/lexicon_numbers.txt where each line is a vocabulary word
+    followed by its 1-based units.txt phone ids. Those ids coincide with the
+    model's phone classes 1..39, so each pronunciation becomes a path in the
+    trie and only vocabulary words are reachable during decoding.
+
+    Returns
+    -------
+    tuple(Node, int)
+        (root, n_lines): the trie root node and the number of lexicon
+        lines inserted.
+    """
     root = Node()
     n_lines = 0
     with open(LM_DIR + "/lexicon_numbers.txt", encoding="utf-8") as f:
@@ -105,11 +165,43 @@ def build_trie():
 
 # ---------------------------------------------------------------- decoder
 class State:
+    """One hypothesis in the joint CTC/LM beam search.
+
+    Combines Graves-style CTC prefix probabilities (p_nb for prefixes
+    ending with a real token, p_b for prefixes ending with blank) with a
+    lexicon-trie position, an accumulated KenLM score and a backpointer
+    chain recording each closed word for the final traceback.
+    """
     __slots__ = ("p_nb", "p_b", "node", "lm_state", "lm_score", "nwords",
                  "parent", "word", "ctx1", "ctx2")
 
     def __init__(self, p_nb, p_b, node, lm_state, lm_score, nwords,
                  parent, word, ctx1, ctx2):
+        """Create a beam-search hypothesis state.
+
+        Parameters
+        ----------
+        p_nb : float
+            Log-probability of the CTC prefix ending with a real token.
+        p_b : float
+            Log-probability of the CTC prefix ending with blank.
+        node : Node
+            Trie node of the partially spelled word.
+        lm_state : kenlm.State
+            KenLM n-gram state after the last closed word.
+        lm_score : float
+            Accumulated ``alpha*logP + beta*nwords`` language-model score.
+        nwords : int
+            Number of closed words so far.
+        parent : State or None
+            Backpointer to the state at the last word close.
+        word : str or None
+            Word closed relative to ``parent`` (None = word still ongoing).
+        ctx1 : str
+            Last closed word (or "<s>").
+        ctx2 : str
+            Second-to-last closed word (or "<s>").
+        """
         self.p_nb = p_nb        # log prob, prefix ends with a real token
         self.p_b = p_b          # log prob, prefix ends with blank
         self.node = node        # trie node of the partial word
@@ -123,7 +215,37 @@ class State:
 
 
 class JointDecoder:
+    """Joint lexicon-constrained CTC beam search decoder with a 3-gram LM.
+
+    Pure-Python replacement for the paper's WFST decoder: at each frame,
+    CTC prefix probabilities are advanced through a pronunciation trie (so
+    only vocabulary words are reachable), closed words are scored by KenLM
+    (``alpha * logP + beta`` per word), and the beam is pruned on
+    ``log(p_nb + p_b) + lm_score`` with a hard penalty margin
+    (LM_BEAM_PENALTY nats) and a size cap.
+    """
+
     def __init__(self, root, lm, alpha, beta, beam, boundary="free"):
+        """Create a decoder instance.
+
+        Parameters
+        ----------
+        root : Node
+            Pronunciation trie root from build_trie().
+        lm : kenlm.LanguageModel
+            3-gram KenLM model (G3.trie.bin; natural-log scores).
+        alpha : float
+            Language-model weight applied to each word's log-probability.
+        beta : float
+            Per-word insertion bonus added at every word close.
+        beam : int
+            Maximum number of states kept after each frame.
+        boundary : str, optional
+            Word-boundary mode: "free" (any phone can close a word at a
+            word-end node), "blank" (only blank-separated mass bridges word
+            boundaries) or "strict" (words close only on the '|'
+            separator) (default "free").
+        """
         self.root = root
         self.lm = lm
         self.alpha = alpha
@@ -132,7 +254,23 @@ class JointDecoder:
         self.boundary = boundary  # free | blank | strict (SEP-only)
 
     def _close_words(self, st):
-        """[(word, kenlm_state, lm_delta)] for every homophone of st.node."""
+        """[(word, kenlm_state, lm_delta)] for every homophone of st.node.
+
+        Scores each word ending at the hypothesis's current trie node with
+        the 3-gram KenLM and applies the alpha/beta weighting.
+
+        Parameters
+        ----------
+        st : State
+            Hypothesis whose ``node`` holds the homophone list.
+
+        Returns
+        -------
+        list of tuple
+            One (word, kenlm_state, lm_delta) per homophone, where
+            lm_delta is ``alpha * log_prob + beta`` to add to
+            ``st.lm_score`` when closing that word.
+        """
         out = []
         for w in st.node.words:
             nst = kenlm.State()
@@ -141,6 +279,26 @@ class JointDecoder:
         return out
 
     def decode(self, logp):
+        """Decode one trial's frame log-probs into the best word sequence.
+
+        Keeps only blank, separator and the TOPK best phones per frame,
+        advances every beam state under CTC prefix semantics (blank, '|'
+        separator word closes, phone emissions with repeat handling and
+        optional free-boundary word closes), prunes the beam each frame,
+        then force-closes any open word (scoring "</s>") and follows the
+        parent backpointers to recover the word sequence.
+
+        Parameters
+        ----------
+        logp : numpy.ndarray
+            (T, 41) float32 frame log-probabilities over CTC classes
+            (0 = blank, 1..39 = phones, 40 = ' | ' separator).
+
+        Returns
+        -------
+        list of str
+            Decoded word sequence (empty when no hypothesis survives).
+        """
         boundary = self.boundary
         T = logp.shape[0]
         keep = np.full((T, NCLS), NEG_INF, dtype=np.float32)
@@ -164,6 +322,12 @@ class JointDecoder:
             new = {}
 
             def push(key, st):
+                """Insert a new state under its dedup key or merge duplicates.
+
+                States sharing the same (ctx2, ctx1, trie node) key are
+                merged by log-add-exp of their CTC masses; the surviving
+                entry adopts the LM bookkeeping of the better-scoring state.
+                """
                 cur = new.get(key)
                 if cur is None:
                     new[key] = st
@@ -302,11 +466,34 @@ DEC = None
 
 
 def decode_one(tno):
+    """Decode a single trial (worker function for the multiprocessing pool).
+
+    Reads the trial from the module-global TRIALS and decodes it with the
+    module-global DEC JointDecoder, so fork-shared trie/LM data is reused
+    without pickling.
+
+    Parameters
+    ----------
+    tno : int
+        Index into TRIALS.
+
+    Returns
+    -------
+    tuple(int, list of str)
+        (tno, words): the trial index and its decoded word sequence.
+    """
     sess, key, logp, sent = TRIALS[tno]
     return tno, DEC.decode(logp)
 
 
 def main():
+    """Parse arguments, load the trie/LM/logits and run the beam search.
+
+    Builds the lexicon trie, loads the KenLM 3-gram and reads per-trial
+    log-probs from H5_PATH, then either sweeps an --alpha:beta grid on the
+    --limit subset or decodes the full test set once, printing WER and
+    optionally writing a per-trial csv via --out.
+    """
     global TRIALS, DEC
     ap = argparse.ArgumentParser()
     ap.add_argument("--alpha", type=float, default=0.6)
@@ -339,6 +526,25 @@ def main():
     print(f"{len(TRIALS)} trials", flush=True)
 
     def run_grid(alpha, beta):
+        """Decode all trials at one (alpha, beta) operating point.
+
+        Builds a JointDecoder, decodes every trial (in a fork-based
+        multiprocessing pool when --workers > 1) and accumulates
+        corpus-level WER as total edit distance over total reference words.
+
+        Parameters
+        ----------
+        alpha : float
+            Language-model weight for this run.
+        beta : float
+            Per-word insertion bonus for this run.
+
+        Returns
+        -------
+        tuple(float, dict)
+            (wer, hyps): word error rate as a fraction and a dict mapping
+            trial index to its decoded word list.
+        """
         DEC = JointDecoder(root, lm, alpha, beta, args.beam, args.boundary)
         globals()["DEC"] = DEC
         if args.workers > 1:

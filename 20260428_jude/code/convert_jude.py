@@ -72,6 +72,20 @@ _phoneme_cache = {}
 
 
 def phoneme_ids(sentence):
+    """Convert a sentence to a phoneme-id list (with a global cache).
+
+    Parameters
+    ----------
+    sentence : str
+        Cue sentence text.
+
+    Returns
+    -------
+    tuple of (list of int, list)
+        Phoneme ids (``"SIL"`` maps to 40, anything else to its index in
+        LOGIT_TO_PHONEME) and the phoneme sequence produced by
+        ``sentence_to_phonemes``.
+    """
     s = sentence.strip()
     if s not in _phoneme_cache:
         ph, _ = sentence_to_phonemes(s, g2p_instance=G2P)
@@ -81,7 +95,37 @@ def phoneme_ids(sentence):
 
 
 def convert_block(mat_path, session, blk_meta):
-    """Return list of trial dicts (features z-scored within this block)."""
+    """Return list of trial dicts (features z-scored within this block).
+
+    Extracts each trial's window between go_cue and trial_end on the binned
+    NSP timestamp grid, rejects paused/timed-out and too-short trials,
+    compresses 10 ms bins to 20 ms (TX summed, SBP averaged), orders
+    features as [SBP, TX], z-scores within the block, and zero-pads channels
+    up to N_FEATS.
+
+    Parameters
+    ----------
+    mat_path : str
+        Path to one block's RedisMat .mat file.
+    session : str
+        Session name (e.g. ``t17.2024.04.02``); used for context in error
+        messages.
+    blk_meta : dict
+        The session's ``{block: (vocab, loop)}`` entry from SENTENCE_BLOCKS.
+
+    Returns
+    -------
+    list of dict
+        Per-trial dicts with keys ``feat``, ``ids``, ``sent``, ``block``,
+        ``vocab``, ``loop``, ``trial``; empty list if no trials survive the
+        filters.
+
+    Raises
+    ------
+    AssertionError
+        If the block number is missing from ``blk_meta``, or a phoneme is
+        not present in LOGIT_TO_PHONEME.
+    """
     m = loadmat(mat_path)
     blk = int(np.ravel(m["block_number"])[0])
     assert blk in blk_meta, f"{mat_path}: block {blk} not in session table"
@@ -151,6 +195,24 @@ def convert_block(mat_path, session, blk_meta):
 
 
 def write_day(session, train_trials, val_trials):
+    """Write one session's train/val trials to hdf5 and accumulate CSV rows.
+
+    Parameters
+    ----------
+    session : str
+        Session directory name under OUT (e.g. ``t17.2024.04.02``).
+    train_trials : list of dict
+        Trial dicts from :func:`convert_block` for the train split.
+    val_trials : list of dict
+        Trial dicts for the val split (the day's last sentence block).
+
+    Returns
+    -------
+    None
+        Writes ``data_train.hdf5`` / ``data_val.hdf5`` under
+        ``OUT/<session>`` and appends description rows to the module-level
+        ALL_ROWS list.
+    """
     sdir = os.path.join(OUT, session)
     os.makedirs(sdir, exist_ok=True)
     for fname, split, trials in [("data_train.hdf5", "Train", train_trials),
@@ -183,6 +245,18 @@ def write_day(session, train_trials, val_trials):
 
 
 def main():
+    """Convert all configured sentence blocks into per-day hdf5 directories.
+
+    For every session in SENTENCE_BLOCKS, maps block numbers to .mat files
+    (warning about missing ones), converts each available block through
+    :func:`convert_block` (the day's last block becomes the val split),
+    writes the hdf5 files via :func:`write_day`, and finally writes the
+    dataset description CSV (CSV_OUT).
+
+    Returns
+    -------
+    None
+    """
     os.makedirs(OUT, exist_ok=True)
     for session, blk_meta in sorted(SENTENCE_BLOCKS.items()):
         mats = {}

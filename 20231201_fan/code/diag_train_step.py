@@ -21,12 +21,42 @@ from neuralDecoder.neuralSequenceDecoder import NeuralSequenceDecoder  # noqa: E
 
 
 def cer(nsd, layer_idx, feat, label):
+    """Greedy-decode one trial and score it against the ground truth.
+
+    Parameters
+    ----------
+    nsd : NeuralSequenceDecoder
+        Decoder whose input layer and frozen backend run the forward pass.
+    layer_idx : int
+        Index of the input layer to push the features through.
+    feat : numpy.ndarray
+        Raw (unsmoothed) neural feature matrix for one trial, shape
+        (n_time_steps, n_features).
+    label : numpy.ndarray
+        Ground-truth 1-based label ids of the trial; entries <= 0 are
+        ignored when forming the reference sequence.
+
+    Returns
+    -------
+    tuple of (float, list of int)
+        Character error rate in percent and the decoded 1-based id
+        sequence.
+    """
     dec = greedy_decode(forward_logits(nsd, layer_idx, feat))
     ed, ref = editdist(dec, [int(x) for x in label if x > 0])
     return 100 * ed / max(ref, 1), dec
 
 
 def main():
+    """Run the 30-step single-trial training diagnostic on session 3.
+
+    Takes trial 0 of session 3 (t5.2022.10.18) with its official
+    pseudo-label, prints the input layer's trainable state and the
+    starting CER/decode, then applies 30 Adam steps on that single trial
+    -- reporting loss, gradient norm, whether gradients were applied, and
+    CER every 5 steps -- and finally checks the same trial (overfit) and
+    a neighbor trial to separate learning from drift damage.
+    """
     args = make_args()
     nsd = NeuralSequenceDecoder(args=args)
     sess_i = 2  # t5.2022.10.18

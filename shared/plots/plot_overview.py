@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Overview dashboard of the 2026-08-31 BtoT24/BtoT25 reproduction run.
+r"""Overview dashboard of the 2026-08-31 BtoT24/BtoT25 reproduction run.
 
 One figure, six panels:
 A  BtoT24 training: val greedy PER trajectory + final test point + anchors

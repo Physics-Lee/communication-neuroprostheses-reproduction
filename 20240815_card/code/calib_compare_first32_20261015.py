@@ -49,6 +49,19 @@ IMPLANT = np.datetime64("2023-07-17")
 
 
 def main():
+    """Compare paper Table S3 online PER/WER against our offline numbers.
+
+    For each pairable Table S3 session (S2..S17), builds a row with the
+    paper's online PER/WER (with 95% CIs) and our offline PER (run_p4 greedy
+    val CSV) plus 5-gram and +OPT WER (p4 tsvs), saves the table to
+    ``OUT_CSV``, prints summary statistics, and renders a two-panel figure to
+    ``OUT_FIG``.
+
+    Returns
+    -------
+    None
+        Results are printed to stdout and written to ``OUT_CSV``/``OUT_FIG``.
+    """
     csv = pd.read_csv(os.path.join(P4, "val_greedy_per_trial.csv"))
     fin = pd.read_csv(os.path.join(P4, "p4_fixed_final_full.tsv"), sep="\t", encoding="utf-8")
     opt = pd.read_csv(os.path.join(P4, "p4_fixed_opt_fx.tsv"), sep="\t", encoding="utf-8")

@@ -14,9 +14,46 @@ from torch import nn
 
 
 class BiGRUDecoder(nn.Module):
+    """Bidirectional GRU CTC decoder with day-layer and optional patching.
+
+    A drop-in upgrade of the official (unidirectional) ``GRUDecoder`` from the
+    Card et al. release: the 5-layer GRU is made bidirectional and the single
+    linear classification head is replaced by an "expanded" head
+    (Linear -> GELU -> Linear). The per-day affine front-end (learnable
+    per-day weight matrix + bias followed by softsign) and the CTC logit
+    interface are unchanged, so it can be monkeypatched into the official
+    trainer (see ``train_bigrun.py``).
+    """
+
     def __init__(self, neural_dim, n_units, n_days, n_classes,
                  rnn_dropout=0.0, input_dropout=0.0, n_layers=5,
                  patch_size=0, patch_stride=0):
+        """Initialize the layers and parameters of the decoder.
+
+        Parameters
+        ----------
+        neural_dim : int
+            Number of input neural features per time step.
+        n_units : int
+            Hidden size of each GRU layer (per direction).
+        n_days : int
+            Number of recording days; one learnable day weight/bias pair is
+            created per day.
+        n_classes : int
+            Number of output classes (CTC vocabulary size, including blank).
+        rnn_dropout : float, optional
+            Dropout between GRU layers (0 disables it). Default 0.0.
+        input_dropout : float, optional
+            Dropout applied after the day layer (0 disables it). Default 0.0.
+        n_layers : int, optional
+            Number of stacked GRU layers. Default 5.
+        patch_size : int, optional
+            Number of consecutive time steps grouped into one patch; 0
+            disables patching. Default 0.
+        patch_stride : int, optional
+            Step between consecutive patches (only used when ``patch_size >
+            0``). Default 0.
+        """
         super().__init__()
         self.neural_dim = neural_dim
         self.n_units = n_units
@@ -59,6 +96,32 @@ class BiGRUDecoder(nn.Module):
         self.h0 = nn.Parameter(nn.init.xavier_uniform_(torch.zeros(2, 1, n_units)))
 
     def forward(self, x, day_idx, states=None, return_state=False):
+        """Run the decoder on a batch of neural sequences.
+
+        Applies the per-day affine layer and softsign activation, optionally
+        patches consecutive time steps, then runs the bidirectional GRU and
+        the expanded classification head to produce frame-wise CTC logits.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input of shape ``(batch, time, neural_dim)``.
+        day_idx : sequence of int
+            Recording-day index (into the learnable day weights/biases) for
+            each batch element.
+        states : torch.Tensor, optional
+            Initial GRU hidden state of shape ``(n_layers * 2, batch,
+            n_units)``. If None, a learnable init state is broadcast to the
+            batch.
+        return_state : bool, optional
+            If True, also return the final GRU hidden state. Default False.
+
+        Returns
+        -------
+        torch.Tensor or tuple of torch.Tensor
+            Logits of shape ``(batch, time, n_classes)`` if ``return_state``
+            is False; otherwise a tuple ``(logits, hidden_states)``.
+        """
         day_weights = torch.stack([self.day_weights[i] for i in day_idx], dim=0)
         day_biases = torch.cat([self.day_biases[i] for i in day_idx], dim=0).unsqueeze(1)
         x = torch.einsum("btd,bdk->btk", x, day_weights) + day_biases

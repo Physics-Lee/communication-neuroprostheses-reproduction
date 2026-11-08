@@ -22,12 +22,43 @@ SETS = {
 
 
 def norm(s):
+    """Normalize a transcript for edit-distance scoring.
+
+    Replaces every character other than ASCII letters, apostrophes,
+    ``<``/``>`` and spaces with a space, uppercases, and tokenizes on
+    whitespace.
+
+    Parameters
+    ----------
+    s : str
+        Raw transcript string (reference or hypothesis).
+
+    Returns
+    -------
+    list of str
+        Uppercase word tokens.
+    """
     return re.sub(r"[^A-Za-z'< ]", " ", s).upper().split()
 
 
 def ops(a, b):
     """edit ops turning a (ref) into b (hyp): D = ref word deleted,
-    I = hyp word inserted, R = substitution."""
+    I = hyp word inserted, R = substitution.
+
+    Parameters
+    ----------
+    a : list of str
+        Reference word tokens.
+    b : list of str
+        Hypothesis word tokens.
+
+    Returns
+    -------
+    list of str
+        One opcode per aligned step in alignment order: ``"M"`` match,
+        ``"R"`` substitution, ``"D"`` deletion from the reference, or
+        ``"I"`` insertion in the hypothesis.
+    """
     n, m = len(a), len(b)
     dp = [[0] * (m + 1) for _ in range(n + 1)]
     for i in range(n + 1):
@@ -50,6 +81,20 @@ def ops(a, b):
 
 
 def tally(rows, label):
+    """Print insertion/deletion/substitution error shares for a row set.
+
+    Scores every (reference, hypothesis) pair with ``ops`` after
+    normalization and prints the I/D/R counts and percentages plus the
+    pooled WER.
+
+    Parameters
+    ----------
+    rows : list of list of str
+        Tab-split rows of at least 3 fields where index 1 is the
+        reference and index 2 the hypothesis.
+    label : str
+        Row-set label used in the printed report.
+    """
     c = {"I": 0, "D": 0, "R": 0}
     n_ref = 0
     for p in rows:
@@ -65,6 +110,12 @@ def tally(rows, label):
 
 
 def main():
+    """Print word-level error anatomy for all configured datasets.
+
+    For every dataset TSV in ``SETS``, tallies I/D/R error shares over
+    all rows; for Card additionally splits rows into early-2023 and
+    late-2024+ sessions using the row-ordered session list.
+    """
     sessions = [r["session"] for r in csv.DictReader(
         open(GREEDY, encoding="utf-8", newline=""))]
     for name, path in SETS.items():

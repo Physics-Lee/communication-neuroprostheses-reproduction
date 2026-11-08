@@ -66,6 +66,7 @@ communication-neuroprostheses-reproduction/
 ├── 20260316_jude/                        # Jude et al., 2026a (Nat. Neurosci., touch typing T17/T18)
 ├── 20260428_jude/                        # Jude et al., 2026b (Cell Rep., intended speech in LIS T17)
 ├── shared/                               # Shared C++ TLG/WeNet decoders, KenLM/OPT/Qwen rescorers, plots
+├── docs/CLEANUP_AUDIT.md                 # Per-file audit: what was deleted and why (2026-11-08 cleanup)
 ├── environment.yml                       # Full Conda environment specification (name: bci-repro)
 ├── requirements.txt                      # Full pinned pip package list for bci-repro
 ├── reproduction_benchmark.yaml           # Structured dataset for the benchmark overview figure (panels a–h)
@@ -74,6 +75,10 @@ communication-neuroprostheses-reproduction/
 ├── build_session_per_vs_wer.py           # Recomputes session_per_vs_wer.json from per-trial decode TSVs
 └── render_figure2.py                     # Standalone renderer + overlap verifier for the benchmark figure (.png/.pdf)
 ```
+
+Every script carries a numpy-style docstring, and each study's `code/` folder has its
+own `README.md` code guide listing every file's role and the pipeline order — start
+there (e.g. [`20210512_willett/code/README.md`](20210512_willett/code/README.md)).
 
 ---
 

@@ -19,7 +19,21 @@ DATA_DIRS = ['t5.2019.05.08', 't5.2019.11.25', 't5.2019.12.09', 't5.2019.12.11',
 
 
 def wer(r, h):
-    """Levenshtein 距离（官方 rnnEval.wer 的直接移植）。"""
+    """Levenshtein 距离（官方 rnnEval.wer 的直接移植）。
+
+    Parameters
+    ----------
+    r : list or str
+        Reference tokens (ground truth).
+    h : list or str
+        Hypothesis tokens (decoded text).
+
+    Returns
+    -------
+    int
+        Minimum number of insertions/deletions/substitutions to turn ``h``
+        into ``r``.
+    """
     d = np.zeros((len(r) + 1, len(h) + 1), dtype=np.int32)
     for i in range(len(r) + 1):
         d[i, 0] = i
@@ -35,7 +49,29 @@ def wer(r, h):
 
 
 def read_kaldi_lattice_file(file_name, file_type):
-    """官方 kaldiReadWrite.readKaldiLatticeFile 移植。"""
+    """官方 kaldiReadWrite.readKaldiLatticeFile 移植。
+
+    Parameters
+    ----------
+    file_name : str
+        Path to a Kaldi lattice output file (per-line transcript or score
+        file, each line prefixed by a discarded index token).
+    file_type : str
+        ``'numeric'`` to parse per-line scores into a float array, or
+        ``'string'`` to parse per-line transcripts (mapping ``<space>`` to
+        a space and ``\\n`` to the empty string).
+
+    Returns
+    -------
+    numpy.ndarray or list of str
+        Float64 array of scores for ``'numeric'``; list of decoded
+        transcript strings for ``'string'``.
+
+    Raises
+    ------
+    ValueError
+        If ``file_type`` is neither ``'numeric'`` nor ``'string'``.
+    """
     with open(file_name, 'r') as f:
         all_lines = f.readlines()
     content = []
@@ -59,6 +95,25 @@ def read_kaldi_lattice_file(file_name, file_type):
 
 
 def main():
+    """Reproduce the official Step6 sentence selection and per-sentence errCounts.
+
+    For both cross-validation partitions, reads each sentence's n-best
+    transcripts and acoustic/LM scores from the packaged KaldiOutput,
+    selects ``argmin(ac + 2.0*lm)``, computes char/word errors against the
+    prompt (with ``>``->space, ``~``->``.``, ``#``->'' substitution),
+    aggregates validation-sentence CER/WER, then verifies every
+    (charCounts, charErrors, wordCounts, wordErrors) tuple against the
+    packaged Step6 errCounts and prints the per-partition result.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    None
+        Results are printed to stdout only.
+    """
     for cv_part in ['HeldOutBlocks', 'HeldOutTrials']:
         val_err_counts = []
         for data_dir in DATA_DIRS:

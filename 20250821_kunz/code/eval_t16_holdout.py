@@ -31,6 +31,18 @@ MODEL_ARGS = OmegaConf.create({
 
 
 def main():
+    """Evaluate one T16 holdout fold checkpoint on its held-out block.
+
+    Rebuilds the ``GRUDecoder`` from the fold's checkpoint, decodes the
+    fold's held-out val session (``blk<N>val``) with greedy CTC, and
+    reports the pooled phoneme error rate.
+
+    Returns
+    -------
+    None
+        The fold's PER summary is printed to stdout and per-trial results
+        are written to ``<run_dir>/val_greedy_per_trial.csv``.
+    """
     run_dir, fold = sys.argv[1], int(sys.argv[2])
     ckpt_path = os.path.join(run_dir, "checkpoint", "best_checkpoint")
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

@@ -12,6 +12,19 @@ import sys
 
 
 def main():
+    """Write a copy of the rescore TSV with the hyp column uppercased.
+
+    Reads the opt_rescore output TSV row by row, uppercases the third
+    (hyp) column of every data row so wer_eval_card.py scores it correctly
+    against its uppercased references, passes header/other lines through
+    unchanged, and writes the result to ``dst``.
+
+    Returns
+    -------
+    None
+        The converted TSV is written to ``dst``; the row count is printed
+        to stdout.
+    """
     src = sys.argv[1]
     dst = sys.argv[2] if len(sys.argv) > 2 else src + ".upperhyp.tsv"
     n = 0

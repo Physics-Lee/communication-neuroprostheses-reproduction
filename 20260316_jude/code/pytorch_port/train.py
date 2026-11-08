@@ -1,6 +1,16 @@
-# train.py — 官方 brainToText_trainDecoder 训练循环的 PyTorch 移植（GPU 版，2026-10-10）
-# 超参默认值逐项对照 code/m1_t18_20241204_args.yaml（官方 notebook 25 的 T18_trainArgs.yaml 翻版）。
-# 运行环境：.\20260910_reproduce_20260629_levy\.venv312\Scripts\python.exe（torch 2.7.1+cu128）
+r"""PyTorch port of the official brainToText_trainDecoder training loop (GPU version).
+
+Hyperparameter defaults are transcribed item by item from
+code/m1_t18_20241204_args.yaml (itself a replica of the official notebook
+25's T18_trainArgs.yaml); any change must be registered in the README
+deviation table.
+
+Notes
+-----
+Written 2026-10-10. Intended interpreter:
+.\20260910_reproduce_20260629_levy\.venv312\Scripts\python.exe
+(torch 2.7.1+cu128).
+"""
 import argparse
 import json
 import math
@@ -27,6 +37,24 @@ HP = dict(
 
 
 def lr_at(step, hp):
+    """Return the learning rate for a given training step.
+
+    Official PolynomialDecay(power=1): linear decay from
+    ``learn_rate_start`` to ``learn_rate_end``.
+
+    Parameters
+    ----------
+    step : int
+        Current batch index.
+    hp : dict
+        Hyperparameter dict providing ``learn_rate_start``,
+        ``learn_rate_end`` and ``learn_rate_decay_steps``.
+
+    Returns
+    -------
+    float
+        Learning rate to use at ``step``.
+    """
     # 官方 PolynomialDecay(power=1)：线性 0.02 -> 0
     frac = min(1.0, step / hp['learn_rate_decay_steps'])
     return hp['learn_rate_start'] + frac * (hp['learn_rate_end'] - hp['learn_rate_start'])
@@ -34,6 +62,29 @@ def lr_at(step, hp):
 
 @torch.no_grad()
 def validate(model, input_net, val_ds, device):
+    """Compute the greedy-CTC character error rate of the model on a dataset.
+
+    Both modules are set to eval mode; batches are built without
+    augmentation, decoded greedily, and character edit distances are
+    accumulated over all trials.
+
+    Parameters
+    ----------
+    model : TypingGRU
+        Decoder network (switched to eval mode inside).
+    input_net : InputNet
+        Session input net applied before the decoder.
+    val_ds : TypingDataset
+        Evaluation split (normally the exported test partition).
+    device : str or torch.device
+        Device the input batch is moved to.
+
+    Returns
+    -------
+    float
+        Character error rate: total edit distance divided by total true
+        character count.
+    """
     model.eval()
     input_net.eval()
     n_err, n_tot = 0, 0
@@ -52,6 +103,20 @@ def validate(model, input_net, val_ds, device):
 
 
 def main():
+    """Run the ported brainToText training loop on the exported npz.
+
+    Trains ``InputNet`` + ``TypingGRU`` with the official hyperparameters
+    (HP dict, Adam with eps=0.1, polynomial LR decay, bf16 autocast),
+    validates every ``batches_per_val`` batches with greedy-CTC CER, saves
+    the best checkpoint to ``<out>/best.pt``, logs to ``<out>/training_log``
+    and writes ``final_report.json`` at the end. CLI options: ``--smoke N``
+    (speed test only), ``--batches``, ``--npz``, ``--n-features``,
+    ``--patience`` (early-stop window) and ``--out`` (run directory).
+
+    Returns
+    -------
+    None
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--smoke', type=int, default=0, help='>0 则只跑 N 批冒烟并报告速度')
     ap.add_argument('--batches', type=int, default=HP['n_batches'])
@@ -66,6 +131,17 @@ def main():
     log_f = open(out_dir / 'training_log', 'a', encoding='utf-8')
 
     def log(msg):
+        """Print a message to stdout and append it to the training_log file.
+
+        Parameters
+        ----------
+        msg : str
+            Message to log.
+
+        Returns
+        -------
+        None
+        """
         print(msg, flush=True)
         log_f.write(msg + '\n')
         log_f.flush()

@@ -12,10 +12,38 @@ import editdistance
 
 
 def norm_ref(sent):
+    """Normalize a reference sentence for edit-distance scoring.
+
+    Replaces every character other than ASCII letters, apostrophes,
+    ``<``/``>`` and spaces with a space, uppercases, and tokenizes on
+    whitespace (identical to decode_words_btot24_v2.py).
+
+    Parameters
+    ----------
+    sent : str
+        Raw reference sentence.
+
+    Returns
+    -------
+    list of str
+        Uppercase word tokens.
+    """
     return re.sub(r"[^A-Za-z'< ]", " ", sent).upper().split()
 
 
 def main():
+    """Compute pooled WER from a decode TSV and save per-trial details.
+
+    Reads key/ref/hyp/score rows, scores each with a token edit
+    distance, prints the pooled WER, and writes a companion
+    ``<path>.wer`` CSV with per-trial edit distances and reference
+    lengths.
+
+    Notes
+    -----
+    Arguments come from ``sys.argv``:
+    ``wer_from_tsv.py <out.tsv> [limit]``.
+    """
     path = sys.argv[1]
     limit = int(sys.argv[2]) if len(sys.argv) > 2 else 0
     tot_ed = tot_ref = n = 0

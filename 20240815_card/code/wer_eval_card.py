@@ -23,10 +23,45 @@ GREEDY = RUN + r"\val_greedy_per_trial.csv"
 
 
 def norm(s):
+    """Normalize a transcript string to the evaluation token vocabulary.
+
+    Keeps only letters, apostrophes, angle brackets (e.g. ``'<unk>'``) and
+    spaces, maps every other character to a space, upper-cases, and splits
+    on whitespace.
+
+    Parameters
+    ----------
+    s : str
+        Raw reference or hypothesis transcript string.
+
+    Returns
+    -------
+    list of str
+        Uppercased word tokens ready for edit-distance WER computation.
+    """
     return re.sub(r"[^A-Za-z'< ]", " ", s).upper().split()
 
 
 def main():
+    """Evaluate a word-decode TSV in the Card 2024 paper's reporting style.
+
+    Joins final.tsv rows (by row order) with the greedy per-trial CSV to
+    recover each trial's session and corpus, then prints the pooled WER with
+    a 10000-resample bootstrap 95% CI over trials, per-session WER (paper
+    Fig 2 style) with day median/range, a per-corpus breakdown, and, when an
+    n-best TSV is given, the n-best pool oracle WER.
+
+    Returns
+    -------
+    None
+        All statistics are printed to stdout.
+
+    Raises
+    ------
+    AssertionError
+        If the final.tsv row count does not match the greedy CSV meta count
+        (row-order join requires them to be identical).
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument("final_tsv")
     ap.add_argument("nbest_tsv", nargs="?", default="")

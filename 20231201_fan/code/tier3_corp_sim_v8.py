@@ -41,6 +41,16 @@ GRAD_CLIP = 10.0
 
 
 def main():
+    """Run the tier-3 v8 self-label robustness CORP simulation.
+
+    Identical protocol to v7 (full decoder, leakage-free final-6-trials
+    holdout, 500 steps/session at lr 5e-5, global-norm clip 10, 70/30
+    pseudo/replay split) except the label source: at each session start
+    the frozen incoming model greedily decodes every pool trial (no LM)
+    and those self-labels become the training targets -- the worst-case
+    re-test of the retracted v1-v3 greedy-label claim. Writes the JSON
+    report to OUT and prints per-session logs plus the summary.
+    """
     args = make_args()
     nsd = NeuralSequenceDecoder(args=args)
     seed_bank = []

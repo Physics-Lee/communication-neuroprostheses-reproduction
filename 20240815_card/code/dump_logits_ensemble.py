@@ -27,6 +27,18 @@ OUT = os.path.join(os.path.dirname(P4), "run_ens_p4_t2a", "t15_logits_fixed.hdf5
 
 
 def main():
+    """Run the P4 + T2a ensemble and dump averaged per-trial CTC log-probs.
+
+    Builds both decoders, evaluates them on every released session that has a
+    data_val.hdf5 split, averages their log-softmax outputs per trial, and
+    writes the result to a single hdf5 file grouped as
+    ``<session>/tr<NNNN>`` for the downstream decode/rescore chain.
+
+    Returns
+    -------
+    None
+        Results are written to ``OUT``; progress is printed to stdout.
+    """
     device = torch.device("cuda:0")
     args = OmegaConf.load(os.path.join(P4, "checkpoint", "args.yaml"))
     sessions = list(args["dataset"]["sessions"])

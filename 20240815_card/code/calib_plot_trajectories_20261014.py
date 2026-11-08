@@ -29,6 +29,26 @@ COLORS = {"static": "#888888", "copy": "#1f77b4", "keep": "#2ca02c", "eye": "#d6
 
 
 def rolling_per(ed, ln, w=5):
+    """Compute a rolling-window PER trajectory over trials.
+
+    The first ``w - 1`` positions hold the expanding-window (cumulative) PER
+    so the output has the same length as the input.
+
+    Parameters
+    ----------
+    ed : sequence of float or int
+        Per-trial edit distances.
+    ln : sequence of float or int
+        Per-trial reference lengths.
+    w : int, optional
+        Rolling window size in trials. Default 5.
+
+    Returns
+    -------
+    numpy.ndarray
+        Array (same length as ``ed``) of PER values in percent; entries
+        before a full window is available use cumulative normalization.
+    """
     ed, ln = np.asarray(ed, float), np.asarray(ln, float)
     red = np.convolve(ed, np.ones(w), "valid")
     rln = np.convolve(ln, np.ones(w), "valid")
@@ -38,6 +58,17 @@ def rolling_per(ed, ln, w=5):
 
 
 def main():
+    """Plot Fig S14-style within-session PER trajectories for the sims.
+
+    Draws one panel per 2025 session: the static-P4 rolling-5 PER from the
+    greedy CSV plus the rolling-5 online PER of each adaptation arm (LR
+    0.004 runs) found under ``CAL``, and saves the figure to ``OUT``.
+
+    Returns
+    -------
+    None
+        The figure is saved to ``OUT``; the path is printed to stdout.
+    """
     csv = pd.read_csv(P4CSV)
     fig, axes = plt.subplots(2, 3, figsize=(15, 8), sharey=True)
     for ax, s in zip(axes.ravel(), DAYS):

@@ -36,6 +36,19 @@ DAYS = {"t15_day179": "brain2voice_t15_day174.h5",
 
 
 def main():
+    """Run the paper-faithful whole-trial Mel alignment evaluation.
+
+    Unlike tier-2 (which concatenated voiced feature chunks before
+    vocoding), this synthesizes the entire trial including silences, then
+    drops silent Mel frames before correlating, avoiding splice artifacts.
+
+    Returns
+    -------
+    None
+        Per-trial and per-day correlations are printed to stdout and the
+        report (with the tier-2 concatenation reference scores) is written
+        to ``result/tier2_mel_full_trial.json``.
+    """
     os.makedirs(WORK, exist_ok=True)
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
     from keras.models import load_model

@@ -16,6 +16,21 @@ TOK = re.compile(r"[^a-z0-9']+")
 
 
 def norm_words(s):
+    """Normalize a transcript string into a list of clean word tokens.
+
+    Casefolds the input, splits on whitespace, and strips every character
+    that is not a lowercase letter, digit, or apostrophe.
+
+    Parameters
+    ----------
+    s : str
+        Raw transcript string (reference or hypothesis sentence).
+
+    Returns
+    -------
+    list of str
+        Non-empty normalized tokens in original order.
+    """
     out = []
     for w in s.casefold().split():
         w = TOK.sub("", w)
@@ -25,6 +40,25 @@ def norm_words(s):
 
 
 def word_ed(ref, hyp):
+    """Compute the word-level edit distance between two transcripts.
+
+    Uses a rolling-row dynamic-programming Levenshtein computation over
+    the word tokens produced by ``norm_words``.
+
+    Parameters
+    ----------
+    ref : str
+        Reference (ground-truth) transcript.
+    hyp : str
+        Hypothesis (decoded) transcript.
+
+    Returns
+    -------
+    tuple of (int, int)
+        ``(distance, n_ref_words)`` where ``distance`` is the minimum
+        number of word insertions, deletions, and substitutions, and
+        ``n_ref_words`` is the number of reference tokens.
+    """
     a, b = norm_words(ref), norm_words(hyp)
     m, n = len(a), len(b)
     dp = list(range(n + 1))
@@ -38,6 +72,23 @@ def word_ed(ref, hyp):
 
 
 def read_tsv(path):
+    """Read (reference, hypothesis) sentence pairs from a decode TSV.
+
+    Skips the header row (first field equal to ``"key"``) and any line
+    with fewer than three tab-separated fields.
+
+    Parameters
+    ----------
+    path : str
+        Path to a tab-separated decode-output file whose columns are at
+        least ``key``, reference sentence, hypothesis sentence.
+
+    Returns
+    -------
+    list of tuple of (str, str)
+        ``(reference, hypothesis)`` pairs, one per data row, in file
+        order.
+    """
     rows = []
     with open(path, encoding="utf-8") as f:
         for line in f:
@@ -48,6 +99,37 @@ def read_tsv(path):
 
 
 def build(name, per_csv, tsv):
+    """Aggregate per-trial PER errors and decode TSVs into session stats.
+
+    Joins a per-trial CSV (edit distances grouped by session) with a
+    decode TSV positionally, verifies the join by comparing sentence
+    labels, accumulates phoneme- and word-level errors per session, and
+    pools them across sessions.
+
+    Parameters
+    ----------
+    name : str
+        Human-readable dataset label used in log output.
+    per_csv : str
+        Path to a per-trial CSV with columns ``sentence_label``,
+        ``session``, ``edit_distance``, and ``true_len``.
+    tsv : str
+        Path to the matching decode-output TSV (see ``read_tsv``).
+
+    Returns
+    -------
+    dict
+        ``{"sessions": [...], "pooled": {...}}`` where ``sessions`` lists
+        ``{"session", "n", "per", "wer"}`` dicts for sessions with at
+        least 3 trials (PER/WER in percent) and ``pooled`` holds the
+        all-session pooled ``per`` and ``wer`` percentages.
+
+    Raises
+    ------
+    AssertionError
+        If the CSV and TSV row counts differ, or if too many sentence
+        labels mismatch (positional join invalid).
+    """
     with open(per_csv, encoding="utf-8") as f:
         per_rows = list(csv.DictReader(f))
     tsv_rows = read_tsv(tsv)
@@ -99,6 +181,12 @@ def build(name, per_csv, tsv):
 
 
 def main():
+    """Rebuild ``session_per_vs_wer.json`` for all benchmark datasets.
+
+    Runs ``build`` for Willett 2023, Card 2024, Jude 2026b, and the three
+    Kunz 2025 inner-speech participants, then writes the combined result
+    dictionary to ``session_per_vs_wer.json`` in the repository root.
+    """
     w_dir = os.path.join(HERE, "20230831_willett", "results", "decode_outputs")
     c_dir = os.path.join(HERE, "20240815_card", "results", "decode_outputs")
     j_dir = os.path.join(HERE, "20260428_jude", "results", "decode_outputs")

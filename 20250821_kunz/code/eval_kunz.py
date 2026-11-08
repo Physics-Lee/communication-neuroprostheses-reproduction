@@ -31,6 +31,19 @@ MODEL_ARGS = OmegaConf.create({
 
 
 def main():
+    """Evaluate a trained Kunz run checkpoint with greedy CTC decoding.
+
+    Rebuilds the ``GRUDecoder`` from the run's saved args and checkpoint,
+    decodes every trial of the closed-loop ``*_eval`` sessions (argmax,
+    collapse repeats, drop blank), and reports pooled, per-session, and
+    per-vocab phoneme error rates.
+
+    Returns
+    -------
+    None
+        PER breakdowns are printed to stdout and per-trial results are
+        written to ``<run_dir>/val_greedy_per_trial.csv``.
+    """
     run_dir, subj = sys.argv[1], sys.argv[2]
     ckpt_path = os.path.join(run_dir, "checkpoint", "best_checkpoint")
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

@@ -40,6 +40,19 @@ OUT = os.path.join(RUN, "t15_logits_fixed.hdf5")
 
 
 def main():
+    """Decode all val trials with correct day indexing and dump CTC log-probs.
+
+    Loads the run's best checkpoint, iterates the full session list from the
+    run's args.yaml (using ``sessions.index(session)`` as the day index, i.e.
+    official evaluate_model.py semantics), converts per-trial logits to
+    log-probs, and writes them to ``RUN/t15_logits_fixed.hdf5`` grouped as
+    ``<session>/tr<NNNN>``.
+
+    Returns
+    -------
+    None
+        Results are written to ``OUT``; progress is printed to stdout.
+    """
     model_args = OmegaConf.load(os.path.join(RUN, "checkpoint", "args.yaml"))
     ds = model_args["dataset"]
     device = torch.device("cuda:0")

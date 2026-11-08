@@ -49,6 +49,20 @@ GRAD_CLIP = 10.0
 
 
 def make_args():
+    """Build the v6 simulation's OmegaConf argument block.
+
+    Same dataset layout as v4/v5 (11 seed sessions + 10 evaluation
+    sessions, each evaluation dataset copying the previous session's
+    input layer via ``copyInputLayer``) but with ``trainableBackend: 1``
+    so the full decoder trains, matching the paper's online update
+    scope.
+
+    Returns
+    -------
+    omegaconf.DictConf
+        Fully-populated config for ``NeuralSequenceDecoder`` (checkpoint
+        ckpt-12500 of the official pretrained seed model).
+    """
     from tier3_corp_sim_official_labels import (  # noqa: F401
         SEED_SESSIONS, MODEL_YAML)
     n_ev = len(EVAL_SESSIONS)
@@ -90,6 +104,17 @@ def make_args():
 
 
 def main():
+    """Run the tier-3 v6 full-decoder CORP simulation.
+
+    Warm-starts the lazily-built Keras backend with one forward pass,
+    snapshots the backend trainable variables once, then for each
+    evaluation session trains the session input layer plus the shared
+    backend (rebuilt per session) for 500 Adam steps at lr 5e-5 with
+    global-norm gradient clipping at 10, on official lm_decoded
+    pseudo-labels mixed with seed replay; aborts a session on NaN loss
+    and records pre/mid/post CER. Writes the JSON report to OUT and
+    prints per-session logs plus the summary.
+    """
     args = make_args()
     nsd = NeuralSequenceDecoder(args=args)
     seed_bank = []

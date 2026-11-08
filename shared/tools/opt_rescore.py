@@ -25,6 +25,22 @@ QWEN_PATH = r".\20260710_Design_of_Large_Corpus\LLM\Qwen3.5-4B"
 
 
 def read_nbest(path, limit):
+    """Read a tlg_viterbi n-best TSV into per-key candidate groups.
+
+    Parameters
+    ----------
+    path : str
+        Path to the n-best TSV with columns ``key``, rank, ``ac_logp``,
+        ``graph_logp``, sentence (tab-separated).
+    limit : int
+        Stop after this many distinct keys; 0 or None means no limit.
+
+    Returns
+    -------
+    collections.OrderedDict
+        Maps key to a list of ``(sentence, ac_logp, graph_logp)``
+        tuples in file order.
+    """
     groups = collections.OrderedDict()
     with open(path, encoding="utf-8") as f:
         for line in f:
@@ -41,7 +57,22 @@ def read_nbest(path, limit):
 
 
 def word_diff_ops(a_words, b_words):
-    """ops[i] in {I,D,R}: how to turn a_words into b_words (word level)."""
+    """ops[i] in {I,D,R}: how to turn a_words into b_words (word level).
+
+    Parameters
+    ----------
+    a_words : list of str
+        Source word sequence.
+    b_words : list of str
+        Target word sequence.
+
+    Returns
+    -------
+    list of str
+        One edit opcode per aligned step, in alignment order: ``"M"``
+        (match), ``"R"`` (substitution), ``"I"`` (insertion into a), or
+        ``"D"`` (deletion from a).
+    """
     n, m = len(a_words), len(b_words)
     dp = [[0] * (m + 1) for _ in range(n + 1)]
     for i in range(n + 1):
@@ -65,7 +96,30 @@ def word_diff_ops(a_words, b_words):
 
 
 def augment_nbest(cands, top_k=20, acs=0.3, penalty=0.01):
-    """Port of augment_nbest: swap replaced words between top candidates."""
+    """Port of augment_nbest: swap replaced words between top candidates.
+
+    For each pair of same-length top candidates whose word-level
+    alignment contains substitutions, both swap variants are emitted with
+    averaged (and slightly penalized) acoustic/graph scores.
+
+    Parameters
+    ----------
+    cands : list of tuple
+        ``(sentence, ac_logp, graph_logp)`` candidates for one trial.
+    top_k : int, optional
+        Only candidates within this rank range (after re-sorting) are
+        paired for swapping.
+    acs : float, optional
+        Acoustic scale used to rank candidates for pairing.
+    penalty : float, optional
+        Relative score penalty applied to swapped variants.
+
+    Returns
+    -------
+    list of tuple
+        Original plus generated candidates as
+        ``(sentence, ac_logp, graph_logp)``, sorted best-first.
+    """
     cands = sorted(cands, key=lambda c: -(c[2] + acs * c[1]))
     sents = [c[0].strip() for c in cands]
     acs_l = [c[1] for c in cands]
@@ -108,7 +162,41 @@ def opt_scores(model, tok, device, sentences, length_penalty, batch=48,
                token_budget=1536):
     """Length-aware batching: the 248k-vocab Qwen logits blow up VRAM when a
     batch pads to a long outlier (Kunz garbage candidates), so pre-tokenize,
-    sort by length and cap each batch by a total-token budget."""
+    sort by length and cap each batch by a total-token budget.
+
+    Computes, for each sentence, the summed causal-LM token log-probability
+    minus ``n_tokens * length_penalty``.
+
+    Parameters
+    ----------
+    model : transformers.PreTrainedModel
+        Causal language model used for scoring.
+    tok : transformers.PreTrainedTokenizerBase
+        Corresponding tokenizer.
+    device : str
+        Torch device to run the model on (e.g. ``"cuda"``).
+    sentences : list of str
+        Candidate sentences to score.
+    length_penalty : float
+        Per-token penalty subtracted from each sentence score.
+    batch : int, optional
+        Maximum sentences per forward batch (further capped by the
+        token budget).
+    token_budget : int, optional
+        Maximum total padded tokens per batch; shorter batches are
+        formed for long outliers.
+
+    Returns
+    -------
+    list of float
+        Length-penalized total log-probability per sentence, in input
+        order.
+
+    Raises
+    ------
+    torch.cuda.OutOfMemoryError
+        If a single-sentence batch still cannot be scored.
+    """
     scores = [None] * len(sentences)
     tok.padding_side = "right"
     if tok.pad_token is None:
@@ -164,6 +252,13 @@ def opt_scores(model, tok, device, sentences, length_penalty, batch=48,
 
 
 def main():
+    """CLI entry point: rescore an n-best TSV with a causal LM.
+
+    Reads and augments the n-best lists, scores every candidate with the
+    configured LM (OPT-6.7B by default), then either sweeps --sweep-alpha
+    values (writing only the best-alpha decode) or decodes once at
+    --alpha and writes the per-trial output TSV.
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument("nbest_tsv")
     ap.add_argument("out_tsv")
@@ -236,6 +331,26 @@ def main():
         by_key[key].append((sent, ac, g, o))
 
     def decode_with(alpha, acs):
+        """Pick the best candidate per trial and score it against the ref.
+
+        Selects, for each key, the candidate maximizing
+        ``acs * ac_logp + (1 - alpha) * graph_logp + alpha * opt_logp``
+        (closures over ``by_key``, ``keys``, and ``key_ref``) and
+        evaluates its word edit distance to the reference.
+
+        Parameters
+        ----------
+        alpha : float
+            LM interpolation weight (0 = graph score only).
+        acs : float
+            Post-hoc acoustic weight.
+
+        Returns
+        -------
+        tuple of (int, int, int, list of tuple)
+            ``(total_ed, total_ref_len, n_trials, out_rows)`` where each
+            row is ``(key, ref, hyp, score, ed, ref_len)``.
+        """
         tot_ed = tot_ref = n = 0
         out_rows = []
         for key in keys:

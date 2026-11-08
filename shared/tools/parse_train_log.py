@@ -25,6 +25,19 @@ RE_BEST = re.compile(r"New best test PER ([\d.]+) --> ([\d.]+)")
 
 
 def main():
+    """Parse a trainer log and emit curve CSVs, a PNG, and a summary.
+
+    Scans the log for train loss / grad-norm lines, validation PER /
+    CTC-loss lines, per-day PER lines, and new-best markers; writes
+    ``curves.csv``, optionally ``day_per_last_valstep.csv``, and
+    ``training_curves.png`` into the output directory, and prints the
+    best val PER plus a trajectory summary.
+
+    Notes
+    -----
+    Arguments come from ``sys.argv``:
+    ``parse_train_log.py <log_path> <out_dir>``.
+    """
     log_path, out_dir = sys.argv[1], sys.argv[2]
 
     train_rows, val_rows, best_rows = [], [], []

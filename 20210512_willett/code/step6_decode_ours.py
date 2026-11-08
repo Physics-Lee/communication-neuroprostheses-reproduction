@@ -24,6 +24,27 @@ ROOT = os.path.join(REPO, 'data', '20210512_willett', 'handwritingBCIData')
 
 
 def main():
+    """Bigram-decode the self-trained model's kaldiMats and write the M3 CSV.
+
+    For every session of the chosen partition that has kaldiMats under
+    ``runs/<runName>/step6_kaldimat/<cvPart>/``, decodes each validation
+    sentence with the WSL ``latgen_lazy2`` 1-best (reusing the verified
+    helpers from ``step6_decode_batch``), computes char/word errors against
+    the sentence prompt (spaces kept, matching the official Step6 errCounts
+    convention), prints the corpus-level CER/WER summary against the
+    official bigram numbers, and writes one row per sentence to
+    ``result/m3_own_decode_<cvPart>.csv``.
+
+    Parameters
+    ----------
+    None
+        Required command-line options: ``--runName`` (runs directory name
+        containing ``step6_kaldimat``) and ``--cvPart``.
+
+    Returns
+    -------
+    None
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--runName', required=True, help='runs 下的运行目录名（含 step6_kaldimat）')
     ap.add_argument('--cvPart', choices=['HeldOutBlocks', 'HeldOutTrials'], required=True)

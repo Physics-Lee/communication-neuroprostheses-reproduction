@@ -37,12 +37,42 @@ REPLAY_FRAC = 0.3
 
 
 def cer(nsd, li, feat, label):
+    """Character error rate of one trial's greedy decode, in percent.
+
+    Parameters
+    ----------
+    nsd : NeuralSequenceDecoder
+        Decoder whose input layer and frozen backend run the forward pass.
+    li : int
+        Index of the input layer to evaluate through.
+    feat : numpy.ndarray
+        Raw (unsmoothed) per-trial feature matrix of shape
+        (n_time_steps, 192).
+    label : numpy.ndarray
+        Ground-truth 1-based label ids of the trial; entries <= 0 are
+        ignored when forming the reference sequence.
+
+    Returns
+    -------
+    float
+        100 * edit distance / reference length, denominator guarded at 1.
+    """
     dec = greedy_decode(forward_logits(nsd, li, feat))
     ed, ref = editdist(dec, [int(x) for x in label if x > 0])
     return 100 * ed / max(ref, 1)
 
 
 def main():
+    """Run the tier-3 v5 CORP simulation with a CORP-scale update budget.
+
+    Builds the decoder and seed replay bank, then for each evaluation
+    session spends STEPS=500 Adam steps (lr 5e-5) fine-tuning only the
+    session's input layer -- roughly 70% official lm_decoded pseudo-label
+    trials and 30% seed replay -- recording pre/mid/post CER, and hands
+    the converged layer to the next session as the incoming layer.
+    Writes the JSON report to OUT and prints per-session logs plus the
+    summary.
+    """
     args = make_args()
     nsd = NeuralSequenceDecoder(args=args)
     seed_bank = []

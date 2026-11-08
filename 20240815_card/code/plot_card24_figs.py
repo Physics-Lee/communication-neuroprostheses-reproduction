@@ -23,6 +23,19 @@ SUMMARY = r".\20240815_card\result\val_greedy_summary.json"
 
 
 def rot_labels(ax):
+    """Rotate a matplotlib axis' x tick labels for readability.
+
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        Axis whose x tick labels should be rotated 30 degrees and
+        right-aligned.
+
+    Returns
+    -------
+    None
+        The axis is modified in place.
+    """
     plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
 
 

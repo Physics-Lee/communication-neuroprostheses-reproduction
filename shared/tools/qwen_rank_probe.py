@@ -19,10 +19,39 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 def norm(s):
+    """Normalize a transcript for edit-distance scoring.
+
+    Replaces every character other than ASCII letters, apostrophes,
+    ``<``/``>`` and spaces with a space, uppercases, and tokenizes on
+    whitespace.
+
+    Parameters
+    ----------
+    s : str
+        Raw transcript string (reference or hypothesis).
+
+    Returns
+    -------
+    list of str
+        Uppercase word tokens.
+    """
     return re.sub(r"[^A-Za-z'< ]", " ", s).upper().split()
 
 
 def main():
+    """Probe where the near-reference candidate ranks under Qwen vs search.
+
+    For a strided sample of trials from an n-best TSV, scores every
+    candidate with the Qwen LM, finds the near-reference candidate
+    (minimum word edit distance), and reports its rank under both the
+    pure Qwen log-probability and the search-time score, to separate
+    LM-prior problems from interpolation-scale problems.
+
+    Notes
+    -----
+    Arguments come from ``sys.argv``:
+    ``qwen_rank_probe.py <nbest.tsv> <model_path> [sample_stride=14]``.
+    """
     nbest_path, model_path = sys.argv[1], sys.argv[2]
     stride = int(sys.argv[3]) if len(sys.argv) > 3 else 14
 

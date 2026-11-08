@@ -35,6 +35,31 @@ SESSIONS = ['t5.2019.05.08', 't5.2019.11.25', 't5.2019.12.09', 't5.2019.12.11', 
 
 
 def main():
+    """Run Step5 RNN inference for a trained checkpoint over all sessions.
+
+    Loads the requested ``model_step{N}.pt`` (highest step by default),
+    rebuilds the CharSeqRNN with the checkpoint's training args, then per
+    session prepares the full-day data cube with the official
+    ``prepareDataCubesForRNN`` (timeSteps=7500, no training augmentation),
+    runs the forward pass in batches, saves the logits to
+    ``<outDir>/<session>_inferenceOutputs.mat``, evaluates them with the
+    official ``evaluateRNNOutput`` (charStartThresh=0.3,
+    charStartDelay=15) into ``<session>_errCounts.mat`` (same layout as the
+    packaged Step5 files), and prints the full-set raw CER/WER.
+
+    Parameters
+    ----------
+    None
+        Options come from the command line: ``--partition`` and
+        ``--runDir`` are required; ``--step`` (default: latest checkpoint),
+        ``--outDir`` (default ``<runDir>/step5_inference``),
+        ``--batchSize`` (default 4) and ``--timeSteps`` (default 7500)
+        are optional.
+
+    Returns
+    -------
+    None
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--partition', choices=['HeldOutBlocks', 'HeldOutTrials'], required=True)
     ap.add_argument('--runDir', required=True, help='train.py 的 outputDir（含 model_step*.pt）')

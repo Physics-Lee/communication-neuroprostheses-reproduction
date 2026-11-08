@@ -29,6 +29,20 @@ MODEL_ARGS = OmegaConf.create({
 
 
 def main():
+    """Evaluate a trained GRUDecoder checkpoint on the held-out val sessions.
+
+    Rebuilds the decoder, loads ``<run_dir>/checkpoint/best_checkpoint``,
+    decodes every ``data_val.hdf5`` trial greedily (official
+    runSingleDecodingStep semantics), prints the overall greedy PER plus
+    breakdowns by session, vocab (50w/125k) and loop (OL/CL), and saves the
+    per-trial table to ``<run_dir>/val_greedy_per_trial.csv``. The run
+    directory comes from the command line: ``eval_jude.py <run_dir>``.
+
+    Returns
+    -------
+    None
+        Results are printed to stdout and written as CSV.
+    """
     run_dir = sys.argv[1]
     ckpt_path = os.path.join(run_dir, "checkpoint", "best_checkpoint")
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

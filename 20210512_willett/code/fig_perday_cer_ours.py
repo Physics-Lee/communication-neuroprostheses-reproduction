@@ -25,6 +25,30 @@ SESSIONS = ['t5.2019.05.08', 't5.2019.11.25', 't5.2019.12.09', 't5.2019.12.11', 
 
 
 def per_session_cer(err_dir, cv_part, flat):
+    """Compute per-session raw character error rate from Step5 errCounts files.
+
+    Parameters
+    ----------
+    err_dir : str
+        Directory holding the ``<session>_errCounts.mat`` files (produced by
+        Step5_RNNInference or the self-trained step5_inference run).
+    cv_part : str
+        Cross-validation partition name, e.g. ``'HeldOutBlocks'`` or
+        ``'HeldOutTrials'``. Selects the ``trainTestPartitions_<cv_part>.mat``
+        split and, when ``flat`` is False, the per-partition subdirectory.
+    flat : bool
+        If True, read errCounts files directly under ``err_dir``; if False,
+        read them under the ``err_dir/<cv_part>`` two-level layout used by
+        the official Step5_RNNInference output.
+
+    Returns
+    -------
+    dict
+        Mapping from session name (e.g. ``'t5.2019.05.08'``) to raw CER in
+        percent for every session whose errCounts file exists and whose test
+        partition is non-empty. Sessions with zero total reference characters
+        map to ``np.nan``; missing files/sessions are skipped entirely.
+    """
     out = {}
     for sess in SESSIONS:
         p = os.path.join(err_dir, sess + '_errCounts.mat') if flat \
@@ -44,6 +68,15 @@ def per_session_cer(err_dir, cv_part, flat):
 
 
 def main():
+    """Render and save the Fig. 2c-style per-session raw CER comparison figure.
+
+    Draws one panel per cross-validation partition (HeldOutBlocks,
+    HeldOutTrials), each showing grouped bars of raw val CER per session for
+    the official checkpoint versus the self-trained model, with per-bar value
+    labels. The figure is saved to
+    ``result/figs/perday_cer_official_vs_ours.png`` (directories are created
+    as needed).
+    """
     fig, axes = plt.subplots(1, 2, figsize=(14, 4.6), sharey=True)
     for ax, cv in zip(axes, ['HeldOutBlocks', 'HeldOutTrials']):
         off = per_session_cer(os.path.join(ROOT, 'RNNTrainingSteps', 'Step5_RNNInference'), cv, flat=False)

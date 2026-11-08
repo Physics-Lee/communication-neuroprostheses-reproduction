@@ -30,7 +30,19 @@ for _i in range(7, 33):
 
 
 def tid_to_phone(tid):
-    """tid→phone：phone p(2..32) 的 tid 块为 5(p-2)+1..5(p-2)+5；phone 33 (<ctc>) 为 156,157。"""
+    """tid→phone：phone p(2..32) 的 tid 块为 5(p-2)+1..5(p-2)+5；phone 33 (<ctc>) 为 156,157。
+
+    Parameters
+    ----------
+    tid : int
+        Transition id emitted by the decoder (1-based).
+
+    Returns
+    -------
+    int
+        Phone id in the characterDefinitions indexing (2..32 map to
+        characters, 33 is the ``<ctc>`` silence phone).
+    """
     if tid >= 156:
         return 33
     return 2 + (tid - 1) // 5
@@ -38,7 +50,19 @@ def tid_to_phone(tid):
 
 def tid_is_state0(tid):
     """state0 的 3 个 tid（块内位置 1..3）；state1 tid（位置 4,5）读 pdf0 列=时长填充。
-    字符实例 = 一个 state0 tid 游程；双字母（pp/ee）靠两次 state0 游程保留。"""
+    字符实例 = 一个 state0 tid 游程；双字母（pp/ee）靠两次 state0 游程保留。
+
+    Parameters
+    ----------
+    tid : int
+        Transition id emitted by the decoder.
+
+    Returns
+    -------
+    bool
+        True if the tid belongs to a state0 slot (character-emitting);
+        False for state1 slots and for the ``<ctc>`` silence tids.
+    """
     if tid >= 156:
         return False  # <ctc> 视为静默
     return (tid - 1) % 5 < 3
@@ -47,7 +71,19 @@ def tid_is_state0(tid):
 def tids_to_text(tids):
     """新字符实例 = state0 tid 且 phone 相对当前 s0 游程发生变化。
     字符可经 s0→final 直接跳出（无 state1 间隔），相邻字符 s0 游程相接，
-    因此按 phone 变化判定而不是按 s1→s0 转换；双字母靠中间的 state1/ctc 游程隔开。"""
+    因此按 phone 变化判定而不是按 s1→s0 转换；双字母靠中间的 state1/ctc 游程隔开。
+
+    Parameters
+    ----------
+    tids : list of int
+        Sequence of transition ids from the decoder's 1-best path.
+
+    Returns
+    -------
+    str
+        Decoded character string with blank/``<ctc>``/non-character phones
+        dropped and surrounding spaces stripped.
+    """
     out = []
     cur_phone = None
     for t in tids:
@@ -63,6 +99,24 @@ def tids_to_text(tids):
 
 
 def wer(r, h):
+    """Levenshtein edit distance between two token sequences.
+
+    Works for both character lists and word lists, so it serves as both
+    charErrs and wordErrs depending on the inputs.
+
+    Parameters
+    ----------
+    r : list or str
+        Reference tokens (ground truth).
+    h : list or str
+        Hypothesis tokens (decoder output).
+
+    Returns
+    -------
+    int
+        Minimum number of insertions/deletions/substitutions to turn ``h``
+        into ``r``.
+    """
     d = np.zeros((len(r) + 1, len(h) + 1), dtype=np.int32)
     for i in range(len(r) + 1):
         d[i, 0] = i
@@ -75,7 +129,29 @@ def wer(r, h):
 
 
 def decode_one(mat_path):
-    """返回 (ac, graph, text) 或 None。"""
+    """返回 (ac, graph, text) 或 None。
+
+    Runs the WSL ``latgen_lazy2`` decoder on a single kaldiMat text matrix
+    with the graph weight 2.0 baked into the search, then folds the
+    emitted tid sequence back into characters via ``tids_to_text``.
+
+    Parameters
+    ----------
+    mat_path : str
+        Windows path of a ``kaldiMat_<sidx>.txt`` matrix file; it is
+        translated to the WSL ``/mnt/...`` form for the subprocess.
+
+    Returns
+    -------
+    tuple of (float, float, str) or None
+        ``(acoustic_score, graph_score, decoded_text)`` on success, or None
+        when the decoder produced no output line.
+
+    Raises
+    ------
+    subprocess.TimeoutExpired
+        If the WSL decoder exceeds its 300 s timeout.
+    """
     cmd = ['wsl.exe', '-e', 'bash', '-c',
            '~/bin/latgen_lazy2 %s/HCL.fst %s/G.fst %s/model %s --graphw 2.0 2>/dev/null'
            % (LM.replace('\\', '/').replace('D:', '/mnt/d'),
@@ -92,6 +168,27 @@ def decode_one(mat_path):
 
 
 def read_ref(kout, sidx):
+    """Read the official Kaldi n-best selection for one sentence.
+
+    Loads the official Step6 KaldiOutput transcript/acoustic/LM score files
+    for sentence ``sidx`` and reproduces the official selection rule
+    ``argmin(ac + 2.0*lm)``.
+
+    Parameters
+    ----------
+    kout : str
+        Directory ``KaldiOutput/<session>`` holding the official per-file
+        ``<sidx>_transcript.txt``, ``<sidx>_best_acscore.ark`` and
+        ``<sidx>_best_lmscore.ark``.
+    sidx : int
+        Sentence index within the session.
+
+    Returns
+    -------
+    str or None
+        The officially selected transcript string, or None when the needed
+        files are missing (e.g. LM score file absent).
+    """
     tr = os.path.join(kout, f'{sidx}_transcript.txt')
     acf = os.path.join(kout, f'{sidx}_best_acscore.ark')
     lmf = os.path.join(kout, f'{sidx}_best_lmscore.ark')
@@ -108,6 +205,25 @@ def read_ref(kout, sidx):
 
 
 def main():
+    """Decode all validation sentences with the WSL decoder and report CER/WER.
+
+    For every session in the chosen partition, iterates the validation
+    kaldiMat files, decodes each with ``decode_one``, computes char/word
+    errors against the sentence prompt, compares against the official
+    selection via ``read_ref``, prints per-sentence progress and the
+    corpus-level summary (CER/WER and exact-match count vs. official), and
+    writes one row per sentence to ``result/m1b_own_decode_<cvPart>.csv``.
+
+    Parameters
+    ----------
+    None
+        ``--cvPart`` (HeldOutBlocks or HeldOutTrials) is required on the
+        command line.
+
+    Returns
+    -------
+    None
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--cvPart', choices=['HeldOutBlocks', 'HeldOutTrials'], required=True)
     cli = vars(ap.parse_args())

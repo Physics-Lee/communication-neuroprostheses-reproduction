@@ -26,6 +26,20 @@ OUT = r".\20240815_card\data\20241009_card_BtoT25\run_120k\t15_logits.hdf5"
 
 
 def main():
+    """Decode the BtoT25 120k-run val set and dump per-trial CTC log-probs.
+
+    Loads the run_120k best checkpoint, mirrors the eval_val_per.py /
+    eval_btot25_fromscratch.py decoding path over every session with a
+    data_val.hdf5 split, converts the logits to log-probs, and writes them to
+    ``OUT`` grouped as ``<session>/tr<NNNN>``. Note: the day index passed to
+    the decoder is the position within the val-having subset (legacy
+    semantics; corrected later in dump_logits_fixed.py).
+
+    Returns
+    -------
+    None
+        Results are written to ``OUT``; progress is printed to stdout.
+    """
     model_args = OmegaConf.load(os.path.join(MODEL_PATH, "checkpoint/args.yaml"))
     ds = model_args["dataset"]
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

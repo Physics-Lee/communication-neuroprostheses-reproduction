@@ -32,6 +32,25 @@ EXCLUDE = [
 
 
 def main():
+    """Train the 40-day baseline GRU decoder (last 5 val days excluded).
+
+    Follows the train_btot25.py protocol (official rnn_args.yaml,
+    micro-batch 32 x accum 2) but removes the five EXCLUDE sessions from
+    both the train and val sides before running
+    ``BrainToTextDecoder_Trainer.train()``; those days are reserved as
+    "new days" for the subsequent N-trial fine-tuning.
+
+    Returns
+    -------
+    None
+        Checkpoints and logs are written under ``out_root``; the run summary
+        is printed to stdout.
+
+    Raises
+    ------
+    AssertionError
+        If the filtered session list is not 40 sessions with 36 val days.
+    """
     n_opt_batches, out_root = int(sys.argv[1]), sys.argv[2]
     val_every = int(sys.argv[3]) if len(sys.argv) > 3 else 2000
     accum = int(sys.argv[4]) if len(sys.argv) > 4 else 2

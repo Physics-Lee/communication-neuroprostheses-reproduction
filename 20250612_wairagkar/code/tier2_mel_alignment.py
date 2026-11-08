@@ -47,6 +47,23 @@ DAYS = {"t15_day179": "brain2voice_t15_day174.h5",
 
 
 def mel_bands(pcm, sr=16000, n_mels=40):
+    """Convert int16 PCM audio to a log-power Mel spectrogram.
+
+    Parameters
+    ----------
+    pcm : numpy.ndarray
+        Raw int16 waveform samples.
+    sr : int, optional
+        Sampling rate in Hz. Default 16000.
+    n_mels : int, optional
+        Number of Mel frequency bands. Default 40.
+
+    Returns
+    -------
+    numpy.ndarray
+        Shape (n_mels, n_frames) dB-scale Mel spectrogram
+        (``librosa.power_to_db`` with ``ref=1.0``).
+    """
     import librosa
     m = librosa.feature.melspectrogram(y=pcm.astype(np.float32) / 32768.0,
                                        sr=sr, n_fft=512, hop_length=160,
@@ -55,7 +72,30 @@ def mel_bands(pcm, sr=16000, n_mels=40):
 
 
 def synth(feat, tag):
-    """feat (T,20) float32 -> waveform via WSL lpcnet_demo."""
+    """feat (T,20) float32 -> waveform via WSL lpcnet_demo.
+
+    Writes the frame sequence to ``<WORK>/<tag>.f32``, invokes the official
+    xiph ``lpcnet_demo -synthesis`` binary inside WSL, and reads back the
+    synthesized int16 PCM.
+
+    Parameters
+    ----------
+    feat : numpy.ndarray
+        Shape (T, 20) float32 LPCNet feature frames to vocode.
+    tag : str
+        Base filename (without extension) for the intermediate ``.f32``
+        and output ``.pcm`` files inside ``WORK``.
+
+    Returns
+    -------
+    numpy.ndarray
+        Int16 synthesized waveform samples.
+
+    Raises
+    ------
+    subprocess.CalledProcessError
+        If the WSL ``lpcnet_demo`` subprocess exits non-zero.
+    """
     f32 = os.path.join(WORK, f"{tag}.f32")
     pcm = os.path.join(WORK, f"{tag}.pcm")
     feat = np.asarray(feat, dtype="<f4")
@@ -73,6 +113,19 @@ def synth(feat, tag):
 
 
 def main():
+    """Run the tier-2 audio-level Mel alignment evaluation.
+
+    For each day in ``DAYS``, samples up to ``N_TRIALS`` evaluation trials,
+    runs the official Keras decoder, vocodes the predicted and target
+    features with LPCNet (after silence removal on the feature grid), and
+    correlates the resulting Mel spectrograms band-by-band.
+
+    Returns
+    -------
+    None
+        Per-trial and per-day correlations are printed to stdout and the
+        report is written to ``result/tier2_mel_alignment.json``.
+    """
     os.makedirs(WORK, exist_ok=True)
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
     import tensorflow as tf  # noqa: F401

@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-# s9a_lm_decode_multi.py — 一次 TLG 加载，批量解码多个会话的 test logits（2026-10-11 00:40）
+"""Decode the test logits of multiple sessions in batch with a single TLG load.
+
+Builds the official 5-gram LM decoder (TLG) once, then for every run listed
+in ``s9_runs.json`` (falling back to a single default run) decodes the dumped
+``test_logits.npz`` and reports post-LM CER/WER per session, with
+punctuation stripped before scoring.
+
+Notes
+-----
+Written 2026-10-11 00:40.
+"""
 import sys
 import time
 from pathlib import Path
@@ -26,6 +36,19 @@ print(f'LM loaded in {time.time()-t0:.0f}s', flush=True)
 grand = {}
 
 def strip_punct(s):
+    """Remove trailing punctuation tokens from a decoded sentence.
+
+    Parameters
+    ----------
+    s : str
+        Decoded sentence, possibly containing ``.``, ``?`` or ``,``.
+
+    Returns
+    -------
+    str
+        The sentence with those punctuation characters removed and
+        surrounding whitespace stripped.
+    """
     return s.replace(".", "").replace("?", "").replace(",", "").strip()
 
 

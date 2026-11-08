@@ -1,6 +1,13 @@
-# g1_scan_blocks.py — G1 第二轮：T18 全会话全块 cpm 扫描（句复制块口径）（2026-10-11）
-# 句复制块：打字内容 = cue 句子，时长 = trial_end_redis_time - go_cue_redis_time。
-# 输出每块均值/峰值 cpm，找论文 110 cpm 的出处。reproduce_20260316_jude 环境跑。
+"""G1 round 2: scan CPM across all blocks of all T18 sessions (sentence-copy-block convention).
+
+Sentence-copy blocks: the typed content is the cue sentence and the duration
+is trial_end_redis_time - go_cue_redis_time. Prints per-block mean/median/
+peak CPM to locate the origin of the paper's 110 cpm figure.
+
+Notes
+-----
+Written 2026-10-11. Run with the ``reproduce_20260316_jude`` environment.
+"""
 import glob
 import re
 from pathlib import Path

@@ -35,6 +35,22 @@ TRAINPROBE = ["t15.2025.01.10", "t15.2025.04.13"]
 
 
 def load_trials(session, split):
+    """Load all trials of one session split from the official HDF5 release.
+
+    Parameters
+    ----------
+    session : str
+        Session directory name, e.g. ``t15.2023.08.18``.
+    split : str
+        HDF5 split filename stem, e.g. ``data_val`` or ``data_train``.
+
+    Returns
+    -------
+    list of dict
+        One dict per trial (sorted by key) with keys ``x`` (float32 input
+        features), ``y`` (int64 class-id sequence), ``seq_len``, ``block``
+        and ``trial``.
+    """
     import h5py
     path = os.path.join(DATA_DIR, session, f"{split}.hdf5")
     trials = []
@@ -56,6 +72,27 @@ def sentence_losses(model, args, trials, day_idx, batch=16, transform="val"):
     """Per-sentence CTC NLL on the trainer's reduction='none' scale.
 
     transform='val': smoothing only ('same'), trainer validation semantics.
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        The GRUDecoder in eval mode.
+    args : omegaconf.DictConfig
+        Training arguments (transform params, patching, use_amp flag).
+    trials : list of dict
+        Trial dicts with keys ``x``, ``y`` and ``seq_len``.
+    day_idx : int
+        Recording-day index used for the day layer.
+    batch : int, optional
+        Number of trials per padded batch. Default 16.
+    transform : str, optional
+        Currently only ``'val'`` (smoothing-only) is implemented. Default
+        ``'val'``.
+
+    Returns
+    -------
+    numpy.ndarray
+        One CTC NLL value (float, reduction='none' scale) per trial.
     """
     device = next(model.parameters()).device
     ta = args["dataset"]["data_transforms"]
@@ -87,7 +124,24 @@ def sentence_losses(model, args, trials, day_idx, batch=16, transform="val"):
 
 @torch.no_grad()
 def greedy_decode(model, args, trial, day_idx):
-    """eval_val_per.py semantics: bf16 input, gauss_smooth 'valid', greedy."""
+    """eval_val_per.py semantics: bf16 input, gauss_smooth 'valid', greedy.
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        The GRUDecoder in eval mode.
+    args : omegaconf.DictConfig
+        Training arguments (transform params, use_amp flag).
+    trial : dict
+        Trial dict with key ``x`` (input features).
+    day_idx : int
+        Recording-day index used for the day layer.
+
+    Returns
+    -------
+    numpy.ndarray
+        Array of predicted non-blank class ids for the trial.
+    """
     device = next(model.parameters()).device
     ta = args["dataset"]["data_transforms"]
     x = torch.tensor(np.expand_dims(trial["x"], 0), device=device, dtype=torch.bfloat16)
@@ -100,6 +154,19 @@ def greedy_decode(model, args, trial, day_idx):
 
 
 def main():
+    """Run P0.2 loss-scale calibration and the P0.3 checkpoint smoke test.
+
+    Loads the P4 best checkpoint, prints per-sentence CTC NLL statistics
+    (median/quartiles/min/max) for good and bad days' val splits plus two bad
+    days' train splits, then greedy-decodes the first 5 val trials of
+    t15.2023.08.18 and compares their edit distances row by row against the
+    P4 CSV.
+
+    Returns
+    -------
+    None
+        Results are printed to stdout.
+    """
     args = OmegaConf.load(os.path.join(P4, "checkpoint", "args.yaml"))
     sessions = list(args["dataset"]["sessions"])
     device = torch.device("cuda:0")

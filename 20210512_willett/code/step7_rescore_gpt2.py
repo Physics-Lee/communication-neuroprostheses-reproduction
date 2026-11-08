@@ -32,6 +32,21 @@ EOT = 50256
 
 
 def wer(r, h):
+    """Levenshtein edit distance between two token sequences.
+
+    Parameters
+    ----------
+    r : list or str
+        Reference tokens (ground truth).
+    h : list or str
+        Hypothesis tokens (decoded text).
+
+    Returns
+    -------
+    int
+        Minimum number of insertions/deletions/substitutions to turn ``h``
+        into ``r``.
+    """
     d = np.zeros((len(r) + 1, len(h) + 1), dtype=np.int32)
     for i in range(len(r) + 1):
         d[i, 0] = i
@@ -47,6 +62,32 @@ def wer(r, h):
 
 
 def read_kaldi_lattice_file(file_name, file_type):
+    """Read a Kaldi lattice transcript or score file into Python objects.
+
+    Port of the official ``kaldiReadWrite.readKaldiLatticeFile``: each line
+    carries a discarded index token followed by the payload.
+
+    Parameters
+    ----------
+    file_name : str
+        Path to the lattice file (``<i>_transcript.txt`` or
+        ``<i>_best_*score.ark``).
+    file_type : str
+        ``'numeric'`` for per-line float scores, ``'string'`` for per-line
+        transcripts (with ``<space>`` mapped to a space and the literal
+        ``\\n`` token to the empty string).
+
+    Returns
+    -------
+    numpy.ndarray or list of str
+        Float64 array of scores for ``'numeric'``; list of decoded
+        transcript strings for ``'string'``.
+
+    Raises
+    ------
+    ValueError
+        If ``file_type`` is neither ``'numeric'`` nor ``'string'``.
+    """
     with open(file_name, 'r') as f:
         all_lines = f.readlines()
     content = []
@@ -72,7 +113,30 @@ def read_kaldi_lattice_file(file_name, file_type):
 @torch.no_grad()
 def gpt2_nll_batch(model, tokenizer, texts, device, chunk=32):
     """一批候选句子的负对数似然（每个 = [EOT] + tokens + [EOT] 的条件 NLL，从第 1 个 token 起）。
-    分块前向（chunk 条/次），控制显存（与训练进程共存时尤其重要）。"""
+    分块前向（chunk 条/次），控制显存（与训练进程共存时尤其重要）。
+
+    Parameters
+    ----------
+    model : transformers.GPT2LMHeadModel
+        GPT-2 model in eval mode (no gradients recorded).
+    tokenizer : transformers.GPT2TokenizerFast
+        Tokenizer matching ``model``.
+    texts : list of str
+        Candidate sentence strings; each is lowercased-except-first-char
+        (``t[0].upper() + t[1:]``), empty strings replaced by ``' '``, and
+        bracketed by ``<|endoftext|>`` before scoring.
+    device : str or torch.device
+        Device the model lives on.
+    chunk : int, optional
+        Number of candidates per forward pass (default 32); larger chunks
+        use more GPU memory.
+
+    Returns
+    -------
+    numpy.ndarray
+        Float array of shape ``(len(texts),)`` with each candidate's
+        negative log-likelihood.
+    """
     out = []
     for c0 in range(0, len(texts), chunk):
         sub = texts[c0:c0 + chunk]
@@ -98,6 +162,27 @@ def gpt2_nll_batch(model, tokenizer, texts, device, chunk=32):
 
 
 def main():
+    """GPT-2-rescore the official Step6 n-best lists and verify against Step7.
+
+    Loads GPT-2 (default gpt2-xl), then for each validation sentence of the
+    chosen partition computes GPT-2 NLLs for every n-best candidate,
+    reselects ``argmin(ac + 2.0*nll)``, computes char/word errors against
+    the prompt (Step6 conventions), prints the rescored CER/WER and the
+    overlap with the bigram selection, checks per-sentence errCounts
+    against the packaged Step7 errCounts, and writes
+    ``result/m1c_rescore_<cv_part>.csv``.
+
+    Parameters
+    ----------
+    None
+        Options come from the command line: ``--cv_part`` (default
+        HeldOutBlocks), ``--model`` (default gpt2-xl) and ``--fp16``
+        (half-precision inference; official run was fp32).
+
+    Returns
+    -------
+    None
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument('--cv_part', default='HeldOutBlocks', choices=['HeldOutBlocks', 'HeldOutTrials'])
     ap.add_argument('--model', default='gpt2-xl')

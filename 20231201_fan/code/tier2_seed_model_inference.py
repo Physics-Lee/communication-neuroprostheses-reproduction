@@ -50,6 +50,32 @@ MODEL_YAML = {
 
 
 def make_args(data_dirs, sessions, layer_map, val_probs, test_on_train=False):
+    """Build the OmegaConf argument block for one inference arm.
+
+    Parameters
+    ----------
+    data_dirs : list of str
+        One tfrecord directory per session (repeated entries allowed).
+    sessions : list of str
+        Session names, e.g. 't5.2022.05.18'.
+    layer_map : list of int
+        Input-layer index assigned to each session's dataset (several
+        sessions may share one layer).
+    val_probs : list of float
+        Per-session inference probability: 1 for datasets to infer, 0 to
+        load them (and their checkpoint layer) but keep them out of
+        inference.
+    test_on_train : bool, optional
+        Passed straight to the package's dataset switch of the same name;
+        required for the eval arms because their shipped test tfrecords
+        are empty and all trials live in the train files. Default False.
+
+    Returns
+    -------
+    omegaconf.DictConf
+        Fully-populated inference config for ``NeuralSequenceDecoder``,
+        pointing at the official pretrained seed checkpoint (ckpt-12500).
+    """
     from omegaconf import OmegaConf
     return OmegaConf.create({
         "mode": "inference",
@@ -90,6 +116,31 @@ def make_args(data_dirs, sessions, layer_map, val_probs, test_on_train=False):
 
 def run_arm(arm, data_dirs, sessions, layer_map, val_probs,
             test_on_train=False):
+    """Run offline inference for one arm of the tier-2 evaluation.
+
+    Parameters
+    ----------
+    arm : str
+        Arm label stored in the result dict ('seed', 'norec', 'recal').
+    data_dirs : list of str
+        One tfrecord directory per session.
+    sessions : list of str
+        Session names.
+    layer_map : list of int
+        Input-layer index assigned to each session's dataset.
+    val_probs : list of float
+        Per-session inference probability (1 = infer, 0 = skip).
+    test_on_train : bool, optional
+        Whether the dataset loader reads trials from the train tfrecords
+        instead of the (empty) test tfrecords. Default False.
+
+    Returns
+    -------
+    dict
+        Arm label, number of inferred trials, pooled CER percent (sum of
+        edit distances / sum of true lengths), and mean per-trial CER
+        percent.
+    """
     from neuralDecoder.neuralSequenceDecoder import NeuralSequenceDecoder
     args = make_args(data_dirs, sessions, layer_map, val_probs,
                      test_on_train)
@@ -107,6 +158,14 @@ def run_arm(arm, data_dirs, sessions, layer_map, val_probs,
 
 
 def main():
+    """Run all three tier-2 arms and save the JSON report.
+
+    Runs the seed self-test arm (the 11 seed sessions' own test splits),
+    then the no-recalibration and static-recalibration eval arms (all 10
+    evaluation sessions mapped to input layer 10, the decoder state at
+    the start of the evaluation period), prints each arm's summary as it
+    finishes, and writes the report to OUT.
+    """
     os.makedirs("./20231201_fan/tmp_run",
                 exist_ok=True)
     seed_dir = DATA + "seed_model_training_data/tfrecords"

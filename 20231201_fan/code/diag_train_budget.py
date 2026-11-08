@@ -24,12 +24,42 @@ EVAL_IDS = [0, 5, 10, 20, 30]
 
 
 def cer(nsd, li, feat, label):
+    """Character error rate of one trial's greedy decode, in percent.
+
+    Parameters
+    ----------
+    nsd : NeuralSequenceDecoder
+        Decoder whose input layer and frozen backend run the forward pass.
+    li : int
+        Index of the input layer to push the features through.
+    feat : numpy.ndarray
+        Raw (unsmoothed) neural feature matrix for one trial, shape
+        (n_time_steps, n_features).
+    label : numpy.ndarray
+        Ground-truth 1-based label ids of the trial; entries <= 0 are
+        ignored when forming the reference sequence.
+
+    Returns
+    -------
+    float
+        100 * edit distance / reference length, with the denominator
+        guarded at 1.
+    """
     dec = greedy_decode(forward_logits(nsd, li, feat))
     ed, ref = editdist(dec, [int(x) for x in label if x > 0])
     return 100 * ed / max(ref, 1)
 
 
 def main():
+    """Run the session-3-only training-budget experiment.
+
+    Builds the official decoder, gathers session 3 (t5.2022.10.18)
+    trials, joins them to the official pseudo-labels, prints pre-update
+    CERs on the fixed probe trials, then fine-tunes only that session's
+    input layer for STEPS Adam steps (lr LR) on pseudo-label trials and
+    prints probe CERs every 100 steps. Success here justified v5's
+    500-step full-run budget.
+    """
     args = make_args()
     nsd = NeuralSequenceDecoder(args=args)
     sess_i = 2

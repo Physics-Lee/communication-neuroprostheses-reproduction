@@ -20,6 +20,19 @@ from rnn_trainer import BrainToTextDecoder_Trainer  # noqa: E402
 
 
 def main():
+    """Run the rapid new-day calibration fine-tune via the NEJM trainer.
+
+    Loads ``args.yaml`` from the Step-2 checkpoint directory, overrides
+    the training hyperparameters for short-run calibration (step count,
+    warmup, learning rate, validation cadence, no saving), initializes
+    from the expanded Step-2 best checkpoint, and launches
+    ``BrainToTextDecoder_Trainer``.
+
+    Notes
+    -----
+    Arguments come from ``sys.argv``:
+    ``train_finetune.py <ft_root> <num_batches> <val_every> [lr=5e-4]``.
+    """
     ft_root, n_batches = sys.argv[1], int(sys.argv[2])
     val_every = int(sys.argv[3]) if len(sys.argv) > 3 else 50
     lr = float(sys.argv[4]) if len(sys.argv) > 4 else 5e-4

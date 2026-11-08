@@ -1,6 +1,19 @@
-# window_W4_convert.py — 任意 T18 会话：官方 mat_to_tfrecord 转换 + 导出 npz（2026-10-10）
-# 用法：reproduce_20260316_jude 环境 python window_W4_convert.py <session> <block_csv> <num_test> <rm_spec>
-# rm_spec 格式："5:9,12,16;7:9" （block:trial列表；空串=无剔除）
+"""Convert any T18 (or T17) session via the official mat_to_tfrecord converter.
+
+Builds the argument dict for the official ``mat_to_tfrecord.main`` (threshold
+crossings + spike power, z-scoring, global std, bin compression factor 2 ->
+``tfdata_20ms``) and runs it, producing the tfrecord tree that is then
+exported to npz for the PyTorch port.
+
+Usage (with the ``reproduce_20260316_jude`` environment):
+``python window_W4_convert.py <session> <block_csv> <num_test> <rm_spec>``.
+``rm_spec`` format: ``"5:9,12,16;7:9"`` (semicolon-separated block:trial-list
+pairs; an empty string means no trials are removed).
+
+Notes
+-----
+Written 2026-10-10.
+"""
 import sys
 from pathlib import Path
 

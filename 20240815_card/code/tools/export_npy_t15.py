@@ -16,6 +16,19 @@ import numpy as np
 
 
 def main():
+    """Export per-trial log-prob npy files and a meta.tsv from the dump hdf5.
+
+    Walks the hdf5 in insertion order (sessions x trials, matching the dump
+    script's write order), saves each trial's log-probs as ``<NNNN>.npy``
+    float32 of shape (T, 41), and appends ``<key> TAB <sentence_label>`` rows
+    to the meta TSV for the wenet_lattice decode chain.
+
+    Returns
+    -------
+    None
+        Files are written under ``out_dir`` and to ``out_meta``; the trial
+        count is printed to stdout.
+    """
     hdf5, out_dir, out_meta = sys.argv[1], sys.argv[2], sys.argv[3]
     os.makedirs(out_dir, exist_ok=True)
     n = 0

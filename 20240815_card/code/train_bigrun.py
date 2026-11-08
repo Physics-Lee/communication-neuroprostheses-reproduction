@@ -35,6 +35,25 @@ EXCLUDE = {"excl0110": ["t15.2025.01.10"]}
 
 
 def main():
+    """Train a GRU or BiGRU decoder from scratch on a chosen session subset.
+
+    Loads the official rnn_args.yaml, applies the requested session mode
+    (all45 / excl0110 / first39, keeping the val probability list in sync),
+    overrides the training-horizon hyperparameters, and runs
+    ``BrainToTextDecoder_Trainer.train()``. The decoder class itself was
+    already swapped at import time via ``rnn_model.GRUDecoder``.
+
+    Returns
+    -------
+    None
+        Checkpoints and logs are written under ``out_root``; the run summary
+        is printed to stdout.
+
+    Raises
+    ------
+    SystemExit
+        If ``SESS_MODE`` (second CLI argument) is not a known session mode.
+    """
     n_opt_batches, out_root = int(sys.argv[3]), sys.argv[4]
     val_every = int(sys.argv[5]) if len(sys.argv) > 5 else 2000
     accum = int(sys.argv[6]) if len(sys.argv) > 6 else 2

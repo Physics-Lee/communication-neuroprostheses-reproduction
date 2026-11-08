@@ -29,6 +29,22 @@ OUT = (r".\20240815_card\result\figs"
 
 
 def norm(s):
+    """Normalize a transcript string to the evaluation token vocabulary.
+
+    Keeps only letters, apostrophes, angle brackets (e.g. ``'<unk>'``) and
+    spaces, maps everything else to a space, upper-cases, and splits on
+    whitespace.
+
+    Parameters
+    ----------
+    s : str
+        Raw transcript string from the decode TSV.
+
+    Returns
+    -------
+    list of str
+        Uppercased word tokens ready for edit-distance WER computation.
+    """
     return re.sub(r"[^A-Za-z'< ]", " ", s).upper().split()
 
 

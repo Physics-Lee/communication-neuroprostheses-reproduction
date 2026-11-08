@@ -46,6 +46,31 @@ NBEST = 128
 
 
 def load_model(path):
+    """Parse the text TransitionModel into per-tid lookup arrays.
+
+    Reads the Kaldi transition-model text file, expands each (phone,
+    hmm-state, pdf) triple into its tid block (2 tids for the ``<ctc>``
+    phone 33, otherwise 3 tids for state0 and 2 for state1) and collects
+    the per-tid transition log-probabilities.
+
+    Parameters
+    ----------
+    path : str
+        Path to the text ``TransitionModel`` file (``BigramLM/model``).
+
+    Returns
+    -------
+    tuple of (numpy.ndarray, numpy.ndarray, numpy.ndarray)
+        ``(tid2pdf, tid2phone, tid_lp)``: int32 arrays indexed by tid giving
+        the pdf-id, phone-id and transition log-probability respectively
+        (index 0 is unused padding).
+
+    Raises
+    ------
+    AssertionError
+        If the parsed triple count or expanded tid count is inconsistent
+        with the file's declared totals.
+    """
     txt = open(path).read()
     n_triples = int(re.search(r'<Triples>\s*(\d+)', txt).group(1))
     body = txt.split('<Triples>')[1].split('</Triples>')[0]
@@ -69,6 +94,20 @@ def load_model(path):
 
 
 def load_symbols(path):
+    """Load a Kaldi symbol table (symbol -> id) from a text file.
+
+    Parameters
+    ----------
+    path : str
+        Path to a symbols file such as ``BigramLM/chars.txt`` with
+        ``symbol id`` per line.
+
+    Returns
+    -------
+    dict
+        Mapping from symbol string to integer id; malformed lines (not
+        exactly two fields) are skipped.
+    """
     m = {}
     for line in open(path, encoding='utf-8'):
         parts = line.split()
@@ -79,7 +118,23 @@ def load_symbols(path):
 
 def parse_fst_text(path, name):
     """AT&T 文本 → (arc_src, arc_dst, arc_il, arc_ol, arc_w, offset, finals, n_states)。
-    pandas C 引擎整体读入（10M 行约 1-2 分钟、~1GB 内存），终态行（字段数≤2）单独抽出。"""
+    pandas C 引擎整体读入（10M 行约 1-2 分钟、~1GB 内存），终态行（字段数≤2）单独抽出。
+
+    Parameters
+    ----------
+    path : str
+        Path to an OpenFst ``fstprint`` AT&T-style text file.
+    name : str
+        Display name of the graph (used in progress logging only).
+
+    Returns
+    -------
+    tuple
+        ``(src, dst, il, ol, w, finals, n_states)`` where ``src``/``dst``/
+        ``il``/``ol`` are int32 arc arrays, ``w`` the float64 arc weights,
+        ``finals`` a dict of final state -> weight, and ``n_states`` the
+        number of states.
+    """
     import pandas as pd
     print(f'parsing {name}: {path}', flush=True)
     df = pd.read_csv(path, sep=r'\s+', header=None, dtype=np.float64,
@@ -107,9 +162,36 @@ def parse_fst_text(path, name):
 
 
 class Graph:
-    """按 (state, ilabel) 排好序的 FST，支持切片访问与 ε 闭包。"""
+    """按 (state, ilabel) 排好序的 FST，支持切片访问与 ε 闭包。
+
+    Arc arrays are lexsorted by (source state, ilabel) so every state's arcs
+    form one contiguous, ilabel-ascending segment addressable via
+    :meth:`arcs`, with epsilon (ilabel==0) arcs first within each segment.
+
+    Parameters
+    ----------
+    path : str
+        Path to the AT&T text FST file parsed with ``parse_fst_text``.
+    name : str
+        Display name of the graph (``'HCL'`` or ``'G'``), used for logging.
+    """
 
     def __init__(self, path, name):
+        """Parse the FST text and build the CSR-style arc index.
+
+        Parameters
+        ----------
+        path : str
+            Path to the AT&T text FST file.
+        name : str
+            Display name of the graph, used for logging.
+
+        Returns
+        -------
+        None
+            Populates ``self.src/dst/il/ol/w``, the per-state ``offset``
+            table, ``self.finals``, ``self.n_states`` and ``self.start=0``.
+        """
         src, dst, il, ol, w, finals, n_states = parse_fst_text(path, name)
         order = np.lexsort((il, src))  # 先按 src 再按 il
         self.src, self.dst, self.il, self.ol, self.w = src[order], dst[order], il[order], ol[order], w[order]
@@ -124,10 +206,36 @@ class Graph:
         self._closure_cache = {}
 
     def arcs(self, s):
+        """Return the contiguous arc-array slice of state ``s``.
+
+        Parameters
+        ----------
+        s : int
+            State id.
+
+        Returns
+        -------
+        slice
+            Index range ``[offset[s], offset[s+1])`` into the arc arrays.
+        """
         return slice(self.offset[s], self.offset[s + 1])
 
     def word_arcs(self, s, word):
-        """state s 上 ilabel==word 的弧：段内二分。"""
+        """state s 上 ilabel==word 的弧：段内二分。
+
+        Parameters
+        ----------
+        s : int
+            State id whose arc segment is searched.
+        word : int
+            Ilabel (output word of HCL) to locate.
+
+        Returns
+        -------
+        tuple of (int, int) or None
+            Half-open index range ``(start, stop)`` of matching arcs, or
+            None when the state has no arc with that ilabel.
+        """
         sl = self.arcs(s)
         los, his = sl.start, sl.stop
         # ilabel 在段内升序
@@ -151,7 +259,20 @@ class Graph:
         return start, lo
 
     def eps_closure(self, s):
-        """ε(ilabel==0) 闭包：返回 [(g', 累计代价)]，含自身 (s, 0)。"""
+        """ε(ilabel==0) 闭包：返回 [(g', 累计代价)]，含自身 (s, 0)。
+
+        Parameters
+        ----------
+        s : int
+            Starting state of the closure.
+
+        Returns
+        -------
+        list of (int, float)
+            ``(state, accumulated epsilon-arc cost)`` pairs reachable from
+            ``s`` via ilabel==0 arcs, including ``(s, 0.0)`` itself. Results
+            are memoised in ``self._closure_cache``.
+        """
         c = self._closure_cache.get(s)
         if c is not None:
             return c
@@ -174,9 +295,45 @@ class Graph:
 
 
 class LazyDecoder:
-    """token = (hcl_state, g_state)；HCL 弧 ol>0 时推进 G。"""
+    """token = (hcl_state, g_state)；HCL 弧 ol>0 时推进 G。
+
+    Time-synchronous beam search over the lazily composed HCL x G product:
+    HCL arcs with a nonzero output label expand the G grammar through its
+    epsilon-backoff closure, reproducing Kaldi's latgen-lazylm semantics.
+
+    Parameters
+    ----------
+    hcl : Graph
+        The HCL graph (arcs with ilabel>0 are emitting, consuming a frame).
+    g : Graph
+        The bigram grammar G graph.
+    tid2pdf : numpy.ndarray
+        Per-tid pdf-id lookup from ``load_model``.
+    tid_lp : numpy.ndarray
+        Per-tid transition log-probability lookup from ``load_model``.
+    """
 
     def __init__(self, hcl, g, tid2pdf, tid_lp):
+        """Precompute per-HCL-arc static acoustic costs and pdf indices.
+
+        Parameters
+        ----------
+        hcl : Graph
+            The HCL graph.
+        g : Graph
+            The bigram grammar G graph (stored for ``decode``).
+        tid2pdf : numpy.ndarray
+            Per-tid pdf-id lookup from ``load_model``.
+        tid_lp : numpy.ndarray
+            Per-tid transition log-probability lookup from ``load_model``.
+
+        Returns
+        -------
+        None
+            Populates ``self.arc_ac_static`` (transition-model part of the
+            acoustic cost, ACOUSTIC_SCALE * -tid_lp) and ``self.arc_pdf``
+            (pdf index per arc, 0 for non-emitting arcs).
+        """
         self.hcl, self.g = hcl, g
         self.arc_ac_static = np.where(hcl.il > 0,
                                       ACOUSTIC_SCALE * (-tid_lp[np.minimum(hcl.il, len(tid_lp) - 1)]), 0.0)
@@ -184,6 +341,29 @@ class LazyDecoder:
         self.arc_pdf[hcl.il == 0] = 0
 
     def decode(self, mat, nbest=NBEST):
+        """Beam-search decode one sentence and enumerate n-best paths.
+
+        Runs the frame-synchronous token pass (beam=65 relative to the
+        running best), then a backward Dijkstra over the resulting lattice
+        for admissible A* heuristics, and finally A* enumeration of up to
+        ``nbest`` complete paths.
+
+        Parameters
+        ----------
+        mat : numpy.ndarray
+            ``(T, 32)`` log-likelihood matrix (rows = frames, cols = pdfs)
+            from a kaldiMat file.
+        nbest : int, optional
+            Maximum number of best paths to enumerate (default 128).
+
+        Returns
+        -------
+        list of tuple
+            Up to ``nbest`` entries ``(ac_cost, graph_cost, phones,
+            words)``: acoustic and graph costs (final weights included) of
+            each path plus its emitted phone-id and word-id sequences.
+            Empty list when no token survives to a jointly final state.
+        """
         hcl, g = self.hcl, self.g
         T = mat.shape[0]
         frame_cost = np.zeros(33, dtype=np.float64)
@@ -346,6 +526,24 @@ TID2PHONE = None
 
 
 def phones_to_transcript(phones, chars_by_id):
+    """Fold a phone-id path into a transcript string.
+
+    Applies run-length folding (one character per contiguous phone run),
+    drops disambiguation/blank symbols (``'.'``, ``<ctc>``, ``<eps>``),
+    maps ``<space>`` to a space and strips leading/trailing spaces.
+
+    Parameters
+    ----------
+    phones : list of int
+        Emitted phone ids along a decode path.
+    chars_by_id : dict
+        Mapping from phone id to symbol string (inverse of chars.txt).
+
+    Returns
+    -------
+    str
+        The decoded transcript.
+    """
     toks = []
     for ph in phones:
         if not toks or toks[-1] != ph:
@@ -360,6 +558,21 @@ def phones_to_transcript(phones, chars_by_id):
 
 
 def wer(r, h):
+    """Levenshtein edit distance between two token sequences.
+
+    Parameters
+    ----------
+    r : list or str
+        Reference tokens (ground truth).
+    h : list or str
+        Hypothesis tokens (decoder output).
+
+    Returns
+    -------
+    int
+        Minimum number of insertions/deletions/substitutions to turn ``h``
+        into ``r``.
+    """
     d = np.zeros((len(r) + 1, len(h) + 1), dtype=np.int32)
     for i in range(len(r) + 1):
         d[i, 0] = i
@@ -372,6 +585,21 @@ def wer(r, h):
 
 
 def load_kaldi_mat(path):
+    """Load a kaldiMat text matrix into a float array.
+
+    Skips the leading header line and the closing ``]`` line, parsing the
+    remaining whitespace-separated numbers as matrix rows.
+
+    Parameters
+    ----------
+    path : str
+        Path to a ``kaldiMat_<sidx>.txt`` file.
+
+    Returns
+    -------
+    numpy.ndarray
+        ``(T, n_pdf)`` float64 matrix of frame log-likelihoods.
+    """
     rows = []
     with open(path) as f:
         next(f)
@@ -384,7 +612,22 @@ def load_kaldi_mat(path):
 
 
 def read_ref_selection(kout_dir, sidx):
-    """包内 KaldiOutput 的官方选句文本（argmin(ac+2lm)）。"""
+    """包内 KaldiOutput 的官方选句文本（argmin(ac+2lm)）。
+
+    Parameters
+    ----------
+    kout_dir : str
+        Official ``KaldiOutput/<session>`` directory.
+    sidx : int
+        Sentence index within the session.
+
+    Returns
+    -------
+    tuple or None
+        ``(selected_text, all_texts, ac_scores, lm_scores)`` where the
+        selected text is the n-best entry minimising ``ac + 2.0*lm``; None
+        when the transcript or acoustic-score file is missing.
+    """
     import math
     tr = os.path.join(kout_dir, f'{sidx}_transcript.txt')
     acf = os.path.join(kout_dir, f'{sidx}_best_acscore.ark')
@@ -404,6 +647,24 @@ def read_ref_selection(kout_dir, sidx):
 
 
 def load_graph_cached(path, name, cache_path):
+    """Load a Graph from pickle cache, building and caching it on first use.
+
+    Parameters
+    ----------
+    path : str
+        Path to the AT&T text FST file (only read on cache miss).
+    name : str
+        Display name of the graph (``'HCL'`` or ``'G'``).
+    cache_path : str
+        Pickle cache file; written atomically (``.tmp`` + replace) after
+        the graph is built.
+
+    Returns
+    -------
+    Graph
+        The loaded graph, either unpickled from ``cache_path`` or freshly
+        parsed from ``path``.
+    """
     import pickle
     if os.path.isfile(cache_path):
         print('loading cached graph:', cache_path, flush=True)
@@ -418,6 +679,33 @@ def load_graph_cached(path, name, cache_path):
 
 
 def main():
+    """Decode validation kaldiMats with the pure-Python lazy bigram decoder.
+
+    Loads the transition model, symbols and (cached) HCL/G graphs, then for
+    each selected session decodes every kaldiMat (optionally limited by
+    sentence index via ``--limit``), selects
+    ``argmin(ac + nbestSelect*graph)`` from the 128-best list, converts to
+    text, compares against the official KaldiOutput selection, accumulates
+    CER/WER over validation sentences and prints a summary against the
+    official reference numbers.
+
+    Parameters
+    ----------
+    None
+        Options come from the command line: ``--cvPart`` (required),
+        ``--limit`` (only sentence indices below it), ``--sessions``
+        (comma list), ``--nbestSelect`` (LM weight in selection, default
+        2.0).
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+    Assigns the module-global ``TID2PHONE`` used inside
+    ``LazyDecoder.decode`` for phone lookup.
+    """
     global TID2PHONE
     ap = argparse.ArgumentParser()
     ap.add_argument('--cvPart', choices=['HeldOutBlocks', 'HeldOutTrials'], required=True)

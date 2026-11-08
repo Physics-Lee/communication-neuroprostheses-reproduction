@@ -25,6 +25,18 @@ OUT = os.path.join(MODEL_PATH, "kunz_logits.hdf5")
 
 
 def main():
+    """Dump per-trial CTC log-probs for a run's eval sessions.
+
+    Rebuilds the ``GRUDecoder`` from the run checkpoint, runs it on every
+    trial of every ``*_eval`` session's ``data_val.hdf5``, and stores the
+    log-softmax output plus trial attributes in ``kunz_logits.hdf5``.
+
+    Returns
+    -------
+    None
+        Progress and the total trial count are printed to stdout; results
+        are written to ``<RUN>/kunz_logits.hdf5``.
+    """
     model_args = OmegaConf.load(os.path.join(MODEL_PATH, "checkpoint/args.yaml"))
     ds = model_args["dataset"]
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
