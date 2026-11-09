@@ -1,8 +1,8 @@
 # `20250821_kunz` — Kunz et al., *Cell* 2025 (Inner Speech in Motor Cortex, T12 / T15 / T16)
 
-- **Paper**: Kunz, E. M. et al. Inner speech in motor cortex and implications for speech neuroprostheses. *Cell* **188**, 4675–4689 (2025-08-21). [doi:10.1016/j.cell.2025.06.037](https://doi.org/10.1016/j.cell.2025.06.037)
-- **Dataset**: Dryad [`doi:10.5061/dryad.m905qfv9c`](https://doi.org/10.5061/dryad.m905qfv9c)
-- **Upstream Code**: [`ekunz/inner_speech_2025`](https://github.com/ekunz/inner_speech_2025)
+- **Paper**: Kunz, E. M. et al. Inner speech in motor cortex and implications for speech neuroprostheses. *Cell* **188**, 4658–4673 (2025-08-21). [doi:10.1016/j.cell.2025.06.015](https://doi.org/10.1016/j.cell.2025.06.015)
+- **Dataset**: Dryad [`doi:10.5061/dryad.gf1vhhn1j`](https://doi.org/10.5061/dryad.gf1vhhn1j)
+- **Upstream Code**: [`nptl-stanford/inner_speech`](https://github.com/nptl-stanford/inner_speech)
 
 ## Consumer-PC Reproduction & Gap Decomposition
 - **`code/convert_kunz.py` & `code/train_kunz.py`**: Converts and trains attempted vs. inner vs. mixed speech models for participants T12, T15, and T16.

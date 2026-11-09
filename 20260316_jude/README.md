@@ -1,8 +1,8 @@
 # `20260316_jude` — Jude et al., *Nature Neuroscience* 2026a (Touch-Typing Neuroprosthesis, T17 & T18)
 
-- **Paper**: Jude, J. et al. A touch-typing neuroprosthesis for rapid communication in people with paralysis. *Nat. Neurosci.* (2026-03-16). [doi:10.1038/s41593-026-02216-y](https://doi.org/10.1038/s41593-026-02216-y)
+- **Paper**: Jude, J. et al. Restoring rapid natural bimanual typing with a neuroprosthesis after paralysis. *Nat. Neurosci.* **29**, 2613–2622 (2026-03-16). [doi:10.1038/s41593-026-02218-y](https://doi.org/10.1038/s41593-026-02218-y)
 - **Dataset**: Dryad [`doi:10.5061/dryad.cz8w9gjjk`](https://doi.org/10.5061/dryad.cz8w9gjjk)
-- **Upstream Code**: [`justin-jude/typing-bci`](https://github.com/justin-jude/typing-bci)
+- **Upstream Code**: [`justin-jude/typingBCI`](https://github.com/justin-jude/typingBCI)
 
 ## Consumer-PC Memory & PyTorch Port Adaptations
 1. **Host RAM Wall (64+ GB → 22.5 GB)**: Bypassed eager preloading of the unpruned 5-gram character/word FST during beam-search initialization (`code/nightly_S6_build_lm_decoder.sh`).

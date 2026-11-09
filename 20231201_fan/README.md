@@ -1,8 +1,8 @@
-# `20231201_fan` — Fan et al., *Nature Communications* 2023 (403-Day Plug-and-Play Handwriting CORP, T5)
+# `20231201_fan` — Fan et al., *NeurIPS 2023* (403-Day Plug-and-Play Handwriting CORP, T5)
 
-- **Paper**: Fan, C. et al. Plug-and-play stability for intracortical brain-computer interfaces: a 1-year demonstration of seamless brain-to-text communication. *Nat. Commun.* **14**, 7965 (2023-12-01). [doi:10.1038/s41467-023-43858-3](https://doi.org/10.1038/s41467-023-43858-3)
+- **Paper**: Fan, C. et al. Plug-and-Play Stability for Intracortical Brain-Computer Interfaces: A One-Year Demonstration of Seamless Brain-to-Text Communication. In *Advances in Neural Information Processing Systems 36 (NeurIPS 2023)*, 42258–42270. [doi:10.52202/075280-1831](https://doi.org/10.52202/075280-1831) · [proceedings page](https://proceedings.neurips.cc/paper_files/paper/2023/hash/83a14a36de4502bac5b580db36e81858-Abstract-Conference.html)
 - **Dataset & Pretrained Seed Weights**: Dryad [`doi:10.5061/dryad.hqbzkh1p6`](https://doi.org/10.5061/dryad.hqbzkh1p6)
-- **Upstream Code**: [`cfan89/CORP`](https://github.com/cfan89/CORP)
+- **Upstream Code**: [`cffan/CORP`](https://github.com/cffan/CORP)
 
 ## Consumer-PC Reproduction Pipeline
 - **`code/tier2_seed_model_inference.py`**: Evaluates the released pretrained seed RNN across all 10 follow-up sessions (403 days).

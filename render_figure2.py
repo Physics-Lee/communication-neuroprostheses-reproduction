@@ -503,18 +503,40 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
              label="paper / benchmark anchor",
              color=fc_ref, edgecolor=c_ref, linewidth=0.8)
     for i, p in enumerate(per):
-        ax_h.text(i - w / 2, p["ours"] + 0.9, f"{p['ours']:.1f}", ha="center", fontsize=5.8)
-        ax_h.text(i + w / 2, p["paper"] + 0.9, f"{p['paper']:.1f}", ha="center", fontsize=5.8)
+        o_val, o_sd = p["ours"], p.get("ours_sd")
+        p_val, p_sd = p["paper"], p.get("paper_sd")
+        top_o = o_val + o_sd if o_sd is not None else o_val
+        top_p = p_val + p_sd if p_sd is not None else p_val
+        if o_sd is not None:
+            ax_h.errorbar(i - w / 2, o_val,
+                          yerr=[[min(o_val, o_sd)], [o_sd]],
+                          color="#333333", capsize=1.8,
+                          elinewidth=0.9, capthick=0.9, zorder=4)
+        if p_sd is not None:
+            ax_h.errorbar(i + w / 2, p_val,
+                          yerr=[[min(p_val, p_sd)], [p_sd]],
+                          color="#333333", capsize=1.8,
+                          elinewidth=0.9, capthick=0.9, zorder=4)
+        o_txt = f"{o_val:.1f}\u00b1{o_sd:.1f}" if o_sd is not None else f"{o_val:.1f}"
+        p_txt = f"{p_val:.1f}\u00b1{p_sd:.1f}" if p_sd is not None else f"{p_val:.1f}"
+        ax_h.text(i - w / 2 - 0.02, top_o + 1.1, o_txt,
+                  ha="center", va="bottom", fontsize=5.0)
+        ax_h.text(i + w / 2 + 0.02, top_p + 1.1, p_txt,
+                  ha="center", va="bottom", fontsize=5.0)
         if p["note"] is not None:
-            ymax_h = max(p["ours"], p["paper"])
-            ax_h.text(i, ymax_h + 5.2, p["note"], ha="center", va="bottom",
-                      fontsize=5.0, color="#555555")
+            ymax_h = max(top_o, top_p)
+            ax_h.text(i, ymax_h + 6.2, p["note"], ha="center", va="bottom",
+                      fontsize=4.8, color="#555555")
     ax_h.set_xticks(x_h)
     ax_h.set_xticklabels([p["label"] for p in per], fontsize=6.0, rotation=75,
                          ha="right", rotation_mode="anchor")
     ax_h.set_ylabel("Greedy PER / CER / 1\u2212r (%)")
-    ax_h.set_ylim(0, 74)
+    ax_h.set_ylim(0, 105)
+    ax_h.set_yticks(range(0, 101, 25))
     ax_h.legend(frameon=False, fontsize=6.6, loc="upper left")
+    ax_h.text(0.98, 0.97, "error bar is calculated across days",
+              transform=ax_h.transAxes, ha="right", va="top",
+              fontsize=6.0, color="#555555")
     ax_h.set_title("(e) Reproduction: acoustic / synthesis stage (no LM), "
                    "one pair per panel-(c) bar",
                    fontsize=9.3, fontweight="bold")
@@ -527,26 +549,45 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
                       fontsize=5.2, color="#777777",
                       linespacing="normal")
             continue
-        ax_i.bar(i - w / 2, v["ours"], w,
+        o_val, o_sd = v["ours"], v.get("ours_sd")
+        p_val, p_sd = v["paper"], v.get("paper_sd")
+        top_o = o_val + o_sd if o_sd is not None else o_val
+        top_p = p_val + p_sd if p_sd is not None else p_val
+        ax_i.bar(i - w / 2, o_val, w,
                  label="our reproduction (16 GB home PC)" if i == 0 else None,
                  color=fc_ours, edgecolor=C_SPEECH_I, linewidth=0.8)
-        ax_i.bar(i + w / 2, v["paper"], w,
+        ax_i.bar(i + w / 2, p_val, w,
                  label="paper / benchmark anchor" if i == 0 else None,
                  color=fc_ref, edgecolor=c_ref, linewidth=0.8)
-        ax_i.text(i - w / 2, v["ours"] + 1.1, f"{v['ours']:.1f}", ha="center",
-                  fontsize=5.8)
-        ax_i.text(i + w / 2, v["paper"] + 1.1, f"{v['paper']:.1f}", ha="center",
-                  fontsize=5.8)
-        ymax_i = max(v["ours"], v["paper"])
-        ax_i.text(i, ymax_i + 5.8, v["note"], ha="center", va="bottom",
-                  fontsize=5.0, color="#555555", linespacing="normal")
+        if o_sd is not None:
+            ax_i.errorbar(i - w / 2, o_val,
+                          yerr=[[min(o_val, o_sd)], [o_sd]],
+                          color="#333333", capsize=1.8,
+                          elinewidth=0.9, capthick=0.9, zorder=4)
+        if p_sd is not None:
+            ax_i.errorbar(i + w / 2, p_val,
+                          yerr=[[min(p_val, p_sd)], [p_sd]],
+                          color="#333333", capsize=1.8,
+                          elinewidth=0.9, capthick=0.9, zorder=4)
+        o_txt = f"{o_val:.1f}\u00b1{o_sd:.1f}" if o_sd is not None else f"{o_val:.1f}"
+        p_txt = f"{p_val:.1f}\u00b1{p_sd:.1f}" if p_sd is not None else f"{p_val:.1f}"
+        ax_i.text(i - w / 2 - 0.02, top_o + 1.4, o_txt,
+                  ha="center", va="bottom", fontsize=5.0)
+        ax_i.text(i + w / 2 + 0.02, top_p + 1.4, p_txt,
+                  ha="center", va="bottom", fontsize=5.0)
+        ymax_i = max(top_o, top_p)
+        ax_i.text(i, ymax_i + 7.8, v["note"], ha="center", va="bottom",
+                  fontsize=4.8, color="#555555", linespacing="normal")
     ax_i.set_xticks(x_i)
     ax_i.set_xticklabels([v["label"] for v in wer], fontsize=6.0, rotation=75,
                          ha="right", rotation_mode="anchor")
     ax_i.set_ylabel("Word error rate (%)")
-    ax_i.set_ylim(0, 112)
-    ax_i.set_yticks(range(0, 101, 25))
+    ax_i.set_ylim(0, 140)
+    ax_i.set_yticks(range(0, 126, 25))
     ax_i.legend(frameon=False, fontsize=6.6, loc="upper left")
+    ax_i.text(0.98, 0.97, "error bar is calculated across days",
+              transform=ax_i.transAxes, ha="right", va="top",
+              fontsize=6.0, color="#555555")
     ax_i.set_title("(f) Reproduction: full-pipeline WER, one pair per "
                    "panel-(c) bar",
                    fontsize=9.3, fontweight="bold")

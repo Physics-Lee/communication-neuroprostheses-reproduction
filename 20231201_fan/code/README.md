@@ -1,6 +1,6 @@
 # `20231201_fan/code/` — Code Guide
 
-Reproduces the **Fan et al., *Nat. Commun.* 2023** CORP study (403-day plug-and-play
+Reproduces the **Fan et al., *NeurIPS* 2023** CORP study (403-day plug-and-play
 handwriting BCI, participant T5): the paper's key claim is that *online unsupervised
 pseudo-label recalibration* keeps a decoder usable for a year. The reproduction is
 organized in tiers.

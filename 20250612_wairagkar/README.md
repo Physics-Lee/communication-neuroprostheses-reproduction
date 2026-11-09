@@ -1,7 +1,7 @@
 # `20250612_wairagkar` — Wairagkar et al., *Nature* 2025 (Instantaneous Voice Synthesis, T15)
 
 - **Paper**: Wairagkar, M. et al. An instantaneous voice-synthesis neuroprosthesis. *Nature* **642**, 417–424 (2025-06-12). [doi:10.1038/s41586-025-09127-3](https://doi.org/10.1038/s41586-025-09127-3)
-- **Dataset & Released Weights**: Dryad [`doi:10.5061/dryad.dncjsxm85`](https://doi.org/10.5061/dryad.dncjsxm85)
+- **Dataset & Released Weights**: Dryad [`doi:10.5061/dryad.2280gb64f`](https://doi.org/10.5061/dryad.2280gb64f)
 - **Upstream Code**: [`Neuroprosthetics-Lab/brain-to-voice-2025`](https://github.com/Neuroprosthetics-Lab/brain-to-voice-2025)
 
 ## Consumer-PC Reproduction Pipeline
