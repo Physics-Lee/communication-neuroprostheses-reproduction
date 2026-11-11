@@ -42,3 +42,4 @@ dependencies:
       - sortedcontainers==2.4.0
       - pymupdf==2.1
       - tabulate==0.10.0
+      - ipykernel==7.4.0

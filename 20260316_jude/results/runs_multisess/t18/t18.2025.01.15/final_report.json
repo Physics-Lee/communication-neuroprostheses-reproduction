@@ -1,0 +1,7 @@
+{
+  "session": "t18.2025.01.15",
+  "best_cer": 0.0768,
+  "step": "joint+875",
+  "n_train": 78,
+  "n_test": 20
+}

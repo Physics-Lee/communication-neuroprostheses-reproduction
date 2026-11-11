@@ -49,3 +49,4 @@ omegaconf==2.4.0
 tqdm==4.70.1
 pymupdf==2.1
 tabulate==0.10.0
+ipykernel==7.4.0

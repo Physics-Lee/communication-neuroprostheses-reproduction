@@ -1,0 +1,2414 @@
+{
+  "t17": {
+    "t17.2024.04.25": {
+      "n_trials": 20,
+      "n_chars": 367,
+      "n_words": 88,
+      "char_errs": 31,
+      "word_errs": 13,
+      "post_lm_cer": 0.0845,
+      "post_lm_wer": 0.1477,
+      "trials": [
+        {
+          "ref": "how very right",
+          "hyp": "how very right",
+          "ce": 0,
+          "nc": 14,
+          "we": 0,
+          "nw": 3
+        },
+        {
+          "ref": "what is my need",
+          "hyp": "what is you need",
+          "ce": 3,
+          "nc": 15,
+          "we": 1,
+          "nw": 4
+        },
+        {
+          "ref": "goodbye i am going",
+          "hyp": "goodbye i am going",
+          "ce": 0,
+          "nc": 18,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "i feel bad here",
+          "hyp": "i feel a her",
+          "ce": 3,
+          "nc": 15,
+          "we": 2,
+          "nw": 4
+        },
+        {
+          "ref": "how is that",
+          "hyp": "how he is that",
+          "ce": 3,
+          "nc": 11,
+          "we": 1,
+          "nw": 3
+        },
+        {
+          "ref": "tell my family i am not thirsty",
+          "hyp": "tell my family i am not thirsty",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "do you like that",
+          "hyp": "do you like that",
+          "ce": 0,
+          "nc": 16,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "do you have it here",
+          "hyp": "do you have it here",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "they are not very thirsty",
+          "hyp": "they are not very theory",
+          "ce": 4,
+          "nc": 25,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "hope is good",
+          "hyp": "loop is food",
+          "ce": 4,
+          "nc": 12,
+          "we": 2,
+          "nw": 3
+        },
+        {
+          "ref": "is it going outside",
+          "hyp": "is it to go outside",
+          "ce": 4,
+          "nc": 19,
+          "we": 2,
+          "nw": 4
+        },
+        {
+          "ref": "i have it very good",
+          "hyp": "i have it very good",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "yes you are coming here",
+          "hyp": "he's you are coming here",
+          "ce": 2,
+          "nc": 23,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "i hope my nurse is hungry",
+          "hyp": "i hope my nurse is hungry",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "what they do",
+          "hyp": "what they do",
+          "ce": 0,
+          "nc": 12,
+          "we": 0,
+          "nw": 3
+        },
+        {
+          "ref": "you do not need that",
+          "hyp": "you do not need that",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i have they",
+          "hyp": "i have they",
+          "ce": 0,
+          "nc": 11,
+          "we": 0,
+          "nw": 3
+        },
+        {
+          "ref": "i hope i do not need my family",
+          "hyp": "i i hope i do not need my family",
+          "ce": 2,
+          "nc": 30,
+          "we": 1,
+          "nw": 8
+        },
+        {
+          "ref": "they are that bad",
+          "hyp": "they that ga",
+          "ce": 6,
+          "nc": 17,
+          "we": 2,
+          "nw": 4
+        },
+        {
+          "ref": "they have faith",
+          "hyp": "they have faith",
+          "ce": 0,
+          "nc": 15,
+          "we": 0,
+          "nw": 3
+        }
+      ],
+      "raw_cer": 0.2031,
+      "single_session_raw_cer": 0.2725
+    },
+    "t17.2024.06.03": {
+      "n_trials": 20,
+      "n_chars": 368,
+      "n_words": 87,
+      "char_errs": 11,
+      "word_errs": 4,
+      "post_lm_cer": 0.0299,
+      "post_lm_wer": 0.046,
+      "trials": [
+        {
+          "ref": "i hope you feel heard",
+          "hyp": "i hope you feel heard",
+          "ce": 0,
+          "nc": 21,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i love change",
+          "hyp": "i love change",
+          "ce": 0,
+          "nc": 13,
+          "we": 0,
+          "nw": 3
+        },
+        {
+          "ref": "we are short on time",
+          "hyp": "we are short on time",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i will go there now",
+          "hyp": "i will go there now",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "she got this from me",
+          "hyp": "she got this on me",
+          "ce": 3,
+          "nc": 20,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "i am taking a break",
+          "hyp": "i am taking a break",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "it is a good choice",
+          "hyp": "it is a good choice",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "it is a good choice",
+          "hyp": "it is a good choice",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "it's show time",
+          "hyp": "it's chow time",
+          "ce": 1,
+          "nc": 14,
+          "we": 1,
+          "nw": 3
+        },
+        {
+          "ref": "this is far from it",
+          "hyp": "this is far from it",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "isn't this very good",
+          "hyp": "isn't this very good",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "let's keep going",
+          "hyp": "let's keep going",
+          "ce": 0,
+          "nc": 16,
+          "we": 0,
+          "nw": 3
+        },
+        {
+          "ref": "do you play chess",
+          "hyp": "do you play chess",
+          "ce": 0,
+          "nc": 17,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "only four days to go",
+          "hyp": "only four days to rot",
+          "ce": 2,
+          "nc": 20,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "what's your point",
+          "hyp": "her your point",
+          "ce": 5,
+          "nc": 17,
+          "we": 1,
+          "nw": 3
+        },
+        {
+          "ref": "i'd love to join you",
+          "hyp": "i'd love to join you",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i believe in people",
+          "hyp": "i believe in people",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "to each their own",
+          "hyp": "to each their own",
+          "ce": 0,
+          "nc": 17,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "we need more water",
+          "hyp": "we need more water",
+          "ce": 0,
+          "nc": 18,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "that was a close call",
+          "hyp": "that was a close call",
+          "ce": 0,
+          "nc": 21,
+          "we": 0,
+          "nw": 5
+        }
+      ],
+      "raw_cer": 0.1958,
+      "single_session_raw_cer": 0.2141
+    },
+    "t17.2024.06.04": {
+      "n_trials": 20,
+      "n_chars": 369,
+      "n_words": 84,
+      "char_errs": 9,
+      "word_errs": 4,
+      "post_lm_cer": 0.0244,
+      "post_lm_wer": 0.0476,
+      "trials": [
+        {
+          "ref": "how old are you",
+          "hyp": "how old are you",
+          "ce": 0,
+          "nc": 15,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "it is my second job",
+          "hyp": "it is my second not",
+          "ce": 2,
+          "nc": 19,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "it's been a pleasure",
+          "hyp": "it's been a pleasure",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "may i come in",
+          "hyp": "may i come in",
+          "ce": 0,
+          "nc": 13,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "this looks very neat",
+          "hyp": "this looks very neat",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "what's your problem",
+          "hyp": "what's your problem",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 3
+        },
+        {
+          "ref": "are you up to it",
+          "hyp": "are you up to it",
+          "ce": 0,
+          "nc": 16,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "what's your problem",
+          "hyp": "what's your problem",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 3
+        },
+        {
+          "ref": "only five days to go",
+          "hyp": "only five days to go",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "this is called life",
+          "hyp": "this is called life",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "let's go outside",
+          "hyp": "let's go outside",
+          "ce": 0,
+          "nc": 16,
+          "we": 0,
+          "nw": 3
+        },
+        {
+          "ref": "can you see my work",
+          "hyp": "can you see my work",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i saw a fleet of cars",
+          "hyp": "i saw a fleet of car",
+          "ce": 1,
+          "nc": 21,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "i'll be leaving soon",
+          "hyp": "i'll be leaving soon",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "what's wrong with you",
+          "hyp": "what's wrong with you",
+          "ce": 0,
+          "nc": 21,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "how old are your kids",
+          "hyp": "how old are your kids",
+          "ce": 0,
+          "nc": 21,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "we have company",
+          "hyp": "have comment",
+          "ce": 6,
+          "nc": 15,
+          "we": 2,
+          "nw": 3
+        },
+        {
+          "ref": "do you play chess",
+          "hyp": "do you play chess",
+          "ce": 0,
+          "nc": 17,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "that's not the case",
+          "hyp": "that's not the case",
+          "ce": 0,
+          "nc": 19,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "my heart is with you",
+          "hyp": "my heart is with you",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        }
+      ],
+      "raw_cer": 0.1859,
+      "single_session_raw_cer": 0.267
+    },
+    "t17.2024.06.05": {
+      "n_trials": 20,
+      "n_chars": 470,
+      "n_words": 101,
+      "char_errs": 30,
+      "word_errs": 15,
+      "post_lm_cer": 0.0638,
+      "post_lm_wer": 0.1485,
+      "trials": [
+        {
+          "ref": "enjoy your time away",
+          "hyp": "enjoy your time away",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "i want to go out",
+          "hyp": "i want to go out",
+          "ce": 0,
+          "nc": 16,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "local or federal government",
+          "hyp": "logo or federal government",
+          "ce": 3,
+          "nc": 27,
+          "we": 1,
+          "nw": 4
+        },
+        {
+          "ref": "i get to pick my team",
+          "hyp": "i get to pick my team",
+          "ce": 0,
+          "nc": 21,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "this is quite unusual",
+          "hyp": "it is is quote unusual",
+          "ce": 3,
+          "nc": 21,
+          "we": 3,
+          "nw": 4
+        },
+        {
+          "ref": "nice to see you again",
+          "hyp": "nice to see you again",
+          "ce": 0,
+          "nc": 21,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "the couple lives in pittsburgh",
+          "hyp": "the couple lives in pittsburgh",
+          "ce": 0,
+          "nc": 30,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "how old are you",
+          "hyp": "how old are you",
+          "ce": 0,
+          "nc": 15,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "let me be very clear",
+          "hyp": "let me be very clear",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i mean no trouble",
+          "hyp": "i meant no trouble",
+          "ce": 1,
+          "nc": 17,
+          "we": 1,
+          "nw": 4
+        },
+        {
+          "ref": "if i would just work all day long",
+          "hyp": "if i would it work all day long",
+          "ce": 3,
+          "nc": 33,
+          "we": 1,
+          "nw": 8
+        },
+        {
+          "ref": "because it wouldn't make any sense",
+          "hyp": "texas is it won't make any sense",
+          "ce": 9,
+          "nc": 34,
+          "we": 3,
+          "nw": 6
+        },
+        {
+          "ref": "her mother was divorced at nineteen",
+          "hyp": "the mother was divorced at nineteen",
+          "ce": 2,
+          "nc": 35,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "what would be interesting",
+          "hyp": "what would be interesting",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "we must go there now",
+          "hyp": "we use to there now",
+          "ce": 3,
+          "nc": 20,
+          "we": 2,
+          "nw": 5
+        },
+        {
+          "ref": "may i come in",
+          "hyp": "may i come in",
+          "ce": 0,
+          "nc": 13,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "the whole concept of death row",
+          "hyp": "the whole concept of earth tow",
+          "ce": 3,
+          "nc": 30,
+          "we": 2,
+          "nw": 6
+        },
+        {
+          "ref": "your decision is a wise one",
+          "hyp": "your decision is a wise one",
+          "ce": 0,
+          "nc": 27,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "in our little local paper",
+          "hyp": "in our little local por",
+          "ce": 3,
+          "nc": 25,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "we are short on time",
+          "hyp": "we are short on time",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        }
+      ],
+      "raw_cer": 0.2429,
+      "single_session_raw_cer": 0.3429
+    },
+    "t17.2024.06.13": {
+      "n_trials": 10,
+      "n_chars": 298,
+      "n_words": 63,
+      "char_errs": 40,
+      "word_errs": 18,
+      "post_lm_cer": 0.1342,
+      "post_lm_wer": 0.2857,
+      "trials": [
+        {
+          "ref": "don't eat the yolk at all",
+          "hyp": "don't eat the yolk hall",
+          "ce": 3,
+          "nc": 25,
+          "we": 2,
+          "nw": 6
+        },
+        {
+          "ref": "i married into a military family",
+          "hyp": "i in aries into a military tail",
+          "ce": 8,
+          "nc": 32,
+          "we": 3,
+          "nw": 6
+        },
+        {
+          "ref": "i think it's a foregone conclusion",
+          "hyp": "think it's a forgone conclusion",
+          "ce": 3,
+          "nc": 34,
+          "we": 2,
+          "nw": 6
+        },
+        {
+          "ref": "these are done with a flour tortilla",
+          "hyp": "these are done with a flour tortilla",
+          "ce": 0,
+          "nc": 36,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "it was when i was a child",
+          "hyp": "it was then i beers as a fil",
+          "ce": 10,
+          "nc": 25,
+          "we": 4,
+          "nw": 7
+        },
+        {
+          "ref": "the child's love and security",
+          "hyp": "the child's love and security",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "do you think that's good or bad",
+          "hyp": "do you think that's to i tar",
+          "ce": 7,
+          "nc": 31,
+          "we": 3,
+          "nw": 7
+        },
+        {
+          "ref": "we had a case like that here",
+          "hyp": "er had a case like that here",
+          "ce": 2,
+          "nc": 28,
+          "we": 1,
+          "nw": 7
+        },
+        {
+          "ref": "i think that's a possibility",
+          "hyp": "i think that's a lot i tilt",
+          "ce": 7,
+          "nc": 28,
+          "we": 3,
+          "nw": 5
+        },
+        {
+          "ref": "take a seat and enjoy the ride",
+          "hyp": "take a seat and enjoy the ride",
+          "ce": 0,
+          "nc": 30,
+          "we": 0,
+          "nw": 7
+        }
+      ],
+      "raw_cer": 0.245,
+      "single_session_raw_cer": 0.3477
+    },
+    "t17.2024.07.09": {
+      "n_trials": 20,
+      "n_chars": 592,
+      "n_words": 122,
+      "char_errs": 46,
+      "word_errs": 22,
+      "post_lm_cer": 0.0777,
+      "post_lm_wer": 0.1803,
+      "trials": [
+        {
+          "ref": "for me i had no choice but to move",
+          "hyp": "for me i had no choice but to move",
+          "ce": 0,
+          "nc": 34,
+          "we": 0,
+          "nw": 9
+        },
+        {
+          "ref": "they're in school down the street",
+          "hyp": "they're in seoul co on the street",
+          "ce": 6,
+          "nc": 33,
+          "we": 3,
+          "nw": 6
+        },
+        {
+          "ref": "it's quick reading you know",
+          "hyp": "it's and reading you know",
+          "ce": 5,
+          "nc": 27,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "i don't really know for sure",
+          "hyp": "i don't really mind for sure",
+          "ce": 4,
+          "nc": 28,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "the only thing that sticks",
+          "hyp": "the only thing that's sticks",
+          "ce": 2,
+          "nc": 26,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "they recently released him",
+          "hyp": "they recently released yo",
+          "ce": 3,
+          "nc": 26,
+          "we": 1,
+          "nw": 4
+        },
+        {
+          "ref": "that's a thing to consider",
+          "hyp": "that's a thing to consider",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "which is unfortunate for them",
+          "hyp": "which is unfortunate for them",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i guess we're kind of fortunate",
+          "hyp": "i guess we're kind of fortunate",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "what's my role in this thing",
+          "hyp": "what's my role in this thing",
+          "ce": 0,
+          "nc": 28,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "maybe five or six years ago",
+          "hyp": "maybe five or six u tears at o",
+          "ce": 5,
+          "nc": 27,
+          "we": 4,
+          "nw": 6
+        },
+        {
+          "ref": "drunk drivers kill people",
+          "hyp": "dry l stiers kill people",
+          "ce": 6,
+          "nc": 25,
+          "we": 3,
+          "nw": 4
+        },
+        {
+          "ref": "they said it was really riveting",
+          "hyp": "they said it was really riveting",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "go over there and rebuild all those",
+          "hyp": "to of et there and rebuild all those",
+          "ce": 4,
+          "nc": 35,
+          "we": 3,
+          "nw": 7
+        },
+        {
+          "ref": "these are the ages of the kids",
+          "hyp": "these are the age of the kids",
+          "ce": 1,
+          "nc": 30,
+          "we": 1,
+          "nw": 7
+        },
+        {
+          "ref": "spray it in one part of your lawn",
+          "hyp": "spray it in one part of your lan",
+          "ce": 1,
+          "nc": 33,
+          "we": 1,
+          "nw": 8
+        },
+        {
+          "ref": "i don't have too much on credit cards",
+          "hyp": "i don't have too much on credit cards",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "so strap in and enjoy the ride",
+          "hyp": "lon steel in and enjoy the ride",
+          "ce": 5,
+          "nc": 30,
+          "we": 2,
+          "nw": 7
+        },
+        {
+          "ref": "people have to be involved",
+          "hyp": "piel have to be involved",
+          "ce": 4,
+          "nc": 26,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "that forces you to pay for it",
+          "hyp": "that forces you to pay for it",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 7
+        }
+      ],
+      "raw_cer": 0.1848,
+      "single_session_raw_cer": 0.2129
+    },
+    "t17.2024.07.10": {
+      "n_trials": 4,
+      "n_chars": 156,
+      "n_words": 30,
+      "char_errs": 4,
+      "word_errs": 2,
+      "post_lm_cer": 0.0256,
+      "post_lm_wer": 0.0667,
+      "trials": [
+        {
+          "ref": "i did a lot and i experienced a lot",
+          "hyp": "i sit a lot and i experienced a lot",
+          "ce": 2,
+          "nc": 35,
+          "we": 1,
+          "nw": 9
+        },
+        {
+          "ref": "i'd like to think that it's quite low",
+          "hyp": "is like to think that it's quite low",
+          "ce": 2,
+          "nc": 37,
+          "we": 1,
+          "nw": 8
+        },
+        {
+          "ref": "gardening in texas is really interesting",
+          "hyp": "gardening in texas is really interesting",
+          "ce": 0,
+          "nc": 40,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "texas leads the nation in uninsured children",
+          "hyp": "texas leads the nation in uninsured children",
+          "ce": 0,
+          "nc": 44,
+          "we": 0,
+          "nw": 7
+        }
+      ],
+      "raw_cer": 0.0823,
+      "single_session_raw_cer": 0.1646
+    },
+    "t17.2024.07.22": {
+      "n_trials": 20,
+      "n_chars": 674,
+      "n_words": 128,
+      "char_errs": 61,
+      "word_errs": 25,
+      "post_lm_cer": 0.0905,
+      "post_lm_wer": 0.1953,
+      "trials": [
+        {
+          "ref": "it's only getting worse exponentially",
+          "hyp": "it's only getting worse exponentially",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "experience in the courtroom",
+          "hyp": "experience in the courtroom",
+          "ce": 0,
+          "nc": 27,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "let me ask you the question",
+          "hyp": "let me ask you the question",
+          "ce": 0,
+          "nc": 27,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "with a more expensive college",
+          "hyp": "wit a more expensive doll",
+          "ce": 5,
+          "nc": 29,
+          "we": 2,
+          "nw": 5
+        },
+        {
+          "ref": "i know the taxes are a lot higher",
+          "hyp": "i know the taxes are a lot hit",
+          "ce": 4,
+          "nc": 33,
+          "we": 1,
+          "nw": 8
+        },
+        {
+          "ref": "it's only getting worse exponentially",
+          "hyp": "it's only getting worse exponentially",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "about a quarter acre of that",
+          "hyp": "about a quarter acre of the t",
+          "ce": 2,
+          "nc": 28,
+          "we": 2,
+          "nw": 6
+        },
+        {
+          "ref": "there was some really nasty patronizing",
+          "hyp": "there was some really nasty patronizing",
+          "ce": 0,
+          "nc": 39,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "for anyone worried about exposure",
+          "hyp": "or anyone worried about exposure",
+          "ce": 1,
+          "nc": 33,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "i'd like to think that it's quite low",
+          "hyp": "i'd like to then that it's quite low",
+          "ce": 2,
+          "nc": 37,
+          "we": 1,
+          "nw": 8
+        },
+        {
+          "ref": "i was born in nineteen hundred sixty nine",
+          "hyp": "i was born in nineteen hundred sixty nine",
+          "ce": 0,
+          "nc": 41,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "it is bad everywhere except for vietnam",
+          "hyp": "it is barn they get a retort for cigna",
+          "ce": 19,
+          "nc": 39,
+          "we": 6,
+          "nw": 7
+        },
+        {
+          "ref": "we are quite simply at a tipping point",
+          "hyp": "we are  quite simply a timing point",
+          "ce": 6,
+          "nc": 38,
+          "we": 3,
+          "nw": 8
+        },
+        {
+          "ref": "canada has socialized medicine",
+          "hyp": "waded had socialized medicine",
+          "ce": 5,
+          "nc": 30,
+          "we": 2,
+          "nw": 4
+        },
+        {
+          "ref": "i guess what you have to do is just relax",
+          "hyp": "i guess set you have to do is just eels",
+          "ce": 6,
+          "nc": 41,
+          "we": 2,
+          "nw": 10
+        },
+        {
+          "ref": "really enjoyed it quite a bit",
+          "hyp": "really enjoyed it quite a bit",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "i had really liked turquoise",
+          "hyp": "i had really liked the noise",
+          "ce": 4,
+          "nc": 28,
+          "we": 2,
+          "nw": 5
+        },
+        {
+          "ref": "when i had my magazines at home",
+          "hyp": "what i had my magazine at home",
+          "ce": 3,
+          "nc": 31,
+          "we": 2,
+          "nw": 7
+        },
+        {
+          "ref": "this brings me to my next point though",
+          "hyp": "this brings me to my next point out",
+          "ce": 4,
+          "nc": 38,
+          "we": 1,
+          "nw": 8
+        },
+        {
+          "ref": "you'll find it in the next aisle",
+          "hyp": "you'll find it in the next aisle",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 7
+        }
+      ],
+      "raw_cer": 0.2735,
+      "single_session_raw_cer": 0.5224
+    }
+  },
+  "t18": {
+    "t18.2024.12.04": {
+      "n_trials": 1,
+      "n_chars": 37,
+      "n_words": 7,
+      "char_errs": 0,
+      "word_errs": 0,
+      "post_lm_cer": 0.0,
+      "post_lm_wer": 0.0,
+      "trials": [
+        {
+          "ref": "fifty to a hundred miles every sunday",
+          "hyp": "fifty to a hundred miles every sunday",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 7
+        }
+      ],
+      "raw_cer": 0.0263,
+      "single_session_raw_cer": 0.0526
+    },
+    "t18.2024.12.05": {
+      "n_trials": 20,
+      "n_chars": 612,
+      "n_words": 116,
+      "char_errs": 23,
+      "word_errs": 10,
+      "post_lm_cer": 0.0376,
+      "post_lm_wer": 0.0862,
+      "trials": [
+        {
+          "ref": "that was the only reason i quit",
+          "hyp": "that was the only reason i quit",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "you've already been preapproved",
+          "hyp": "you've already been pre approved",
+          "ce": 1,
+          "nc": 31,
+          "we": 2,
+          "nw": 4
+        },
+        {
+          "ref": "i haven't talked to them this weekend",
+          "hyp": "i haven't talked to them this weekend",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "the music in that was fantastic",
+          "hyp": "the music in that was fantastic",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "do you still keep up with them",
+          "hyp": "do you still still keep up with hm",
+          "ce": 8,
+          "nc": 30,
+          "we": 2,
+          "nw": 7
+        },
+        {
+          "ref": "i had really liked turquoise",
+          "hyp": "i had i had really liked turi lise",
+          "ce": 9,
+          "nc": 28,
+          "we": 4,
+          "nw": 5
+        },
+        {
+          "ref": "you always get into the paper",
+          "hyp": "you always ter into the paper",
+          "ce": 2,
+          "nc": 29,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "hope you have enjoyed this tutorial",
+          "hyp": "hope you have enjoyed this tutorial",
+          "ce": 0,
+          "nc": 35,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "i totally agree with that",
+          "hyp": "i totally agree with that",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "you shouldn't have left it there",
+          "hyp": "you shouldn't have left it there",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "you just have less variety",
+          "hyp": "you just have less variety",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "their statistics aren't very accurate",
+          "hyp": "their statistics aren't very accurate",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i had to change the water in that",
+          "hyp": "i had to change the water in that",
+          "ce": 0,
+          "nc": 33,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "there's an employment problem",
+          "hyp": "there's an employment problem",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "then you have to make a salad",
+          "hyp": "then you have to make a salad",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "we all had snack time together",
+          "hyp": "all had snack time together",
+          "ce": 3,
+          "nc": 30,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "but you actually enjoy it",
+          "hyp": "but you actually enjoy it",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "anywhere from two to four semesters",
+          "hyp": "anywhere from two to four semesters",
+          "ce": 0,
+          "nc": 35,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "we didn't understand the culture",
+          "hyp": "we didn't understand the culture",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "how did it reach this point",
+          "hyp": "how did it reach this point",
+          "ce": 0,
+          "nc": 27,
+          "we": 0,
+          "nw": 6
+        }
+      ],
+      "raw_cer": 0.0879,
+      "single_session_raw_cer": 0.1022
+    },
+    "t18.2025.01.14": {
+      "n_trials": 20,
+      "n_chars": 621,
+      "n_words": 125,
+      "char_errs": 33,
+      "word_errs": 12,
+      "post_lm_cer": 0.0531,
+      "post_lm_wer": 0.096,
+      "trials": [
+        {
+          "ref": "they don't take kid into kindergarten",
+          "hyp": "they don't take mid into kindergarten",
+          "ce": 1,
+          "nc": 37,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "when i first started working",
+          "hyp": "when i first started working",
+          "ce": 0,
+          "nc": 28,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i lived there for a long time",
+          "hyp": "i lived there for a long time",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "if they penalize businesses",
+          "hyp": "if they penalize bus is en es",
+          "ce": 5,
+          "nc": 27,
+          "we": 4,
+          "nw": 4
+        },
+        {
+          "ref": "every time something new came up",
+          "hyp": "every time something new came up",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "the boy's name has not been released",
+          "hyp": "the boy's name has not been released",
+          "ce": 0,
+          "nc": 36,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "i barely made it through high school",
+          "hyp": "i barely made it through high school",
+          "ce": 0,
+          "nc": 36,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "and they were not really fighting",
+          "hyp": "and they were not really fighting",
+          "ce": 0,
+          "nc": 33,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "i liked it a little bit but i didn't",
+          "hyp": "i liked it a little bit but i didn't",
+          "ce": 0,
+          "nc": 36,
+          "we": 0,
+          "nw": 9
+        },
+        {
+          "ref": "i will start doing it well",
+          "hyp": "i will start doing it well",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "it's a number of different things",
+          "hyp": "it its ai i",
+          "ce": 26,
+          "nc": 33,
+          "we": 6,
+          "nw": 6
+        },
+        {
+          "ref": "i'm at a little bit of a loss",
+          "hyp": "i'm at a little bit of a los",
+          "ce": 1,
+          "nc": 29,
+          "we": 1,
+          "nw": 8
+        },
+        {
+          "ref": "toss the recycled items as well",
+          "hyp": "toss the recycled items as well",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "the carpet cleaning companies",
+          "hyp": "the carpet cleaning companies",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "he dug a hole under the fence",
+          "hyp": "he dug a hole under the fence",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "so it's been real fun here to see",
+          "hyp": "so it's been real fun here to see",
+          "ce": 0,
+          "nc": 33,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "glad i never had to pay for one",
+          "hyp": "glad i never had to pay for one",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "the same patterns of behavior",
+          "hyp": "the same patterns of behavior",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "and then sunday nights we watch",
+          "hyp": "and then sunday nights we watch",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "their mother's maiden name",
+          "hyp": "their mother's maiden name",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 4
+        }
+      ],
+      "raw_cer": 0.1136,
+      "single_session_raw_cer": 0.142
+    },
+    "t18.2025.01.15": {
+      "n_trials": 20,
+      "n_chars": 612,
+      "n_words": 133,
+      "char_errs": 17,
+      "word_errs": 11,
+      "post_lm_cer": 0.0278,
+      "post_lm_wer": 0.0827,
+      "trials": [
+        {
+          "ref": "she's real interested in recycling",
+          "hyp": "alex real interested in recycling",
+          "ce": 4,
+          "nc": 34,
+          "we": 1,
+          "nw": 5
+        },
+        {
+          "ref": "you have to do a whole lot of sit ups",
+          "hyp": "you have to do a whole lot of 's it is",
+          "ce": 4,
+          "nc": 37,
+          "we": 3,
+          "nw": 10
+        },
+        {
+          "ref": "it was a decision that would pay off",
+          "hyp": "it was a decision that would pay off",
+          "ce": 0,
+          "nc": 36,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "i never quite found a new york fan",
+          "hyp": "i never quite found a new york fan",
+          "ce": 0,
+          "nc": 34,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "if you're willing to work for it",
+          "hyp": "if you're willing to work for it",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "i watch her kids on the weekend",
+          "hyp": "i watch her kids on the weekends",
+          "ce": 1,
+          "nc": 31,
+          "we": 1,
+          "nw": 7
+        },
+        {
+          "ref": "to the price of what i buy",
+          "hyp": "to the price of what i b o u",
+          "ce": 4,
+          "nc": 26,
+          "we": 3,
+          "nw": 7
+        },
+        {
+          "ref": "we do as a matter of fact",
+          "hyp": "we do as a matter of fact",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "then i could take the van",
+          "hyp": "then i could take the van",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "you probably have all kinds of trees",
+          "hyp": "you probably have all kinds of trees",
+          "ce": 0,
+          "nc": 36,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "that's probably a major one",
+          "hyp": "that's probably a man or one",
+          "ce": 2,
+          "nc": 27,
+          "we": 2,
+          "nw": 5
+        },
+        {
+          "ref": "i'm up there at my kids' school",
+          "hyp": "i'm up there at my kids' school",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "i have to keep up with them",
+          "hyp": "i have to keep up with them",
+          "ce": 0,
+          "nc": 27,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "i'm happy with that decision",
+          "hyp": "i'm happy with that decision",
+          "ce": 0,
+          "nc": 28,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i think i'm really going to enjoy it",
+          "hyp": "i think i'm really going to enjoy it",
+          "ce": 0,
+          "nc": 36,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "i like country and western",
+          "hyp": "i like country and western",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "are you involved in any other",
+          "hyp": "are you involved in any other l",
+          "ce": 2,
+          "nc": 29,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "i just came in from outside",
+          "hyp": "i just came in from outside",
+          "ce": 0,
+          "nc": 27,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "she didn't announce that to you",
+          "hyp": "she didn't announce that to you",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "add your voice to the conversation",
+          "hyp": "add your voice to the conversation",
+          "ce": 0,
+          "nc": 34,
+          "we": 0,
+          "nw": 6
+        }
+      ],
+      "raw_cer": 0.0768,
+      "single_session_raw_cer": 0.1088
+    },
+    "t18.2025.01.21": {
+      "n_trials": 20,
+      "n_chars": 598,
+      "n_words": 121,
+      "char_errs": 13,
+      "word_errs": 7,
+      "post_lm_cer": 0.0217,
+      "post_lm_wer": 0.0579,
+      "trials": [
+        {
+          "ref": "i don't know if i'm that brave yet",
+          "hyp": "i don't know if i'm that brave yet",
+          "ce": 0,
+          "nc": 34,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "i want to make some flower beds",
+          "hyp": "i want to make some flower beds",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "rats mice problems in car garages",
+          "hyp": "rats mice problems in the garage",
+          "ce": 4,
+          "nc": 33,
+          "we": 2,
+          "nw": 6
+        },
+        {
+          "ref": "there's so much going on here",
+          "hyp": "there's so much going on here",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "why not get the whole thing",
+          "hyp": "why not get the whole thing",
+          "ce": 0,
+          "nc": 27,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "that's not really surprising",
+          "hyp": "that's not really surprising",
+          "ce": 0,
+          "nc": 28,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "as far as income tax is concerned",
+          "hyp": "cash far as income tax is concerned",
+          "ce": 2,
+          "nc": 33,
+          "we": 1,
+          "nw": 7
+        },
+        {
+          "ref": "out of an office every day",
+          "hyp": "out of an office every day",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "because he was carrying a camera",
+          "hyp": "because he was carrying a camera",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "that's what i see burning a lot",
+          "hyp": "that's what i see burning a lot",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "then he's not eligible for parole",
+          "hyp": "the he's not eligible for parole",
+          "ce": 1,
+          "nc": 33,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "what i saw on the news today",
+          "hyp": "what i saw on the news today",
+          "ce": 0,
+          "nc": 28,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "it would make life easier",
+          "hyp": "it would make life easier",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "you don't understand this",
+          "hyp": "you don't understand this",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "he supposedly got this one usually",
+          "hyp": "he supposedly got this one usually",
+          "ce": 0,
+          "nc": 34,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "i would kind of like to go",
+          "hyp": "i would kind of like to go",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "music seemed to really help",
+          "hyp": "music seemed to really help",
+          "ce": 0,
+          "nc": 27,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "it's never sticky or grainy feeling",
+          "hyp": "it's never sticky or grainy feeling",
+          "ce": 0,
+          "nc": 35,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "do you have a personal computer",
+          "hyp": "do you have a personal computer",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "they are wanting to do another",
+          "hyp": "they are want initio ceo another",
+          "ce": 6,
+          "nc": 30,
+          "we": 3,
+          "nw": 6
+        }
+      ],
+      "raw_cer": 0.0705,
+      "single_session_raw_cer": 0.082
+    },
+    "t18.2025.01.22": {
+      "n_trials": 20,
+      "n_chars": 621,
+      "n_words": 123,
+      "char_errs": 4,
+      "word_errs": 3,
+      "post_lm_cer": 0.0064,
+      "post_lm_wer": 0.0244,
+      "trials": [
+        {
+          "ref": "it's all independent choices",
+          "hyp": "it's all independent choices",
+          "ce": 0,
+          "nc": 28,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "he's run into so many problems",
+          "hyp": "he's run into so many problems",
+          "ce": 0,
+          "nc": 30,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "it might let more people get off",
+          "hyp": "it might let more people get off",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "places like ross dress for less",
+          "hyp": "places like ross dress for less",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "ten percent or thirteen percent",
+          "hyp": "ten percent or thirteen percent",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "know where to draw a line",
+          "hyp": "know where to draw a line",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "i've been pretty successful with that",
+          "hyp": "i've been pretty successful with that",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "i wish they would require it",
+          "hyp": "i wish they would require it",
+          "ce": 0,
+          "nc": 28,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "i thought the topic was boring",
+          "hyp": "i thought the topic was boring",
+          "ce": 0,
+          "nc": 30,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "you are going to get caught anyways",
+          "hyp": "you are going to get caught anyways",
+          "ce": 0,
+          "nc": 35,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "people will have batteries",
+          "hyp": "people will have batteries",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "i think that's a little war condition",
+          "hyp": "i think that's a little war condition",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "that i think should change",
+          "hyp": "that i think should change",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "but i've never actually even made it",
+          "hyp": "fit i've never actually even made it",
+          "ce": 2,
+          "nc": 36,
+          "we": 1,
+          "nw": 7
+        },
+        {
+          "ref": "have something to do with it",
+          "hyp": "have something to do with it",
+          "ce": 0,
+          "nc": 28,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "i think he got a real good deal",
+          "hyp": "i think he got a real good deal",
+          "ce": 0,
+          "nc": 31,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "and most people like that are old",
+          "hyp": "and most people like that are old",
+          "ce": 0,
+          "nc": 33,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "i get most of my news from the paper",
+          "hyp": "i get most if my news from the paper",
+          "ce": 1,
+          "nc": 36,
+          "we": 1,
+          "nw": 9
+        },
+        {
+          "ref": "is so careful about recycling",
+          "hyp": "is so careful about recycling",
+          "ce": 0,
+          "nc": 29,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "they kept putting off doing that",
+          "hyp": "they kept putting of doing that",
+          "ce": 1,
+          "nc": 32,
+          "we": 1,
+          "nw": 6
+        }
+      ],
+      "raw_cer": 0.0597,
+      "single_session_raw_cer": 0.0943
+    },
+    "t18.2025.02.04": {
+      "n_trials": 20,
+      "n_chars": 586,
+      "n_words": 135,
+      "char_errs": 15,
+      "word_errs": 11,
+      "post_lm_cer": 0.0256,
+      "post_lm_wer": 0.0815,
+      "trials": [
+        {
+          "ref": "i did not get the last part of the talk",
+          "hyp": "i did not get the last part of the tall",
+          "ce": 1,
+          "nc": 39,
+          "we": 1,
+          "nw": 10
+        },
+        {
+          "ref": "i want to pick the best place to live",
+          "hyp": "i want to pick the best place to live",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 9
+        },
+        {
+          "ref": "that is kind of wild",
+          "hyp": "that is kind of wild",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "where do you want to eat",
+          "hyp": "where do you want to eat",
+          "ce": 0,
+          "nc": 24,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "yes there's quite a bit of crime",
+          "hyp": "yes there's quite a bit o crime",
+          "ce": 1,
+          "nc": 32,
+          "we": 1,
+          "nw": 7
+        },
+        {
+          "ref": "up in new england where i'm from",
+          "hyp": "up in new england where i'm from",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "she gave me a warm hug",
+          "hyp": "he gave me a warm hug",
+          "ce": 1,
+          "nc": 22,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "i have been thinking about what you said",
+          "hyp": "i have been thinking about what you said",
+          "ce": 0,
+          "nc": 40,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "it sounds that way to me",
+          "hyp": "it sounds that way to me",
+          "ce": 0,
+          "nc": 24,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "we need more bees",
+          "hyp": "we need more beds",
+          "ce": 1,
+          "nc": 17,
+          "we": 1,
+          "nw": 4
+        },
+        {
+          "ref": "it was like contract work",
+          "hyp": "it was like contract work",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "she is full of hope this year",
+          "hyp": "she is full of how this year",
+          "ce": 2,
+          "nc": 29,
+          "we": 1,
+          "nw": 7
+        },
+        {
+          "ref": "this was a good call",
+          "hyp": "this was a good call",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "we don't really eat out too much",
+          "hyp": "we don't really eat out too much",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "my kids are very good at this game",
+          "hyp": "my kid a are very good at this game",
+          "ce": 2,
+          "nc": 34,
+          "we": 2,
+          "nw": 8
+        },
+        {
+          "ref": "that's a great salad in summertime",
+          "hyp": "that's a great salad in summertime",
+          "ce": 0,
+          "nc": 34,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "try not to make so much noise",
+          "hyp": "they not to make so much noise",
+          "ce": 2,
+          "nc": 29,
+          "we": 1,
+          "nw": 7
+        },
+        {
+          "ref": "i told you to sell that part of the company",
+          "hyp": "i told you to sell that part of the co anny",
+          "ce": 3,
+          "nc": 43,
+          "we": 2,
+          "nw": 10
+        },
+        {
+          "ref": "please step into this room",
+          "hyp": "please step into this room",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i hope we find a nice place",
+          "hyp": "i how we find a nice place",
+          "ce": 2,
+          "nc": 27,
+          "we": 1,
+          "nw": 7
+        }
+      ],
+      "raw_cer": 0.0714,
+      "single_session_raw_cer": 0.0864
+    },
+    "t18.2025.02.05": {
+      "n_trials": 20,
+      "n_chars": 585,
+      "n_words": 125,
+      "char_errs": 24,
+      "word_errs": 13,
+      "post_lm_cer": 0.041,
+      "post_lm_wer": 0.104,
+      "trials": [
+        {
+          "ref": "if you want to play tennis",
+          "hyp": "if you want to play tennis",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "build and deploy manually",
+          "hyp": "build and deploy manually",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 4
+        },
+        {
+          "ref": "we live next to the school",
+          "hyp": "we live next to the school",
+          "ce": 0,
+          "nc": 26,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "my dad is a big blue grass fan",
+          "hyp": "my cas is a big blue grass dara n",
+          "ce": 6,
+          "nc": 30,
+          "we": 3,
+          "nw": 8
+        },
+        {
+          "ref": "what do you think of the spoilers",
+          "hyp": "what do you think of the spoilers",
+          "ce": 0,
+          "nc": 33,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "that was a turning point in the war",
+          "hyp": "that was a turning point in the way r",
+          "ce": 2,
+          "nc": 35,
+          "we": 2,
+          "nw": 8
+        },
+        {
+          "ref": "i called him the other day",
+          "hyp": "i called hine the other day",
+          "ce": 2,
+          "nc": 26,
+          "we": 1,
+          "nw": 6
+        },
+        {
+          "ref": "this is a hard problem to work on",
+          "hyp": "this is a hard problem to work pm",
+          "ce": 2,
+          "nc": 33,
+          "we": 1,
+          "nw": 8
+        },
+        {
+          "ref": "i own less stuff than you",
+          "hyp": "i own less stuff than you",
+          "ce": 0,
+          "nc": 25,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "only four days to go",
+          "hyp": "only four days to go",
+          "ce": 0,
+          "nc": 20,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "his side of the family",
+          "hyp": "his side of the family",
+          "ce": 0,
+          "nc": 22,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "i love this country too much",
+          "hyp": "i love this country too much",
+          "ce": 0,
+          "nc": 28,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "i read this with my family every week",
+          "hyp": "i read this with my family every week",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 8
+        },
+        {
+          "ref": "it was an interesting experience",
+          "hyp": "it was an interesting experience",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "now you are just making stuff up",
+          "hyp": "now you are just making stuff up",
+          "ce": 0,
+          "nc": 32,
+          "we": 0,
+          "nw": 7
+        },
+        {
+          "ref": "your feedback is welcome as usual",
+          "hyp": "your feedback is welcome as usual",
+          "ce": 0,
+          "nc": 33,
+          "we": 0,
+          "nw": 6
+        },
+        {
+          "ref": "we grew more every year",
+          "hyp": "we grew more every year",
+          "ce": 0,
+          "nc": 23,
+          "we": 0,
+          "nw": 5
+        },
+        {
+          "ref": "this deal depends on employees",
+          "hyp": "this call co ends on employers",
+          "ce": 7,
+          "nc": 30,
+          "we": 4,
+          "nw": 5
+        },
+        {
+          "ref": "running is great for some people",
+          "hyp": "ringing is great for some pille",
+          "ce": 5,
+          "nc": 32,
+          "we": 2,
+          "nw": 6
+        },
+        {
+          "ref": "some people like to work all the time",
+          "hyp": "some people like to work all the time",
+          "ce": 0,
+          "nc": 37,
+          "we": 0,
+          "nw": 8
+        }
+      ],
+      "raw_cer": 0.1091,
+      "single_session_raw_cer": 0.1421
+    }
+  }
+}

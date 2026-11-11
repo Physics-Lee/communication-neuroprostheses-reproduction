@@ -509,7 +509,7 @@
     {
       "label": "Willett et al., 2023\n(T12, greedy PER)",
       "ours": 23.42,
-      "ours_sd": 6.3,
+      "ours_sd": 3.18,
       "paper": 19.7,
       "paper_sd": null,
       "note": null
@@ -517,7 +517,7 @@
     {
       "label": "Fan et al., 2023\n(T5, CORP v6 CER)",
       "ours": 6.2,
-      "ours_sd": 4.86,
+      "ours_sd": 3.26,
       "paper": 6.16,
       "paper_sd": 2.28,
       "note": "seed: 2.65"
@@ -525,7 +525,7 @@
     {
       "label": "Card et al., 2024\n(T15, greedy PER)",
       "ours": 10.19,
-      "ours_sd": 6.56,
+      "ours_sd": 4.25,
       "paper": 9.54,
       "paper_sd": 2.76,
       "note": null
@@ -564,19 +564,19 @@
     },
     {
       "label": "Jude et al., 2026a\n(T17, raw CER)",
-      "ours": 16.5,
-      "ours_sd": 11.23,
+      "ours": 19.42,
+      "ours_sd": 5.8,
       "paper": 18.6,
       "paper_sd": 5.75,
-      "note": "best; SrcData"
+      "note": "best 8.2%"
     },
     {
       "label": "Jude et al., 2026a\n(T18, raw CER)",
-      "ours": 5.3,
-      "ours_sd": 3.02,
+      "ours": 7.69,
+      "ours_sd": 2.79,
       "paper": 12.0,
-      "paper_sd": 1.78,
-      "note": "paper <12%"
+      "paper_sd": 2.41,
+      "note": "best 2.6%; <12%"
     },
     {
       "label": "Jude et al., 2026b\n(T17, greedy PER)",
@@ -591,7 +591,7 @@
     {
       "label": "Willett et al., 2021 (T5)",
       "ours": 10.0,
-      "ours_sd": 6.4,
+      "ours_sd": 3.58,
       "paper": 3.64,
       "paper_sd": 3.19,
       "note": "bigram\n63-tr. pool"
@@ -599,9 +599,9 @@
     {
       "label": "Willett et al., 2023 (T12)",
       "ours": 23.58,
-      "ours_sd": 11.02,
+      "ours_sd": 5.25,
       "paper": 23.8,
-      "paper_sd": 1.8,
+      "paper_sd": 4.01,
       "note": "day med.\n5-gram"
     },
     {
@@ -639,7 +639,7 @@
     {
       "label": "Kunz et al., 2025 (T15)",
       "ours": 78.07,
-      "ours_sd": 21.79,
+      "ours_sd": 0.59,
       "paper": 54.0,
       "paper_sd": 33.15,
       "note": "125k\ngap attr."
@@ -647,26 +647,26 @@
     {
       "label": "Kunz et al., 2025 (T16)",
       "ours": 82.38,
-      "ours_sd": 35.02,
+      "ours_sd": 0.0,
       "paper": 52.0,
       "paper_sd": 0.0,
       "note": "125k\ngap attr."
     },
     {
       "label": "Jude et al., 2026a (T17)",
-      "ours": 11.5,
-      "ours_sd": 20.5,
-      "paper": 15.0,
+      "ours": 11.41,
+      "ours_sd": 6.85,
+      "paper": 12.5,
       "paper_sd": 2.49,
-      "note": "best sess."
+      "note": "best 4.6%"
     },
     {
       "label": "Jude et al., 2026a (T18)",
-      "ours": 5.7,
-      "ours_sd": 6.74,
+      "ours": 6.66,
+      "ours_sd": 3.67,
       "paper": 7.0,
-      "paper_sd": 0.84,
-      "note": "best; paper <7%"
+      "paper_sd": 2.38,
+      "note": "best 0.0%; <7%"
     },
     {
       "label": "Jude et al., 2026b (T17)",
@@ -679,60 +679,102 @@
   ],
   "panel_g_host_ram_walls": [
     {
-      "category": "125k 5-gram WFST LM\n(host RAM; 4 studies)",
-      "official_gb": 300.0,
-      "ours_gb": 19.6,
-      "note": "300 → 19.6 GB\n(mmap + .idx; 15.3×)"
-    },
-    {
-      "category": "125k 3-gram WFST LM\n(host RAM; 3 studies)",
-      "official_gb": 60.0,
-      "ours_gb": 1.46,
-      "note": "40–60 → 1.46 GB\n(KenLM trie; 41×)"
-    },
-    {
-      "category": "Typing 5-gram WFST\n(host RAM; Jude 2026a)",
-      "official_gb": 64.0,
-      "ours_gb": 22.5,
-      "note": "64+ → 22.5 GB (2.8×)\n(drop unpruned FST)"
-    },
-    {
-      "category": "Handwriting fold + FST\n(host RAM; Willett 2021)",
+      "category": "Willett et al., 2021 (T5)",
       "official_gb": 56.0,
       "ours_gb": 26.9,
-      "note": "56 → 26.9 GB (2.1×)\n(mmap + lazy FST)"
+      "note": "mmap + lazy FST"
+    },
+    {
+      "category": "Willett et al., 2023 (T12)",
+      "official_gb": 300.0,
+      "ours_gb": 19.6,
+      "note": "mmap + .idx"
+    },
+    {
+      "category": "Fan et al., 2023 (T5)",
+      "official_gb": 40.0,
+      "ours_gb": 18.4,
+      "note": "TF GC fix"
+    },
+    {
+      "category": "Card et al., 2024 (T15)",
+      "official_gb": 300.0,
+      "ours_gb": 19.6,
+      "note": "mmap + .idx"
+    },
+    {
+      "category": "Wairagkar et al., 2025 (T15)",
+      "official_gb": 24.0,
+      "ours_gb": 1.8,
+      "note": "stream win."
+    },
+    {
+      "category": "Kunz et al., 2025 (T12/15/16)",
+      "official_gb": 300.0,
+      "ours_gb": 19.6,
+      "note": "mmap + .idx"
+    },
+    {
+      "category": "Jude et al., 2026a (T17/T18)",
+      "official_gb": 64.0,
+      "ours_gb": 22.5,
+      "note": "drop unpruned FST"
+    },
+    {
+      "category": "Jude et al., 2026b (T17)",
+      "official_gb": 300.0,
+      "ours_gb": 19.6,
+      "note": "mmap + .idx"
     }
   ],
   "panel_h_gpu_vram_walls": [
     {
-      "category": "Speech RNN + OPT-6.7B\n(A100 80G; Willett 2023)",
-      "official_gb": 80.0,
-      "ours_gb": 13.0,
-      "note": "80 GB A100\n→ 13.0 GB (OPT fp16)"
-    },
-    {
-      "category": "Speech RNN + OPT-6.7B\n(1–2× 4090; 3 studies)",
-      "official_gb": 48.0,
-      "ours_gb": 13.0,
-      "note": "24–48 GB 4090\n→ 13.0 GB (accum + OPT)"
-    },
-    {
-      "category": "Voice synthesis\n(3× 3090; Wairagkar 2025)",
-      "official_gb": 72.0,
-      "ours_gb": 1.5,
-      "note": "3×24 GB 3090 + A6000\n→ 0–1.5 GB (CPU / .h5)"
-    },
-    {
-      "category": "Handwriting GRU + GPT-2\n(1080 Ti / A100; 2 studies)",
+      "category": "Willett et al., 2021 (T5)",
       "official_gb": 44.0,
       "ours_gb": 4.0,
-      "note": "40–44 GB rig\n→ 3.5–4.0 GB (GRU + GPT-2)"
+      "note": "RNN + GPT-2"
     },
     {
-      "category": "Typing GRU + 5-gram\n(RTX 4090; Jude 2026a)",
+      "category": "Willett et al., 2023 (T12)",
+      "official_gb": 80.0,
+      "ours_gb": 13.0,
+      "note": "FP16 + OPT"
+    },
+    {
+      "category": "Fan et al., 2023 (T5)",
+      "official_gb": 40.0,
+      "ours_gb": 4.0,
+      "note": "seed + CORP"
+    },
+    {
+      "category": "Card et al., 2024 (T15)",
+      "official_gb": 48.0,
+      "ours_gb": 13.0,
+      "note": "accum + OPT"
+    },
+    {
+      "category": "Wairagkar et al., 2025 (T15)",
+      "official_gb": 72.0,
+      "ours_gb": 1.5,
+      "note": "causal Mel"
+    },
+    {
+      "category": "Kunz et al., 2025 (T12/15/16)",
+      "official_gb": 48.0,
+      "ours_gb": 13.0,
+      "note": "FP16 + OPT"
+    },
+    {
+      "category": "Jude et al., 2026a (T17/T18)",
       "official_gb": 24.0,
       "ours_gb": 11.5,
-      "note": "24 GB 4090\n→ 11.5 GB (bf16 port)"
+      "note": "BF16 port"
+    },
+    {
+      "category": "Jude et al., 2026b (T17)",
+      "official_gb": 48.0,
+      "ours_gb": 13.0,
+      "note": "FP16 + OPT"
     }
   ]
 }
