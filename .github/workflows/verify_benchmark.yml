@@ -6,6 +6,8 @@ on:
       - "reproduction_benchmark.yaml"
       - "render_figure2.py"
       - "build_session_per_vs_wer.py"
+      - "build_session_cer_vs_wer.py"
+      - "render_phase_memory_figure.py"
       - "**/results/**"
   workflow_dispatch:
 
@@ -29,16 +31,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install "numpy==1.26.4" "matplotlib>=3.8.0" "PyYAML>=6.0.1" "editdistance>=0.8.0"
 
-      - name: Recompute session-level PER vs. WER and render benchmark figure
+      - name: Recompute session-level PER/CER vs. WER and render benchmark figures
         run: |
           python build_session_per_vs_wer.py
+          python build_session_cer_vs_wer.py
           python render_figure2.py
+          python render_phase_memory_figure.py
 
       - name: Commit updated artifacts if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reproduction_benchmark.json session_per_vs_wer.json communication_neuroprostheses_reproduction.png communication_neuroprostheses_reproduction.pdf communication_neuroprostheses_reproduction.html index.html
+          git add reproduction_benchmark.json session_per_vs_wer.json session_cer_vs_wer.json communication_neuroprostheses_reproduction.png communication_neuroprostheses_reproduction.pdf communication_neuroprostheses_reproduction.html communication_neuroprostheses_phase_memory.png communication_neuroprostheses_phase_memory.pdf index.html
           if ! git diff --cached --quiet; then
             git commit -m "chore: auto-render benchmark figure and sync JSON artifacts"
             git push

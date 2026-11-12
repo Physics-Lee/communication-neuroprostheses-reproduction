@@ -1,0 +1,331 @@
+{
+ "Willett 2021 (T5)": {
+  "sessions": [
+   {
+    "session": "t5.2019.05.08",
+    "n": 10,
+    "cer": 4.47,
+    "wer": 5.88,
+    "char_counts": 693,
+    "word_counts": 136
+   },
+   {
+    "session": "t5.2019.11.25",
+    "n": 7,
+    "cer": 4.76,
+    "wer": 12.66,
+    "char_counts": 399,
+    "word_counts": 79
+   },
+   {
+    "session": "t5.2019.12.09",
+    "n": 7,
+    "cer": 4.14,
+    "wer": 8.7,
+    "char_counts": 362,
+    "word_counts": 69
+   },
+   {
+    "session": "t5.2019.12.11",
+    "n": 7,
+    "cer": 4.74,
+    "wer": 13.73,
+    "char_counts": 274,
+    "word_counts": 51
+   },
+   {
+    "session": "t5.2019.12.18",
+    "n": 7,
+    "cer": 4.64,
+    "wer": 6.98,
+    "char_counts": 453,
+    "word_counts": 86
+   },
+   {
+    "session": "t5.2019.12.20",
+    "n": 7,
+    "cer": 2.93,
+    "wer": 5.48,
+    "char_counts": 375,
+    "word_counts": 73
+   },
+   {
+    "session": "t5.2020.01.06",
+    "n": 5,
+    "cer": 4.4,
+    "wer": 16.0,
+    "char_counts": 273,
+    "word_counts": 50
+   },
+   {
+    "session": "t5.2020.01.08",
+    "n": 7,
+    "cer": 4.91,
+    "wer": 11.76,
+    "char_counts": 387,
+    "word_counts": 68
+   },
+   {
+    "session": "t5.2020.01.13",
+    "n": 3,
+    "cer": 9.29,
+    "wer": 27.27,
+    "char_counts": 140,
+    "word_counts": 22
+   },
+   {
+    "session": "t5.2020.01.15",
+    "n": 3,
+    "cer": 7.81,
+    "wer": 11.54,
+    "char_counts": 128,
+    "word_counts": 26
+   }
+  ],
+  "pooled": {
+   "cer": 4.71,
+   "wer": 10.0
+  }
+ },
+ "Fan 2023 (T5)": {
+  "sessions": [
+   {
+    "session": "t5.2022.09.29",
+    "n": 40,
+    "cer": 0.5,
+    "wer": 3.77,
+    "char_counts": 1597,
+    "word_counts": 318
+   },
+   {
+    "session": "t5.2022.10.06",
+    "n": 40,
+    "cer": 4.4,
+    "wer": 3.95,
+    "char_counts": 1686,
+    "word_counts": 329
+   },
+   {
+    "session": "t5.2022.10.18",
+    "n": 40,
+    "cer": 9.6,
+    "wer": 3.85,
+    "char_counts": 1673,
+    "word_counts": 312
+   },
+   {
+    "session": "t5.2022.10.25",
+    "n": 37,
+    "cer": 7.3,
+    "wer": 6.85,
+    "char_counts": 1598,
+    "word_counts": 321
+   },
+   {
+    "session": "t5.2022.10.27",
+    "n": 40,
+    "cer": 9.6,
+    "wer": 2.54,
+    "char_counts": 1708,
+    "word_counts": 315
+   },
+   {
+    "session": "t5.2022.11.01",
+    "n": 40,
+    "cer": 1.9,
+    "wer": 4.05,
+    "char_counts": 1593,
+    "word_counts": 296
+   },
+   {
+    "session": "t5.2022.11.03",
+    "n": 40,
+    "cer": 3.8,
+    "wer": 3.95,
+    "char_counts": 1695,
+    "word_counts": 329
+   },
+   {
+    "session": "t5.2022.12.08",
+    "n": 40,
+    "cer": 5.2,
+    "wer": 4.55,
+    "char_counts": 1718,
+    "word_counts": 330
+   },
+   {
+    "session": "t5.2022.12.15",
+    "n": 20,
+    "cer": 2.9,
+    "wer": 2.5,
+    "char_counts": 858,
+    "word_counts": 160
+   },
+   {
+    "session": "t5.2023.02.28",
+    "n": 40,
+    "cer": 17.0,
+    "wer": 4.17,
+    "char_counts": 1662,
+    "word_counts": 312
+   }
+  ],
+  "pooled": {
+   "cer": 6.22,
+   "wer": 4.1
+  }
+ },
+ "Jude 2026a (T17)": {
+  "sessions": [
+   {
+    "session": "t17.2024.04.25",
+    "n": 20,
+    "cer": 20.31,
+    "wer": 14.77,
+    "char_counts": 367,
+    "word_counts": 88
+   },
+   {
+    "session": "t17.2024.06.03",
+    "n": 20,
+    "cer": 19.58,
+    "wer": 4.6,
+    "char_counts": 368,
+    "word_counts": 87
+   },
+   {
+    "session": "t17.2024.06.04",
+    "n": 20,
+    "cer": 18.59,
+    "wer": 4.76,
+    "char_counts": 369,
+    "word_counts": 84
+   },
+   {
+    "session": "t17.2024.06.05",
+    "n": 20,
+    "cer": 24.29,
+    "wer": 14.85,
+    "char_counts": 470,
+    "word_counts": 101
+   },
+   {
+    "session": "t17.2024.06.13",
+    "n": 10,
+    "cer": 24.5,
+    "wer": 28.57,
+    "char_counts": 298,
+    "word_counts": 63
+   },
+   {
+    "session": "t17.2024.07.09",
+    "n": 20,
+    "cer": 18.48,
+    "wer": 18.03,
+    "char_counts": 592,
+    "word_counts": 122
+   },
+   {
+    "session": "t17.2024.07.10",
+    "n": 4,
+    "cer": 8.23,
+    "wer": 6.67,
+    "char_counts": 156,
+    "word_counts": 30
+   },
+   {
+    "session": "t17.2024.07.22",
+    "n": 20,
+    "cer": 27.35,
+    "wer": 19.53,
+    "char_counts": 674,
+    "word_counts": 128
+   }
+  ],
+  "pooled": {
+   "cer": 21.52,
+   "wer": 14.65
+  }
+ },
+ "Jude 2026a (T18)": {
+  "sessions": [
+   {
+    "session": "t18.2024.12.05",
+    "n": 20,
+    "cer": 8.79,
+    "wer": 8.62,
+    "char_counts": 612,
+    "word_counts": 116
+   },
+   {
+    "session": "t18.2025.01.14",
+    "n": 20,
+    "cer": 11.36,
+    "wer": 9.6,
+    "char_counts": 621,
+    "word_counts": 125
+   },
+   {
+    "session": "t18.2025.01.15",
+    "n": 20,
+    "cer": 7.68,
+    "wer": 8.27,
+    "char_counts": 612,
+    "word_counts": 133
+   },
+   {
+    "session": "t18.2025.01.21",
+    "n": 20,
+    "cer": 7.05,
+    "wer": 5.79,
+    "char_counts": 598,
+    "word_counts": 121
+   },
+   {
+    "session": "t18.2025.01.22",
+    "n": 20,
+    "cer": 5.97,
+    "wer": 2.44,
+    "char_counts": 621,
+    "word_counts": 123
+   },
+   {
+    "session": "t18.2025.02.04",
+    "n": 20,
+    "cer": 7.14,
+    "wer": 8.15,
+    "char_counts": 586,
+    "word_counts": 135
+   },
+   {
+    "session": "t18.2025.02.05",
+    "n": 20,
+    "cer": 10.91,
+    "wer": 10.4,
+    "char_counts": 585,
+    "word_counts": 125
+   }
+  ],
+  "pooled": {
+   "cer": 8.41,
+   "wer": 7.63
+  }
+ },
+ "_meta": {
+  "min_trials": 3,
+  "chars_per_word_pooled": 5.092,
+  "chars_per_word_note": "reference characters (spaces included, matching the CER denominators) per word, pooled across the four plotted arms; Fan counts embedded from the sibling CORP release (FAN_RECAL_CHARS)",
+  "pooling": {
+   "Willett 2021 (T5)": "micro (errCounts char errors x m3 bigram word errors)",
+   "Fan 2023 (T5)": "CER = session mean (v6 archives rates only); WER = n_ref_words-weighted micro average",
+   "Jude 2026a (T17)": "CER = n_chars-weighted raw_cer; WER = micro over post-LM word error counts",
+   "Jude 2026a (T18)": "CER = n_chars-weighted raw_cer; WER = micro over post-LM word error counts"
+  },
+  "sources": {
+   "Willett 2021 (T5)": "20210512_willett/results/m3_own_decode_HeldOutTrials.csv + WILLET21_RAW_CER (sibling errCounts.mat constants, see module docstring)",
+   "Fan 2023 (T5)": "20231201_fan/results/tier3_corp_sim_v6.json + rescore_official_outputs.json (recalibration arm)",
+   "Jude 2026a (T17)": "20260316_jude/results/runs_multisess/lm_decode_summary.json (t17)",
+   "Jude 2026a (T18)": "20260316_jude/results/runs_multisess/lm_decode_summary.json (t18)"
+  }
+ }
+}

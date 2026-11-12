@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 """Standalone renderer for the 8-Study Consumer-GPU (16 GB VRAM / 64 GB RAM)
 Communication Neuroprostheses Reproduction Benchmark (Figure 2) and its
-interactive HTML edition (Figure 2 + Figure 6: The Limit of CTC-TLG).
+interactive HTML edition (Figure 2 + the 4-panel phase/memory companion in
+its own "Insights" section at native size + Figure 6: The Limit of CTC-TLG).
 
-Reads `reproduction_benchmark.yaml` and `session_per_vs_wer.json` in this
-repository, syncs `reproduction_benchmark.json`, verifies zero text overlaps,
+Reads `reproduction_benchmark.yaml` in this repository, syncs
+`reproduction_benchmark.json`, verifies zero text overlaps,
 and outputs publication-ready `.png` (300 DPI), vector `.pdf`, and interactive
 single-file `.html` (`communication_neuroprostheses_reproduction.html` +
 `index.html`) artifacts.
@@ -20,6 +21,7 @@ import html as html_lib
 import json
 import math
 import os
+import re
 import zlib
 import matplotlib
 matplotlib.use("Agg")
@@ -78,10 +80,72 @@ PANEL_BCD_IDS = [
     "kunz2025", "kunz2025", "kunz2025", "jude2026a", "jude2026a", "jude2026b",
 ]
 
-PANEL_GH_IDS = [
-    "willett2021", "willett2023", "fan2023", "card2024",
-    "wairagkar2025", "kunz2025", "jude2026a", "jude2026b",
-]
+# 2026-11-11 split round: PANEL_GH_IDS (study-id slots for the former
+# RAM/VRAM panels) was removed together with those panels -- they now
+# live in render_phase_memory_figure.py, reading the same YAML rows.
+
+# 2026-11-11 metric-split round (user: "fig2e，其实应该拆分成多个部分，
+# 第一部分画PER，第二部分画CER，第三部分画1-r"): panel (e)'s 11 pairs
+# regroup by acoustic metric -- greedy PER bars first, CER bars second,
+# the single 1-mel-r voice bar last -- with dotted separators rising to
+# bold group headers in the axes top band (headers cannot hang below the
+# tick labels: row-4 axes patches start right under the label tips and
+# paint white over them). YAML row order stays parallel to panel (c) so
+# PANEL_BCD_IDS keeps mapping each pair to its study in the interactive
+# edition; only the drawn x positions regroup.
+PANEL_E_GROUPS = ("per", "cer", "mel1r")
+PANEL_E_GROUP_TITLES = {
+    "per": "greedy phoneme error rate (PER)",
+    "cer": "character error rate (CER)",
+    "mel1r": "1 \u2212 mel r (voice)",
+}
+
+
+def _panel_e_group_geometry(per_rows):
+    """Compute metric-grouped x positions for panel (e) bar pairs.
+
+    Parameters
+    ----------
+    per_rows : list of dict
+        Rows of ``panel_e_repro_acoustic`` in YAML order (parallel to
+        the panel-(c) rows and ``PANEL_BCD_IDS``).
+
+    Returns
+    -------
+    tuple of (numpy.ndarray, list of tuple, list of float)
+        ``(x_pos, group_spans, separators)``: one x position per input
+        row with bars regrouped PER -> CER -> 1-mel-r (unit intra-group
+        pitch, +0.8-unit inter-group gaps), the ``(first_x, last_x)``
+        span of each group in ``PANEL_E_GROUPS`` order, and the
+        separator x positions midway between adjacent groups.
+
+    Raises
+    ------
+    ValueError
+        If any row lacks a ``metric`` key in ``PANEL_E_GROUPS`` or any
+        group ends up empty.
+    """
+    bad = [p["label"] for p in per_rows if p.get("metric") not in PANEL_E_GROUPS]
+    if bad:
+        raise ValueError(
+            f"panel_e_repro_acoustic rows missing valid metric key: {bad}"
+        )
+    x_pos = np.empty(len(per_rows))
+    spans = []
+    cursor = 0.0
+    for g in PANEL_E_GROUPS:
+        idxs = [i for i, p in enumerate(per_rows) if p["metric"] == g]
+        if not idxs:
+            raise ValueError(f"panel_e_repro_acoustic group {g!r} is empty")
+        for i in idxs:
+            x_pos[i] = cursor
+            cursor += 1.0
+        spans.append((cursor - len(idxs), cursor - 1.0))
+        cursor += 0.8
+    separators = [
+        0.5 * (spans[k][1] + spans[k + 1][0]) for k in range(len(spans) - 1)
+    ]
+    return x_pos, spans, separators
 
 
 def make_color_legend_handles(keys=None):
@@ -160,97 +224,99 @@ def check_figure_overlaps(fig, tol_px=1.0):
 
 
 _STUDIES_B64 = (
-    "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"
-    "MOluvOKZ8Flkq2gcsXeRqdpZRtAakBFupmCDb5ItZ+GOWCCTJR/t/DS42nD6WJ4ApbbKUaSVpRwtkRZmmIdkqkEzOcXN1a18KZzF"
-    "xTG2WXsUQ7SFG1NwjltjcKv2KBrWG1eyqOVTMEzYQovO5ims7CHy1Kld3Hb3pTZn0JswLLVNec9PqNjncSQSgBGpQaFnWP/8hkzd"
-    "BKt10jwJCW+wTj3Fn4DCi3U2qGQgI4SWxeLlrC5nsQpSv1xgc+3GCyVJYZbClT6KC82HHhHryRKxOCaHTHVxWDGZYpe5gnZFsXxz"
-    "JBiVoVi7I1KfU7gMHRC0EKT36PRltpvFOS5ye3n8tLbpEStqUm826RlRfVS3j7+T5FYkniS1ayaS1m2kVIjUTD46ffrkOckcvUmx"
-    "BdIqTDwv2xFLOOIMwD40ajtK7pqQacj/ccWaP9GEzPbh3TUCDTZLpTZz9rs2gRkN13F0i+s4auqFobCaXui3+Y6jzk0tEBZFtNIP"
-    "yenTlxuSxblEHWjhK0r3tWiL+6EWw23lSdZHxw/0AbeMLWukxZhU1x+YCtckCxCKSjYAoZoxcWpR3rlY+uprWx9dGjb9OFfPYHbD"
-    "1RO1bGBWVWKYyEnwQQoHD+G8xcGzuK1M/AXZeUdKsO6/vvZCXbG/3eXSn24Nm+6ojvX+nZOVelWqlfJ9sCgTroVahlylpdm6KBjj"
-    "2f6S7TXQBu6l8/4dBR6Oqe5MIPoh3IY+3eyQKB7yC2JwsQ9ltii4WalmatgUeIs0lwQejBgy8ISyIqn77ij2+K2ouobpqMAR8lYQ"
-    "O/XEsoGk0SeNhvOt0IuyNJjLqlVpwhfCcJ4n1rsl6xB89YXXH1SWJeNQ1CrG0G0SfYedkaTK6TMxy/b8BbzRlfDIwpoj9mcTHPLG"
-    "s7nheB7Fda+rKP1aR7Lo9G/haKenhTywalGMhkVpCbjlFxi8UPychJdUQtG6aoGGYQTzDrsbS0T+CALT32IKH2QUJZFZMBq58ybg"
-    "BliLgSO69RB1ZeiqWyCbqtEZqRbBaos5lrbfbWUYr+8rw7v3lZGgnRo1tJvd+8rI0a6Ln6yYkzlo/Qbmmmor+jafScodqnL2g+1P"
-    "9ddEvtVdZcDtGODaL7nPVAxLBb4m71i0SbPgmGFQY8+LNllZhxXNZm3wnsDRTvDiaukqeM3GbvQtAVLwZsGEVVItutJVR7ElszPv"
-    "TKcMzxnNPqQT+KahH8u83ZFTgX9EZ4l/2F2yLOLO7LaapvD7cAtKB1xjWzSlQMGOCXdLxeU1umPoe064F3VaI/DQAvErJM1cZHai"
-    "U1mcxkzfTEVKRHTsc/pg5iViuWn5UySF5mgVtcFq+rwK5YjGqBpixfrwiG/f87Qh+UexX16cKUK2nB8++dYN9PAiccXdyrLMbPOS"
-    "KvRN8SMIxUZ6iZdmv8pTc69lOXptx730yqSKYXBlv5u6MKdZv8tvq99tqgPVavW7oA7mbfW7cnU49Wfz9AiXrVQq3IHhDZmqV9ZP"
-    "atpu0dNS3E9x04+Mm2ravgrZy9G863ZGgHvHsPb7g1RF8dUyWuHeZK6E4p4Vp25RAFarTbEbGQW5FKkO4M7oawLEHRCbbiKeR8dP"
-    "M6WwzM1P+pjVPV02pbuvhOP0SqjGK+n2LtsbuUVV8IcjL6Z+sKjoy/wzowuvclfpVa4tr7Zs/PKKiovEFR9duIsYr2tCbUMMS7bT"
-    "i8aGi1WiWpqh75cr6FSywQvfYYOXFvCZotVSBs4uG7zIgS82zmDZrgu4YYRkDyP8sZTdN3hpCPzMjMBnsdsL6cl38Olv2eEIB3BH"
-    "AsBV8I4s3eT6fooR//D/PdwEuQ=="
+    "eNrtXe9y28iRf5UpVSmRygSIGQADwFu5Kkuxfc7KXsXW2flTKRVIgiQsEOACoGQ5lVQ+5e5z7ir78e4B7otzb+C8iZ/kumcAEH+G"
+    "ECVzd+3drXKVTABsADO/nu5fd0/z93/cCydv9u4bA/i7d3/vKoyiIM+ZwejeYG8c5n4eJjGceCVPkCAnfqQPSHHFxM8DOIufNMPW"
+    "KINjbxZ79/GAbvLBXuwvgvMojIMNMsiHb/4dvrMI8jQclxeOUj+MtTzR8uBNTj787/8MiGeQ8XIxIK8ePifM1un+gCTLICaXydgf"
+    "kYP4F3RAzuwPf//HIT5VkI3TcJknaVsYnIx8cY+5H0+u0jAP4xkcDKJgnKfJBM+scn8Oh7K5v8SPmXxN/9y/9MPIH4VRmF/Dcbw9"
+    "nEqW8frDJBgnE5B4vpCikli80WAv97OL8zDO8nQ1LkY0jPMgngST8mvB5DxZ5ctVDueKR82WQTCen8t7hkG2d//3+DV/nO/9YbC3"
+    "9NM8HIdLP87FGfH6eGIVh1+vgvNlOCmO48H4fJysYhBOy9GGk3/cE+N3noVvg+It5IjizQN8wDHedY8ODMMg6yODvasAx7aajeJh"
+    "EUJypvb+BK+VhPhdQ6eG6Q4zi9ou1wRSTNvgGisHtroOjtLhJL32J/rV3DHSN1eLy/KiVRrBRfCp+k+YnafBMk327sOoBoO94sMf"
+    "9yZhWmDSsCk7LzA9hK8sVyM488zPV2lAbM8EDFreh7/8J7MtcrAGMWJo7GdjX0ziaRpox2fH5Hjupy+Cr58/e0bukaNwlvoL8urR"
+    "izP49Pj0TLzOAqZpVqqMzcnjI/Lhr38jjOse/v/5g6fkYLHwlyS7jvN5ANNHpkk0IX6WBYtRdA2iIv/tNfnSjyYhGcl7wC0Oyc+I"
+    "pRso4yUIgTvBCYBLipNTSC8PTqfi3uLq4licCC0Vdy7uAELh5GVNjFV+43ItxmoeLOTIESjf2QdcZfAmazkOff+O6q67Tw5S/4oc"
+    "P3x+WL9uCXolJkh3XLzQMpsXArRKWYAJw3j/ztRtFCbHY0C4qeWpTpZJEh2SIWE6o3D2nnigUkB5E1PnFgqgXiUAv2Pqlt34zmWQ"
+    "TsIx6t5zhNFkNRaaWRw+H0f4OMkFHMJBwA+P0mShwTrj5+M5Ob0+S1L4W8PIMklzckAN44KM8JogO4ShjycZuQrzeRiTe1T3TLJc"
+    "kmRKAAzwZwrq7EcErh1fLBPQdJLEpBgZcoADu08uM53gyO0fDsjVPIwCEq8Wy2t9EfQCy79MYDkQ95G4fJEHS80k8yTLBS6zZXgR"
+    "6Ht/+tOgMAm0MAmLJAuyrkF4iod7zYGjUbtuDmyzaQ66EpTGIA38SMvDRVCtP6RcZqVpoLbOyFXNOHAwDtIu2EZhGo7oh7//X8c0"
+    "9IheGwq5CLdsBFw1q9mIZIONGEfwjpPKSlQfvwM7AdbBj66zMFOZCjEcClNxRLc1FeX4tgwFs2tmAhYJb+CC4bhK0gkBOX7UMR28"
+    "bjrKmWwZD5sPnz381dPEB4w4tmU07cY2BmIKd15biHgVRRXMWQnzIH87C1K4BWsBXZ6oA5U1oM40SjVmrqHOdNdrQV0hQwn2Zw/O"
+    "viI4yZoYMxiYKKqAjkOGVrKCNx1Qm/UifIO83aA7iWF8AT5ZXiFcAM2PfkAQF2PcdodaKF8PsALkYsZqIGeebm30kCzuaIgo0+QA"
+    "KnOnSDc7SDdvRLrZQLqpGa5m0jXSwbryG5FuKpHuuKjpMHgAqtxPAeH/PaxQDgtDHeUGs0qUmyqUt2R9RugeJfn8Tug2N6DbvC26"
+    "YWxb6PYGjm1vdvYbYJYj3+PsA2S4ZZmatVMoWx26at5IV28NZZUMJZQjP50FmhzQpmvC646JqXtrTDP7omStlKkwrRJ6A7A/beLa"
+    "i2c5CCryStktEQ0j2wE0dzeyV5yVGqA52wLQpuNob/rY6xvuLd3x2+XXH8NeTcM16Ub2ypkBrq9hUqCv8IcL/lqguslfgbtqZyeP"
+    "yYGtRf41rM2Pn/8brJUCgrZWp7FfARviunN02KaypiG4Z/3qIXHFsQfAcATJpZ7OmyT3HtFBWw9JkhJgeeLkl0F88hStZACMlpqb"
+    "KG0hq0Fp4Rk2c1q8UYvPFtKbhNY1VIT20Snl8vUVfBYQYjFBIZGDzlLAyTU53cBp4cGdgs2edtgsQx77/h04ucg94QvaxL8mi2AS"
+    "+vGgGFxBaE2dMWSn8EBtPgvnQATQcqS8waUfrcQcFZL8+G5c9gxjZMGE8DVZJcBQxbgABaX//IY8P/sNuPvcIGchQA3sgEMWYXyo"
+    "k6fBIkmvNZiHJUg4vgfjCGsKQqRaCw/yaHZ+GeZBOgrh/a6COMjPIz+HkQsOyXiVS2LaRBlAVp8COZ0mSb5MkQznSR1kA7LAJ0X5"
+    "+GUxQD/PcPBgnlC1/VyeaIwzPLuIJgwIUHECrjqz9gUhh6cFQowxhUoNSAoLcgK3nh3WibFdGJ+pH3cNzyO4RY/RoUwzGkbHY02j"
+    "0/6+0uBYhileaRmtZhq8h7YExV5zBEDH2tCYxkVveFQp66cw6RaGBka2EyY16SbPCSel7jiBjndYgM1gyoeGYzPX0Khr0j4bM/96"
+    "9PZiTpf8o2wMZQY9ByTX7EuwSp+cviAmHxALFN0FAwN/HaOwMALCLQvz1fNTcpoFq0minfijICLPg7EfhaNUqMV24VJLKP/ZI5KG"
+    "M2lQXCBKpUEJ3iwjmMUcLwBRy/kwC7IMhT8+JtPwTW+EtJDUMCeWypqAcClum9io0pRkML3whjgiClvCdSbCmYzD6i1G7ZJjcO8L"
+    "Ir7HdG7vK+0K1yl//w5WK7f8YjdYaoGngvFUZqAFwgnQiZ8u0EsgOFg62hYQhKen4E2Lh2zbl8aNpF6K63BhuZtteQWLK2gsSeuQ"
+    "GIileZomb4NYvjuGTCdpOAVbAIcXcizgVDTVQE4uQqBgACxHB9OIH/xxmmQZgfWLwPqV6eT5Ko5La8CoVuKjeImlhGck4Nl4FjKe"
+    "g/Wr5uMQl31YG8EEokEtb8zluGL4FcdoXxqcQ2FGpJ0IpBVLYZH0M3ijtXXGaRAPX5shGM+6UeGFUfHjGaw5F0zSsppheSBP1I2D"
+    "1TAulmZYGuNr42LpZsu4qGQoDYxcUYtgMrjsyM4HJAozWNjAgRSO89rG8MLAHB8byiBUW9qO+Pm3aFguE/BM7sJjiiFQmBc8czsD"
+    "w1vWhZMwS8BrAmiNE/B7AXgYc1qbmfb81MxNPEzVnMZzNYQONxhwGtZH0ud5vszuD4dJNtXDZGh5ae4Mb83cnZK5w+MHUd7F+St5"
+    "ohfntkbNBs6dFnNXyACc/3WowjriII39iBQwXQeh6P7QcSqUu4hyNiCnMMH/GJ4ylTPVkvVp8PUixrQb70m8PXxLvL8C5qdUnGwg"
+    "nd2EdLeFdHeNdIFwcsAtpLnAPmSAtTT+h00uLydsG9hzJmBvUJc72nXXzWIuHYJpSiYJfId7TgXCO4es3AL4WRhdYiLDGjVx/wKP"
+    "NxA76sKeGQ3Yu03YK0SoyytCzAGsAKb1gGuNMzhub1Kh+v5PaYTt2YLTBvlRNQvLeQoOQwFtcgCXymRCFLwJxx2Q2/p2K7tNC4gz"
+    "w9HsnYZfvQLLYz+ddFfwYzjau3y7jcSwpfOWm9IRoM4L+zAXpO7H1QjwhkirrcwCtwX9kMOs9qYwq72DMKvluRvZbyPKalKd9yZ6"
+    "TWpRs7dAaBKPX2dvFq79MfTXMlxqnyOMa/xXJw/jGXCnX2Fsa6IT0wPscAPrhDh1BQsuQHxznHV4FO4o2mq5Jbe9IdrajKtixNKf"
+    "AFkarzBBhkhaLSMwrEVs8bsIulquiimXj6SOuiIePAx0iljpujTmYpl/gSlVk+5LnlhU4ChZs6fbFpJZh6/JbDOAW6PPQPDs9+84"
+    "fEVUCsG0aZZ7MSAWUMmq1sjRDYzMwklVcBZm00ARHCuajsq6wzMsYvw5s8kIVnl8hjvWG4VvkN0C1z2HcScpLAb4WQwC8k5rTXmB"
+    "eIYTuSZmq1EGS2kQrxZBsUwCEcXrx36cxCEse8Syq2/CR1h0/BSoeCLiuX4UaTXJOA5wFFV6dI1As7GACSQWA4OkhIs5EzHVo3IY"
+    "D1vRWhypfTKChWK+8NOLamgKOu3LK03dKmK5cOsXxSOwRpFSWbg6DeJZ1xQ9gqO9pshrhGPBFLWYREeA0hQ9ZA8xfqGdnDytuVRc"
+    "FzBgZwQFe1iwtW3yryZwN8YIhjQuzEJpkhqHOoZpOv3hJgDJgSq123KzOrPX43MxapnO8AmSP/niukCX6bKdul20LMm78NNlchWO"
+    "33YR/2V5qg/2lGm0wSQ8qwl7tRQl9h89ODn+6hn5V1bT5nW1EtUxaDYPookWouoaNS24KTOhkLzDvMSnoBGfQpKCHLRTTk1FUE1h"
+    "jyqUKQzPoI7GLNPbrQaU1XowhnkUvE7mmIKzmypwUp2rv5bd0AFbM8xG+QcmZZs6sEGMOl6aA3YWaLJE5FARLrVd3b1FRVNL4GdE"
+    "tO8cOv12S5o8w1JQk+4U1aBtOeDdbCwG8UxNwIh6hq3x3aLcrIKkYerPYLXvgvxVeaoX47yxI8fWLasdKFVJUUJcArsvI2CZAuLd"
+    "bTlq2t0S+OmT7jsjexese+PWHHdgud5N0BZTs03QSJQ4AXA8ypx2+WmTfzPmGrMRt6Yfw79RHjuvYN4tcrIYEjBHpKDlFp0C1S3q"
+    "ncTgCayA/pGKdr0U+Do49lcZchxDG4H5ehpEWGBjaL8kR+BP3HtkiGooZNQnp8fPQAteJjjtaZeU//MbJtPRZ78hpuEZQF0fcNwW"
+    "deCwkm0fSm6uuxU1Xy/kV2E8Sa4yQdBhYVEnqsU3GwycWQoCLqWiSL1NwIXoJv92mIp/j+XAwIgo6LdJdUtUKqETTD/8x9/SL8TY"
+    "nQZ+muGmFPILYoBbrC6CAjIoapT6vuuaLf6NOAVckgNAB+g9aa0PIkVOynuRLPdnQZt/C5iDr7JagEtTKUBR+NOTwCYH+Hygy+lh"
+    "Pwd/UTzNW/CbUBkjLU/Bg6seKyPy4aNrycupoS3gytPjxwTQJ3f+YC7cj6/Jcp7EwSIoo7zkZEBiGfF5PMCSOeB+OnkwBU5BfNzy"
+    "NIVTyNrFrEkwacDzZ/ECdB9rFnA/ELBzTcSRMSddrdWCiyPtLjB+KTFOkGYHl/Au8PraCKl3e36xCqyG1gb1LotwL1bx266B+hKO"
+    "9tomV2MN/4u3OUhbQE8GD6e5k74zdWd/aFPgcUOL1zYFlfTbLOn3UC7Q8IerDFVd/Geb0duGfA9KS4X/4ZvpuLhOXtQwX+YdqDkd"
+    "cKdBzeEG94ltGMJvuE8cJv7H7xPLNg7bpbvNCe41cJQPX+vjIIp0gTaD6wa1+wzcbEov5/OYvv44A+cyeo4asrZtx/AQhLouWDYu"
+    "q6u4Y5a2DbViQ1j5icDhz8iDPA8WS0yOvpCQlxFm29CuwLYJdG8ZYb5taHnYquP9Xkp41dHk3hJeDo+9L6CF72B7uvP+naubrjhm"
+    "i7IoWOTev6NMp6Y4yA8xQqzctSrtWinLQlNnmjq118JsVlwCUl4JKTUz51m6aa8FOPA28DSAPG8twGXlw/FO/e+tbt+wd49hmP0c"
+    "9HO0QvAc/AuGaeEtwVTMwkXQNX0zf1mvEcZa2tUoAuNblDiRbB4uMyywuiZYhm7CIgnmIyBixdTKsh8Zt82wEJfUVh5yABoN3wIN"
+    "r+k/1lehjczETlmwPmi2/BUcSrOfk/FqsYoAxJdBWda13iubHepE1DFXUfFycy6GwWsPVloKuRnXz8mfOYzXOi9APvzlv8gVKqk/"
+    "SuBOop6sGKrlXGZq/TgLRTD94BTMQURCsRs3AJd1rX8jdNEyMKhwL1i/gzTPyCKBS2RNQz4HpwQjxlWVMYbk4dMCbtowtHYV9FAF"
+    "O/qMLPgf9VSrrTteO8hxM/P7JXjXv9ROnjw6WxtXkIR17lRDaxURADG/TXx7LfKn8Pb3Et5Wzl+v/XTdIXUsqjHbZkN/MvVHdLdB"
+    "j7IC8votKAbmcvj5KMybaP+tTn6HZ3sxT1uOZXszrlLIRucS+OSTdRrv4OjJ2WFdDaixP6QywYhJG0wGsP2hg0c6+sBaDmdHLRT3"
+    "+gT149v2PvuczluVlancTW+A1U1tf1NoUOFxijKGtrb0TXOP2liubRtDP/1NeKkzm1KdgQ7tdv86daoM6Gw+V1iIR+J4r8Y0N6XY"
+    "3U0pXRFKS4GtFLQFIAbcizO0kdMkXQTpWl8c3UO/JojBygPjc29jMzYI/8mAfC8GpDuTW6uBgbUCrrFjNSjrK6PgMoyF9ajwUHeX"
+    "8Gz9tXhDFzgoQsNjApbYCkt0JShVQWxO0ETvKekuTks9OBXUVbPQRy9iXod3DU2o7rIbhVjiIAOQK3VYxRdxchV/QrrwfYQrLIO0"
+    "aE2lFap57dEJbrmeO5QQozowT+55lO5YKbyOUjTz5p+SZnwhdtqwhlY0c0lmUSkwrHTDVdUN9CvFRxcOfM+aUdQMDG5QEVuW6ddU"
+    "xd1YUTCo1MTdVkE2pqPAM6iNcFdL2nP8PWsIK+vHYj9L4gL1Na14hoe1swT8jrfBVXYR9moIaxToc522NKRfmlJbfv2zB4SBnyka"
+    "nFR+lGnrTF3hrDQTdSHfvXn4zmucN9oC/tGeEqUD5liN5j84uKMoGV80K57FFNXb/pTjvwniTKeezriJQeHdNv5hZd3YKBmP/Tzp"
+    "wvxInugFtwn/GuBulUqqZGxk1XKNzlaj15jqw+6K9Q5X5v7QVpTwW2qvCP44m52j2j1+hFy6co3wP852PpK4tKEp1h00hTnAtFmL"
+    "aePE4azhlB22u2QVs36LKFTg2s5uS29YWWD2ejUJEMF+U1F+BYcbCPe7akJ5XU1aVLorQM2kkxX4mPn1Eo1oHKzSBJ41q0pvsOsh"
+    "rXXEBeNo7w9N3dpXxpycHm+p705rhZHnP8cOEDc5SlIr+hwkUIaub3Sn4NPAMWhTI5z7hHMX58i9j5VrZrv6sprYeptE2tNiV9Sl"
+    "oS/CqKva2bhOcI7fulfe7PXri49JcHLDpPwctaVRvKMTbCORZONQJ8wDpHNqYp9dzpjIdBaKsjHTCbOLhQr3yJkAHmY4TUO7CK6F"
+    "rehup+lkOLl1r8xhDoks3KkSnIzJigaR4BxdL/0sI6t4ma6wBQ5mbsC7iRJ/Ikp1atUP5ODoEeVVr1ds8NraQlNIbiQ9uaqAB7dX"
+    "NO7Zznyq6niYshuveCZ8FtUuGk/0LrJ1V2YEnQEZYTMFF3wTuZ2Fe2KDjEw+usVpcLXh9LE6AUpdnaNIR6YcHZEWZpiHZLpFpZzy"
+    "y/VWvhTO4uYY1248iiXuhY0pOMfWGNxpPIqB9ca1LGr1FAwTtnBHb/0UjnyIInXqll+7/VabUxhNmJZGU96zR1T0eRyJBGBCGlA4"
+    "sJx/fkOmfobVOnmRhIQ3uM4DLZyAwot9NqhkICOGO4vNy7IuZ7GK8rDaYHPlpwsty2GVwp0+mg+3jwMi9pNlYnNMAZn65rByMcUh"
+    "8wXtSlJ1cySYlaHYuyNSn1O4DB0QtBDk4MHJC9nN4gw3ub04ftJoesTKmtS36/SMqD5q2sffKXIrCk+Sug0TSZs2UilEaSYfnDx5"
+    "/IxIR29StkBaxVkQyI5YwhFnAPah1egouW1CpiX/xxVr/kQTMpund9sINNgsnbrM2+3eBGa1XMfRDa7jqK0XlsYaemHe5DuOepta"
+    "ICzKaGUYk5MnL9Yki3OFOtDSV1T2teiK+6EWw23kSc5Hxw/MAXesDXukxZzU9x/YGjcUGxDKSjYAoS6ZOHUo790sffm1a44uLJd+"
+    "nKtnMbfl6olaNjCrOrFs5CT4IKWDh3De4OA53NUm4YJs3ZESrPuvr4LY1Nxvd7v0p1vDZnq657x/58lSr1q1UtEHizLhWuhVyFVZ"
+    "mm2KgjEu+0t290Bb2Evn/TsKPBxT3VIg+iHchTFdd0gUD/kFsbjoQyk3Bbcr1WwDbwXeIi0kgQcjpgw8IVkkddeOYg/fiKprWI5K"
+    "HCFvBbHTQGwbyFpj0rpx0Qq9LEuDtaxelSZ8IQznBWK/W3Ydg6++CA4HtW3JOBWNijF0m8TY4WBkuXbyVKyyB+EC3uhSeGRxwxH7"
+    "sw0OeevZ/Hg8T9Km11WWfl0nquj0b+For6eFPLBuUayWRekIuOEXGIJY/JxEkNVC0abugIZhBPMW3Y0VIn8EgelvMYUPMsqSSBmM"
+    "Ru68DrgB1lLgiH4zRF2bunoLZFu3eiPVIljtMM8xdttWhvFmXxne31dGgXZqNdBu9/eVUaPdFD9ZMSdz0Po1zA3d1cxNPpOSO9Tl"
+    "7Abbn+qviXyrXWXA7Rjg3i+1z1ROSw2+Nu/ZtEllcMyyqLXjTZusqsNKZrMueB/B0V7w4m7pOnjtVjf6jgAleGUwYZXVi65M3dNc"
+    "xerMe9MpwzNG5R/lAr6+0Y9l3e7JqcB/xGCJ/7DbZFnEN+XXGprC78ItKB1wg23QlBIFWybcHR2315ieZe444V7WaY3AQ4vEr5C0"
+    "c5HyRK+yeK2Vvp2KVIjo6XN6bxZkYrtp9VMkpeYYNbXBavqiCuWIpqgaYsf68Ihv7nnakvyj6JeXSkWQ2/nhL9/YQA8vElfcrizL"
+    "ls1L6tC3xY8glI30siCXv8rTcK9VOXpjy156VVLFsri2w6Yucup8ZBjwvl1dOF2flCjWDSCA1i3VYYOUm35trbWfEganVAWxTVe2"
+    "/L3pd9W22TUJD5YmV2Ea1MB/+Zn5QMeb2v7esk8kQrCJbXlkDdriChVktwJm2cf36upKr4FPHyeLYRxcZcPaQa3cIaxVU1ps69JA"
+    "u+LgzaootIOPCxjAINVEC9ypLzol9CnAoLAH3vr3qYx2JTu/qZK9bRio0ahkB02wb6pkVxuGk3A2z49wA1dtr4dB94dMN2s7iQ1j"
+    "uzxCJe6nDMJHZhAMY1dbOqrZvG1jL7AAnuXs9qfZygqtZbLCLn2+IthzWp66QQFYo0rLbeXW1FKUOoC/EXBNwsUSEJuvY/9Hx0+k"
+    "Ujj2+set7Hp3o3UR+0tBIV4K1XipbHS0+SY3qAr+hOr5NIwWNX2Zf2ZG42VBGl4W2vJyQwukl1RcJK746BL2tj2xm61hHFXPI4MN"
+    "F6tMdwzL3C1rNpmi1RHfotVRB/hMMxrJM2+bVkdq4IsWMkz2H8HWKYpuXvizQdu3OmoJ/MyMwGfR94gcqHtZHW7o9YUTuCUV5jrw"
+    "BMe0ubmbstw//D/wqQjc"
 )
 
 _WORLD_110M_B64 = (
@@ -921,7 +987,7 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     """Render the full 8-study benchmark overview figure (Figure 2).
 
     Loads the benchmark YAML, syncs its JSON mirror, draws panels (a)
-    vocabulary funnel through (i) session-level PER vs WER including the
+    vocabulary funnel through (f) full-pipeline WER including the
     funnel and reproduction curly-brace annotations, optionally verifies
     that no text bounding boxes collide, and saves the figure as
     ``<out_stem>.png`` and ``<out_stem>.pdf``.
@@ -932,8 +998,10 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
         Path to ``reproduction_benchmark.yaml``. Defaults to the copy in
         this script's directory.
     session_json_path : str, optional
-        Path to ``session_per_vs_wer.json`` used by panel (i). Defaults
-        to the copy in this script's directory.
+        Unused since the 2026-11-11 phase-diagram round moved panel (g)
+        (session-level PER vs. WER) to ``render_phase_memory_figure.py``
+        panel (a); kept in the signature for backwards compatibility with
+        external callers (e.g., the review repo's ``main_fig_2`` wrapper).
     out_stem : str, optional
         Output path stem; ``.png`` and ``.pdf`` are appended.
     verify_overlaps : bool, optional
@@ -954,8 +1022,6 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     here = os.path.dirname(os.path.abspath(__file__))
     if yaml_path is None:
         yaml_path = os.path.join(here, "reproduction_benchmark.yaml")
-    if session_json_path is None:
-        session_json_path = os.path.join(here, "session_per_vs_wer.json")
 
     with open(yaml_path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
@@ -973,12 +1039,14 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     rows_cd = data["panel_cd_online_wer_speed"]
     per = data["panel_e_repro_acoustic"]
     wer = data["panel_f_repro_full_wer"]
-    walls = data["panel_g_host_ram_walls"]
-    vram = data["panel_h_gpu_vram_walls"]
-
-    fig = plt.figure(figsize=(22.4, 22.9))
+    # 2026-11-11 phase-diagram round (user: "fig2g已经不需要出现在fig2上了，
+    # 删掉"): the session-level PER-vs-WER phase diagram (then lettered (g))
+    # leaves Figure 2 entirely -- it lives on as panel (a) of
+    # render_phase_memory_figure.py -- so the figure drops from 5 rows
+    # (22.9 in) to 4 (17.1 in), keeping rows 1-3 at their tuned sizes.
+    fig = plt.figure(figsize=(22.4, 17.1))
     outer = fig.add_gridspec(
-        5, 1, height_ratios=(1.02, 0.08, 0.96, 0.92, 0.98), hspace=0.72
+        4, 1, height_ratios=(1.02, 0.08, 0.96, 0.92), hspace=0.72
     )
 
     # ---- Row 1: (a) Vocabulary size ----
@@ -1061,7 +1129,11 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     # The timeline identifies rows by study id (fan2023/card2024/jude2026a);
     # these YAML rows carry study_key instead, and both jude2026a sessions
     # (T17/T18) star together just as both id-tagged rows do there.
-    STAR_KEYS = {"Fan et al., 2023", "Card et al., 2024", "Jude et al., 2026a"}
+    # 2026-11-12 star round (user, both repos: star additionally requires
+    # vocal paralysis): a study must also have at least one vocal-paralysis
+    # participant (△), dropping Fan et al., 2023 (T5 speaks naturally ▲) and
+    # keeping Card et al., 2024 (T15△) and Jude et al., 2026a (T17△/T18▲).
+    STAR_KEYS = {"Card et al., 2024", "Jude et al., 2026a"}
     # 2026-11-06 equal-pillar round (user, review repo: "I want the
     # pillars in fig2 b c d have the same width ... calculate
     # [full-width / number-of-pillars]"), blank-space follow-up (user:
@@ -1103,7 +1175,7 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     # 2026-11-06 same-height-title round (user: "for each row of fig2,
     # make the top of panels of that row have the same height"): the
     # axes tops already align in every row (same gridspec slots;
-    # (i)'s equal-aspect shrink takes width, not height), but in row 2
+    # (g)'s equal-aspect shrink takes width, not height), but in row 2
     # the (c)/(d) 2-line titles (series / not-reported qualifiers) top
     # out ~0.18 in above (b)'s 1-line title. The trailing newline gives
     # (b) an empty second title line of identical height, so every
@@ -1177,8 +1249,8 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     ax2.set_xlim(-0.75, len(rows_cd) - 0.25)
     ax2.set_ylabel("word error rate (%)")
     ax2.set_title("(c) Word error rate (online)\n"
-                  "\u2605 3 studies satisfy: Open Data, Vocab > 71.4k, "
-                  "WER < 12.8%",
+                  "\u2605 2 studies satisfy: Open Data, Vocab > 71.4k, "
+                  "WER < 12.8%, Vocal paralysis \u25b3",
                   fontsize=9.8, fontweight="bold")
     ax2.text(0.98, 0.985,
              "\u2020 recomputed from released data (decode outputs / trial "
@@ -1273,22 +1345,20 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
              fontsize=6.0, color="#555555", linespacing="normal")
 
     # ---- Row 3: (e) Reproduction greedy PER/CER, (f) Reproduction full WER
+    # 2026-11-11 split round (user: fig2 is too long to publish -- the
+    # RAM/VRAM panels moved to render_phase_memory_figure.py panels c/d,
+    # with a new WER-vs-CER companion alongside); the phase-diagram round
+    # then retired the former row-4 (g) PER-vs-WER panel to the companion
+    # figure's panel (a), so (f) is now the last row of Figure 2.
     gs_r4 = outer[3].subgridspec(1, 2, width_ratios=(1.0, 1.0), wspace=0.16)
     ax_h = fig.add_subplot(gs_r4[0, 0])
     ax_i = fig.add_subplot(gs_r4[0, 1])
-    # ---- Row 4: (g) memory walls | (h) GPU VRAM | (i) PER vs WER
-    gs_r5 = outer[4].subgridspec(
-        1, 3, width_ratios=(0.94, 0.94, 0.52), wspace=0.16
-    )
-    ax_j = fig.add_subplot(gs_r5[0, 0])
-    ax_v = fig.add_subplot(gs_r5[0, 1])
-    ax_p = fig.add_subplot(gs_r5[0, 2])
 
     fc_ours = (*to_rgb(C_SPEECH_I), 0.35)
     c_ref = OPEN_C[2]
     fc_ref = (*to_rgb(c_ref), 0.35)
 
-    x_h = np.arange(len(per))
+    x_h, e_spans, e_seps = _panel_e_group_geometry(per)
     w = 0.36
     ax_h.bar(x_h - w / 2, [p["ours"] for p in per], w,
              label="our reproduction (16 GB home PC)",
@@ -1297,42 +1367,57 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
              label="paper / benchmark anchor",
              color=fc_ref, edgecolor=c_ref, linewidth=0.8)
     for i, p in enumerate(per):
+        xe = x_h[i]
         o_val, o_sd = p["ours"], p.get("ours_sd")
         p_val, p_sd = p["paper"], p.get("paper_sd")
         top_o = o_val + o_sd if o_sd is not None else o_val
         top_p = p_val + p_sd if p_sd is not None else p_val
         if o_sd is not None:
-            ax_h.errorbar(i - w / 2, o_val,
+            ax_h.errorbar(xe - w / 2, o_val,
                           yerr=[[min(o_val, o_sd)], [o_sd]],
                           color="#333333", capsize=1.8,
                           elinewidth=0.9, capthick=0.9, zorder=4)
         if p_sd is not None:
-            ax_h.errorbar(i + w / 2, p_val,
+            ax_h.errorbar(xe + w / 2, p_val,
                           yerr=[[min(p_val, p_sd)], [p_sd]],
                           color="#333333", capsize=1.8,
                           elinewidth=0.9, capthick=0.9, zorder=4)
         o_txt = f"{o_val:.1f}\u00b1{o_sd:.1f}" if o_sd is not None else f"{o_val:.1f}"
         p_txt = f"{p_val:.1f}\u00b1{p_sd:.1f}" if p_sd is not None else f"{p_val:.1f}"
-        ax_h.text(i - w / 2 - 0.02, top_o + 1.1, o_txt,
+        ax_h.text(xe - w / 2 - 0.08, top_o + 1.1, o_txt,
                   ha="center", va="bottom", fontsize=5.0)
-        ax_h.text(i + w / 2 + 0.02, top_p + 1.1, p_txt,
+        ax_h.text(xe + w / 2 + 0.08, top_p + 1.1, p_txt,
                   ha="center", va="bottom", fontsize=5.0)
         if p["note"] is not None:
             ymax_h = max(top_o, top_p)
-            ax_h.text(i, ymax_h + 6.2, p["note"], ha="center", va="bottom",
+            ax_h.text(xe, ymax_h + 6.2, p["note"], ha="center", va="bottom",
                       fontsize=4.8, color="#555555")
     ax_h.set_xticks(x_h)
     ax_h.set_xticklabels([p["label"] for p in per], fontsize=6.0, rotation=75,
                          ha="right", rotation_mode="anchor")
+    ax_h.set_xlim(-0.6, float(x_h.max()) + 0.6)
+    # Dotted separators rise from the axis base to the header band at
+    # y=100; the bold metric headers sit inside the axes top band
+    # (y 100.5 up), above every bar/value/note (max ~96.8) and below
+    # the legend / "error bar" note. They cannot hang below the tick
+    # labels: row-4 axes patches start right under them and paint white
+    # over anything hanging past the label tips.
+    for x_sep in e_seps:
+        ax_h.axvline(x_sep, color="#999999", linewidth=0.8,
+                     linestyle=":", ymax=100.0 / 118.0)
+    for (g_lo, g_hi), g_key in zip(e_spans, PANEL_E_GROUPS):
+        ax_h.text(0.5 * (g_lo + g_hi), 100.5, PANEL_E_GROUP_TITLES[g_key],
+                  ha="center", va="bottom", fontsize=6.8,
+                  fontweight="bold", color="#444444")
     ax_h.set_ylabel("Greedy PER / CER / 1\u2212r (%)")
-    ax_h.set_ylim(0, 105)
+    ax_h.set_ylim(0, 118)
     ax_h.set_yticks(range(0, 101, 25))
     ax_h.legend(frameon=False, fontsize=6.6, loc="upper left")
     ax_h.text(0.98, 0.97, "error bar is calculated across days",
               transform=ax_h.transAxes, ha="right", va="top",
               fontsize=6.0, color="#555555")
     ax_h.set_title("(e) Reproduction: acoustic / synthesis stage (no LM), "
-                   "one pair per panel-(c) bar",
+                   "grouped by metric: PER / CER / 1\u2212r",
                    fontsize=9.3, fontweight="bold")
 
     # (f) Full-pipeline WER
@@ -1386,141 +1471,10 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
                    "panel-(c) bar",
                    fontsize=9.3, fontweight="bold")
 
-    # (g) Host RAM walls (per-study chronological order; left=ours, right=official)
-    x_j = np.arange(len(walls))
-    c_off = OPEN_C[2]
-    fc_off = (*to_rgb(c_off), 0.35)
-    ax_j.bar(x_j - w / 2, [r["ours_gb"] for r in walls], w,
-             label="our reproduction (64 GB RAM PC)",
-             color=fc_ours, edgecolor=C_SPEECH_I, linewidth=0.8)
-    ax_j.bar(x_j + w / 2, [r["official_gb"] for r in walls], w,
-             label="official / naive stack",
-             color=fc_off, edgecolor=c_off, linewidth=0.8)
-    for i, r in enumerate(walls):
-        o_gb, p_gb = r["ours_gb"], r["official_gb"]
-        o_str = f"{o_gb:.0f}" if o_gb == int(o_gb) else f"{o_gb:.1f}"
-        p_str = f"{p_gb:.0f}" if p_gb == int(p_gb) else f"{p_gb:.1f}"
-        ax_j.text(i - w / 2 - 0.02, o_gb + 4.5, o_str,
-                  ha="center", va="bottom", fontsize=5.3)
-        ax_j.text(i + w / 2 + 0.02, p_gb + 4.5, p_str,
-                  ha="center", va="bottom", fontsize=5.3)
-        ax_j.text(i, max(o_gb, p_gb) + 23.0, r["note"],
-                  ha="center", va="bottom", fontsize=4.9,
-                  color="#555555", linespacing="normal")
-    ax_j.set_ylim(0, 445)
-    ax_j.set_yticks(range(0, 401, 100))
-    ax_j.axhline(64.0, color=C_NORM, linewidth=1.0,
-                 linestyle=(0, (4, 2)), zorder=2.6)
-    ax_j.set_xticks(x_j)
-    ax_j.set_xticklabels([r["category"] for r in walls], fontsize=6.0, rotation=75,
-                         ha="right", rotation_mode="anchor")
-    ax_j.set_xlim(-0.65, len(walls) - 0.35)
-    ax_j.set_ylabel("Peak host RAM (GB)")
-    ax_j.legend(handles=[
-        mpatches.Patch(facecolor=fc_ours, edgecolor=C_SPEECH_I, linewidth=0.8,
-                       label="our reproduction (64 GB RAM PC)"),
-        mpatches.Patch(facecolor=fc_off, edgecolor=c_off, linewidth=0.8,
-                       label="official / naive stack"),
-        Line2D([0], [0], color=C_NORM, linewidth=1.0,
-               linestyle=(0, (4, 2)), label="64 GB consumer PC RAM ceiling"),
-    ], frameon=False, fontsize=6.3, loc="upper left", ncol=1,
-        columnspacing=1.0, handlelength=1.4, handletextpad=0.5)
-    ax_j.set_title("(g) Host RAM across all 8 studies: our 64 GB PC vs. official stacks",
-                   fontsize=9.3, fontweight="bold")
-
-    # (h) GPU VRAM walls (per-study chronological order; left=ours, right=official)
-    x_v = np.arange(len(vram))
-    ax_v.bar(x_v - w / 2, [r["ours_gb"] for r in vram], w,
-             color=fc_ours, edgecolor=C_SPEECH_I, linewidth=0.8)
-    ax_v.bar(x_v + w / 2, [r["official_gb"] for r in vram], w,
-             color=fc_off, edgecolor=OPEN_C[2], linewidth=0.8)
-    for i, r in enumerate(vram):
-        o_gb, p_gb = r["ours_gb"], r["official_gb"]
-        o_str = f"{o_gb:.0f}" if o_gb == int(o_gb) else f"{o_gb:.1f}"
-        p_str = f"{p_gb:.0f}" if p_gb == int(p_gb) else f"{p_gb:.1f}"
-        ax_v.text(i - w / 2 - 0.02, o_gb + 1.3, o_str,
-                  ha="center", va="bottom", fontsize=5.3)
-        ax_v.text(i + w / 2 + 0.02, p_gb + 1.3, p_str,
-                  ha="center", va="bottom", fontsize=5.3)
-        ax_v.text(i, max(o_gb, p_gb) + 6.8, r["note"],
-                  ha="center", va="bottom", fontsize=4.9, color="#555555",
-                  linespacing="normal")
-    ax_v.set_ylim(0, 118.0)
-    ax_v.set_yticks(range(0, 101, 25))
-    ax_v.axhline(16.0, color=C_NORM, linewidth=1.0,
-                 linestyle=(0, (4, 2)), zorder=2.6)
-    ax_v.set_xticks(x_v)
-    ax_v.set_xticklabels([r["category"] for r in vram], fontsize=6.0, rotation=75,
-                         ha="right", rotation_mode="anchor")
-    ax_v.set_xlim(-0.65, len(vram) - 0.35)
-    ax_v.set_ylabel("Peak GPU VRAM (GB)")
-    ax_v.legend(handles=[
-        mpatches.Patch(facecolor=fc_ours, edgecolor=C_SPEECH_I,
-                       linewidth=0.8,
-                       label="our peak VRAM (1\u00d7 RTX 5060 Ti)"),
-        mpatches.Patch(facecolor=fc_off, edgecolor=OPEN_C[2], linewidth=0.8,
-                       label="official provisioned GPU VRAM"),
-        Line2D([0], [0], color=C_NORM, linewidth=1.0,
-               linestyle=(0, (4, 2)), label="16 GB single-GPU VRAM ceiling"),
-    ], frameon=False, fontsize=6.3, loc="upper left", ncol=1,
-        columnspacing=1.0, handlelength=1.4, handletextpad=0.5)
-    ax_v.set_title("(h) GPU VRAM across all 8 studies: our 16 GB GPU vs. official rigs",
-                   fontsize=9.3, fontweight="bold")
-
-    # (i) Session-level PER vs post-LM WER phase diagram
-    with open(session_json_path, "r", encoding="utf-8") as sf:
-        _data = json.load(sf)
-    _style = {
-        "Willett 2023 (T12)":   ("#3C5488", "o", "Willett et al., 2023 (T12)"),
-        "Card 2024 (T15)":      ("#4DBBD5", "s", "Card et al., 2024 (T15)"),
-        "Jude 2026 (LIS, T17)": ("#1B6CA8", "D", "Jude et al., 2026b (T17)"),
-    }
-    _lim = 80
-    _x_curve = np.linspace(0, 41.0, 200)
-    _y_curve = 100.0 * (1.0 - (1.0 - _x_curve / 100.0) ** 3.4)
-    ax_p.plot(_x_curve, _y_curve, ls="-.", lw=1.15, color="#888888", zorder=1.2)
-    ax_p.text(1.5, 81.8,
-              "No-LM baseline:\n1 \u2212 (1 \u2212 PER)$^{3.4}$",
-              fontsize=5.9, color="#666666", ha="left", va="top",
-              linespacing=1.12)
-    ax_p.plot([0, _lim], [0, _lim], ls="--", lw=1.2, color="#999999", zorder=1)
-    ax_p.axvline(25.0, color=C_NORM, lw=1.0, linestyle=(0, (4, 2)), zorder=1.5)
-    ax_p.text(26.2, 23.4,
-              "PER = 25%\n"
-              "(\u226425%: 45/57 = 79% WER < PER;\n"
-              " >25%: 4/20 = 20% WER < PER)\n"
-              "This means that we must get PER < 25%.",
-              fontsize=5.7, color="#555555", ha="left", va="top",
-              linespacing=1.08)
-    ax_p.text(60.0, 57.5, "WER = PER",
-              fontsize=6.4, color="#777777", ha="left", va="top",
-              rotation=45, rotation_mode="anchor")
-    for _name, _v in _data.items():
-        if _name not in _style:
-            continue
-        _c, _m, _lab = _style[_name]
-        ax_p.scatter([s["per"] for s in _v["sessions"]],
-                     [s["wer"] for s in _v["sessions"]],
-                     s=26, marker=_m, facecolor="none", edgecolor=_c,
-                     lw=1.4, alpha=0.85, zorder=3, label=_lab)
-        ax_p.scatter([_v["pooled"]["per"]], [_v["pooled"]["wer"]], s=80,
-                     marker="*", color=_c, edgecolor="white", lw=0.6,
-                     zorder=4)
-    ax_p.legend(fontsize=6.5, frameon=False, loc="lower right",
-                title="per-session (open)   pooled (star)",
-                title_fontsize=6.6, borderaxespad=0.2, labelspacing=0.35)
-    ax_p.set_xlim(0, _lim)
-    ax_p.set_ylim(0, _lim + 3)
-    ax_p.set_aspect("equal", adjustable="box")
-    ax_p.set_xlabel("greedy phoneme error rate per session (%)")
-    ax_p.set_ylabel("word error rate after LM stage (%)")
-    ax_p.set_title("(i) Session-level PER vs. post-LM WER",
-                   fontsize=9.6, fontweight="bold")
-
     fig.legend(handles=make_color_legend_handles(), loc="upper center",
                bbox_to_anchor=(0.512, 0.992), ncol=6, frameon=False,
                fontsize=8.4, handlelength=1.4, columnspacing=1.5)
-    fig.subplots_adjust(left=0.045, right=0.985, top=0.952, bottom=0.085)
+    fig.subplots_adjust(left=0.045, right=0.985, top=0.952, bottom=0.10)
 
     for _ax in (ax_h, ax_i):
         _bb = _ax.get_position()
@@ -1758,10 +1712,9 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
             inv_fig=inv_fig,
             axes_dict=dict(
                 a=ax1, b=ax_b, c=ax2, d=ax3,
-                e=ax_h, f=ax_i, g=ax_j, h=ax_v, i=ax_p,
+                e=ax_h, f=ax_i,
             ),
             data=data,
-            session_data=_data,
             c_badges=c_badges,
             d_badges=d_badges,
             funnel_geom=dict(
@@ -1785,7 +1738,6 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
         export_interactive_html(
             out_html=out_stem + ".html",
             f2_svg_tuple=f2_svg_tuple,
-            session_data=_data,
             verify_overlaps=verify_overlaps,
         )
     return len(rows_b), len(per)
@@ -1818,13 +1770,12 @@ def _build_fig2_full_svg(
     inv_fig,
     axes_dict,
     data,
-    session_data,
     c_badges,
     d_badges,
     funnel_geom,
     repro_geom,
 ):
-    """Convert the live 9-panel Figure 2 Matplotlib figure into interactive SVG.
+    """Convert the live 6-panel Figure 2 Matplotlib figure into interactive SVG.
 
     Parameters
     ----------
@@ -1835,11 +1786,9 @@ def _build_fig2_full_svg(
     inv_fig : matplotlib.transforms.Transform
         Inverse of ``fig.transFigure``.
     axes_dict : dict of str to matplotlib.axes.Axes
-        Mapping of panel keys ``'a'``..``'i'`` to their Matplotlib axes.
+        Mapping of panel keys ``'a'``..``'f'`` to their Matplotlib axes.
     data : dict
         Parsed ``reproduction_benchmark.yaml`` dictionary.
-    session_data : dict
-        Parsed ``session_per_vs_wer.json`` dictionary.
     c_badges, d_badges : list
         Badge text objects captured from Panels (c) and (d).
     funnel_geom, repro_geom : dict
@@ -1852,7 +1801,6 @@ def _build_fig2_full_svg(
     """
     w_px, h_px = fig.canvas.get_width_height()
     vw = int(round(w_px * 0.5))
-    vh = 2245  # tight bottom crop below Row 4 rotated x-tick labels
     PT = 1.3889
     SW = lambda pt: round(pt * PT, 2)
     SX = lambda px: px * 0.5
@@ -1976,9 +1924,7 @@ def _build_fig2_full_svg(
     rows_cd = data["panel_cd_online_wer_speed"]
     per = data["panel_e_repro_acoustic"]
     wer = data["panel_f_repro_full_wer"]
-    walls = data["panel_g_host_ram_walls"]
-    vram = data["panel_h_gpu_vram_walls"]
-    STAR_IDS = {"fan2023", "card2024", "jude2026a"}
+    STAR_IDS = {"card2024", "jude2026a"}
 
     open_how = {
         "Willett et al., 2021": "brain-to-text\nwithout\nlanguage model",
@@ -1992,7 +1938,9 @@ def _build_fig2_full_svg(
         "error bar is calculated across days"
     )
 
-    s = [f'<rect x="0" y="0" width="{vw}" height="{vh}" fill="#ffffff"/>']
+    # Background rect is prepended after the body so that vh (measured
+    # from the drawn elements; see the return below) is known.
+    s = []
 
     # Top 6-item clickable legend
     leg_items = [
@@ -2161,7 +2109,7 @@ def _build_fig2_full_svg(
         [str(v) for v in range(0, 101, 25)],
         "word error rate (%)",
         "(c) Word error rate (online)\n"
-        "\u2605 3 studies satisfy: Open Data, Vocab > 71.4k, WER < 12.8%",
+        "\u2605 2 studies satisfy: Open Data, Vocab > 71.4k, WER < 12.8%, Vocal paralysis \u25b3",
         title_fs=9.8,
     )
     s.append(ch_c)
@@ -2370,7 +2318,7 @@ def _build_fig2_full_svg(
         list(range(0, 101, 25)),
         [str(v) for v in range(0, 101, 25)],
         "Greedy PER / CER / 1\u2212r (%)",
-        "(e) Reproduction: acoustic / synthesis stage (no LM), one pair per panel-(c) bar",
+        "(e) Reproduction: acoustic / synthesis stage (no LM), grouped by metric: PER / CER / 1\u2212r",
         title_fs=9.3,
     )
     s.append(ch_e)
@@ -2382,8 +2330,20 @@ def _build_fig2_full_svg(
         e_x0 + 0.98 * (e_x1 - e_x0), e_y0 + 0.03 * (e_y1 - e_y0),
         "error bar is calculated across days", 6.0, "#555555", anchor="end", va="top"
     ))
+    x_e, e_spans, e_seps = _panel_e_group_geometry(per)
+    for x_sep in e_seps:
+        sx_a, sy_a = d2svg(ax_h, x_sep, 0.0)
+        sx_b, sy_b = d2svg(ax_h, x_sep, 100.0)
+        s.append(f'<line x1="{sx_a:.1f}" y1="{sy_a:.1f}" x2="{sx_b:.1f}" y2="{sy_b:.1f}" '
+                 f'stroke="#999999" stroke-width="{SW(0.8)}" stroke-dasharray="1.4,2.2"/>')
+    for (g_lo, g_hi), g_key in zip(e_spans, PANEL_E_GROUPS):
+        hx, hy = d2svg(ax_h, 0.5 * (g_lo + g_hi), 100.5)
+        s.append(multiline_svg(hx, hy, PANEL_E_GROUP_TITLES[g_key], 6.8,
+                               "#444444", anchor="middle", va="bottom",
+                               weight="bold"))
     w = 0.36
     for i, p in enumerate(per):
+        xe = x_e[i]
         sid = PANEL_BCD_IDS[i]
         o_val, o_sd = p["ours"], p.get("ours_sd")
         p_val, p_sd = p["paper"], p.get("paper_sd")
@@ -2391,10 +2351,10 @@ def _build_fig2_full_svg(
         top_p = p_val + p_sd if p_sd is not None else p_val
         o_txt = f"{o_val:.1f}\u00b1{o_sd:.1f}" if o_sd is not None else f"{o_val:.1f}"
         p_txt = f"{p_val:.1f}\u00b1{p_sd:.1f}" if p_sd is not None else f"{p_val:.1f}"
-        bx0_l, by0_l = d2svg(ax_h, i - w, o_val)
-        bx1_l, by1_l = d2svg(ax_h, i, 0)
-        bx0_r, by0_r = d2svg(ax_h, i, p_val)
-        bx1_r, _ = d2svg(ax_h, i + w, 0)
+        bx0_l, by0_l = d2svg(ax_h, xe - w, o_val)
+        bx1_l, by1_l = d2svg(ax_h, xe, 0)
+        bx0_r, by0_r = d2svg(ax_h, xe, p_val)
+        bx1_r, _ = d2svg(ax_h, xe + w, 0)
         cx_slot = 0.5 * (bx1_l + bx0_r)
         cx_l = 0.5 * (bx0_l + bx1_l)
         cx_r = 0.5 * (bx0_r + bx1_r)
@@ -2407,23 +2367,23 @@ def _build_fig2_full_svg(
         s.append(f'<rect class="f2-bar" x="{bx0_r:.1f}" y="{by0_r:.1f}" width="{bx1_r - bx0_r:.1f}" height="{by1_l - by0_r:.1f}" '
                  f'fill="{OPEN_C[2]}" fill-opacity="0.35" stroke="{OPEN_C[2]}" stroke-width="{SW(0.8)}"/>')
         if o_sd is not None:
-            _, ey_hi = d2svg(ax_h, i - w / 2, o_val + o_sd)
-            _, ey_lo = d2svg(ax_h, i - w / 2, max(0.0, o_val - o_sd))
+            _, ey_hi = d2svg(ax_h, xe - w / 2, o_val + o_sd)
+            _, ey_lo = d2svg(ax_h, xe - w / 2, max(0.0, o_val - o_sd))
             s.append(f'<line x1="{cx_l:.1f}" y1="{ey_hi:.1f}" x2="{cx_l:.1f}" y2="{ey_lo:.1f}" stroke="#333333" stroke-width="{SW(0.9)}"/>')
             s.append(f'<line x1="{cx_l - 2.3:.1f}" y1="{ey_hi:.1f}" x2="{cx_l + 2.3:.1f}" y2="{ey_hi:.1f}" stroke="#333333" stroke-width="{SW(0.9)}"/>')
             s.append(f'<line x1="{cx_l - 2.3:.1f}" y1="{ey_lo:.1f}" x2="{cx_l + 2.3:.1f}" y2="{ey_lo:.1f}" stroke="#333333" stroke-width="{SW(0.9)}"/>')
         if p_sd is not None:
-            _, ey_hi = d2svg(ax_h, i + w / 2, p_val + p_sd)
-            _, ey_lo = d2svg(ax_h, i + w / 2, max(0.0, p_val - p_sd))
+            _, ey_hi = d2svg(ax_h, xe + w / 2, p_val + p_sd)
+            _, ey_lo = d2svg(ax_h, xe + w / 2, max(0.0, p_val - p_sd))
             s.append(f'<line x1="{cx_r:.1f}" y1="{ey_hi:.1f}" x2="{cx_r:.1f}" y2="{ey_lo:.1f}" stroke="#333333" stroke-width="{SW(0.9)}"/>')
             s.append(f'<line x1="{cx_r - 2.3:.1f}" y1="{ey_hi:.1f}" x2="{cx_r + 2.3:.1f}" y2="{ey_hi:.1f}" stroke="#333333" stroke-width="{SW(0.9)}"/>')
             s.append(f'<line x1="{cx_r - 2.3:.1f}" y1="{ey_lo:.1f}" x2="{cx_r + 2.3:.1f}" y2="{ey_lo:.1f}" stroke="#333333" stroke-width="{SW(0.9)}"/>')
-        tx_o, ty_o = d2svg(ax_h, i - w / 2 - 0.02, top_o + 1.1)
-        tx_p, ty_p = d2svg(ax_h, i + w / 2 + 0.02, top_p + 1.1)
+        tx_o, ty_o = d2svg(ax_h, xe - w / 2 - 0.08, top_o + 1.1)
+        tx_p, ty_p = d2svg(ax_h, xe + w / 2 + 0.08, top_p + 1.1)
         s.append(multiline_svg(tx_o, ty_o, o_txt, 5.0, "#1f2937", anchor="middle", va="bottom", cls="f2-val"))
         s.append(multiline_svg(tx_p, ty_p, p_txt, 5.0, "#1f2937", anchor="middle", va="bottom", cls="f2-val"))
         if p.get("note") is not None:
-            _, ny = d2svg(ax_h, i, max(top_o, top_p) + 6.2)
+            _, ny = d2svg(ax_h, xe, max(top_o, top_p) + 6.2)
             s.append(multiline_svg(cx_slot, ny, p["note"], 4.8, "#555555", anchor="middle", va="bottom"))
         s.append(f'<line x1="{cx_slot:.1f}" y1="{e_y1:.1f}" x2="{cx_slot:.1f}" y2="{e_y1 + 3.5:.1f}" stroke="#1f2937" stroke-width="{SW(0.8)}"/>')
         s.append(rot_xtick_svg(cx_slot, e_y1 + 6.0, p["label"], 6.0))
@@ -2500,200 +2460,17 @@ def _build_fig2_full_svg(
         s.append(rot_xtick_svg(cx_slot, f_y1 + 6.0, v["label"], 6.0))
         s.append("</g>")
 
-    # ---- Panel (g): Host RAM walls ----
-    ax_j = axes_dict["g"]
-    ch_g, g_x0, g_x1, g_y0, g_y1 = draw_axes_chrome(
-        ax_j,
-        list(range(0, 401, 100)),
-        [str(v) for v in range(0, 401, 100)],
-        "Peak host RAM (GB)",
-        "(g) Host RAM across all 8 studies: our 64 GB PC vs. official stacks",
-        title_fs=9.3,
+    svg_inner = "\n".join(s)
+    # 2026-11-11 RAM/VRAM split: the bottom row lost its rotated x-tick
+    # labels, so the former hardcoded vh = 2245 tight crop is measured
+    # from the drawn SVG elements instead (max y over text/rect/line).
+    ys = [float(m) for m in re.findall(r'\sy="(-?[0-9.]+)"', svg_inner)]
+    vh = int(max(ys)) + 14 if ys else int(h_px * 0.5)
+    svg_inner = (
+        f'<rect x="0" y="0" width="{vw}" height="{vh}" fill="#ffffff"/>\n'
+        + svg_inner
     )
-    s.append(ch_g)
-    _, sy_ram64 = d2svg(ax_j, 0, 64.0)
-    s.append(f'<line x1="{g_x0:.1f}" y1="{sy_ram64:.1f}" x2="{g_x1:.1f}" y2="{sy_ram64:.1f}" '
-             f'stroke="#7F7F7F" stroke-width="{SW(1.0)}" stroke-dasharray="5.5,2.8"/>')
-    draw_inpanel_legend(g_x0, g_y0, [
-        ("patch", C_SPEECH_I, "our reproduction (64 GB RAM PC)"),
-        ("patch", OPEN_C[2], "official / naive stack"),
-        ("dash", "#7F7F7F", "64 GB consumer PC RAM ceiling"),
-    ], fs_pt=6.3)
-    for i, r in enumerate(walls):
-        sid = PANEL_GH_IDS[i]
-        o_gb, p_gb = r["ours_gb"], r["official_gb"]
-        o_str = f"{o_gb:.0f}" if o_gb == int(o_gb) else f"{o_gb:.1f}"
-        p_str = f"{p_gb:.0f}" if p_gb == int(p_gb) else f"{p_gb:.1f}"
-        bx0_l, by0_l = d2svg(ax_j, i - w, o_gb)
-        bx1_l, by1_g = d2svg(ax_j, i, 0)
-        bx0_r, by0_r = d2svg(ax_j, i, p_gb)
-        bx1_r, _ = d2svg(ax_j, i + w, 0)
-        cx_slot = 0.5 * (bx1_l + bx0_r)
-        s.append(f'<g class="f2-slot" data-id="{sid}" data-panel="g">')
-        s.append(f'<title>{esc(r["category"])} \u2014 Peak Host RAM: Ours {o_str} GB vs. Official {p_str} GB ({esc(r["note"])}) (click to inspect study)</title>')
-        s.append(f'<rect class="f2-hit" fill="none" pointer-events="all" x="{bx0_l - 3:.1f}" y="{g_y0:.1f}" width="{bx1_r - bx0_l + 6:.1f}" height="{g_y1 - g_y0 + 115:.1f}"/>')
-        s.append(f'<rect class="f2-bar" x="{bx0_l:.1f}" y="{by0_l:.1f}" width="{bx1_l - bx0_l:.1f}" height="{by1_g - by0_l:.1f}" '
-                 f'fill="{C_SPEECH_I}" fill-opacity="0.35" stroke="{C_SPEECH_I}" stroke-width="{SW(0.8)}"/>')
-        s.append(f'<rect class="f2-bar" x="{bx0_r:.1f}" y="{by0_r:.1f}" width="{bx1_r - bx0_r:.1f}" height="{by1_g - by0_r:.1f}" '
-                 f'fill="{OPEN_C[2]}" fill-opacity="0.35" stroke="{OPEN_C[2]}" stroke-width="{SW(0.8)}"/>')
-        tx_o, ty_o = d2svg(ax_j, i - w / 2 - 0.02, o_gb + 4.5)
-        tx_p, ty_p = d2svg(ax_j, i + w / 2 + 0.02, p_gb + 4.5)
-        s.append(multiline_svg(tx_o, ty_o, o_str, 5.3, "#1f2937", anchor="middle", va="bottom", cls="f2-val"))
-        s.append(multiline_svg(tx_p, ty_p, p_str, 5.3, "#1f2937", anchor="middle", va="bottom", cls="f2-val"))
-        _, ny = d2svg(ax_j, i, max(o_gb, p_gb) + 23.0)
-        s.append(multiline_svg(cx_slot, ny, r["note"], 4.9, "#555555", anchor="middle", va="bottom"))
-        s.append(f'<line x1="{cx_slot:.1f}" y1="{g_y1:.1f}" x2="{cx_slot:.1f}" y2="{g_y1 + 3.5:.1f}" stroke="#1f2937" stroke-width="{SW(0.8)}"/>')
-        s.append(rot_xtick_svg(cx_slot, g_y1 + 6.0, r["category"], 6.0))
-        s.append("</g>")
-
-    # ---- Panel (h): GPU VRAM walls ----
-    ax_v = axes_dict["h"]
-    ch_h, h_x0, h_x1, h_y0, h_y1 = draw_axes_chrome(
-        ax_v,
-        list(range(0, 101, 25)),
-        [str(v) for v in range(0, 101, 25)],
-        "Peak GPU VRAM (GB)",
-        "(h) GPU VRAM across all 8 studies: our 16 GB GPU vs. official rigs",
-        title_fs=9.3,
-    )
-    s.append(ch_h)
-    _, sy_vram16 = d2svg(ax_v, 0, 16.0)
-    s.append(f'<line x1="{h_x0:.1f}" y1="{sy_vram16:.1f}" x2="{h_x1:.1f}" y2="{sy_vram16:.1f}" '
-             f'stroke="#7F7F7F" stroke-width="{SW(1.0)}" stroke-dasharray="5.5,2.8"/>')
-    draw_inpanel_legend(h_x0, h_y0, [
-        ("patch", C_SPEECH_I, "our peak VRAM (1\u00d7 RTX 5060 Ti)"),
-        ("patch", OPEN_C[2], "official provisioned GPU VRAM"),
-        ("dash", "#7F7F7F", "16 GB single-GPU VRAM ceiling"),
-    ], fs_pt=6.3)
-    for i, r in enumerate(vram):
-        sid = PANEL_GH_IDS[i]
-        o_gb, p_gb = r["ours_gb"], r["official_gb"]
-        o_str = f"{o_gb:.0f}" if o_gb == int(o_gb) else f"{o_gb:.1f}"
-        p_str = f"{p_gb:.0f}" if p_gb == int(p_gb) else f"{p_gb:.1f}"
-        bx0_l, by0_l = d2svg(ax_v, i - w, o_gb)
-        bx1_l, by1_h = d2svg(ax_v, i, 0)
-        bx0_r, by0_r = d2svg(ax_v, i, p_gb)
-        bx1_r, _ = d2svg(ax_v, i + w, 0)
-        cx_slot = 0.5 * (bx1_l + bx0_r)
-        s.append(f'<g class="f2-slot" data-id="{sid}" data-panel="h">')
-        s.append(f'<title>{esc(r["category"])} \u2014 Peak GPU VRAM: Ours {o_str} GB vs. Official {p_str} GB ({esc(r["note"])}) (click to inspect study)</title>')
-        s.append(f'<rect class="f2-hit" fill="none" pointer-events="all" x="{bx0_l - 3:.1f}" y="{h_y0:.1f}" width="{bx1_r - bx0_l + 6:.1f}" height="{h_y1 - h_y0 + 115:.1f}"/>')
-        s.append(f'<rect class="f2-bar" x="{bx0_l:.1f}" y="{by0_l:.1f}" width="{bx1_l - bx0_l:.1f}" height="{by1_h - by0_l:.1f}" '
-                 f'fill="{C_SPEECH_I}" fill-opacity="0.35" stroke="{C_SPEECH_I}" stroke-width="{SW(0.8)}"/>')
-        s.append(f'<rect class="f2-bar" x="{bx0_r:.1f}" y="{by0_r:.1f}" width="{bx1_r - bx0_r:.1f}" height="{by1_h - by0_r:.1f}" '
-                 f'fill="{OPEN_C[2]}" fill-opacity="0.35" stroke="{OPEN_C[2]}" stroke-width="{SW(0.8)}"/>')
-        tx_o, ty_o = d2svg(ax_v, i - w / 2 - 0.02, o_gb + 1.3)
-        tx_p, ty_p = d2svg(ax_v, i + w / 2 + 0.02, p_gb + 1.3)
-        s.append(multiline_svg(tx_o, ty_o, o_str, 5.3, "#1f2937", anchor="middle", va="bottom", cls="f2-val"))
-        s.append(multiline_svg(tx_p, ty_p, p_str, 5.3, "#1f2937", anchor="middle", va="bottom", cls="f2-val"))
-        _, ny = d2svg(ax_v, i, max(o_gb, p_gb) + 6.8)
-        s.append(multiline_svg(cx_slot, ny, r["note"], 4.9, "#555555", anchor="middle", va="bottom"))
-        s.append(f'<line x1="{cx_slot:.1f}" y1="{h_y1:.1f}" x2="{cx_slot:.1f}" y2="{h_y1 + 3.5:.1f}" stroke="#1f2937" stroke-width="{SW(0.8)}"/>')
-        s.append(rot_xtick_svg(cx_slot, h_y1 + 6.0, r["category"], 6.0))
-        s.append("</g>")
-
-    # ---- Panel (i): Session-level PER vs post-LM WER phase diagram ----
-    ax_p = axes_dict["i"]
-    ch_i, p_x0, p_x1, p_y0, p_y1 = draw_axes_chrome(
-        ax_p,
-        [0, 20, 40, 60, 80],
-        ["0", "20", "40", "60", "80"],
-        "word error rate after LM stage (%)",
-        "(i) Session-level PER vs. post-LM WER",
-        title_fs=9.6,
-        xticks=[0, 20, 40, 60, 80],
-        xticklabels=["0", "20", "40", "60", "80"],
-        xlabel_str="greedy phoneme error rate per session (%)",
-    )
-    s.append(ch_i)
-    # Clip path for curves inside ax_p
-    s.append(f'<defs><clipPath id="clip-panel-i"><rect x="{p_x0:.1f}" y="{p_y0:.1f}" '
-             f'width="{p_x1 - p_x0:.1f}" height="{p_y1 - p_y0:.1f}"/></clipPath></defs>')
-    _x_curve = np.linspace(0, 41.0, 90)
-    _y_curve = 100.0 * (1.0 - (1.0 - _x_curve / 100.0) ** 3.4)
-    curve_pts = " ".join(f"{d2svg(ax_p, xv, yv)[0]:.1f},{d2svg(ax_p, xv, yv)[1]:.1f}"
-                         for xv, yv in zip(_x_curve, _y_curve))
-    s.append(f'<polyline points="{curve_pts}" fill="none" stroke="#888888" '
-             f'stroke-width="{SW(1.15)}" stroke-dasharray="6.0,2.2,1.4,2.2" clip-path="url(#clip-panel-i)"/>')
-    tx_nl, ty_nl = d2svg(ax_p, 1.5, 81.8)
-    fs_nl = 5.9 * PT
-    s.append(f'<text x="{tx_nl:.1f}" font-size="{fs_nl:.2f}" fill="#666666" text-anchor="start">'
-             f'<tspan x="{tx_nl:.1f}" y="{ty_nl + 0.82 * fs_nl:.1f}">No-LM baseline:</tspan>'
-             f'<tspan x="{tx_nl:.1f}" y="{ty_nl + 2.02 * fs_nl:.1f}">1 \u2212 (1 \u2212 PER)<tspan baseline-shift="super" font-size="72%">3.4</tspan></tspan>'
-             f'</text>')
-    # Diagonal WER = PER
-    dx0_p, dy0_p = d2svg(ax_p, 0, 0)
-    dx1_p, dy1_p = d2svg(ax_p, 80, 80)
-    s.append(f'<line x1="{dx0_p:.1f}" y1="{dy0_p:.1f}" x2="{dx1_p:.1f}" y2="{dy1_p:.1f}" '
-             f'stroke="#999999" stroke-width="{SW(1.2)}" stroke-dasharray="5.5,2.8" clip-path="url(#clip-panel-i)"/>')
-    tx_wp, ty_wp = d2svg(ax_p, 60.0, 57.5)
-    fs_wp = 6.4 * PT
-    s.append(f'<g transform="translate({tx_wp:.1f},{ty_wp:.1f}) rotate(-45)">'
-             f'<text x="0" y="{0.82 * fs_wp:.1f}" font-size="{fs_wp:.2f}" fill="#777777" text-anchor="start">WER = PER</text></g>')
-    # Vertical PER = 25%
-    vx25, _ = d2svg(ax_p, 25.0, 0)
-    s.append(f'<line x1="{vx25:.1f}" y1="{p_y0:.1f}" x2="{vx25:.1f}" y2="{p_y1:.1f}" '
-             f'stroke="#7F7F7F" stroke-width="{SW(1.0)}" stroke-dasharray="5.5,2.8"/>')
-    tx_25, ty_25 = d2svg(ax_p, 26.2, 23.4)
-    s.append(multiline_svg(
-        tx_25, ty_25,
-        "PER = 25%\n(\u226425%: 45/57 = 79% WER < PER;\n >25%: 4/20 = 20% WER < PER)\nThis means that we must get PER < 25%.",
-        5.7, "#555555", anchor="start", va="top"
-    ))
-    _style_i = [
-        ("Willett 2023 (T12)", "willett2023", "#3C5488", "o", "Willett et al., 2023 (T12)"),
-        ("Card 2024 (T15)", "card2024", "#4DBBD5", "s", "Card et al., 2024 (T15)"),
-        ("Jude 2026 (LIS, T17)", "jude2026b", "#1B6CA8", "D", "Jude et al., 2026b (T17)"),
-    ]
-    for _key, sid_i, _col, _mk, _lab in _style_i:
-        if _key not in session_data:
-            continue
-        _v = session_data[_key]
-        for sess in _v["sessions"]:
-            sx_m, sy_m = d2svg(ax_p, sess["per"], sess["wer"])
-            s.append(f'<g class="f2-sess" data-id="{sid_i}" data-sess="{esc(sess["session"])}">')
-            s.append(f'<title>{esc(_lab)} \u2014 Session {esc(sess["session"])} (n={sess["n"]} trials): '
-                     f'greedy PER {sess["per"]:.2f}% \u2192 post-LM WER {sess["wer"]:.2f}% (click to inspect study)</title>')
-            if _mk == "o":
-                s.append(f'<circle cx="{sx_m:.1f}" cy="{sy_m:.1f}" r="3.4" fill="#ffffff" fill-opacity="0.01" '
-                         f'stroke="{_col}" stroke-width="{SW(1.35)}" opacity="0.88"/>')
-            elif _mk == "s":
-                s.append(f'<rect x="{sx_m - 3.0:.1f}" y="{sy_m - 3.0:.1f}" width="6.0" height="6.0" '
-                         f'fill="#ffffff" fill-opacity="0.01" stroke="{_col}" stroke-width="{SW(1.35)}" opacity="0.88"/>')
-            else:
-                s.append(f'<polygon points="{_poly_pts(sx_m, sy_m, 4.0, 4, 90)}" '
-                         f'fill="#ffffff" fill-opacity="0.01" stroke="{_col}" stroke-width="{SW(1.35)}" opacity="0.88"/>')
-            s.append("</g>")
-        # Pooled star
-        px_st, py_st = d2svg(ax_p, _v["pooled"]["per"], _v["pooled"]["wer"])
-        s.append(f'<g class="f2-sess f2-pooled" data-id="{sid_i}" data-sess="pooled">')
-        s.append(f'<title>{esc(_lab)} \u2014 Pooled across {len(_v["sessions"])} sessions: '
-                 f'greedy PER {_v["pooled"]["per"]:.2f}% \u2192 post-LM WER {_v["pooled"]["wer"]:.2f}% (click to inspect study)</title>')
-        s.append(f'<polygon points="{_star_pts(px_st, py_st, 6.2, 2.6, 5, 90)}" '
-                 f'fill="{_col}" stroke="#ffffff" stroke-width="{SW(0.6)}"/>')
-        s.append("</g>")
-
-    # Lower-right legend inside ax_p
-    leg_i_x = p_x1 - 152.0
-    leg_i_y = p_y1 - 54.0
-    s.append(f'<text x="{leg_i_x:.1f}" y="{leg_i_y:.1f}" font-size="{6.5 * PT:.2f}" '
-             f'fill="#374151" dominant-baseline="central">per-session (open)   pooled (star)</text>')
-    for idx_l, (_key, sid_i, _col, _mk, _lab) in enumerate(_style_i):
-        ry_l = leg_i_y + (idx_l + 1) * 12.2
-        cx_m = leg_i_x + 7.0
-        s.append(f'<g class="f2-sess-leg" data-id="{sid_i}" style="cursor:pointer">')
-        s.append(f'<title>Click to inspect {esc(_lab)}</title>')
-        if _mk == "o":
-            s.append(f'<circle cx="{cx_m:.1f}" cy="{ry_l:.1f}" r="3.2" fill="none" stroke="{_col}" stroke-width="{SW(1.3)}"/>')
-        elif _mk == "s":
-            s.append(f'<rect x="{cx_m - 2.8:.1f}" y="{ry_l - 2.8:.1f}" width="5.6" height="5.6" fill="none" stroke="{_col}" stroke-width="{SW(1.3)}"/>')
-        else:
-            s.append(f'<polygon points="{_poly_pts(cx_m, ry_l, 3.8, 4, 90)}" fill="none" stroke="{_col}" stroke-width="{SW(1.3)}"/>')
-        s.append(f'<text x="{leg_i_x + 17.0:.1f}" y="{ry_l:.1f}" font-size="{6.4 * PT:.2f}" '
-                 f'fill="#1f2937" dominant-baseline="central">{esc(_lab)}</text>')
-        s.append("</g>")
-
-    return "\n".join(s), vw, vh
+    return svg_inner, vw, vh
 
 
 # Robinson projection lookup table (every 5 degrees of latitude, 0..90 deg)
@@ -2709,29 +2486,222 @@ _ROB_Y = np.array([
     0.9394, 0.9761, 1.0000,
 ])
 
+# Sovereign states whose best official language is Tier 2 in (c):
+# high-/mid-resource tonal, agglutinative, unsegmented-script, or Semitic
+# official language (with sufficient text for L/G/LLM and existing TTS, so Tier 1 in (d)),
+# and NO Tier-1 Indo-European analytic/fusional co-official language.
 _CTC_TIER2_A3 = {
-    "CHN", "TWN", "VNM", "THA", "LAO", "MMR", "KHM",
-    "JPN", "KOR", "PRK", "MNG",
-    "TUR", "AZE", "KAZ", "UZB", "TKM", "KGZ", "TJK", "CYN",
-    "FIN", "HUN", "EST", "GEO", "ARM",
-    "IDN", "MYS", "PHL", "BRN", "MDG",
+    "CHN", "TWN", "VNM", "THA",
+    "JPN", "KOR", "PRK",
+    "TUR", "AZE", "UZB", "CYN",
+    "HUN", "EST", "GEO",
+    "IDN", "MYS", "BRN",
     "SAU", "EGY", "MAR", "DZA", "TUN", "LBY", "JOR", "IRQ", "SYR",
     "LBN", "PSX", "ISR", "ARE", "QAT", "KWT", "OMN", "YEM", "SAH",
-    "IRN", "AFG",
-    "ETH", "ERI", "TZA", "KEN",
+    "MRT", "SOM", "SOL",
 }
 
+# Sovereign states / territories whose best official language is itself low-resource
+# (insufficient text corpus to train open-vocabulary WFST + LLM rescorer -> Tier 3 in (c);
+#  lacks mainstream TTS so requires recorded audio -> Tier 2 in (d)),
+# and having NO high-resource co-official language (English/French/Spanish/Portuguese/Russian/Arabic).
 _CTC_TIER3_A3 = {
-    "GRL",
-    "PNG", "SLB", "VUT", "FJI", "NCL", "TLS",
-    "BOL", "PRY", "PER", "ECU", "GTM",
-    "BWA", "NAM", "ZAF", "LSO", "SWZ", "ZWE", "ZMB", "MWI", "MOZ", "AGO",
-    "COD", "COG", "GAB", "CMR", "CAF", "TCD", "NER", "MLI", "BFA", "NGA",
-    "GHA", "CIV", "SEN", "GIN", "SLE", "LBR", "BEN", "TGO", "GMB", "GNB",
-    "MRT", "SDN", "SDS", "UGA", "RWA", "BDI", "SOM", "SOL", "DJI", "GNQ",
+    "GRL",                      # Kalaallisut (sole official since 2009)
+    "BTN",                      # Dzongkha (sole official)
+    "LAO", "KHM", "MMR",        # Lao, Khmer, Burmese (sole official, low-resource)
+    "MNG", "TKM",               # Mongolian, Turkmen (sole official, low-resource)
+    "ETH", "ERI",               # Amharic/Oromo/Tigrinya/Afar (low-resource)
+    "MLI", "BFA", "NER",        # Indigenous languages sole official after 2023-2025 constitutions
 }
 
-_B2V_TIER2_A3 = _CTC_TIER3_A3 | {"ETH", "ERI", "TZA", "KEN", "MDG"}
+_B2V_TIER2_A3 = _CTC_TIER3_A3
+
+# 2026-11-12 official-language tooltip round (user: "html中Limits of CTC-TLG节，
+# 鼠标指针放在某个国家上时，列出其官方语言。维基百科或者联合国应该有这个数据"):
+# per-country official-language strings for the Figure 6 country hover tooltip,
+# keyed by the Natural Earth adm0_a3 codes of _WORLD_110M_B64. Reviewed against
+# Wikidata P37 (official language) + Wikipedia "List of official languages"
+# (snapshot 2026-11), cross-checked with mledoze/countries (GitHub, 2026-11);
+# NE-only codes (PSX/SOL/CYN/SDS/KOS/SAH) curated by hand. The tooltip shows at
+# most 8 entries and appends "+N more".
+_OFFICIAL_LANGUAGES = {
+    "AFG": ("Pashto", "Dari (Persian)"),
+    "AGO": ("Portuguese",),
+    "ALB": ("Albanian",),
+    "ARE": ("Arabic",),
+    "ARG": ("Spanish",),
+    "ARM": ("Armenian",),
+    "AUS": ("English (de facto)",),
+    "AUT": ("German",),
+    "AZE": ("Azerbaijani",),
+    "BDI": ("Kirundi",),
+    "BEL": ("Dutch", "French", "German"),
+    "BEN": ("French",),
+    "BFA": ("Mooré", "Bissa", "Dioula", "Fulfulde (2024 const.)", "French (working language)"),
+    "BGD": ("Bengali",),
+    "BGR": ("Bulgarian",),
+    "BHS": ("English",),
+    "BIH": ("Bosnian", "Croatian", "Serbian"),
+    "BLR": ("Belarusian", "Russian"),
+    "BLZ": ("English",),
+    "BOL": ("Spanish", "Aymara", "Guaraní", "Quechua", "+33 further co-official indigenous languages (2009 const.)"),
+    "BRA": ("Portuguese",),
+    "BRN": ("Malay",),
+    "BTN": ("Dzongkha",),
+    "BWA": ("English",),
+    "CAF": ("Sango", "French"),
+    "CAN": ("English", "French"),
+    "CHE": ("German", "French", "Italian", "Romansh"),
+    "CHL": ("Spanish",),
+    "CHN": ("Standard Chinese (Putonghua)",),
+    "CIV": ("French",),
+    "CMR": ("French", "English"),
+    "COD": ("French", "Lingala", "Kikongo", "Swahili", "Tshiluba (national languages)"),
+    "COG": ("French",),
+    "COL": ("Spanish",),
+    "CRI": ("Spanish",),
+    "CUB": ("Spanish",),
+    "CYN": ("Turkish",),
+    "CYP": ("Greek", "Turkish"),
+    "CZE": ("Czech",),
+    "DEU": ("German",),
+    "DJI": ("Arabic", "French"),
+    "DNK": ("Danish",),
+    "DOM": ("Spanish",),
+    "DZA": ("Arabic", "Tamazight (Berber)"),
+    "ECU": ("Spanish", "Kichwa", "Shuar"),
+    "EGY": ("Arabic",),
+    "ERI": ("Tigrinya", "Arabic", "English (working languages)"),
+    "ESP": ("Spanish (Castilian)", "Catalan", "Galician", "Basque (co-official in their regions)"),
+    "EST": ("Estonian",),
+    "ETH": ("Amharic (federal working language)", "Oromo", "Afar", "Somali", "Tigrinya (regional official)"),
+    "FIN": ("Finnish", "Swedish"),
+    "FJI": ("iTaukei (Fijian)", "Fiji Hindi", "English"),
+    "FLK": ("English",),
+    "FRA": ("French",),
+    "GAB": ("French",),
+    "GBR": ("English (de facto)", "Welsh (Wales)", "Scots Gaelic (Scotland)"),
+    "GEO": ("Georgian",),
+    "GHA": ("English",),
+    "GIN": ("French",),
+    "GMB": ("English",),
+    "GNB": ("Portuguese",),
+    "GNQ": ("Spanish", "French", "Portuguese"),
+    "GRC": ("Greek",),
+    "GRL": ("Kalaallisut (sole official since 2009)",),
+    "GTM": ("Spanish",),
+    "GUY": ("English",),
+    "HND": ("Spanish",),
+    "HRV": ("Croatian",),
+    "HTI": ("Haitian Creole", "French"),
+    "HUN": ("Hungarian",),
+    "IDN": ("Indonesian",),
+    "IND": ("Hindi", "English (union official)", "+22 scheduled languages"),
+    "IRL": ("Irish (first official)", "English"),
+    "IRN": ("Persian (Farsi)",),
+    "IRQ": ("Arabic", "Kurdish"),
+    "ISL": ("Icelandic",),
+    "ISR": ("Hebrew", "Arabic (special status)"),
+    "ITA": ("Italian",),
+    "JAM": ("English (Jamaican Patois national)",),
+    "JOR": ("Arabic",),
+    "JPN": ("Japanese (de facto)",),
+    "KAZ": ("Kazakh", "Russian"),
+    "KEN": ("Swahili", "English"),
+    "KGZ": ("Kyrgyz", "Russian"),
+    "KHM": ("Khmer",),
+    "KOR": ("Korean",),
+    "KOS": ("Albanian", "Serbian"),
+    "KWT": ("Arabic",),
+    "LAO": ("Lao",),
+    "LBN": ("Arabic",),
+    "LBR": ("English",),
+    "LBY": ("Arabic",),
+    "LKA": ("Sinhala", "Tamil", "English (link language)"),
+    "LSO": ("Sesotho", "English"),
+    "LTU": ("Lithuanian",),
+    "LUX": ("Luxembourgish", "French", "German"),
+    "LVA": ("Latvian",),
+    "MAR": ("Arabic", "Tamazight (Berber)"),
+    "MDA": ("Romanian", "Russian & Gagauz (regional official)"),
+    "MDG": ("Malagasy", "French"),
+    "MEX": ("Spanish (de facto)", "+68 indigenous national languages (e.g. Nahuatl, Maya, Mixtec)"),
+    "MKD": ("Macedonian", "Albanian (co-official)"),
+    "MLI": ("Bambara", "Fulfulde", "Soninke", "+10 further national languages (2023 const.)", "French (working language)"),
+    "MMR": ("Burmese",),
+    "MNE": ("Montenegrin", "Serbian", "Bosnian", "Albanian", "Croatian"),
+    "MNG": ("Mongolian",),
+    "MOZ": ("Portuguese",),
+    "MRT": ("Arabic", "French (working language)"),
+    "MWI": ("English", "Chichewa"),
+    "MYS": ("Malay",),
+    "NAM": ("English (official since 1990)", "Afrikaans & German (recognized regional)", "Oshiwambo & other national languages"),
+    "NCL": ("French",),
+    "NER": ("National languages: Hausa, Zarma, Fulfulde, Kanuri, Tamachek, Arabic (2025 const.)", "French (working language)"),
+    "NGA": ("English",),
+    "NIC": ("Spanish",),
+    "NLD": ("Dutch", "Frisian (Friesland)"),
+    "NOR": ("Norwegian (Bokmål & Nynorsk)", "Sámi (co-official)"),
+    "NPL": ("Nepali", "Maithili, Bhojpuri, Tharu et al. (provincial official)"),
+    "NZL": ("English (de facto)", "Māori", "New Zealand Sign Language"),
+    "OMN": ("Arabic",),
+    "PAK": ("Urdu (national)", "English (official)"),
+    "PAN": ("Spanish",),
+    "PER": ("Spanish", "Quechua", "Aymara"),
+    "PHL": ("Filipino", "English"),
+    "PNG": ("Tok Pisin", "Hiri Motu", "English", "Papua New Guinean Sign Language"),
+    "POL": ("Polish",),
+    "PRK": ("Korean",),
+    "PRI": ("Spanish", "English"),
+    "PRT": ("Portuguese",),
+    "PRY": ("Spanish", "Guaraní"),
+    "PSX": ("Arabic",),
+    "QAT": ("Arabic",),
+    "ROU": ("Romanian",),
+    "RUS": ("Russian",),
+    "RWA": ("Kinyarwanda", "French", "English", "Swahili"),
+    "SAH": ("Arabic (Hassaniya spoken)",),
+    "SAU": ("Arabic",),
+    "SDN": ("Arabic", "English"),
+    "SDS": ("English", "indigenous languages (official at state level)"),
+    "SEN": ("French", "Wolof (national)"),
+    "SLE": ("English",),
+    "SLB": ("English",),
+    "SLV": ("Spanish",),
+    "SOL": ("Somali", "Arabic"),
+    "SOM": ("Somali", "Arabic"),
+    "SRB": ("Serbian",),
+    "SUR": ("Dutch",),
+    "SVK": ("Slovak",),
+    "SVN": ("Slovene", "Italian & Hungarian (co-official locally)"),
+    "SWE": ("Swedish",),
+    "SWZ": ("siSwati", "English"),
+    "SYR": ("Arabic",),
+    "TCD": ("Arabic", "French"),
+    "TGO": ("French", "Ewe & Kabye (national)"),
+    "THA": ("Thai",),
+    "TJK": ("Tajik", "Russian (inter-ethnic communication)"),
+    "TKM": ("Turkmen",),
+    "TLS": ("Tetum", "Portuguese"),
+    "TTO": ("English",),
+    "TUN": ("Arabic",),
+    "TUR": ("Turkish",),
+    "TWN": ("Mandarin Chinese (Guóyǔ)",),
+    "TZA": ("Swahili", "English"),
+    "UGA": ("English", "Swahili"),
+    "UKR": ("Ukrainian",),
+    "URY": ("Spanish",),
+    "USA": ("English (de facto)",),
+    "UZB": ("Uzbek", "Karakalpak (in Karakalpakstan)"),
+    "VEN": ("Spanish",),
+    "VNM": ("Vietnamese",),
+    "VUT": ("Bislama", "English", "French"),
+    "YEM": ("Arabic",),
+    "ZAF": ("Afrikaans", "English", "Ndebele", "Northern Sotho", "Sotho", "Swazi", "Tsonga", "Tswana", "Venda", "Xhosa", "Zulu", "South African Sign Language (12th, 2023)"),
+    "ZMB": ("English",),
+    "ZWE": ("Chewa", "Chibarwe", "English", "Kalanga", "Khoisan", "Nambya", "Ndau", "Northern Ndebele", "Shangani", "Shona", "Zimbabwean Sign Language", "Sotho", "Tonga", "Tswana", "Venda", "Xhosa (16, 2013 const.)"),
+}
+
 
 
 def _robinson_xy(lon_deg, lat_deg):
@@ -2803,16 +2773,16 @@ def _build_fig6_svg(verify_overlaps=True):
 
     ax_a = fig.add_subplot(outer[0, 0:6])
     ax_a.set_xlim(0, 100)
-    ax_a.set_ylim(0, 32)
+    ax_a.set_ylim(6.5, 31.0)
     ax_a.axis("off")
-    ax_a.set_title("(a) Brain-to-text pipeline (CTC-TLG)",
+    ax_a.set_title("(a) Brain-to-text decoding pipeline",
                    fontsize=10.0, fontweight="bold", pad=10)
 
     ax_b = fig.add_subplot(outer[0, 6:12])
     ax_b.set_xlim(0, 100)
-    ax_b.set_ylim(0, 32)
+    ax_b.set_ylim(6.5, 31.0)
     ax_b.axis("off")
-    ax_b.set_title("(b) Brain-to-voice pipeline (Wairagkar et al., 2025, 2026)",
+    ax_b.set_title("(b) Brain-to-voice decoding pipeline",
                    fontsize=10.0, fontweight="bold", pad=10)
 
     ax_cd = fig.add_subplot(outer[1, 0:12])
@@ -2822,12 +2792,12 @@ def _build_fig6_svg(verify_overlaps=True):
 
     ax_c_title = fig.add_subplot(outer[1, 0:6])
     ax_c_title.axis("off")
-    ax_c_title.set_title("(c) CTC-TLG applicability (~7,000 spoken languages)",
+    ax_c_title.set_title("(c) Brain-to-text applicability (~7,000 spoken languages)",
                          fontsize=10.0, fontweight="bold", pad=10)
 
     ax_d_title = fig.add_subplot(outer[1, 6:12])
     ax_d_title.axis("off")
-    ax_d_title.set_title("(d) Brain-to-Voice applicability (100% covered; 0 in Tier 3)",
+    ax_d_title.set_title("(d) Brain-to-voice applicability (~7,000 spoken languages)",
                          fontsize=10.0, fontweight="bold", pad=10)
 
     fig.canvas.draw()
@@ -2876,7 +2846,7 @@ def _build_fig6_svg(verify_overlaps=True):
     pad = 0.30
 
     def svg_block(ax, x, y, w, h, title, sub="", fc=C_BOX_BG, ec=C_BOX_EC,
-                  lw=1.25, title_fs=8.5, sub_fs=7.0, tier="", study_id="", tip=""):
+                  lw=1.25, title_fs=8.5, sub_fs=7.0, tier="", study_id="", tip="", f6_map=""):
         x0, y0 = d2svg(ax, x - pad, y + h + pad)
         x1, y1 = d2svg(ax, x + w + pad, y - pad)
         bw, bh = x1 - x0, y1 - y0
@@ -2884,6 +2854,8 @@ def _build_fig6_svg(verify_overlaps=True):
         attrs = ['class="f6-node"']
         if tier:
             attrs.append(f'data-f6-tier="{tier}"')
+        if f6_map:
+            attrs.append(f'data-f6-map="{f6_map}"')
         if study_id:
             attrs.append(f'data-id="{study_id}"')
         g = [f'<g {" ".join(attrs)}>']
@@ -2920,6 +2892,12 @@ def _build_fig6_svg(verify_overlaps=True):
                  f'stroke="{C_BOX_EC}" stroke-width="{SW(1.35)}"/>')
         s.append(f'<polygon points="{p_a} {p_b} {p_c}" fill="{C_BOX_EC}"/>')
 
+    def svg_poly(ax, pts, color=C_BOX_EC, lw=1.35, dash=None):
+        p_str = " ".join(f"{x:.1f},{y:.1f}" for x, y in (d2svg(ax, px_, py_) for px_, py_ in pts))
+        dash_a = f' stroke-dasharray="{dash}"' if dash else ""
+        s.append(f'<polyline points="{p_str}" fill="none" stroke="{color}" '
+                 f'stroke-width="{SW(lw)}"{dash_a}/>')
+
     def hatch_poly_lines(px, py, step=6.2):
         u = px + py
         v = px - py
@@ -2942,110 +2920,150 @@ def _build_fig6_svg(verify_overlaps=True):
             u0 += step
         return segs
 
-    # ---- Panel (a): Brain-to-text pipeline (CTC-TLG) ----
+    # ---- Panel (a): Brain-to-text decoding pipeline (CTC-TLG) ----
     yb, hb = 11.5, 13.5
-    svg_block(ax_a, 1.0, yb, 15.0, hb, "Spikes", "20-ms TX+SBP",
-              tip="Intracortical neural features: 20-ms binned threshold crossings (TX) + spike-band power (SBP), blockwise z-scored.")
-    svg_arr(ax_a, (16.0 + pad, yb + hb / 2), (19.2 - pad, yb + hb / 2))
-    svg_block(ax_a, 19.2, yb, 14.5, hb, "Day Linear", "Aligns day drift",
-              tip="Day-specific affine input layer (W_d x_t + b_d) absorbing cross-day recording nonstationarity.")
-    svg_arr(ax_a, (33.7 + pad, yb + hb / 2), (36.9 - pad, yb + hb / 2))
-    svg_block(ax_a, 36.9, yb, 16.0, hb, "CTC RNN", "Phoneme probs",
-              fc=C_T2_BG, ec=C_T2_EC, tier="2",
-              tip="Tier 2 bottleneck: emits frame posteriors over a language-specific discrete phoneme inventory T (e.g., 39 English ARPAbet phonemes + SIL + blank). Tonal languages require tonal initial/final redesign.")
-    svg_arr(ax_a, (52.9 + pad, yb + hb / 2), (56.1 - pad, yb + hb / 2))
-    svg_block(ax_a, 56.1, yb, 17.5, hb, "WFST (T\u2218L\u2218G)", "Lexicon + n-gram",
-              fc=C_T3_BG, ec=C_T3_EC, tier="3",
-              tip="Tier 3 & Memory bottleneck: composes token FST T, pronunciation dictionary L, and n-gram grammar G into TLG.fst (~300 GB unpruned RAM; 19.6 GB mmap). Blocks ~85% of the world's ~7,000 spoken languages that lack a written lexicon L or text corpus G, and fails when greedy PER > 25%.")
-    svg_arr(ax_a, (73.6 + pad, yb + hb / 2), (76.8 - pad, yb + hb / 2))
-    svg_block(ax_a, 76.8, yb, 14.0, hb, "LLM", "Rescorer",
-              fc=C_T3_BG, ec=C_T3_EC, tier="3",
-              tip="Tier 3 bottleneck: second-pass causal LLM rescorer (OPT-6.7B / Qwen3-8B, 13 GB VRAM). Requires massive written pretraining corpora unavailable for low-resource and unwritten languages.")
-    svg_arr(ax_a, (90.8 + pad, yb + hb / 2), (93.8 - pad, yb + hb / 2))
-    tx_txt, ty_txt = d2svg(ax_a, 96.8, yb + hb / 2)
+    yc = yb + hb / 2  # 18.25
+    y_v1, y_v2 = 23.4, 13.1
+    svg_block(ax_a, 0.4, 19.6, 19.8, 7.6, "Threshold Crossings", "20-ms bins",
+              title_fs=8.0, sub_fs=6.7,
+              tip="Intracortical neural features: 20-ms binned threshold crossings (TX), blockwise z-scored.")
+    svg_block(ax_a, 0.4, 9.3, 19.8, 7.6, "Spike Band Power", "20-ms bins",
+              title_fs=8.0, sub_fs=6.7,
+              tip="Intracortical neural features: 20-ms binned spike-band power (SBP), blockwise z-scored.")
+    # Merge both input streams into the per-day calibration layer
+    x_in_r = 0.4 + 19.8 + pad
+    svg_poly(ax_a, [(x_in_r, y_v1), (21.2, y_v1), (21.2, y_v2), (x_in_r, y_v2)])
+    svg_arr(ax_a, (21.2, yc), (22.8 - pad, yc))
+
+    svg_block(ax_a, 22.8, yb, 17.4, hb, "Daily Calibration", "Linear alignment",
+              tip="Per-day calibration layer: linear (affine) alignment W_d\u00b7x_t + b_d absorbing cross-day recording nonstationarity.")
+    svg_arr(ax_a, (40.2 + pad, yc), (42.8 - pad, yc))
+
+    # Colored by worst-case tier: CTC RNN -> Tier 2 (amber); WFST & LLM -> Tier 3 (terracotta)
+    svg_block(ax_a, 42.8, yb, 13.8, hb, "CTC RNN", "Phoneme probs (T)",
+              fc=C_T2_BG, ec=C_T2_EC, tier="2", f6_map="c",
+              tip="Tier 2 bottleneck: emits frame posteriors over a language-specific discrete phoneme inventory T (e.g., 39 English ARPAbet phonemes + SIL + blank). Tonal or sub-word languages require tonal T or sub-word token redesign.")
+    svg_arr(ax_a, (56.6 + pad, yc), (59.2 - pad, yc))
+
+    svg_block(ax_a, 59.2, yb, 16.6, hb, "WFST (T\u2218L\u2218G)", "Lexicon L + n-gram G",
+              fc=C_T3_BG, ec=C_T3_EC, tier="3", f6_map="c",
+              tip="Tier 3 & memory bottleneck: composes token FST T, pronunciation lexicon L, and n-gram grammar G into TLG.fst (~300 GB unpruned RAM; 19.6 GB mmap). Cannot apply to languages that are unwritten or lack sufficient text to train language models; fails when greedy PER > 25%.")
+    svg_arr(ax_a, (75.8 + pad, yc), (78.4 - pad, yc))
+
+    svg_block(ax_a, 78.4, yb, 11.6, hb, "LLM", "Text rescorer",
+              fc=C_T3_BG, ec=C_T3_EC, tier="3", f6_map="c",
+              tip="Tier 3 bottleneck: second-pass causal LLM rescorer (OPT-6.7B / Qwen3-8B, 13 GB VRAM). Requires massive written pretraining corpora — unavailable for unwritten languages or those with insufficient text.")
+    svg_arr(ax_a, (90.0 + pad, yc), (92.8 - pad, yc))
+    tx_txt, ty_txt = d2svg(ax_a, 95.6, yc)
     s.append(f'<text x="{tx_txt:.1f}" y="{ty_txt:.1f}" font-size="{9.0 * PT:.2f}" '
              f'font-weight="bold" fill="{C_INK}" text-anchor="middle" dominant-baseline="central">Text</text>')
 
-    bx0_a, by0_a = d2svg(ax_a, 36.9, 9.2)
-    bx1_a, by1_a = d2svg(ax_a, 90.8, 7.2)
-    s.append(f'<polyline points="{bx0_a:.1f},{by0_a:.1f} {bx0_a:.1f},{by1_a:.1f} {bx1_a:.1f},{by1_a:.1f} {bx1_a:.1f},{by0_a:.1f}" '
-             f'fill="none" stroke="{C_T3_EC}" stroke-width="{SW(1.15)}"/>')
-    tx_ba, ty_ba = d2svg(ax_a, 63.85, 4.2)
-    s.append(f'<text x="{tx_ba:.1f}" y="{ty_ba:.1f}" font-size="{7.3 * PT:.2f}" '
-             f'font-weight="bold" fill="{C_T3_EC}" text-anchor="middle" dominant-baseline="central">'
-             f'Language- &amp; writing-dependent: requires phoneme set T, written dictionary L, and text LM / LLM</text>')
-
-    # ---- Panel (b): Brain-to-voice pipeline (v1.0 & v2.0) ----
-    svg_block(ax_b, 1.0, 11.5, 15.5, 13.5, "Spikes", "10-ms TX+SBP",
-              study_id="wairagkar2025",
-              tip="10-ms binned threshold crossings + spike-band power from ventral precentral gyrus (vPCG, 256 channels, T15).")
-    svg_arr(ax_b, (16.5 + pad, 20.5), (21.0 - pad, 23.8))
-    svg_arr(ax_b, (16.5 + pad, 16.0), (21.0 - pad, 12.7))
-
-    svg_block(ax_b, 21.0, 19.5, 22.0, 8.6, "v1.0 GRU Encoder", "Causal RNN",
+    # ---- Panel (b): Brain-to-voice decoding pipeline (v1.0 & v2.0) ----
+    svg_block(ax_b, 0.4, 19.6, 19.8, 7.6, "Threshold Crossings", "10-ms bins",
               title_fs=8.0, sub_fs=6.7, study_id="wairagkar2025",
-              tip="Wairagkar et al., 2025 (Brain-to-Voice v1.0): causal GRU encoder mapping 10-ms neural bins to acoustic features in 1.5 GB VRAM (click to inspect study).")
-    svg_arr(ax_b, (43.0 + pad, 23.8), (46.8 - pad, 23.8))
-    svg_block(ax_b, 46.8, 19.5, 23.0, 8.6, "20-D Acoustic Head", "18 Bark + 2 F0 pitch",
-              fc=C_T1_BG, ec=C_T1_EC, title_fs=8.0, sub_fs=6.7, tier="1", study_id="wairagkar2025",
-              tip="Wairagkar et al., 2025 (v1.0): continuous 20-D LPCNet regression head (18 Bark cepstral bands + 2 pitch parameters; 43.8% listener WER; Mel Pearson r = 0.69 in our reproduction).")
+              tip="10-ms binned threshold crossings + spike-band power from ventral precentral gyrus (vPCG, 256 channels, T15).")
+    svg_block(ax_b, 0.4, 9.3, 19.8, 7.6, "Spike Band Power", "10-ms bins",
+              title_fs=8.0, sub_fs=6.7, study_id="wairagkar2025",
+              tip="10-ms binned threshold crossings + spike-band power from ventral precentral gyrus (vPCG, 256 channels, T15).")
+    # Combine both features and feed separately into v1.0 (top) and v2.0 (bottom)
+    x_in_b = 0.4 + 19.8 + pad
+    svg_poly(ax_b, [(x_in_b, y_v1), (21.1, y_v1), (21.1, y_v2), (x_in_b, y_v2)])
+    svg_poly(ax_b, [(21.1, yc), (21.7, yc)])
+    svg_poly(ax_b, [(21.7, y_v2), (21.7, y_v1)])
+    svg_arr(ax_b, (21.7, y_v1), (22.8 - pad, y_v1))
+    svg_arr(ax_b, (21.7, y_v2), (22.8 - pad, y_v2))
 
-    svg_block(ax_b, 21.0, 8.4, 22.0, 8.6, "v2.0 Transformer", "Causal masked",
-              title_fs=8.0, sub_fs=6.7, study_id="wairagkar2026",
-              tip="Wairagkar et al., 2026 (Brain2voice 2.0): 8-layer causal masked Transformer encoder (click to inspect study).")
-    svg_arr(ax_b, (43.0 + pad, 12.7), (46.8 - pad, 12.7))
-    svg_block(ax_b, 46.8, 8.4, 23.0, 8.6, "Acoustic + GAN", "+ Aux RVQ / Phone / SSL",
-              fc=C_T1_BG, ec=C_T1_EC, title_fs=8.0, sub_fs=6.7, tier="1", study_id="wairagkar2026",
-              tip="Wairagkar et al., 2026 (v2.0): 20-D continuous LPCNet + 4-scale 1D-conv GAN + auxiliary RVQ token, phoneme CTC, and SSL training heads — cutting human listener WER from 43.8% to 5.24%.")
-
-    svg_arr(ax_b, (69.8 + pad, 23.8), (74.2 - pad, 20.5))
-    svg_arr(ax_b, (69.8 + pad, 12.7), (74.2 - pad, 16.0))
-    svg_block(ax_b, 74.2, 11.5, 16.0, 13.5, "LPCNet", "Causal vocoder",
-              fc=C_T1_BG, ec=C_T1_EC, tier="1", study_id="wairagkar2025",
+    # Top row: v1.0 (2025) separate pipeline
+    # Acoustic Head = Tier 2 worst-case (needs recorded audio for DTW training when TTS is absent)
+    # LPCNet Vocoder = Tier 1 worst-case (universal vocal-tract waveform synthesis)
+    svg_block(ax_b, 22.8, 19.6, 18.8, 7.6, "v1.0 Voiceformer", "2-block causal (600 ms)",
+              title_fs=8.0, sub_fs=6.7, study_id="wairagkar2025",
+              tip="Wairagkar et al., 2025 (Brain-to-Voice v1.0): 2-block causal Voiceformer encoder (600-ms receptive field) mapping 10-ms neural bins to acoustic features in 1.5 GB VRAM (click to inspect study).")
+    svg_arr(ax_b, (41.6 + pad, y_v1), (44.5 - pad, y_v1))
+    svg_block(ax_b, 44.5, 19.6, 21.2, 7.6, "20-D Acoustic Head", "18 Bark + 2 F0 pitch",
+              fc=C_T2_BG, ec=C_T2_EC, title_fs=8.0, sub_fs=6.7, tier="2", f6_map="d",
+              study_id="wairagkar2025",
+              tip="Tier 2 bottleneck: continuous 20-D LPCNet regression head (18 Bark bands + 2 F0). When the language lacks TTS, training needs recorded prompt audio for DTW alignment (v1.0: 43.8% listener WER; Mel Pearson r = 0.69 in our reproduction).")
+    svg_arr(ax_b, (65.7 + pad, y_v1), (68.5 - pad, y_v1))
+    svg_block(ax_b, 68.5, 19.6, 17.0, 7.6, "LPCNet Vocoder", "Causal synthesis",
+              fc=C_T1_BG, ec=C_T1_EC, title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
+              study_id="wairagkar2025",
               tip="Causal LPCNet vocoder: synthesizes continuous speech waveform directly from 20-D Bark + F0 features in <10 ms with no dictionary L, no WFST G, and no LLM.")
-    svg_arr(ax_b, (90.2 + pad, 18.25), (93.4 - pad, 18.25))
-    tx_vc, ty_vc = d2svg(ax_b, 96.6, 18.25)
-    s.append(f'<text x="{tx_vc:.1f}" y="{ty_vc:.1f}" font-size="{9.0 * PT:.2f}" '
+    svg_arr(ax_b, (85.5 + pad, y_v1), (88.0 - pad, y_v1))
+    tx_v1, ty_v1 = d2svg(ax_b, 91.0, y_v1)
+    s.append(f'<text x="{tx_v1:.1f}" y="{ty_v1:.1f}" font-size="{9.0 * PT:.2f}" '
              f'font-weight="bold" fill="{C_INK}" text-anchor="middle" dominant-baseline="central">Voice</text>')
 
-    bx0_b, by0_b = d2svg(ax_b, 21.0, 6.6)
-    bx1_b, by1_b = d2svg(ax_b, 90.2, 4.8)
-    s.append(f'<polyline points="{bx0_b:.1f},{by0_b:.1f} {bx0_b:.1f},{by1_b:.1f} {bx1_b:.1f},{by1_b:.1f} {bx1_b:.1f},{by0_b:.1f}" '
-             f'fill="none" stroke="{C_T1_EC}" stroke-width="{SW(1.15)}"/>')
-    tx_bb, ty_bb = d2svg(ax_b, 55.6, 2.2)
-    s.append(f'<text x="{tx_bb:.1f}" y="{ty_bb:.1f}" font-size="{7.3 * PT:.2f}" '
-             f'font-weight="bold" fill="{C_T1_EC}" text-anchor="middle" dominant-baseline="central">'
-             f'Writing- &amp; lexicon-free at inference: synthesizes vocal-tract acoustics directly (no L, no G, no LLM)</text>')
+    # Dashed divider between 1.0 (top) and 2.0 (bottom) pipelines
+    svg_poly(ax_b, [(22.2, yc), (99.2, yc)], color=C_MUTED, lw=0.75, dash="4.5,2.8")
+    tx_10, ty_10 = d2svg(ax_b, 97.2, yc + 1.55)
+    s.append(f'<text x="{tx_10:.1f}" y="{ty_10:.1f}" font-size="{6.8 * PT:.2f}" '
+             f'font-weight="bold" fill="{C_MUTED}" text-anchor="middle" dominant-baseline="bottom">1.0</text>')
+    tx_20, ty_20 = d2svg(ax_b, 97.2, yc - 1.55)
+    s.append(f'<text x="{tx_20:.1f}" y="{ty_20:.1f}" font-size="{6.8 * PT:.2f}" '
+             f'font-weight="bold" fill="{C_MUTED}" text-anchor="middle" dominant-baseline="top">2.0</text>')
+
+    # Bottom row: v2.0 (2026) separate pipeline
+    svg_block(ax_b, 22.8, 9.3, 18.8, 7.6, "v2.0 Transformer", "8-layer causal masked",
+              title_fs=8.0, sub_fs=6.7, study_id="wairagkar2026",
+              tip="Wairagkar et al., 2026 (Brain2voice 2.0): 8-layer causal masked Transformer encoder (click to inspect study).")
+    svg_arr(ax_b, (41.6 + pad, y_v2), (44.5 - pad, y_v2))
+    svg_block(ax_b, 44.5, 9.3, 21.2, 7.6, "Acoustic + GAN", "+ RVQ / CTC / SSL aux",
+              fc=C_T2_BG, ec=C_T2_EC, title_fs=8.0, sub_fs=6.7, tier="2", f6_map="d",
+              study_id="wairagkar2026",
+              tip="Tier 2 bottleneck: 20-D continuous LPCNet + 4-scale 1D-conv GAN + auxiliary RVQ token, phoneme CTC, and SSL training heads — cutting human listener WER from 43.8% to 5.24%. Auxiliary targets still need audio or text resources that unserved languages lack.")
+    svg_arr(ax_b, (65.7 + pad, y_v2), (68.5 - pad, y_v2))
+    svg_block(ax_b, 68.5, 9.3, 17.0, 7.6, "LPCNet Vocoder", "Causal synthesis",
+              fc=C_T1_BG, ec=C_T1_EC, title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
+              study_id="wairagkar2026",
+              tip="Causal LPCNet vocoder: synthesizes continuous speech waveform directly from 20-D Bark + F0 features in <10 ms with no dictionary L, no WFST G, and no LLM.")
+    svg_arr(ax_b, (85.5 + pad, y_v2), (88.0 - pad, y_v2))
+    tx_v2, ty_v2 = d2svg(ax_b, 91.0, y_v2)
+    s.append(f'<text x="{tx_v2:.1f}" y="{ty_v2:.1f}" font-size="{9.0 * PT:.2f}" '
+             f'font-weight="bold" fill="{C_INK}" text-anchor="middle" dominant-baseline="central">Voice</text>')
 
     # ---- Panels (c) & (d): Robinson World Maps ----
     countries = json.loads(zlib.decompress(base64.b64decode(_WORLD_110M_B64)).decode("utf-8"))
     tier_fill = {1: C_T1_MAP, 2: C_T2_MAP, 3: C_T3_MAP}
     indigenous_belts = [
-        ("Arctic & Subarctic North America (Inuktitut, Yupik, Athabaskan, Algonquian — polysynthetic / oral)",
-         [-166, -140, -110, -78, -62, -65, -95, -135, -165],
-         [60, 60, 56, 56, 62, 72, 73, 70, 66]),
-        ("US Southwest & Mesoamerica (Navajo, Uto-Aztecan, Otomanguean, Mayan — tonal & polysynthetic)",
-         [-113, -104, -92, -95, -106, -113],
-         [36, 36, 16, 14, 21, 32]),
-        ("Amazon Basin (~300 indigenous languages across 50+ families — predominantly oral/unwritten)",
-         [-74, -54, -50, -60, -72, -76],
-         [2, 1, -7, -13, -11, -4]),
-        ("Central & Northern Outback Australia (Indigenous Australian languages — oral / low-resource)",
-         ([122, 138, 140, 128, 120]),
-         [-13, -13, -25, -27, -21]),
-        ("Siberia & Russian Far East (Paleo-Siberian, Tungusic, Samoyedic — agglutinative / polysynthetic)",
-         [95, 172, 175, 135, 95],
-         [61, 61, 70, 71, 69]),
+        ("Arctic & Subarctic North America (Inuktitut, Yupik, Athabaskan, Cree-Innu — polysynthetic / oral)",
+         [-168, -140, -105, -75, -55, -60, -80, -115, -145, -168],
+         [58, 56, 54, 53, 54, 74, 76, 74, 71, 68]),
+        ("SW North America & Mesoamerican indigenous belt to Panama (Navajo, Uto-Aztecan, Otomanguean, Mayan)",
+         [-112, -104, -87, -80, -83, -95, -107, -112],
+         [36, 35, 21, 9, 8, 15, 24, 33]),
+        ("Amazonia, Guiana Interior, Andean Cordillera & Gran Chaco (~300 languages, 50+ families — oral / unwritten)",
+         [-79, -70, -60, -52, -49, -54, -64, -71, -74, -81],
+         [0, 2.5, 4, 2, -2, -25, -28, -39, -16, -4]),
+        ("Sub-Saharan Equatorial, East African Rift & Kalahari / Southern African belt (Bantu, Nilotic, Khoisan)",
+         [-15, 10, 38, 37, 26, 14, 11, 5, -12],
+         [11, 11, 4, -15, -25, -23, -6, 4, 6]),
+        ("Hindu Kush, Himalaya, Central-East Indian Adivasi & SE Asian Massif / Zomia (Tibeto-Burman, Austroasiatic)",
+         [72, 85, 98, 106, 105, 86, 81, 75, 71],
+         [35, 30, 28, 23, 19, 19, 22, 28, 32]),
+        ("Outer Insular SE Asia, New Guinea & Melanesia (Austronesian, Papuan — ~1,000+ languages, predominantly oral)",
+         [111, 128, 152, 168, 166, 142, 118, 110],
+         [4, 3, -2, -13, -18, -10, -9, -2]),
+        ("Central, Northern & Western Outback Australia (Top End, Kimberley, Central Desert)",
+         [120, 142, 139, 126, 119],
+         [-11, -12, -26, -27, -20]),
+        ("Aotearoa / New Zealand (Māori indigenous belt)",
+         [172, 179, 178, 171],
+         [-34, -37, -42, -40]),
+        ("Northern Eurasia: Sápmi, Northern Ural, Siberia & Russian Far East (Sámi, Paleo-Siberian, Tungusic)",
+         [16, 45, 95, 175, 178, 135, 85, 35, 15],
+         [65, 64, 59, 60, 71, 73, 73, 70, 69]),
     ]
 
     ctc_tier_desc = {
-        1: "Tier 1 (Applies as-is): high-resource alphabetic/fusional language with established phoneme inventory T, written lexicon L, and text LM/LLM.",
-        2: "Tier 2 (Needs adaptation): tonal (East/SE Asia) or agglutinative/abjad language where word-level L∘G suffers homophony or OOV explosion; requires tonal T or subword L_sub∘G_sub.",
-        3: "Tier 3 (Blocked directly): unwritten, polysynthetic, or low-resource spoken languages (~85% of ~7,000 languages) lacking a standardized dictionary L or text LM/LLM.",
+        1: "Applies as-is (Tier 1): high-resource language with an established phoneme inventory T, written lexicon L, and text LM/LLM.",
+        2: "Needs adaptation (Tier 2): tonal or sub-word language where word-level L∘G suffers homophony or OOV explosion; requires tonal T or sub-word L_sub∘G_sub.",
+        3: "Cannot apply (Tier 3): unwritten or insufficient text to train language models (no standardized dictionary L or text LM/LLM).",
     }
     b2v_tier_desc = {
-        1: "Tier 1 (Applies as-is): synthesizes continuous vocal-tract acoustics + F0 pitch contour directly (eliminates tonal homophony and word-lexicon OOV).",
-        2: "Tier 2 (Audio-adaptable; 0 in Tier 3): applies without written lexicon L or text LM (v1.0 via native prompt audio + DTW; v2.0 via universal phone/SSL targets + zero-shot VC).",
+        1: "Applies as-is (Tier 1): mainstream TTS targets exist; synthesizes continuous vocal-tract acoustics + F0 pitch contour directly.",
+        2: "Needs adaptation (Tier 2): lacks Text-To-Speech, so needs recorded audio for acoustic-target training.",
+        3: "Cannot apply (Tier 3): none — no spoken language is blocked outright.",
     }
 
     def draw_svg_world_map(map_cx, map_cy, map_sx, map_sy, is_b2v):
@@ -3088,6 +3106,7 @@ def _build_fig6_svg(verify_overlaps=True):
             g_pts = " ".join(f"{x:.1f},{y:.1f}" for x, y in zip(gx, gy))
             s.append(f'<polyline points="{g_pts}" fill="none" stroke="{C_GRAT}" stroke-width="{SW(0.5)}" stroke-dasharray="1.8,2.2"/>')
 
+        clip_pts = []
         for c_rec in countries:
             a3 = c_rec["a3"]
             name = c_rec["name"]
@@ -3096,13 +3115,27 @@ def _build_fig6_svg(verify_overlaps=True):
             tier = t_b2v if is_b2v else t_ctc
             fc = tier_fill[tier]
             panel_tag = "d" if is_b2v else "c"
+            # 2026-11-12 official-language round (user: "鼠标指针放在某个国家上时，
+            # 列出其官方语言"): the country's official language(s) ride directly
+            # under its name so the tier reading is self-evident (e.g. Lao ->
+            # Tier 3, unwritten-language cascade). Long lists cap at 8 entries.
+            lang_line = ""
+            langs = _OFFICIAL_LANGUAGES.get(a3)
+            if langs:
+                shown = "; ".join(langs[:8])
+                extra = len(langs) - 8
+                if extra > 0:
+                    shown += f" +{extra} more"
+                lang_line = f"\u2022 Official language(s): {shown}\n"
             tip_str = (
                 f"{name} ({a3})\n"
-                f"\u2022 CTC-TLG (Panel c): {ctc_tier_desc[t_ctc]}\n"
-                f"\u2022 Brain-to-Voice (Panel d): {b2v_tier_desc[t_b2v]}"
+                f"{lang_line}"
+                f"\u2022 Brain-to-text (Panel c): {ctc_tier_desc[t_ctc]}\n"
+                f"\u2022 Brain-to-voice (Panel d): {b2v_tier_desc[t_b2v]}"
             )
             s.append(f'<g class="f6-country" data-a3="{esc(a3)}" data-name="{esc(name)}" '
-                     f'data-f6-tier="{tier}" data-ctc-tier="{t_ctc}" data-b2v-tier="{t_b2v}" data-map="{panel_tag}">')
+                     f'data-f6-tier="{tier}" data-f6-map="{panel_tag}" data-ctc-tier="{t_ctc}" '
+                     f'data-b2v-tier="{t_b2v}" data-map="{panel_tag}">')
             s.append(f'<title>{esc(tip_str)}</title>')
             for ring in c_rec["rings"]:
                 arr = np.asarray(ring, dtype=float)
@@ -3110,59 +3143,82 @@ def _build_fig6_svg(verify_overlaps=True):
                 px, py = proj_svg(arr[:, 0], lat_c)
                 p_str = " ".join(f"{x:.1f},{y:.1f}" for x, y in zip(px, py))
                 s.append(f'<polygon points="{p_str}" fill="{fc}" stroke="#FFFFFF" stroke-width="{SW(0.42)}"/>')
+                if a3 not in _CTC_TIER3_A3:
+                    clip_pts.append(p_str)
             s.append("</g>")
 
-        belt_ec = C_T2_EC if is_b2v else C_T3_EC
+        # Land clip (all countries except Tier-3 ones) so indigenous-belt fill
+        # and hatching never spill into the ocean, mirroring main_fig_7.
+        clip_id = f"f6-clip-{'d' if is_b2v else 'c'}"
+        s.append(f'<defs><clipPath id="{clip_id}">')
+        for cp in clip_pts:
+            s.append(f'<polygon points="{cp}"/>')
+        s.append('</clipPath></defs>')
+
+        belt_fc = C_T2_MAP if is_b2v else C_T3_MAP
         for b_name, lons, lats in indigenous_belts:
             px, py = proj_svg(lons, lats)
             p_str = " ".join(f"{x:.1f},{y:.1f}" for x, y in zip(px, py))
             b_tip = (
                 f"Indigenous belt: {b_name}\n"
-                f"\u2022 CTC-TLG (Panel c): Blocked directly (Tier 3) — lacks standardized orthography / word lexicon L.\n"
-                f"\u2022 Brain-to-Voice (Panel d): Upgraded to Tier 2 — audio-adaptable via native prompt audio + DTW or universal phone/SSL targets."
+                f"\u2022 Brain-to-text (Panel c): Cannot apply (Tier 3) — unwritten or insufficient text to train language models.\n"
+                f"\u2022 Brain-to-voice (Panel d): Needs adaptation (Tier 2) — lacks Text-To-Speech, so needs recorded audio."
             )
-            s.append(f'<g class="f6-belt" data-f6-tier="belt">')
+            s.append(f'<g class="f6-belt" data-f6-tier="belt" data-f6-map="{"d" if is_b2v else "c"}">')
             s.append(f'<title>{esc(b_tip)}</title>')
-            s.append(f'<polygon points="{p_str}" fill="#ffffff" fill-opacity="0.001" stroke="none" pointer-events="all"/>')
+            s.append(f'<g clip-path="url(#{clip_id})">')
+            s.append(f'<polygon points="{p_str}" fill="{belt_fc}" fill-opacity="0.38" stroke="none"/>')
             for hx1, hy1, hx2, hy2 in hatch_poly_lines(px, py, step=6.0):
                 s.append(f'<line x1="{hx1:.1f}" y1="{hy1:.1f}" x2="{hx2:.1f}" y2="{hy2:.1f}" '
-                         f'stroke="{belt_ec}" stroke-width="{SW(1.05)}"/>')
-            s.append(f'<polygon points="{p_str}" fill="none" stroke="{belt_ec}" '
+                         f'stroke="{belt_fc}" stroke-width="{SW(1.05)}"/>')
+            s.append(f'<polygon points="{p_str}" fill="none" stroke="{belt_fc}" '
                      f'stroke-width="{SW(0.95)}" stroke-dasharray="4.5,2.5"/>')
+            s.append('</g>')
+            s.append(f'<polygon points="{p_str}" fill="#ffffff" fill-opacity="0.001" stroke="none" pointer-events="all"/>')
             s.append("</g>")
 
     draw_svg_world_map(44.5, 40.5, 16.6, 18.5, is_b2v=False)
     draw_svg_world_map(139.5, 40.5, 16.6, 18.5, is_b2v=True)
 
-    # Bottom 1-line clickable legend (4 items)
-    leg6_y = vh - 22.0
-    leg6_items = [
-        ("1", C_T1_MAP, C_T1_EC, "Applies as-is (Tier 1)", 225.0),
-        ("2", C_T2_MAP, C_T2_EC, "Needs tonal / subword / audio adaptation (Tier 2)", 535.0),
-        ("3", C_T3_MAP, C_T3_EC, "Cannot apply directly: lacks written lexicon / LM (Tier 3)", 1045.0),
-        ("belt", "#ffffff", C_T3_EC, "Indigenous unwritten / polysynthetic belts", 1635.0),
+    # Two separate clickable legends, one under Panel (c) and one under Panel (d)
+    leg6_specs = [
+        ("c", 235.0, [
+            ("1", C_T1_MAP, C_T1_EC, C_T1_BG, "Applies as-is (Tier 1)"),
+            ("2", C_T2_MAP, C_T2_EC, C_T2_BG, "Needs adaptation: tonal or sub-word (Tier 2)"),
+            ("3", C_T3_MAP, C_T3_EC, C_T3_BG, "Cannot apply: unwritten or insufficient text to train language models (Tier 3)"),
+            ("belt", C_T3_MAP, C_T3_MAP, C_T3_BG, "Indigenous belts: unwritten or insufficient text to train language models (Tier 3)"),
+        ]),
+        ("d", 1250.0, [
+            ("1", C_T1_MAP, C_T1_EC, C_T1_BG, "Applies as-is (Tier 1)"),
+            ("2", C_T2_MAP, C_T2_EC, C_T2_BG, "Needs adaptation: lacks Text-To-Speech, so needs recorded audio (Tier 2)"),
+            ("3", C_T3_MAP, C_T3_EC, C_T3_BG, "Cannot apply: none (Tier 3)"),
+            ("belt", C_T2_MAP, C_T2_MAP, C_T2_BG, "Indigenous belts: lacks Text-To-Speech, so needs recorded audio (Tier 2)"),
+        ]),
     ]
-    for tier_k, fc_l, ec_l, lab_l, lx_l in leg6_items:
-        dash_l = ' stroke-dasharray="3.5,2.0"' if tier_k == "belt" else ""
-        s.append(f'<g class="f6-leg-item" data-f6-tier="{tier_k}" style="cursor:pointer">')
-        s.append(f'<title>Click to highlight {esc(lab_l)} across Panels (a)\u2013(d)</title>')
-        if tier_k == "belt":
-            rx0, ry0 = lx_l, leg6_y - 6.0
-            s.append(f'<rect x="{rx0:.1f}" y="{ry0:.1f}" width="18" height="11" '
-                     f'fill="#ffffff" stroke="{ec_l}" stroke-width="{SW(0.9)}"{dash_l}/>')
-            for hx1, hy1, hx2, hy2 in hatch_poly_lines(
-                np.array([rx0, rx0 + 18.0, rx0 + 18.0, rx0]),
-                np.array([ry0, ry0, ry0 + 11.0, ry0 + 11.0]),
-                step=4.8,
-            ):
-                s.append(f'<line x1="{hx1:.1f}" y1="{hy1:.1f}" x2="{hx2:.1f}" y2="{hy2:.1f}" '
-                         f'stroke="{ec_l}" stroke-width="{SW(0.95)}"/>')
-        else:
-            s.append(f'<rect x="{lx_l:.1f}" y="{leg6_y - 6.0:.1f}" width="18" height="11" '
-                     f'fill="{fc_l}" stroke="{ec_l}" stroke-width="{SW(0.9)}"{dash_l}/>')
-        s.append(f'<text x="{lx_l + 24.0:.1f}" y="{leg6_y:.1f}" font-size="{8.2 * PT:.2f}" '
-                 f'fill="#1f2937" dominant-baseline="central">{esc(lab_l)}</text>')
-        s.append("</g>")
+    leg6_y0, leg6_dy = vh - 128.0, 29.0
+    for leg_map, lx0, items in leg6_specs:
+        for idx_l, (tier_k, fc_l, ec_l, hatch_bg, lab_l) in enumerate(items):
+            ry_l = leg6_y0 + idx_l * leg6_dy
+            panel_letter = "c" if leg_map == "c" else "d"
+            s.append(f'<g class="f6-leg-item" data-f6-tier="{tier_k}" data-f6-map="{leg_map}" style="cursor:pointer">')
+            s.append(f'<title>Click to highlight {esc(lab_l)} on the Panel ({panel_letter}) map '
+                     f'and its pipeline modules above</title>')
+            if tier_k == "belt":
+                s.append(f'<rect x="{lx0:.1f}" y="{ry_l - 6.0:.1f}" width="18" height="11" '
+                         f'fill="{hatch_bg}" stroke="{ec_l}" stroke-width="{SW(0.9)}" stroke-dasharray="3.5,2.0"/>')
+                for hx1, hy1, hx2, hy2 in hatch_poly_lines(
+                    np.array([lx0, lx0 + 18.0, lx0 + 18.0, lx0]),
+                    np.array([ry_l - 6.0, ry_l - 6.0, ry_l + 5.0, ry_l + 5.0]),
+                    step=4.8,
+                ):
+                    s.append(f'<line x1="{hx1:.1f}" y1="{hy1:.1f}" x2="{hx2:.1f}" y2="{hy2:.1f}" '
+                             f'stroke="{ec_l}" stroke-width="{SW(0.95)}"/>')
+            else:
+                s.append(f'<rect x="{lx0:.1f}" y="{ry_l - 6.0:.1f}" width="18" height="11" '
+                         f'fill="{fc_l}" stroke="{ec_l}" stroke-width="{SW(0.9)}"/>')
+            s.append(f'<text x="{lx0 + 24.0:.1f}" y="{ry_l:.1f}" font-size="{8.2 * PT:.2f}" '
+                     f'fill="#1f2937" dominant-baseline="central">{esc(lab_l)}</text>')
+            s.append("</g>")
 
     plt.close(fig)
     return "\n".join(s), vw, vh
@@ -3264,29 +3320,41 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
   .nav-pill:hover { border-color: var(--accent); background: var(--accent-soft); }
 
   /* ---------- figure boxes ---------- */
-  #benchbox, #fig6box { position: relative; background: var(--card); border: 1px solid var(--line);
+  #benchbox, #fig6box, #pmbox { position: relative; background: var(--card); border: 1px solid var(--line);
                         border-radius: 14px; padding: 10px 10px 6px; }
   #benchbox:fullscreen, #benchbox:-webkit-full-screen, #benchbox.is-fullscreen,
-  #fig6box:fullscreen, #fig6box:-webkit-full-screen, #fig6box.is-fullscreen {
+  #fig6box:fullscreen, #fig6box:-webkit-full-screen, #fig6box.is-fullscreen,
+  #pmbox:fullscreen, #pmbox:-webkit-full-screen, #pmbox.is-fullscreen {
     background: var(--card); border: none; border-radius: 0; padding: 14px 18px;
     display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
     overflow: auto; width: 100vw; height: 100vh;
   }
-  #benchbox.is-fullscreen, #fig6box.is-fullscreen { position: fixed; inset: 0; z-index: 9999; }
+  #benchbox.is-fullscreen, #fig6box.is-fullscreen, #pmbox.is-fullscreen { position: fixed; inset: 0; z-index: 9999; }
   #f2-svg, #f6-svg { width: 100%; height: auto; display: block; border-radius: 8px; }
+  /* 2026-11-12 Insights round (user: "算了，还是新开一个section吧，就叫 Insights";
+     "四个 panel 在网页中打开看上去很大，和其他图片不太适应，不要动 pdf 和 png，
+     在 html 中处理一下"): the 4-panel phase/memory companion left the Overview
+     box for its own "Insights" section and is capped at its natural CSS size
+     (12.6 in x 96 dpi = 1210 px) and centered, so its panels no longer render
+     larger than the Figure 2 / Figure 6 panels. The .pdf/.png outputs are
+     untouched; full screen lifts the cap. */
+  #pm-svg { width: 100%; max-width: 1210px; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
   #benchbox:fullscreen #f2-svg, #benchbox:-webkit-full-screen #f2-svg, #benchbox.is-fullscreen #f2-svg,
   #fig6box:fullscreen #f6-svg, #fig6box:-webkit-full-screen #f6-svg, #fig6box.is-fullscreen #f6-svg {
     width: 100%; height: auto; max-width: 100%;
   }
-  #f2-fs-btn, #f6-fs-btn { position: absolute; top: 14px; right: 16px; z-index: 10;
+  #pmbox:fullscreen #pm-svg, #pmbox:-webkit-full-screen #pm-svg, #pmbox.is-fullscreen #pm-svg {
+    width: 100%; height: auto; max-width: 100%;
+  }
+  #f2-fs-btn, #f6-fs-btn, #pm-fs-btn { position: absolute; top: 14px; right: 16px; z-index: 10;
                            display: inline-flex; align-items: center; gap: 6px;
                            border: 1px solid var(--line); background: rgba(255, 255, 255, .92);
                            backdrop-filter: blur(4px); border-radius: 999px; padding: 5px 12px;
                            font-size: 12px; font-weight: 500; color: var(--muted); cursor: pointer;
                            box-shadow: 0 1px 4px rgba(15, 36, 64, .06); transition: all .12s ease; }
-  #f2-fs-btn:hover, #f6-fs-btn:hover { color: var(--ink); border-color: var(--faint);
+  #f2-fs-btn:hover, #f6-fs-btn:hover, #pm-fs-btn:hover { color: var(--ink); border-color: var(--faint);
                                        box-shadow: 0 2px 8px rgba(15, 36, 64, .10); }
-  #f2-fs-btn svg, #f6-fs-btn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 1.8;
+  #f2-fs-btn svg, #f6-fs-btn svg, #pm-fs-btn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 1.8;
                                    fill: none; stroke-linecap: round; stroke-linejoin: round; flex: none; }
   #f2-svg text, #f6-svg text { font-family: "Segoe UI", "DejaVu Sans", Arial, sans-serif; }
 
@@ -3463,8 +3531,8 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
       <h1>__TITLE__</h1>
       <div class="head-tools">
         <span class="stat">Reproduced <b id="vis-repro">8 / 8</b></span>
-        <span class="stat">Studies <b id="vis-count">32 / 32</b></span>
-        <span class="stat">Participants <b id="vis-people">17 / 17</b></span>
+        <span class="stat">Studies <b id="vis-count">33 / 33</b></span>
+        <span class="stat">Participants <b id="vis-people">18 / 18</b></span>
         <input id="search" type="search" placeholder="Search author, participant, pipeline, memory wall…">
         <button id="reset">Reset</button>
       </div>
@@ -3479,7 +3547,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
         <button data-mode="dim" class="on">Dim</button>
         <button data-mode="hide">Hide in place</button>
       </div>
-      <button id="pinned-only-btn" type="button" title="Toggle showing only the 3 open-data studies with vocabulary &gt; 71.4k and online WER &lt; 12.8%: Fan et al. (2023), Card et al. (2024) &amp; Jude et al. (2026a)">★ Open Data, Vocab &gt; 71.4k, WER &lt; 12.8%</button>
+      <button id="pinned-only-btn" type="button" title="Toggle showing only the 2 open-data studies with vocabulary &gt; 71.4k, online WER &lt; 12.8% and at least one vocal-paralysis (△) participant: Card et al. (2024) &amp; Jude et al. (2026a)">★ Open Data, Vocab &gt; 71.4k, WER &lt; 12.8%, Vocal paralysis</button>
       <button id="repro-only-btn" type="button" title="Toggle showing only the 8 open-data studies reproduced end-to-end on our 16 GB VRAM / 64 GB RAM consumer PC">● 8 Reproduced Studies Only</button>
       <div class="ext-links">
         <a href="https://physics-lee.github.io/communication-neuroprostheses-timeline/" target="_blank" rel="noopener" class="nav-pill">Living Timeline ↗</a>
@@ -3489,7 +3557,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
   </div>
 
   <div class="sec" id="bench-sec" style="margin-top:20px">
-    <h2>Figure 2 · Vocabulary Funnel &amp; Consumer-GPU Reproduction Benchmark (Panels a–i)</h2>
+    <h2>Overview</h2>
     <span class="count" id="bench-count"></span>
     <span class="rule"></span>
     <button id="bench-toggle" class="sec-btn" type="button">Hide</button>
@@ -3512,9 +3580,23 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
     </div>
   </div>
 
+  <div class="sec" id="pm-sec">
+    <h2>Insights</h2>
+    <span class="count" id="pm-count">Session-level phase diagrams (post-LM WER vs. greedy PER / raw CER) and the memory wall: our 64 GB RAM / 16 GB VRAM stack vs. official pipelines</span>
+    <span class="rule"></span>
+    <button id="pm-toggle" class="sec-btn" type="button">Hide</button>
+  </div>
+  <div id="pmbox">
+    <button id="pm-fs-btn" type="button" title="Toggle full screen" aria-label="Toggle full screen">
+      <svg id="pm-fs-ico" viewBox="0 0 16 16"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg>
+      <span id="pm-fs-lbl">Full screen</span>
+    </button>
+    __PM_FULL_SVG__
+  </div>
+
   <div class="sec" id="fig6-sec">
-    <h2>Figure 6 · The Limit of CTC-TLG vs. Brain-to-Voice Across ~7,000 Spoken Languages (Panels a–d)</h2>
-    <span class="count" id="fig6-count">Click any Tier in the legend below or hover any country / module to compare CTC-TLG vs. Brain-to-Voice</span>
+    <h2>Limits of CTC-TLG</h2>
+    <span class="count" id="fig6-count">Click any tier in either map legend (or any country / module) to compare Brain-to-text vs. Brain-to-Voice across ~7,000 spoken languages</span>
     <span class="rule"></span>
     <button id="fig6-toggle" class="sec-btn" type="button">Hide</button>
   </div>
@@ -3541,7 +3623,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
   </div>
 
   <div class="sec" id="repro-sec">
-    <h2>Table 1 · 8-Study Consumer-GPU (16 GB VRAM / 64 GB RAM) Reproduction Ledger</h2>
+    <h2>Reproduction Ledger</h2>
     <span class="count" id="repro-count">8 open-data studies reproduced end-to-end (click any row to inspect)</span>
     <span class="rule"></span>
     <button id="repro-toggle" class="sec-btn" type="button">Hide</button>
@@ -3549,7 +3631,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
   <div id="reprobox">
     <p class="cohort-sub">
       <b>Hardware target</b>: 1× NVIDIA GeForce RTX 5060 Ti (16 GB VRAM) + 64 GB DDR5 host RAM ·
-      <b>★</b> satisfies Open Data, Vocabulary &gt; 71.4k &amp; Online WER &lt; 12.8% ·
+      <b>★</b> satisfies Open Data, Vocabulary &gt; 71.4k, Online WER &lt; 12.8% &amp; Vocal Paralysis (△) ·
       Click any row to highlight its bars across Figure 2 and open its reproduction breakdown.
     </p>
     <table class="cohort-tbl" aria-label="Table 1: 8-Study Consumer-GPU Reproduction Ledger">
@@ -3597,7 +3679,7 @@ const TASK_LBL = { inner:'inner speech ◆', intended:'overt/mouthing/intended �
 const OUT_LBL = { voice:'brain-to-voice ⬟', text:'brain-to-text ⬠', both:'voice ⬟ + text ⬠' };
 const SHAPE_GLYPH = { o:'●', s:'■', h:'⬢', v:'▼' };
 const LANE_LBL = { speech:'Speech', typing:'Typing', handwriting:'Handwriting' };
-const STAR_STUDY_IDS = new Set(['fan2023', 'card2024', 'jude2026a']);
+const STAR_STUDY_IDS = new Set(['card2024', 'jude2026a']);
 const REPRO_STUDY_IDS = new Set(STUDIES.filter(r => r.is_repro).map(r => r.id));
 
 function esc(s){ return String(s).replace(/[&<>"']/g,
@@ -3607,7 +3689,7 @@ const DIMS = {
   data_availability: ['open','partial','closed','unknown','reanalysis'],
   decoding_mode: ['online','offline'],
   decoded_output: ['voice','text'],
-  electrode: ['ecog','utah','thin_film'],
+  electrode: ['ecog','utah','thin_film','microwire'],
   speech_ability: ['intact','paralysis'],
   task_instruction: ['inner','intended'],
   lane: ['speech','typing','handwriting'],
@@ -3617,7 +3699,7 @@ const ALL_DATES = STUDIES.map(r => r.date).sort();
 const MIN_DATE = ALL_DATES[0] || '2021-01-01';
 const MAX_DATE = ALL_DATES[ALL_DATES.length - 1] || '2026-12-31';
 let searchStr = '', dateFrom = MIN_DATE, dateTo = MAX_DATE, mode = 'dim';
-let selectedId = null, pinnedOnly = false, reproOnly = false, activeF6Tier = null;
+let selectedId = null, pinnedOnly = false, reproOnly = false, activeF6Tier = null, activeF6Map = null;
 
 function matches(rec){
   if (pinnedOnly && !STAR_STUDY_IDS.has(rec.id)) return false;
@@ -3681,13 +3763,14 @@ for (const sid of REPRO_ORDER){
 function cardHtml(rec, includeReproBox){
   const m = rec.metrics;
   const isStar = STAR_STUDY_IDS.has(rec.id);
-  const pinBadge = isStar ? `<span class="sc-pin" title="Satisfies Open Data, Vocab &gt; 71.4k, Online WER &lt; 12.8%">★ Pinned</span>` : '';
+  const pinBadge = isStar ? `<span class="sc-pin" title="Satisfies Open Data, Vocab &gt; 71.4k, Online WER &lt; 12.8%, Vocal Paralysis (△)">★ Pinned</span>` : '';
   const reproBadge = rec.is_repro ? `<span class="sc-repro-pill" title="Reproduced end-to-end on our 16 GB VRAM / 64 GB RAM consumer PC">● Reproduced</span>` : '';
   const dataHref = rec.data_url || (rec.data_doi ? 'https://doi.org/' + encodeURIComponent(rec.data_doi) : '');
   const repoHref = rec.repro ? `https://github.com/Physics-Lee/communication-neuroprostheses-reproduction/tree/main/${rec.repro.dir.replace(/\/$/, '')}` : '';
   const links = [
     rec.doi ? `<a href="https://doi.org/${encodeURIComponent(rec.doi)}" target="_blank" rel="noopener">Paper ↗</a>` : '',
     dataHref ? `<a href="${esc(dataHref)}" target="_blank" rel="noopener">Dataset ↗</a>` : '',
+    rec.url ? `<a href="${esc(rec.url)}" target="_blank" rel="noopener">Announcement ↗</a>` : '',
     repoHref ? `<a href="${esc(repoHref)}" target="_blank" rel="noopener">Reproduction Code (${esc(rec.repro.dir)}) ↗</a>` : '',
   ].join('');
   let reproHtml = '';
@@ -3860,7 +3943,8 @@ const GROUPS = [
   {dim:'electrode', title:'Electrode', opts:[
     {v:'ecog', label:'ECoG', glyph:'●'},
     {v:'utah', label:'Utah', glyph:'■'},
-    {v:'thin_film', label:'thin-film', glyph:'⬢'}]},
+    {v:'thin_film', label:'thin-film', glyph:'⬢'},
+    {v:'microwire', label:'microwire', glyph:'▼'}]},
   {dim:'speech_ability', title:'Speech ability', opts:[
     {v:'intact', label:'can speak naturally', glyph:'▲'},
     {v:'paralysis', label:'vocal paralysis', glyph:'△'}]},
@@ -4026,16 +4110,23 @@ document.querySelectorAll('.f2-slot, .f2-sess, .f2-sess-leg').forEach(el => {
 });
 
 /* ---------- Figure 6 interactivity ---------- */
-function setF6Tier(tier){
-  activeF6Tier = (activeF6Tier === tier) ? null : tier;
+function setF6Tier(tier, map){
+  if (activeF6Tier === tier && activeF6Map === map){
+    activeF6Tier = null;
+    activeF6Map = null;
+  } else {
+    activeF6Tier = tier;
+    activeF6Map = map;
+  }
   document.querySelectorAll('.f6-leg-item').forEach(it => {
-    it.classList.toggle('active', it.dataset.f6Tier === activeF6Tier);
+    it.classList.toggle('active', it.dataset.f6Tier === activeF6Tier && it.dataset.f6Map === activeF6Map);
   });
   document.querySelectorAll('#f6-svg .f6-country, #f6-svg .f6-belt, #f6-svg .f6-node[data-f6-tier]').forEach(el => {
     if (!activeF6Tier){
       el.classList.remove('f6-dimmed');
     } else {
-      el.classList.toggle('f6-dimmed', el.dataset.f6Tier !== activeF6Tier);
+      const sameMap = (el.dataset.f6Map || el.dataset.map) === activeF6Map;
+      el.classList.toggle('f6-dimmed', !(sameMap && el.dataset.f6Tier === activeF6Tier));
     }
   });
 }
@@ -4043,7 +4134,7 @@ function setF6Tier(tier){
 document.querySelectorAll('.f6-leg-item').forEach(it => {
   it.addEventListener('click', ev => {
     ev.stopPropagation();
-    setF6Tier(it.dataset.f6Tier);
+    setF6Tier(it.dataset.f6Tier, it.dataset.f6Map);
   });
 });
 
@@ -4062,7 +4153,7 @@ document.querySelectorAll('#f6-svg .f6-country').forEach(cEl => {
   });
   cEl.addEventListener('click', ev => {
     ev.stopPropagation();
-    setF6Tier(cEl.dataset.f6Tier);
+    setF6Tier(cEl.dataset.f6Tier, cEl.dataset.f6Map || cEl.dataset.map);
   });
 });
 
@@ -4077,7 +4168,7 @@ document.querySelectorAll('#f6-svg .f6-belt, #f6-svg .f6-node').forEach(el => {
     if (el.dataset.id){
       selectStudy(el.dataset.id, true);
     } else if (el.dataset.f6Tier){
-      setF6Tier(el.dataset.f6Tier);
+      setF6Tier(el.dataset.f6Tier, el.dataset.f6Map || el.dataset.map);
     }
   });
 });
@@ -4095,6 +4186,12 @@ const f6FsLbl = document.getElementById('f6-fs-lbl');
 const f6FsIco = document.getElementById('f6-fs-ico');
 const fig6Toggle = document.getElementById('fig6-toggle');
 
+const pmbox = document.getElementById('pmbox');
+const pmFsBtn = document.getElementById('pm-fs-btn');
+const pmFsLbl = document.getElementById('pm-fs-lbl');
+const pmFsIco = document.getElementById('pm-fs-ico');
+const pmToggle = document.getElementById('pm-toggle');
+
 const reprobox = document.getElementById('reprobox');
 const reproToggle = document.getElementById('repro-toggle');
 const cardsbox = document.getElementById('cardsbox');
@@ -4108,7 +4205,7 @@ function isBoxFs(box){
                  document.webkitFullscreenElement === box ||
                  box.classList.contains('is-fullscreen'));
 }
-function isFs(){ return isBoxFs(benchbox) || isBoxFs(fig6box); }
+function isFs(){ return isBoxFs(benchbox) || isBoxFs(fig6box) || isBoxFs(pmbox); }
 function syncFsUI(){
   const on2 = isBoxFs(benchbox);
   f2FsLbl.textContent = on2 ? 'Exit full screen' : 'Full screen';
@@ -4116,16 +4213,23 @@ function syncFsUI(){
   const on6 = isBoxFs(fig6box);
   f6FsLbl.textContent = on6 ? 'Exit full screen' : 'Full screen';
   f6FsIco.innerHTML = `<path d="${on6 ? FS_EXIT_PATH : FS_ENTER_PATH}"/>`;
+  const onP = isBoxFs(pmbox);
+  pmFsLbl.textContent = onP ? 'Exit full screen' : 'Full screen';
+  pmFsIco.innerHTML = `<path d="${onP ? FS_EXIT_PATH : FS_ENTER_PATH}"/>`;
   document.body.style.overflow =
-    (benchbox.classList.contains('is-fullscreen') || fig6box.classList.contains('is-fullscreen')) ? 'hidden' : '';
+    (benchbox.classList.contains('is-fullscreen') || fig6box.classList.contains('is-fullscreen') ||
+     pmbox.classList.contains('is-fullscreen')) ? 'hidden' : '';
 }
 function exitFs(){
-  if ((document.fullscreenElement === benchbox || document.fullscreenElement === fig6box) && document.exitFullscreen)
+  if ((document.fullscreenElement === benchbox || document.fullscreenElement === fig6box ||
+       document.fullscreenElement === pmbox) && document.exitFullscreen)
     document.exitFullscreen().catch(() => {});
-  else if ((document.webkitFullscreenElement === benchbox || document.webkitFullscreenElement === fig6box) && document.webkitExitFullscreen)
+  else if ((document.webkitFullscreenElement === benchbox || document.webkitFullscreenElement === fig6box ||
+            document.webkitFullscreenElement === pmbox) && document.webkitExitFullscreen)
     document.webkitExitFullscreen();
   benchbox.classList.remove('is-fullscreen');
   fig6box.classList.remove('is-fullscreen');
+  pmbox.classList.remove('is-fullscreen');
   syncFsUI();
 }
 function toggleBoxFs(box){
@@ -4146,6 +4250,7 @@ function toggleBoxFs(box){
 }
 f2FsBtn.addEventListener('click', ev => { ev.stopPropagation(); toggleBoxFs(benchbox); });
 f6FsBtn.addEventListener('click', ev => { ev.stopPropagation(); toggleBoxFs(fig6box); });
+pmFsBtn.addEventListener('click', ev => { ev.stopPropagation(); toggleBoxFs(pmbox); });
 document.addEventListener('fullscreenchange', syncFsUI);
 document.addEventListener('webkitfullscreenchange', syncFsUI);
 
@@ -4158,6 +4263,11 @@ fig6Toggle.addEventListener('click', () => {
   const hidden = fig6box.style.display === 'none';
   fig6box.style.display = hidden ? '' : 'none';
   fig6Toggle.textContent = hidden ? 'Hide' : 'Show';
+});
+pmToggle.addEventListener('click', () => {
+  const hidden = pmbox.style.display === 'none';
+  pmbox.style.display = hidden ? '' : 'none';
+  pmToggle.textContent = hidden ? 'Hide' : 'Show';
 });
 reproToggle.addEventListener('click', () => {
   const hidden = reprobox.style.display === 'none';
@@ -4202,11 +4312,12 @@ apply();
 def export_interactive_html(
     out_html,
     f2_svg_tuple,
-    session_data,
     verify_overlaps=True,
+    pm_svg_tuple=None,
 ):
     """Write the single-file interactive HTML edition showcasing Figure 2
-    (Panels a-i) and Figure 6 (The Limit of CTC-TLG, Panels a-d).
+    (Panels a-f), the 4-panel phase/memory companion in its own "Insights"
+    section, and Figure 6 (The Limit of CTC-TLG, Panels a-d).
 
     Parameters
     ----------
@@ -4214,19 +4325,38 @@ def export_interactive_html(
         Destination path for ``communication_neuroprostheses_reproduction.html``.
     f2_svg_tuple : tuple of (str, int, int)
         ``(svg_inner, vw, vh)`` produced by :func:`_build_fig2_full_svg`.
-    session_data : dict
-        Session-level PER vs. WER dictionary.
     verify_overlaps : bool, optional
         Whether to run the pairwise text overlap check on Figure 6.
+    pm_svg_tuple : tuple of (str, int, int), optional
+        ``(svg_element, vw, vh)`` produced by
+        ``render_phase_memory_figure.build_phase_memory_svg``. When
+        ``None`` (default) it is built in-process via a deferred import,
+        so CI can run ``render_figure2.py`` before
+        ``render_phase_memory_figure.py`` without stale artifacts.
+
+    Notes
+    -----
+    2026-11-12 HTML rounds: the companion first continued the Overview box
+    under the blue reproduction brace (user: "续着 overview 画"), then moved
+    to its own "Insights" section at native size (user: "算了，还是新开一个
+    section 吧，就叫 Insights"; "四个 panel 在网页中打开看上去很大，和其他
+    图片不太适应") -- the page CSS caps ``#pm-svg`` at 1210 px (12.6 in x
+    96 dpi) and centers it, without touching the ``.pdf``/``.png`` outputs.
     """
     f2_svg_inner, f2_vw, f2_vh = f2_svg_tuple
+    if pm_svg_tuple is None:
+        # Deferred import: render_phase_memory_figure imports symbols from
+        # this module, so a top-level import would be circular.
+        from render_phase_memory_figure import build_phase_memory_svg
+        pm_svg_tuple = build_phase_memory_svg()
+    pm_svg_element, pm_vw, pm_vh = pm_svg_tuple
     f6_svg_inner, f6_vw, f6_vh = _build_fig6_svg(verify_overlaps=verify_overlaps)
     studies_list = json.loads(
         zlib.decompress(base64.b64decode(_STUDIES_B64)).decode("utf-8")
     )
     studies_json = json.dumps(studies_list, ensure_ascii=False).replace("</", "<\\/")
     title_str = (
-        "Communication Neuroprostheses — Consumer-GPU (16 GB VRAM / 64 GB RAM) Reproduction Suite"
+        "Communication Neuroprostheses, Reproduced on a Consumer PC"
     )
     doc = (
         _HTML_TEMPLATE
@@ -4234,6 +4364,7 @@ def export_interactive_html(
         .replace("__FIG2_FULL__", f2_svg_inner)
         .replace("__F2_VW__", str(f2_vw))
         .replace("__F2_VH__", str(f2_vh))
+        .replace("__PM_FULL_SVG__", pm_svg_element)
         .replace("__FIG6_SVG__", f6_svg_inner)
         .replace("__F6_VW__", str(f6_vw))
         .replace("__F6_VH__", str(f6_vh))
