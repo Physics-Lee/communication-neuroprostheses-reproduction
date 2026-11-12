@@ -1129,10 +1129,13 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     # The timeline identifies rows by study id (fan2023/card2024/jude2026a);
     # these YAML rows carry study_key instead, and both jude2026a sessions
     # (T17/T18) star together just as both id-tagged rows do there.
-    # 2026-11-12 star round (user, both repos: star additionally requires
-    # vocal paralysis): a study must also have at least one vocal-paralysis
-    # participant (△), dropping Fan et al., 2023 (T5 speaks naturally ▲) and
-    # keeping Card et al., 2024 (T15△) and Jude et al., 2026a (T17△/T18▲).
+    # 2026-11-12 star rounds (user, both repos: star additionally requires
+    # vocal paralysis, then online decoding): a study must have online
+    # (closed-loop) decoding and at least one vocal-paralysis participant
+    # (△), dropping Fan et al., 2023 (T5 speaks naturally ▲, offline rows
+    # aside) and excluding offline AI-conference open-data reanalyses
+    # (Feng/Li/Zhang ...), keeping Card et al., 2024 (T15△) and
+    # Jude et al., 2026a (T17△/T18▲) -- both online.
     STAR_KEYS = {"Card et al., 2024", "Jude et al., 2026a"}
     # 2026-11-06 equal-pillar round (user, review repo: "I want the
     # pillars in fig2 b c d have the same width ... calculate
@@ -1249,7 +1252,7 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     ax2.set_xlim(-0.75, len(rows_cd) - 0.25)
     ax2.set_ylabel("word error rate (%)")
     ax2.set_title("(c) Word error rate (online)\n"
-                  "\u2605 2 studies satisfy: Open Data, Vocab > 71.4k, "
+                  "\u2605 2 studies satisfy: Open Data, Online, Vocab > 71.4k, "
                   "WER < 12.8%, Vocal paralysis \u25b3",
                   fontsize=9.8, fontweight="bold")
     ax2.text(0.98, 0.985,
@@ -2109,7 +2112,7 @@ def _build_fig2_full_svg(
         [str(v) for v in range(0, 101, 25)],
         "word error rate (%)",
         "(c) Word error rate (online)\n"
-        "\u2605 2 studies satisfy: Open Data, Vocab > 71.4k, WER < 12.8%, Vocal paralysis \u25b3",
+        "\u2605 2 studies satisfy: Open Data, Online, Vocab > 71.4k, WER < 12.8%, Vocal paralysis \u25b3",
         title_fs=9.8,
     )
     s.append(ch_c)
@@ -3547,7 +3550,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
         <button data-mode="dim" class="on">Dim</button>
         <button data-mode="hide">Hide in place</button>
       </div>
-      <button id="pinned-only-btn" type="button" title="Toggle showing only the 2 open-data studies with vocabulary &gt; 71.4k, online WER &lt; 12.8% and at least one vocal-paralysis (△) participant: Card et al. (2024) &amp; Jude et al. (2026a)">★ Open Data, Vocab &gt; 71.4k, WER &lt; 12.8%, Vocal paralysis</button>
+      <button id="pinned-only-btn" type="button" title="Toggle showing only the 2 open-data, online (closed-loop) studies with vocabulary &gt; 71.4k, online WER &lt; 12.8% and at least one vocal-paralysis (△) participant: Card et al. (2024) &amp; Jude et al. (2026a)">★ Open Data, Online, Vocab &gt; 71.4k, WER &lt; 12.8%, Vocal paralysis</button>
       <button id="repro-only-btn" type="button" title="Toggle showing only the 8 open-data studies reproduced end-to-end on our 16 GB VRAM / 64 GB RAM consumer PC">● 8 Reproduced Studies Only</button>
       <div class="ext-links">
         <a href="https://physics-lee.github.io/communication-neuroprostheses-timeline/" target="_blank" rel="noopener" class="nav-pill">Living Timeline ↗</a>
@@ -3631,7 +3634,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
   <div id="reprobox">
     <p class="cohort-sub">
       <b>Hardware target</b>: 1× NVIDIA GeForce RTX 5060 Ti (16 GB VRAM) + 64 GB DDR5 host RAM ·
-      <b>★</b> satisfies Open Data, Vocabulary &gt; 71.4k, Online WER &lt; 12.8% &amp; Vocal Paralysis (△) ·
+      <b>★</b> satisfies Open Data, Online Decoding, Vocabulary &gt; 71.4k, Online WER &lt; 12.8% &amp; Vocal Paralysis (△) ·
       Click any row to highlight its bars across Figure 2 and open its reproduction breakdown.
     </p>
     <table class="cohort-tbl" aria-label="Table 1: 8-Study Consumer-GPU Reproduction Ledger">
@@ -3763,7 +3766,7 @@ for (const sid of REPRO_ORDER){
 function cardHtml(rec, includeReproBox){
   const m = rec.metrics;
   const isStar = STAR_STUDY_IDS.has(rec.id);
-  const pinBadge = isStar ? `<span class="sc-pin" title="Satisfies Open Data, Vocab &gt; 71.4k, Online WER &lt; 12.8%, Vocal Paralysis (△)">★ Pinned</span>` : '';
+  const pinBadge = isStar ? `<span class="sc-pin" title="Satisfies Open Data, Online Decoding, Vocab &gt; 71.4k, Online WER &lt; 12.8%, Vocal Paralysis (△)">★ Pinned</span>` : '';
   const reproBadge = rec.is_repro ? `<span class="sc-repro-pill" title="Reproduced end-to-end on our 16 GB VRAM / 64 GB RAM consumer PC">● Reproduced</span>` : '';
   const dataHref = rec.data_url || (rec.data_doi ? 'https://doi.org/' + encodeURIComponent(rec.data_doi) : '');
   const repoHref = rec.repro ? `https://github.com/Physics-Lee/communication-neuroprostheses-reproduction/tree/main/${rec.repro.dir.replace(/\/$/, '')}` : '';

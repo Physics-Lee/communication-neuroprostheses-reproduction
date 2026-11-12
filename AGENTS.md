@@ -35,11 +35,14 @@ This repository reproduces **8 open-data intracortical speech, typing, and handw
 | [`shared/`](shared/) | Cross-study C++ `mmap` OpenFST decoders (`tlg_viterbi.cc`, `wenet_lattice.cc`), LLM rescorers (`opt_rescore.py`), WER evaluator (`wer_from_tsv.py`), `vacation_tlg/` ablations, `finetune_chain/`, and `plots/`. |
 | [`tutorials/`](tutorials/) | 3 zero-download interactive Jupyter Notebooks in English (`tutorials/*.ipynb`) and Chinese (`tutorials/zh/*_zh.ipynb`) for students. |
 | [`docs/`](docs/) | Repository governance and cleanup audit logs ([`docs/CLEANUP_AUDIT.md`](docs/CLEANUP_AUDIT.md)). |
-| `reproduction_benchmark.yaml` | Single source of truth for Panels (a)–(h) of the benchmark overview figure. |
+| `reproduction_benchmark.yaml` | Single source of truth for all benchmark panels: Figure 2 panels (a)–(f) and the 4-panel phase/memory companion figure. |
 | `reproduction_benchmark.json` | Auto-synced JSON mirror of `reproduction_benchmark.yaml` written by `render_figure2.py`. |
 | `build_session_per_vs_wer.py` | Recomputes session-level `(PER, post-LM WER)` pairs from archived per-trial CSVs and TSVs across the 4 speech studies. |
-| `session_per_vs_wer.json` | Output of `build_session_per_vs_wer.py`, consumed by Panel (i) of `render_figure2.py`. |
-| `render_figure2.py` | Standalone renderer and bounding-box collision verifier (`check_figure_overlaps`) for `communication_neuroprostheses_reproduction.{png,pdf,html}` and `index.html`. |
+| `session_per_vs_wer.json` | Output of `build_session_per_vs_wer.py`, consumed by panel (a) of `render_phase_memory_figure.py`. |
+| `build_session_cer_vs_wer.py` | Character-level analog of the PER builder: recomputes session-level `(raw CER, post-LM WER)` pairs for the Willett 2021 / Fan 2023 / Jude 2026a arms (Willett raw-CER counts embedded as constants from the sibling repo's `errCounts.mat`). |
+| `session_cer_vs_wer.json` | Output of `build_session_cer_vs_wer.py`, consumed by panel (b) of `render_phase_memory_figure.py`. Do not hand-edit. |
+| `render_figure2.py` | Standalone renderer and bounding-box collision verifier (`check_figure_overlaps`) for `communication_neuroprostheses_reproduction.{png,pdf,html}` and `index.html` (panels a–f since 2026-11-11; the RAM/VRAM panels and the PER-vs-WER phase diagram moved to the companion figure). The interactive HTML shows the phase/memory companion in its own "Insights" section, page-CSS-capped at the figure's natural 1210 px width (2026-11-12; the `.pdf`/`.png` stay full-size). Figure 6 country hover tooltips list each country's official languages from the curated `_OFFICIAL_LANGUAGES` table (Wikidata P37 / Wikipedia snapshot 2026-11, cross-checked with mledoze/countries; NE-only codes PSX/SOL/CYN/SDS/KOS/SAH handled by hand). |
+| `render_phase_memory_figure.py` | 4-panel companion figure — WER-vs-PER and WER-vs-CER phase diagrams plus the Host-RAM / GPU-VRAM memory-wall panels moved out of Figure 2 (2026-11-11) — rendering `communication_neuroprostheses_phase_memory.{png,pdf}`; `build_phase_memory_svg()` additionally serialises it as the inline SVG consumed by `render_figure2.export_interactive_html` (deferred import; builds in-process so CI render order does not matter). |
 | `environment.yml` / `requirements.txt` | Verified Conda/pip environment specification (`bci-repro`: Python 3.11.18, CUDA 12.8, PyTorch 2.11.0+cu128, TensorFlow 2.14.0). |
 
 ---
@@ -73,8 +76,10 @@ conda activate bci-repro
 After modifying any aggregation script, evaluation utility, or `reproduction_benchmark.yaml`, always run:
 ```bash
 python build_session_per_vs_wer.py
+python build_session_cer_vs_wer.py
 python shared/tools/wer_from_tsv.py 20230831_willett/results/decode_outputs/wl_5g_opt_official.tsv
 python render_figure2.py
+python render_phase_memory_figure.py
 ```
 
 ---

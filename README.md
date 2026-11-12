@@ -7,7 +7,8 @@ Reproducing **8 open-data speech, typing, and handwriting neuroprosthesis studie
 ![Communication Neuroprostheses Reproduction Benchmark](communication_neuroprostheses_reproduction.png)
 
 - **Vector PDF (TrueType Type-42 embedded)**: [`communication_neuroprostheses_reproduction.pdf`](communication_neuroprostheses_reproduction.pdf)
-- **Interactive HTML edition (single file, no dependencies)**: [`communication_neuroprostheses_reproduction.html`](communication_neuroprostheses_reproduction.html) ([`index.html`](index.html)) — Interactive vector SVG edition combining **Figure 2** (Panels a–i: 32-study vocabulary funnel, open-sourced dataset size, online WER, online speed, consumer-GPU acoustic & full-pipeline WER reproductions, Host RAM & GPU VRAM walls, and the 77-session `PER = 25%` phase diagram) and **Figure 6** (Panels a–d: discrete `CTC-TLG` vs. continuous `Brain-to-Voice` decoding cascades and their global linguistic applicability across ~7,000 spoken languages, highlighting the three limits of `CTC-TLG`), plus an interactive 8-study reproduction ledger, selected-study spotlight, and filterable study cards.
+- **Phase-diagram & memory-wall companion figure (4 panels)**: [`communication_neuroprostheses_phase_memory.png`](communication_neuroprostheses_phase_memory.png) ([`.pdf`](communication_neuroprostheses_phase_memory.pdf)) — session-level **WER vs PER** and **WER vs CER** phase diagrams (raw CER from our Willett 2021 / Fan 2023 / Jude 2026a reproductions, no-LM baseline 1−(1−CER)^5.1) plus the **Host RAM** and **GPU VRAM** walls moved out of Figure 2 on 2026-11-11; data from `session_cer_vs_wer.json` + `reproduction_benchmark.yaml`.
+- **Interactive HTML edition (single file, no dependencies)**: [`communication_neuroprostheses_reproduction.html`](communication_neuroprostheses_reproduction.html) ([`index.html`](index.html)) — Interactive vector SVG edition combining **Figure 2** (Panels a–g: 32-study vocabulary funnel, open-sourced dataset size, online WER, online speed, consumer-GPU acoustic & full-pipeline WER reproductions, and the 77-session `PER = 25%` phase diagram) and **Figure 6** (Panels a–d: discrete `CTC-TLG` vs. continuous `Brain-to-Voice` decoding cascades and their global linguistic applicability across ~7,000 spoken languages, highlighting the three limits of `CTC-TLG`), plus an interactive 8-study reproduction ledger, selected-study spotlight, and filterable study cards.
 
 ---
 
@@ -74,9 +75,9 @@ communication-neuroprostheses-reproduction/
 ├── AGENTS.md                             # Root + per-directory AI Agent collaboration guides (ZCode / Claude Code)
 ├── environment.yml                       # Full Conda environment specification (name: bci-repro)
 ├── requirements.txt                      # Full pinned pip package list for bci-repro
-├── reproduction_benchmark.yaml           # Structured dataset for the benchmark overview figure (panels a–h)
+├── reproduction_benchmark.yaml           # Structured dataset for the benchmark overview figure (panels a–f) and the companion figure
 ├── reproduction_benchmark.json           # Auto-synced JSON mirror of reproduction_benchmark.yaml
-├── session_per_vs_wer.json               # Session-level (PER, post-LM WER) pairs for panel (i)
+├── session_per_vs_wer.json               # Session-level (PER, post-LM WER) pairs for the companion figure panel (a)
 ├── build_session_per_vs_wer.py           # Recomputes session_per_vs_wer.json from per-trial decode TSVs
 ├── communication_neuroprostheses_reproduction.html # Interactive HTML edition (Figure 2 + Figure 6: Limit of CTC-TLG)
 └── render_figure2.py                     # Standalone renderer + overlap verifier for .png, .pdf, and .html
