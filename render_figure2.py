@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 """Standalone renderer for the 8-Study Consumer-GPU (16 GB VRAM / 64 GB RAM)
 Communication Neuroprostheses Reproduction Benchmark (Figure 2) and its
-interactive HTML edition (Figure 2 + the 4-panel phase/memory companion in
-its own "Insights" section at native size + Figure 6: The Limit of CTC-TLG).
+interactive HTML edition (Figure 2 + the phase-diagram companion panels in
+an "Insights" section and the memory-wall panels in a "Memory Savings"
+section, both at native size + Figure 6: The Limit of CTC-TLG).
 
 Reads `reproduction_benchmark.yaml` in this repository, syncs
 `reproduction_benchmark.json`, verifies zero text overlaps,
@@ -3323,16 +3324,17 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
   .nav-pill:hover { border-color: var(--accent); background: var(--accent-soft); }
 
   /* ---------- figure boxes ---------- */
-  #benchbox, #fig6box, #pmbox { position: relative; background: var(--card); border: 1px solid var(--line);
+  #benchbox, #fig6box, #pmbox, #mmbox { position: relative; background: var(--card); border: 1px solid var(--line);
                         border-radius: 14px; padding: 10px 10px 6px; }
   #benchbox:fullscreen, #benchbox:-webkit-full-screen, #benchbox.is-fullscreen,
   #fig6box:fullscreen, #fig6box:-webkit-full-screen, #fig6box.is-fullscreen,
-  #pmbox:fullscreen, #pmbox:-webkit-full-screen, #pmbox.is-fullscreen {
+  #pmbox:fullscreen, #pmbox:-webkit-full-screen, #pmbox.is-fullscreen,
+  #mmbox:fullscreen, #mmbox:-webkit-full-screen, #mmbox.is-fullscreen {
     background: var(--card); border: none; border-radius: 0; padding: 14px 18px;
     display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
     overflow: auto; width: 100vw; height: 100vh;
   }
-  #benchbox.is-fullscreen, #fig6box.is-fullscreen, #pmbox.is-fullscreen { position: fixed; inset: 0; z-index: 9999; }
+  #benchbox.is-fullscreen, #fig6box.is-fullscreen, #pmbox.is-fullscreen, #mmbox.is-fullscreen { position: fixed; inset: 0; z-index: 9999; }
   #f2-svg, #f6-svg { width: 100%; height: auto; display: block; border-radius: 8px; }
   /* 2026-11-12 Insights round (user: "算了，还是新开一个section吧，就叫 Insights";
      "四个 panel 在网页中打开看上去很大，和其他图片不太适应，不要动 pdf 和 png，
@@ -3340,24 +3342,29 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
      box for its own "Insights" section and is capped at its natural CSS size
      (12.6 in x 96 dpi = 1210 px) and centered, so its panels no longer render
      larger than the Figure 2 / Figure 6 panels. The .pdf/.png outputs are
-     untouched; full screen lifts the cap. */
-  #pm-svg { width: 100%; max-width: 1210px; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
+     untouched; full screen lifts the cap.
+     2026-11-13 split round (user: "把 Insights 拆成两节吧，a b 是 insights，
+     c d 是节约"): the companion is split into two 1x2 SVGs — #pm-svg (a, b)
+     stays in "Insights", #mm-svg (c, d) goes to the new "Memory Savings"
+     section; both keep the 1210 px cap. */
+  #pm-svg, #mm-svg { width: 100%; max-width: 1210px; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
   #benchbox:fullscreen #f2-svg, #benchbox:-webkit-full-screen #f2-svg, #benchbox.is-fullscreen #f2-svg,
   #fig6box:fullscreen #f6-svg, #fig6box:-webkit-full-screen #f6-svg, #fig6box.is-fullscreen #f6-svg {
     width: 100%; height: auto; max-width: 100%;
   }
-  #pmbox:fullscreen #pm-svg, #pmbox:-webkit-full-screen #pm-svg, #pmbox.is-fullscreen #pm-svg {
+  #pmbox:fullscreen #pm-svg, #pmbox:-webkit-full-screen #pm-svg, #pmbox.is-fullscreen #pm-svg,
+  #mmbox:fullscreen #mm-svg, #mmbox:-webkit-full-screen #mm-svg, #mmbox.is-fullscreen #mm-svg {
     width: 100%; height: auto; max-width: 100%;
   }
-  #f2-fs-btn, #f6-fs-btn, #pm-fs-btn { position: absolute; top: 14px; right: 16px; z-index: 10;
+  #f2-fs-btn, #f6-fs-btn, #pm-fs-btn, #mm-fs-btn { position: absolute; top: 14px; right: 16px; z-index: 10;
                            display: inline-flex; align-items: center; gap: 6px;
                            border: 1px solid var(--line); background: rgba(255, 255, 255, .92);
                            backdrop-filter: blur(4px); border-radius: 999px; padding: 5px 12px;
                            font-size: 12px; font-weight: 500; color: var(--muted); cursor: pointer;
                            box-shadow: 0 1px 4px rgba(15, 36, 64, .06); transition: all .12s ease; }
-  #f2-fs-btn:hover, #f6-fs-btn:hover, #pm-fs-btn:hover { color: var(--ink); border-color: var(--faint);
+  #f2-fs-btn:hover, #f6-fs-btn:hover, #pm-fs-btn:hover, #mm-fs-btn:hover { color: var(--ink); border-color: var(--faint);
                                        box-shadow: 0 2px 8px rgba(15, 36, 64, .10); }
-  #f2-fs-btn svg, #f6-fs-btn svg, #pm-fs-btn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 1.8;
+  #f2-fs-btn svg, #f6-fs-btn svg, #pm-fs-btn svg, #mm-fs-btn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 1.8;
                                    fill: none; stroke-linecap: round; stroke-linejoin: round; flex: none; }
   #f2-svg text, #f6-svg text { font-family: "Segoe UI", "DejaVu Sans", Arial, sans-serif; }
 
@@ -3585,7 +3592,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
 
   <div class="sec" id="pm-sec">
     <h2>Insights</h2>
-    <span class="count" id="pm-count">Session-level phase diagrams (post-LM WER vs. greedy PER / raw CER) and the memory wall: our 64 GB RAM / 16 GB VRAM stack vs. official pipelines</span>
+    <span class="count" id="pm-count">Session-level phase diagrams (post-LM WER vs. greedy PER / raw CER)</span>
     <span class="rule"></span>
     <button id="pm-toggle" class="sec-btn" type="button">Hide</button>
   </div>
@@ -3594,7 +3601,21 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
       <svg id="pm-fs-ico" viewBox="0 0 16 16"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg>
       <span id="pm-fs-lbl">Full screen</span>
     </button>
-    __PM_FULL_SVG__
+    __PM_PHASE_SVG__
+  </div>
+
+  <div class="sec" id="mm-sec">
+    <h2>Memory Savings</h2>
+    <span class="count" id="mm-count">The memory wall: our 64 GB RAM / 16 GB VRAM stack vs. official pipelines</span>
+    <span class="rule"></span>
+    <button id="mm-toggle" class="sec-btn" type="button">Hide</button>
+  </div>
+  <div id="mmbox">
+    <button id="mm-fs-btn" type="button" title="Toggle full screen" aria-label="Toggle full screen">
+      <svg id="mm-fs-ico" viewBox="0 0 16 16"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg>
+      <span id="mm-fs-lbl">Full screen</span>
+    </button>
+    __PM_MEMORY_SVG__
   </div>
 
   <div class="sec" id="fig6-sec">
@@ -4195,6 +4216,12 @@ const pmFsLbl = document.getElementById('pm-fs-lbl');
 const pmFsIco = document.getElementById('pm-fs-ico');
 const pmToggle = document.getElementById('pm-toggle');
 
+const mmbox = document.getElementById('mmbox');
+const mmFsBtn = document.getElementById('mm-fs-btn');
+const mmFsLbl = document.getElementById('mm-fs-lbl');
+const mmFsIco = document.getElementById('mm-fs-ico');
+const mmToggle = document.getElementById('mm-toggle');
+
 const reprobox = document.getElementById('reprobox');
 const reproToggle = document.getElementById('repro-toggle');
 const cardsbox = document.getElementById('cardsbox');
@@ -4208,7 +4235,7 @@ function isBoxFs(box){
                  document.webkitFullscreenElement === box ||
                  box.classList.contains('is-fullscreen'));
 }
-function isFs(){ return isBoxFs(benchbox) || isBoxFs(fig6box) || isBoxFs(pmbox); }
+function isFs(){ return isBoxFs(benchbox) || isBoxFs(fig6box) || isBoxFs(pmbox) || isBoxFs(mmbox); }
 function syncFsUI(){
   const on2 = isBoxFs(benchbox);
   f2FsLbl.textContent = on2 ? 'Exit full screen' : 'Full screen';
@@ -4219,20 +4246,25 @@ function syncFsUI(){
   const onP = isBoxFs(pmbox);
   pmFsLbl.textContent = onP ? 'Exit full screen' : 'Full screen';
   pmFsIco.innerHTML = `<path d="${onP ? FS_EXIT_PATH : FS_ENTER_PATH}"/>`;
+  const onM = isBoxFs(mmbox);
+  mmFsLbl.textContent = onM ? 'Exit full screen' : 'Full screen';
+  mmFsIco.innerHTML = `<path d="${onM ? FS_EXIT_PATH : FS_ENTER_PATH}"/>`;
   document.body.style.overflow =
     (benchbox.classList.contains('is-fullscreen') || fig6box.classList.contains('is-fullscreen') ||
-     pmbox.classList.contains('is-fullscreen')) ? 'hidden' : '';
+     pmbox.classList.contains('is-fullscreen') || mmbox.classList.contains('is-fullscreen')) ? 'hidden' : '';
 }
 function exitFs(){
   if ((document.fullscreenElement === benchbox || document.fullscreenElement === fig6box ||
-       document.fullscreenElement === pmbox) && document.exitFullscreen)
+       document.fullscreenElement === pmbox || document.fullscreenElement === mmbox) && document.exitFullscreen)
     document.exitFullscreen().catch(() => {});
   else if ((document.webkitFullscreenElement === benchbox || document.webkitFullscreenElement === fig6box ||
-            document.webkitFullscreenElement === pmbox) && document.webkitExitFullscreen)
+            document.webkitFullscreenElement === pmbox || document.webkitFullscreenElement === mmbox) &&
+           document.webkitExitFullscreen)
     document.webkitExitFullscreen();
   benchbox.classList.remove('is-fullscreen');
   fig6box.classList.remove('is-fullscreen');
   pmbox.classList.remove('is-fullscreen');
+  mmbox.classList.remove('is-fullscreen');
   syncFsUI();
 }
 function toggleBoxFs(box){
@@ -4254,6 +4286,7 @@ function toggleBoxFs(box){
 f2FsBtn.addEventListener('click', ev => { ev.stopPropagation(); toggleBoxFs(benchbox); });
 f6FsBtn.addEventListener('click', ev => { ev.stopPropagation(); toggleBoxFs(fig6box); });
 pmFsBtn.addEventListener('click', ev => { ev.stopPropagation(); toggleBoxFs(pmbox); });
+mmFsBtn.addEventListener('click', ev => { ev.stopPropagation(); toggleBoxFs(mmbox); });
 document.addEventListener('fullscreenchange', syncFsUI);
 document.addEventListener('webkitfullscreenchange', syncFsUI);
 
@@ -4271,6 +4304,11 @@ pmToggle.addEventListener('click', () => {
   const hidden = pmbox.style.display === 'none';
   pmbox.style.display = hidden ? '' : 'none';
   pmToggle.textContent = hidden ? 'Hide' : 'Show';
+});
+mmToggle.addEventListener('click', () => {
+  const hidden = mmbox.style.display === 'none';
+  mmbox.style.display = hidden ? '' : 'none';
+  mmToggle.textContent = hidden ? 'Hide' : 'Show';
 });
 reproToggle.addEventListener('click', () => {
   const hidden = reprobox.style.display === 'none';
@@ -4316,10 +4354,11 @@ def export_interactive_html(
     out_html,
     f2_svg_tuple,
     verify_overlaps=True,
-    pm_svg_tuple=None,
+    pm_svgs=None,
 ):
     """Write the single-file interactive HTML edition showcasing Figure 2
-    (Panels a-f), the 4-panel phase/memory companion in its own "Insights"
+    (Panels a-f), the phase-diagram panels (a)/(b) in the "Insights"
+    section, the memory-wall panels (c)/(d) in their own "Memory Savings"
     section, and Figure 6 (The Limit of CTC-TLG, Panels a-d).
 
     Parameters
@@ -4330,12 +4369,12 @@ def export_interactive_html(
         ``(svg_inner, vw, vh)`` produced by :func:`_build_fig2_full_svg`.
     verify_overlaps : bool, optional
         Whether to run the pairwise text overlap check on Figure 6.
-    pm_svg_tuple : tuple of (str, int, int), optional
-        ``(svg_element, vw, vh)`` produced by
-        ``render_phase_memory_figure.build_phase_memory_svg``. When
-        ``None`` (default) it is built in-process via a deferred import,
-        so CI can run ``render_figure2.py`` before
-        ``render_phase_memory_figure.py`` without stale artifacts.
+    pm_svgs : dict of str to tuple of (str, int, int), optional
+        ``{"phase": (svg, vw, vh), "memory": (svg, vw, vh)}`` produced by
+        ``render_phase_memory_figure.build_html_svgs``. When ``None``
+        (default) it is built in-process via a deferred import, so CI can
+        run ``render_figure2.py`` before ``render_phase_memory_figure.py``
+        without stale artifacts.
 
     Notes
     -----
@@ -4345,14 +4384,20 @@ def export_interactive_html(
     section 吧，就叫 Insights"; "四个 panel 在网页中打开看上去很大，和其他
     图片不太适应") -- the page CSS caps ``#pm-svg`` at 1210 px (12.6 in x
     96 dpi) and centers it, without touching the ``.pdf``/``.png`` outputs.
+    2026-11-13 split round (user: "把 Insights 拆成两节吧，a b 是 insights，
+    c d 是节约"): the single 4-panel SVG is replaced by two 1x2 SVGs --
+    ``#pm-svg`` (panels a, b) stays in "Insights" and ``#mm-svg`` (panels
+    c, d) moves to the new "Memory Savings" section, each with its own
+    full-screen button and the same 1210 px cap.
     """
     f2_svg_inner, f2_vw, f2_vh = f2_svg_tuple
-    if pm_svg_tuple is None:
+    if pm_svgs is None:
         # Deferred import: render_phase_memory_figure imports symbols from
         # this module, so a top-level import would be circular.
-        from render_phase_memory_figure import build_phase_memory_svg
-        pm_svg_tuple = build_phase_memory_svg()
-    pm_svg_element, pm_vw, pm_vh = pm_svg_tuple
+        from render_phase_memory_figure import build_html_svgs
+        pm_svgs = build_html_svgs()
+    pm_svg_element = pm_svgs["phase"][0]
+    mm_svg_element = pm_svgs["memory"][0]
     f6_svg_inner, f6_vw, f6_vh = _build_fig6_svg(verify_overlaps=verify_overlaps)
     studies_list = json.loads(
         zlib.decompress(base64.b64decode(_STUDIES_B64)).decode("utf-8")
@@ -4367,7 +4412,8 @@ def export_interactive_html(
         .replace("__FIG2_FULL__", f2_svg_inner)
         .replace("__F2_VW__", str(f2_vw))
         .replace("__F2_VH__", str(f2_vh))
-        .replace("__PM_FULL_SVG__", pm_svg_element)
+        .replace("__PM_PHASE_SVG__", pm_svg_element)
+        .replace("__PM_MEMORY_SVG__", mm_svg_element)
         .replace("__FIG6_SVG__", f6_svg_inner)
         .replace("__F6_VW__", str(f6_vw))
         .replace("__F6_VH__", str(f6_vh))

@@ -29,11 +29,12 @@ four panels.
 Usage:
     python render_phase_memory_figure.py
 
-``build_phase_memory_svg`` additionally serialises the same figure as a
-self-contained inline SVG consumed by ``render_figure2.export_interactive_html``
-(the interactive HTML shows it in its own "Insights" section, capped at the
-figure's natural 1210 px CSS width — the ``.pdf``/``.png`` outputs are
-identical either way).
+``build_html_svgs`` additionally serialises the same panels as two
+self-contained inline SVGs consumed by ``render_figure2.export_interactive_html``
+(the interactive HTML shows panels (a)+(b) in its "Insights" section and the
+memory-wall panels (c)+(d) in its own "Memory Savings" section, each capped at
+the figure's natural 1210 px CSS width — the ``.pdf``/``.png`` outputs remain
+the single 4-panel figure either way).
 """
 import io
 import json
@@ -244,6 +245,51 @@ def _draw_memory_panel(ax, rows, ceiling, title, ylabel, y_max, y_ticks,
     ax.set_title(title, fontsize=11.0, fontweight="bold")
 
 
+def _load_yaml():
+    """Load the canonical benchmark YAML shared by all four panels.
+
+    Returns
+    -------
+    dict
+        Parsed ``reproduction_benchmark.yaml`` content.
+    """
+    with open(os.path.join(HERE, "reproduction_benchmark.yaml"), "r",
+              encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+
+def _draw_phase_row(ax_a, ax_b):
+    """Draw panels (a)/(b): the two session-level phase diagrams.
+
+    Parameters
+    ----------
+    ax_a, ax_b : matplotlib.axes.Axes
+        Left (PER vs. WER) and right (CER vs. WER) axes of the row.
+    """
+    _draw_per_panel(ax_a, os.path.join(HERE, "session_per_vs_wer.json"))
+    _draw_cer_panel(ax_b, os.path.join(HERE, "session_cer_vs_wer.json"))
+
+
+def _draw_memory_row(ax_c, ax_d, data):
+    """Draw panels (c)/(d): the ours-vs-official memory bar pairs.
+
+    Parameters
+    ----------
+    ax_c, ax_d : matplotlib.axes.Axes
+        Left (host RAM) and right (GPU VRAM) axes of the row.
+    data : dict
+        Parsed ``reproduction_benchmark.yaml`` content.
+    """
+    _draw_memory_panel(
+        ax_c, data["panel_g_host_ram_walls"], 64.0,
+        "(c) Host RAM across all 8 studies: our 64 GB PC vs. official stacks",
+        "Peak host RAM (GB)", 445, list(range(0, 401, 100)), 4.5, 23.0)
+    _draw_memory_panel(
+        ax_d, data["panel_h_gpu_vram_walls"], 16.0,
+        "(d) GPU VRAM across all 8 studies: our 16 GB GPU vs. official rigs",
+        "Peak GPU VRAM (GB)", 118.0, list(range(0, 101, 25)), 1.3, 6.8)
+
+
 def _build_figure():
     """Assemble the live 4-panel Matplotlib figure.
 
@@ -253,54 +299,77 @@ def _build_figure():
         Unchecked (no overlap verification yet) figure instance; the
         caller is responsible for ``check_figure_overlaps`` and closing.
     """
-    with open(os.path.join(HERE, "reproduction_benchmark.yaml"), "r",
-              encoding="utf-8") as f:
-        data = yaml.safe_load(f)
-
+    data = _load_yaml()
     fig = plt.figure(figsize=(12.6, 12.2))
     gs = fig.add_gridspec(2, 2, height_ratios=(1.0, 0.86), hspace=0.34,
                           wspace=0.24)
 
     ax_a = fig.add_subplot(gs[0, 0])
-    _draw_per_panel(ax_a, os.path.join(HERE, "session_per_vs_wer.json"))
     ax_b = fig.add_subplot(gs[0, 1])
-    _draw_cer_panel(ax_b, os.path.join(HERE, "session_cer_vs_wer.json"))
+    _draw_phase_row(ax_a, ax_b)
     ax_c = fig.add_subplot(gs[1, 0])
-    _draw_memory_panel(
-        ax_c, data["panel_g_host_ram_walls"], 64.0,
-        "(c) Host RAM across all 8 studies: our 64 GB PC vs. official stacks",
-        "Peak host RAM (GB)", 445, list(range(0, 401, 100)), 4.5, 23.0)
     ax_d = fig.add_subplot(gs[1, 1])
-    _draw_memory_panel(
-        ax_d, data["panel_h_gpu_vram_walls"], 16.0,
-        "(d) GPU VRAM across all 8 studies: our 16 GB GPU vs. official rigs",
-        "Peak GPU VRAM (GB)", 118.0, list(range(0, 101, 25)), 1.3, 6.8)
+    _draw_memory_row(ax_c, ax_d, data)
 
     fig.subplots_adjust(left=0.075, right=0.985, top=0.965, bottom=0.09)
     return fig
 
 
-def build_phase_memory_svg():
-    """Render the 4-panel companion figure as a self-contained inline SVG.
+def _build_phase_figure():
+    """Assemble the 1x2 phase-diagram figure (panels a+b only).
 
-    2026-11-12 HTML rounds (user: "把 phase_memory 图加入 html 的 Overview
-    之后"; then "算了，还是新开一个 section 吧，就叫 Insights"; "四个 panel
-    在网页中打开看上去很大，和其他图片不太适应，在 html 中处理一下"):
-    the interactive HTML shows this figure in its own "Insights" section,
-    so the exporter needs an in-process SVG serialisation that does not
-    depend on the ``.png``/``.pdf`` files (CI runs ``render_figure2.py``
-    before this script's ``main()``); page CSS caps the rendered width.
+    Returns
+    -------
+    matplotlib.figure.Figure
+        Unchecked figure instance for the HTML "Insights" section; the
+        caller is responsible for ``check_figure_overlaps`` and closing.
+    """
+    fig = plt.figure(figsize=(12.6, 6.4))
+    ax_a, ax_b = fig.subplots(1, 2)
+    _draw_phase_row(ax_a, ax_b)
+    fig.subplots_adjust(left=0.075, right=0.985, top=0.94, bottom=0.10,
+                        wspace=0.24)
+    return fig
+
+
+def _build_memory_figure():
+    """Assemble the 1x2 memory-wall figure (panels c+d only).
+
+    Returns
+    -------
+    matplotlib.figure.Figure
+        Unchecked figure instance for the HTML "Memory Savings" section;
+        the caller is responsible for ``check_figure_overlaps`` and closing.
+    """
+    data = _load_yaml()
+    fig = plt.figure(figsize=(12.6, 5.4))
+    ax_c, ax_d = fig.subplots(1, 2)
+    _draw_memory_row(ax_c, ax_d, data)
+    fig.subplots_adjust(left=0.075, right=0.985, top=0.92, bottom=0.12,
+                        wspace=0.24)
+    return fig
+
+
+def _checked_svg(fig, svg_id):
+    """Overlap-check a figure and serialise it as a self-contained SVG.
+
+    Parameters
+    ----------
+    fig : matplotlib.figure.Figure
+        Already-drawn figure; ``check_figure_overlaps`` must pass and the
+        figure is closed either way before returning.
+    svg_id : str
+        Root-element ``id`` stamped on the ``<svg>`` tag; Matplotlib's
+        internal ``<style>`` block is scoped under ``#<svg_id>`` so its
+        universal selectors cannot leak into the page-wide CSS.
 
     Returns
     -------
     tuple of (str, int, int)
         ``(svg_element, vw, vh)`` where ``svg_element`` is a complete
-        ``<svg id="pm-svg" viewBox="...">...</svg>`` element (fixed
-        ``width``/``height`` stripped so page CSS scales it, Matplotlib's
-        internal ``<style>`` block scoped under ``#pm-svg`` so its
-        universal selectors cannot leak into the page-wide CSS).
+        ``<svg id="<svg_id>" viewBox="...">...</svg>`` element with the
+        fixed ``width``/``height`` stripped so page CSS scales it.
     """
-    fig = _build_figure()
     bad = check_figure_overlaps(fig)
     if bad:
         plt.close(fig)
@@ -317,7 +386,7 @@ def build_phase_memory_svg():
     svg = re.sub(r"^<!--.*?-->\s*", "", svg, flags=re.DOTALL)
 
     # Scope Matplotlib's <style> block (e.g. ``*{stroke-linejoin: round}``)
-    # under #pm-svg: a bare universal selector inside an inline SVG would
+    # under #<svg_id>: a bare universal selector inside an inline SVG would
     # apply document-wide and silently restyle the hand-built f2/f6 SVGs.
     def _scope_style(match):
         rules = []
@@ -326,7 +395,7 @@ def build_phase_memory_svg():
                 continue
             sel, body = rule.split("{", 1)
             scoped = ", ".join(
-                f"#pm-svg {s.strip()}" for s in sel.split(",") if s.strip()
+                f"#{svg_id} {s.strip()}" for s in sel.split(",") if s.strip()
             )
             rules.append(f"{scoped}{{{body.strip()}}}")
         return ('<style type="text/css">' + " ".join(rules) + "</style>")
@@ -335,7 +404,7 @@ def build_phase_memory_svg():
                  _scope_style, svg, count=1, flags=re.DOTALL)
 
     # Drop the fixed pt width/height on the root tag only and stamp the id
-    # the page CSS (#pm-svg { width: 100%; height: auto; }) targets.
+    # the page CSS (e.g. ``#pm-svg { width: 100%; height: auto; }``) targets.
     root = re.search(r"<svg\b[^>]*>", svg)
     if root is None:
         raise RuntimeError("Matplotlib SVG output has no root <svg> tag")
@@ -343,9 +412,37 @@ def build_phase_memory_svg():
     vw_m = re.search(r'viewBox="([\d.]+) ([\d.]+)', root_tag)
     vw, vh = (int(round(float(g))) for g in vw_m.groups()) if vw_m else (0, 0)
     slim = re.sub(r'\s+(?:width|height)="[^"]*"', "", root_tag)
-    slim = slim.replace("<svg", '<svg id="pm-svg"', 1)
+    slim = slim.replace("<svg", f'<svg id="{svg_id}"', 1)
     svg = svg.replace(root_tag, slim, 1)
     return svg, vw, vh
+
+
+def build_html_svgs():
+    """Serialise the two HTML section figures as inline SVGs.
+
+    2026-11-12 HTML rounds (user: "把 phase_memory 图加入 html 的 Overview
+    之后"; then "算了，还是新开一个 section 吧，就叫 Insights"; "四个 panel
+    在网页中打开看上去很大，和其他图片不太适应，在 html 中处理一下"):
+    the interactive HTML showed the 4-panel companion in its own "Insights"
+    section. 2026-11-13 split round (user: "把 Insights 拆成两节吧，a b 是
+    insights，c d 是节约"): panels (a)/(b) stay in "Insights" while the
+    memory-wall panels (c)/(d) move to their own "Memory Savings" section,
+    so the exporter needs two in-process SVG serialisations that do not
+    depend on the ``.png``/``.pdf`` files (CI runs ``render_figure2.py``
+    before this script's ``main()``); page CSS caps the rendered width.
+    The standalone 4-panel ``.png``/``.pdf`` outputs are untouched.
+
+    Returns
+    -------
+    dict of str to tuple of (str, int, int)
+        ``{"phase": (svg_element, vw, vh), "memory": (svg_element, vw,
+        vh)}`` for the panels-(a)+(b) and panels-(c)+(d) 1x2 figures,
+        stamped ``#pm-svg`` and ``#mm-svg`` respectively.
+    """
+    return {
+        "phase": _checked_svg(_build_phase_figure(), "pm-svg"),
+        "memory": _checked_svg(_build_memory_figure(), "mm-svg"),
+    }
 
 
 def main():
