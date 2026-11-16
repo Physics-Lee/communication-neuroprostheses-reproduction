@@ -52,6 +52,69 @@ from render_figure2 import C_NORM, C_SPEECH_I, OPEN_C, check_figure_overlaps, to
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_STEM = os.path.join(HERE, "communication_neuroprostheses_phase_memory")
 
+# 2026-11-16 interactivity round (user: "给Insights和Memory Savings的四个
+# panel也加上可点击的交互，就像Overview和Limits of CTC-TLG"): every plottable
+# arm / memory row maps onto a study id from the interactive HTML's STUDIES
+# payload, so per-session markers, pooled stars, and ours/official bar pairs
+# can drive selectStudy() cross-highlighting on the page. The ids below must
+# stay in sync with the ``id`` fields decoded in render_figure2.py.
+_ARM_IDS = {
+    "Willett 2023 (T12)":   "willett2023",
+    "Card 2024 (T15)":      "card2024",
+    "Jude 2026 (LIS, T17)": "jude2026b",
+    "Willett 2021 (T5)":    "willett2021",
+    "Fan 2023 (T5)":        "fan2023",
+    "Jude 2026a (T17)":     "jude2026a",
+    "Jude 2026a (T18)":     "jude2026a",
+}
+_CATEGORY_IDS = {
+    "Willett et al., 2021 (T5)":       "willett2021",
+    "Willett et al., 2023 (T12)":      "willett2023",
+    "Fan et al., 2023 (T5)":           "fan2023",
+    "Card et al., 2024 (T15)":         "card2024",
+    "Wairagkar et al., 2025 (T15)":    "wairagkar2025",
+    "Kunz et al., 2025 (T12/15/16)":   "kunz2025",
+    "Jude et al., 2026a (T17/T18)":    "jude2026a",
+    "Jude et al., 2026b (T17)":        "jude2026b",
+}
+
+
+def _stamp_legend_gids(leg, panel, style):
+    """Stamp per-entry gid hooks on a phase-panel legend.
+
+    Parameters
+    ----------
+    leg : matplotlib.legend.Legend
+        Legend returned by ``ax.legend`` (one labeled entry per arm; the
+        legend title is left unhooked).
+    panel : str
+        Panel tag used in the gid, ``"per"`` or ``"cer"``.
+    style : dict
+        Arm style map (``name -> (color, marker, legend label)``); the
+        legend labels map back onto study ids via ``_ARM_IDS``.
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+    2026-11-16 legend round (user: "insights中的两张图的legend也改成可以交
+    互"): matplotlib's SVG backend wraps every gid-bearing artist in its own
+    ``<g id="...">``, so each legend handle gets ``pmLh--<panel>--<sid>``
+    and its label ``pmLt--<panel>--<sid>``. The page JS promotes both to
+    ``.pm-leg`` groups bound to tooltips and ``selectStudy()`` /
+    ``highlightStudy()`` exactly like the per-session markers. Gids never
+    reach the ``.png``/``.pdf`` serialisations.
+    """
+    label_sid = {lab: _ARM_IDS[name] for name, (_, _, lab) in style.items()}
+    for handle, text in zip(leg.legend_handles, leg.get_texts()):
+        sid = label_sid.get(text.get_text())
+        if sid is None:
+            continue
+        handle.set_gid(f"pmLh--{panel}--{sid}")
+        text.set_gid(f"pmLt--{panel}--{sid}")
+
 
 def _draw_per_panel(ax, session_path):
     """Draw panel (a): session-level PER vs. post-LM WER phase diagram.
@@ -96,15 +159,27 @@ def _draw_per_panel(ax, session_path):
         if name not in style:
             continue
         c, m, lab = style[name]
-        ax.scatter([s["per"] for s in v["sessions"]],
-                   [s["wer"] for s in v["sessions"]],
-                   s=34, marker=m, facecolor="none", edgecolor=c,
-                   lw=1.5, alpha=0.85, zorder=3, label=lab)
-        ax.scatter([v["pooled"]["per"]], [v["pooled"]["wer"]], s=120,
-                   marker="*", color=c, edgecolor="white", lw=0.6, zorder=4)
-    ax.legend(fontsize=8.2, frameon=False, loc="lower right",
-              title="per-session (open)   pooled (star)",
-              title_fontsize=8.2, borderaxespad=0.3, labelspacing=0.4)
+        sid = _ARM_IDS[name]
+        # One PathCollection per session point: the SVG backend then wraps
+        # each marker in its own <g id="pmS--..."> so the page JS can bind
+        # tooltips / selectStudy() per point. The first point keeps the arm
+        # label so the legend is unchanged.
+        for j, sess in enumerate(v["sessions"]):
+            coll = ax.scatter([sess["per"]], [sess["wer"]],
+                              s=34, marker=m, facecolor="none", edgecolor=c,
+                              lw=1.5, alpha=0.85, zorder=3,
+                              label=lab if j == 0 else None)
+            coll.set_gid(f"pmS--per--{sid}--{sess['session']}--"
+                         f"{sess['per']:g}--{sess['wer']:g}--{sess.get('n', '')}")
+        pool = ax.scatter([v["pooled"]["per"]], [v["pooled"]["wer"]], s=120,
+                          marker="*", color=c, edgecolor="white", lw=0.6,
+                          zorder=4)
+        pool.set_gid(f"pmP--per--{sid}--{v['pooled']['per']:g}--"
+                     f"{v['pooled']['wer']:g}")
+    leg = ax.legend(fontsize=8.2, frameon=False, loc="lower right",
+                    title="per-session (open)   pooled (star)",
+                    title_fontsize=8.2, borderaxespad=0.3, labelspacing=0.4)
+    _stamp_legend_gids(leg, "per", style)
     ax.set_xlim(0, lim)
     ax.set_ylim(0, lim + 3)
     ax.set_aspect("equal", adjustable="box")
@@ -159,15 +234,25 @@ def _draw_cer_panel(ax, session_path):
         if name not in style:
             continue
         c, m, lab = style[name]
-        ax.scatter([s["cer"] for s in v["sessions"]],
-                   [s["wer"] for s in v["sessions"]],
-                   s=34, marker=m, facecolor="none", edgecolor=c,
-                   lw=1.5, alpha=0.85, zorder=3, label=lab)
-        ax.scatter([v["pooled"]["cer"]], [v["pooled"]["wer"]], s=120,
-                   marker="*", color=c, edgecolor="white", lw=0.6, zorder=4)
-    ax.legend(fontsize=8.2, frameon=False, loc="lower right",
-              title="per-session (open)   pooled (star)",
-              title_fontsize=8.2, borderaxespad=0.3, labelspacing=0.4)
+        sid = _ARM_IDS[name]
+        # Per-point collections + gids, mirroring panel (a); see the note
+        # in _draw_per_panel.
+        for j, sess in enumerate(v["sessions"]):
+            coll = ax.scatter([sess["cer"]], [sess["wer"]],
+                              s=34, marker=m, facecolor="none", edgecolor=c,
+                              lw=1.5, alpha=0.85, zorder=3,
+                              label=lab if j == 0 else None)
+            coll.set_gid(f"pmS--cer--{sid}--{sess['session']}--"
+                         f"{sess['cer']:g}--{sess['wer']:g}--{sess.get('n', '')}")
+        pool = ax.scatter([v["pooled"]["cer"]], [v["pooled"]["wer"]], s=120,
+                          marker="*", color=c, edgecolor="white", lw=0.6,
+                          zorder=4)
+        pool.set_gid(f"pmP--cer--{sid}--{v['pooled']['cer']:g}--"
+                     f"{v['pooled']['wer']:g}")
+    leg = ax.legend(fontsize=8.2, frameon=False, loc="lower right",
+                    title="per-session (open)   pooled (star)",
+                    title_fontsize=8.2, borderaxespad=0.3, labelspacing=0.4)
+    _stamp_legend_gids(leg, "cer", style)
     ax.set_xlim(0, lim)
     ax.set_ylim(0, lim + 2)
     ax.set_aspect("equal", adjustable="box")
@@ -208,10 +293,18 @@ def _draw_memory_panel(ax, rows, ceiling, title, ylabel, y_max, y_ticks,
     fc_off = (*to_rgb(c_off), 0.35)
     x = np.arange(len(rows))
     w = 0.36
-    ax.bar(x - w / 2, [r["ours_gb"] for r in rows], w,
-           color=fc_ours, edgecolor=C_SPEECH_I, linewidth=0.9)
-    ax.bar(x + w / 2, [r["official_gb"] for r in rows], w,
-           color=fc_off, edgecolor=c_off, linewidth=0.9)
+    bars_ours = ax.bar(x - w / 2, [r["ours_gb"] for r in rows], w,
+                       color=fc_ours, edgecolor=C_SPEECH_I, linewidth=0.9)
+    bars_off = ax.bar(x + w / 2, [r["official_gb"] for r in rows], w,
+                      color=fc_off, edgecolor=c_off, linewidth=0.9)
+    # 2026-11-16 interactivity round: gid each bar patch so the page JS can
+    # bind tooltips / selectStudy() exactly like the Figure 2 slots. The
+    # unit tag disambiguates host RAM from GPU VRAM in the tooltip copy.
+    unit = "RAM" if ceiling > 32 else "VRAM"
+    for i, r in enumerate(rows):
+        sid = _CATEGORY_IDS[r["category"]]
+        bars_ours[i].set_gid(f"mmB--{unit}--ours--{sid}--{r['ours_gb']:g}")
+        bars_off[i].set_gid(f"mmB--{unit}--off--{sid}--{r['official_gb']:g}")
     for i, r in enumerate(rows):
         o_gb, p_gb = r["ours_gb"], r["official_gb"]
         o_str = f"{o_gb:.0f}" if o_gb == int(o_gb) else f"{o_gb:.1f}"
@@ -431,6 +524,16 @@ def build_html_svgs():
     depend on the ``.png``/``.pdf`` files (CI runs ``render_figure2.py``
     before this script's ``main()``); page CSS caps the rendered width.
     The standalone 4-panel ``.png``/``.pdf`` outputs are untouched.
+    2026-11-16 interactivity round (user: "给Insights和Memory Savings的
+    四个panel也加上可点击的交互，就像Overview和Limits of CTC-TLG"):
+    per-session markers, pooled stars, and ours/official bar pairs carry
+    ``<g id="pmS--…"> / pmP--… / mmB--…`` gid hooks (see ``_ARM_IDS`` /
+    ``_CATEGORY_IDS``) that the page JS binds to tooltips and
+    ``selectStudy()`` cross-highlighting. Legend round (user:
+    "insights中的两张图的legend也改成可以交互"): the phase panels'
+    legend handles/labels carry ``pmLh--/pmLt--`` gids (see
+    ``_stamp_legend_gids``). The ``.png``/``.pdf`` outputs are
+    pixel-identical (gids only live in the SVG serialisation).
 
     Returns
     -------

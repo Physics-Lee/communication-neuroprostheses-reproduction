@@ -3298,6 +3298,8 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>__TITLE__ · Interactive Edition</title>
+<script>/* progressive-enhancement flag: gates the .rv entrance-reveal CSS */
+document.documentElement.classList.add('js');</script>
 <style>
   :root {
     --ink: #1f2937; --muted: #6b7280; --faint: #9aa3af;
@@ -3311,6 +3313,26 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
          font: 14px/1.45 "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
          -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 1600px; margin: 0 auto; padding: 0 28px 80px; }
+
+  /* ---------- entrance reveal (top-to-bottom cascade on load / refresh) ----------
+     2026-11-16 round (user: "首次打开和刷新网页时，使用从上到下逐步展开的动画"):
+     static sections carry .rv in the markup and study cards are tagged .rv on
+     the first build only; the rules are gated behind the html.js flag set by
+     the inline <head> script, so a no-JS browser renders the page normally.
+     An IntersectionObserver flips .rv -> .in with a per-batch top-to-bottom
+     stagger (--rv-d); animationend then parks the element on .done
+     (animation: none) so later hover transforms keep working. The keyframes
+     animate the independent `translate` property, never `transform`. */
+  html.js .rv { opacity: 0; }
+  html.js .rv.in { animation: rv-up .62s cubic-bezier(.16, .84, .32, 1) both;
+                   animation-delay: var(--rv-d, 0ms); }
+  html.js .rv.done { opacity: 1; animation: none; }
+  @keyframes rv-up { from { opacity: 0; translate: 0 22px; }
+                     to { opacity: 1; translate: 0 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    html.js .rv { opacity: 1; }
+    html.js .rv.in { animation: none; }
+  }
 
   /* ---------- header ---------- */
   header { position: sticky; top: 0; z-index: 50; background: rgba(245, 246, 248, .92);
@@ -3475,6 +3497,37 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
   .f6-leg-item.active rect { stroke-width: 2.3px; }
   .f6-dimmed { opacity: 0.16 !important; }
 
+  /* ---------- Insights / Memory Savings interactive SVG classes ----------
+     2026-11-16 round (user: "给Insights和Memory Savings的四个panel也加上
+     可点击的交互，就像Overview和Limits of CTC-TLG"): the companion SVGs
+     carry pmS--/pmP--/mmB-- gid hooks that the page JS promotes to these
+     classes. Visual feedback uses drop-shadow filters instead of
+     stroke-width because the matplotlib-exported markers carry inline
+     styles a page stylesheet cannot override; dim/hide states reuse the
+     same inline-opacity logic the Figure 2 slots follow in apply(). */
+  #pm-svg .pm-sess, #pm-svg .pm-pool, #mm-svg .mm-bar {
+    cursor: pointer; transition: opacity .15s ease, filter .15s ease; }
+  #pm-svg .pm-sess:hover, #pm-svg .pm-sess.hovered,
+  #pm-svg .pm-pool:hover, #pm-svg .pm-pool.hovered,
+  #mm-svg .mm-bar:hover, #mm-svg .mm-bar.hovered {
+    filter: drop-shadow(0 0 2.6px rgba(15, 36, 64, .8)); }
+  #pm-svg .pm-sess.selected, #pm-svg .pm-pool.selected,
+  #mm-svg .mm-bar.selected {
+    filter: drop-shadow(0 0 3.2px rgba(15, 76, 129, .95)); }
+  /* 2026-11-16 legend round (user: "insights中的两张图的legend也改成可以交
+     互"): phase-panel legend handles/labels carry pmLh--/pmLt-- gids promoted
+     to .pm-leg-h / .pm-leg-t. Labels serialise as glyph <use> paths whose
+     colour is an inline fill on the inner <g>, so the accent recolour needs
+     !important; handles reuse the marker drop-shadow feedback. */
+  #pm-svg .pm-leg { cursor: pointer; transition: opacity .15s ease, filter .15s ease; }
+  #pm-svg .pm-leg-h:hover, #pm-svg .pm-leg-h.hovered {
+    filter: drop-shadow(0 0 2.6px rgba(15, 36, 64, .8)); }
+  #pm-svg .pm-leg-h.selected {
+    filter: drop-shadow(0 0 3.2px rgba(15, 76, 129, .95)); }
+  #pm-svg .pm-leg-t:hover g, #pm-svg .pm-leg-t.hovered g, #pm-svg .pm-leg-t.selected g {
+    fill: var(--accent) !important;
+    filter: drop-shadow(0 0 2.2px rgba(15, 76, 129, .45)); }
+
   /* ---------- CTC-TLG 3-limits diagnostic strip ---------- */
   .limits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
                  gap: 12px; margin: 10px 4px 6px; padding-top: 10px; border-top: 1px solid var(--line); }
@@ -3600,7 +3653,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
 <body>
 <div id="svg-tip"></div>
 <div class="wrap">
-  <header>
+  <header class="rv">
     <div class="head-row">
       <h1>__TITLE_H1__</h1>
       <div class="head-tools">
@@ -3613,7 +3666,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
     </div>
   </header>
 
-  <div id="panel">
+  <div id="panel" class="rv">
     <div class="groups" id="controls"></div>
     <div class="bottom-row">
       <span class="mode-lbl">Filter view</span>
@@ -3630,13 +3683,13 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
     </div>
   </div>
 
-  <div class="sec" id="bench-sec" style="margin-top:20px">
+  <div class="sec rv" id="bench-sec" style="margin-top:20px">
     <h2>Overview</h2>
     <span class="count" id="bench-count"></span>
     <span class="rule"></span>
     <button id="bench-toggle" class="sec-btn" type="button">Hide</button>
   </div>
-  <div id="benchbox">
+  <div id="benchbox" class="rv">
     <button id="f2-fs-btn" type="button" title="Toggle full screen (F)" aria-label="Toggle full screen">
       <svg id="f2-fs-ico" viewBox="0 0 16 16"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg>
       <span id="f2-fs-lbl">Full screen</span>
@@ -3644,23 +3697,13 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
     <svg id="f2-svg" viewBox="0 0 __F2_VW__ __F2_VH__" xmlns="http://www.w3.org/2000/svg">__FIG2_FULL__</svg>
   </div>
 
-  <div id="spotlight" style="display:none">
-    <button id="sp-close" title="Close">×</button>
-    <div id="sp-body"></div>
-    <div class="sp-nav">
-      <button id="sp-prev">← Previous</button>
-      <button id="sp-next">Next →</button>
-      <span id="sp-pos"></span>
-    </div>
-  </div>
-
-  <div class="sec" id="pm-sec">
+  <div class="sec rv" id="pm-sec">
     <h2>Insights</h2>
     <span class="count" id="pm-count">Session-level phase diagrams (post-LM WER vs. greedy PER / raw CER)</span>
     <span class="rule"></span>
     <button id="pm-toggle" class="sec-btn" type="button">Hide</button>
   </div>
-  <div id="pmbox">
+  <div id="pmbox" class="rv">
     <button id="pm-fs-btn" type="button" title="Toggle full screen" aria-label="Toggle full screen">
       <svg id="pm-fs-ico" viewBox="0 0 16 16"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg>
       <span id="pm-fs-lbl">Full screen</span>
@@ -3668,13 +3711,13 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
     __PM_PHASE_SVG__
   </div>
 
-  <div class="sec" id="mm-sec">
+  <div class="sec rv" id="mm-sec">
     <h2>Memory Savings</h2>
     <span class="count" id="mm-count">The memory wall: our 64 GB RAM / 16 GB VRAM stack vs. official pipelines</span>
     <span class="rule"></span>
     <button id="mm-toggle" class="sec-btn" type="button">Hide</button>
   </div>
-  <div id="mmbox">
+  <div id="mmbox" class="rv">
     <button id="mm-fs-btn" type="button" title="Toggle full screen" aria-label="Toggle full screen">
       <svg id="mm-fs-ico" viewBox="0 0 16 16"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg>
       <span id="mm-fs-lbl">Full screen</span>
@@ -3682,13 +3725,13 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
     __PM_MEMORY_SVG__
   </div>
 
-  <div class="sec" id="fig6-sec">
+  <div class="sec rv" id="fig6-sec">
     <h2>Limits of CTC-TLG</h2>
     <span class="count" id="fig6-count">Click any tier in the master legend, either map legend (or any country / module) to compare Brain-to-text vs. Brain-to-Voice across ~7,000 spoken languages</span>
     <span class="rule"></span>
     <button id="fig6-toggle" class="sec-btn" type="button">Hide</button>
   </div>
-  <div id="fig6box">
+  <div id="fig6box" class="rv">
     <button id="f6-fs-btn" type="button" title="Toggle full screen" aria-label="Toggle full screen">
       <svg id="f6-fs-ico" viewBox="0 0 16 16"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg>
       <span id="f6-fs-lbl">Full screen</span>
@@ -3710,13 +3753,13 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
     </div>
   </div>
 
-  <div class="sec" id="repro-sec">
+  <div class="sec rv" id="repro-sec">
     <h2>Reproduction Ledger</h2>
     <span class="count" id="repro-count">8 open-data studies reproduced end-to-end (click any row to inspect)</span>
     <span class="rule"></span>
     <button id="repro-toggle" class="sec-btn" type="button">Hide</button>
   </div>
-  <div id="reprobox">
+  <div id="reprobox" class="rv">
     <p class="cohort-sub">
       <b>Hardware target</b>: 1× NVIDIA GeForce RTX 5060 Ti (16 GB VRAM) + 64 GB DDR5 host RAM ·
       <b>★</b> satisfies Open Data, Online Decoding, Vocabulary &gt; 71.4k, Online WER &lt; 12.8% &amp; Vocal Paralysis (△) ·
@@ -3742,7 +3785,20 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
     </p>
   </div>
 
-  <div class="sec" id="cards-sec">
+  <!-- 2026-11-16: spotlight ("SELECTED STUDY") moved from directly under the
+       Figure 2 benchbox to below the Reproduction Ledger table, so clicking a
+       ledger row opens its breakdown right under the table (user request). -->
+  <div id="spotlight" style="display:none">
+    <button id="sp-close" title="Close">×</button>
+    <div id="sp-body"></div>
+    <div class="sp-nav">
+      <button id="sp-prev">← Previous</button>
+      <button id="sp-next">Next →</button>
+      <span id="sp-pos"></span>
+    </div>
+  </div>
+
+  <div class="sec rv" id="cards-sec">
     <h2>Study Cards</h2>
     <span class="count" id="cards-count"></span>
     <span class="rule"></span>
@@ -3927,14 +3983,18 @@ function rebuildCards(visStudies){
 }
 
 function highlightStudy(sid, on){
-  document.querySelectorAll(`.f2-slot[data-id="${sid}"], .f2-sess[data-id="${sid}"]`).forEach(el => {
+  document.querySelectorAll(
+    `.f2-slot[data-id="${sid}"], .f2-sess[data-id="${sid}"],` +
+    ` .pm-sess[data-id="${sid}"], .pm-pool[data-id="${sid}"],` +
+    ` .pm-leg[data-id="${sid}"], .mm-bar[data-id="${sid}"]`
+  ).forEach(el => {
     el.classList.toggle('hovered', on);
   });
 }
 
 function selectStudy(id, scrollPage){
   selectedId = id;
-  document.querySelectorAll('.study-card, .f2-slot, .f2-sess, .repro-row').forEach(c =>
+  document.querySelectorAll('.study-card, .f2-slot, .f2-sess, .repro-row, .pm-sess, .pm-pool, .pm-leg, .mm-bar').forEach(c =>
     c.classList.toggle('selected', Boolean(id && c.dataset.id === id)));
   const sp = document.getElementById('spotlight');
   if (!id){ sp.style.display = 'none'; return; }
@@ -3982,10 +4042,12 @@ function apply(){
   document.getElementById('vis-count').textContent = vis.length + ' / ' + N;
   document.getElementById('vis-people').textContent = visPids.size + ' / ' + TOTAL_PIDS;
 
-  document.querySelectorAll('.f2-slot, .f2-drop, .f2-sess').forEach(el => {
+  document.querySelectorAll('.f2-slot, .f2-drop, .f2-sess, .pm-sess, .pm-pool, .pm-leg, .mm-bar').forEach(el => {
     const sid = el.dataset.id;
     const on = visIds.has(sid);
-    if (mode === 'hide' && el.classList.contains('f2-sess')){
+    // SVG has no flow layout, so display:none keeps every remaining mark
+    // "in place"; dim mode instead leaves a 13%-opacity ghost.
+    if (mode === 'hide'){
       el.style.display = on ? '' : 'none';
       el.style.opacity = '1';
     } else {
@@ -4178,10 +4240,26 @@ function moveTip(ev){
 }
 function hideTip(){ tipEl.style.display = 'none'; }
 
+/* 2026-11-16 duplicate-tooltip fix (user: "为啥光标放在这里是会出来一黑一白
+   两个"): every SVG <title> child ALSO triggers the browser's own native
+   hover box (white, ~1 s delay, does not follow the cursor) on top of our
+   custom #svg-tip (black, immediate), so the same text renders twice.
+   Hoist the text into a data-tip attribute and drop the <title> node on
+   exactly the elements we bind ourselves; with JS disabled the <title>
+   elements survive untouched and keep serving as the static no-JS /
+   screen-reader fallback. */
+function claimTitle(el){
+  const tNode = el.querySelector('title');
+  if (!tNode) return '';
+  const text = tNode.textContent;
+  el.dataset.tip = text;
+  tNode.remove();
+  return text;
+}
+
 document.querySelectorAll('.f2-slot, .f2-sess, .f2-sess-leg').forEach(el => {
   const sid = el.dataset.id;
-  const tNode = el.querySelector('title');
-  const tipText = tNode ? tNode.textContent : '';
+  const tipText = claimTitle(el);
   el.addEventListener('click', ev => {
     ev.stopPropagation();
     selectStudy(sid, true);
@@ -4230,8 +4308,7 @@ document.querySelectorAll('.f6-leg-item').forEach(it => {
 
 document.querySelectorAll('#f6-svg .f6-country').forEach(cEl => {
   const a3 = cEl.dataset.a3;
-  const tNode = cEl.querySelector('title');
-  const tipText = tNode ? tNode.textContent : '';
+  const tipText = claimTitle(cEl);
   cEl.addEventListener('mouseenter', ev => {
     document.querySelectorAll(`#f6-svg .f6-country[data-a3="${a3}"]`).forEach(x => x.classList.add('hovered'));
     showTip(ev, tipText);
@@ -4248,8 +4325,7 @@ document.querySelectorAll('#f6-svg .f6-country').forEach(cEl => {
 });
 
 document.querySelectorAll('#f6-svg .f6-belt, #f6-svg .f6-node').forEach(el => {
-  const tNode = el.querySelector('title');
-  const tipText = tNode ? tNode.textContent : '';
+  const tipText = claimTitle(el);
   el.addEventListener('mouseenter', ev => showTip(ev, tipText));
   el.addEventListener('mousemove', moveTip);
   el.addEventListener('mouseleave', hideTip);
@@ -4261,6 +4337,73 @@ document.querySelectorAll('#f6-svg .f6-belt, #f6-svg .f6-node').forEach(el => {
       setF6Tier(el.dataset.f6Tier, el.dataset.f6Map || el.dataset.map);
     }
   });
+});
+
+/* ---------- Insights / Memory Savings interactivity ----------
+   2026-11-16 round (user: "给Insights和Memory Savings的四个panel也加上
+   可点击的交互，就像Overview和Limits of CTC-TLG"): the companion SVGs
+   stamp <g id="pmS--…/pmP--…/mmB--…"> hooks (render_phase_memory_figure
+   gid scheme, see _ARM_IDS / _CATEGORY_IDS). Parse each gid into a
+   data-id + tooltip payload, then bind the same tooltip /
+   selectStudy() / highlightStudy() cross-highlighting the Figure 2
+   slots use:
+     pmS--<per|cer>--<sid>--<session>--<x>--<y>--<n>
+     pmP--<per|cer>--<sid>--<x>--<y>
+     mmB--<RAM|VRAM>--<ours|off>--<sid>--<gb>
+   Legend round (user: "insights中的两张图的legend也改成可以交互"):
+   each phase-panel legend handle + label carries
+     pmLh--<per|cer>--<sid>  /  pmLt--<per|cer>--<sid>
+   and is promoted to .pm-leg groups with the same bindings. */
+function pmArmLabel(sid){
+  const r = STUDIES.find(s => s.id === sid);
+  return r ? r.citation : sid;
+}
+function pmBind(el, sid, tip){
+  el.addEventListener('mouseenter', ev => { highlightStudy(sid, true); showTip(ev, tip); });
+  el.addEventListener('mousemove', moveTip);
+  el.addEventListener('mouseleave', () => { highlightStudy(sid, false); hideTip(); });
+  el.addEventListener('click', ev => { ev.stopPropagation(); selectStudy(sid, true); });
+}
+document.querySelectorAll('#pm-svg g[id^="pmS--"], #pm-svg g[id^="pmP--"]').forEach(el => {
+  const p = el.id.split('--');
+  const sid = p[2];
+  el.classList.add(p[0] === 'pmS' ? 'pm-sess' : 'pm-pool');
+  el.dataset.id = sid;
+  const metric = p[1] === 'per' ? 'greedy PER' : 'raw CER';
+  const tip = p[0] === 'pmS'
+    ? pmArmLabel(sid) + '  ·  session ' + p[3] +
+      '\nsentences n = ' + (p[6] || '–') +
+      '\n' + metric + ' ' + p[4] + '%  →  post-LM WER ' + p[5] + '%'
+    : pmArmLabel(sid) + '  ·  pooled across sessions' +
+      '\n' + metric + ' ' + p[3] + '%  →  post-LM WER ' + p[4] + '%';
+  pmBind(el, sid, tip);
+});
+/* Legend entries: hovering either the handle or the label cross-highlights
+   the study everywhere (highlightStudy also toggles the sibling .pm-leg
+   groups), clicking spotlights it. Session counts come from the already
+   bound .pm-sess / .pm-pool groups. */
+document.querySelectorAll('#pm-svg g[id^="pmLh--"], #pm-svg g[id^="pmLt--"]').forEach(el => {
+  const p = el.id.split('--');
+  const sid = p[2];
+  el.classList.add('pm-leg', p[0] === 'pmLh' ? 'pm-leg-h' : 'pm-leg-t');
+  el.dataset.id = sid;
+  const nSess = document.querySelectorAll(`#pm-svg .pm-sess[data-id="${sid}"]`).length;
+  const hasPool = document.querySelector(`#pm-svg .pm-pool[data-id="${sid}"]`) !== null;
+  const tip = pmArmLabel(sid) + '  ·  legend entry' +
+    '\n' + nSess + ' per-session markers (open)' +
+    (hasPool ? ' + pooled star' : '') +
+    '\nclick to spotlight this study';
+  pmBind(el, sid, tip);
+});
+document.querySelectorAll('#mm-svg g[id^="mmB--"]').forEach(el => {
+  const p = el.id.split('--');
+  const sid = p[3];
+  el.classList.add('mm-bar');
+  el.dataset.id = sid;
+  const tip = pmArmLabel(sid) + '  ·  ' +
+    (p[2] === 'ours' ? 'our reproduction' : 'official / naive stack') +
+    '\npeak ' + (p[1] === 'RAM' ? 'host RAM' : 'GPU VRAM') + ': ' + p[4] + ' GB';
+  pmBind(el, sid, tip);
 });
 
 /* ---------- full screen & collapsible sections ---------- */
@@ -4410,6 +4553,53 @@ document.getElementById('search').addEventListener('input', e => {
 
 syncUI();
 apply();
+
+/* ---------- entrance reveal: top-to-bottom cascade on load / refresh ----------
+   2026-11-16 (user: "首次打开和刷新网页时，使用从上到下逐步展开的动画"):
+   static sections carry .rv in the markup (gated by html.js, so a no-JS
+   browser shows everything); the study cards built by the apply() above are
+   tagged here on the first build only -- rebuildCards() re-runs on every
+   filter change and those later cards must appear without replaying. Each
+   IntersectionObserver batch assigns document-order delays (110 ms steps for
+   sections, 45 ms for cards, capped at 700 ms), so the initial viewport
+   cascades top-to-bottom and below-the-fold sections unfold on scroll. */
+(function(){
+  const reduce = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('#cards .study-card').forEach(el => el.classList.add('rv'));
+  if (reduce || !('IntersectionObserver' in window)){
+    document.querySelectorAll('.rv').forEach(el => {
+      el.classList.add('in');
+      el.classList.add('done');
+    });
+    return;
+  }
+  const io = new IntersectionObserver(entries => {
+    let i = 0;
+    for (const en of entries){
+      if (!en.isIntersecting) continue;
+      const el = en.target;
+      io.unobserve(el);
+      const step = el.classList.contains('study-card') ? 45 : 110;
+      const delayMs = Math.min(i * step, 700);
+      el.style.setProperty('--rv-d', delayMs + 'ms');
+      el.classList.add('in');
+      // Park on .done once the entrance finishes. animationend is the
+      // primary signal, but embedded/throttled renderers can defer the
+      // event even after the animation reached "finished" (verified in the
+      // in-app browser), so a timer backstop (>= delay + 620 ms duration)
+      // guarantees the cleanup; classList.add is idempotent either way.
+      el.addEventListener('animationend', function onEnd(ev){
+        if (ev.target !== el) return;
+        el.removeEventListener('animationend', onEnd);
+        el.classList.add('done');
+      });
+      setTimeout(() => el.classList.add('done'), delayMs + 750);
+      i++;
+    }
+  }, { threshold: 0, rootMargin: '0px 0px -7% 0px' });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+})();
 </script>
 </body>
 </html>
@@ -4455,6 +4645,32 @@ def export_interactive_html(
     ``#pm-svg`` (panels a, b) stays in "Insights" and ``#mm-svg`` (panels
     c, d) moves to the new "Memory Savings" section, each with its own
     full-screen button and the same 1210 px cap.
+    2026-11-16 filter-mode fix (user: "当前的Dim和Hide in Place没区别"):
+    the "Hide in place" branch had been gated on ``.f2-sess`` elements,
+    which were removed from Figure 2 when the phase-diagram panels moved
+    to the companion figure (2026-11-12), so both filter modes fell back
+    to the identical 13%-opacity dim. Hide mode now ``display:none``-hides
+    every filtered-out ``.f2-slot`` bar and ``.f2-drop`` line (SVG has no
+    reflow, so the remaining marks stay in place).
+    2026-11-16 entrance-reveal round (user: "首次打开和刷新网页时，使用从上到
+    下逐步展开的动画"): on first load / refresh the page plays a staggered
+    top-to-bottom entrance cascade -- static sections carry ``.rv`` in the
+    markup and first-build study cards are tagged in JS, both gated behind
+    the ``html.js`` flag (no-JS browsers render normally); an
+    IntersectionObserver flips ``.rv -> .in`` with document-order delays
+    and ``animationend`` parks elements on ``.done`` so hover transforms
+    keep working; ``prefers-reduced-motion`` skips the animation entirely.
+    2026-11-16 interactivity round (user: "给Insights和Memory Savings的四
+    个panel也加上可点击的交互，就像Overview和Limits of CTC-TLG"): the
+    per-session markers, pooled stars, and ours/official bar pairs in both
+    companion SVGs carry ``pmS--/pmP--/mmB--`` gid hooks that the page JS
+    binds to tooltips and ``selectStudy()`` / ``highlightStudy()`` /
+    ``apply()`` cross-highlighting, exactly like the Figure 2 slots; see
+    ``render_phase_memory_figure._ARM_IDS`` / ``_CATEGORY_IDS``. Legend
+    round (user: "insights中的两张图的legend也改成可以交互"): the phase
+    panels' legend handles/labels carry ``pmLh--/pmLt--`` gids promoted to
+    ``.pm-leg`` groups with the same bindings (see
+    ``render_phase_memory_figure._stamp_legend_gids``).
     """
     f2_svg_inner, f2_vw, f2_vh = f2_svg_tuple
     if pm_svgs is None:
