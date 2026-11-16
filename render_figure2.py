@@ -3602,7 +3602,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
 <div class="wrap">
   <header>
     <div class="head-row">
-      <h1>__TITLE__</h1>
+      <h1>__TITLE_H1__</h1>
       <div class="head-tools">
         <span class="stat">Reproduced <b id="vis-repro">8 / 8</b></span>
         <span class="stat">Studies <b id="vis-count">33 / 33</b></span>
@@ -3746,9 +3746,9 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
     <h2>Study Cards</h2>
     <span class="count" id="cards-count"></span>
     <span class="rule"></span>
-    <button id="cards-toggle" class="sec-btn" type="button">Show</button>
+    <button id="cards-toggle" class="sec-btn" type="button">Hide</button>
   </div>
-  <div id="cardsbox" style="display:none">
+  <div id="cardsbox">
     <div id="cards"></div>
     <div id="cards-empty">No studies match the current filters.</div>
   </div>
@@ -4470,11 +4470,19 @@ def export_interactive_html(
     )
     studies_json = json.dumps(studies_list, ensure_ascii=False).replace("</", "<\\/")
     title_str = (
-        "Communication Neuroprostheses, Reproduced on a Consumer PC"
+        "Speech, Typing, and Handwriting Neuroprostheses for People "
+        "with Paralysis: Data Openness, Independent Reproduction, and "
+        "Clinical Maturity"
+    )
+    # Browser-tab titles cannot carry formatting, so the <u> underline is
+    # only injected into the visible page <h1> via its own placeholder.
+    h1_title_str = html_lib.escape(title_str).replace(
+        "Independent Reproduction", "<u>Independent Reproduction</u>"
     )
     doc = (
         _HTML_TEMPLATE
         .replace("__TITLE__", html_lib.escape(title_str))
+        .replace("__TITLE_H1__", h1_title_str)
         .replace("__FIG2_FULL__", f2_svg_inner)
         .replace("__F2_VW__", str(f2_vw))
         .replace("__F2_VH__", str(f2_vh))
