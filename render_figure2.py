@@ -2773,7 +2773,9 @@ def _build_fig6_svg(verify_overlaps=True):
         2, 12, height_ratios=[0.66, 1.34],
         hspace=0.28, wspace=0.42
     )
-    fig.subplots_adjust(left=0.02, right=0.98, top=0.93, bottom=0.06)
+    # top=0.895 leaves room for the 3-tier master legend row above the panel
+    # titles (2026-11-16 supp_fig_1 sync)
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.895, bottom=0.06)
 
     ax_a = fig.add_subplot(outer[0, 0:6])
     ax_a.set_xlim(0, 100)
@@ -2796,12 +2798,12 @@ def _build_fig6_svg(verify_overlaps=True):
 
     ax_c_title = fig.add_subplot(outer[1, 0:6])
     ax_c_title.axis("off")
-    ax_c_title.set_title("(c) Brain-to-text applicability (~7,000 spoken languages)",
+    ax_c_title.set_title("(c) Brain-to-text applicability (7,000 languages)",
                          fontsize=10.0, fontweight="bold", pad=10)
 
     ax_d_title = fig.add_subplot(outer[1, 6:12])
     ax_d_title.axis("off")
-    ax_d_title.set_title("(d) Brain-to-voice applicability (~7,000 spoken languages)",
+    ax_d_title.set_title("(d) Brain-to-voice applicability (7,000 languages)",
                          fontsize=10.0, fontweight="bold", pad=10)
 
     fig.canvas.draw()
@@ -2826,12 +2828,6 @@ def _build_fig6_svg(verify_overlaps=True):
 
     s = [
         f'<defs>'
-        f'<pattern id="f6-hatch-t3" width="6.5" height="6.5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">'
-        f'<line x1="0" y1="0" x2="0" y2="6.5" stroke="{C_T3_EC}" stroke-width="1.35"/>'
-        f'</pattern>'
-        f'<pattern id="f6-hatch-t2" width="6.5" height="6.5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">'
-        f'<line x1="0" y1="0" x2="0" y2="6.5" stroke="{C_T2_EC}" stroke-width="1.35"/>'
-        f'</pattern>'
         f'<marker id="f6-arr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">'
         f'<path d="M 0 1.2 L 9 5 L 0 8.8 z" fill="{C_BOX_EC}"/>'
         f'</marker>'
@@ -2839,17 +2835,55 @@ def _build_fig6_svg(verify_overlaps=True):
         f'<rect x="0" y="0" width="{vw}" height="{vh}" fill="#ffffff"/>',
     ]
 
-    # Panel titles
+    # Panel titles (keep the topmost title y so the master legend can sit
+    # above the whole title row)
+    title_tys = []
     for ax_t in (ax_a, ax_b, ax_c_title, ax_d_title):
         bb = ax_t.get_window_extent(renderer)
         tcx = SX(0.5 * (bb.x0 + bb.x1))
         ty = SY(bb.y1) - 10.0
+        title_tys.append(ty)
         s.append(f'<text x="{tcx:.1f}" y="{ty:.1f}" font-size="{10.0 * PT:.2f}" '
                  f'font-weight="bold" fill="#111827" text-anchor="middle">{esc(ax_t.get_title())}</text>')
 
+    # 3-tier master legend at the figure top (2026-11-16 supp_fig_1 sync):
+    # panels (a)/(b)'s block tints encode each stage's worst-case linguistic
+    # tier, so the three tier colors need a key before any map is seen.
+    # Translucent fill + solid edge mirrors the reference patch style. Unlike
+    # the per-map legends below, a click here highlights the tier across BOTH
+    # maps (data-f6-map="all").
+    master_items = [
+        ("1", C_T1_MAP, "Applies as-is (Tier 1)"),
+        ("2", C_T2_MAP, "Needs adaptation (Tier 2)"),
+        ("3", C_T3_MAP, "Blocked (Tier 3)"),
+    ]
+    m_fs, sw_w, sw_h = 7.6, 26.0, 13.0
+    gap_item, gap_st = 36.0, 9.0
+    m_widths = []
+    for _tk, _mc, m_lab in master_items:
+        t_m = fig.text(0.5, 0.5, m_lab, fontsize=m_fs)
+        m_widths.append(t_m.get_window_extent(renderer).width * 0.5)
+        t_m.remove()
+    row_w = sum(sw_w + gap_st + w_m for w_m in m_widths) + gap_item * (len(master_items) - 1)
+    mx = (vw - row_w) / 2.0
+    my_c = min(title_tys) - 38.0
+    for (tier_m, col_m, lab_m), w_m in zip(master_items, m_widths):
+        s.append(f'<g class="f6-leg-item" data-f6-tier="{tier_m}" data-f6-map="all" style="cursor:pointer">')
+        s.append(f'<title>{esc(f"Click to highlight {lab_m} across BOTH maps (c and d) and the pipeline modules above")}</title>')
+        s.append(f'<rect x="{mx:.1f}" y="{my_c - sw_h / 2:.1f}" width="{sw_w:.1f}" height="{sw_h:.1f}" '
+                 f'fill="{col_m}" fill-opacity="0.35" stroke="{col_m}" stroke-width="{SW(1.1)}" rx="2.5"/>')
+        s.append(f'<text x="{mx + sw_w + gap_st:.1f}" y="{my_c:.1f}" font-size="{m_fs * PT:.2f}" '
+                 f'fill="#1f2937" dominant-baseline="central">{esc(lab_m)}</text>')
+        s.append("</g>")
+        mx += sw_w + gap_st + w_m + gap_item
+
     pad = 0.30
 
-    def svg_block(ax, x, y, w, h, title, sub="", fc=C_BOX_BG, ec=C_BOX_EC,
+    # 2026-11-16 supp_fig_1 sync: flowchart blocks use ONLY the three tier
+    # colors (green/amber/terracotta); the former neutral-gray default became
+    # Tier 1 green, matching the reference `_block(fc=C_T1_BG, ec=C_T1_EC)`.
+    # C_BOX_EC stays the arrow/elbow-line color only.
+    def svg_block(ax, x, y, w, h, title, sub="", fc=C_T1_BG, ec=C_T1_EC,
                   lw=1.25, title_fs=8.5, sub_fs=7.0, tier="", study_id="", tip="", f6_map=""):
         x0, y0 = d2svg(ax, x - pad, y + h + pad)
         x1, y1 = d2svg(ax, x + w + pad, y - pad)
@@ -2928,19 +2962,22 @@ def _build_fig6_svg(verify_overlaps=True):
     yb, hb = 11.5, 13.5
     yc = yb + hb / 2  # 18.25
     y_v1, y_v2 = 23.4, 13.1
-    svg_block(ax_a, 0.4, 19.6, 19.8, 7.6, "Threshold Crossings", "20-ms bins",
-              title_fs=8.0, sub_fs=6.7,
-              tip="Intracortical neural features: 20-ms binned threshold crossings (TX), blockwise z-scored.")
-    svg_block(ax_a, 0.4, 9.3, 19.8, 7.6, "Spike Band Power", "20-ms bins",
-              title_fs=8.0, sub_fs=6.7,
-              tip="Intracortical neural features: 20-ms binned spike-band power (SBP), blockwise z-scored.")
-    # Merge both input streams into the per-day calibration layer
-    x_in_r = 0.4 + 19.8 + pad
-    svg_poly(ax_a, [(x_in_r, y_v1), (21.2, y_v1), (21.2, y_v2), (x_in_r, y_v2)])
-    svg_arr(ax_a, (21.2, yc), (22.8 - pad, yc))
+    svg_block(ax_a, 0.4, 19.6, 17.3, 7.6, "Threshold Crossings", "20-ms bins",
+              title_fs=8.0, sub_fs=6.7, tier="1", f6_map="c",
+              tip="Tier 1 (language-agnostic): intracortical neural features, 20-ms binned threshold crossings (TX), blockwise z-scored.")
+    svg_block(ax_a, 0.4, 9.3, 17.3, 7.6, "Spike Band Power", "20-ms bins",
+              title_fs=8.0, sub_fs=6.7, tier="1", f6_map="c",
+              tip="Tier 1 (language-agnostic): intracortical neural features, 20-ms binned spike-band power (SBP), blockwise z-scored.")
+    # Merge both input streams into the per-day calibration layer (narrower
+    # input blocks keep this band's input column x-aligned with panel (b))
+    x_in_r = 0.4 + 17.3 + pad
+    x_merge_a = 19.6
+    svg_poly(ax_a, [(x_in_r, y_v1), (x_merge_a, y_v1), (x_merge_a, y_v2), (x_in_r, y_v2)])
+    svg_arr(ax_a, (x_merge_a, yc), (22.8 - pad, yc))
 
     svg_block(ax_a, 22.8, yb, 17.4, hb, "Daily Calibration", "Linear alignment",
-              tip="Per-day calibration layer: linear (affine) alignment W_d\u00b7x_t + b_d absorbing cross-day recording nonstationarity.")
+              tier="1", f6_map="c",
+              tip="Tier 1 (language-agnostic): per-day calibration layer, linear (affine) alignment W_d\u00b7x_t + b_d absorbing cross-day recording nonstationarity.")
     svg_arr(ax_a, (40.2 + pad, yc), (42.8 - pad, yc))
 
     # Colored by worst-case tier: CTC RNN -> Tier 2 (amber); WFST & LLM -> Tier 3 (terracotta)
@@ -2958,73 +2995,89 @@ def _build_fig6_svg(verify_overlaps=True):
               fc=C_T3_BG, ec=C_T3_EC, tier="3", f6_map="c",
               tip="Tier 3 bottleneck: second-pass causal LLM rescorer (OPT-6.7B / Qwen3-8B, 13 GB VRAM). Requires massive written pretraining corpora — unavailable for unwritten languages or those with insufficient text.")
     svg_arr(ax_a, (90.0 + pad, yc), (92.8 - pad, yc))
-    tx_txt, ty_txt = d2svg(ax_a, 95.6, yc)
+    # "Text" shares ONE right edge with panel (b)'s "Voice" labels (x=97.2)
+    tx_txt, ty_txt = d2svg(ax_a, 97.2, yc)
     s.append(f'<text x="{tx_txt:.1f}" y="{ty_txt:.1f}" font-size="{9.0 * PT:.2f}" '
-             f'font-weight="bold" fill="{C_INK}" text-anchor="middle" dominant-baseline="central">Text</text>')
+             f'font-weight="bold" fill="{C_INK}" text-anchor="end" dominant-baseline="central">Text</text>')
 
     # ---- Panel (b): Brain-to-voice decoding pipeline (v1.0 & v2.0) ----
-    svg_block(ax_b, 0.4, 19.6, 19.8, 7.6, "Threshold Crossings", "10-ms bins",
-              title_fs=8.0, sub_fs=6.7, study_id="wairagkar2025",
-              tip="10-ms binned threshold crossings + spike-band power from ventral precentral gyrus (vPCG, 256 channels, T15).")
-    svg_block(ax_b, 0.4, 9.3, 19.8, 7.6, "Spike Band Power", "10-ms bins",
-              title_fs=8.0, sub_fs=6.7, study_id="wairagkar2025",
-              tip="10-ms binned threshold crossings + spike-band power from ventral precentral gyrus (vPCG, 256 channels, T15).")
-    # Combine both features and feed separately into v1.0 (top) and v2.0 (bottom)
-    x_in_b = 0.4 + 19.8 + pad
-    svg_poly(ax_b, [(x_in_b, y_v1), (21.1, y_v1), (21.1, y_v2), (x_in_b, y_v2)])
-    svg_poly(ax_b, [(21.1, yc), (21.7, yc)])
-    svg_poly(ax_b, [(21.7, y_v2), (21.7, y_v1)])
-    svg_arr(ax_b, (21.7, y_v1), (22.8 - pad, y_v1))
-    svg_arr(ax_b, (21.7, y_v2), (22.8 - pad, y_v2))
+    # 2026-11-16 supp_fig_1 sync: "v1.0 Voiceformer"/"v2.0 Transformer" block
+    # titles rewritten as plain "2-block Transformer"/"8-layer Transformer"
+    # (version identity moved to the row-head labels "Brain-to-Voice 1.0
+    # (2025)"/"2.0 (2026)"; the cryptic right-edge "1.0"/"2.0" tags removed)
+    # and the input merge-bus replaced by four explicit TX/SBP elbow mappings
+    # so each row visibly receives both inputs.
+    svg_block(ax_b, 0.4, 19.6, 17.3, 7.6, "Threshold Crossings", "10-ms bins",
+              title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
+              tip="Tier 1 (language-agnostic): 10-ms binned threshold crossings + spike-band power from ventral precentral gyrus (vPCG, 256 channels, T15).")
+    svg_block(ax_b, 0.4, 9.3, 17.3, 7.6, "Spike Band Power", "10-ms bins",
+              title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
+              tip="Tier 1 (language-agnostic): 10-ms binned threshold crossings + spike-band power from ventral precentral gyrus (vPCG, 256 channels, T15).")
+    # Four explicit input mappings: the two feature streams each feed BOTH
+    # rows -- v1.0 has two inputs, v2.0 the same two -- drawn as four
+    # individually traceable elbow lines (a single forced TX x SBP crossing)
+    x_in_b = 0.4 + 17.3 + pad
+    x_trunk_tx, x_trunk_sbp = 19.6, 20.6
+    x_dst_b = 22.8 - pad
+    y_v1_hi, y_v1_lo = 25.1, 21.7   # two entry heights on the 1.0 row block
+    y_v2_hi, y_v2_lo = 14.5, 11.7   # two entry heights on the 2.0 row block
+    # Threshold Crossings -> upper entry of both rows
+    svg_poly(ax_b, [(x_in_b, y_v1), (x_trunk_tx, y_v1)])
+    svg_poly(ax_b, [(x_trunk_tx, y_v2_hi), (x_trunk_tx, y_v1_hi)])
+    svg_arr(ax_b, (x_trunk_tx, y_v1_hi), (x_dst_b, y_v1_hi))
+    svg_arr(ax_b, (x_trunk_tx, y_v2_hi), (x_dst_b, y_v2_hi))
+    # Spike Band Power -> lower entry of both rows
+    svg_poly(ax_b, [(x_in_b, y_v2), (x_trunk_sbp, y_v2)])
+    svg_poly(ax_b, [(x_trunk_sbp, y_v2_lo), (x_trunk_sbp, y_v1_lo)])
+    svg_arr(ax_b, (x_trunk_sbp, y_v1_lo), (x_dst_b, y_v1_lo))
+    svg_arr(ax_b, (x_trunk_sbp, y_v2_lo), (x_dst_b, y_v2_lo))
 
     # Top row: v1.0 (2025) separate pipeline
     # Acoustic Head = Tier 2 worst-case (needs recorded audio for DTW training when TTS is absent)
     # LPCNet Vocoder = Tier 1 worst-case (universal vocal-tract waveform synthesis)
-    svg_block(ax_b, 22.8, 19.6, 18.8, 7.6, "v1.0 Voiceformer", "2-block causal (600 ms)",
-              title_fs=8.0, sub_fs=6.7, study_id="wairagkar2025",
-              tip="Wairagkar et al., 2025 (Brain-to-Voice v1.0): 2-block causal Voiceformer encoder (600-ms receptive field) mapping 10-ms neural bins to acoustic features in 1.5 GB VRAM (click to inspect study).")
+    svg_block(ax_b, 22.8, 19.6, 18.8, 7.6, "2-block Transformer", "causal, 600-ms window",
+              title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
+              tip="Wairagkar et al., 2025 (Brain-to-Voice v1.0): 2-block causal Voiceformer encoder (600-ms receptive field) mapping 10-ms neural bins to acoustic features in 1.5 GB VRAM.")
     svg_arr(ax_b, (41.6 + pad, y_v1), (44.5 - pad, y_v1))
     svg_block(ax_b, 44.5, 19.6, 21.2, 7.6, "20-D Acoustic Head", "18 Bark + 2 F0 pitch",
               fc=C_T2_BG, ec=C_T2_EC, title_fs=8.0, sub_fs=6.7, tier="2", f6_map="d",
-              study_id="wairagkar2025",
               tip="Tier 2 bottleneck: continuous 20-D LPCNet regression head (18 Bark bands + 2 F0). When the language lacks TTS, training needs recorded prompt audio for DTW alignment (v1.0: 43.8% listener WER; Mel Pearson r = 0.69 in our reproduction).")
     svg_arr(ax_b, (65.7 + pad, y_v1), (68.5 - pad, y_v1))
-    svg_block(ax_b, 68.5, 19.6, 17.0, 7.6, "LPCNet Vocoder", "Causal synthesis",
+    svg_block(ax_b, 68.5, 19.6, 21.5, 7.6, "LPCNet Vocoder", "Causal synthesis",
               fc=C_T1_BG, ec=C_T1_EC, title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
-              study_id="wairagkar2025",
               tip="Causal LPCNet vocoder: synthesizes continuous speech waveform directly from 20-D Bark + F0 features in <10 ms with no dictionary L, no WFST G, and no LLM.")
-    svg_arr(ax_b, (85.5 + pad, y_v1), (88.0 - pad, y_v1))
-    tx_v1, ty_v1 = d2svg(ax_b, 91.0, y_v1)
+    svg_arr(ax_b, (90.0 + pad, y_v1), (92.8 - pad, y_v1))
+    tx_v1, ty_v1 = d2svg(ax_b, 97.2, y_v1)
     s.append(f'<text x="{tx_v1:.1f}" y="{ty_v1:.1f}" font-size="{9.0 * PT:.2f}" '
-             f'font-weight="bold" fill="{C_INK}" text-anchor="middle" dominant-baseline="central">Voice</text>')
+             f'font-weight="bold" fill="{C_INK}" text-anchor="end" dominant-baseline="central">Voice</text>')
 
-    # Dashed divider between 1.0 (top) and 2.0 (bottom) pipelines
+    # Dashed divider between the 1.0 (top) and 2.0 (bottom) pipelines; rows
+    # are identified by full labels at the head of each row (version names
+    # no longer live inside the blocks)
     svg_poly(ax_b, [(22.2, yc), (99.2, yc)], color=C_MUTED, lw=0.75, dash="4.5,2.8")
-    tx_10, ty_10 = d2svg(ax_b, 97.2, yc + 1.55)
-    s.append(f'<text x="{tx_10:.1f}" y="{ty_10:.1f}" font-size="{6.8 * PT:.2f}" '
-             f'font-weight="bold" fill="{C_MUTED}" text-anchor="middle" dominant-baseline="bottom">1.0</text>')
-    tx_20, ty_20 = d2svg(ax_b, 97.2, yc - 1.55)
-    s.append(f'<text x="{tx_20:.1f}" y="{ty_20:.1f}" font-size="{6.8 * PT:.2f}" '
-             f'font-weight="bold" fill="{C_MUTED}" text-anchor="middle" dominant-baseline="top">2.0</text>')
+    tx_10, ty_10 = d2svg(ax_b, 22.8, 29.6)
+    s.append(f'<text x="{tx_10:.1f}" y="{ty_10:.1f}" font-size="{8.0 * PT:.2f}" '
+             f'font-weight="bold" fill="{C_INK}" text-anchor="start" dominant-baseline="central">Brain-to-Voice 1.0 (2025)</text>')
+    tx_20, ty_20 = d2svg(ax_b, 22.8, 7.3)
+    s.append(f'<text x="{tx_20:.1f}" y="{ty_20:.1f}" font-size="{8.0 * PT:.2f}" '
+             f'font-weight="bold" fill="{C_INK}" text-anchor="start" dominant-baseline="central">Brain-to-Voice 2.0 (2026)</text>')
 
     # Bottom row: v2.0 (2026) separate pipeline
-    svg_block(ax_b, 22.8, 9.3, 18.8, 7.6, "v2.0 Transformer", "8-layer causal masked",
-              title_fs=8.0, sub_fs=6.7, study_id="wairagkar2026",
-              tip="Wairagkar et al., 2026 (Brain2voice 2.0): 8-layer causal masked Transformer encoder (click to inspect study).")
+    svg_block(ax_b, 22.8, 9.3, 18.8, 7.6, "8-layer Transformer", "causal, masked",
+              title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
+              tip="Wairagkar et al., 2026 (Brain2voice 2.0): 8-layer causal masked Transformer encoder.")
     svg_arr(ax_b, (41.6 + pad, y_v2), (44.5 - pad, y_v2))
     svg_block(ax_b, 44.5, 9.3, 21.2, 7.6, "Acoustic + GAN", "+ RVQ / CTC / SSL aux",
               fc=C_T2_BG, ec=C_T2_EC, title_fs=8.0, sub_fs=6.7, tier="2", f6_map="d",
-              study_id="wairagkar2026",
               tip="Tier 2 bottleneck: 20-D continuous LPCNet + 4-scale 1D-conv GAN + auxiliary RVQ token, phoneme CTC, and SSL training heads — cutting human listener WER from 43.8% to 5.24%. Auxiliary targets still need audio or text resources that unserved languages lack.")
     svg_arr(ax_b, (65.7 + pad, y_v2), (68.5 - pad, y_v2))
-    svg_block(ax_b, 68.5, 9.3, 17.0, 7.6, "LPCNet Vocoder", "Causal synthesis",
+    svg_block(ax_b, 68.5, 9.3, 21.5, 7.6, "LPCNet Vocoder", "Causal synthesis",
               fc=C_T1_BG, ec=C_T1_EC, title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
-              study_id="wairagkar2026",
               tip="Causal LPCNet vocoder: synthesizes continuous speech waveform directly from 20-D Bark + F0 features in <10 ms with no dictionary L, no WFST G, and no LLM.")
-    svg_arr(ax_b, (85.5 + pad, y_v2), (88.0 - pad, y_v2))
-    tx_v2, ty_v2 = d2svg(ax_b, 91.0, y_v2)
+    svg_arr(ax_b, (90.0 + pad, y_v2), (92.8 - pad, y_v2))
+    tx_v2, ty_v2 = d2svg(ax_b, 97.2, y_v2)
     s.append(f'<text x="{tx_v2:.1f}" y="{ty_v2:.1f}" font-size="{9.0 * PT:.2f}" '
-             f'font-weight="bold" fill="{C_INK}" text-anchor="middle" dominant-baseline="central">Voice</text>')
+             f'font-weight="bold" fill="{C_INK}" text-anchor="end" dominant-baseline="central">Voice</text>')
 
     # ---- Panels (c) & (d): Robinson World Maps ----
     countries = json.loads(zlib.decompress(base64.b64decode(_WORLD_110M_B64)).decode("utf-8"))
@@ -3184,28 +3237,39 @@ def _build_fig6_svg(verify_overlaps=True):
     draw_svg_world_map(44.5, 40.5, 16.6, 18.5, is_b2v=False)
     draw_svg_world_map(139.5, 40.5, 16.6, 18.5, is_b2v=True)
 
-    # Two separate clickable legends, one under Panel (c) and one under Panel (d)
+    # Two separate clickable legends, one under Panel (c) and one under Panel
+    # (d). Entries are compressed to "Tier N: <reason>" tokens (2026-11-16
+    # supp_fig_1 sync -- the old sentence-style entries bloated the legend);
+    # the full reason wording survives in each entry's hover tooltip.
     leg6_specs = [
         ("c", 235.0, [
-            ("1", C_T1_MAP, C_T1_EC, C_T1_BG, "Applies as-is (Tier 1)"),
-            ("2", C_T2_MAP, C_T2_EC, C_T2_BG, "Needs adaptation: tonal or sub-word (Tier 2)"),
-            ("3", C_T3_MAP, C_T3_EC, C_T3_BG, "Cannot apply: unwritten or insufficient text to train language models (Tier 3)"),
-            ("belt", C_T3_MAP, C_T3_MAP, C_T3_BG, "Indigenous belts: unwritten or insufficient text to train language models (Tier 3)"),
+            ("1", C_T1_MAP, C_T1_EC, C_T1_BG, "Tier 1: as-is",
+             "Applies as-is (Tier 1)"),
+            ("2", C_T2_MAP, C_T2_EC, C_T2_BG, "Tier 2: tones / sub-words",
+             "Needs adaptation: tonal or sub-word (Tier 2)"),
+            ("3", C_T3_MAP, C_T3_EC, C_T3_BG, "Tier 3: too little text",
+             "Cannot apply: unwritten or too little text to train language models (Tier 3)"),
+            ("belt", C_T3_MAP, C_T3_MAP, C_T3_BG, "Indigenous belts (Tier 3)",
+             "Indigenous belts: unwritten or too little text to train language models (Tier 3)"),
         ]),
         ("d", 1250.0, [
-            ("1", C_T1_MAP, C_T1_EC, C_T1_BG, "Applies as-is (Tier 1)"),
-            ("2", C_T2_MAP, C_T2_EC, C_T2_BG, "Needs adaptation: lacks Text-To-Speech, so needs recorded audio (Tier 2)"),
-            ("3", C_T3_MAP, C_T3_EC, C_T3_BG, "Cannot apply: none (Tier 3)"),
-            ("belt", C_T2_MAP, C_T2_MAP, C_T2_BG, "Indigenous belts: lacks Text-To-Speech, so needs recorded audio (Tier 2)"),
+            ("1", C_T1_MAP, C_T1_EC, C_T1_BG, "Tier 1: as-is",
+             "Applies as-is (Tier 1)"),
+            ("2", C_T2_MAP, C_T2_EC, C_T2_BG, "Tier 2: no TTS",
+             "Needs adaptation: lacks Text-To-Speech, so needs recorded audio (Tier 2)"),
+            ("3", C_T3_MAP, C_T3_EC, C_T3_BG, "Tier 3: none",
+             "Cannot apply: none (Tier 3)"),
+            ("belt", C_T2_MAP, C_T2_MAP, C_T2_BG, "Indigenous belts (Tier 2)",
+             "Indigenous belts: lacks Text-To-Speech, so needs recorded audio (Tier 2)"),
         ]),
     ]
     leg6_y0, leg6_dy = vh - 128.0, 29.0
     for leg_map, lx0, items in leg6_specs:
-        for idx_l, (tier_k, fc_l, ec_l, hatch_bg, lab_l) in enumerate(items):
+        for idx_l, (tier_k, fc_l, ec_l, hatch_bg, lab_l, full_l) in enumerate(items):
             ry_l = leg6_y0 + idx_l * leg6_dy
             panel_letter = "c" if leg_map == "c" else "d"
             s.append(f'<g class="f6-leg-item" data-f6-tier="{tier_k}" data-f6-map="{leg_map}" style="cursor:pointer">')
-            s.append(f'<title>Click to highlight {esc(lab_l)} on the Panel ({panel_letter}) map '
+            s.append(f'<title>Click to highlight {esc(full_l)} on the Panel ({panel_letter}) map '
                      f'and its pipeline modules above</title>')
             if tier_k == "belt":
                 s.append(f'<rect x="{lx0:.1f}" y="{ry_l - 6.0:.1f}" width="18" height="11" '
@@ -3620,7 +3684,7 @@ _HTML_TEMPLATE = r"""<!DOCTYPE html>
 
   <div class="sec" id="fig6-sec">
     <h2>Limits of CTC-TLG</h2>
-    <span class="count" id="fig6-count">Click any tier in either map legend (or any country / module) to compare Brain-to-text vs. Brain-to-Voice across ~7,000 spoken languages</span>
+    <span class="count" id="fig6-count">Click any tier in the master legend, either map legend (or any country / module) to compare Brain-to-text vs. Brain-to-Voice across ~7,000 spoken languages</span>
     <span class="rule"></span>
     <button id="fig6-toggle" class="sec-btn" type="button">Hide</button>
   </div>
@@ -4149,7 +4213,9 @@ function setF6Tier(tier, map){
     if (!activeF6Tier){
       el.classList.remove('f6-dimmed');
     } else {
-      const sameMap = (el.dataset.f6Map || el.dataset.map) === activeF6Map;
+      // 'all' = the figure-top master legend chip: highlight the tier on
+      // BOTH maps (c and d) at once instead of a single panel
+      const sameMap = activeF6Map === 'all' || (el.dataset.f6Map || el.dataset.map) === activeF6Map;
       el.classList.toggle('f6-dimmed', !(sameMap && el.dataset.f6Tier === activeF6Tier));
     }
   });
