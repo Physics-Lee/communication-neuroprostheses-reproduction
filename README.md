@@ -4,6 +4,8 @@
 
 Reproducing **8 open-data speech, typing, and handwriting neuroprosthesis studies** on a single consumer GPU (**1× NVIDIA GeForce RTX 5060 Ti 16 GB VRAM, 64 GB DDR5 RAM**), with end-to-end training/decoding code, memory-wall mitigations, per-trial decode outputs, and benchmark figure scripts.
 
+> **This work is a product of we-linking.** The reproduction suite, model ports, memory-wall mitigations, and benchmark figures were developed and are maintained by **we-linking**.
+
 ![Communication Neuroprostheses Reproduction Benchmark](communication_neuroprostheses_reproduction.png)
 
 - **Vector PDF (TrueType Type-42 embedded)**: [`communication_neuroprostheses_reproduction.pdf`](communication_neuroprostheses_reproduction.pdf)
@@ -118,6 +120,11 @@ python render_figure2.py
 
 - **Weekly-Updated Living Timeline**: [`Physics-Lee/communication-neuroprostheses-timeline`](https://github.com/Physics-Lee/communication-neuroprostheses-timeline)
 
-## License
+## License & Attribution
 
-Released under the [MIT License](LICENSE). Official upstream repositories remain under their respective authors' licenses and are referenced (not redistributed) in each study directory.
+This work is a product of **we-linking** and is released under the [PolyForm Noncommercial License 1.0.0](LICENSE) ([SPDX: `PolyForm-Noncommercial-1.0.0`](https://spdx.org/licenses/PolyForm-Noncommercial-1.0.0.html)):
+
+- ✅ **Allowed**: any **noncommercial** purpose — academic research, teaching, and personal study; use by educational institutions, public research organizations, and other noncommercial organizations is explicitly permitted, regardless of funding source.
+- ❌ **Prohibited**: any **commercial** use of this repository, in whole or in part — including sale, product integration, or paid services — unless we-linking grants a separate commercial license.
+
+Official upstream repositories remain under their respective authors' licenses and are referenced (not redistributed) in each study directory.
