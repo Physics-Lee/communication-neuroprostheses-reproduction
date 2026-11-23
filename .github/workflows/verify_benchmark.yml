@@ -8,6 +8,7 @@ on:
       - "build_session_per_vs_wer.py"
       - "build_session_cer_vs_wer.py"
       - "render_phase_memory_figure.py"
+      - "fig2cd/**"
       - "**/results/**"
   workflow_dispatch:
 

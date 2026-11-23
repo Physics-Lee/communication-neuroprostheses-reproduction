@@ -312,166 +312,80 @@ panel_b_dataset_size:
 
     span 141 d'
   openness_code: 2
+panel_cd_daily_csv: fig2cd/daily_metrics.csv
 panel_cd_online_wer_speed:
 - label: Willett et al., 2021 (T5)
-  wer_mean: 25.1
-  wer_sd: 8.6
-  speed_wpm_mean: 15.4
-  speed_wpm_sd: 2.2
-  speed_note: 15.4±2.2
   study_key: Willett et al., 2021
   vocab_tag: open
-  wer_caliber: 'mean±SD†
-
-    5 of 10 d'
-  speed_caliber: 'mean±SD†
-
-    5 of 10 d'
   openness_code: 2
+  daily_series: willett21_t5
+  released_days: 10
 - label: Willett et al., 2023 (T12)
-  wer_mean: 23.9
-  wer_sd: 1.8
-  speed_wpm_mean: 65.3
-  speed_wpm_sd: 0.9
-  speed_note: 65.3±0.9
   study_key: Willett et al., 2023
   vocab_tag: 125k
-  wer_caliber: 'mean±SD‡
-
-    5 of 24 d'
-  speed_caliber: 'mean±SD‡
-
-    5 of 24 d'
   openness_code: 2
+  daily_series: willett23_t12
+  released_days: 24
 - label: Fan et al., 2023 (T5)
-  wer_mean: 4.0
-  wer_sd: 1.2
-  speed_wpm_mean: 14.6
-  speed_wpm_sd: 2.2
-  speed_note: 14.6±2.2
   study_key: Fan et al., 2023
   vocab_tag: 130k
-  wer_caliber: 'mean±SD†
-
-    10 of 21 d'
-  speed_caliber: 'mean±SD
-
-    15 eval d
-
-    (10 released)'
   openness_code: 2
+  daily_series: fan23_t5
+  released_days: 21
 - label: Card et al., 2024 (T15)
-  wer_mean: 4.9
-  wer_sd: 3.3
-  speed_wpm_mean: 32.5
-  speed_wpm_sd: 2.7
-  speed_note: 32.5±2.7
   study_key: Card et al., 2024
   vocab_tag: 125k
-  wer_caliber: 'mean±SD
-
-    14 of 45 d'
-  speed_caliber: 'mean±SD
-
-    14 of 45 d'
   openness_code: 2
+  daily_series: card24_t15
+  released_days: 45
 - label: Wairagkar et al., 2025 (T15)
-  wer_mean: 43.8
+  study_key: Wairagkar et al., 2025
+  vocab_tag: open
+  openness_code: 2
+  wer_mean: 43.75
   wer_sd: null
   speed_wpm_mean: null
   speed_wpm_sd: null
-  speed_note: n/a
-  study_key: Wairagkar et al., 2025
-  vocab_tag: open
-  wer_caliber: 'listener median
+  wer_caliber: 'listener median*
 
-    8 of 37 d'
+    90 trials'
   speed_caliber: n/r
-  openness_code: 2
 - label: Kunz et al., 2025 (T12)
-  wer_mean: 23.7
-  wer_sd: 0.0
-  speed_wpm_mean: null
-  speed_wpm_sd: null
-  speed_note: n/a
   study_key: Kunz et al., 2025
   vocab_tag: 50-w
-  wer_caliber: 'mean±SD†
-
-    1 of 1 d'
-  speed_caliber: n/r
   openness_code: 2
+  daily_series: kunz25_t12
+  released_days: 1
 - label: Kunz et al., 2025 (T15)
-  wer_mean: 51.3
-  wer_sd: 33.1
-  speed_wpm_mean: null
-  speed_wpm_sd: null
-  speed_note: n/a
   study_key: Kunz et al., 2025
   vocab_tag: 125k
-  wer_caliber: 'mean±SD†
-
-    2 of 3 d'
-  speed_caliber: n/r
   openness_code: 2
+  daily_series: kunz25_t15
+  released_days: 3
 - label: Kunz et al., 2025 (T16)
-  wer_mean: 46.6
-  wer_sd: 0.0
-  speed_wpm_mean: null
-  speed_wpm_sd: null
-  speed_note: n/a
   study_key: Kunz et al., 2025
   vocab_tag: 125k
-  wer_caliber: 'mean±SD†
-
-    1 of 2 d'
-  speed_caliber: n/r
   openness_code: 2
+  daily_series: kunz25_t16
+  released_days: 2
 - label: Jude et al., 2026a (T17)
-  wer_mean: 12.5
-  wer_sd: 2.5
-  speed_wpm_mean: 6.8
-  speed_wpm_sd: 1.8
-  speed_note: 6.8±1.8
   study_key: Jude et al., 2026a
   vocab_tag: 125k
-  wer_caliber: 'mean±SD†
-
-    6 of 8 d'
-  speed_caliber: 'mean±SD†
-
-    6 of 8 d'
   openness_code: 2
+  daily_series: jude26a_t17
+  released_days: 8
 - label: Jude et al., 2026a (T18)
-  wer_mean: 3.4
-  wer_sd: 0.8
-  speed_wpm_mean: 14.0
-  speed_wpm_sd: 4.5
-  speed_note: 14.0±4.5
   study_key: Jude et al., 2026a
   vocab_tag: 125k
-  wer_caliber: 'mean±SD†
-
-    7 of 9 d'
-  speed_caliber: 'mean±SD†
-
-    7 of 9 d'
   openness_code: 2
+  daily_series: jude26a_t18
+  released_days: 9
 - label: Jude et al., 2026b (T17)
-  wer_mean: 66.5
-  wer_sd: 18.1
-  speed_wpm_mean: 34.1
-  speed_wpm_sd: 7.7
-  speed_note: 34.1±7.7
   study_key: Jude et al., 2026b
   vocab_tag: 125k
-  wer_caliber: 'mean±SD†
-
-    4 of 13 d'
-  speed_caliber: 'mean±SD†
-
-    8 of 13 d'
   openness_code: 2
+  daily_series: jude26b_t17
+  released_days: 13
 panel_e_repro_acoustic:
 - label: "Willett et al., 2021 (T5)"
   metric: cer

@@ -36,6 +36,8 @@ from matplotlib.text import Text
 import numpy as np
 import yaml
 
+from fig2cd.recompute import apply_daily_metrics
+
 os.environ.setdefault("SOURCE_DATE_EPOCH", "946684800")
 
 plt.rcParams.update({
@@ -57,6 +59,17 @@ OPEN_C = {
 C_SPEECH_I = "#3C5488"
 C_REANALYSIS = "#7B3294"
 C_NORM = "#7F7F7F"
+
+DAILY_WER_NOTE = (
+    "Daily WER (%) = 100 × word edits / reference words\n"
+    "Equal-day mean ± sample SD. Single days have no SD.\n"
+    "* Published listener transcription median"
+)
+DAILY_SPEED_NOTE = (
+    "Daily speed = reference count / total trial time\n"
+    "Handwriting and typing use 5 characters per word.\n"
+    "Equal-day mean ± sample SD"
+)
 
 COLOR_LEGEND_ITEMS = (
     ("open", OPEN_C[2], "open data"),
@@ -1028,6 +1041,8 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     with open(yaml_path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
+    apply_daily_metrics(data, yaml_path)
+
     # Auto-sync JSON mirror alongside YAML
     json_mirror = os.path.splitext(yaml_path)[0] + ".json"
     try:
@@ -1278,10 +1293,7 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
                   "\u2605 2 studies satisfy: Open Data, Online, Vocab > 71.4k, "
                   "WER < 12.8%, Vocal paralysis \u25b3",
                   fontsize=9.8, fontweight="bold")
-    ax2.text(0.98, 0.985,
-             "\u2020 recomputed from released data (decode outputs / trial "
-             "timing / Source Data files)\n\u2021 digitized from the "
-             "paper's figure markers\nerror bar is calculated across days",
+    ax2.text(0.98, 0.985, DAILY_WER_NOTE,
              transform=ax2.transAxes, ha="right", va="top",
              fontsize=6.0, color="#555555", linespacing="normal")
 
@@ -1361,12 +1373,9 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     # with the n/r slots); two lines keep row 2's title tops level with
     # (c)'s 2-line title and (b)'s padded 1-line title
     ax3.set_title("(d) Communication speed (online)\n"
-                  "n/r: speed not reported",
+                  "n/r: speed unavailable",
                   fontsize=9.8, fontweight="bold")
-    ax3.text(0.98, 0.985,
-             "\u2020 recomputed from released data (decode outputs / trial "
-             "timing / Source Data files)\n\u2021 digitized from the "
-             "paper's figure markers\nerror bar is calculated across days",
+    ax3.text(0.98, 0.985, DAILY_SPEED_NOTE,
              transform=ax3.transAxes, ha="right", va="top",
              fontsize=6.0, color="#555555", linespacing="normal")
 
@@ -1977,12 +1986,6 @@ def _build_fig2_full_svg(
         "Levin et al., 2026": "brain-to-text\nwithout\nlanguage model",
         "Wairagkar et al., 2026": "brain-to-voice",
     }
-    dagger_note = (
-        "\u2020 recomputed from released data (decode outputs / trial timing / Source Data files)\n"
-        "\u2021 digitized from the paper's figure markers\n"
-        "error bar is calculated across days"
-    )
-
     # Background rect is prepended after the body so that vh (measured
     # from the drawn elements; see the return below) is known.
     s = []
@@ -2174,7 +2177,7 @@ def _build_fig2_full_svg(
         s.append(multiline_svg(tx, ty, asr_lab, 5.6, "#666666", anchor="end", va="bottom"))
     s.append(multiline_svg(
         c_x0 + 0.98 * (c_x1 - c_x0), c_y0 + 0.015 * (c_y1 - c_y0),
-        dagger_note, 6.0, "#555555", anchor="end", va="top"
+        DAILY_WER_NOTE, 6.0, "#555555", anchor="end", va="top"
     ))
     for x, r in enumerate(rows_cd):
         sid = PANEL_BCD_IDS[x]
@@ -2190,7 +2193,8 @@ def _build_fig2_full_svg(
         top = wmean + wsd if wsd is not None else wmean
         note = f"{wmean:.1f}\u00b1{wsd:.1f}" if wsd is not None else f"{wmean:.1f}"
         s.append(f'<g class="f2-slot" data-id="{sid}" data-panel="c">')
-        s.append(f'<title>{esc(r["label"])} \u2014 online WER: {esc(note)}% (click to inspect study)</title>')
+        wer_basis = r["wer_caliber"].replace("\n", ", ").replace("*", "")
+        s.append(f'<title>{esc(r["label"])} \u2014 online WER: {esc(note)}% ({esc(wer_basis)})</title>')
         s.append(f'<rect class="f2-hit" fill="none" pointer-events="all" x="{bx0 - 3:.1f}" y="{c_y0:.1f}" width="{bw + 6:.1f}" height="{c_y1 - c_y0 + 125:.1f}"/>')
         s.append(f'<rect class="f2-bar" x="{bx0:.1f}" y="{by0:.1f}" width="{bw:.1f}" height="{bh:.1f}" '
                  f'fill="{col}" fill-opacity="0.35" stroke="{col}" stroke-width="{SW(0.8)}"/>')
@@ -2223,7 +2227,7 @@ def _build_fig2_full_svg(
         [2, 5, 10, 20, 50, 100, 200],
         ["2", "5", "10", "20", "50", "100", "200"],
         "words per minute",
-        "(d) Communication speed (online)\nn/r: speed not reported",
+        "(d) Communication speed (online)\nn/r: speed unavailable",
         title_fs=9.8,
         minor_yticks=[3, 4, 6, 7, 8, 9, 30, 40, 60, 70, 80, 90, 300, 400],
     )
@@ -2242,7 +2246,7 @@ def _build_fig2_full_svg(
                                va="bottom" if above else "top"))
     s.append(multiline_svg(
         d_x0 + 0.98 * (d_x1 - d_x0), d_y0 + 0.015 * (c_y1 - c_y0),
-        dagger_note, 6.0, "#555555", anchor="end", va="top"
+        DAILY_SPEED_NOTE, 6.0, "#555555", anchor="end", va="top"
     ))
     for x, r in enumerate(rows_cd):
         sid = PANEL_BCD_IDS[x]
@@ -2266,7 +2270,8 @@ def _build_fig2_full_svg(
             bh = by1 - by0
             top = spd + spdsd if spdsd is not None else spd
             note = f"{spd:.1f}\u00b1{spdsd:.1f}" if spdsd is not None else f"{spd:.1f}"
-            s.append(f'<title>{esc(r["label"])} \u2014 online speed: {esc(note)} wpm (click to inspect study)</title>')
+            speed_basis = r["speed_caliber"].replace("\n", ", ")
+            s.append(f'<title>{esc(r["label"])} \u2014 online speed: {esc(note)} wpm ({esc(speed_basis)})</title>')
             s.append(f'<rect class="f2-hit" fill="none" pointer-events="all" x="{bx0 - 3:.1f}" y="{d_y0:.1f}" width="{bw + 6:.1f}" height="{d_y1 - d_y0 + 125:.1f}"/>')
             s.append(f'<rect class="f2-bar" x="{bx0:.1f}" y="{by0:.1f}" width="{bw:.1f}" height="{bh:.1f}" '
                      f'fill="{col}" fill-opacity="0.35" stroke="{col}" stroke-width="{SW(0.8)}"/>')
@@ -3739,6 +3744,14 @@ document.documentElement.classList.add('js');</script>
     </button>
     <svg id="f2-svg" viewBox="0 0 __F2_VW__ __F2_VH__" xmlns="http://www.w3.org/2000/svg">__FIG2_FULL__</svg>
   </div>
+  <p class="rv" style="font-size:13px;color:var(--muted)">
+    For each day, WER uses the total word edits and reference words, and speed uses
+    the total reference count and trial time. The bars give each included day equal weight.
+    Whiskers show the sample standard deviation across days.
+    The marked Wairagkar bar shows the paper’s listener transcription median.
+    See the
+    <a href="https://github.com/Physics-Lee/communication-neuroprostheses-reproduction/tree/main/fig2cd">Figure 2(c,d) methods and data</a>.
+  </p>
 
   <div class="sec rv" id="pm-sec">
     <h2>Insights</h2>
@@ -4000,29 +4013,38 @@ function cardHtml(rec, includeReproBox){
 const cardsBox = document.getElementById('cards');
 function rebuildCards(visStudies){
   cardsBox.innerHTML = '';
-  const reproStudies = visStudies.filter(r => r.is_repro);
-  const restStudies = visStudies.filter(r => !r.is_repro);
-  const appendCard = (rec) => {
+  /* Three bands separated by dashed row breaks: the pinned studies alone in
+     the first row (at the normal column width, so the break after them just
+     ends the row early), the other reproduced studies, then the
+     non-reproduced remainder. */
+  const isPinned = r => STAR_STUDY_IDS.has(r.id);
+  const pinnedStudies = visStudies.filter(isPinned);
+  const reproStudies = visStudies.filter(r => r.is_repro && !isPinned(r));
+  const restStudies = visStudies.filter(r => !r.is_repro && !isPinned(r));
+  const makeCard = (rec) => {
     const d = document.createElement('div');
-    d.className = 'study-card' + (STAR_STUDY_IDS.has(rec.id) ? ' pinned' : '') + (rec.is_repro ? ' repro-card' : '');
+    d.className = 'study-card' + (isPinned(rec) ? ' pinned' : '') + (rec.is_repro ? ' repro-card' : '');
     d.dataset.id = rec.id;
     d.style.setProperty('--spine', COLORS[rec.opn]);
     d.innerHTML = cardHtml(rec, false);
     d.addEventListener('click', () => selectStudy(rec.id, true));
     d.addEventListener('mouseenter', () => highlightStudy(rec.id, true));
     d.addEventListener('mouseleave', () => highlightStudy(rec.id, false));
-    cardsBox.appendChild(d);
+    return d;
   };
-  for (const r of reproStudies) appendCard(r);
-  if (reproStudies.length && restStudies.length){
+  const addRowBreak = () => {
     const br = document.createElement('div');
     br.className = 'cards-row-break';
     cardsBox.appendChild(br);
-  }
-  for (const r of restStudies) appendCard(r);
+  };
+  for (const r of pinnedStudies) cardsBox.appendChild(makeCard(r));
+  if (pinnedStudies.length && (reproStudies.length || restStudies.length)) addRowBreak();
+  for (const r of reproStudies) cardsBox.appendChild(makeCard(r));
+  if (reproStudies.length && restStudies.length) addRowBreak();
+  for (const r of restStudies) cardsBox.appendChild(makeCard(r));
   document.getElementById('cards-empty').style.display = visStudies.length ? 'none' : '';
   document.getElementById('cards-count').textContent =
-    visStudies.length + ' of ' + N + ' studies (' + reproStudies.length + ' reproduced)';
+    visStudies.length + ' of ' + N + ' studies (' + (pinnedStudies.length + reproStudies.length) + ' reproduced)';
 }
 
 function highlightStudy(sid, on){
@@ -4714,6 +4736,14 @@ def export_interactive_html(
     panels' legend handles/labels carry ``pmLh--/pmLt--`` gids promoted to
     ``.pm-leg`` groups with the same bindings (see
     ``render_phase_memory_figure._stamp_legend_gids``).
+    2026-11-23 study-card order round (user: "两个pinned单独作为第一行，随后是
+    其他6个被复现的文章，随后是其他的"; same width as the other cards, user:
+    "同宽"): the Study Cards grid is now three bands separated by the dashed
+    row break -- the 2 pinned studies alone in the first row, the other 6
+    reproduced studies, then the non-reproduced remainder. The pinned cards
+    keep the normal column width, so the break after them ends the first row
+    early and leaves the remaining columns empty. The bands rebuild from the
+    filtered list, so they shrink under the filters.
     """
     f2_svg_inner, f2_vw, f2_vh = f2_svg_tuple
     if pm_svgs is None:

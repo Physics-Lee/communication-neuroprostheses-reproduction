@@ -1,0 +1,56 @@
+series,day,released_trials,wer_trials,word_errors,reference_words,speed_trials,speed_count,speed_unit,seconds,source,wer_pct,speed_wpm
+willett21_t5,2019-12-11,32,32,53,316,32,1641,characters,1604.290000000,Datasets/t5.2019.12.11/sentences.mat,16.772152,12.274589
+willett21_t5,2019-12-18,34,34,49,326,34,1687,characters,1612.680000000,Datasets/t5.2019.12.18/sentences.mat,15.030675,12.553017
+willett21_t5,2019-12-20,34,34,88,333,34,1749,characters,1435.810000000,Datasets/t5.2019.12.20/sentences.mat,26.426426,14.617533
+willett21_t5,2020-01-06,30,30,103,287,30,1486,characters,1105.590000000,Datasets/t5.2020.01.06/sentences.mat,35.888502,16.128945
+willett21_t5,2020-01-08,33,33,77,306,33,1596,characters,1220.680000000,Datasets/t5.2020.01.08/sentences.mat,25.163399,15.689616
+willett23_t12,2022-07-21,80,80,113,498,80,498,words,452.500000000,sentences.tar.gz/./sentences/t12.2022.07.21_sentences.mat,22.690763,66.033149
+willett23_t12,2022-07-27,80,80,128,483,80,483,words,439.860000000,sentences.tar.gz/./sentences/t12.2022.07.27_sentences.mat,26.501035,65.884600
+willett23_t12,2022-08-02,80,80,104,440,80,440,words,392.020000000,sentences.tar.gz/./sentences/t12.2022.08.02_sentences.mat,23.636364,67.343503
+willett23_t12,2022-08-11,80,80,117,477,80,477,words,439.620000000,sentences.tar.gz/./sentences/t12.2022.08.11_sentences.mat,24.528302,65.101679
+willett23_t12,2022-08-13,80,80,104,476,80,476,words,438.580000000,sentences.tar.gz/./sentences/t12.2022.08.13_sentences.mat,21.848739,65.119248
+fan23_t5,2022-09-29,40,40,12,318,40,1627,characters,1677.640000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2022.09.29.mat,3.773585,11.637777
+fan23_t5,2022-10-06,40,40,13,329,40,1724,characters,1648.060000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2022.10.06.mat,3.951368,12.552941
+fan23_t5,2022-10-18,40,40,12,312,40,1709,characters,1338.560000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2022.10.18.mat,3.846154,15.320942
+fan23_t5,2022-10-25,37,37,22,321,37,1635,characters,1194.840000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2022.10.25.mat,6.853583,16.420609
+fan23_t5,2022-10-27,40,40,8,315,40,1744,characters,1260.020000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2022.10.27.mat,2.539683,16.609260
+fan23_t5,2022-11-01,40,40,12,296,40,1629,characters,1307.820000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2022.11.01.mat,4.054054,14.947011
+fan23_t5,2022-11-03,40,40,13,329,40,1733,characters,1484.060000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2022.11.03.mat,3.951368,14.012911
+fan23_t5,2022-12-08,40,40,15,330,40,1751,characters,1494.000000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2022.12.08.mat,4.545455,14.064257
+fan23_t5,2022-12-15,20,20,4,160,20,876,characters,792.960000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2022.12.15.mat,2.500000,13.256659
+fan23_t5,2023-02-28,40,40,13,312,40,1695,characters,1379.380000000,CORP_data_release.zip/CORP_data_release/online_evaluation_data/recalibration/mat/t5.2023.02.28.mat,4.166667,14.745755
+card24_t15,2023-08-13,30,30,19,193,30,193,words,315.240000000,"t15_copyTask.pkl, post-implant day 27",9.844560,36.733917
+card24_t15,2023-08-20,100,100,80,588,100,588,words,1087.680000000,"t15_copyTask.pkl, post-implant day 34",13.605442,32.436011
+card24_t15,2023-09-01,99,99,27,586,99,586,words,1062.880000000,"t15_copyTask.pkl, post-implant day 46",4.607509,33.079934
+card24_t15,2023-09-03,115,115,39,722,115,722,words,1355.920000000,"t15_copyTask.pkl, post-implant day 48",5.401662,31.948788
+card24_t15,2023-09-24,115,115,43,699,115,699,words,1485.680000000,"t15_copyTask.pkl, post-implant day 69",6.151645,28.229498
+card24_t15,2023-09-29,74,74,18,463,74,463,words,881.280000000,"t15_copyTask.pkl, post-implant day 74",3.887689,31.522331
+card24_t15,2023-10-01,208,208,59,1282,208,1282,words,2085.760000000,"t15_copyTask.pkl, post-implant day 76",4.602184,36.878644
+card24_t15,2023-10-06,138,138,35,863,138,863,words,1635.920000000,"t15_copyTask.pkl, post-implant day 81",4.055620,31.651915
+card24_t15,2023-10-08,169,169,47,1076,169,1076,words,1876.400000000,"t15_copyTask.pkl, post-implant day 83",4.368030,34.406310
+card24_t15,2023-10-13,90,90,13,512,90,512,words,952.160000000,"t15_copyTask.pkl, post-implant day 88",2.539062,32.263485
+card24_t15,2023-10-15,148,148,31,953,148,953,words,1692.640000000,"t15_copyTask.pkl, post-implant day 90",3.252886,33.781548
+card24_t15,2023-10-20,50,50,3,302,50,302,words,574.800000000,"t15_copyTask.pkl, post-implant day 95",0.993377,31.524008
+card24_t15,2024-02-25,146,146,31,1001,146,1001,words,1758.000000000,"t15_copyTask.pkl, post-implant day 223",3.096903,34.163823
+card24_t15,2024-03-17,146,146,20,1097,146,1097,words,2372.080000000,"t15_copyTask.pkl, post-implant day 244",1.823154,27.747799
+kunz25_t12,2023-11-28,100,100,93,407,,,,,sentenceData.zip/sentenceData/t12.2023.11.28_imagined_50words_eval.mat,22.850123,
+kunz25_t15,2024-12-15,15,15,26,98,,,,,sentenceData.zip/sentenceData/t15.2024.12.15_imagined_125kwords_eval.mat,26.530612,
+kunz25_t15,2025-01-05,40,40,151,251,,,,,sentenceData.zip/sentenceData/t15.2025.01.05_imagined_125kwords_eval.mat,60.159363,
+kunz25_t16,2024-12-18,35,35,95,214,,,,,sentenceData.zip/sentenceData/t16.2024.12.18_imagined_125kwords_eval.mat,44.392523,
+jude26a_t17,2024-06-03,20,20,10,85,20,384,characters,1003.814000000,"Data.zip/t17/t17.2024.06.03, Fig. 3 blocks",11.764706,4.590492
+jude26a_t17,2024-06-04,55,55,26,260,55,1311,characters,3737.842000000,"Data.zip/t17/t17.2024.06.04, Fig. 3 blocks",10.000000,4.208846
+jude26a_t17,2024-06-05,31,29,13,124,29,560,characters,1637.942000000,"Data.zip/t17/t17.2024.06.05, Fig. 3 blocks",10.483871,4.102709
+jude26a_t17,2024-07-09,28,27,7,137,27,717,characters,1465.376000000,"Data.zip/t17/t17.2024.07.09, Fig. 3 blocks",5.109489,5.871531
+jude26a_t17,2024-07-10,15,14,12,82,14,454,characters,691.138000000,"Data.zip/t17/t17.2024.07.10, Fig. 3 blocks",14.634146,7.882652
+jude26a_t17,2024-07-22,16,16,8,72,16,402,characters,617.210000000,"Data.zip/t17/t17.2024.07.22, Fig. 3 blocks",11.111111,7.815816
+jude26a_t18,2024-12-05,40,40,11,243,40,1273,characters,2336.415000000,"Data.zip/t18/t18.2024.12.05, Fig. 3 blocks",4.526749,6.538222
+jude26a_t18,2025-01-14,60,60,13,365,60,1905,characters,2494.219000000,"Data.zip/t18/t18.2025.01.14, Fig. 3 blocks",3.561644,9.165194
+jude26a_t18,2025-01-15,70,70,13,442,70,2189,characters,2189.573000000,"Data.zip/t18/t18.2025.01.15, Fig. 3 blocks",2.941176,11.996860
+jude26a_t18,2025-01-21,80,80,19,480,80,2489,characters,2234.258000000,"Data.zip/t18/t18.2025.01.21, Fig. 3 blocks",3.958333,13.368197
+jude26a_t18,2025-01-22,100,100,23,614,100,3143,characters,2652.833000000,"Data.zip/t18/t18.2025.01.22, Fig. 3 blocks",3.745928,14.217254
+jude26a_t18,2025-02-04,100,100,22,679,100,3004,characters,2056.230000000,"Data.zip/t18/t18.2025.02.04, Fig. 3 blocks",3.240059,17.531113
+jude26a_t18,2025-02-05,130,130,22,848,130,3822,characters,2515.760000000,"Data.zip/t18/t18.2025.02.05, Fig. 3 blocks",2.594340,18.230674
+jude26b_t17,2024-04-02,11,11,59,64,11,64,words,125.562000000,"Data.zip/t17/t17.2024.04.02, Fig. 3B unconstrained vocabulary",92.187500,30.582501
+jude26b_t17,2024-05-07,200,200,625,1251,200,1251,words,2325.256000000,"Data.zip/t17/t17.2024.05.07, Fig. 3B unconstrained vocabulary",49.960032,32.280317
+jude26b_t17,2024-05-14,178,178,655,1097,178,1097,words,2111.704000000,"Data.zip/t17/t17.2024.05.14, Fig. 3B unconstrained vocabulary",59.708295,31.169141
+jude26b_t17,2024-05-28,80,80,312,487,80,487,words,865.861000000,"Data.zip/t17/t17.2024.05.28, Fig. 3B unconstrained vocabulary",64.065708,33.746756
