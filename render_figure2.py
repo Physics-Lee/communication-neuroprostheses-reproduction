@@ -29,6 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.colors import to_rgb
+from matplotlib.font_manager import FontProperties
 from matplotlib.lines import Line2D
 from matplotlib.path import Path as MplPath
 from matplotlib.text import Text
@@ -1046,8 +1047,29 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     # render_phase_memory_figure.py -- so the figure drops from 5 rows
     # (22.9 in) to 4 (17.1 in), keeping rows 1-3 at their tuned sizes.
     fig = plt.figure(figsize=(22.4, 17.1))
+    # 2026-11-23 (user: "make the two inter-row corridors the same height,
+    # (a+b)/2"): the former 4-row spec (1.02, 0.08, 0.96, 0.92) with global
+    # hspace=0.72 left ~167 svg units between rows 1 and 2 (panel-a rotated
+    # labels -> b/c/d titles) but only ~36 between rows 2 and 3 (b/c/d
+    # labels -> e/f titles). hspace is global, so the gaps are rebuilt as
+    # explicit spacer rows with hspace=0: _GAP_R is the old hspace in ratio
+    # units; spacer 1 absorbs the old 0.08 row plus both adjacent gaps and
+    # shrinks by _CORR_D units, spacer 2 grows by the same _CORR_D, so both
+    # corridors land at (167+36)/2 ~ 101.5 svg units while every panel
+    # keeps its height and the figure keeps its 17.1 in canvas.
+    _GAP_R = 0.72 * (1.02 + 0.08 + 0.96 + 0.92) / 4.0
+    _UNIT = 0.852 * 1710.0 / (2.98 + 3 * _GAP_R)  # svg units per ratio unit
+    _CORR_D = 65.5 / _UNIT
     outer = fig.add_gridspec(
-        4, 1, height_ratios=(1.02, 0.08, 0.96, 0.92), hspace=0.72
+        5, 1,
+        height_ratios=(
+            1.02,                          # (a) vocabulary funnel
+            2 * _GAP_R + 0.08 - _CORR_D,   # spacer: row1 -> row2 corridor
+            0.96,                          # (b)(c)(d)
+            _GAP_R + _CORR_D,              # spacer: row2 -> row3 corridor
+            0.92,                          # (e)(f)
+        ),
+        hspace=0.0,
     )
 
     # ---- Row 1: (a) Vocabulary size ----
@@ -1354,7 +1376,7 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
     # with a new WER-vs-CER companion alongside); the phase-diagram round
     # then retired the former row-4 (g) PER-vs-WER panel to the companion
     # figure's panel (a), so (f) is now the last row of Figure 2.
-    gs_r4 = outer[3].subgridspec(1, 2, width_ratios=(1.0, 1.0), wspace=0.16)
+    gs_r4 = outer[4].subgridspec(1, 2, width_ratios=(1.0, 1.0), wspace=0.16)
     ax_h = fig.add_subplot(gs_r4[0, 0])
     ax_i = fig.add_subplot(gs_r4[0, 1])
 
@@ -1595,9 +1617,15 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
                     *ax3.get_xticklabels())
     )
     corridor_rep = lbl_y0_rep - title_y1_rep
-    y_tip_r = title_y1_rep + 0.05 * corridor_rep
-    y_arm_r = title_y1_rep + 0.30 * corridor_rep
-    y_apex_r = title_y1_rep + 0.58 * corridor_rep
+    # 2026-11-23 (user: "make the blue brace middle as long as the green
+    # one's; equalize both inter-row corridors to (a+b)/2"): with both
+    # corridors now ~101.5 svg units (see the gridspec spacer-row comment),
+    # the blue brace simply mirrors the green funnel brace's coefficients
+    # exactly (tip +0.06c, arm +0.22c, apex +0.42c, bus lbl-0.28c), so both
+    # center spikes are 0.20c = ~20.3 svg units -- literally equal.
+    y_tip_r = title_y1_rep + 0.06 * corridor_rep
+    y_arm_r = title_y1_rep + 0.22 * corridor_rep
+    y_apex_r = title_y1_rep + 0.42 * corridor_rep
     brace_x0r = ax_h.get_position().x0
     brace_x1r = ax_i.get_position().x1
     brace_xmr = 0.5 * (brace_x0r + brace_x1r)
@@ -1855,11 +1883,24 @@ def _build_fig2_full_svg(
         out_t.append("</text>")
         return "".join(out_t)
 
+    # Bottom edges (SVG y) of the rotate(-75) x-tick labels. Their translate
+    # anchors live in transform attributes, invisible to the max-y scan that
+    # derives vh below, while the rotated text drops ~sin(75 deg) * rendered
+    # width below the anchor — the 2026-11-11 split left the bottom row's
+    # labels clipped by the viewBox until this tracker was added.
+    rot_bottoms = []
+
     def rot_xtick_svg(tx, ty, label, fs_pt, bold=False, color="#1f2937"):
         lines = str(label).split("\n")
         fs = fs_pt * PT
         lh = fs * 1.15
         w_attr = ' font-weight="bold"' if bold else ""
+        # Track the label's on-screen bottom edge: the renderer measures at
+        # figure DPI (SX converts to SVG units); the 6% margin absorbs
+        # Segoe UI vs. DejaVu Sans width drift, and 0.35*fs covers descent.
+        fp = FontProperties(size=fs_pt, weight="bold" if bold else "normal")
+        w_max = max(renderer.get_text_width_height_descent(ln, fp, False)[0] for ln in lines)
+        rot_bottoms.append(ty + SX(w_max) * 1.06 * 0.9659 + 0.35 * fs)
         if len(lines) == 1:
             return (f'<g transform="translate({tx:.1f},{ty:.1f}) rotate(-75)">'
                     f'<text class="f2-lbl" x="0" y="{0.34 * fs:.1f}" font-size="{fs:.2f}" '
@@ -2467,8 +2508,10 @@ def _build_fig2_full_svg(
     svg_inner = "\n".join(s)
     # 2026-11-11 RAM/VRAM split: the bottom row lost its rotated x-tick
     # labels, so the former hardcoded vh = 2245 tight crop is measured
-    # from the drawn SVG elements instead (max y over text/rect/line).
-    ys = [float(m) for m in re.findall(r'\sy="(-?[0-9.]+)"', svg_inner)]
+    # from the drawn SVG elements instead (max y over text/rect/line,
+    # plus the rotate(-75) label extents tracked in rot_bottoms — their
+    # anchors sit in transform attributes the max-y scan cannot see).
+    ys = [float(m) for m in re.findall(r'\sy="(-?[0-9.]+)"', svg_inner)] + rot_bottoms
     vh = int(max(ys)) + 14 if ys else int(h_px * 0.5)
     svg_inner = (
         f'<rect x="0" y="0" width="{vw}" height="{vh}" fill="#ffffff"/>\n'
