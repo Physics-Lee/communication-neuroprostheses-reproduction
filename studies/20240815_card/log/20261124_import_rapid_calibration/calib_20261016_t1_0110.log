@@ -1,0 +1,19 @@
+[t15.2025.01.10] day 39: 106 train / 23 val / 2340 replay
+[before] val PER 24.38% (177/726)
+  step 250: batch loss 0.019 (102s)
+  step 500: batch loss 0.019 (197s)
+  step 750: batch loss 0.020 (290s)
+  step 1000: batch loss 0.019 (383s)
+  step 1250: batch loss 0.018 (479s)
+  step 1500: batch loss 0.017 (576s)
+{
+  "session": "t15.2025.01.10",
+  "lr": 0.001,
+  "steps": 1500,
+  "val_PER_before": 24.380165289256198,
+  "val_PER_after": 24.517906336088153,
+  "delta": 0.13774104683195532,
+  "final_batch_loss": 0.016877782188821584,
+  "first_batch_loss": 0.015737442416138947,
+  "wall_min": 9.606977887948354
+}

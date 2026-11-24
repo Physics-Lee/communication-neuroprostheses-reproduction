@@ -3,7 +3,7 @@
 This directory provides **3 progressive, zero-download Jupyter Notebooks** designed for undergraduate/graduate students and neuroengineering researchers. Every notebook runs out-of-the-box in the unified `bci-repro` Conda environment (**Python 3.11.18 + PyTorch 2.11.0+cu128, verified on 1× NVIDIA GeForce RTX 5060 Ti 16 GB**) without waiting for 100+ GB of external Dryad downloads. All code cells are pre-executed with embedded tables and PNG figures so they can be read directly on GitHub or in VS Code.
 
 * **Primary English Notebooks**: `tutorials/01_*.ipynb` – `tutorials/03_*.ipynb`
-* **Chinese Companion Notebooks (中文版)**: [`tutorials/zh/`](zh/)
+* **Chinese Companion Notebooks (中文版)**: [`tutorials/zh/`](zh)
 
 ---
 

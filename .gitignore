@@ -15,5 +15,14 @@ env/
 *.tfrecord
 *.fst
 *.arpa
+
+# Local study inputs and upstream checkouts. Keep manifests and trial lists.
+/studies/*/data/*/
+!/studies/*/data/splits/
+/studies/*/nejm-brain-to-text/
+/studies/*/open_source_code_for_reference/
+/studies/20231201_fan/tmp_run*/
+/studies/20250612_wairagkar/tmp_mel*/
+
 .DS_Store
 Thumbs.db

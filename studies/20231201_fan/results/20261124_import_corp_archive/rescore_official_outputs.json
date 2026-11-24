@@ -1,0 +1,204 @@
+{
+ "arms": {
+  "recalibration": {
+   "sessions": 10,
+   "pooled_wer_lm_pct": 4.1,
+   "mean_session_wer_pct": 4.02,
+   "mean_session_accuracy_pct": 95.98,
+   "sd_session_accuracy_pct": 1.2,
+   "mean_session_wer_rnn_pct": 22.22,
+   "per_session": [
+    {
+     "session": "t5.2022.09.29",
+     "n_sentences": 40,
+     "n_ref_words": 318,
+     "wer_rnn_pct": 15.09,
+     "wer_lm_pct": 3.77,
+     "sentence_exact_match_pct": 75.0,
+     "session_accuracy_pct": 96.23
+    },
+    {
+     "session": "t5.2022.10.06",
+     "n_sentences": 40,
+     "n_ref_words": 329,
+     "wer_rnn_pct": 23.4,
+     "wer_lm_pct": 3.95,
+     "sentence_exact_match_pct": 80.0,
+     "session_accuracy_pct": 96.05
+    },
+    {
+     "session": "t5.2022.10.18",
+     "n_sentences": 40,
+     "n_ref_words": 312,
+     "wer_rnn_pct": 27.56,
+     "wer_lm_pct": 3.85,
+     "sentence_exact_match_pct": 72.5,
+     "session_accuracy_pct": 96.15
+    },
+    {
+     "session": "t5.2022.10.25",
+     "n_sentences": 37,
+     "n_ref_words": 321,
+     "wer_rnn_pct": 28.35,
+     "wer_lm_pct": 6.85,
+     "sentence_exact_match_pct": 59.46,
+     "session_accuracy_pct": 93.15
+    },
+    {
+     "session": "t5.2022.10.27",
+     "n_sentences": 40,
+     "n_ref_words": 315,
+     "wer_rnn_pct": 26.35,
+     "wer_lm_pct": 2.54,
+     "sentence_exact_match_pct": 80.0,
+     "session_accuracy_pct": 97.46
+    },
+    {
+     "session": "t5.2022.11.01",
+     "n_sentences": 40,
+     "n_ref_words": 296,
+     "wer_rnn_pct": 21.96,
+     "wer_lm_pct": 4.05,
+     "sentence_exact_match_pct": 77.5,
+     "session_accuracy_pct": 95.95
+    },
+    {
+     "session": "t5.2022.11.03",
+     "n_sentences": 40,
+     "n_ref_words": 329,
+     "wer_rnn_pct": 17.93,
+     "wer_lm_pct": 3.95,
+     "sentence_exact_match_pct": 77.5,
+     "session_accuracy_pct": 96.05
+    },
+    {
+     "session": "t5.2022.12.08",
+     "n_sentences": 40,
+     "n_ref_words": 330,
+     "wer_rnn_pct": 19.09,
+     "wer_lm_pct": 4.55,
+     "sentence_exact_match_pct": 67.5,
+     "session_accuracy_pct": 95.45
+    },
+    {
+     "session": "t5.2022.12.15",
+     "n_sentences": 20,
+     "n_ref_words": 160,
+     "wer_rnn_pct": 20.0,
+     "wer_lm_pct": 2.5,
+     "sentence_exact_match_pct": 80.0,
+     "session_accuracy_pct": 97.5
+    },
+    {
+     "session": "t5.2023.02.28",
+     "n_sentences": 40,
+     "n_ref_words": 312,
+     "wer_rnn_pct": 22.44,
+     "wer_lm_pct": 4.17,
+     "sentence_exact_match_pct": 85.0,
+     "session_accuracy_pct": 95.83
+    }
+   ]
+  },
+  "no_recalibration": {
+   "sessions": 10,
+   "pooled_wer_lm_pct": 15.46,
+   "mean_session_wer_pct": 15.63,
+   "mean_session_accuracy_pct": 84.37,
+   "sd_session_accuracy_pct": 8.13,
+   "mean_session_wer_rnn_pct": 76.01,
+   "per_session": [
+    {
+     "session": "t5.2022.09.29",
+     "n_sentences": 20,
+     "n_ref_words": 164,
+     "wer_rnn_pct": 48.17,
+     "wer_lm_pct": 4.88,
+     "sentence_exact_match_pct": 70.0,
+     "session_accuracy_pct": 95.12
+    },
+    {
+     "session": "t5.2022.10.06",
+     "n_sentences": 20,
+     "n_ref_words": 156,
+     "wer_rnn_pct": 70.51,
+     "wer_lm_pct": 9.62,
+     "sentence_exact_match_pct": 45.0,
+     "session_accuracy_pct": 90.38
+    },
+    {
+     "session": "t5.2022.10.18",
+     "n_sentences": 20,
+     "n_ref_words": 162,
+     "wer_rnn_pct": 75.93,
+     "wer_lm_pct": 12.96,
+     "sentence_exact_match_pct": 35.0,
+     "session_accuracy_pct": 87.04
+    },
+    {
+     "session": "t5.2022.10.25",
+     "n_sentences": 20,
+     "n_ref_words": 177,
+     "wer_rnn_pct": 78.53,
+     "wer_lm_pct": 17.51,
+     "sentence_exact_match_pct": 35.0,
+     "session_accuracy_pct": 82.49
+    },
+    {
+     "session": "t5.2022.10.27",
+     "n_sentences": 20,
+     "n_ref_words": 152,
+     "wer_rnn_pct": 85.53,
+     "wer_lm_pct": 30.26,
+     "sentence_exact_match_pct": 20.0,
+     "session_accuracy_pct": 69.74
+    },
+    {
+     "session": "t5.2022.11.01",
+     "n_sentences": 20,
+     "n_ref_words": 145,
+     "wer_rnn_pct": 80.69,
+     "wer_lm_pct": 26.21,
+     "sentence_exact_match_pct": 15.0,
+     "session_accuracy_pct": 73.79
+    },
+    {
+     "session": "t5.2022.11.03",
+     "n_sentences": 20,
+     "n_ref_words": 156,
+     "wer_rnn_pct": 80.77,
+     "wer_lm_pct": 17.31,
+     "sentence_exact_match_pct": 40.0,
+     "session_accuracy_pct": 82.69
+    },
+    {
+     "session": "t5.2022.12.08",
+     "n_sentences": 20,
+     "n_ref_words": 155,
+     "wer_rnn_pct": 74.19,
+     "wer_lm_pct": 8.39,
+     "sentence_exact_match_pct": 50.0,
+     "session_accuracy_pct": 91.61
+    },
+    {
+     "session": "t5.2022.12.15",
+     "n_sentences": 19,
+     "n_ref_words": 133,
+     "wer_rnn_pct": 84.96,
+     "wer_lm_pct": 19.55,
+     "sentence_exact_match_pct": 36.84,
+     "session_accuracy_pct": 80.45
+    },
+    {
+     "session": "t5.2023.02.28",
+     "n_sentences": 20,
+     "n_ref_words": 146,
+     "wer_rnn_pct": 80.82,
+     "wer_lm_pct": 9.59,
+     "sentence_exact_match_pct": 50.0,
+     "session_accuracy_pct": 90.41
+    }
+   ]
+  }
+ }
+}

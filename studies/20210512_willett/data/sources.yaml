@@ -1,0 +1,9 @@
+study: 20210512_willett
+dataset: https://doi.org/10.5061/dryad.wh70rxwmv
+dataset_id: dryad_wh70rxwmv
+release_id: null
+external_input_path: data/extracted/dryad_wh70rxwmv/handwritingBCIData
+historical_checkout: 20261009_reproduce_20210512_willett
+legacy_commit: aed06f0879d7796121e29c06d241c08157f3c1fe
+checksums: See each run.yaml for archived evidence file checksums. Full release file
+  hashes are unverified.

@@ -1,0 +1,149 @@
+[t16/mixed] train sessions: ['t16.2024.04.29_attempted_50words', 't16.2024.04.29_imagined_50words', 't16.2024.12.18_imagined_125kwords']
+[t16/mixed] all sessions: ['t16.2024.04.29_attempted_50words', 't16.2024.04.29_imagined_50words', 't16.2024.04.29_imagined_50words_eval', 't16.2024.12.18_imagined_125kwords', 't16.2024.12.18_imagined_125kwords_eval']
+days_per_batch=3 | batches=6000 | val every 250
+2026-09-01 16:29:18,615: Using device: cuda:0
+2026-09-01 16:29:19,072: Using torch.compile
+2026-09-01 16:29:19,072: Initialized RNN decoding model
+2026-09-01 16:29:19,072: GRUDecoder(
+  (day_layer_activation): Softsign()
+  (day_weights): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 512x512]
+      (1): Parameter containing: [torch.float32 of size 512x512]
+      (2): Parameter containing: [torch.float32 of size 512x512]
+      (3): Parameter containing: [torch.float32 of size 512x512]
+      (4): Parameter containing: [torch.float32 of size 512x512]
+  )
+  (day_biases): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 1x512]
+      (1): Parameter containing: [torch.float32 of size 1x512]
+      (2): Parameter containing: [torch.float32 of size 1x512]
+      (3): Parameter containing: [torch.float32 of size 1x512]
+      (4): Parameter containing: [torch.float32 of size 1x512]
+  )
+  (day_layer_dropout): Dropout(p=0.2, inplace=False)
+  (gru): GRU(7168, 768, num_layers=5, batch_first=True, dropout=0.4)
+  (out): Linear(in_features=768, out_features=41, bias=True)
+)
+2026-09-01 16:29:19,074: Model has 33,808,937 parameters
+2026-09-01 16:29:19,075: Model has 1,313,280 day-specific parameters | 3.88% of total parameters
+2026-09-01 16:29:19,555: Successfully initialized datasets
+2026-09-01 16:29:20,452: Train batch 0: loss: 240.23 grad norm: 99.04 time: 0.546
+2026-09-01 16:29:20,452: Running test after training batch: 0
+2026-09-01 16:29:20,874: Val batch 0: PER (avg): 1.1876 CTC Loss (avg): 409.1911 time: 0.422
+2026-09-01 16:29:20,874: t16.2024.04.29_imagined_50words_eval val PER: 1.1592
+2026-09-01 16:29:20,874: t16.2024.12.18_imagined_125kwords_eval val PER: 1.2117
+2026-09-01 16:29:20,874: New best test PER inf --> 1.1876
+2026-09-01 16:29:20,874: Checkpointing model
+2026-09-01 16:29:22,491: Saved model to checkpoint: D:/bcirun/kunz/run_t16_mixed\checkpoint/best_checkpoint
+2026-09-01 16:29:35,801: Train batch 50: loss: 198.40 grad norm: 229.82 time: 0.181
+2026-09-01 16:29:48,742: Train batch 100: loss: 69.80 grad norm: 31.05 time: 0.167
+2026-09-01 16:30:01,489: Train batch 150: loss: 61.22 grad norm: 20.07 time: 0.171
+2026-09-01 16:30:14,457: Train batch 200: loss: 66.15 grad norm: 14.68 time: 0.168
+2026-09-01 16:30:27,559: Train batch 250: loss: 61.54 grad norm: 11.90 time: 0.166
+2026-09-01 16:30:27,560: Running test after training batch: 250
+2026-09-01 16:30:27,827: Val batch 250: PER (avg): 0.9502 CTC Loss (avg): 68.2663 time: 0.267
+2026-09-01 16:30:27,828: t16.2024.04.29_imagined_50words_eval val PER: 0.9363
+2026-09-01 16:30:27,828: t16.2024.12.18_imagined_125kwords_eval val PER: 0.9620
+2026-09-01 16:30:27,828: New best test PER 1.1876 --> 0.9502
+2026-09-01 16:30:27,828: Checkpointing model
+2026-09-01 16:30:29,344: Saved model to checkpoint: D:/bcirun/kunz/run_t16_mixed\checkpoint/best_checkpoint
+2026-09-01 16:30:42,885: Train batch 300: loss: 61.82 grad norm: 23.89 time: 0.159
+2026-09-01 16:30:56,457: Train batch 350: loss: 64.77 grad norm: 16.38 time: 0.176
+2026-09-01 16:31:10,575: Train batch 400: loss: 57.30 grad norm: 17.40 time: 0.137
+2026-09-01 16:31:24,242: Train batch 450: loss: 56.37 grad norm: 19.09 time: 0.194
+2026-09-01 16:31:37,998: Train batch 500: loss: 54.05 grad norm: 27.08 time: 0.143
+2026-09-01 16:31:37,998: Running test after training batch: 500
+2026-09-01 16:31:38,312: Val batch 500: PER (avg): 0.9385 CTC Loss (avg): 69.7477 time: 0.314
+2026-09-01 16:31:38,312: t16.2024.04.29_imagined_50words_eval val PER: 0.9057
+2026-09-01 16:31:38,312: t16.2024.12.18_imagined_125kwords_eval val PER: 0.9663
+2026-09-01 16:31:38,312: New best test PER 0.9502 --> 0.9385
+2026-09-01 16:31:38,312: Checkpointing model
+2026-09-01 16:31:39,939: Saved model to checkpoint: D:/bcirun/kunz/run_t16_mixed\checkpoint/best_checkpoint
+2026-09-01 16:31:53,169: Train batch 550: loss: 49.83 grad norm: 23.58 time: 0.152
+2026-09-01 16:32:06,359: Train batch 600: loss: 47.85 grad norm: 37.82 time: 0.197
+2026-09-01 16:32:19,628: Train batch 650: loss: 43.73 grad norm: 26.15 time: 0.178
+2026-09-01 16:32:32,969: Train batch 700: loss: 43.30 grad norm: 40.45 time: 0.151
+2026-09-01 16:32:46,314: Train batch 750: loss: 36.57 grad norm: 29.46 time: 0.188
+2026-09-01 16:32:46,315: Running test after training batch: 750
+2026-09-01 16:32:46,608: Val batch 750: PER (avg): 0.6196 CTC Loss (avg): 69.5662 time: 0.293
+2026-09-01 16:32:46,609: t16.2024.04.29_imagined_50words_eval val PER: 0.5401
+2026-09-01 16:32:46,609: t16.2024.12.18_imagined_125kwords_eval val PER: 0.6873
+2026-09-01 16:32:46,609: New best test PER 0.9385 --> 0.6196
+2026-09-01 16:32:46,609: Checkpointing model
+2026-09-01 16:32:48,468: Saved model to checkpoint: D:/bcirun/kunz/run_t16_mixed\checkpoint/best_checkpoint
+2026-09-01 16:33:01,716: Train batch 800: loss: 32.71 grad norm: 31.48 time: 0.201
+2026-09-01 16:33:14,945: Train batch 850: loss: 26.75 grad norm: 29.13 time: 0.148
+2026-09-01 16:33:28,194: Train batch 900: loss: 29.21 grad norm: 32.54 time: 0.128
+2026-09-01 16:33:41,576: Train batch 950: loss: 23.89 grad norm: 31.03 time: 0.107
+2026-09-01 16:33:55,069: Train batch 1000: loss: 23.40 grad norm: 30.91 time: 0.170
+2026-09-01 16:33:55,069: Running test after training batch: 1000
+2026-09-01 16:33:55,375: Val batch 1000: PER (avg): 0.6143 CTC Loss (avg): 77.2520 time: 0.306
+2026-09-01 16:33:55,375: t16.2024.04.29_imagined_50words_eval val PER: 0.5210
+2026-09-01 16:33:55,376: t16.2024.12.18_imagined_125kwords_eval val PER: 0.6938
+2026-09-01 16:33:55,376: New best test PER 0.6196 --> 0.6143
+2026-09-01 16:33:55,376: Checkpointing model
+2026-09-01 16:33:56,856: Saved model to checkpoint: D:/bcirun/kunz/run_t16_mixed\checkpoint/best_checkpoint
+2026-09-01 16:34:10,283: Train batch 1050: loss: 25.16 grad norm: 36.04 time: 0.167
+2026-09-01 16:34:23,856: Train batch 1100: loss: 22.56 grad norm: 34.61 time: 0.190
+2026-09-01 16:34:37,123: Train batch 1150: loss: 17.22 grad norm: 30.61 time: 0.159
+2026-09-01 16:34:50,414: Train batch 1200: loss: 17.81 grad norm: 33.06 time: 0.135
+2026-09-01 16:35:03,623: Train batch 1250: loss: 16.83 grad norm: 33.61 time: 0.192
+2026-09-01 16:35:03,623: Running test after training batch: 1250
+2026-09-01 16:35:03,928: Val batch 1250: PER (avg): 0.6225 CTC Loss (avg): 80.6388 time: 0.305
+2026-09-01 16:35:03,929: t16.2024.04.29_imagined_50words_eval val PER: 0.5490
+2026-09-01 16:35:03,929: t16.2024.12.18_imagined_125kwords_eval val PER: 0.6851
+2026-09-01 16:35:17,243: Train batch 1300: loss: 13.52 grad norm: 27.00 time: 0.192
+2026-09-01 16:35:30,455: Train batch 1350: loss: 13.06 grad norm: 28.72 time: 0.167
+2026-09-01 16:35:43,907: Train batch 1400: loss: 13.95 grad norm: 31.27 time: 0.181
+2026-09-01 16:35:57,147: Train batch 1450: loss: 13.07 grad norm: 29.72 time: 0.164
+2026-09-01 16:36:10,617: Train batch 1500: loss: 11.73 grad norm: 33.05 time: 0.176
+2026-09-01 16:36:10,617: Running test after training batch: 1500
+2026-09-01 16:36:10,943: Val batch 1500: PER (avg): 0.6559 CTC Loss (avg): 89.7850 time: 0.325
+2026-09-01 16:36:10,943: t16.2024.04.29_imagined_50words_eval val PER: 0.6000
+2026-09-01 16:36:10,943: t16.2024.12.18_imagined_125kwords_eval val PER: 0.7036
+2026-09-01 16:36:24,275: Train batch 1550: loss: 9.63 grad norm: 29.61 time: 0.149
+2026-09-01 16:36:37,791: Train batch 1600: loss: 9.57 grad norm: 29.48 time: 0.201
+2026-09-01 16:36:50,913: Train batch 1650: loss: 8.58 grad norm: 29.38 time: 0.179
+2026-09-01 16:37:04,100: Train batch 1700: loss: 8.10 grad norm: 26.46 time: 0.197
+2026-09-01 16:37:17,466: Train batch 1750: loss: 7.13 grad norm: 27.81 time: 0.165
+2026-09-01 16:37:17,466: Running test after training batch: 1750
+2026-09-01 16:37:17,765: Val batch 1750: PER (avg): 0.6805 CTC Loss (avg): 101.1357 time: 0.298
+2026-09-01 16:37:17,765: t16.2024.04.29_imagined_50words_eval val PER: 0.6153
+2026-09-01 16:37:17,765: t16.2024.12.18_imagined_125kwords_eval val PER: 0.7362
+2026-09-01 16:37:31,781: Train batch 1800: loss: 8.02 grad norm: 27.50 time: 0.201
+2026-09-01 16:37:44,937: Train batch 1850: loss: 4.95 grad norm: 21.07 time: 0.171
+2026-09-01 16:37:58,131: Train batch 1900: loss: 4.17 grad norm: 19.31 time: 0.169
+2026-09-01 16:38:11,176: Train batch 1950: loss: 5.47 grad norm: 25.44 time: 0.172
+2026-09-01 16:38:24,643: Train batch 2000: loss: 5.55 grad norm: 26.54 time: 0.162
+2026-09-01 16:38:24,643: Running test after training batch: 2000
+2026-09-01 16:38:24,976: Val batch 2000: PER (avg): 0.7356 CTC Loss (avg): 119.0557 time: 0.333
+2026-09-01 16:38:24,977: t16.2024.04.29_imagined_50words_eval val PER: 0.6662
+2026-09-01 16:38:24,977: t16.2024.12.18_imagined_125kwords_eval val PER: 0.7948
+2026-09-01 16:38:39,238: Train batch 2050: loss: 5.21 grad norm: 25.76 time: 0.144
+2026-09-01 16:38:52,459: Train batch 2100: loss: 5.33 grad norm: 27.69 time: 0.198
+2026-09-01 16:39:05,922: Train batch 2150: loss: 4.56 grad norm: 23.24 time: 0.188
+2026-09-01 16:39:19,039: Train batch 2200: loss: 3.68 grad norm: 20.30 time: 0.194
+2026-09-01 16:39:33,303: Train batch 2250: loss: 3.10 grad norm: 18.53 time: 0.146
+2026-09-01 16:39:33,305: Running test after training batch: 2250
+2026-09-01 16:39:33,609: Val batch 2250: PER (avg): 0.7339 CTC Loss (avg): 127.4138 time: 0.304
+2026-09-01 16:39:33,609: t16.2024.04.29_imagined_50words_eval val PER: 0.6586
+2026-09-01 16:39:33,609: t16.2024.12.18_imagined_125kwords_eval val PER: 0.7980
+2026-09-01 16:39:47,586: Train batch 2300: loss: 3.87 grad norm: 20.31 time: 0.153
+2026-09-01 16:40:01,829: Train batch 2350: loss: 3.01 grad norm: 19.67 time: 0.188
+2026-09-01 16:40:15,696: Train batch 2400: loss: 3.05 grad norm: 25.05 time: 0.196
+2026-09-01 16:40:30,488: Train batch 2450: loss: 2.05 grad norm: 15.47 time: 0.204
+2026-09-01 16:40:45,011: Train batch 2500: loss: 1.95 grad norm: 15.50 time: 0.132
+2026-09-01 16:40:45,011: Running test after training batch: 2500
+2026-09-01 16:40:45,346: Val batch 2500: PER (avg): 0.7380 CTC Loss (avg): 135.1727 time: 0.334
+2026-09-01 16:40:45,347: t16.2024.04.29_imagined_50words_eval val PER: 0.6713
+2026-09-01 16:40:45,347: t16.2024.12.18_imagined_125kwords_eval val PER: 0.7948
+2026-09-01 16:41:00,047: Train batch 2550: loss: 2.78 grad norm: 18.27 time: 0.155
+2026-09-01 16:41:14,850: Train batch 2600: loss: 1.89 grad norm: 15.72 time: 0.235
+2026-09-01 16:41:33,414: Train batch 2650: loss: 1.75 grad norm: 16.36 time: 0.250
+2026-09-01 16:41:52,799: Train batch 2700: loss: 1.57 grad norm: 15.69 time: 0.336
+2026-09-01 16:42:16,115: Train batch 2750: loss: 2.13 grad norm: 16.05 time: 0.402
+2026-09-01 16:42:16,115: Running test after training batch: 2750
+2026-09-01 16:42:16,800: Val batch 2750: PER (avg): 0.7626 CTC Loss (avg): 146.3420 time: 0.686
+2026-09-01 16:42:16,800: t16.2024.04.29_imagined_50words_eval val PER: 0.7057
+2026-09-01 16:42:16,802: t16.2024.12.18_imagined_125kwords_eval val PER: 0.8111
+2026-09-01 16:42:34,349: Train batch 2800: loss: 1.30 grad norm: 11.85 time: 0.230

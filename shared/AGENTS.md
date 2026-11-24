@@ -1,6 +1,6 @@
 # AGENTS.md — `shared/` (Cross-Study C++ `mmap` WFST Decoders, LLM Rescorers & Utilities)
 
-This directory houses shared decoding, rescoring, calibration, and plotting infrastructure used across the speech and handwriting reproduction pipelines (especially `20230831_willett`, `20240815_card`, `20250821_kunz`, and `20260428_jude`):
+This directory houses shared decoding, rescoring, calibration, and plotting infrastructure used across the speech and handwriting reproduction pipelines (especially `studies/20230831_willett`, `studies/20240815_card`, `studies/20250821_kunz`, and `studies/20260428_jude`):
 1. **300 GB → 19.6 GB RAM C++ OpenFST Decoders (`tools/tlg_viterbi.cc`, `tools/wenet_lattice.cc`)**: Memory-mapped (`mmap` + `.idx` state-offset index) C++ Kaldi OpenFST 5-gram WFST beam-search decoders;
 2. **Single-GPU Second-Pass LLM Rescorers (`tools/opt_rescore.py`, `tools/qwen_rank_probe.py`)**: Score N-best lattices with Facebook OPT-6.7B (FP16, 13.0 GB VRAM) or 4-bit Qwen2.5-7B / Qwen3-8B on a single 16 GB GPU;
 3. **Standardized Evaluation, Label-Free Day Adaptation & Supplementary Figures (`tools/wer_from_tsv.py`, `vacation_tlg/`, `finetune_chain/`, `plots/`)**.
@@ -12,9 +12,9 @@ This directory houses shared decoding, rescoring, calibration, and plotting infr
 1. **Do NOT copy scripts from `shared/tools/` back into individual study folders**:
    - Duplicate copies of `opt_rescore.py`, `wer_from_tsv.py`, `tlg_viterbi.cc`, `wenet_lattice.cc`, and `glog_shim.h` were removed during the 2026-11-08 cleanup audit (`../docs/CLEANUP_AUDIT.md` §4, §9). Always invoke the canonical versions in `shared/tools/`.
 2. **Respect the tokenization convention in `tools/wer_from_tsv.py`**:
-   - `norm_ref(sent)` applies `re.sub(r"[^A-Za-z'< ]", " ", sent).upper().split()`, preserving internal apostrophes (e.g., `LORI'S`, `WON'T`) and `<`/`>` tags in uppercase. Note that `wer_from_tsv.py` splits `parts[2]` (`hyp`) on whitespace without uppercasing it; if a rescorer outputs lowercase hypotheses (such as raw Qwen TSVs), uppercase the hypothesis column first (see `20240815_card/code/tools/prep_rescore_for_wereval.py`).
-3. **Distinguish `shared/plots/` from root `render_figure2.py`**:
-   - Root `render_figure2.py` renders the main 9-panel benchmark overview figure (`communication_neuroprostheses_reproduction.{png,pdf}`).
+   - `norm_ref(sent)` applies `re.sub(r"[^A-Za-z'< ]", " ", sent).upper().split()`, preserving internal apostrophes (e.g., `LORI'S`, `WON'T`) and `<`/`>` tags in uppercase. Note that `wer_from_tsv.py` splits `parts[2]` (`hyp`) on whitespace without uppercasing it; if a rescorer outputs lowercase hypotheses (such as raw Qwen TSVs), uppercase the hypothesis column first (see `studies/20240815_card/code/tools/prep_rescore_for_wereval.py`).
+3. **Distinguish `shared/plots/` from root `figures/code/render_figure2.py`**:
+   - Root `figures/code/render_figure2.py` renders the main 9-panel benchmark overview figure (`communication_neuroprostheses_reproduction.{png,pdf}`).
    - Scripts in `shared/plots/` generate **supplementary multi-study figures** (training trajectories, 5-participant PER difficulty spectrum, recording-day calendars, and `vacation_tlg` ablations).
 
 ---
@@ -62,7 +62,7 @@ shared/
 conda activate bci-repro
 
 # 1) Compute official-convention WER on any decode TSV
-python shared/tools/wer_from_tsv.py 20230831_willett/results/decode_outputs/wl_5g_opt_official.tsv
+python shared/tools/wer_from_tsv.py studies/20230831_willett/results/20261124_import_btot24/wl_5g_opt_official.tsv
 
 # 2) Compare 5-gram vs. OPT-6.7B vs. Qwen rescoring across the 4 speech studies
 python shared/tools/compare_rescorers.py

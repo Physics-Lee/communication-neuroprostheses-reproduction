@@ -1,0 +1,14 @@
+id: 20261124_import_paired_v7
+study: 20231201_fan
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261022_reproduce_20231201_fan
+legacy_checkout_head_at_import: 02e15cb2c5dc805cde9fbe4c8303ef529a230b77
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20231201_fan/results/paired_v7_summary.json
+  path: studies/20231201_fan/results/20261124_import_paired_v7/paired_v7_summary.json
+  sha256: e4286781cf4215aa2f69228c228e4581899e339eeee76c5d7ba4c38bc2d4c02c
+- old_path: 20231201_fan/results/paired_v7_trial_transcripts.csv
+  path: studies/20231201_fan/results/20261124_import_paired_v7/paired_v7_trial_transcripts.csv
+  sha256: 8d51a8e3ae9d0751d84701ba8de68e32aaafda3538b8ed2a0953d071095984eb

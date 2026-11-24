@@ -1,0 +1,29 @@
+id: 20261124_import_lis_decode
+study: 20260428_jude
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261008_reproduce_20260428_jude
+legacy_checkout_head_at_import: 2417f9b8361e6e9e1669a106fb90f4caa28bf926
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20260428_jude/results/decode_outputs/off_5g_opt_official.tsv
+  path: studies/20260428_jude/results/20261124_import_lis_decode/off_5g_opt_official.tsv
+  sha256: 416c2882913dabbc9a67c811fe62c494c03cedb27c31a61cf598acd24c2e1c30
+- old_path: 20260428_jude/results/decode_outputs/off_5g_opt_qwen3base_fx.tsv
+  path: studies/20260428_jude/results/20261124_import_lis_decode/off_5g_opt_qwen3base_fx.tsv
+  sha256: 262404276690ecceff0b0096c21b856be4b04442980ca7990b1c743c2c8c92c0
+- old_path: 20260428_jude/results/decode_outputs/off_5g_qwen.tsv
+  path: studies/20260428_jude/results/20261124_import_lis_decode/off_5g_qwen.tsv
+  sha256: 9349dfccdeec8d7225a5ee5f1fccf6f2f4081d5b2a630e6e30bb7feff8fc6db6
+- old_path: 20260428_jude/results/decode_outputs/off_final_full.tsv
+  path: studies/20260428_jude/results/20261124_import_lis_decode/off_final_full.tsv
+  sha256: c036111b74d3126218983950fc16f761d3236bbabc2f4653bf611ea38449e336
+- old_path: 20260428_jude/results/decode_outputs/val_greedy_per_trial.csv
+  path: studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+  sha256: 1a5535fe46e92039de4d44ec44d71193df4412112f4ae3a048a6b39346709b60
+- old_path: 20260428_jude/results/decode_outputs/word_decode_3gram.csv
+  path: studies/20260428_jude/results/20261124_import_lis_decode/word_decode_3gram.csv
+  sha256: 9c9a3239db979e4cfd9dce8da9e6957e9f74f34398d5804581b929cc64418b7f
+- old_path: 20260428_jude/results/logs/jude_train.log
+  path: studies/20260428_jude/log/20261124_import_lis_decode/jude_train.log
+  sha256: 1f6dade2190171318053f4018111893bf46800e618362d16c04ef6d7ae4f5241

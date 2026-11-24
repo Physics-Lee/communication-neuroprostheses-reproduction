@@ -10,6 +10,13 @@ E  LM-step contribution (from the paper's own online records; no LM run locally)
 F  Headline: ours vs official/paper anchors
 Output: .\shared\result\figs\btot_results_overview.png
 """
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "shared"))
+from study_paths import study_path
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
@@ -25,7 +32,7 @@ MUTED = "#5c667a"
 fig, axes = plt.subplots(2, 3, figsize=(19, 10.5))
 
 # ---------- A: BtoT24 training trajectory ----------
-curves = pd.read_csv(r".\20230831_willett\data\20230616_willett_BtoT24\run_60k\curves.csv")
+curves = pd.read_csv(study_path("20230831_willett", 'data/20230616_willett_BtoT24/run_60k/curves.csv'))
 va = curves[(curves.metric == "val_PER")].sort_values("batch")
 ax = axes[0, 0]
 ax.plot(va.batch, 100 * va.value, marker="o", ms=4, color=GREEN, label="val greedy PER")
@@ -38,7 +45,7 @@ ax.set_title("A  BtoT24: training trajectory (60k batches, 225.7 min)")
 ax.legend(fontsize=7.5); ax.grid(alpha=0.3)
 
 # ---------- B: BtoT24 per-day test PER ----------
-tdf = pd.read_csv(r".\20230831_willett\data\20230616_willett_BtoT24\run_60k\test_partition_greedy_per_trial.csv")
+tdf = pd.read_csv(study_path("20230831_willett", 'data/20230616_willett_BtoT24/run_60k/test_partition_greedy_per_trial.csv'))
 day = (tdf.groupby("session")
           .apply(lambda g: 100 * g.edit_distance.sum() / g.true_len.sum(),
                  include_groups=False)
@@ -61,7 +68,7 @@ ax.legend(fontsize=8); ax.grid(alpha=0.3)
 plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
 
 # ---------- C: BtoT25 by corpus ----------
-b25 = pd.read_csv(r".\20240815_card\result\val_greedy_per_trial.csv")
+b25 = pd.read_csv(study_path("20240815_card", 'result/val_greedy_per_trial.csv'))
 byc = (b25.groupby("corpus")
           .apply(lambda g: 100 * g.edit_distance.sum() / g.true_len.sum(),
                  include_groups=False)

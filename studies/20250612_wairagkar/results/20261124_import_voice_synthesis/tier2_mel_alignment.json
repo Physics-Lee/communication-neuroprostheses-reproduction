@@ -1,0 +1,23 @@
+{
+ "days": {
+  "t15_day179": {
+   "model": "brain2voice_t15_day174.h5",
+   "n_scored": 20,
+   "mel_band_r_mean": 0.532,
+   "mel_band_r_sd_trials": 0.069
+  },
+  "t15_day195": {
+   "model": "brain2voice_t15_day193.h5",
+   "n_scored": 20,
+   "mel_band_r_mean": 0.646,
+   "mel_band_r_sd_trials": 0.043
+  }
+ },
+ "protocol": {
+  "vocoder": "xiph LPCNet lpcnet_demo (official pre-trained weights)",
+  "mel": "librosa 40 mel bands, n_fft 512, hop 160 (10 ms), power->dB",
+  "silence": "frames outside word intervals (word_indices, shifted -63 to match model output timing)",
+  "n_trials_per_day": 20
+ },
+ "grand_mean": 0.589
+}

@@ -1,0 +1,361 @@
+device: cuda (NVIDIA GeForce RTX 5060 Ti)
+trials: train=56 test=1
+begin training: 10000 batches, batch_size=64
+batch 0: loss 60.81 (pred 60.67) gradNorm 15.28 lr 0.02000 elapsed 0.0min
+batch 10: loss 3.65 (pred 3.51) gradNorm 6.79 lr 0.01998 elapsed 0.2min
+batch 20: loss 3.54 (pred 3.40) gradNorm 8.38 lr 0.01996 elapsed 0.6min
+batch 30: loss 3.33 (pred 3.18) gradNorm 3.70 lr 0.01994 elapsed 1.1min
+batch 40: loss 3.22 (pred 3.07) gradNorm 1.04 lr 0.01992 elapsed 1.7min
+batch 50: loss 3.22 (pred 3.08) gradNorm 2.13 lr 0.01990 elapsed 2.3min
+val @ 50: CER 1.0000 (best 1.0000, since_improved 0)
+batch 60: loss 3.19 (pred 3.04) gradNorm 1.03 lr 0.01988 elapsed 2.9min
+batch 70: loss 3.17 (pred 3.03) gradNorm 0.52 lr 0.01986 elapsed 3.4min
+batch 80: loss 3.15 (pred 3.01) gradNorm 0.44 lr 0.01984 elapsed 4.0min
+batch 90: loss 3.15 (pred 3.00) gradNorm 0.52 lr 0.01982 elapsed 4.7min
+batch 100: loss 3.14 (pred 3.00) gradNorm 0.49 lr 0.01980 elapsed 5.3min
+val @ 100: CER 1.0000 (best 1.0000, since_improved 50)
+batch 110: loss 3.13 (pred 2.98) gradNorm 0.45 lr 0.01978 elapsed 5.9min
+batch 120: loss 3.11 (pred 2.97) gradNorm 0.40 lr 0.01976 elapsed 6.4min
+batch 130: loss 3.10 (pred 2.96) gradNorm 0.45 lr 0.01974 elapsed 7.0min
+batch 140: loss 3.10 (pred 2.95) gradNorm 0.48 lr 0.01972 elapsed 7.6min
+batch 150: loss 3.09 (pred 2.94) gradNorm 0.51 lr 0.01970 elapsed 8.0min
+val @ 150: CER 1.0000 (best 1.0000, since_improved 100)
+batch 160: loss 3.08 (pred 2.93) gradNorm 0.41 lr 0.01968 elapsed 8.6min
+batch 170: loss 3.07 (pred 2.92) gradNorm 0.51 lr 0.01966 elapsed 9.1min
+batch 180: loss 3.05 (pred 2.90) gradNorm 0.96 lr 0.01964 elapsed 9.7min
+batch 190: loss 3.02 (pred 2.87) gradNorm 0.64 lr 0.01962 elapsed 10.2min
+batch 200: loss 3.00 (pred 2.86) gradNorm 0.73 lr 0.01960 elapsed 10.7min
+val @ 200: CER 1.0000 (best 1.0000, since_improved 150)
+batch 210: loss 2.96 (pred 2.81) gradNorm 1.04 lr 0.01958 elapsed 11.3min
+batch 220: loss 2.94 (pred 2.80) gradNorm 0.77 lr 0.01956 elapsed 11.8min
+batch 230: loss 2.91 (pred 2.76) gradNorm 0.61 lr 0.01954 elapsed 12.4min
+batch 240: loss 2.87 (pred 2.72) gradNorm 0.90 lr 0.01952 elapsed 12.9min
+batch 250: loss 2.84 (pred 2.70) gradNorm 0.70 lr 0.01950 elapsed 13.4min
+val @ 250: CER 1.0000 (best 1.0000, since_improved 200)
+batch 260: loss 2.78 (pred 2.64) gradNorm 0.71 lr 0.01948 elapsed 13.9min
+batch 270: loss 2.73 (pred 2.58) gradNorm 1.04 lr 0.01946 elapsed 14.5min
+batch 280: loss 2.69 (pred 2.54) gradNorm 0.92 lr 0.01944 elapsed 15.0min
+batch 290: loss 2.65 (pred 2.51) gradNorm 2.45 lr 0.01942 elapsed 15.5min
+batch 300: loss 2.56 (pred 2.42) gradNorm 1.00 lr 0.01940 elapsed 16.0min
+val @ 300: CER 1.0000 (best 1.0000, since_improved 250)
+batch 310: loss 2.47 (pred 2.32) gradNorm 0.90 lr 0.01938 elapsed 16.6min
+batch 320: loss 2.44 (pred 2.29) gradNorm 1.09 lr 0.01936 elapsed 17.1min
+batch 330: loss 2.39 (pred 2.25) gradNorm 1.09 lr 0.01934 elapsed 17.6min
+batch 340: loss 2.34 (pred 2.20) gradNorm 1.33 lr 0.01932 elapsed 18.4min
+batch 350: loss 2.36 (pred 2.22) gradNorm 3.84 lr 0.01930 elapsed 19.0min
+val @ 350: CER 1.0000 (best 1.0000, since_improved 300)
+batch 360: loss 2.31 (pred 2.17) gradNorm 1.43 lr 0.01928 elapsed 19.7min
+batch 370: loss 2.27 (pred 2.12) gradNorm 1.45 lr 0.01926 elapsed 20.3min
+batch 380: loss 2.23 (pred 2.08) gradNorm 0.99 lr 0.01924 elapsed 20.9min
+batch 390: loss 2.20 (pred 2.05) gradNorm 0.97 lr 0.01922 elapsed 21.6min
+batch 400: loss 2.19 (pred 2.05) gradNorm 1.32 lr 0.01920 elapsed 22.2min
+val @ 400: CER 1.0000 (best 1.0000, since_improved 350)
+batch 410: loss 2.15 (pred 2.00) gradNorm 2.37 lr 0.01918 elapsed 22.8min
+batch 420: loss 2.09 (pred 1.95) gradNorm 1.55 lr 0.01916 elapsed 23.4min
+batch 430: loss 2.08 (pred 1.94) gradNorm 2.21 lr 0.01914 elapsed 23.9min
+batch 440: loss 2.04 (pred 1.89) gradNorm 1.94 lr 0.01912 elapsed 24.5min
+batch 450: loss 2.02 (pred 1.88) gradNorm 1.19 lr 0.01910 elapsed 25.0min
+val @ 450: CER 1.0000 (best 1.0000, since_improved 400)
+batch 460: loss 1.97 (pred 1.83) gradNorm 1.71 lr 0.01908 elapsed 25.4min
+batch 470: loss 1.95 (pred 1.81) gradNorm 1.96 lr 0.01906 elapsed 25.9min
+batch 480: loss 1.91 (pred 1.77) gradNorm 1.09 lr 0.01904 elapsed 26.3min
+batch 490: loss 1.87 (pred 1.73) gradNorm 1.97 lr 0.01902 elapsed 26.9min
+batch 500: loss 1.85 (pred 1.70) gradNorm 1.72 lr 0.01900 elapsed 27.5min
+val @ 500: CER 1.0000 (best 1.0000, since_improved 450)
+batch 510: loss 1.80 (pred 1.66) gradNorm 1.07 lr 0.01898 elapsed 28.2min
+batch 520: loss 1.78 (pred 1.63) gradNorm 1.19 lr 0.01896 elapsed 28.8min
+batch 530: loss 1.73 (pred 1.59) gradNorm 1.31 lr 0.01894 elapsed 29.4min
+batch 540: loss 1.74 (pred 1.60) gradNorm 1.58 lr 0.01892 elapsed 29.9min
+batch 550: loss 1.68 (pred 1.54) gradNorm 1.00 lr 0.01890 elapsed 30.5min
+val @ 550: CER 0.9474 (best 1.0000, since_improved 500)
+batch 560: loss 1.67 (pred 1.53) gradNorm 1.13 lr 0.01888 elapsed 31.1min
+batch 570: loss 1.66 (pred 1.51) gradNorm 1.15 lr 0.01886 elapsed 31.7min
+batch 580: loss 1.62 (pred 1.48) gradNorm 1.35 lr 0.01884 elapsed 32.3min
+batch 590: loss 1.62 (pred 1.48) gradNorm 1.41 lr 0.01882 elapsed 32.9min
+batch 600: loss 1.56 (pred 1.41) gradNorm 1.43 lr 0.01880 elapsed 33.5min
+val @ 600: CER 0.9474 (best 0.9474, since_improved 0)
+batch 610: loss 1.52 (pred 1.38) gradNorm 1.21 lr 0.01878 elapsed 34.0min
+batch 620: loss 1.53 (pred 1.38) gradNorm 1.12 lr 0.01876 elapsed 34.5min
+batch 630: loss 1.52 (pred 1.38) gradNorm 1.16 lr 0.01874 elapsed 35.0min
+batch 640: loss 1.51 (pred 1.37) gradNorm 1.55 lr 0.01872 elapsed 35.5min
+batch 650: loss 1.46 (pred 1.31) gradNorm 1.03 lr 0.01870 elapsed 36.1min
+val @ 650: CER 0.7368 (best 0.9474, since_improved 50)
+batch 660: loss 1.43 (pred 1.29) gradNorm 1.35 lr 0.01868 elapsed 36.6min
+batch 670: loss 1.46 (pred 1.32) gradNorm 1.38 lr 0.01866 elapsed 37.1min
+batch 680: loss 1.41 (pred 1.27) gradNorm 1.27 lr 0.01864 elapsed 37.7min
+batch 690: loss 1.41 (pred 1.26) gradNorm 1.06 lr 0.01862 elapsed 38.3min
+batch 700: loss 1.41 (pred 1.26) gradNorm 1.08 lr 0.01860 elapsed 38.8min
+val @ 700: CER 0.7368 (best 0.7368, since_improved 0)
+batch 710: loss 1.39 (pred 1.25) gradNorm 1.07 lr 0.01858 elapsed 39.3min
+batch 720: loss 1.34 (pred 1.20) gradNorm 0.98 lr 0.01856 elapsed 39.8min
+batch 730: loss 1.36 (pred 1.21) gradNorm 1.10 lr 0.01854 elapsed 40.4min
+batch 740: loss 1.32 (pred 1.18) gradNorm 1.04 lr 0.01852 elapsed 40.9min
+batch 750: loss 1.30 (pred 1.16) gradNorm 1.00 lr 0.01850 elapsed 41.4min
+val @ 750: CER 0.6842 (best 0.7368, since_improved 50)
+batch 760: loss 1.31 (pred 1.17) gradNorm 1.08 lr 0.01848 elapsed 41.9min
+batch 770: loss 1.29 (pred 1.15) gradNorm 1.12 lr 0.01846 elapsed 42.4min
+batch 780: loss 1.27 (pred 1.13) gradNorm 1.21 lr 0.01844 elapsed 42.9min
+batch 790: loss 1.26 (pred 1.11) gradNorm 1.18 lr 0.01842 elapsed 43.5min
+batch 800: loss 1.26 (pred 1.11) gradNorm 1.09 lr 0.01840 elapsed 44.0min
+val @ 800: CER 0.6316 (best 0.6842, since_improved 0)
+batch 810: loss 1.24 (pred 1.10) gradNorm 1.29 lr 0.01838 elapsed 44.5min
+batch 820: loss 1.23 (pred 1.09) gradNorm 1.19 lr 0.01836 elapsed 45.1min
+batch 830: loss 1.22 (pred 1.08) gradNorm 1.07 lr 0.01834 elapsed 45.7min
+batch 840: loss 1.18 (pred 1.04) gradNorm 1.17 lr 0.01832 elapsed 46.2min
+batch 850: loss 1.20 (pred 1.06) gradNorm 1.19 lr 0.01830 elapsed 46.7min
+val @ 850: CER 0.5789 (best 0.6316, since_improved 0)
+batch 860: loss 1.19 (pred 1.05) gradNorm 1.54 lr 0.01828 elapsed 47.2min
+batch 870: loss 1.11 (pred 0.97) gradNorm 1.23 lr 0.01826 elapsed 47.8min
+batch 880: loss 1.12 (pred 0.98) gradNorm 1.20 lr 0.01824 elapsed 48.3min
+batch 890: loss 1.10 (pred 0.96) gradNorm 1.20 lr 0.01822 elapsed 48.8min
+batch 900: loss 1.14 (pred 1.00) gradNorm 1.29 lr 0.01820 elapsed 49.3min
+val @ 900: CER 0.4737 (best 0.5789, since_improved 0)
+batch 910: loss 1.09 (pred 0.95) gradNorm 1.62 lr 0.01818 elapsed 49.8min
+batch 920: loss 1.06 (pred 0.92) gradNorm 1.10 lr 0.01816 elapsed 50.3min
+batch 930: loss 1.05 (pred 0.90) gradNorm 1.20 lr 0.01814 elapsed 50.9min
+batch 940: loss 0.98 (pred 0.83) gradNorm 1.05 lr 0.01812 elapsed 51.4min
+batch 950: loss 0.99 (pred 0.85) gradNorm 1.14 lr 0.01810 elapsed 51.9min
+val @ 950: CER 0.3947 (best 0.4737, since_improved 0)
+batch 960: loss 1.00 (pred 0.85) gradNorm 1.20 lr 0.01808 elapsed 52.5min
+batch 970: loss 0.99 (pred 0.84) gradNorm 1.34 lr 0.01806 elapsed 53.1min
+batch 980: loss 0.97 (pred 0.82) gradNorm 1.52 lr 0.01804 elapsed 53.6min
+batch 990: loss 0.94 (pred 0.79) gradNorm 1.16 lr 0.01802 elapsed 54.1min
+batch 1000: loss 0.95 (pred 0.81) gradNorm 1.28 lr 0.01800 elapsed 54.6min
+val @ 1000: CER 0.2368 (best 0.3947, since_improved 0)
+batch 1010: loss 0.89 (pred 0.75) gradNorm 1.25 lr 0.01798 elapsed 55.2min
+batch 1020: loss 0.91 (pred 0.77) gradNorm 1.23 lr 0.01796 elapsed 55.7min
+batch 1030: loss 0.88 (pred 0.74) gradNorm 1.20 lr 0.01794 elapsed 56.2min
+batch 1040: loss 0.87 (pred 0.73) gradNorm 1.21 lr 0.01792 elapsed 56.7min
+batch 1050: loss 0.89 (pred 0.74) gradNorm 1.22 lr 0.01790 elapsed 57.2min
+val @ 1050: CER 0.2105 (best 0.2368, since_improved 0)
+batch 1060: loss 0.81 (pred 0.67) gradNorm 1.18 lr 0.01788 elapsed 57.7min
+batch 1070: loss 0.86 (pred 0.71) gradNorm 1.24 lr 0.01786 elapsed 58.3min
+batch 1080: loss 0.78 (pred 0.64) gradNorm 1.14 lr 0.01784 elapsed 58.8min
+batch 1090: loss 0.80 (pred 0.66) gradNorm 1.17 lr 0.01782 elapsed 59.3min
+batch 1100: loss 0.80 (pred 0.66) gradNorm 1.20 lr 0.01780 elapsed 59.9min
+val @ 1100: CER 0.1579 (best 0.2105, since_improved 0)
+batch 1110: loss 0.79 (pred 0.64) gradNorm 1.22 lr 0.01778 elapsed 60.5min
+batch 1120: loss 0.76 (pred 0.62) gradNorm 1.20 lr 0.01776 elapsed 61.0min
+batch 1130: loss 0.75 (pred 0.61) gradNorm 1.15 lr 0.01774 elapsed 61.5min
+batch 1140: loss 0.73 (pred 0.58) gradNorm 1.14 lr 0.01772 elapsed 62.0min
+batch 1150: loss 0.71 (pred 0.56) gradNorm 1.09 lr 0.01770 elapsed 62.6min
+val @ 1150: CER 0.1316 (best 0.1579, since_improved 0)
+batch 1160: loss 0.74 (pred 0.60) gradNorm 1.17 lr 0.01768 elapsed 63.1min
+batch 1170: loss 0.73 (pred 0.59) gradNorm 1.22 lr 0.01766 elapsed 63.6min
+batch 1180: loss 0.68 (pred 0.53) gradNorm 1.09 lr 0.01764 elapsed 64.1min
+batch 1190: loss 0.72 (pred 0.58) gradNorm 1.26 lr 0.01762 elapsed 64.6min
+batch 1200: loss 0.68 (pred 0.54) gradNorm 1.09 lr 0.01760 elapsed 65.1min
+val @ 1200: CER 0.1579 (best 0.1316, since_improved 0)
+batch 1210: loss 0.72 (pred 0.58) gradNorm 1.20 lr 0.01758 elapsed 65.7min
+batch 1220: loss 0.67 (pred 0.53) gradNorm 1.15 lr 0.01756 elapsed 66.2min
+batch 1230: loss 0.66 (pred 0.51) gradNorm 1.21 lr 0.01754 elapsed 66.8min
+batch 1240: loss 0.67 (pred 0.53) gradNorm 1.19 lr 0.01752 elapsed 67.3min
+batch 1250: loss 0.67 (pred 0.53) gradNorm 1.14 lr 0.01750 elapsed 67.8min
+val @ 1250: CER 0.1316 (best 0.1316, since_improved 50)
+batch 1260: loss 0.67 (pred 0.53) gradNorm 1.13 lr 0.01748 elapsed 68.4min
+batch 1270: loss 0.63 (pred 0.49) gradNorm 1.15 lr 0.01746 elapsed 68.9min
+batch 1280: loss 0.62 (pred 0.48) gradNorm 1.10 lr 0.01744 elapsed 69.4min
+batch 1290: loss 0.65 (pred 0.51) gradNorm 1.16 lr 0.01742 elapsed 70.0min
+batch 1300: loss 0.61 (pred 0.47) gradNorm 1.13 lr 0.01740 elapsed 70.5min
+val @ 1300: CER 0.1579 (best 0.1316, since_improved 100)
+batch 1310: loss 0.67 (pred 0.53) gradNorm 1.35 lr 0.01738 elapsed 71.0min
+batch 1320: loss 0.61 (pred 0.47) gradNorm 1.12 lr 0.01736 elapsed 71.5min
+batch 1330: loss 0.64 (pred 0.50) gradNorm 1.32 lr 0.01734 elapsed 72.0min
+batch 1340: loss 0.58 (pred 0.44) gradNorm 1.09 lr 0.01732 elapsed 72.5min
+batch 1350: loss 0.60 (pred 0.45) gradNorm 1.08 lr 0.01730 elapsed 73.1min
+val @ 1350: CER 0.1842 (best 0.1316, since_improved 150)
+batch 1360: loss 0.62 (pred 0.47) gradNorm 1.13 lr 0.01728 elapsed 73.6min
+batch 1370: loss 0.63 (pred 0.49) gradNorm 1.10 lr 0.01726 elapsed 74.1min
+batch 1380: loss 0.61 (pred 0.47) gradNorm 1.19 lr 0.01724 elapsed 74.6min
+batch 1390: loss 0.58 (pred 0.44) gradNorm 1.14 lr 0.01722 elapsed 75.2min
+batch 1400: loss 0.60 (pred 0.46) gradNorm 1.13 lr 0.01720 elapsed 75.8min
+val @ 1400: CER 0.1842 (best 0.1316, since_improved 200)
+batch 1410: loss 0.57 (pred 0.43) gradNorm 1.03 lr 0.01718 elapsed 76.3min
+batch 1420: loss 0.59 (pred 0.45) gradNorm 1.09 lr 0.01716 elapsed 76.8min
+batch 1430: loss 0.55 (pred 0.41) gradNorm 1.03 lr 0.01714 elapsed 77.3min
+batch 1440: loss 0.56 (pred 0.41) gradNorm 1.01 lr 0.01712 elapsed 77.9min
+batch 1450: loss 0.56 (pred 0.42) gradNorm 1.12 lr 0.01710 elapsed 78.4min
+val @ 1450: CER 0.1842 (best 0.1316, since_improved 250)
+batch 1460: loss 0.57 (pred 0.42) gradNorm 1.04 lr 0.01708 elapsed 78.9min
+batch 1470: loss 0.53 (pred 0.39) gradNorm 1.04 lr 0.01706 elapsed 79.4min
+batch 1480: loss 0.50 (pred 0.36) gradNorm 1.02 lr 0.01704 elapsed 79.9min
+batch 1490: loss 0.53 (pred 0.39) gradNorm 1.02 lr 0.01702 elapsed 80.4min
+batch 1500: loss 0.57 (pred 0.43) gradNorm 1.06 lr 0.01700 elapsed 81.0min
+val @ 1500: CER 0.1842 (best 0.1316, since_improved 300)
+batch 1510: loss 0.52 (pred 0.37) gradNorm 1.04 lr 0.01698 elapsed 81.5min
+batch 1520: loss 0.54 (pred 0.40) gradNorm 1.07 lr 0.01696 elapsed 82.0min
+batch 1530: loss 0.51 (pred 0.37) gradNorm 0.98 lr 0.01694 elapsed 82.6min
+batch 1540: loss 0.50 (pred 0.36) gradNorm 1.08 lr 0.01692 elapsed 83.2min
+batch 1550: loss 0.53 (pred 0.38) gradNorm 1.09 lr 0.01690 elapsed 83.7min
+val @ 1550: CER 0.1316 (best 0.1316, since_improved 350)
+batch 1560: loss 0.52 (pred 0.38) gradNorm 1.14 lr 0.01688 elapsed 84.2min
+batch 1570: loss 0.50 (pred 0.36) gradNorm 1.02 lr 0.01686 elapsed 84.7min
+batch 1580: loss 0.48 (pred 0.34) gradNorm 0.99 lr 0.01684 elapsed 85.3min
+batch 1590: loss 0.47 (pred 0.33) gradNorm 0.98 lr 0.01682 elapsed 85.8min
+batch 1600: loss 0.49 (pred 0.35) gradNorm 0.97 lr 0.01680 elapsed 86.3min
+val @ 1600: CER 0.1316 (best 0.1316, since_improved 400)
+batch 1610: loss 0.49 (pred 0.34) gradNorm 1.15 lr 0.01678 elapsed 86.8min
+batch 1620: loss 0.50 (pred 0.35) gradNorm 1.06 lr 0.01676 elapsed 87.3min
+batch 1630: loss 0.55 (pred 0.41) gradNorm 1.10 lr 0.01674 elapsed 87.8min
+batch 1640: loss 0.48 (pred 0.34) gradNorm 0.98 lr 0.01672 elapsed 88.4min
+batch 1650: loss 0.51 (pred 0.37) gradNorm 1.07 lr 0.01670 elapsed 88.9min
+val @ 1650: CER 0.1316 (best 0.1316, since_improved 450)
+batch 1660: loss 0.50 (pred 0.36) gradNorm 1.12 lr 0.01668 elapsed 89.4min
+batch 1670: loss 0.48 (pred 0.34) gradNorm 0.95 lr 0.01666 elapsed 90.0min
+batch 1680: loss 0.50 (pred 0.36) gradNorm 1.09 lr 0.01664 elapsed 90.5min
+batch 1690: loss 0.48 (pred 0.34) gradNorm 0.99 lr 0.01662 elapsed 91.1min
+batch 1700: loss 0.49 (pred 0.35) gradNorm 1.12 lr 0.01660 elapsed 91.6min
+val @ 1700: CER 0.1053 (best 0.1316, since_improved 500)
+batch 1710: loss 0.45 (pred 0.30) gradNorm 1.05 lr 0.01658 elapsed 92.1min
+batch 1720: loss 0.45 (pred 0.31) gradNorm 0.94 lr 0.01656 elapsed 92.7min
+batch 1730: loss 0.47 (pred 0.33) gradNorm 1.02 lr 0.01654 elapsed 93.2min
+batch 1740: loss 0.47 (pred 0.33) gradNorm 0.97 lr 0.01652 elapsed 93.7min
+batch 1750: loss 0.46 (pred 0.32) gradNorm 1.00 lr 0.01650 elapsed 94.2min
+val @ 1750: CER 0.0789 (best 0.1053, since_improved 0)
+batch 1760: loss 0.43 (pred 0.29) gradNorm 0.98 lr 0.01648 elapsed 94.7min
+batch 1770: loss 0.48 (pred 0.34) gradNorm 1.17 lr 0.01646 elapsed 95.2min
+batch 1780: loss 0.45 (pred 0.31) gradNorm 1.05 lr 0.01644 elapsed 95.8min
+batch 1790: loss 0.42 (pred 0.28) gradNorm 0.97 lr 0.01642 elapsed 96.3min
+batch 1800: loss 0.45 (pred 0.31) gradNorm 1.04 lr 0.01640 elapsed 96.8min
+val @ 1800: CER 0.1053 (best 0.0789, since_improved 0)
+batch 1810: loss 0.48 (pred 0.33) gradNorm 1.01 lr 0.01638 elapsed 97.4min
+batch 1820: loss 0.48 (pred 0.34) gradNorm 1.06 lr 0.01636 elapsed 97.9min
+batch 1830: loss 0.43 (pred 0.29) gradNorm 0.94 lr 0.01634 elapsed 98.4min
+batch 1840: loss 0.48 (pred 0.34) gradNorm 1.11 lr 0.01632 elapsed 99.0min
+batch 1850: loss 0.43 (pred 0.29) gradNorm 1.00 lr 0.01630 elapsed 99.5min
+val @ 1850: CER 0.0789 (best 0.0789, since_improved 50)
+batch 1860: loss 0.45 (pred 0.31) gradNorm 1.02 lr 0.01628 elapsed 100.0min
+batch 1870: loss 0.45 (pred 0.31) gradNorm 1.06 lr 0.01626 elapsed 100.6min
+batch 1880: loss 0.45 (pred 0.31) gradNorm 0.99 lr 0.01624 elapsed 101.1min
+batch 1890: loss 0.46 (pred 0.32) gradNorm 1.00 lr 0.01622 elapsed 101.6min
+batch 1900: loss 0.44 (pred 0.30) gradNorm 0.99 lr 0.01620 elapsed 102.1min
+val @ 1900: CER 0.0789 (best 0.0789, since_improved 100)
+batch 1910: loss 0.40 (pred 0.26) gradNorm 0.91 lr 0.01618 elapsed 102.6min
+batch 1920: loss 0.46 (pred 0.32) gradNorm 1.14 lr 0.01616 elapsed 103.2min
+batch 1930: loss 0.41 (pred 0.27) gradNorm 0.93 lr 0.01614 elapsed 103.7min
+batch 1940: loss 0.41 (pred 0.27) gradNorm 0.92 lr 0.01612 elapsed 104.2min
+batch 1950: loss 0.42 (pred 0.28) gradNorm 0.95 lr 0.01610 elapsed 104.7min
+val @ 1950: CER 0.0526 (best 0.0789, since_improved 150)
+batch 1960: loss 0.41 (pred 0.27) gradNorm 0.99 lr 0.01608 elapsed 105.3min
+batch 1970: loss 0.45 (pred 0.31) gradNorm 1.01 lr 0.01606 elapsed 105.8min
+batch 1980: loss 0.44 (pred 0.29) gradNorm 0.97 lr 0.01604 elapsed 106.4min
+batch 1990: loss 0.39 (pred 0.25) gradNorm 0.91 lr 0.01602 elapsed 106.9min
+batch 2000: loss 0.39 (pred 0.25) gradNorm 0.93 lr 0.01600 elapsed 107.4min
+val @ 2000: CER 0.0789 (best 0.0526, since_improved 0)
+batch 2010: loss 0.37 (pred 0.23) gradNorm 0.89 lr 0.01598 elapsed 108.0min
+batch 2020: loss 0.41 (pred 0.27) gradNorm 0.96 lr 0.01596 elapsed 108.5min
+batch 2030: loss 0.43 (pred 0.29) gradNorm 1.13 lr 0.01594 elapsed 109.0min
+batch 2040: loss 0.36 (pred 0.22) gradNorm 0.83 lr 0.01592 elapsed 109.5min
+batch 2050: loss 0.41 (pred 0.27) gradNorm 0.97 lr 0.01590 elapsed 110.0min
+val @ 2050: CER 0.0526 (best 0.0526, since_improved 50)
+batch 2060: loss 0.38 (pred 0.24) gradNorm 0.95 lr 0.01588 elapsed 110.5min
+batch 2070: loss 0.39 (pred 0.25) gradNorm 0.94 lr 0.01586 elapsed 111.1min
+batch 2080: loss 0.40 (pred 0.26) gradNorm 0.97 lr 0.01584 elapsed 111.6min
+batch 2090: loss 0.36 (pred 0.22) gradNorm 0.86 lr 0.01582 elapsed 112.1min
+batch 2100: loss 0.38 (pred 0.24) gradNorm 0.94 lr 0.01580 elapsed 112.7min
+val @ 2100: CER 0.0526 (best 0.0526, since_improved 100)
+batch 2110: loss 0.37 (pred 0.23) gradNorm 0.94 lr 0.01578 elapsed 113.2min
+batch 2120: loss 0.38 (pred 0.24) gradNorm 0.98 lr 0.01576 elapsed 113.8min
+batch 2130: loss 0.38 (pred 0.24) gradNorm 0.95 lr 0.01574 elapsed 114.3min
+batch 2140: loss 0.36 (pred 0.22) gradNorm 0.87 lr 0.01572 elapsed 114.8min
+batch 2150: loss 0.38 (pred 0.23) gradNorm 0.98 lr 0.01570 elapsed 115.4min
+val @ 2150: CER 0.0526 (best 0.0526, since_improved 150)
+batch 2160: loss 0.37 (pred 0.23) gradNorm 0.88 lr 0.01568 elapsed 115.9min
+batch 2170: loss 0.38 (pred 0.24) gradNorm 0.94 lr 0.01566 elapsed 116.4min
+batch 2180: loss 0.41 (pred 0.27) gradNorm 1.05 lr 0.01564 elapsed 116.9min
+batch 2190: loss 0.39 (pred 0.24) gradNorm 0.97 lr 0.01562 elapsed 117.4min
+batch 2200: loss 0.40 (pred 0.26) gradNorm 1.10 lr 0.01560 elapsed 117.9min
+val @ 2200: CER 0.0526 (best 0.0526, since_improved 200)
+batch 2210: loss 0.36 (pred 0.22) gradNorm 0.94 lr 0.01558 elapsed 118.5min
+batch 2220: loss 0.35 (pred 0.21) gradNorm 0.89 lr 0.01556 elapsed 119.1min
+batch 2230: loss 0.38 (pred 0.24) gradNorm 0.99 lr 0.01554 elapsed 119.7min
+batch 2240: loss 0.36 (pred 0.22) gradNorm 0.89 lr 0.01552 elapsed 120.4min
+batch 2250: loss 0.37 (pred 0.23) gradNorm 0.97 lr 0.01550 elapsed 121.0min
+val @ 2250: CER 0.0526 (best 0.0526, since_improved 250)
+batch 2260: loss 0.37 (pred 0.23) gradNorm 0.98 lr 0.01548 elapsed 121.6min
+batch 2270: loss 0.38 (pred 0.24) gradNorm 1.02 lr 0.01546 elapsed 122.2min
+batch 2280: loss 0.35 (pred 0.21) gradNorm 0.92 lr 0.01544 elapsed 122.9min
+batch 2290: loss 0.37 (pred 0.23) gradNorm 0.95 lr 0.01542 elapsed 123.5min
+batch 2300: loss 0.31 (pred 0.17) gradNorm 0.75 lr 0.01540 elapsed 124.1min
+val @ 2300: CER 0.0789 (best 0.0526, since_improved 300)
+batch 2310: loss 0.36 (pred 0.22) gradNorm 0.91 lr 0.01538 elapsed 124.6min
+batch 2320: loss 0.37 (pred 0.23) gradNorm 0.99 lr 0.01536 elapsed 125.1min
+batch 2330: loss 0.35 (pred 0.21) gradNorm 0.94 lr 0.01534 elapsed 125.6min
+batch 2340: loss 0.36 (pred 0.22) gradNorm 0.93 lr 0.01532 elapsed 126.1min
+batch 2350: loss 0.35 (pred 0.21) gradNorm 0.87 lr 0.01530 elapsed 126.7min
+val @ 2350: CER 0.0526 (best 0.0526, since_improved 350)
+batch 2360: loss 0.35 (pred 0.20) gradNorm 0.91 lr 0.01528 elapsed 127.2min
+batch 2370: loss 0.36 (pred 0.22) gradNorm 0.94 lr 0.01526 elapsed 127.7min
+batch 2380: loss 0.34 (pred 0.20) gradNorm 0.94 lr 0.01524 elapsed 128.3min
+batch 2390: loss 0.35 (pred 0.21) gradNorm 0.98 lr 0.01522 elapsed 128.8min
+batch 2400: loss 0.35 (pred 0.21) gradNorm 0.90 lr 0.01520 elapsed 129.3min
+val @ 2400: CER 0.0526 (best 0.0526, since_improved 400)
+batch 2410: loss 0.33 (pred 0.18) gradNorm 0.80 lr 0.01518 elapsed 129.9min
+batch 2420: loss 0.33 (pred 0.19) gradNorm 0.90 lr 0.01516 elapsed 130.4min
+batch 2430: loss 0.33 (pred 0.18) gradNorm 0.87 lr 0.01514 elapsed 130.9min
+batch 2440: loss 0.35 (pred 0.21) gradNorm 0.92 lr 0.01512 elapsed 131.5min
+batch 2450: loss 0.36 (pred 0.22) gradNorm 0.97 lr 0.01510 elapsed 132.0min
+val @ 2450: CER 0.0526 (best 0.0526, since_improved 450)
+batch 2460: loss 0.36 (pred 0.22) gradNorm 0.93 lr 0.01508 elapsed 132.5min
+batch 2470: loss 0.33 (pred 0.19) gradNorm 0.85 lr 0.01506 elapsed 132.9min
+batch 2480: loss 0.33 (pred 0.19) gradNorm 0.94 lr 0.01504 elapsed 133.5min
+batch 2490: loss 0.32 (pred 0.18) gradNorm 0.82 lr 0.01502 elapsed 134.1min
+batch 2500: loss 0.33 (pred 0.19) gradNorm 0.95 lr 0.01500 elapsed 134.6min
+val @ 2500: CER 0.0526 (best 0.0526, since_improved 500)
+batch 2510: loss 0.34 (pred 0.20) gradNorm 0.89 lr 0.01498 elapsed 135.1min
+batch 2520: loss 0.33 (pred 0.19) gradNorm 0.86 lr 0.01496 elapsed 135.6min
+batch 2530: loss 0.32 (pred 0.18) gradNorm 0.88 lr 0.01494 elapsed 136.2min
+batch 2540: loss 0.32 (pred 0.18) gradNorm 0.90 lr 0.01492 elapsed 136.7min
+batch 2550: loss 0.33 (pred 0.19) gradNorm 1.01 lr 0.01490 elapsed 137.3min
+val @ 2550: CER 0.0526 (best 0.0526, since_improved 550)
+batch 2560: loss 0.33 (pred 0.19) gradNorm 0.90 lr 0.01488 elapsed 137.8min
+batch 2570: loss 0.30 (pred 0.16) gradNorm 0.87 lr 0.01486 elapsed 138.3min
+batch 2580: loss 0.32 (pred 0.18) gradNorm 0.92 lr 0.01484 elapsed 138.9min
+batch 2590: loss 0.31 (pred 0.17) gradNorm 0.83 lr 0.01482 elapsed 139.4min
+batch 2600: loss 0.32 (pred 0.18) gradNorm 0.87 lr 0.01480 elapsed 139.8min
+val @ 2600: CER 0.0526 (best 0.0526, since_improved 600)
+batch 2610: loss 0.32 (pred 0.17) gradNorm 0.92 lr 0.01478 elapsed 140.3min
+batch 2620: loss 0.32 (pred 0.18) gradNorm 0.91 lr 0.01476 elapsed 140.9min
+batch 2630: loss 0.34 (pred 0.20) gradNorm 0.94 lr 0.01474 elapsed 141.4min
+batch 2640: loss 0.31 (pred 0.17) gradNorm 0.89 lr 0.01472 elapsed 142.0min
+batch 2650: loss 0.29 (pred 0.15) gradNorm 0.73 lr 0.01470 elapsed 142.5min
+val @ 2650: CER 0.0526 (best 0.0526, since_improved 650)
+batch 2660: loss 0.32 (pred 0.18) gradNorm 0.92 lr 0.01468 elapsed 143.0min
+batch 2670: loss 0.30 (pred 0.15) gradNorm 0.87 lr 0.01466 elapsed 143.5min
+batch 2680: loss 0.32 (pred 0.18) gradNorm 0.87 lr 0.01464 elapsed 144.1min
+batch 2690: loss 0.32 (pred 0.18) gradNorm 0.87 lr 0.01462 elapsed 144.7min
+batch 2700: loss 0.34 (pred 0.20) gradNorm 0.98 lr 0.01460 elapsed 145.2min
+val @ 2700: CER 0.0526 (best 0.0526, since_improved 700)
+batch 2710: loss 0.32 (pred 0.18) gradNorm 0.91 lr 0.01458 elapsed 145.7min
+batch 2720: loss 0.30 (pred 0.16) gradNorm 0.80 lr 0.01456 elapsed 146.2min
+batch 2730: loss 0.30 (pred 0.16) gradNorm 0.83 lr 0.01454 elapsed 146.8min
+batch 2740: loss 0.28 (pred 0.14) gradNorm 0.71 lr 0.01452 elapsed 147.2min
+batch 2750: loss 0.33 (pred 0.19) gradNorm 1.02 lr 0.01450 elapsed 147.7min
+val @ 2750: CER 0.0526 (best 0.0526, since_improved 750)
+batch 2760: loss 0.31 (pred 0.17) gradNorm 0.85 lr 0.01448 elapsed 148.2min
+batch 2770: loss 0.31 (pred 0.17) gradNorm 0.83 lr 0.01446 elapsed 148.8min
+batch 2780: loss 0.30 (pred 0.16) gradNorm 0.83 lr 0.01444 elapsed 149.3min
+batch 2790: loss 0.31 (pred 0.17) gradNorm 0.91 lr 0.01442 elapsed 149.9min
+batch 2800: loss 0.30 (pred 0.16) gradNorm 0.84 lr 0.01440 elapsed 150.4min
+val @ 2800: CER 0.0526 (best 0.0526, since_improved 800)
+batch 2810: loss 0.28 (pred 0.14) gradNorm 0.78 lr 0.01438 elapsed 150.9min
+batch 2820: loss 0.30 (pred 0.16) gradNorm 0.87 lr 0.01436 elapsed 151.5min
+batch 2830: loss 0.32 (pred 0.18) gradNorm 0.96 lr 0.01434 elapsed 152.0min
+batch 2840: loss 0.29 (pred 0.15) gradNorm 0.80 lr 0.01432 elapsed 152.5min
+batch 2850: loss 0.31 (pred 0.17) gradNorm 0.86 lr 0.01430 elapsed 153.1min
+val @ 2850: CER 0.0526 (best 0.0526, since_improved 850)
+batch 2860: loss 0.30 (pred 0.16) gradNorm 0.93 lr 0.01428 elapsed 153.6min
+batch 2870: loss 0.33 (pred 0.19) gradNorm 0.96 lr 0.01426 elapsed 154.1min
+batch 2880: loss 0.32 (pred 0.17) gradNorm 0.86 lr 0.01424 elapsed 154.6min
+batch 2890: loss 0.28 (pred 0.14) gradNorm 0.74 lr 0.01422 elapsed 155.1min
+batch 2900: loss 0.29 (pred 0.15) gradNorm 0.81 lr 0.01420 elapsed 155.6min
+val @ 2900: CER 0.0526 (best 0.0526, since_improved 900)
+batch 2910: loss 0.30 (pred 0.16) gradNorm 0.90 lr 0.01418 elapsed 156.1min
+batch 2920: loss 0.30 (pred 0.16) gradNorm 0.87 lr 0.01416 elapsed 156.7min
+batch 2930: loss 0.29 (pred 0.15) gradNorm 0.78 lr 0.01414 elapsed 157.2min
+batch 2940: loss 0.31 (pred 0.17) gradNorm 1.00 lr 0.01412 elapsed 157.7min
+batch 2950: loss 0.31 (pred 0.17) gradNorm 0.86 lr 0.01410 elapsed 158.3min
+val @ 2950: CER 0.0789 (best 0.0526, since_improved 950)
+early stop @ 2950（1000 批无改进）
+FINAL val CER 0.0789 | best 0.0526 | total 2.64 h
+TRAIN_DONE

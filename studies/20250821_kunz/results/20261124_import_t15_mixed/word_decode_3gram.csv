@@ -1,0 +1,106 @@
+session,sentence_label,ref_words,hyp_words,edit_distance,ref_len
+t15.2024.03.03_imagined_50words_eval,They are coming outside,THEY ARE COMING OUTSIDE,DO I COME INGOT,4,4
+t15.2024.03.03_imagined_50words_eval,Are you tired?,ARE YOU TIRED,ARE YOU AT,1,3
+t15.2024.03.03_imagined_50words_eval,It is right here,IT IS RIGHT HERE,IT IS RIGHT HERE,0,4
+t15.2024.03.03_imagined_50words_eval,I am not okay,I AM NOT OKAY,I AM NOT OKAY,0,4
+t15.2024.03.03_imagined_50words_eval,My nurse is right outside,MY NURSE IS RIGHT OUTSIDE,WE ARE CITRUS,5,5
+t15.2024.03.03_imagined_50words_eval,I am not going,I AM NOT GOING,HERE ARE NOT REAL,3,4
+t15.2024.03.03_imagined_50words_eval,Are you going outside?,ARE YOU GOING OUTSIDE,ARE YOU GOING TROUT,1,4
+t15.2024.03.03_imagined_50words_eval,It is okay,IT IS OKAY,IT IS TIME K,2,3
+t15.2024.03.03_imagined_50words_eval,Where is it?,WHERE IS IT,WHERE IS IT,0,3
+t15.2024.03.03_imagined_50words_eval,Hello how are you?,HELLO HOW ARE YOU,WHERE I ARE YOU,2,4
+t15.2024.03.03_imagined_50words_eval,My glasses are clean,MY GLASSES ARE CLEAN,I LATRINE,4,4
+t15.2024.03.03_imagined_50words_eval,My glasses are comfortable,MY GLASSES ARE COMFORTABLE,THE USER I CAN'T,4,4
+t15.2024.03.03_imagined_50words_eval,I feel very hungry,I FEEL VERY HUNGRY,I FEEL VERY HUNGRY,0,4
+t15.2024.03.03_imagined_50words_eval,You are not right,YOU ARE NOT RIGHT,YOU ARE NOT RIGHT,0,4
+t15.2024.03.03_imagined_50words_eval,Do you feel comfortable?,DO YOU FEEL COMFORTABLE,HERE YOU HAVE FLUTTERED,3,4
+t15.2024.03.03_imagined_50words_eval,Please bring my glasses here,PLEASE BRING MY GLASSES HERE,LI LI R GAMMEL,5,5
+t15.2024.03.03_imagined_50words_eval,I am going outside,I AM GOING OUTSIDE,I AM RARITY,2,4
+t15.2024.03.03_imagined_50words_eval,I need my glasses,I NEED MY GLASSES,I NEED MY GUT,1,4
+t15.2024.03.03_imagined_50words_eval,Please tell my family,PLEASE TELL MY FAMILY,LEE TO R GAMMEL,4,4
+t15.2024.03.03_imagined_50words_eval,I am okay,I AM OKAY,I AM A COASTER,2,3
+t15.2024.03.03_imagined_50words_eval,How do you like my music?,HOW DO YOU LIKE MY MUSIC,HOW I DO YOU LIKE TO WRITE MY MUSIC,3,6
+t15.2024.03.03_imagined_50words_eval,I hope it is clean,I HOPE IT IS CLEAN,I HOPE IT IS CLEAN,0,5
+t15.2024.03.03_imagined_50words_eval,What do you do?,WHAT DO YOU DO,I DO YOU DO YOU DO,3,4
+t15.2024.03.03_imagined_50words_eval,Bring my glasses please,BRING MY GLASSES PLEASE,BRING MY CAMERAS,2,4
+t15.2024.03.03_imagined_50words_eval,How do you feel?,HOW DO YOU FEEL,DO DO YOU FEEL,1,4
+t15.2024.03.03_imagined_50words_eval,Do not feel bad,DO NOT FEEL BAD,DO NOT FEEL PRIDE,1,4
+t15.2024.03.03_imagined_50words_eval,That is very clean,THAT IS VERY CLEAN,IT IS EARLY,3,4
+t15.2024.03.03_imagined_50words_eval,They are coming here,THEY ARE COMING HERE,YOU ARE ARE COMING,3,4
+t15.2024.03.03_imagined_50words_eval,Please clean it,PLEASE CLEAN IT,DE LEDET,3,3
+t15.2024.03.03_imagined_50words_eval,I am thirsty,I AM THIRSTY,I FIRST,2,3
+t15.2024.03.03_imagined_50words_eval,My computer is clean,MY COMPUTER IS CLEAN,I MY COMPUTER IS P,2,4
+t15.2024.03.03_imagined_50words_eval,They have faith,THEY HAVE FAITH,I DO,3,3
+t15.2024.03.03_imagined_50words_eval,Faith is good,FAITH IS GOOD,THEY IS,2,3
+t15.2024.03.03_imagined_50words_eval,My nurse is outside,MY NURSE IS OUTSIDE,THERE ARE IS OUT,3,4
+t15.2024.03.03_imagined_50words_eval,I do not feel comfortable,I DO NOT FEEL COMFORTABLE,I DO IT THAT WAY BUT,4,5
+t15.2024.03.03_imagined_50words_eval,Here is my computer,HERE IS MY COMPUTER,HERE IS MY COAT,1,4
+t15.2024.03.03_imagined_50words_eval,They are going outside,THEY ARE GOING OUTSIDE,THEY ARE PRETTY,2,4
+t15.2024.03.03_imagined_50words_eval,I am not hungry,I AM NOT HUNGRY,I AM NOT HUNGRY,0,4
+t15.2024.03.03_imagined_50words_eval,No,NO,,1,1
+t15.2024.03.03_imagined_50words_eval,I like my nurse,I LIKE MY NURSE,I LIKE ITS,2,4
+t15.2024.03.03_imagined_50words_eval,My family is here,MY FAMILY IS HERE,THEY CAVALIER,4,4
+t15.2024.03.03_imagined_50words_eval,I feel very comfortable,I FEEL VERY COMFORTABLE,HE AREA,4,4
+t15.2024.03.03_imagined_50words_eval,It is comfortable,IT IS COMFORTABLE,IT IS COMPLETE,1,3
+t15.2024.03.03_imagined_50words_eval,My family is outside,MY FAMILY IS OUTSIDE,ARE ALLEGORY,4,4
+t15.2024.03.03_imagined_50words_eval,My family is very comfortable,MY FAMILY IS VERY COMFORTABLE,MY FAMILY IS ARROGANT,2,5
+t15.2024.03.03_imagined_50words_eval,I am outside,I AM OUTSIDE,I HAVE AGREED,2,3
+t15.2024.03.03_imagined_50words_eval,Bring my glasses here,BRING MY GLASSES HERE,WHILE I LUCKY,4,4
+t15.2024.03.03_imagined_50words_eval,It is good,IT IS GOOD,IT IS GOOD,0,3
+t15.2024.03.03_imagined_50words_eval,Yes,YES,YES,0,1
+t15.2024.03.03_imagined_50words_eval,I need you,I NEED YOU,WE NEED YOU,1,3
+t15.2024.12.15_imagined_125kwords_eval,Which way is the tourist area?,WHICH WAY IS THE TOURIST AREA,I WROTE,6,6
+t15.2024.12.15_imagined_125kwords_eval,I was raised in New York City.,I WAS RAISED IN NEW YORK CITY,I WOULD DO O,6,7
+t15.2024.12.15_imagined_125kwords_eval,When do you leave your job?,WHEN DO YOU LEAVE YOUR JOB,WHAT DO YOU KNOW,4,6
+t15.2024.12.15_imagined_125kwords_eval,That's the only pollution that's been there.,THAT'S THE ONLY POLLUTION THAT'S BEEN THERE,THE THALIDOMIDE,6,7
+t15.2024.12.15_imagined_125kwords_eval,They needed a smaller setting.,THEY NEEDED A SMALLER SETTING,THE PINKERTON,5,5
+t15.2024.12.15_imagined_125kwords_eval,They put it out in a video.,THEY PUT IT OUT IN A VIDEO,HOPING,7,7
+t15.2024.12.15_imagined_125kwords_eval,Especially in the winter.,ESPECIALLY IN THE WINTER,VERHOEF,4,4
+t15.2024.12.15_imagined_125kwords_eval,You like pets and things.,YOU LIKE PETS AND THINGS,YOU MRS,4,5
+t15.2024.12.15_imagined_125kwords_eval,Like building a house or anything.,LIKE BUILDING A HOUSE OR ANYTHING,THE OHIO IS,6,6
+t15.2024.12.15_imagined_125kwords_eval,Take a lot of chances.,TAKE A LOT OF CHANCES,DO I HAVE IS,5,5
+t15.2024.12.15_imagined_125kwords_eval,I don't think I have insurance.,I DON'T THINK I HAVE INSURANCE,I DID I HAVE IS,3,6
+t15.2024.12.15_imagined_125kwords_eval,It's up north by Green Bay.,IT'S UP NORTH BY GREEN BAY,IT VINYL,6,6
+t15.2024.12.15_imagined_125kwords_eval,I always wanted to go to school for nursing.,I ALWAYS WANTED TO GO TO SCHOOL FOR NURSING,I THEN DO NOT RISE,8,9
+t15.2024.12.15_imagined_125kwords_eval,I make a lot of my Christmas presents every year.,I MAKE A LOT OF MY CHRISTMAS PRESENTS EVERY YEAR,I DO NOT DESERVE,9,10
+t15.2024.12.15_imagined_125kwords_eval,I think a lot of the choices are good.,I THINK A LOT OF THE CHOICES ARE GOOD,I KNOW HOW I SEE,8,9
+t15.2025.01.05_imagined_125kwords_eval,But I'm still going to college.,BUT I'M STILL GOING TO COLLEGE,BUT I THINK TO TELL,4,6
+t15.2025.01.05_imagined_125kwords_eval,Our choir is doing this as a money making scheme.,OUR CHOIR IS DOING THIS AS A MONEY MAKING SCHEME,WE'RE PRINTING THE ABOVE BEING,10,10
+t15.2025.01.05_imagined_125kwords_eval,I don't know how familiar you are with Maryland.,I DON'T KNOW HOW FAMILIAR YOU ARE WITH MARYLAND,I DON'T KNOW HOW TRUE HOW WARMING,5,9
+t15.2025.01.05_imagined_125kwords_eval,Because it's her business and everything.,BECAUSE IT'S HER BUSINESS AND EVERYTHING,IN UTOPIAN VOTING,6,6
+t15.2025.01.05_imagined_125kwords_eval,You need to be very careful.,YOU NEED TO BE VERY CAREFUL,SO IT DUBROVNIK,6,6
+t15.2025.01.05_imagined_125kwords_eval,He's in the Herman Method of Reading.,HE'S IN THE HERMAN METHOD OF READING,YOU HOPE THEY ARE VICTORY,7,7
+t15.2025.01.05_imagined_125kwords_eval,They require them to.,THEY REQUIRE THEM TO,THE RED TOO,4,4
+t15.2025.01.05_imagined_125kwords_eval,From the community.,FROM THE COMMUNITY,OF THE SINGING,2,3
+t15.2025.01.05_imagined_125kwords_eval,We didn't understand the culture.,WE DIDN'T UNDERSTAND THE CULTURE,ONE RING THE RING,4,5
+t15.2025.01.05_imagined_125kwords_eval,Not be able to be in her apartment on her own.,NOT BE ABLE TO BE IN HER APARTMENT ON HER OWN,IT TROVATORE,11,11
+t15.2025.01.05_imagined_125kwords_eval,Regardless whether it's north Dallas or whatnot.,REGARDLESS WHETHER IT'S NORTH DALLAS OR WHATNOT,RELATED THE LOT,7,7
+t15.2025.01.05_imagined_125kwords_eval,You know the family.,YOU KNOW THE FAMILY,YOU THINK THE FILE,2,4
+t15.2025.01.05_imagined_125kwords_eval,I don't care anything about that.,I DON'T CARE ANYTHING ABOUT THAT,I DID RECOUNTED,5,6
+t15.2025.01.05_imagined_125kwords_eval,Mostly in raised beds so we could keep the deer out.,MOSTLY IN RAISED BEDS SO WE COULD KEEP THE DEER OUT,MITTELSTADT POWERTRAIN,11,11
+t15.2025.01.05_imagined_125kwords_eval,A really good companion for me.,A REALLY GOOD COMPANION FOR ME,I LANIER,6,6
+t15.2025.01.05_imagined_125kwords_eval,Everybody will say that he is for abortion.,EVERYBODY WILL SAY THAT HE IS FOR ABORTION,BLUNT OR OR HOURS,8,8
+t15.2025.01.05_imagined_125kwords_eval,We've got a stone from Austin.,WE'VE GOT A STONE FROM AUSTIN,WE'VE HAD A STINT REALLY,4,6
+t15.2025.01.05_imagined_125kwords_eval,They are able to reduce prices.,THEY ARE ABLE TO REDUCE PRICES,A HIGH HITTING TREES,6,6
+t15.2025.01.05_imagined_125kwords_eval,It's second nature.,IT'S SECOND NATURE,A SATANIST,3,3
+t15.2025.01.05_imagined_125kwords_eval,In a different fashion.,IN A DIFFERENT FASHION,IN THE TREES,3,4
+t15.2025.01.05_imagined_125kwords_eval,It's on the border.,IT'S ON THE BORDER,IT IS THAT THE BILL,4,4
+t15.2025.01.05_imagined_125kwords_eval,That will keep the bugs off them.,THAT WILL KEEP THE BUGS OFF THEM,BUT I DID AND A A,7,7
+t15.2025.01.05_imagined_125kwords_eval,It is bad everywhere except for Vietnam.,IT IS BAD EVERYWHERE EXCEPT FOR VIETNAM,IT PICKED VIRIDIS,6,7
+t15.2025.01.05_imagined_125kwords_eval,You're from where?,YOU'RE FROM WHERE,YOU FEAR,3,3
+t15.2025.01.05_imagined_125kwords_eval,When it came to tax evasion.,WHEN IT CAME TO TAX EVASION,AND TO TACITLY,5,6
+t15.2025.01.05_imagined_125kwords_eval,I saw plenty of jokes.,I SAW PLENTY OF JOKES,THIS REDUCES,5,5
+t15.2025.01.05_imagined_125kwords_eval,I hadn't thought about that.,I HADN'T THOUGHT ABOUT THAT,I TIDBIT,4,5
+t15.2025.01.05_imagined_125kwords_eval,The sequence was altered for the international versions.,THE SEQUENCE WAS ALTERED FOR THE INTERNATIONAL VERSIONS,IRRITABILITY,8,8
+t15.2025.01.05_imagined_125kwords_eval,Pay the vet four hundred dollars for surgery.,PAY THE VET FOUR HUNDRED DOLLARS FOR SURGERY,BUT REALLY REALLY,8,8
+t15.2025.01.05_imagined_125kwords_eval,Food pollution.,FOOD POLLUTION,SHETLAND OR THE UN,4,2
+t15.2025.01.05_imagined_125kwords_eval,Twentieth and eighteenth.,TWENTIETH AND EIGHTEENTH,WITHOUT,3,3
+t15.2025.01.05_imagined_125kwords_eval,It's more of a police action in itself.,IT'S MORE OF A POLICE ACTION IN ITSELF,IT OMITTED,8,8
+t15.2025.01.05_imagined_125kwords_eval,Let the voice of the People be heard!,LET THE VOICE OF THE PEOPLE BE HEARD,BUT THOSE AT THE TIME I HEARD,6,8
+t15.2025.01.05_imagined_125kwords_eval,We've gone through this over and over again.,WE'VE GONE THROUGH THIS OVER AND OVER AGAIN,WE WILL KNOW THINKS OLD HAROLD,8,8
+t15.2025.01.05_imagined_125kwords_eval,Some of the things were available at the border.,SOME OF THE THINGS WERE AVAILABLE AT THE BORDER,OR HOW THE PYRAMID HERE,8,9
+t15.2025.01.05_imagined_125kwords_eval,Public Broadcasting.,PUBLIC BROADCASTING,IT RIVALRY,2,2
+t15.2025.01.05_imagined_125kwords_eval,That is good that they're like that.,THAT IS GOOD THAT THEY'RE LIKE THAT,IN THE SOUTH IN,7,7
+t15.2025.01.05_imagined_125kwords_eval,In the work force as well.,IN THE WORK FORCE AS WELL,IN O'SULLIVAN,5,6
+t15.2025.01.05_imagined_125kwords_eval,I often sort of wonder how you ended up with him.,I OFTEN SORT OF WONDER HOW YOU ENDED UP WITH HIM,I HUNGARIAN UDEN Y,10,11
+t15.2025.01.05_imagined_125kwords_eval,Worship through music kind of things.,WORSHIP THROUGH MUSIC KIND OF THINGS,ILLICITLY,6,6

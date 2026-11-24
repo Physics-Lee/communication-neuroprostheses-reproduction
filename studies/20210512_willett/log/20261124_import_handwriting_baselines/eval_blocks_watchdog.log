@@ -1,0 +1,4 @@
+partition      tier                         CER% (95%CI)               WER% (95%CI)               official(CER/WER)
+HeldOutBlocks  Raw                          7.29 [6.69, 7.94]          25.02 [22.97, 27.18]       5.32/23.28  dCER=+1.97 dWER=+1.74 n=228
+
+saved -> result/eval_from_errcounts_ours.csv

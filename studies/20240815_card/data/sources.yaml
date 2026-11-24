@@ -1,0 +1,9 @@
+study: 20240815_card
+dataset: https://doi.org/10.5061/dryad.dncjsxm85
+dataset_id: dryad_dncjsxm85
+release_id: null
+external_input_path: data/extracted/dryad_dncjsxm85/hdf5_data_final
+historical_checkout: 20261008_reproduce_20240815_card
+legacy_commit: 49fe9e14be58a645842383bfce192d41e859e208
+checksums: See each run.yaml for archived evidence file checksums. Full release file
+  hashes are unverified.

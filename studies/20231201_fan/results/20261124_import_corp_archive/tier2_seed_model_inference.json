@@ -1,0 +1,20 @@
+{
+ "seed_selftest": {
+  "arm": "seed",
+  "n_trials": 110,
+  "pooled_cer_pct": 2.65,
+  "mean_trial_cer_pct": 2.71
+ },
+ "eval_no_recalibration": {
+  "arm": "eval_no_recalibration",
+  "n_trials": 199,
+  "pooled_cer_pct": 47.22,
+  "mean_trial_cer_pct": 48.46
+ },
+ "eval_recalibration_static": {
+  "arm": "eval_recalibration_static",
+  "n_trials": 377,
+  "pooled_cer_pct": 50.85,
+  "mean_trial_cer_pct": 51.38
+ }
+}

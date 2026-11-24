@@ -1,0 +1,9 @@
+study: 20260428_jude
+dataset: https://doi.org/10.5061/dryad.vq83bk481
+dataset_id: dryad_vq83bk481
+release_id: null
+external_input_path: data/extracted/dryad_vq83bk481/Data
+historical_checkout: 20261008_reproduce_20260428_jude
+legacy_commit: 2417f9b8361e6e9e1669a106fb90f4caa28bf926
+checksums: See each run.yaml for archived evidence file checksums. Full release file
+  hashes are unverified.

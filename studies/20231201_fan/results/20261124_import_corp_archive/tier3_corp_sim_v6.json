@@ -1,0 +1,103 @@
+{
+ "sessions": [
+  {
+   "session": "t5.2022.09.29",
+   "n": 40,
+   "usable": 40,
+   "pre": 17.6,
+   "mid": 5.6,
+   "post": 0.5
+  },
+  {
+   "session": "t5.2022.10.06",
+   "n": 40,
+   "usable": 40,
+   "pre": 35.9,
+   "mid": 19.1,
+   "post": 4.4
+  },
+  {
+   "session": "t5.2022.10.18",
+   "n": 40,
+   "usable": 40,
+   "pre": 48.0,
+   "mid": 9.2,
+   "post": 9.6
+  },
+  {
+   "session": "t5.2022.10.25",
+   "n": 37,
+   "usable": 37,
+   "pre": 22.5,
+   "mid": 14.4,
+   "post": 7.3
+  },
+  {
+   "session": "t5.2022.10.27",
+   "n": 40,
+   "usable": 40,
+   "pre": 27.7,
+   "mid": 19.9,
+   "post": 9.6
+  },
+  {
+   "session": "t5.2022.11.01",
+   "n": 40,
+   "usable": 40,
+   "pre": 27.5,
+   "mid": 13.9,
+   "post": 1.9
+  },
+  {
+   "session": "t5.2022.11.03",
+   "n": 40,
+   "usable": 40,
+   "pre": 22.2,
+   "mid": 8.1,
+   "post": 3.8
+  },
+  {
+   "session": "t5.2022.12.08",
+   "n": 40,
+   "usable": 40,
+   "pre": 12.3,
+   "mid": 7.1,
+   "post": 5.2
+  },
+  {
+   "session": "t5.2022.12.15",
+   "n": 20,
+   "usable": 20,
+   "pre": 24.7,
+   "mid": 4.5,
+   "post": 2.9
+  },
+  {
+   "session": "t5.2023.02.28",
+   "n": 40,
+   "usable": 40,
+   "pre": 30.4,
+   "mid": 22.3,
+   "post": 17.0
+  }
+ ],
+ "protocol": {
+  "pseudo": "official lm_decoded labels",
+  "scope": "FULL decoder (per-session input layer + shared backend), like the paper",
+  "steps": 500,
+  "lr": 5e-05,
+  "replay_frac": 0.3,
+  "grad_global_norm_clip": 10.0,
+  "backend_vars": 9,
+  "input_layer_vars": 2
+ },
+ "summary": {
+  "mean_pre": 26.9,
+  "mean_post": 6.2,
+  "v5_ref": {
+   "mean_pre": 51.4,
+   "mean_post": 40.2
+  },
+  "static_ref": 50.85
+ }
+}

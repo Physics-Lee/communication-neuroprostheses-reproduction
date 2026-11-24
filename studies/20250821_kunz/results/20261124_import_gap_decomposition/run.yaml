@@ -1,0 +1,11 @@
+id: 20261124_import_gap_decomposition
+study: 20250821_kunz
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261008_reproduce_20250821_kunz
+legacy_checkout_head_at_import: 6a65beea0b86c8fb7b190ed12f91045c12fe45e3
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20250821_kunz/results/20261028_gap_decomposition.tsv
+  path: studies/20250821_kunz/results/20261124_import_gap_decomposition/20261028_gap_decomposition.tsv
+  sha256: 38504dcfc26d606d59ae149c54753c4e3b0ca04900d25831bc78693a1a32dafe

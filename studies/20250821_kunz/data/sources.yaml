@@ -1,0 +1,9 @@
+study: 20250821_kunz
+dataset: https://doi.org/10.5061/dryad.gf1vhhn1j
+dataset_id: dryad_gf1vhhn1j
+release_id: null
+external_input_path: data/extracted/dryad_gf1vhhn1j/sentenceData
+historical_checkout: 20261008_reproduce_20250821_kunz
+legacy_commit: 6a65beea0b86c8fb7b190ed12f91045c12fe45e3
+checksums: See each run.yaml for archived evidence file checksums. Full release file
+  hashes are unverified.

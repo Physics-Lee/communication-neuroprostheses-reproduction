@@ -1,0 +1,17 @@
+checkpoint loaded, saved val_PER=0.1022
+
+== P0.2 per-sentence CTC NLL (reduction='none' scale) ==
+t15.2023.08.18  VAL   n= 49  median    4.16  q25    1.53  q75   13.81  min   0.00  max   42.85
+t15.2023.11.04  VAL   n= 15  median    0.00  q25    0.00  q75    0.02  min   0.00  max   14.91
+t15.2025.01.10  VAL   n= 23  median   55.98  q25   32.39  q75   85.44  min   7.38  max  166.42
+t15.2025.03.14  VAL   n= 24  median   50.17  q25   39.25  q75   90.59  min   2.41  max  132.05
+t15.2025.01.10  TRAIN n=106  median    0.00  q25    0.00  q75    0.00  min   0.00  max    0.01
+t15.2025.04.13  TRAIN n= 69  median    0.00  q25    0.00  q75    0.00  min   0.00  max    0.00
+
+== P0.3 greedy smoke (t15.2023.08.18, first 5 trials) ==
+trial 0: recomputed ed=5 len=23  csv ed=5 len=23  OK
+trial 1: recomputed ed=3 len=34  csv ed=3 len=34  OK
+trial 2: recomputed ed=2 len=26  csv ed=2 len=26  OK
+trial 3: recomputed ed=1 len=29  csv ed=1 len=29  OK
+trial 4: recomputed ed=2 len=16  csv ed=2 len=16  OK
+smoke: 5/5 match

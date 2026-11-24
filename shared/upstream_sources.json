@@ -1,0 +1,75 @@
+{
+  "20210512_willett": {
+    "name": "handwritingBCI",
+    "url": "https://github.com/fwillett/handwritingBCI.git",
+    "commit": "93d6cc65491785d2743c74948b75beb0e2eaaeb1",
+    "historical_commit": "93d6cc65491785d2743c74948b75beb0e2eaaeb1",
+    "runtime_studies": [
+      "20210512_willett"
+    ]
+  },
+  "20230831_willett": {
+    "name": "speechBCI",
+    "url": "https://github.com/fwillett/speechBCI.git",
+    "commit": "522a9605ccf0818def80b6fd80007598e790408e",
+    "historical_commit": "522a9605ccf0818def80b6fd80007598e790408e",
+    "runtime_studies": [],
+    "windows_sparse_prefix": "LanguageModelDecoder"
+  },
+  "20231201_fan": {
+    "name": "CORP",
+    "url": "https://github.com/cffan/CORP.git",
+    "commit": "8d87b9478aa2fb084e7b2fd32a827edc0ffa269f",
+    "historical_commit": "8d87b9478aa2fb084e7b2fd32a827edc0ffa269f",
+    "runtime_studies": [
+      "20231201_fan"
+    ],
+    "windows_sparse_prefix": "LanguageModelDecoder"
+  },
+  "20240815_card": {
+    "name": "nejm-brain-to-text",
+    "url": "https://github.com/Neuroprosthetics-Lab/nejm-brain-to-text.git",
+    "commit": "980a5b7e96392210edf976d76bdb5d15d2e0e62b",
+    "historical_commit": "980a5b7e96392210edf976d76bdb5d15d2e0e62b",
+    "runtime_studies": [
+      "20230831_willett",
+      "20240815_card",
+      "20250821_kunz",
+      "20260428_jude"
+    ],
+    "patch": "studies/20240815_card/code/upstream_patches/nejm-brain-to-text.patch",
+    "windows_sparse_prefix": "language_model"
+  },
+  "20250612_wairagkar": {
+    "name": "brain-to-voice-2025",
+    "url": "https://github.com/Neuroprosthetics-Lab/brain-to-voice-2025.git",
+    "commit": "cff4875decd35ff0f98a944035377a25b43ba79c",
+    "historical_commit": null,
+    "runtime_studies": [
+      "20250612_wairagkar"
+    ]
+  },
+  "20250821_kunz": {
+    "name": "inner_speech",
+    "url": "https://github.com/nptl-stanford/inner_speech.git",
+    "commit": "66b7948f3134971eba51431e8829e475abf362dd",
+    "historical_commit": null,
+    "runtime_studies": []
+  },
+  "20260316_jude": {
+    "name": "typingBCI",
+    "url": "https://github.com/justin-jude/typingBCI.git",
+    "commit": "e822bf75f8a36a229889bf1cab952ef2deb070b0",
+    "historical_commit": null,
+    "runtime_studies": [
+      "20260316_jude"
+    ]
+  },
+  "20260428_jude": {
+    "name": "anarthria-speech-bci",
+    "url": "https://github.com/justin-jude/anarthria-speech-bci.git",
+    "commit": "c2085baad13a66a415b269d9977adf24098f370a",
+    "historical_commit": null,
+    "runtime_studies": []
+  }
+}

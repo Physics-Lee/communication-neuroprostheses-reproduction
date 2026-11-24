@@ -1,0 +1,17 @@
+panel,resource,category,official_gb,ours_gb,note,source
+3c,host RAM,"Willett et al., 2021 (T5)",56.0,26.9,mmap + lazy FST,figures/reproduction_benchmark.yaml#panel_g_host_ram_walls
+3c,host RAM,"Willett et al., 2023 (T12)",300.0,19.6,mmap + .idx,figures/reproduction_benchmark.yaml#panel_g_host_ram_walls
+3c,host RAM,"Fan et al., 2023 (T5)",40.0,18.4,TF GC fix,figures/reproduction_benchmark.yaml#panel_g_host_ram_walls
+3c,host RAM,"Card et al., 2024 (T15)",300.0,19.6,mmap + .idx,figures/reproduction_benchmark.yaml#panel_g_host_ram_walls
+3c,host RAM,"Wairagkar et al., 2025 (T15)",24.0,1.8,stream win.,figures/reproduction_benchmark.yaml#panel_g_host_ram_walls
+3c,host RAM,"Kunz et al., 2025 (T12/15/16)",300.0,19.6,mmap + .idx,figures/reproduction_benchmark.yaml#panel_g_host_ram_walls
+3c,host RAM,"Jude et al., 2026a (T17/T18)",64.0,22.5,drop unpruned FST,figures/reproduction_benchmark.yaml#panel_g_host_ram_walls
+3c,host RAM,"Jude et al., 2026b (T17)",300.0,19.6,mmap + .idx,figures/reproduction_benchmark.yaml#panel_g_host_ram_walls
+3d,GPU VRAM,"Willett et al., 2021 (T5)",44.0,4.0,RNN + GPT-2,figures/reproduction_benchmark.yaml#panel_h_gpu_vram_walls
+3d,GPU VRAM,"Willett et al., 2023 (T12)",80.0,13.0,FP16 + OPT,figures/reproduction_benchmark.yaml#panel_h_gpu_vram_walls
+3d,GPU VRAM,"Fan et al., 2023 (T5)",40.0,4.0,seed + CORP,figures/reproduction_benchmark.yaml#panel_h_gpu_vram_walls
+3d,GPU VRAM,"Card et al., 2024 (T15)",48.0,13.0,accum + OPT,figures/reproduction_benchmark.yaml#panel_h_gpu_vram_walls
+3d,GPU VRAM,"Wairagkar et al., 2025 (T15)",72.0,1.5,causal Mel,figures/reproduction_benchmark.yaml#panel_h_gpu_vram_walls
+3d,GPU VRAM,"Kunz et al., 2025 (T12/15/16)",48.0,13.0,FP16 + OPT,figures/reproduction_benchmark.yaml#panel_h_gpu_vram_walls
+3d,GPU VRAM,"Jude et al., 2026a (T17/T18)",24.0,11.5,BF16 port,figures/reproduction_benchmark.yaml#panel_h_gpu_vram_walls
+3d,GPU VRAM,"Jude et al., 2026b (T17)",48.0,13.0,FP16 + OPT,figures/reproduction_benchmark.yaml#panel_h_gpu_vram_walls

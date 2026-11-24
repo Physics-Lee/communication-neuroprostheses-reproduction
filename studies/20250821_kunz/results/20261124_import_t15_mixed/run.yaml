@@ -1,0 +1,26 @@
+id: 20261124_import_t15_mixed
+study: 20250821_kunz
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261008_reproduce_20250821_kunz
+legacy_checkout_head_at_import: 6a65beea0b86c8fb7b190ed12f91045c12fe45e3
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20250821_kunz/results/decode_outputs/run_t15_mixed/off_bp1_final.tsv
+  path: studies/20250821_kunz/results/20261124_import_t15_mixed/off_bp1_final.tsv
+  sha256: e9fcb0f138e14036cf6815b05cc7e49395d5e4408c27d7ee18fbc8ac3c302cab
+- old_path: 20250821_kunz/results/decode_outputs/run_t15_mixed/off_bp1_opt.tsv
+  path: studies/20250821_kunz/results/20261124_import_t15_mixed/off_bp1_opt.tsv
+  sha256: 6b9236cde813665b0b0266bcdb3f178dbc724de8608816a8a6a1aa381c67cd0e
+- old_path: 20250821_kunz/results/decode_outputs/run_t15_mixed/off_final_full.tsv
+  path: studies/20250821_kunz/results/20261124_import_t15_mixed/off_final_full.tsv
+  sha256: 558aa78053f5231cf012fde3517ac2165c20f6e51fb9c75537a8d20c9b4f9628
+- old_path: 20250821_kunz/results/decode_outputs/run_t15_mixed/qwen_bp1_opt.tsv
+  path: studies/20250821_kunz/results/20261124_import_t15_mixed/qwen_bp1_opt.tsv
+  sha256: 1dcc9d5dcbce67c9c99b777a19a1ab9bb3189fe69e4d2b72ff6eecc48e3a9bd2
+- old_path: 20250821_kunz/results/decode_outputs/run_t15_mixed/val_greedy_per_trial.csv
+  path: studies/20250821_kunz/results/20261124_import_t15_mixed/val_greedy_per_trial.csv
+  sha256: d21c60183f8e43d942e79bae6d7b2320aa0dbf6a3c5ab028de95bdca4eb4d8b7
+- old_path: 20250821_kunz/results/decode_outputs/run_t15_mixed/word_decode_3gram.csv
+  path: studies/20250821_kunz/results/20261124_import_t15_mixed/word_decode_3gram.csv
+  sha256: 930488bacf8ef0f8ec33480fdf88f2fcc62f1a61060ab1b2d6d2b52b94bcd1fe

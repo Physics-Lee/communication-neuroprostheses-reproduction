@@ -1,0 +1,86 @@
+session,sentence_label,ref_words,hyp_words,edit_distance,ref_len
+t16.2024.04.29_imagined_50words_eval,They are coming outside,THEY ARE COMING OUTSIDE,ARE YOU IN THAT,4,4
+t16.2024.04.29_imagined_50words_eval,Are you tired?,ARE YOU TIRED,ARE YOU TIRED,0,3
+t16.2024.04.29_imagined_50words_eval,It is right here,IT IS RIGHT HERE,IT IS THAT I HEAR,3,4
+t16.2024.04.29_imagined_50words_eval,I am not okay,I AM NOT OKAY,I AM NOT A,1,4
+t16.2024.04.29_imagined_50words_eval,My nurse is right outside,MY NURSE IS RIGHT OUTSIDE,THE ERSKINE I,5,5
+t16.2024.04.29_imagined_50words_eval,I am not going,I AM NOT GOING,I AM NOT,1,4
+t16.2024.04.29_imagined_50words_eval,Are you going outside?,ARE YOU GOING OUTSIDE,ARE YOU GOING OUTSIDE,0,4
+t16.2024.04.29_imagined_50words_eval,It is okay,IT IS OKAY,IT IS NO,1,3
+t16.2024.04.29_imagined_50words_eval,Where is it?,WHERE IS IT,WHERE IS IT,0,3
+t16.2024.04.29_imagined_50words_eval,Hello how are you?,HELLO HOW ARE YOU,HELLO THERE ARE U,2,4
+t16.2024.04.29_imagined_50words_eval,My glasses are clean,MY GLASSES ARE CLEAN,I CATEGORICALLY,4,4
+t16.2024.04.29_imagined_50words_eval,My glasses are comfortable,MY GLASSES ARE COMFORTABLE,I CELERITY,4,4
+t16.2024.04.29_imagined_50words_eval,I feel very hungry,I FEEL VERY HUNGRY,TELFORD REEKS,4,4
+t16.2024.04.29_imagined_50words_eval,You are not right,YOU ARE NOT RIGHT,YOU ARE NOT RIGHT,0,4
+t16.2024.04.29_imagined_50words_eval,Do you feel comfortable?,DO YOU FEEL COMFORTABLE,DO YOU FEEL AWFUL,1,4
+t16.2024.04.29_imagined_50words_eval,Please bring my glasses here,PLEASE BRING MY GLASSES HERE,THEY DO LIKE IS HE,5,5
+t16.2024.04.29_imagined_50words_eval,I am going outside,I AM GOING OUTSIDE,I AM GOING OUTSIDE,0,4
+t16.2024.04.29_imagined_50words_eval,I need my glasses,I NEED MY GLASSES,I DO LIKE THAT,3,4
+t16.2024.04.29_imagined_50words_eval,Please tell my family,PLEASE TELL MY FAMILY,DO THAT BY FAMILY,3,4
+t16.2024.04.29_imagined_50words_eval,I am okay,I AM OKAY,I AM NO,1,3
+t16.2024.04.29_imagined_50words_eval,How do you like my music?,HOW DO YOU LIKE MY MUSIC,HOW DO YOU LIKE MY MUSIC,0,6
+t16.2024.04.29_imagined_50words_eval,I hope it is clean,I HOPE IT IS CLEAN,I HOPE IT IS GOOD,1,5
+t16.2024.04.29_imagined_50words_eval,What do you do?,WHAT DO YOU DO,A DO YOU DO,1,4
+t16.2024.04.29_imagined_50words_eval,Bring my glasses please,BRING MY GLASSES PLEASE,YOU,4,4
+t16.2024.04.29_imagined_50words_eval,How do you feel?,HOW DO YOU FEEL,HOW DO YOU NEED,1,4
+t16.2024.04.29_imagined_50words_eval,Do not feel bad,DO NOT FEEL BAD,DO NOT DO,2,4
+t16.2024.04.29_imagined_50words_eval,That is very clean,THAT IS VERY CLEAN,IT IS EVERYTHING,3,4
+t16.2024.04.29_imagined_50words_eval,They are coming here,THEY ARE COMING HERE,THERE ARE RECEIVED,3,4
+t16.2024.04.29_imagined_50words_eval,Please clean it,PLEASE CLEAN IT,IN IT,2,3
+t16.2024.04.29_imagined_50words_eval,I am thirsty,I AM THIRSTY,I AM HONORED,1,3
+t16.2024.04.29_imagined_50words_eval,My computer is clean,MY COMPUTER IS CLEAN,IT ALARMING,4,4
+t16.2024.04.29_imagined_50words_eval,They have faith,THEY HAVE FAITH,I AM OK,3,3
+t16.2024.04.29_imagined_50words_eval,Faith is good,FAITH IS GOOD,THAT IS GOOD,1,3
+t16.2024.04.29_imagined_50words_eval,My nurse is outside,MY NURSE IS OUTSIDE,THE VERSES HAD LIED,4,4
+t16.2024.04.29_imagined_50words_eval,I do not feel comfortable,I DO NOT FEEL COMFORTABLE,I DO NOT BEAR CURLED,2,5
+t16.2024.04.29_imagined_50words_eval,Here is my computer,HERE IS MY COMPUTER,HERE IS MY MONEY,1,4
+t16.2024.04.29_imagined_50words_eval,They are going outside,THEY ARE GOING OUTSIDE,THEY ARE COMING HELL,2,4
+t16.2024.04.29_imagined_50words_eval,I am not hungry,I AM NOT HUNGRY,I AM RIGHT SIDE,2,4
+t16.2024.04.29_imagined_50words_eval,No,NO,O,1,1
+t16.2024.04.29_imagined_50words_eval,I like my nurse,I LIKE MY NURSE,PIKER,4,4
+t16.2024.04.29_imagined_50words_eval,My family is here,MY FAMILY IS HERE,MY FAMILY IS HERE,0,4
+t16.2024.04.29_imagined_50words_eval,I feel very comfortable,I FEEL VERY COMFORTABLE,I UGLIEST,3,4
+t16.2024.04.29_imagined_50words_eval,It is comfortable,IT IS COMFORTABLE,IT IS FIRST,1,3
+t16.2024.04.29_imagined_50words_eval,My family is outside,MY FAMILY IS OUTSIDE,MY FAMILY IS THAT I,2,4
+t16.2024.04.29_imagined_50words_eval,My family is very comfortable,MY FAMILY IS VERY COMFORTABLE,I HAD IT VERY ALERT,4,5
+t16.2024.04.29_imagined_50words_eval,I am outside,I AM OUTSIDE,I AM IS I,2,3
+t16.2024.04.29_imagined_50words_eval,Bring my glasses here,BRING MY GLASSES HERE,DECISIVELY,4,4
+t16.2024.04.29_imagined_50words_eval,It is good,IT IS GOOD,IT IS GOOD,0,3
+t16.2024.04.29_imagined_50words_eval,Yes,YES,YOU,1,1
+t16.2024.04.29_imagined_50words_eval,I need you,I NEED YOU,DID,3,3
+t16.2024.12.18_imagined_125kwords_eval,I think it has the best flavor.,I THINK IT HAS THE BEST FLAVOR,I DYNASTY,6,7
+t16.2024.12.18_imagined_125kwords_eval,It am enjoying that side of it.,IT AM ENJOYING THAT SIDE OF IT,INDICTED IRONSIDE,7,7
+t16.2024.12.18_imagined_125kwords_eval,What I see on the newspapers.,WHAT I SEE ON THE NEWSPAPERS,AS I AM MISSTATEMENTS,5,6
+t16.2024.12.18_imagined_125kwords_eval,Android application.,ANDROID APPLICATION,TO FREEDOM,2,2
+t16.2024.12.18_imagined_125kwords_eval,"When it's on the line, he delivers.",WHEN IT'S ON THE LINE HE DELIVERS,I NEED SCIENTIFICALLY TIRING,7,7
+t16.2024.12.18_imagined_125kwords_eval,We don't have a real strict budget.,WE DON'T HAVE A REAL STRICT BUDGET,I LIKE IT MAY JEDLICKA,7,7
+t16.2024.12.18_imagined_125kwords_eval,That person rushes you.,THAT PERSON RUSHES YOU,I DORTMUND,4,4
+t16.2024.12.18_imagined_125kwords_eval,More people call.,MORE PEOPLE CALL,I FIRST TIMER,3,3
+t16.2024.12.18_imagined_125kwords_eval,Want to learn something?,WANT TO LEARN SOMETHING,UNTRIED,4,4
+t16.2024.12.18_imagined_125kwords_eval,More on their level.,MORE ON THEIR LEVEL,I LEARNT LATER TO IT,5,4
+t16.2024.12.18_imagined_125kwords_eval,How long does it take to get my points back?,HOW LONG DOES IT TAKE TO GET MY POINTS BACK,AND AS I DO IS TO NAME THE TIME FOCUSING,9,10
+t16.2024.12.18_imagined_125kwords_eval,I don't know how long you've been here.,I DON'T KNOW HOW LONG YOU'VE BEEN HERE,I ITEMIZERS,7,8
+t16.2024.12.18_imagined_125kwords_eval,How old are you all.,HOW OLD ARE YOU ALL,LIFELIKE ARRAY I MOVE EDIT,5,5
+t16.2024.12.18_imagined_125kwords_eval,Some of the experiments fail.,SOME OF THE EXPERIMENTS FAIL,DON'T UPMARKET,5,5
+t16.2024.12.18_imagined_125kwords_eval,I'd probably buy another.,I'D PROBABLY BUY ANOTHER,I PATRONIZED,4,4
+t16.2024.12.18_imagined_125kwords_eval,I think he barely makes it.,I THINK HE BARELY MAKES IT,TYPEWRITING,6,6
+t16.2024.12.18_imagined_125kwords_eval,Little coves that I like to fish in.,LITTLE COVES THAT I LIKE TO FISH IN,IN HARLEM MINDFULLY,8,8
+t16.2024.12.18_imagined_125kwords_eval,To shoot up in that way.,TO SHOOT UP IN THAT WAY,FUCK,6,6
+t16.2024.12.18_imagined_125kwords_eval,I don't know if you like the mayor.,I DON'T KNOW IF YOU LIKE THE MAYOR,TIMELY LINDEMANN,8,8
+t16.2024.12.18_imagined_125kwords_eval,"Today, the decisions are not in their hands.",TODAY THE DECISIONS ARE NOT IN THEIR HANDS,IMPUTED TRIGGERED,8,8
+t16.2024.12.18_imagined_125kwords_eval,Just keeping your senses about you.,JUST KEEPING YOUR SENSES ABOUT YOU,I FIRED,6,6
+t16.2024.12.18_imagined_125kwords_eval,We like Mexican food.,WE LIKE MEXICAN FOOD,I DIEBOLD,4,4
+t16.2024.12.18_imagined_125kwords_eval,Be gentle unto all men.,BE GENTLE UNTO ALL MEN,HOKKAIDO TO IT,5,5
+t16.2024.12.18_imagined_125kwords_eval,I've done that before.,I'VE DONE THAT BEFORE,OMIT MEYER,4,4
+t16.2024.12.18_imagined_125kwords_eval,They have all really got really good jobs.,THEY HAVE ALL REALLY GOT REALLY GOOD JOBS,YOU MIGHT TYPEWRITING,8,8
+t16.2024.12.18_imagined_125kwords_eval,In rebellion against the United States.,IN REBELLION AGAINST THE UNITED STATES,I DILITHIUM,6,6
+t16.2024.12.18_imagined_125kwords_eval,She gave one last sigh of pleasure as she shivered.,SHE GAVE ONE LAST SIGH OF PLEASURE AS SHE SHIVERED,IT IS TESTAMENT TO MANEUVERABILITY,10,10
+t16.2024.12.18_imagined_125kwords_eval,That's probably a good idea.,THAT'S PROBABLY A GOOD IDEA,I STATED I DO,5,5
+t16.2024.12.18_imagined_125kwords_eval,Something that still has a lots of amenities.,SOMETHING THAT STILL HAS A LOTS OF AMENITIES,TIMES IT MAY TITANATE,8,8
+t16.2024.12.18_imagined_125kwords_eval,Whether he is or not.,WHETHER HE IS OR NOT,REWRITE AND TOLERATE,5,5
+t16.2024.12.18_imagined_125kwords_eval,"If there is a decision to make, they speak first.",IF THERE IS A DECISION TO MAKE THEY SPEAK FIRST,THE DREAM MY TEAMMATE AT ATARI,10,10
+t16.2024.12.18_imagined_125kwords_eval,It's the hard work.,IT'S THE HARD WORK,I RARE,4,4
+t16.2024.12.18_imagined_125kwords_eval,I did grow up with David Brinkley.,I DID GROW UP WITH DAVID BRINKLEY,HE HIGHLIGHTED ITEMS,7,7
+t16.2024.12.18_imagined_125kwords_eval,But he was with another company before that.,BUT HE WAS WITH ANOTHER COMPANY BEFORE THAT,I REINSDORF,8,8
+t16.2024.12.18_imagined_125kwords_eval,You might want to attack.,YOU MIGHT WANT TO ATTACK,ITINERANT EASILY AT,5,5
