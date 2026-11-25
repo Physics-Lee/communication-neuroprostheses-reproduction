@@ -11,10 +11,13 @@ Run these commands from the repository root in the environment required by the s
 
 | Public command | Role |
 | --- | --- |
+| [`export_sessions.py`](export_sessions.py) | Export one recording day from the release ZIP to the common session format. |
 | [`infer.py`](infer.py) | Run the released neural-to-voice encoder. |
 | [`evaluate.py`](evaluate.py) | Evaluate Mel correlations over full synthesized trials. |
 
 Use [`record_study_run.py`](../../../shared/tools/record_study_run.py) to name scored outputs from a completed command. See the [eight-study naming map](../../../docs/20261124_repository_migration/naming_map.md) for the result and data paths.
+
+The export writes `data/processed/t15/dryad_2280gb64f_<day>.h5` for one day. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the ZIP, and `python studies/20250612_wairagkar/code/check_session_timing.py <file>` checks that the neural features and the acoustic targets share one time axis. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
 
 ## Pipeline order
 
@@ -33,6 +36,9 @@ mel_param_scan.py ── how much of the r-gap is librosa mel configuration?
 
 | File | Role |
 |---|---|
+| `export_sessions.py` | Writes one recording day of the release ZIP to the common session format: neural features, acoustic targets, word and syllable timings as released, and the ZIP members each trial came from. |
+| `check_session_timing.py` | Checks an exported day without the ZIP: equal frame counts on the neural and acoustic axes, intervals inside their trial, and agreement between word-interval silence and the silent frames of the targets. |
+| `build_split_manifest.py` | Writes the evaluation-trial and listener-benchmark lists under `data/splits/` from the release ZIP. |
 | `tier1_official_model_inference.py` | Runs the authors' released Keras `.h5` decoders on the held-out day and correlates predicted vs released target features. |
 | `diag_align.py` | Failure diagnosis: scans frame lags between predicted and released features per trial (pure time shift vs scale vs deeper mismatch); also compares against the released online audio. |
 | `tier2_mel_alignment.py` | Trains a causal 40-bin Mel encoder from scratch with DTW target alignment; synthesizes voiced chunks with the official LPCNet vocoder. |

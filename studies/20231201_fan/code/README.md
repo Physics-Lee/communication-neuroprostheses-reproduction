@@ -12,10 +12,13 @@ Run these commands from the repository root in the environment required by the s
 
 | Public command | Role |
 | --- | --- |
+| [`export_sessions.py`](export_sessions.py) | Export one session to the common session format. |
 | [`infer.py`](infer.py) | Evaluate inference from the frozen CORP seed model. |
 | [`evaluate.py`](evaluate.py) | Replay CORP recalibration and score matched held-out trials. |
 
 Use [`record_study_run.py`](../../../shared/tools/record_study_run.py) to name scored outputs from a completed command. See the [eight-study naming map](../../../docs/20261124_repository_migration/naming_map.md) for the result and data paths.
+
+The export command writes `data/processed/t5/dryad_<release>_<date>.h5` for one session. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the publisher's files. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
 
 ## Pipeline order
 
@@ -46,6 +49,8 @@ see `docs/20261108_cleanup_audit/CLEANUP_AUDIT.md`.
 
 | File | Role |
 |---|---|
+| `export_sessions.py` | Writes one session to the common session format (`data/processed/t5/dryad_hqbzkh1p6_<date>.h5`): the released features of every trial of the seed partitions or of both online arms, with the TFRecord shard, the example position, and the row of the session's sentence table. It reads the sentence tables from the ZIP. |
+| `build_split_manifest.py` | Writes `data/splits/dryad_hqbzkh1p6__paired_v7_holdout.csv` from the exported session files and checks the holdout trials against the archived evaluation list. |
 | `rescore_official_outputs.py` | Tier-1: rescores the official online decoded outputs shipped in the Dryad release (independent of running any model). |
 | `tier2_seed_model_inference.py` | Tier-2: evaluates the frozen pretrained seed RNN across the 10 follow-up sessions (shows the drift the paper's CORP fixes). |
 | `tier3_corp_sim_official_labels.py` | Tier-3 v4 + library: session-by-session online recalibration simulation using the official `lm_decoded` pseudo-labels; provides `make_args`, `gather_trials`, `load_official_labels`, `forward_logits`, `greedy_decode`, `ctc_loss`, … to v5–v8. |

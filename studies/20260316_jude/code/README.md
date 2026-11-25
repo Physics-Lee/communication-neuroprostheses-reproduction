@@ -13,6 +13,7 @@ Run these commands from the repository root in the environment required by the s
 | Public command | Role |
 | --- | --- |
 | [`prepare_data.py`](prepare_data.py) | Prepare a typing session as TFRecords. |
+| [`export_sessions.py`](export_sessions.py) | Export one typing session to the common session format. |
 | [`train.py`](train.py) | Train the joint-session typing model. |
 | [`infer.py`](infer.py) | Export typing logits. |
 | [`decode.py`](decode.py) | Decode typing outputs with the published typing graph. |
@@ -21,6 +22,8 @@ Run these commands from the repository root in the environment required by the s
 After `prepare_data.py`, use `pytorch_port/export_tfrecord_to_npz.py` for the study-native NPZ inputs.
 
 Use [`record_study_run.py`](../../../shared/tools/record_study_run.py) to name scored outputs from a completed command. See the [eight-study naming map](../../../docs/20261124_repository_migration/naming_map.md) for the result and data paths.
+
+The export command writes `data/processed/<participant>/dryad_<release>_<date>.h5` for one session. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the publisher's files. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
 
 ## Pipeline order
 
@@ -48,6 +51,8 @@ see `docs/20261108_cleanup_audit/CLEANUP_AUDIT.md`).
 
 | File | Role |
 |---|---|
+| `export_sessions.py` | Writes one typing session to the common session format (`data/processed/<participant>/dryad_cz8w9gjjk_<date>.h5`): every cue of every block with the released 10 ms features and the publisher's timing variables and flags. |
+| `build_split_manifest.py` | Writes `data/splits/dryad_cz8w9gjjk__test_trials.csv` from the exported session files, the recorded conversion arguments, and the publisher's flags, and checks each session against its existing TFRecords and the archived evaluation list. |
 | `window_W4_convert.py` | Generic per-session converter: official `mat_to_tfrecord.main` with CLI-selected blocks / test-trial count / trial removals (both T17 & T18). |
 | `g1_recompute_cpm.py` | G1 analysis: recomputes online typing speed (CPM, multiple conventions incl. peak) and WER of the LM output for free-typing blocks, from trial timestamps in the released `.mat` files. |
 | `g1_scan_blocks.py` | Complementary G1 scan over sentence-copy blocks (typing content = cue sentence): per-block mean/median/peak CPM across all T18 sessions — locates the paper's 110-cpm figure. |

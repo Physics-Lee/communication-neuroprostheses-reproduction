@@ -12,12 +12,15 @@ Run these commands from the repository root in the environment required by the s
 | Public command | Role |
 | --- | --- |
 | [`prepare_data.py`](prepare_data.py) | Prepare the handwriting model's memory-mapped synthetic data. |
+| [`export_sessions.py`](export_sessions.py) | Export one recording day to the common session format. |
 | [`train.py`](train.py) | Train the handwriting model. |
 | [`infer.py`](infer.py) | Infer handwriting character probabilities. |
 | [`decode.py`](decode.py) | Run the lazy handwriting bigram decoder. |
 | [`evaluate.py`](evaluate.py) | Score the handwriting decoder from its error counts. |
 
 Use [`record_study_run.py`](../../../shared/tools/record_study_run.py) to name scored outputs from a completed command. See the [eight-study naming map](../../../docs/20261124_repository_migration/naming_map.md) for the result and data paths.
+
+The export command writes `data/processed/t5/dryad_<release>_<date>.h5` for one session. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the publisher's files. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
 
 ## Pipeline order
 
@@ -43,6 +46,8 @@ pipeline_watchdog_v4.py drives steps automatically (see below)
 
 | File | Role |
 |---|---|
+| `export_sessions.py` | Writes one recording day to the common session format (`data/processed/t5/dryad_wh70rxwmv_<date>.h5`): the released neural activity, the sentence texts, and the HMM letter timing of both released partitions, with the publisher files and position of each sentence. |
+| `build_split_manifest.py` | Writes `data/splits/dryad_wh70rxwmv__train_test_partitions.csv` from the released partition files and the exported session files. |
 | `step2_relabel.py` | Re-runs the official HMM forced-alignment labeling (Step2) and audits agreement with the shipped official labels (letter starts, frame argmax, …). |
 | `forcedAlignmentHMM.py` | numpy-2.x compatibility shim for the official module of the same name (spawned workers re-import it; `code/` precedes the official repo on `sys.path`). |
 | `step3_make_synthetic.py` | Port of the official synthetic-data augmentation notebook; writes `.npy` folds (mmap-friendly) instead of TF1 `.tfrecord`s — the 56 GB → 26.9 GB RAM fix. |

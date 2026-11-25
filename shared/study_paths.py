@@ -5,6 +5,8 @@ import re
 from datetime import date
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parents[1]
 ARCHIVE_NAMES = {
     "20210512_willett": "20261009_reproduce_20210512_willett",
@@ -190,6 +192,87 @@ def study_data_path(study_id, relative, checkout=None):
                 )
                 return location / tail
     return base / relative
+
+
+def release_prefix(study_id):
+    """Return the identifier that prefixes generated data file names.
+
+    Parameters
+    ----------
+    study_id : str
+        Study directory name.
+
+    Returns
+    -------
+    str
+        The verified provider release recorded in ``data/sources.yaml``, or
+        the dataset ID while the local version is unverified.
+
+    Notes
+    -----
+    The manifest is read from the repository copy of the study, which Git
+    tracks, so the rule does not depend on a local data tree.
+    """
+    if study_id not in ARCHIVE_NAMES:
+        raise ValueError(f"Unknown study: {study_id}")
+    prefix = RELEASE_LAYOUT.get(study_id, ("", {}))[0]
+    manifest = ROOT / "studies" / study_id / "data" / "sources.yaml"
+    if manifest.is_file():
+        with manifest.open(encoding="utf-8") as stream:
+            recorded = yaml.safe_load(stream) or {}
+        prefix = str(recorded.get("release_id") or recorded.get("dataset_id") or prefix)
+    return prefix
+
+
+def session_file_name(study_id, session):
+    """Name the common session file of one native session identifier.
+
+    Parameters
+    ----------
+    study_id : str
+        Study directory name.
+    session : str
+        Native session identifier such as ``t12.2022.05.19`` or ``t15_day195``.
+
+    Returns
+    -------
+    tuple of str
+        ``(participant, file name)``. The participant is the code before the
+        first ``.`` or ``_``; the file name joins the release prefix and the
+        remaining identifier with dots replaced by dashes, for example
+        ``dryad_x69p8czpq_2022-05-19.h5``.
+
+    Raises
+    ------
+    ValueError
+        When the identifier does not start with a participant code.
+    """
+    parts = re.split(r"[._]", session, maxsplit=1)
+    if len(parts) != 2 or not parts[1]:
+        raise ValueError(f"Session {session!r} does not start with a participant code such as t12.")
+    return parts[0], f"{release_prefix(study_id)}_{parts[1].replace('.', '-')}.h5"
+
+
+def session_export_path(study_id, session, checkout=None):
+    """Return where a study exports one session in the common HDF5 format.
+
+    Parameters
+    ----------
+    study_id : str
+        Study directory name.
+    session : str
+        Native session identifier.
+    checkout : pathlib.Path, optional
+        Explicit study directory if the command accepts one.
+
+    Returns
+    -------
+    pathlib.Path
+        ``data/processed/<participant>/<release>_<date>.h5`` inside the study,
+        for example ``data/processed/t12/dryad_x69p8czpq_2022-05-19.h5``.
+    """
+    participant, name = session_file_name(study_id, session)
+    return study_data_path(study_id, Path("data", "processed", participant, name), checkout)
 
 
 def study_path(study_id, relative=""):

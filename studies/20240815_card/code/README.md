@@ -12,6 +12,7 @@ Run these commands from the repository root in the environment required by the s
 
 | Public command | Role |
 | --- | --- |
+| [`export_sessions.py`](export_sessions.py) | Export one recording day to the common session format. |
 | [`train.py`](train.py) | Train the Card speech model. |
 | [`infer.py`](infer.py) | Export logits with corrected day routing. |
 | [`evaluate.py`](evaluate.py) | Evaluate word errors from the Card transcription results. |
@@ -20,6 +21,8 @@ Run these commands from the repository root in the environment required by the s
 Run the indexed WFST command in WSL with the compiled `shared/tools/wenet_lattice.cc` decoder. Supply the graph, words, exported trials, metadata, and the run-specific decoding options.
 
 Use [`record_study_run.py`](../../../shared/tools/record_study_run.py) to name scored outputs from a completed command. See the [eight-study naming map](../../../docs/20261124_repository_migration/naming_map.md) for the result and data paths.
+
+The export command writes `data/processed/t15/dryad_<release>_<date>.h5` for one session. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the publisher's files. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
 
 ## Pipeline order
 
@@ -59,6 +62,8 @@ Figures: plot_btot25.py, plot_card24_figs.py, plot_card24_scopes.py,
 
 | File | Role |
 |---|---|
+| `export_sessions.py` | Writes one recording day to the common session format (`data/processed/t15/dryad_dncjsxm85_<date>.h5`): the released features and labels of the `train` and `val` files, with the publisher file and position of each trial. The withheld-label `test` file is counted and not exported. |
+| `build_split_manifest.py` | Writes `data/splits/dryad_dncjsxm85__calibration_order.csv`, the trial order the rapid-calibration stage consumes, from the exported session files. |
 | `train_btot25.py` | Trains the GRUDecoder from scratch on the full 45-session dataset with the official recipe/optimizer. |
 | `train_btot25_step2.py` | Step-2 baseline of the rapid-calibration plan: 40 training days, last 5 val days excluded. |
 | `train_bigrun.py` | Scratch training with session subsets and/or the BiGRU architecture (T2a 44-sess, T2b 39-sess, T4 biGRU); monkeypatches `calib_models.BiGRUDecoder` into the trainer. |

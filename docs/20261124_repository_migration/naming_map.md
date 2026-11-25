@@ -4,18 +4,18 @@ Paths in the tables are relative to the named study directory. The public comman
 
 ## Public command names
 
-| Study | Prepare data | Train | Infer | Decode | Evaluate |
-| --- | --- | --- | --- | --- | --- |
-| `20210512_willett` | `step3_make_synthetic.py` → `prepare_data.py` | `torch_port/train.py` → `train.py` | `torch_port/infer.py` → `infer.py` | `step6_decode_bigram.py` → `decode.py` | `step5_eval_from_errcounts.py` → `evaluate.py` |
-| `20230831_willett` | `convert_btot24.py` → `prepare_data.py` | `train_btot24.py` → `train.py` | `dump_btot24_logits.py` → `infer.py` | `decode_words_btot24_v2.py` → `decode.py` | `eval_btot24.py` → `evaluate.py` |
-| `20231201_fan` | — | — | `tier2_seed_model_inference.py` → `infer.py` | — | `reproduce_paired_wer.py` → `evaluate.py` |
-| `20240815_card` | — | `train_btot25.py` → `train.py` | `dump_logits_fixed.py` → `infer.py` | `../../../shared/tools/decode_wfst.py` → `decode.py` | `wer_eval_card.py` → `evaluate.py` |
-| `20250612_wairagkar` | — | — | `tier1_official_model_inference.py` → `infer.py` | — | `tier2_mel_full_trial.py` → `evaluate.py` |
-| `20250821_kunz` | `convert_kunz.py` → `prepare_data.py` | `train_kunz.py` → `train.py` | `dump_kunz_logits.py` → `infer.py` | `../../../shared/tools/decode_wfst.py` → `decode.py` | `eval_kunz.py` → `evaluate.py` |
-| `20260316_jude` | `window_W4_convert.py` → `prepare_data.py` | `pytorch_port/train_multisession.py` → `train.py` | `pytorch_port/dump_logits.py` → `infer.py` | `pytorch_port/decode_multisession_lm.py` → `decode.py` | `g1_recompute_cpm.py` → `evaluate.py` |
-| `20260428_jude` | `convert_jude.py` → `prepare_data.py` | `train_jude.py` → `train.py` | `dump_jude_logits.py` → `infer.py` | `../../../shared/tools/decode_wfst.py` → `decode.py` | `eval_jude.py` → `evaluate.py` |
+| Study | Prepare data | Session export | Train | Infer | Decode | Evaluate |
+| --- | --- | --- | --- | --- | --- | --- |
+| `20210512_willett` | `step3_make_synthetic.py` → `prepare_data.py` | `export_sessions.py` | `torch_port/train.py` → `train.py` | `torch_port/infer.py` → `infer.py` | `step6_decode_bigram.py` → `decode.py` | `step5_eval_from_errcounts.py` → `evaluate.py` |
+| `20230831_willett` | `convert_btot24.py` → `prepare_data.py` | `export_sessions.py` | `train_btot24.py` → `train.py` | `dump_btot24_logits.py` → `infer.py` | `decode_words_btot24_v2.py` → `decode.py` | `eval_btot24.py` → `evaluate.py` |
+| `20231201_fan` | — | `export_sessions.py` | — | `tier2_seed_model_inference.py` → `infer.py` | — | `reproduce_paired_wer.py` → `evaluate.py` |
+| `20240815_card` | — | `export_sessions.py` | `train_btot25.py` → `train.py` | `dump_logits_fixed.py` → `infer.py` | `../../../shared/tools/decode_wfst.py` → `decode.py` | `wer_eval_card.py` → `evaluate.py` |
+| `20250612_wairagkar` | — | `export_sessions.py` | — | `tier1_official_model_inference.py` → `infer.py` | — | `tier2_mel_full_trial.py` → `evaluate.py` |
+| `20250821_kunz` | `convert_kunz.py` → `prepare_data.py` | `export_sessions.py` | `train_kunz.py` → `train.py` | `dump_kunz_logits.py` → `infer.py` | `../../../shared/tools/decode_wfst.py` → `decode.py` | `eval_kunz.py` → `evaluate.py` |
+| `20260316_jude` | `window_W4_convert.py` → `prepare_data.py` | `export_sessions.py` | `pytorch_port/train_multisession.py` → `train.py` | `pytorch_port/dump_logits.py` → `infer.py` | `pytorch_port/decode_multisession_lm.py` → `decode.py` | `g1_recompute_cpm.py` → `evaluate.py` |
+| `20260428_jude` | `convert_jude.py` → `prepare_data.py` | `export_sessions.py` | `train_jude.py` → `train.py` | `dump_jude_logits.py` → `infer.py` | `../../../shared/tools/decode_wfst.py` → `decode.py` | `eval_jude.py` → `evaluate.py` |
 
-The command paths are under `code/`. Fan’s evaluation command includes the paired replay adaptation. Wairagkar reads the released ZIP directly, and Card reads the released HDF5 directly.
+The command paths are under `code/`. Fan’s evaluation command includes the paired replay adaptation. Wairagkar reads the released ZIP directly, and Card reads the released HDF5 directly. Every study writes common session files with `export_sessions.py`; see [Common session files](README.md#common-session-files).
 ## Data paths
 
 Paths are relative to each study. The common rules are in the [repository layout](README.md#repository-layout). Every row lists a current input path. Publisher archive members keep their names after extraction.
@@ -40,7 +40,7 @@ Paths are relative to each study. The common rules are in the [repository layout
 | Jude 2026a | `data/language_models/wfst_5gram/` |
 | Jude 2026b | `data/derived/dryad_vq83bk481/hdf5/trainer_input/`, `data/derived/dryad_vq83bk481/hdf5/dryad_vq83bk481__session_description.csv` |
 
-Seven studies have a trial list named `data/splits/<release>__archived_evaluation.csv`. Wairagkar's archived summaries expose session-level trial counts, so its [split notes](../../studies/20250612_wairagkar/data/splits/README.md) document where to recover trial membership. The common session export under `data/processed/` is planned. Historical dataset locations still resolve through the path helper. Historical model workspaces and diagnostic paths are listed in the study code guides when used.
+Seven studies have a trial list named `data/splits/<release>__archived_evaluation.csv`. Wairagkar's listener test is recovered in `data/splits/dryad_2280gb64f__listener_benchmark.csv`. Each study also has split lists keyed by `trial_id` for the trials of its session files, described in its `data/splits/README.md`. Common session files go to `data/processed/<participant>/<release>_<session>.h5`; the [export inventory](session_export_inventory.md) lists which ones exist. Historical dataset locations still resolve through the path helper. Historical model workspaces and diagnostic paths are listed in the study code guides when used.
 
 ## Result names
 

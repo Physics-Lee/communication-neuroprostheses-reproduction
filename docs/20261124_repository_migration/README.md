@@ -24,7 +24,7 @@ studies/<yyyymmdd>_<author>/
 │   ├── raw/<release>/<release>__<publisher_filename>
 │   ├── extracted/<release>/<publisher_path>
 │   ├── splits/<release>__<split_id>.csv
-│   ├── processed/<release>/hdf5/<participant>/<release>__<session_id>.h5
+│   ├── processed/<participant>/<release>_<session>.h5
 │   ├── derived/<release>/<format>/<variant>/
 │   ├── checkpoints/<release>/<asset_id>/
 │   └── language_models/<decoder>/
@@ -55,9 +55,26 @@ For new published runs, use `<run_id> = <yyyymmdd>_<release>__<format>__<decoder
 | Native trainer index | `data/derived/dryad_x69p8czpq/hdf5/dryad_x69p8czpq__session_description.csv` |
 | Archived evaluation list | `data/splits/dryad_x69p8czpq__archived_evaluation.csv` |
 | Decoder assets | `data/language_models/kenlm_3gram/`, `data/language_models/wfst_5gram/` |
-| Common session export target | `data/processed/dryad_x69p8czpq/hdf5/t12/dryad_x69p8czpq__t12.2022.05.19.h5` (planned) |
+| Common session file | `data/processed/t12/dryad_x69p8czpq_2022-05-19.h5` |
 
 Keep a downloaded `competitionData.tar.gz` at `data/raw/dryad_x69p8czpq/dryad_x69p8czpq__competitionData.tar.gz` if the archive is available locally. The extracted tree and both decoder assets already exist in this checkout. Existing model workspaces such as the local `run_60k` still use their historical paths. The [naming map](naming_map.md) records the current paths for the other seven studies.
+
+## Common session files
+
+Every study exports one `.h5` file per recording session in the same layout, defined in [`shared/session_format.py`](../../shared/session_format.py) (schema `bci-session`, version 1). A file stores each trial's neural features as released, its task targets, and its timing, and names the publisher file and position the trial came from. A numeric target that names a label set holds zero-based positions in it. Split assignments stay in `data/splits/` lists that reference `trial_id`, so different experiments can share the exported trials.
+
+| Step | Command from the repository root |
+| --- | --- |
+| Export one session | `python studies/<study>/code/export_sessions.py --session <id>` |
+| List the sessions of a study and their export state | `python studies/<study>/code/export_sessions.py --list` |
+| Check a file and trace every trial to its source | `python shared/tools/validate_session.py <file> --source trials` |
+| Check every exported file | `python shared/tools/validate_session.py` |
+| Rebuild a study's split lists from its exported files | `python studies/<study>/code/build_split_manifest.py` |
+| List the export state of every session of every study | `python shared/tools/session_export_inventory.py` |
+
+The file name is `<release>_<session>.h5` inside `data/processed/<participant>/`. The session part is the native identifier without its participant code and with dots replaced by dashes: `t12.2022.05.19` gives `t12/dryad_x69p8czpq_2022-05-19.h5`, `t15_day195` gives `t15/dryad_2280gb64f_day195.h5`, and `t12.2023.11.28_attempted_50words` gives `t12/dryad_gf1vhhn1j_2023-11-28_attempted_50words.h5`. [`shared/study_paths.py`](../../shared/study_paths.py) builds the path with `session_export_path`. Session files are local data and are not tracked by Git.
+
+The format was piloted on one text-decoding study and one voice-synthesis study: [Willett 2023](pilot_willett2023_session_export.md) and [Wairagkar 2025](pilot_wairagkar2025_session_export.md), then applied to the other six studies. The [export inventory](session_export_inventory.md) lists the state of every session of every study, and [onboarding a study](onboarding_a_study.md) shows how a new study registers its source, exports one session, and validates it with the same command.
 
 ## Implementation order
 
@@ -87,3 +104,8 @@ Four historical source snapshots have no recorded Git commit. The manifest disti
 - The eight studies passed input checks through the new paths. Representative conversions succeeded for Willett 2023, Kunz 2025, and Jude 2026b. All eight zero-download notebooks and the Figure 2 and 3 rebuilds passed. The [archived file manifest](archived_files.csv) records the 252 verified result and log files.
 - The release-scoped naming update verified 26 local renames across the eight studies, including seven evaluation lists. The current and historical input paths resolved for all eight studies. The Willett 2023 public commands rebuilt and evaluated the 20-trial sample from the new data paths, matching all input tensors, trial predictions, and 245 errors over 637 phonemes. Figure 2 and Figure 3 rebuilt with identical numerical tables. All 252 archived artifact hashes matched.
 - Full GPU retraining and WSL 5-gram decoding are outside these verification results. Verify the affected commands and zero-download tutorial each time a study adopts the target subdirectories.
+- The common session format (schema `bci-session`, version 1) is exported by all eight studies through `studies/*/code/export_sessions.py`. 131 session files hold 28,724 trials in 28.46 GiB. Not exported are 35 Wairagkar days, the 11 Fan seed sessions, and 3 Card days outside the archived evaluation; Jude 2026b's `t17.2024.03.25` and `t17.2024.05.23` are excluded because they hold no sentence block. The export took 29 GiB and left 103.7 GiB free on the data disk. The [export inventory](session_export_inventory.md) lists every session.
+- `python shared/tools/validate_session.py --source trials` re-reads every trial from its publisher file and compares it with the stored trial. It passed for all 131 files, checked in batches between 08:03 and 10:04 on 2026-11-25: each of the 28,724 stored trials is identical to the trial re-read from its publisher file, and the provenance attributes match. A full pass reads every publisher file again, so it takes tens of minutes on a hard disk; run it when no other job reads the same disk.
+- Each study's split lists were rebuilt from the exported files by `studies/*/code/build_split_manifest.py` and checked against the archived evaluation lists: Willett 2023 (24 sessions, 880 validation trials), Willett 2021 (63 `HeldOutTrials` test sentences), Fan 2023 (60 holdout rows), Card 2024 (five calibration days in file order), Kunz 2025 (three T16 folds, each matching its existing fold input), Jude 2026a (16 sessions, each matching its TFRecord conversion, 275 test trials), and Jude 2026b (12 sessions, 417 validation sentences).
+- All eight study tutorials pass `python shared/tools/check_study_tutorials.py --run`: data setup comes first, every path is a download target, an existing input, or a command output, and every public command answers `--help`. They execute without errors through `python shared/tools/run_notebook.py` and store the output of the cell that reads their session file. The six general tutorials also executed without errors on temporary copies. Figure 2 and Figure 3 were rebuilt into a temporary directory: the nine published tables are byte-identical and no tracked figure file changed.
+- Differences to keep in mind. The Kunz T12 session files hold the continuous 128-electrode arrays, while `convert_kunz.py` trains on the publisher's 8-bit per-trial copy with another electrode order; for T15 and T16 the two are identical in all 1,170 trials. The Fan release states no bin size; its files use 20 ms, the size the figure code assumes, which the trial lengths support. Label ids are zero-based in every study; Fan's released ids are one-based and are shifted by its exporter.

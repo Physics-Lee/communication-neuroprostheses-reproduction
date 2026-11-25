@@ -13,6 +13,7 @@ Run these commands from the repository root in the environment required by the s
 | Public command | Role |
 | --- | --- |
 | [`prepare_data.py`](prepare_data.py) | Prepare the released sentence data for the Kunz models. |
+| [`export_sessions.py`](export_sessions.py) | Export one session, condition, and vocabulary file to the common session format. |
 | [`train.py`](train.py) | Train the selected Kunz speech condition. |
 | [`infer.py`](infer.py) | Export logits for the selected Kunz model. |
 | [`evaluate.py`](evaluate.py) | Evaluate the Kunz model's greedy phoneme errors. |
@@ -21,6 +22,8 @@ Run these commands from the repository root in the environment required by the s
 Run the indexed WFST command in WSL with the compiled `shared/tools/wenet_lattice.cc` decoder. Supply the graph, words, exported trials, metadata, and the run-specific decoding options.
 
 Use [`record_study_run.py`](../../../shared/tools/record_study_run.py) to name scored outputs from a completed command. See the [eight-study naming map](../../../docs/20261124_repository_migration/naming_map.md) for the result and data paths.
+
+The export command writes `data/processed/<participant>/dryad_<release>_<session>.h5` for one session. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the publisher's files. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
 
 ## Pipeline order
 
@@ -45,6 +48,8 @@ Analysis & figures:
 
 | File | Role |
 |---|---|
+| `export_sessions.py` | Writes one session, condition, and vocabulary file to the common session format (`data/processed/<participant>/dryad_gf1vhhn1j_<date>_<condition>_<vocabulary>.h5`): the released go-period features at the bin size the file records, the sentences, and the block of each trial. For T15 and T16 these features equal the per-trial `sentenceFeatures` the converter reads. For T12 they do not: the session file keeps the continuous 128-electrode arrays, and the converter reads the publisher's 8-bit per-trial copy with another electrode order (see the exporter docstring). |
+| `build_split_manifest.py` | Writes `data/splits/dryad_gf1vhhn1j__conditions.csv` and `data/splits/dryad_gf1vhhn1j__t16_folds.csv` from the exported session files. |
 | `inspect_kunz.py` | Prints the structure of every released `sentenceData` `.mat`: variables, trial counts, blocks, channel sets, sentences, and the recorded `decodedSentenceText` (works for both string/char-code storage conventions). |
 | `convert_kunz.py` | Converts sentenceData `.mat` files into the nejm-brain-to-text hdf5 layout (first-half binnedTX + second-half spikePow features, per-vocab phoneme targets). |
 | `train_kunz.py` | Trains the GRUDecoder per participant and arm (mixed / imagined / attempted). |

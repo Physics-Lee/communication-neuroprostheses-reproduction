@@ -24,6 +24,10 @@ This directory houses shared decoding, rescoring, calibration, and plotting infr
 ```text
 shared/
 ├── README.md                            # Shared infrastructure overview & file tables
+├── study_paths.py                       # Resolves study code, data, and run output paths; builds common session file names
+├── study_commands.py                    # Launches a public command's implementation with the caller's arguments
+├── session_format.py                    # Common per-session HDF5 format: TrialSpec/Field records, SessionWriter, read_session, validate_session, export_cli
+├── upstream_sources.json                # Pinned upstream repositories and the studies that run them
 ├── tools/
 │   ├── tlg_viterbi.cc                   # C++ frame-synchronous CTC Viterbi decoder over mmap TLG.fst + .idx (19.6 GB RAM 1-best path)
 │   ├── wenet_lattice.cc                 # C++ N-best lattice decoder over mmap TLG.fst + .idx (feeds second-pass LLM rescoring)
@@ -35,6 +39,14 @@ shared/
 │   ├── parse_train_log.py               # Parses nejm-brain-to-text trainer logs into curves.csv and training_curves.png
 │   ├── pkl_online_metrics.py            # Extracts online greedy PER and post-LM WER from official t15_copyTask.pkl records
 │   ├── extract_four_papers.py           # Fault-tolerant PDF-to-text extractor for verifying reported paper anchor numbers
+│   ├── setup_upstream.py                # Installs the pinned upstream checkouts under studies/*/open_source_code_for_reference/
+│   ├── record_study_run.py              # Names and records a scored run under results/<yyyymmdd>_<release>__<format>__<decoder>__<experiment>/
+│   ├── decode_wfst.py                   # Public decode command behind Card, Kunz, and Jude 2026b (WSL OpenFST decoder driver)
+│   ├── validate_session.py              # Checks common session files and traces every trial to its publisher file
+│   ├── session_export_inventory.py      # Lists the state of every session of every study; --write updates the inventory document
+│   ├── check_study_tutorials.py          # Checks that each study tutorial names existing scripts, accepted flags, and accounted-for paths
+│   ├── run_notebook.py                  # Executes notebooks in the bci-repro interpreter and stores their outputs
+│   ├── onboarding_example.py            # Runs the new-study example: register, export one session, validate it
 │   └── *.sh                             # WSL compilation and sweep driver scripts
 ├── finetune_chain/
 │   └── train_finetune.py                # Rapid-calibration Step 3: fine-tunes a multi-day checkpoint on the first N trials of a target day
@@ -69,4 +81,24 @@ python shared/tools/compare_rescorers.py
 
 # 3) Inspect CLI flags for second-pass LLM rescoring
 python shared/tools/opt_rescore.py --help
+
+# 4) Check a common session file and re-read every trial from its publisher file
+python shared/tools/validate_session.py studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-19.h5 --source trials
+
+# 5) List the export state of every session of every study
+python shared/tools/session_export_inventory.py
+
+# 6) Check the eight study tutorials (scripts, flags, links, public command --help)
+python shared/tools/check_study_tutorials.py --run
 ```
+
+---
+
+## Common Session Files (`session_format.py`)
+
+Each study's `code/export_sessions.py` writes one `.h5` file per recording session to `data/processed/<participant>/<release>_<session>.h5` through `export_cli`. The layout (schema `bci-session`, version 1) is defined in the module docstring.
+
+1. **Change the stored layout only with a schema version bump**: every exporter and `validate_session` share `TrialSpec`, `Field`, and the attribute names. Bump `SCHEMA_VERSION` and extend the validator when the layout changes.
+2. **Export features as released**: no normalization, resampling, or channel filtering in an exporter. A pipeline's transforms stay in that pipeline, as `studies/20230831_willett/code/eval_session_file.py` keeps the block-wise z-scoring.
+3. **Keep splits out of the session file**: trial roles, folds, calibration order, and adaptation order belong in `data/splits/<release>__<split>.csv` lists keyed by `trial_id`.
+4. **`read_source_trial` must rebuild exactly what `iter_trials` wrote**: `validate_session(..., source="trials")` compares the two for every trial.
