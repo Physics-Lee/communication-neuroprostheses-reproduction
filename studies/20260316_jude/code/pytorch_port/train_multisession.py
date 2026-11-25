@@ -21,7 +21,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "shared"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from study_paths import study_checkout, study_path
+from typing_data import typing_npz_path
 
 import argparse
 import copy
@@ -164,7 +166,7 @@ def dump_session_logits(model, input_net, val_ds, out_dir, step, cer, device, ba
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--participant', choices=['t17', 't18'], required=True)
-    ap.add_argument('--data-root', default=study_path("20260316_jude", 'data/extracted/Data'))
+    ap.add_argument('--data-root', type=Path, help='Override the root containing the participant NPZ directories')
     ap.add_argument('--out-root', default=study_path("20260316_jude", 'result/runs_multisess'))
     ap.add_argument('--batches', type=int, default=10000)
     ap.add_argument('--ft-batches', type=int, default=1500)
@@ -211,7 +213,7 @@ def main():
 
     train_dss, val_dss = [], []
     for s in sessions:
-        npz_path = Path(args.data_root) / args.participant / s / 'Typing' / 'm1_torch_data.npz'
+        npz_path = typing_npz_path(s, for_read=True, data_root=args.data_root)
         tr_ds = SessionDataset(npz_path, 'train', keep_idx=keep_idx, patch_size=patch_size, patch_stride=patch_stride)
         va_ds = SessionDataset(npz_path, 'test', keep_idx=keep_idx, patch_size=patch_size, patch_stride=patch_stride)
         train_dss.append(tr_ds)

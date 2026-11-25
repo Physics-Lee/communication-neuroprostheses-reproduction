@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "shared"))
-from study_paths import study_path
+from study_paths import derived_data_path, study_path
 
 import argparse
 import os
@@ -31,8 +31,9 @@ import numpy as np
 import scipy.io
 import torch
 
-REPO = study_path("20210512_willett")
-OFFICIAL_REPO = os.path.join(REPO, r'open_source_code_for_reference\handwritingBCI')
+STUDY = "20210512_willett"
+REPO = study_path(STUDY)
+OFFICIAL_REPO = study_path(STUDY, "open_source_code_for_reference/handwritingBCI")
 sys.path.insert(0, OFFICIAL_REPO)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -84,7 +85,11 @@ def build_default_args(partition, synth_batch_size):
         args['singleLettersFile_' + str(x)] = os.path.join(root, 'Datasets', sess, 'singleLetters.mat')
         args['labelsFile_' + str(x)] = os.path.join(root, 'RNNTrainingSteps', 'Step2_HMMLabels', partition, sess + '_timeSeriesLabels.mat')
         args['cvPartitionFile_' + str(x)] = os.path.join(root, 'RNNTrainingSteps', 'trainTestPartitions_' + partition + '.mat')
-        args['syntheticDatasetDir_' + str(x)] = os.path.join(root, 'RNNTrainingSteps', 'Step3_SyntheticSentences', partition, sess + '_syntheticSentences')
+        fold = Path(partition) / f"{sess}_syntheticSentences"
+        args['syntheticDatasetDir_' + str(x)] = str(derived_data_path(
+            STUDY, Path("npy/synthetic_sentences") / fold,
+            legacy=Path("data/extracted/handwritingBCIData/RNNTrainingSteps/Step3_SyntheticSentences") / fold,
+        ))
     args['dayToLayerMap'] = str(list(range(len(SESSIONS))))
     args['dayProbability'] = str([1.0 / len(SESSIONS)] * len(SESSIONS))
     return args

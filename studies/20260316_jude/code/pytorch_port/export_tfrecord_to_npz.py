@@ -7,15 +7,15 @@ The parsing spec (DATASET_FEATURES below) replicates verbatim the
 Notes
 -----
 Written 2026-10-10. CLI: ``python export_tfrecord_to_npz.py [session]``
-(default session ``t18.2024.12.04``); writes ``m1_torch_data.npz`` next to
-the session's ``tfdata_20ms`` directory.
+(default session ``t18.2024.12.04``); writes ``m1_torch_data.npz`` under
+``data/derived/<release>/npz/typing_20ms/``.
 """
 
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "shared"))
-from study_paths import study_path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from typing_data import typing_npz_path, typing_tfrecord_path
 
 
 import numpy as np
@@ -23,8 +23,8 @@ import tensorflow as tf
 
 SESSION = sys.argv[1] if len(sys.argv) > 1 else 't18.2024.12.04'
 N_FEATURES = 768  # 实测 t17.2024.06.03 与 t18 均为 384 通道×2=768（raw README 的“T17=512 features”与发布数据不符）
-TFDATA = Path(study_path("20260316_jude", 'data/extracted/Data'), 't17' if SESSION.startswith('t17') else 't18', SESSION, 'Typing', 'tfdata_20ms')
-OUT = TFDATA.parent / 'm1_torch_data.npz'
+TFDATA = typing_tfrecord_path(SESSION, for_read=True)
+OUT = typing_npz_path(SESSION)
 MAX_SEQ = 60
 
 DATASET_FEATURES = {
@@ -108,6 +108,7 @@ def to_object_array(list_of_arrays):
 if __name__ == '__main__':
     tr = dump_split('train')
     te = dump_split('test')
+    OUT.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         OUT,
         train_features=to_object_array(tr[0]), train_seqClassIDs=tr[1], train_nTimeSteps=tr[2],

@@ -23,9 +23,11 @@ After `prepare_data.py`, use `pytorch_port/export_tfrecord_to_npz.py` for the st
 
 Use [`record_study_run.py`](../../../shared/tools/record_study_run.py) to name scored outputs from a completed command. See the [eight-study naming map](../../../docs/20261124_repository_migration/naming_map.md) for the result and data paths.
 
-The export command writes `data/processed/<participant>/dryad_<release>_<date>.h5` for one session. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the publisher's files. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
+The export command writes `data/processed/<participant>/<release>_<date>.h5` for one session. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the publisher's files. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
 
 ## Pipeline order
+
+The converter writes TFRecords under `data/derived/dryad_cz8w9gjjk/tfrecord/typing_20ms/<participant>/<session>/`. The PyTorch export writes `m1_torch_data.npz` under `data/derived/dryad_cz8w9gjjk/npz/typing_20ms/<participant>/<session>/`. The NPZ exporter, trainer, and split builder can also read inputs produced beside the source MAT files by earlier commands.
 
 ```text
 Per session (generic chain — see fix_t17_chain.sh / run_t17_remaining.sh):

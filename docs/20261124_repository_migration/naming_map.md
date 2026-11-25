@@ -33,11 +33,12 @@ Paths are relative to each study. The common rules are in the [repository layout
 
 | Study | Other current paths using the shared names |
 | --- | --- |
+| Willett 2021 | `data/derived/dryad_wh70rxwmv/npy/synthetic_sentences/<partition>/`, `data/derived/dryad_wh70rxwmv/pkl/synthetic_snippets/<partition>/` |
 | Willett 2023 | `data/derived/dryad_x69p8czpq/hdf5/trainer_input/`, `data/derived/dryad_x69p8czpq/hdf5/dryad_x69p8czpq__session_description.csv`, `data/language_models/kenlm_3gram/`, `data/language_models/wfst_5gram/` |
 | Fan 2023 | `data/raw/dryad_hqbzkh1p6/dryad_hqbzkh1p6__CORP_data_release.zip` |
 | Card 2024 | `data/raw/dryad_dncjsxm85/dryad_dncjsxm85__t15_copyTask.pkl`, `data/extracted/dryad_dncjsxm85/t15_copyTaskData_description.csv`, `data/checkpoints/dryad_dncjsxm85/t15_pretrained_rnn_baseline/` |
 | Kunz 2025 | `data/derived/dryad_gf1vhhn1j/hdf5/trainer_input/`, `data/derived/dryad_gf1vhhn1j/hdf5/t16_holdout/`, `data/derived/dryad_gf1vhhn1j/hdf5/dryad_gf1vhhn1j__session_description.csv` |
-| Jude 2026a | `data/language_models/wfst_5gram/` |
+| Jude 2026a | `data/derived/dryad_cz8w9gjjk/tfrecord/typing_20ms/<participant>/<session>/`, `data/derived/dryad_cz8w9gjjk/npz/typing_20ms/<participant>/<session>/`, `data/language_models/wfst_5gram/` |
 | Jude 2026b | `data/derived/dryad_vq83bk481/hdf5/trainer_input/`, `data/derived/dryad_vq83bk481/hdf5/dryad_vq83bk481__session_description.csv` |
 
 Seven studies have a trial list named `data/splits/<release>__archived_evaluation.csv`. Wairagkar's listener test is recovered in `data/splits/dryad_2280gb64f__listener_benchmark.csv`. Each study also has split lists keyed by `trial_id` for the trials of its session files, described in its `data/splits/README.md`. Common session files go to `data/processed/<participant>/<release>_<session>.h5`; the [export inventory](session_export_inventory.md) lists which ones exist. Historical dataset locations still resolve through the path helper. Historical model workspaces and diagnostic paths are listed in the study code guides when used.

@@ -16,7 +16,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "shared"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from study_paths import study_path
+from typing_data import typing_npz_path
 
 import argparse
 import json
@@ -30,7 +32,7 @@ import torch.nn.functional as F
 from dataset import TypingDataset, greedy_ctc_decode, edit_distance
 from model import InputNet, TypingGRU
 
-NPZ = Path(study_path("20260316_jude", 'data/extracted/Data/t18/t18.2024.12.04/Typing/m1_torch_data.npz'))
+NPZ = typing_npz_path('t18.2024.12.04', for_read=True)
 
 # 官方 yaml 逐项抄录（改动须在 README 偏差表登记）
 HP = dict(

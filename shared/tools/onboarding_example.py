@@ -52,7 +52,9 @@ from session_format import Field, TrialSpec, export_cli, trial_id  # noqa: E402
 from study_paths import study_checkout, study_path  # noqa: E402
 
 STUDY = "20990101_example"
+DATASET_ID = "example_ds001"
 DATASET = "https://doi.org/10.0000/example.dataset"
+RAW_DIR = f"data/raw/{{DATASET_ID}}"
 BIN_MS = 20
 _CACHE = {{"path": None, "mat": None}}
 
@@ -71,9 +73,9 @@ def _load(path):
 
 def list_sessions():
     """List the publisher files, one per session."""
-    directory = Path(study_path(STUDY, "data/raw/example_release"))
-    return [{{"session": path.stem, "sources": [_relative(path)]}}
-            for path in sorted(directory.glob("*.mat"))]
+    directory = Path(study_path(STUDY, RAW_DIR))
+    return [{{"session": path.stem.removeprefix(f"{{DATASET_ID}}__"), "sources": [_relative(path)]}}
+            for path in sorted(directory.glob(f"{{DATASET_ID}}__*.mat"))]
 
 
 def _spec(mat, session, relative, index):
@@ -89,7 +91,7 @@ def _spec(mat, session, relative, index):
 
 def iter_trials(session):
     """Yield every trial of one session in file order."""
-    path = Path(study_path(STUDY, f"data/raw/example_release/{{session}}.mat"))
+    path = Path(study_path(STUDY, f"{{RAW_DIR}}/{{DATASET_ID}}__{{session}}.mat"))
     relative, mat = _relative(path), _load(path)
     for index in range(mat["sentences"].shape[0]):
         yield _spec(mat, session, relative, index)
@@ -98,7 +100,8 @@ def iter_trials(session):
 def read_source_trial(attrs):
     """Rebuild one trial from the publisher file named in its attributes."""
     return _spec(_load(Path(study_path(STUDY, attrs["source_file"]))),
-                 Path(attrs["source_file"]).stem, attrs["source_file"], int(attrs["source_index"]))
+                 Path(attrs["source_file"]).stem.removeprefix(f"{{DATASET_ID}}__"),
+                 attrs["source_file"], int(attrs["source_index"]))
 
 
 def label_sets():
@@ -156,14 +159,20 @@ def run(directory):
         The validation report of the exported session file.
     """
     study = directory / STUDY
-    write_publisher_file(study / "data" / "raw" / "example_release" / "x1.2000.01.01.mat", seed=0)
-    write_publisher_file(study / "data" / "raw" / "example_release" / "x1.2000.01.02.mat", seed=1)
+    raw_dir = Path("data", "raw", DATASET_ID)
+    for seed, session in enumerate(("x1.2000.01.01", "x1.2000.01.02")):
+        write_publisher_file(study / raw_dir / f"{DATASET_ID}__{session}.mat", seed=seed)
+    (study / "data" / "sources.yaml").write_text(
+        f"study: {STUDY}\ndataset: https://doi.org/10.0000/example.dataset\n"
+        f"dataset_id: {DATASET_ID}\nrelease_id: null\nexternal_input_path: {raw_dir.as_posix()}\n",
+        encoding="utf-8",
+    )
     entry = study / "code" / "export_sessions.py"
     entry.parent.mkdir(parents=True)
     entry.write_text(EXPORTER.format(shared=str(Path(__file__).resolve().parents[1])), encoding="utf-8")
 
     study_paths.ARCHIVE_NAMES[STUDY] = STUDY
-    study_paths.RELEASE_LAYOUT[STUDY] = (DATASET_ID, {"data/raw/example_release": "data/raw/example_release"})
+    study_paths.RELEASE_LAYOUT[STUDY] = (DATASET_ID, {})
     os.environ["BCI_DATA_ROOT"] = str(directory)
 
     sys.path.insert(0, str(entry.parent))

@@ -34,8 +34,9 @@ python studies/20250612_wairagkar/code/check_session_timing.py studies/20250612_
 python studies/20250612_wairagkar/code/build_split_manifest.py
 ```
 
-The timing check of the pilot run is in
-`studies/20250612_wairagkar/results/20261124_dryad_2280gb64f__zip__none__session_timing_check/summary.json`.
+The timing check reads the exported HDF5 file. The verified result and its
+run record are in
+`studies/20250612_wairagkar/results/20261125_dryad_2280gb64f__hdf5__none__session_timing_check/`.
 
 ## Results
 

@@ -12,9 +12,9 @@
     python step3_make_synthetic.py --phase generate          # 阶段B：生成合成句（慢，10进程并行）
     python step3_make_synthetic.py --phase generate --dataDir t5.2019.05.08 --cvPart HeldOutTrials
 产出：
-    data/20210512_willett/handwritingBCIData/RNNTrainingSteps/Step3_SyntheticSentences/
-        <cvPart>/<dataDir>_snippets.pkl
-        <cvPart>/<dataDir>_syntheticSentences/bat_{x}_{inputs,labels,errW}.npy  (x=0..19)
+    data/derived/<release>/pkl/synthetic_snippets/<cvPart>/<dataDir>_snippets.pkl
+    data/derived/<release>/npy/synthetic_sentences/<cvPart>/<dataDir>_syntheticSentences/
+        bat_{x}_{inputs,labels,errW}.npy  (x=0..19)
 磁盘：约 5.2GB × 10 session × 2 partition ≈ 104GB（fp32）。
 """
 
@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
-from study_paths import study_path
+from study_paths import derived_data_path, study_path
 
 import argparse
 import multiprocessing
@@ -34,8 +34,8 @@ from datetime import datetime
 import numpy as np
 import scipy.io
 
-REPO = study_path("20210512_willett")
-OFFICIAL_REPO = os.path.join(REPO, r'open_source_code_for_reference\handwritingBCI')
+STUDY = "20210512_willett"
+OFFICIAL_REPO = study_path(STUDY, "open_source_code_for_reference/handwritingBCI")
 sys.path.insert(0, OFFICIAL_REPO)
 
 # 官方 makeSyntheticSentences.py 顶层 import tensorflow（仅用于 tfrecord 写出，本移植不调用）。
@@ -51,8 +51,8 @@ from dataPreprocessing import normalizeSentenceDataCube  # noqa: E402
 from makeSyntheticSentences import (extractCharacterSnippets, addSingleLetterSnippets,
                                     makeSyntheticDataFromRawSnippets)  # noqa: E402
 
-ROOT = study_path("20210512_willett", "data/extracted/handwritingBCIData")
-STEP3_DIR = os.path.join(ROOT, 'RNNTrainingSteps', 'Step3_SyntheticSentences')
+ROOT = study_path(STUDY, "data/extracted/handwritingBCIData")
+LEGACY_STEP3 = Path("data/extracted/handwritingBCIData/RNNTrainingSteps/Step3_SyntheticSentences")
 
 DATA_DIRS = ['t5.2019.05.08', 't5.2019.11.25', 't5.2019.12.09', 't5.2019.12.11', 't5.2019.12.18',
              't5.2019.12.20', 't5.2020.01.06', 't5.2020.01.08', 't5.2020.01.13', 't5.2020.01.15']
@@ -67,7 +67,7 @@ def phase_snippets(data_dirs, cv_parts):
     normalizes the neural cube, then runs the official
     ``extractCharacterSnippets`` + ``addSingleLetterSnippets`` restricted to
     the training trials, and pickles the snippet dictionary to
-    ``Step3_SyntheticSentences/<cvPart>/<dataDir>_snippets.pkl``.
+    ``data/derived/<release>/pkl/synthetic_snippets/<cvPart>/<dataDir>_snippets.pkl``.
 
     Parameters
     ----------
@@ -107,8 +107,8 @@ def phase_snippets(data_dirs, cv_parts):
                                                     train_idx, char_def)
             snippet_dict = addSingleLetterSnippets(snippet_dict, single_letter_dat, tw_cubes, char_def)
 
-            os.makedirs(os.path.join(STEP3_DIR, cv_part), exist_ok=True)
-            out = os.path.join(STEP3_DIR, cv_part, data_dir + '_snippets.pkl')
+            out = derived_data_path(STUDY, Path("pkl/synthetic_snippets") / cv_part / f"{data_dir}_snippets.pkl")
+            out.parent.mkdir(parents=True, exist_ok=True)
             with open(out, 'wb') as f:
                 pickle.dump({k: (v if isinstance(v, (int, float, str)) else
                                  [np.asarray(x, dtype=np.float64) if isinstance(x, np.ndarray) else x for x in v])
@@ -255,13 +255,14 @@ def phase_generate(data_dirs, cv_parts, n_parallel):
     -------
     None
         Batches are written to
-        ``Step3_SyntheticSentences/<cvPart>/<dataDir>_syntheticSentences/``.
+        ``data/derived/<release>/npy/synthetic_sentences/<cvPart>/<dataDir>_syntheticSentences/``.
     """
     char_def = getHandwritingCharacterDefinitions()
     for data_dir in data_dirs:
         for cv_part in cv_parts:
-            output_dir = os.path.join(STEP3_DIR, cv_part, data_dir + '_syntheticSentences')
-            os.makedirs(output_dir, exist_ok=True)
+            fold = Path(cv_part) / f"{data_dir}_syntheticSentences"
+            output_dir = derived_data_path(STUDY, Path("npy/synthetic_sentences") / fold)
+            output_dir.mkdir(parents=True, exist_ok=True)
 
             todo = [x for x in range(20)
                     if not os.path.isfile(os.path.join(output_dir, f'bat_{x}_errW.npy'))]
@@ -269,10 +270,14 @@ def phase_generate(data_dirs, cv_parts, n_parallel):
                 print(f'skip {data_dir} {cv_part} (20 bats 已存在)', flush=True)
                 continue
 
+            snippets = Path(cv_part) / f"{data_dir}_snippets.pkl"
+            snippet_file = derived_data_path(
+                STUDY, Path("pkl/synthetic_snippets") / snippets, legacy=LEGACY_STEP3 / snippets,
+            )
             base_args = {'nSentences': 256, 'nSteps': 2400, 'binSize': 2,
                          'wordListFile': os.path.join(OFFICIAL_REPO, 'wordList', 'google-10000-english-usa.txt'),
                          'rareWordFile': os.path.join(OFFICIAL_REPO, 'wordList', 'rareWordIdx.mat'),
-                         'snippetFile': os.path.join(STEP3_DIR, cv_part, data_dir + '_snippets.pkl'),
+                         'snippetFile': str(snippet_file),
                          'accountForPenState': 1, 'charDef': char_def,
                          'seed': datetime.now().microsecond}
             work = []

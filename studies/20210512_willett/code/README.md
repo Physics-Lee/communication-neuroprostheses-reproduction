@@ -20,7 +20,9 @@ Run these commands from the repository root in the environment required by the s
 
 Use [`record_study_run.py`](../../../shared/tools/record_study_run.py) to name scored outputs from a completed command. See the [eight-study naming map](../../../docs/20261124_repository_migration/naming_map.md) for the result and data paths.
 
-The export command writes `data/processed/t5/dryad_<release>_<date>.h5` for one session. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the publisher's files. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
+The export command writes `data/processed/t5/<release>_<date>.h5` for one session. `python shared/tools/validate_session.py <file> --source trials` re-reads every trial from the publisher's files. The format is defined in [`shared/session_format.py`](../../../shared/session_format.py).
+
+`prepare_data.py` writes snippet libraries to `data/derived/dryad_wh70rxwmv/pkl/synthetic_snippets/<partition>/` and memory-mapped folds to `data/derived/dryad_wh70rxwmv/npy/synthetic_sentences/<partition>/`. Generation and training can read existing inputs in the former Step 3 directory.
 
 ## Pipeline order
 

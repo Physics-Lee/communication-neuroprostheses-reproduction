@@ -224,6 +224,31 @@ def release_prefix(study_id):
     return prefix
 
 
+def derived_data_path(study_id, relative, *, legacy=None):
+    """Resolve one trainer artifact in the release-scoped derived tree.
+
+    Parameters
+    ----------
+    study_id : str
+        Study directory name.
+    relative : str or pathlib.Path
+        Path below the release directory, starting with the file format.
+    legacy : str or pathlib.Path, optional
+        Previous study-relative input path. Writers omit this argument.
+
+    Returns
+    -------
+    pathlib.Path
+        The canonical path, or the existing legacy artifact if needed.
+    """
+    path = study_checkout(study_id) / "data" / "derived" / release_prefix(study_id) / relative
+    if legacy is not None and not path.exists():
+        previous = study_data_path(study_id, legacy)
+        if previous.exists():
+            return previous
+    return path
+
+
 def session_file_name(study_id, session):
     """Name the common session file of one native session identifier.
 

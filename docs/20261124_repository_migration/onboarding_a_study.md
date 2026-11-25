@@ -41,7 +41,7 @@ study: 20990101_example
 dataset: https://doi.org/10.0000/example.dataset
 dataset_id: example_ds001
 release_id: null
-external_input_path: data/raw/example_ds001/example_ds001__example_release.mat
+external_input_path: data/raw/example_ds001
 ```
 
 `shared/study_paths.py` names it for the code. Add one entry to
@@ -49,9 +49,7 @@ external_input_path: data/raw/example_ds001/example_ds001__example_release.mat
 
 ```python
 ARCHIVE_NAMES["20990101_example"] = "20990101_example"
-RELEASE_LAYOUT["20990101_example"] = ("example_ds001", {
-    "data/raw/example_release": "data/raw/example_release",
-})
+RELEASE_LAYOUT["20990101_example"] = ("example_ds001", {})
 ```
 
 The dataset ID is used in paths and file names until the provider's release
@@ -59,8 +57,9 @@ version is verified. Record the verified version as `release_id` when it is.
 
 ## 3. Place the publisher's file
 
-Save the file where `sources.yaml` says, under `data/raw/<dataset_id>/`, with
-the dataset ID as the file-name prefix. Scripts reach it through
+Save the two example files as `example_ds001__x1.2000.01.01.mat` and
+`example_ds001__x1.2000.01.02.mat` in the `data/raw/example_ds001/` directory
+declared in `sources.yaml`. Scripts reach them through
 `study_path("<study>", "<path>")`, so a reader can keep the data on another
 disk by setting `BCI_DATA_ROOT`.
 
@@ -87,8 +86,20 @@ the session file, in a split list under `data/splits/` that
 This is the complete exporter of the example study:
 
 ```python
+import sys
+from pathlib import Path
+
+import numpy as np
+from scipy.io import loadmat
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
+from session_format import Field, TrialSpec, export_cli, trial_id
+from study_paths import study_checkout, study_path
+
 STUDY = "20990101_example"
+DATASET_ID = "example_ds001"
 DATASET = "https://doi.org/10.0000/example.dataset"
+RAW_DIR = f"data/raw/{DATASET_ID}"
 BIN_MS = 20
 _CACHE = {"path": None, "mat": None}
 
@@ -104,9 +115,9 @@ def _load(path):
 
 
 def list_sessions():
-    directory = Path(study_path(STUDY, "data/raw/example_release"))
-    return [{"session": path.stem, "sources": [_relative(path)]}
-            for path in sorted(directory.glob("*.mat"))]
+    directory = Path(study_path(STUDY, RAW_DIR))
+    return [{"session": path.stem.removeprefix(f"{DATASET_ID}__"), "sources": [_relative(path)]}
+            for path in sorted(directory.glob(f"{DATASET_ID}__*.mat"))]
 
 
 def _spec(mat, session, relative, index):
@@ -120,7 +131,7 @@ def _spec(mat, session, relative, index):
 
 
 def iter_trials(session):
-    path = Path(study_path(STUDY, f"data/raw/example_release/{session}.mat"))
+    path = Path(study_path(STUDY, f"{RAW_DIR}/{DATASET_ID}__{session}.mat"))
     relative, mat = _relative(path), _load(path)
     for index in range(mat["sentences"].shape[0]):
         yield _spec(mat, session, relative, index)
@@ -128,7 +139,8 @@ def iter_trials(session):
 
 def read_source_trial(attrs):
     return _spec(_load(Path(study_path(STUDY, attrs["source_file"]))),
-                 Path(attrs["source_file"]).stem, attrs["source_file"], int(attrs["source_index"]))
+                 Path(attrs["source_file"]).stem.removeprefix(f"{DATASET_ID}__"),
+                 attrs["source_file"], int(attrs["source_index"]))
 
 
 def label_sets():

@@ -4,7 +4,7 @@
 Writes ``data/splits/dryad_cz8w9gjjk__test_trials.csv`` with one row per
 exported trial and the role the official ``mat_to_tfrecord`` conversion
 gives it. ``window_W4_convert.py`` records the arguments of each conversion
-in ``Typing/tfdata_20ms/mat_to_tfrecord_params.json``; the roles follow from
+in ``mat_to_tfrecord_params.json`` beside each session's derived TFRecords. The roles follow from
 them and from the publisher's per-trial flags:
 
 1. The cues of the blocks listed in ``block_nums`` (in that order, then cue
@@ -32,7 +32,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
 from session_format import read_session  # noqa: E402
-from study_paths import study_checkout, study_path  # noqa: E402
+from study_paths import study_checkout  # noqa: E402
 
 import csv  # noqa: E402
 import json  # noqa: E402
@@ -43,6 +43,7 @@ import numpy as np  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from export_sessions import SPLIT_SEED, pipeline_split  # noqa: E402
+from typing_data import typing_tfrecord_path  # noqa: E402
 
 STUDY = "20260316_jude"
 MANIFEST = "dryad_cz8w9gjjk__test_trials.csv"
@@ -65,16 +66,14 @@ def conversion(session):
     dict
         ``blocks`` (``block_nums``), ``num_test``, ``removed`` mapping a
         block number to the cue positions of ``trials_to_remove``, and
-        ``directory``, the ``tfdata_20ms`` folder of the conversion.
+        ``directory``, the TFRecord folder of the conversion.
 
     Raises
     ------
     SystemExit
         When the session has no conversion on disk.
     """
-    participant = re.split(r"[._]", session, maxsplit=1)[0]
-    directory = Path(study_path(
-        STUDY, f"data/extracted/Data/{participant}/{session}/Typing/tfdata_20ms"))
+    directory = typing_tfrecord_path(session, for_read=True)
     source = directory / "mat_to_tfrecord_params.json"
     if not source.is_file():
         raise SystemExit(f"{session}: no conversion under {directory}; the split rule needs its arguments")

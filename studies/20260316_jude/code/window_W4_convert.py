@@ -3,7 +3,8 @@
 Builds the argument dict for the official ``mat_to_tfrecord.main`` (threshold
 crossings + spike power, z-scoring, global std, bin compression factor 2 ->
 ``tfdata_20ms``) and runs it, producing the tfrecord tree that is then
-exported to npz for the PyTorch port.
+exported to NPZ for the PyTorch port. The records go under
+``data/derived/<release>/tfrecord/typing_20ms/``.
 
 Usage (with the ``reproduce_20260316_jude`` environment):
 ``python window_W4_convert.py <session> <block_csv> <num_test> <rm_spec>``.
@@ -20,6 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
 from study_paths import study_path
+from typing_data import typing_tfrecord_path
 
 
 REF = Path(study_path("20260316_jude", 'open_source_code_for_reference/typingBCI'))
@@ -51,7 +53,7 @@ args = {
     'z_score_data': True,
     'global_std': True,
     'bin_compression_factor': 2,
-    'save_path': str(Path(session_path, 'tfdata_20ms')),
+    'save_path': str(typing_tfrecord_path(session)),
 }
 mat_to_tfrecord.main(args)
 print('CONVERT_DONE')
