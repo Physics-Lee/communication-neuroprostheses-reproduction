@@ -1,0 +1,11 @@
+session,trials,char_errors,reference_chars,legacy_source,source_sha256
+t5.2019.05.08,10,31,693,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2019.05.08_errCounts.mat,22109a334a053be1baa8e60da0ed2cd9f200cf204adc4d2bc611019711dd68be
+t5.2019.11.25,7,19,399,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2019.11.25_errCounts.mat,be76e7df59cddf9d2c140069969adbadbfd0078d03e3668ec88660697bfe8873
+t5.2019.12.09,7,15,362,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2019.12.09_errCounts.mat,15f2d60954723c68447fb8a79b3d96c24c41eb2b1299e7a0824c69289a0592d2
+t5.2019.12.11,7,13,274,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2019.12.11_errCounts.mat,9a94e51c059b217333c6a4e4561581e0a4cdb27e9cfc5d07beaf8c60ab716b81
+t5.2019.12.18,7,21,453,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2019.12.18_errCounts.mat,cf53cc37a4370260d890839ce0571c640606b7fc8794ab14fdd60acc45016545
+t5.2019.12.20,7,11,375,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2019.12.20_errCounts.mat,73fc40ce6227a064127aff0a554e673d06072db79f5edd4c4ac335d3681401db
+t5.2020.01.06,5,12,273,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2020.01.06_errCounts.mat,3cff972b3e4d171af24dac4cbe8787ea52329f38322b1bbe019caf4933094edd
+t5.2020.01.08,7,19,387,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2020.01.08_errCounts.mat,d647d0633f2fb2d250b2e7c8913b13aa23f0d51d3cfca8ab86f2632e1c331fdb
+t5.2020.01.13,3,13,140,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2020.01.13_errCounts.mat,c76e7fdd886ec42b30822fd5a97ec694affc41459579e55eb1b9a7d6bc500516
+t5.2020.01.15,3,10,128,data/20210512_willett/runs/HeldOutTrials_synth/step5_inference/t5.2020.01.15_errCounts.mat,e5f237b2e8d675678a688bfa12e5e2c8f05117ec664694ce080a3d40b5dc0de1

@@ -1,0 +1,880 @@
+{
+ "Willett 2023 (T12)": {
+  "sessions": [
+   {
+    "session": "t12.2022.04.28",
+    "n": 20,
+    "per": 41.28,
+    "wer": 59.06,
+    "phoneme_errors": 369,
+    "phoneme_counts": 894,
+    "word_errors": 101,
+    "word_counts": 171
+   },
+   {
+    "session": "t12.2022.05.05",
+    "n": 20,
+    "per": 33.56,
+    "wer": 34.3,
+    "phoneme_errors": 292,
+    "phoneme_counts": 870,
+    "word_errors": 59,
+    "word_counts": 172
+   },
+   {
+    "session": "t12.2022.05.17",
+    "n": 20,
+    "per": 27.0,
+    "wer": 25.37,
+    "phoneme_errors": 169,
+    "phoneme_counts": 626,
+    "word_errors": 34,
+    "word_counts": 134
+   },
+   {
+    "session": "t12.2022.05.19",
+    "n": 20,
+    "per": 38.46,
+    "wer": 60.15,
+    "phoneme_errors": 245,
+    "phoneme_counts": 637,
+    "word_errors": 80,
+    "word_counts": 133
+   },
+   {
+    "session": "t12.2022.05.24",
+    "n": 40,
+    "per": 17.49,
+    "wer": 14.73,
+    "phoneme_errors": 195,
+    "phoneme_counts": 1115,
+    "word_errors": 38,
+    "word_counts": 258
+   },
+   {
+    "session": "t12.2022.05.26",
+    "n": 40,
+    "per": 16.89,
+    "wer": 12.76,
+    "phoneme_errors": 178,
+    "phoneme_counts": 1054,
+    "word_errors": 31,
+    "word_counts": 243
+   },
+   {
+    "session": "t12.2022.06.02",
+    "n": 40,
+    "per": 20.44,
+    "wer": 16.05,
+    "phoneme_errors": 216,
+    "phoneme_counts": 1057,
+    "word_errors": 39,
+    "word_counts": 243
+   },
+   {
+    "session": "t12.2022.06.07",
+    "n": 40,
+    "per": 24.51,
+    "wer": 26.29,
+    "phoneme_errors": 275,
+    "phoneme_counts": 1122,
+    "word_errors": 66,
+    "word_counts": 251
+   },
+   {
+    "session": "t12.2022.06.14",
+    "n": 40,
+    "per": 20.56,
+    "wer": 19.71,
+    "phoneme_errors": 258,
+    "phoneme_counts": 1255,
+    "word_errors": 54,
+    "word_counts": 274
+   },
+   {
+    "session": "t12.2022.06.16",
+    "n": 40,
+    "per": 28.67,
+    "wer": 29.56,
+    "phoneme_errors": 344,
+    "phoneme_counts": 1200,
+    "word_errors": 81,
+    "word_counts": 274
+   },
+   {
+    "session": "t12.2022.06.21",
+    "n": 40,
+    "per": 24.06,
+    "wer": 23.26,
+    "phoneme_errors": 275,
+    "phoneme_counts": 1143,
+    "word_errors": 60,
+    "word_counts": 258
+   },
+   {
+    "session": "t12.2022.06.23",
+    "n": 40,
+    "per": 25.74,
+    "wer": 30.0,
+    "phoneme_errors": 280,
+    "phoneme_counts": 1088,
+    "word_errors": 75,
+    "word_counts": 250
+   },
+   {
+    "session": "t12.2022.06.28",
+    "n": 40,
+    "per": 24.44,
+    "wer": 27.69,
+    "phoneme_errors": 263,
+    "phoneme_counts": 1076,
+    "word_errors": 67,
+    "word_counts": 242
+   },
+   {
+    "session": "t12.2022.07.05",
+    "n": 40,
+    "per": 19.14,
+    "wer": 14.95,
+    "phoneme_errors": 169,
+    "phoneme_counts": 883,
+    "word_errors": 32,
+    "word_counts": 214
+   },
+   {
+    "session": "t12.2022.07.14",
+    "n": 40,
+    "per": 21.59,
+    "wer": 18.22,
+    "phoneme_errors": 242,
+    "phoneme_counts": 1121,
+    "word_errors": 47,
+    "word_counts": 258
+   },
+   {
+    "session": "t12.2022.07.21",
+    "n": 40,
+    "per": 19.86,
+    "wer": 19.69,
+    "phoneme_errors": 220,
+    "phoneme_counts": 1108,
+    "word_errors": 50,
+    "word_counts": 254
+   },
+   {
+    "session": "t12.2022.07.27",
+    "n": 40,
+    "per": 20.11,
+    "wer": 21.83,
+    "phoneme_errors": 190,
+    "phoneme_counts": 945,
+    "word_errors": 50,
+    "word_counts": 229
+   },
+   {
+    "session": "t12.2022.07.29",
+    "n": 40,
+    "per": 22.61,
+    "wer": 16.02,
+    "phoneme_errors": 229,
+    "phoneme_counts": 1013,
+    "word_errors": 37,
+    "word_counts": 231
+   },
+   {
+    "session": "t12.2022.08.02",
+    "n": 40,
+    "per": 20.07,
+    "wer": 21.6,
+    "phoneme_errors": 181,
+    "phoneme_counts": 902,
+    "word_errors": 46,
+    "word_counts": 213
+   },
+   {
+    "session": "t12.2022.08.11",
+    "n": 40,
+    "per": 19.55,
+    "wer": 21.4,
+    "phoneme_errors": 198,
+    "phoneme_counts": 1013,
+    "word_errors": 49,
+    "word_counts": 229
+   },
+   {
+    "session": "t12.2022.08.13",
+    "n": 40,
+    "per": 17.39,
+    "wer": 12.81,
+    "phoneme_errors": 173,
+    "phoneme_counts": 995,
+    "word_errors": 31,
+    "word_counts": 242
+   },
+   {
+    "session": "t12.2022.08.18",
+    "n": 40,
+    "per": 21.65,
+    "wer": 17.13,
+    "phoneme_errors": 231,
+    "phoneme_counts": 1067,
+    "word_errors": 43,
+    "word_counts": 251
+   },
+   {
+    "session": "t12.2022.08.23",
+    "n": 40,
+    "per": 21.13,
+    "wer": 18.75,
+    "phoneme_errors": 228,
+    "phoneme_counts": 1079,
+    "word_errors": 48,
+    "word_counts": 256
+   },
+   {
+    "session": "t12.2022.08.25",
+    "n": 40,
+    "per": 26.46,
+    "wer": 27.98,
+    "phoneme_errors": 254,
+    "phoneme_counts": 960,
+    "word_errors": 61,
+    "word_counts": 218
+   }
+  ],
+  "pooled": {
+   "per": 23.42,
+   "wer": 23.26
+  }
+ },
+ "Card 2024 (T15)": {
+  "sessions": [
+   {
+    "session": "t15.2023.08.13",
+    "n": 35,
+    "per": 6.44,
+    "wer": 3.48,
+    "phoneme_errors": 62,
+    "phoneme_counts": 962,
+    "word_errors": 8,
+    "word_counts": 230
+   },
+   {
+    "session": "t15.2023.08.18",
+    "n": 49,
+    "per": 6.45,
+    "wer": 2.53,
+    "phoneme_errors": 77,
+    "phoneme_counts": 1193,
+    "word_errors": 7,
+    "word_counts": 277
+   },
+   {
+    "session": "t15.2023.08.20",
+    "n": 48,
+    "per": 4.85,
+    "wer": 2.4,
+    "phoneme_errors": 61,
+    "phoneme_counts": 1259,
+    "word_errors": 7,
+    "word_counts": 292
+   },
+   {
+    "session": "t15.2023.08.25",
+    "n": 25,
+    "per": 9.49,
+    "wer": 5.03,
+    "phoneme_errors": 63,
+    "phoneme_counts": 664,
+    "word_errors": 8,
+    "word_counts": 159
+   },
+   {
+    "session": "t15.2023.08.27",
+    "n": 25,
+    "per": 17.85,
+    "wer": 15.94,
+    "phoneme_errors": 111,
+    "phoneme_counts": 622,
+    "word_errors": 22,
+    "word_counts": 138
+   },
+   {
+    "session": "t15.2023.09.01",
+    "n": 49,
+    "per": 4.3,
+    "wer": 3.34,
+    "phoneme_errors": 53,
+    "phoneme_counts": 1232,
+    "word_errors": 10,
+    "word_counts": 299
+   },
+   {
+    "session": "t15.2023.09.03",
+    "n": 34,
+    "per": 11.88,
+    "wer": 6.01,
+    "phoneme_errors": 100,
+    "phoneme_counts": 842,
+    "word_errors": 11,
+    "word_counts": 183
+   },
+   {
+    "session": "t15.2023.09.24",
+    "n": 35,
+    "per": 7.52,
+    "wer": 7.65,
+    "phoneme_errors": 62,
+    "phoneme_counts": 824,
+    "word_errors": 15,
+    "word_counts": 196
+   },
+   {
+    "session": "t15.2023.09.29",
+    "n": 48,
+    "per": 10.08,
+    "wer": 5.16,
+    "phoneme_errors": 158,
+    "phoneme_counts": 1567,
+    "word_errors": 18,
+    "word_counts": 349
+   },
+   {
+    "session": "t15.2023.10.01",
+    "n": 44,
+    "per": 13.14,
+    "wer": 6.71,
+    "phoneme_errors": 199,
+    "phoneme_counts": 1514,
+    "word_errors": 21,
+    "word_counts": 313
+   },
+   {
+    "session": "t15.2023.10.06",
+    "n": 36,
+    "per": 7.1,
+    "wer": 2.7,
+    "phoneme_errors": 66,
+    "phoneme_counts": 929,
+    "word_errors": 6,
+    "word_counts": 222
+   },
+   {
+    "session": "t15.2023.10.08",
+    "n": 17,
+    "per": 17.59,
+    "wer": 11.33,
+    "phoneme_errors": 130,
+    "phoneme_counts": 739,
+    "word_errors": 17,
+    "word_counts": 150
+   },
+   {
+    "session": "t15.2023.10.13",
+    "n": 44,
+    "per": 13.89,
+    "wer": 26.03,
+    "phoneme_errors": 179,
+    "phoneme_counts": 1289,
+    "word_errors": 63,
+    "word_counts": 242
+   },
+   {
+    "session": "t15.2023.10.15",
+    "n": 44,
+    "per": 11.14,
+    "wer": 4.46,
+    "phoneme_errors": 169,
+    "phoneme_counts": 1517,
+    "word_errors": 15,
+    "word_counts": 336
+   },
+   {
+    "session": "t15.2023.10.20",
+    "n": 9,
+    "per": 15.1,
+    "wer": 15.49,
+    "phoneme_errors": 45,
+    "phoneme_counts": 298,
+    "word_errors": 11,
+    "word_counts": 71
+   },
+   {
+    "session": "t15.2023.10.22",
+    "n": 33,
+    "per": 9.24,
+    "wer": 11.27,
+    "phoneme_errors": 83,
+    "phoneme_counts": 898,
+    "word_errors": 24,
+    "word_counts": 213
+   },
+   {
+    "session": "t15.2023.11.03",
+    "n": 50,
+    "per": 14.72,
+    "wer": 16.08,
+    "phoneme_errors": 217,
+    "phoneme_counts": 1474,
+    "word_errors": 55,
+    "word_counts": 342
+   },
+   {
+    "session": "t15.2023.11.04",
+    "n": 15,
+    "per": 1.71,
+    "wer": 0.0,
+    "phoneme_errors": 5,
+    "phoneme_counts": 293,
+    "word_errors": 0,
+    "word_counts": 80
+   },
+   {
+    "session": "t15.2023.11.17",
+    "n": 25,
+    "per": 1.56,
+    "wer": 0.0,
+    "phoneme_errors": 10,
+    "phoneme_counts": 643,
+    "word_errors": 0,
+    "word_counts": 168
+   },
+   {
+    "session": "t15.2023.11.19",
+    "n": 20,
+    "per": 2.2,
+    "wer": 1.54,
+    "phoneme_errors": 11,
+    "phoneme_counts": 501,
+    "word_errors": 2,
+    "word_counts": 130
+   },
+   {
+    "session": "t15.2023.11.26",
+    "n": 44,
+    "per": 4.86,
+    "wer": 11.15,
+    "phoneme_errors": 67,
+    "phoneme_counts": 1380,
+    "word_errors": 31,
+    "word_counts": 278
+   },
+   {
+    "session": "t15.2023.12.03",
+    "n": 34,
+    "per": 5.15,
+    "wer": 2.36,
+    "phoneme_errors": 49,
+    "phoneme_counts": 952,
+    "word_errors": 5,
+    "word_counts": 212
+   },
+   {
+    "session": "t15.2023.12.08",
+    "n": 50,
+    "per": 3.66,
+    "wer": 1.5,
+    "phoneme_errors": 55,
+    "phoneme_counts": 1502,
+    "word_errors": 5,
+    "word_counts": 333
+   },
+   {
+    "session": "t15.2023.12.10",
+    "n": 25,
+    "per": 3.02,
+    "wer": 0.0,
+    "phoneme_errors": 23,
+    "phoneme_counts": 761,
+    "word_errors": 0,
+    "word_counts": 168
+   },
+   {
+    "session": "t15.2023.12.17",
+    "n": 30,
+    "per": 8.63,
+    "wer": 3.43,
+    "phoneme_errors": 83,
+    "phoneme_counts": 962,
+    "word_errors": 8,
+    "word_counts": 233
+   },
+   {
+    "session": "t15.2023.12.29",
+    "n": 50,
+    "per": 7.07,
+    "wer": 5.71,
+    "phoneme_errors": 103,
+    "phoneme_counts": 1457,
+    "word_errors": 19,
+    "word_counts": 333
+   },
+   {
+    "session": "t15.2024.02.25",
+    "n": 23,
+    "per": 5.9,
+    "wer": 1.22,
+    "phoneme_errors": 42,
+    "phoneme_counts": 712,
+    "word_errors": 2,
+    "word_counts": 164
+   },
+   {
+    "session": "t15.2024.03.08",
+    "n": 24,
+    "per": 17.5,
+    "wer": 10.56,
+    "phoneme_errors": 123,
+    "phoneme_counts": 703,
+    "word_errors": 17,
+    "word_counts": 161
+   },
+   {
+    "session": "t15.2024.03.15",
+    "n": 48,
+    "per": 15.51,
+    "wer": 12.98,
+    "phoneme_errors": 248,
+    "phoneme_counts": 1599,
+    "word_errors": 47,
+    "word_counts": 362
+   },
+   {
+    "session": "t15.2024.03.17",
+    "n": 48,
+    "per": 7.11,
+    "wer": 2.08,
+    "phoneme_errors": 102,
+    "phoneme_counts": 1434,
+    "word_errors": 7,
+    "word_counts": 336
+   },
+   {
+    "session": "t15.2024.05.10",
+    "n": 25,
+    "per": 13.22,
+    "wer": 4.49,
+    "phoneme_errors": 89,
+    "phoneme_counts": 673,
+    "word_errors": 7,
+    "word_counts": 156
+   },
+   {
+    "session": "t15.2024.06.14",
+    "n": 25,
+    "per": 11.2,
+    "wer": 4.64,
+    "phoneme_errors": 71,
+    "phoneme_counts": 634,
+    "word_errors": 7,
+    "word_counts": 151
+   },
+   {
+    "session": "t15.2024.07.19",
+    "n": 48,
+    "per": 14.9,
+    "wer": 5.71,
+    "phoneme_errors": 226,
+    "phoneme_counts": 1517,
+    "word_errors": 20,
+    "word_counts": 350
+   },
+   {
+    "session": "t15.2024.07.21",
+    "n": 46,
+    "per": 4.76,
+    "wer": 1.16,
+    "phoneme_errors": 69,
+    "phoneme_counts": 1450,
+    "word_errors": 4,
+    "word_counts": 345
+   },
+   {
+    "session": "t15.2024.07.28",
+    "n": 48,
+    "per": 9.04,
+    "wer": 2.95,
+    "phoneme_errors": 123,
+    "phoneme_counts": 1360,
+    "word_errors": 9,
+    "word_counts": 305
+   },
+   {
+    "session": "t15.2025.01.10",
+    "n": 23,
+    "per": 24.38,
+    "wer": 20.23,
+    "phoneme_errors": 177,
+    "phoneme_counts": 726,
+    "word_errors": 35,
+    "word_counts": 173
+   },
+   {
+    "session": "t15.2025.01.12",
+    "n": 47,
+    "per": 9.47,
+    "wer": 2.01,
+    "phoneme_errors": 123,
+    "phoneme_counts": 1299,
+    "word_errors": 6,
+    "word_counts": 298
+   },
+   {
+    "session": "t15.2025.03.14",
+    "n": 24,
+    "per": 29.29,
+    "wer": 24.69,
+    "phoneme_errors": 198,
+    "phoneme_counts": 676,
+    "word_errors": 40,
+    "word_counts": 162
+   },
+   {
+    "session": "t15.2025.03.16",
+    "n": 24,
+    "per": 14.14,
+    "wer": 6.98,
+    "phoneme_errors": 108,
+    "phoneme_counts": 764,
+    "word_errors": 12,
+    "word_counts": 172
+   },
+   {
+    "session": "t15.2025.03.30",
+    "n": 30,
+    "per": 21.49,
+    "wer": 24.02,
+    "phoneme_errors": 187,
+    "phoneme_counts": 870,
+    "word_errors": 49,
+    "word_counts": 204
+   },
+   {
+    "session": "t15.2025.04.13",
+    "n": 25,
+    "per": 19.83,
+    "wer": 8.18,
+    "phoneme_errors": 139,
+    "phoneme_counts": 701,
+    "word_errors": 13,
+    "word_counts": 159
+   }
+  ],
+  "pooled": {
+   "per": 10.31,
+   "wer": 7.02
+  }
+ },
+ "Jude 2026 (LIS, T17)": {
+  "sessions": [
+   {
+    "session": "t17.2024.03.26",
+    "n": 40,
+    "per": 27.12,
+    "wer": 38.04,
+    "phoneme_errors": 189,
+    "phoneme_counts": 697,
+    "word_errors": 70,
+    "word_counts": 184
+   },
+   {
+    "session": "t17.2024.04.02",
+    "n": 11,
+    "per": 48.3,
+    "wer": 64.06,
+    "phoneme_errors": 142,
+    "phoneme_counts": 294,
+    "word_errors": 41,
+    "word_counts": 64
+   },
+   {
+    "session": "t17.2024.04.15",
+    "n": 40,
+    "per": 42.35,
+    "wer": 49.57,
+    "phoneme_errors": 421,
+    "phoneme_counts": 994,
+    "word_errors": 115,
+    "word_counts": 232
+   },
+   {
+    "session": "t17.2024.04.16",
+    "n": 40,
+    "per": 41.84,
+    "wer": 50.0,
+    "phoneme_errors": 472,
+    "phoneme_counts": 1128,
+    "word_errors": 126,
+    "word_counts": 252
+   },
+   {
+    "session": "t17.2024.04.17",
+    "n": 6,
+    "per": 46.97,
+    "wer": 48.28,
+    "phoneme_errors": 62,
+    "phoneme_counts": 132,
+    "word_errors": 14,
+    "word_counts": 29
+   },
+   {
+    "session": "t17.2024.05.06",
+    "n": 40,
+    "per": 35.27,
+    "wer": 37.04,
+    "phoneme_errors": 365,
+    "phoneme_counts": 1035,
+    "word_errors": 90,
+    "word_counts": 243
+   },
+   {
+    "session": "t17.2024.05.07",
+    "n": 40,
+    "per": 27.45,
+    "wer": 26.07,
+    "phoneme_errors": 303,
+    "phoneme_counts": 1104,
+    "word_errors": 67,
+    "word_counts": 257
+   },
+   {
+    "session": "t17.2024.05.13",
+    "n": 40,
+    "per": 49.29,
+    "wer": 65.24,
+    "phoneme_errors": 519,
+    "phoneme_counts": 1053,
+    "word_errors": 152,
+    "word_counts": 233
+   },
+   {
+    "session": "t17.2024.05.14",
+    "n": 40,
+    "per": 37.49,
+    "wer": 27.51,
+    "phoneme_errors": 415,
+    "phoneme_counts": 1107,
+    "word_errors": 74,
+    "word_counts": 269
+   },
+   {
+    "session": "t17.2024.05.28",
+    "n": 40,
+    "per": 49.47,
+    "wer": 66.67,
+    "phoneme_errors": 514,
+    "phoneme_counts": 1039,
+    "word_errors": 156,
+    "word_counts": 234
+   },
+   {
+    "session": "t17.2024.08.12",
+    "n": 40,
+    "per": 31.55,
+    "wer": 33.14,
+    "phoneme_errors": 201,
+    "phoneme_counts": 637,
+    "word_errors": 56,
+    "word_counts": 169
+   },
+   {
+    "session": "t17.2024.08.13",
+    "n": 40,
+    "per": 54.36,
+    "wer": 69.28,
+    "phoneme_errors": 312,
+    "phoneme_counts": 574,
+    "word_errors": 106,
+    "word_counts": 153
+   }
+  ],
+  "pooled": {
+   "per": 39.97,
+   "wer": 46.01
+  }
+ },
+ "Kunz 2025 (inner, T12)": {
+  "sessions": [
+   {
+    "session": "t12.2023.11.28_imagined_50words_eval",
+    "n": 100,
+    "per": 61.4,
+    "wer": 122.11,
+    "phoneme_errors": 991,
+    "phoneme_counts": 1614,
+    "word_errors": 497,
+    "word_counts": 407
+   }
+  ],
+  "pooled": {
+   "per": 61.4,
+   "wer": 122.11
+  }
+ },
+ "Kunz 2025 (inner, T15)": {
+  "sessions": [
+   {
+    "session": "t15.2024.03.03_imagined_50words_eval",
+    "n": 50,
+    "per": 51.46,
+    "wer": 50.26,
+    "phoneme_errors": 404,
+    "phoneme_counts": 785,
+    "word_errors": 95,
+    "word_counts": 189
+   },
+   {
+    "session": "t15.2024.12.15_imagined_125kwords_eval",
+    "n": 15,
+    "per": 54.41,
+    "wer": 92.86,
+    "phoneme_errors": 222,
+    "phoneme_counts": 408,
+    "word_errors": 91,
+    "word_counts": 98
+   },
+   {
+    "session": "t15.2025.01.05_imagined_125kwords_eval",
+    "n": 40,
+    "per": 67.22,
+    "wer": 99.2,
+    "phoneme_errors": 765,
+    "phoneme_counts": 1138,
+    "word_errors": 249,
+    "word_counts": 251
+   }
+  ],
+  "pooled": {
+   "per": 59.67,
+   "wer": 80.86
+  }
+ },
+ "Kunz 2025 (inner, T16)": {
+  "sessions": [
+   {
+    "session": "t16.2024.04.29_imagined_50words_eval",
+    "n": 50,
+    "per": 52.23,
+    "wer": 52.91,
+    "phoneme_errors": 410,
+    "phoneme_counts": 785,
+    "word_errors": 100,
+    "word_counts": 189
+   },
+   {
+    "session": "t16.2024.12.18_imagined_125kwords_eval",
+    "n": 35,
+    "per": 69.38,
+    "wer": 133.18,
+    "phoneme_errors": 639,
+    "phoneme_counts": 921,
+    "word_errors": 285,
+    "word_counts": 214
+   }
+  ],
+  "pooled": {
+   "per": 61.49,
+   "wer": 95.53
+  }
+ }
+}

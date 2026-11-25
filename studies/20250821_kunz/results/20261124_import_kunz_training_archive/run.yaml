@@ -1,0 +1,38 @@
+id: 20261124_import_kunz_training_archive
+study: 20250821_kunz
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261008_reproduce_20250821_kunz
+legacy_checkout_head_at_import: 6a65beea0b86c8fb7b190ed12f91045c12fe45e3
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20250821_kunz/results/logs/finetune_chain_20260904.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/finetune_chain_20260904.log
+  sha256: ce4844ab47bcefa13e7b420fad5b9f77de757a45fa9954622bdf414850a210ad
+- old_path: 20250821_kunz/results/logs/finetune_N20_20260904.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/finetune_N20_20260904.log
+  sha256: cc35b465ea0a1bc3f96d49c24a6d49bb60f4ca27d33cf1e1653332825e8cb40d
+- old_path: 20250821_kunz/results/logs/kunz_train_chain.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/kunz_train_chain.log
+  sha256: 45694dfd0c70d7979cbfc6c66d2a90212b117c154c0359fcc21bef009da91167
+- old_path: 20250821_kunz/results/logs/train_ablation.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/train_ablation.log
+  sha256: 17c0650323aeb358394d8bbe4fc0a831d37f4a0fdf2d3d1b51707ccf73cbd6be
+- old_path: 20250821_kunz/results/logs/train_chain2.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/train_chain2.log
+  sha256: caa83c52e4af9c4a98ffa90269b077cad87bc5fc9358f4d26a1e02a8a881f0e6
+- old_path: 20250821_kunz/results/logs/train_chain3.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/train_chain3.log
+  sha256: 8f604f9544bab635848846fb6fe53634b48d819955d0729325c2deca5ccbc387
+- old_path: 20250821_kunz/results/logs/train_chain4.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/train_chain4.log
+  sha256: 6aabde7bd23928c1e60afd62d3407403cf8d576a6ebccd0ba30373f9ecf96310
+- old_path: 20250821_kunz/results/logs/train_chain5.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/train_chain5.log
+  sha256: a0c0f6c2146081ccf1ad490c41558d6e2d6857649d19bee9dcad205f0b66cc6c
+- old_path: 20250821_kunz/results/logs/train_chain6.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/train_chain6.log
+  sha256: 0a5bae552d5b780be4edc35d84d22b32577919d1062bde4ae9bb805ec21d9f88
+- old_path: 20250821_kunz/results/logs/train_t16_holdout.log
+  path: studies/20250821_kunz/log/20261124_import_kunz_training_archive/train_t16_holdout.log
+  sha256: a3e2dc5b1035c9ddbbd1e4b735786f0c09f9faa84b5f63f2bd34eed39b8e6014

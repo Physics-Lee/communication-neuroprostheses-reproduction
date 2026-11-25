@@ -1,0 +1,2119 @@
+sessions: 24 | batches: 60000 | val every 2000
+2026-08-31 13:13:47,639: Using device: cuda:0
+2026-08-31 13:13:48,057: Using torch.compile
+2026-08-31 13:13:48,057: Initialized RNN decoding model
+2026-08-31 13:13:48,057: GRUDecoder(
+  (day_layer_activation): Softsign()
+  (day_weights): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 512x512]
+      (1): Parameter containing: [torch.float32 of size 512x512]
+      (2): Parameter containing: [torch.float32 of size 512x512]
+      (3): Parameter containing: [torch.float32 of size 512x512]
+      (4): Parameter containing: [torch.float32 of size 512x512]
+      (5): Parameter containing: [torch.float32 of size 512x512]
+      (6): Parameter containing: [torch.float32 of size 512x512]
+      (7): Parameter containing: [torch.float32 of size 512x512]
+      (8): Parameter containing: [torch.float32 of size 512x512]
+      (9): Parameter containing: [torch.float32 of size 512x512]
+      (10): Parameter containing: [torch.float32 of size 512x512]
+      (11): Parameter containing: [torch.float32 of size 512x512]
+      (12): Parameter containing: [torch.float32 of size 512x512]
+      (13): Parameter containing: [torch.float32 of size 512x512]
+      (14): Parameter containing: [torch.float32 of size 512x512]
+      (15): Parameter containing: [torch.float32 of size 512x512]
+      (16): Parameter containing: [torch.float32 of size 512x512]
+      (17): Parameter containing: [torch.float32 of size 512x512]
+      (18): Parameter containing: [torch.float32 of size 512x512]
+      (19): Parameter containing: [torch.float32 of size 512x512]
+      (20): Parameter containing: [torch.float32 of size 512x512]
+      (21): Parameter containing: [torch.float32 of size 512x512]
+      (22): Parameter containing: [torch.float32 of size 512x512]
+      (23): Parameter containing: [torch.float32 of size 512x512]
+  )
+  (day_biases): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 1x512]
+      (1): Parameter containing: [torch.float32 of size 1x512]
+      (2): Parameter containing: [torch.float32 of size 1x512]
+      (3): Parameter containing: [torch.float32 of size 1x512]
+      (4): Parameter containing: [torch.float32 of size 1x512]
+      (5): Parameter containing: [torch.float32 of size 1x512]
+      (6): Parameter containing: [torch.float32 of size 1x512]
+      (7): Parameter containing: [torch.float32 of size 1x512]
+      (8): Parameter containing: [torch.float32 of size 1x512]
+      (9): Parameter containing: [torch.float32 of size 1x512]
+      (10): Parameter containing: [torch.float32 of size 1x512]
+      (11): Parameter containing: [torch.float32 of size 1x512]
+      (12): Parameter containing: [torch.float32 of size 1x512]
+      (13): Parameter containing: [torch.float32 of size 1x512]
+      (14): Parameter containing: [torch.float32 of size 1x512]
+      (15): Parameter containing: [torch.float32 of size 1x512]
+      (16): Parameter containing: [torch.float32 of size 1x512]
+      (17): Parameter containing: [torch.float32 of size 1x512]
+      (18): Parameter containing: [torch.float32 of size 1x512]
+      (19): Parameter containing: [torch.float32 of size 1x512]
+      (20): Parameter containing: [torch.float32 of size 1x512]
+      (21): Parameter containing: [torch.float32 of size 1x512]
+      (22): Parameter containing: [torch.float32 of size 1x512]
+      (23): Parameter containing: [torch.float32 of size 1x512]
+  )
+  (day_layer_dropout): Dropout(p=0.2, inplace=False)
+  (gru): GRU(7168, 768, num_layers=5, batch_first=True, dropout=0.4)
+  (out): Linear(in_features=768, out_features=41, bias=True)
+)
+2026-08-31 13:13:48,059: Model has 38,799,401 parameters
+2026-08-31 13:13:48,060: Model has 6,303,744 day-specific parameters | 16.25% of total parameters
+2026-08-31 13:13:54,493: Successfully initialized datasets
+2026-08-31 13:13:55,128: Train batch 0: loss: 207.49 grad norm: 79.02 time: 0.501
+2026-08-31 13:13:55,128: Running test after training batch: 0
+2026-08-31 13:13:57,808: Val batch 0: PER (avg): 0.9206 CTC Loss (avg): 212.6353 time: 2.680
+2026-08-31 13:13:57,808: t12.2022.04.28 val PER: 0.8937
+2026-08-31 13:13:57,808: t12.2022.05.05 val PER: 0.9000
+2026-08-31 13:13:57,809: t12.2022.05.17 val PER: 0.9233
+2026-08-31 13:13:57,809: t12.2022.05.19 val PER: 0.9121
+2026-08-31 13:13:57,809: t12.2022.05.24 val PER: 0.9336
+2026-08-31 13:13:57,809: t12.2022.05.26 val PER: 0.9260
+2026-08-31 13:13:57,809: t12.2022.06.02 val PER: 0.9196
+2026-08-31 13:13:57,809: t12.2022.06.07 val PER: 0.9171
+2026-08-31 13:13:57,809: t12.2022.06.14 val PER: 0.9124
+2026-08-31 13:13:57,809: t12.2022.06.16 val PER: 0.9150
+2026-08-31 13:13:57,809: t12.2022.06.21 val PER: 0.9151
+2026-08-31 13:13:57,809: t12.2022.06.23 val PER: 0.9301
+2026-08-31 13:13:57,810: t12.2022.06.28 val PER: 0.9154
+2026-08-31 13:13:57,810: t12.2022.07.05 val PER: 0.9275
+2026-08-31 13:13:57,810: t12.2022.07.14 val PER: 0.9242
+2026-08-31 13:13:57,810: t12.2022.07.21 val PER: 0.9170
+2026-08-31 13:13:57,810: t12.2022.07.27 val PER: 0.9291
+2026-08-31 13:13:57,810: t12.2022.07.29 val PER: 0.9220
+2026-08-31 13:13:57,810: t12.2022.08.02 val PER: 0.9379
+2026-08-31 13:13:57,810: t12.2022.08.11 val PER: 0.9181
+2026-08-31 13:13:57,810: t12.2022.08.13 val PER: 0.9357
+2026-08-31 13:13:57,811: t12.2022.08.18 val PER: 0.9175
+2026-08-31 13:13:57,811: t12.2022.08.23 val PER: 0.9240
+2026-08-31 13:13:57,811: t12.2022.08.25 val PER: 0.9250
+2026-08-31 13:13:57,811: New best test PER inf --> 0.9206
+2026-08-31 13:13:57,811: Checkpointing model
+2026-08-31 13:13:59,265: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 13:14:10,162: Train batch 50: loss: 164.90 grad norm: 144.14 time: 0.119
+2026-08-31 13:14:21,132: Train batch 100: loss: 118.70 grad norm: 31.47 time: 0.150
+2026-08-31 13:14:31,439: Train batch 150: loss: 87.27 grad norm: 11.84 time: 0.107
+2026-08-31 13:14:42,106: Train batch 200: loss: 96.23 grad norm: 17.51 time: 0.170
+2026-08-31 13:14:52,294: Train batch 250: loss: 87.71 grad norm: 16.04 time: 0.098
+2026-08-31 13:15:02,929: Train batch 300: loss: 77.35 grad norm: 16.91 time: 0.097
+2026-08-31 13:15:13,852: Train batch 350: loss: 85.67 grad norm: 23.56 time: 0.159
+2026-08-31 13:15:24,532: Train batch 400: loss: 91.05 grad norm: 23.44 time: 0.162
+2026-08-31 13:15:34,837: Train batch 450: loss: 65.85 grad norm: 21.77 time: 0.105
+2026-08-31 13:15:45,628: Train batch 500: loss: 71.46 grad norm: 31.21 time: 0.112
+2026-08-31 13:15:56,195: Train batch 550: loss: 71.56 grad norm: 27.67 time: 0.099
+2026-08-31 13:16:06,849: Train batch 600: loss: 65.20 grad norm: 28.34 time: 0.103
+2026-08-31 13:16:17,713: Train batch 650: loss: 59.08 grad norm: 28.74 time: 0.122
+2026-08-31 13:16:28,554: Train batch 700: loss: 73.26 grad norm: 31.40 time: 0.134
+2026-08-31 13:16:38,964: Train batch 750: loss: 74.57 grad norm: 35.16 time: 0.154
+2026-08-31 13:16:49,573: Train batch 800: loss: 71.21 grad norm: 33.50 time: 0.151
+2026-08-31 13:17:00,277: Train batch 850: loss: 56.76 grad norm: 34.38 time: 0.111
+2026-08-31 13:17:11,171: Train batch 900: loss: 51.51 grad norm: 37.35 time: 0.100
+2026-08-31 13:17:21,759: Train batch 950: loss: 46.90 grad norm: 31.65 time: 0.093
+2026-08-31 13:17:32,659: Train batch 1000: loss: 53.46 grad norm: 38.49 time: 0.114
+2026-08-31 13:17:43,209: Train batch 1050: loss: 59.38 grad norm: 38.17 time: 0.105
+2026-08-31 13:17:53,832: Train batch 1100: loss: 63.94 grad norm: 41.68 time: 0.156
+2026-08-31 13:18:04,449: Train batch 1150: loss: 48.11 grad norm: 38.02 time: 0.099
+2026-08-31 13:18:14,931: Train batch 1200: loss: 40.15 grad norm: 34.65 time: 0.109
+2026-08-31 13:18:25,670: Train batch 1250: loss: 53.47 grad norm: 40.02 time: 0.149
+2026-08-31 13:18:36,138: Train batch 1300: loss: 59.33 grad norm: 44.39 time: 0.180
+2026-08-31 13:18:46,978: Train batch 1350: loss: 40.31 grad norm: 36.66 time: 0.093
+2026-08-31 13:18:57,664: Train batch 1400: loss: 37.52 grad norm: 34.30 time: 0.100
+2026-08-31 13:19:08,593: Train batch 1450: loss: 39.47 grad norm: 34.02 time: 0.112
+2026-08-31 13:19:19,239: Train batch 1500: loss: 50.24 grad norm: 40.82 time: 0.161
+2026-08-31 13:19:30,081: Train batch 1550: loss: 54.25 grad norm: 43.35 time: 0.155
+2026-08-31 13:19:40,706: Train batch 1600: loss: 49.52 grad norm: 40.86 time: 0.147
+2026-08-31 13:19:51,705: Train batch 1650: loss: 45.09 grad norm: 38.81 time: 0.098
+2026-08-31 13:20:02,236: Train batch 1700: loss: 36.89 grad norm: 35.92 time: 0.093
+2026-08-31 13:20:13,258: Train batch 1750: loss: 34.69 grad norm: 36.43 time: 0.102
+2026-08-31 13:20:23,577: Train batch 1800: loss: 41.61 grad norm: 39.05 time: 0.100
+2026-08-31 13:20:34,373: Train batch 1850: loss: 49.79 grad norm: 45.60 time: 0.135
+2026-08-31 13:20:44,899: Train batch 1900: loss: 35.89 grad norm: 37.60 time: 0.087
+2026-08-31 13:20:55,385: Train batch 1950: loss: 45.22 grad norm: 40.90 time: 0.157
+2026-08-31 13:21:06,117: Train batch 2000: loss: 32.28 grad norm: 36.38 time: 0.104
+2026-08-31 13:21:06,117: Running test after training batch: 2000
+2026-08-31 13:21:08,905: Val batch 2000: PER (avg): 0.3503 CTC Loss (avg): 36.2899 time: 2.788
+2026-08-31 13:21:08,906: t12.2022.04.28 val PER: 0.4978
+2026-08-31 13:21:08,906: t12.2022.05.05 val PER: 0.4540
+2026-08-31 13:21:08,906: t12.2022.05.17 val PER: 0.4249
+2026-08-31 13:21:08,906: t12.2022.05.19 val PER: 0.4411
+2026-08-31 13:21:08,906: t12.2022.05.24 val PER: 0.3175
+2026-08-31 13:21:08,907: t12.2022.05.26 val PER: 0.3074
+2026-08-31 13:21:08,907: t12.2022.06.02 val PER: 0.3245
+2026-08-31 13:21:08,907: t12.2022.06.07 val PER: 0.3431
+2026-08-31 13:21:08,907: t12.2022.06.14 val PER: 0.3211
+2026-08-31 13:21:08,907: t12.2022.06.16 val PER: 0.3583
+2026-08-31 13:21:08,907: t12.2022.06.21 val PER: 0.3701
+2026-08-31 13:21:08,908: t12.2022.06.23 val PER: 0.3649
+2026-08-31 13:21:08,908: t12.2022.06.28 val PER: 0.3411
+2026-08-31 13:21:08,908: t12.2022.07.05 val PER: 0.3171
+2026-08-31 13:21:08,908: t12.2022.07.14 val PER: 0.3122
+2026-08-31 13:21:08,908: t12.2022.07.21 val PER: 0.3186
+2026-08-31 13:21:08,908: t12.2022.07.27 val PER: 0.3111
+2026-08-31 13:21:08,909: t12.2022.07.29 val PER: 0.3672
+2026-08-31 13:21:08,909: t12.2022.08.02 val PER: 0.3082
+2026-08-31 13:21:08,909: t12.2022.08.11 val PER: 0.3445
+2026-08-31 13:21:08,909: t12.2022.08.13 val PER: 0.2844
+2026-08-31 13:21:08,909: t12.2022.08.18 val PER: 0.3402
+2026-08-31 13:21:08,909: t12.2022.08.23 val PER: 0.3448
+2026-08-31 13:21:08,909: t12.2022.08.25 val PER: 0.3948
+2026-08-31 13:21:08,909: New best test PER 0.9206 --> 0.3503
+2026-08-31 13:21:08,910: Checkpointing model
+2026-08-31 13:21:10,601: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 13:21:21,237: Train batch 2050: loss: 38.39 grad norm: 42.06 time: 0.112
+2026-08-31 13:21:31,545: Train batch 2100: loss: 34.37 grad norm: 38.16 time: 0.102
+2026-08-31 13:21:42,397: Train batch 2150: loss: 35.09 grad norm: 41.81 time: 0.105
+2026-08-31 13:21:52,896: Train batch 2200: loss: 31.31 grad norm: 38.21 time: 0.102
+2026-08-31 13:22:03,495: Train batch 2250: loss: 40.93 grad norm: 39.61 time: 0.175
+2026-08-31 13:22:14,130: Train batch 2300: loss: 29.24 grad norm: 39.37 time: 0.114
+2026-08-31 13:22:24,484: Train batch 2350: loss: 32.56 grad norm: 43.07 time: 0.118
+2026-08-31 13:22:35,142: Train batch 2400: loss: 26.97 grad norm: 36.29 time: 0.107
+2026-08-31 13:22:45,996: Train batch 2450: loss: 28.18 grad norm: 37.63 time: 0.097
+2026-08-31 13:22:56,587: Train batch 2500: loss: 24.95 grad norm: 34.38 time: 0.108
+2026-08-31 13:23:07,452: Train batch 2550: loss: 28.95 grad norm: 41.25 time: 0.132
+2026-08-31 13:23:18,161: Train batch 2600: loss: 27.82 grad norm: 38.94 time: 0.105
+2026-08-31 13:23:28,903: Train batch 2650: loss: 37.37 grad norm: 46.62 time: 0.164
+2026-08-31 13:23:39,357: Train batch 2700: loss: 22.92 grad norm: 39.35 time: 0.119
+2026-08-31 13:23:50,270: Train batch 2750: loss: 36.51 grad norm: 44.89 time: 0.162
+2026-08-31 13:24:00,726: Train batch 2800: loss: 45.00 grad norm: 46.44 time: 0.165
+2026-08-31 13:24:11,451: Train batch 2850: loss: 32.69 grad norm: 48.45 time: 0.135
+2026-08-31 13:24:22,206: Train batch 2900: loss: 30.94 grad norm: 47.84 time: 0.092
+2026-08-31 13:24:32,893: Train batch 2950: loss: 22.10 grad norm: 33.96 time: 0.083
+2026-08-31 13:24:43,771: Train batch 3000: loss: 24.35 grad norm: 36.00 time: 0.112
+2026-08-31 13:24:54,370: Train batch 3050: loss: 39.64 grad norm: 47.34 time: 0.139
+2026-08-31 13:25:04,972: Train batch 3100: loss: 24.44 grad norm: 39.43 time: 0.115
+2026-08-31 13:25:15,725: Train batch 3150: loss: 25.32 grad norm: 42.77 time: 0.098
+2026-08-31 13:25:26,416: Train batch 3200: loss: 33.99 grad norm: 44.70 time: 0.129
+2026-08-31 13:25:37,056: Train batch 3250: loss: 23.63 grad norm: 34.49 time: 0.105
+2026-08-31 13:25:47,577: Train batch 3300: loss: 21.69 grad norm: 36.49 time: 0.104
+2026-08-31 13:25:58,637: Train batch 3350: loss: 25.07 grad norm: 40.01 time: 0.087
+2026-08-31 13:26:09,553: Train batch 3400: loss: 26.92 grad norm: 43.70 time: 0.104
+2026-08-31 13:26:20,566: Train batch 3450: loss: 19.03 grad norm: 33.82 time: 0.115
+2026-08-31 13:26:31,175: Train batch 3500: loss: 18.98 grad norm: 34.03 time: 0.118
+2026-08-31 13:26:42,224: Train batch 3550: loss: 26.61 grad norm: 42.25 time: 0.094
+2026-08-31 13:26:53,075: Train batch 3600: loss: 43.46 grad norm: 55.20 time: 0.155
+2026-08-31 13:27:03,867: Train batch 3650: loss: 21.95 grad norm: 35.63 time: 0.106
+2026-08-31 13:27:14,903: Train batch 3700: loss: 31.04 grad norm: 44.91 time: 0.159
+2026-08-31 13:27:25,578: Train batch 3750: loss: 20.21 grad norm: 34.79 time: 0.107
+2026-08-31 13:27:36,261: Train batch 3800: loss: 21.78 grad norm: 50.54 time: 0.105
+2026-08-31 13:27:46,792: Train batch 3850: loss: 24.06 grad norm: 46.27 time: 0.130
+2026-08-31 13:27:57,324: Train batch 3900: loss: 19.85 grad norm: 40.12 time: 0.120
+2026-08-31 13:28:08,003: Train batch 3950: loss: 23.67 grad norm: 40.85 time: 0.110
+2026-08-31 13:28:18,781: Train batch 4000: loss: 30.67 grad norm: 47.66 time: 0.144
+2026-08-31 13:28:18,781: Running test after training batch: 4000
+2026-08-31 13:28:21,578: Val batch 4000: PER (avg): 0.2829 CTC Loss (avg): 30.0541 time: 2.797
+2026-08-31 13:28:21,578: t12.2022.04.28 val PER: 0.4374
+2026-08-31 13:28:21,578: t12.2022.05.05 val PER: 0.3690
+2026-08-31 13:28:21,578: t12.2022.05.17 val PER: 0.3355
+2026-08-31 13:28:21,578: t12.2022.05.19 val PER: 0.4270
+2026-08-31 13:28:21,579: t12.2022.05.24 val PER: 0.2269
+2026-08-31 13:28:21,579: t12.2022.05.26 val PER: 0.2505
+2026-08-31 13:28:21,579: t12.2022.06.02 val PER: 0.2640
+2026-08-31 13:28:21,579: t12.2022.06.07 val PER: 0.2923
+2026-08-31 13:28:21,579: t12.2022.06.14 val PER: 0.2614
+2026-08-31 13:28:21,579: t12.2022.06.16 val PER: 0.2950
+2026-08-31 13:28:21,579: t12.2022.06.21 val PER: 0.2817
+2026-08-31 13:28:21,579: t12.2022.06.23 val PER: 0.2932
+2026-08-31 13:28:21,579: t12.2022.06.28 val PER: 0.2890
+2026-08-31 13:28:21,580: t12.2022.07.05 val PER: 0.2582
+2026-08-31 13:28:21,580: t12.2022.07.14 val PER: 0.2471
+2026-08-31 13:28:21,580: t12.2022.07.21 val PER: 0.2437
+2026-08-31 13:28:21,580: t12.2022.07.27 val PER: 0.2487
+2026-08-31 13:28:21,580: t12.2022.07.29 val PER: 0.2853
+2026-08-31 13:28:21,580: t12.2022.08.02 val PER: 0.2539
+2026-08-31 13:28:21,580: t12.2022.08.11 val PER: 0.2636
+2026-08-31 13:28:21,580: t12.2022.08.13 val PER: 0.2171
+2026-08-31 13:28:21,580: t12.2022.08.18 val PER: 0.2634
+2026-08-31 13:28:21,580: t12.2022.08.23 val PER: 0.2604
+2026-08-31 13:28:21,581: t12.2022.08.25 val PER: 0.3417
+2026-08-31 13:28:21,581: New best test PER 0.3503 --> 0.2829
+2026-08-31 13:28:21,581: Checkpointing model
+2026-08-31 13:28:23,688: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 13:28:34,630: Train batch 4050: loss: 30.43 grad norm: 44.13 time: 0.154
+2026-08-31 13:28:45,340: Train batch 4100: loss: 25.11 grad norm: 44.38 time: 0.156
+2026-08-31 13:28:56,030: Train batch 4150: loss: 27.67 grad norm: 48.52 time: 0.169
+2026-08-31 13:29:06,815: Train batch 4200: loss: 18.38 grad norm: 33.40 time: 0.107
+2026-08-31 13:29:17,169: Train batch 4250: loss: 23.71 grad norm: 41.77 time: 0.101
+2026-08-31 13:29:28,028: Train batch 4300: loss: 30.49 grad norm: 48.28 time: 0.151
+2026-08-31 13:29:38,717: Train batch 4350: loss: 19.24 grad norm: 37.54 time: 0.114
+2026-08-31 13:29:49,423: Train batch 4400: loss: 21.15 grad norm: 37.99 time: 0.115
+2026-08-31 13:30:00,228: Train batch 4450: loss: 19.67 grad norm: 41.14 time: 0.091
+2026-08-31 13:30:10,928: Train batch 4500: loss: 24.08 grad norm: 41.76 time: 0.137
+2026-08-31 13:30:21,811: Train batch 4550: loss: 20.71 grad norm: 39.75 time: 0.112
+2026-08-31 13:30:32,716: Train batch 4600: loss: 24.21 grad norm: 47.77 time: 0.096
+2026-08-31 13:30:43,365: Train batch 4650: loss: 30.35 grad norm: 50.90 time: 0.163
+2026-08-31 13:30:54,360: Train batch 4700: loss: 24.37 grad norm: 44.89 time: 0.170
+2026-08-31 13:31:04,858: Train batch 4750: loss: 18.01 grad norm: 35.64 time: 0.113
+2026-08-31 13:31:15,784: Train batch 4800: loss: 21.51 grad norm: 41.10 time: 0.131
+2026-08-31 13:31:26,665: Train batch 4850: loss: 25.63 grad norm: 48.14 time: 0.158
+2026-08-31 13:31:37,364: Train batch 4900: loss: 18.66 grad norm: 43.47 time: 0.101
+2026-08-31 13:31:48,385: Train batch 4950: loss: 18.36 grad norm: 39.89 time: 0.100
+2026-08-31 13:31:59,040: Train batch 5000: loss: 18.70 grad norm: 45.12 time: 0.105
+2026-08-31 13:32:09,685: Train batch 5050: loss: 22.73 grad norm: 41.40 time: 0.165
+2026-08-31 13:32:20,716: Train batch 5100: loss: 17.38 grad norm: 39.22 time: 0.110
+2026-08-31 13:32:31,579: Train batch 5150: loss: 19.13 grad norm: 41.27 time: 0.105
+2026-08-31 13:32:42,649: Train batch 5200: loss: 24.21 grad norm: 44.78 time: 0.160
+2026-08-31 13:32:53,055: Train batch 5250: loss: 27.41 grad norm: 46.17 time: 0.154
+2026-08-31 13:33:04,004: Train batch 5300: loss: 17.12 grad norm: 40.28 time: 0.085
+2026-08-31 13:33:14,412: Train batch 5350: loss: 16.29 grad norm: 35.07 time: 0.097
+2026-08-31 13:33:25,064: Train batch 5400: loss: 18.16 grad norm: 37.71 time: 0.099
+2026-08-31 13:33:35,654: Train batch 5450: loss: 15.19 grad norm: 37.14 time: 0.108
+2026-08-31 13:33:46,420: Train batch 5500: loss: 23.54 grad norm: 46.69 time: 0.179
+2026-08-31 13:33:56,972: Train batch 5550: loss: 18.93 grad norm: 43.34 time: 0.115
+2026-08-31 13:34:07,859: Train batch 5600: loss: 16.84 grad norm: 42.74 time: 0.096
+2026-08-31 13:34:18,665: Train batch 5650: loss: 24.14 grad norm: 44.18 time: 0.151
+2026-08-31 13:34:29,452: Train batch 5700: loss: 28.74 grad norm: 50.35 time: 0.182
+2026-08-31 13:34:40,247: Train batch 5750: loss: 25.26 grad norm: 45.55 time: 0.151
+2026-08-31 13:34:50,565: Train batch 5800: loss: 22.96 grad norm: 43.61 time: 0.147
+2026-08-31 13:35:03,775: Train batch 5850: loss: 12.19 grad norm: 32.86 time: 0.096
+2026-08-31 13:35:15,885: Train batch 5900: loss: 15.09 grad norm: 36.91 time: 0.124
+2026-08-31 13:35:26,564: Train batch 5950: loss: 18.08 grad norm: 40.90 time: 0.104
+2026-08-31 13:35:37,477: Train batch 6000: loss: 13.60 grad norm: 33.54 time: 0.110
+2026-08-31 13:35:37,478: Running test after training batch: 6000
+2026-08-31 13:35:40,365: Val batch 6000: PER (avg): 0.2624 CTC Loss (avg): 29.1288 time: 2.886
+2026-08-31 13:35:40,365: t12.2022.04.28 val PER: 0.4273
+2026-08-31 13:35:40,365: t12.2022.05.05 val PER: 0.3655
+2026-08-31 13:35:40,365: t12.2022.05.17 val PER: 0.3131
+2026-08-31 13:35:40,366: t12.2022.05.19 val PER: 0.3972
+2026-08-31 13:35:40,366: t12.2022.05.24 val PER: 0.2152
+2026-08-31 13:35:40,366: t12.2022.05.26 val PER: 0.2059
+2026-08-31 13:35:40,366: t12.2022.06.02 val PER: 0.2157
+2026-08-31 13:35:40,366: t12.2022.06.07 val PER: 0.2727
+2026-08-31 13:35:40,366: t12.2022.06.14 val PER: 0.2295
+2026-08-31 13:35:40,367: t12.2022.06.16 val PER: 0.2725
+2026-08-31 13:35:40,367: t12.2022.06.21 val PER: 0.2721
+2026-08-31 13:35:40,367: t12.2022.06.23 val PER: 0.2592
+2026-08-31 13:35:40,367: t12.2022.06.28 val PER: 0.2714
+2026-08-31 13:35:40,367: t12.2022.07.05 val PER: 0.2390
+2026-08-31 13:35:40,367: t12.2022.07.14 val PER: 0.2569
+2026-08-31 13:35:40,367: t12.2022.07.21 val PER: 0.2338
+2026-08-31 13:35:40,367: t12.2022.07.27 val PER: 0.2328
+2026-08-31 13:35:40,368: t12.2022.07.29 val PER: 0.2734
+2026-08-31 13:35:40,368: t12.2022.08.02 val PER: 0.2239
+2026-08-31 13:35:40,368: t12.2022.08.11 val PER: 0.2330
+2026-08-31 13:35:40,368: t12.2022.08.13 val PER: 0.2070
+2026-08-31 13:35:40,368: t12.2022.08.18 val PER: 0.2371
+2026-08-31 13:35:40,368: t12.2022.08.23 val PER: 0.2530
+2026-08-31 13:35:40,369: t12.2022.08.25 val PER: 0.3021
+2026-08-31 13:35:40,369: New best test PER 0.2829 --> 0.2624
+2026-08-31 13:35:40,369: Checkpointing model
+2026-08-31 13:35:42,696: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 13:35:53,329: Train batch 6050: loss: 13.61 grad norm: 38.92 time: 0.096
+2026-08-31 13:36:03,915: Train batch 6100: loss: 18.25 grad norm: 38.80 time: 0.111
+2026-08-31 13:36:14,833: Train batch 6150: loss: 23.57 grad norm: 42.15 time: 0.126
+2026-08-31 13:36:25,694: Train batch 6200: loss: 15.52 grad norm: 42.14 time: 0.093
+2026-08-31 13:36:37,137: Train batch 6250: loss: 23.44 grad norm: 44.90 time: 0.155
+2026-08-31 13:36:49,045: Train batch 6300: loss: 16.68 grad norm: 41.14 time: 0.109
+2026-08-31 13:36:59,881: Train batch 6350: loss: 15.83 grad norm: 50.26 time: 0.084
+2026-08-31 13:37:10,791: Train batch 6400: loss: 19.60 grad norm: 44.14 time: 0.166
+2026-08-31 13:37:21,988: Train batch 6450: loss: 16.40 grad norm: 41.46 time: 0.100
+2026-08-31 13:37:33,601: Train batch 6500: loss: 24.83 grad norm: 49.51 time: 0.161
+2026-08-31 13:37:44,882: Train batch 6550: loss: 21.88 grad norm: 43.96 time: 0.145
+2026-08-31 13:37:55,756: Train batch 6600: loss: 13.63 grad norm: 37.12 time: 0.093
+2026-08-31 13:38:06,856: Train batch 6650: loss: 14.66 grad norm: 42.81 time: 0.121
+2026-08-31 13:38:18,304: Train batch 6700: loss: 22.13 grad norm: 44.26 time: 0.134
+2026-08-31 13:38:29,189: Train batch 6750: loss: 14.61 grad norm: 33.44 time: 0.090
+2026-08-31 13:38:39,643: Train batch 6800: loss: 19.52 grad norm: 52.15 time: 0.158
+2026-08-31 13:38:49,828: Train batch 6850: loss: 13.57 grad norm: 39.29 time: 0.099
+2026-08-31 13:39:00,501: Train batch 6900: loss: 13.69 grad norm: 38.18 time: 0.131
+2026-08-31 13:39:10,961: Train batch 6950: loss: 24.76 grad norm: 59.37 time: 0.152
+2026-08-31 13:39:21,536: Train batch 7000: loss: 12.42 grad norm: 41.25 time: 0.095
+2026-08-31 13:39:31,988: Train batch 7050: loss: 20.12 grad norm: 46.70 time: 0.153
+2026-08-31 13:39:42,822: Train batch 7100: loss: 17.36 grad norm: 39.79 time: 0.142
+2026-08-31 13:39:53,472: Train batch 7150: loss: 12.92 grad norm: 36.84 time: 0.086
+2026-08-31 13:40:03,981: Train batch 7200: loss: 13.91 grad norm: 41.51 time: 0.112
+2026-08-31 13:40:14,696: Train batch 7250: loss: 19.72 grad norm: 44.74 time: 0.154
+2026-08-31 13:40:25,287: Train batch 7300: loss: 17.32 grad norm: 42.24 time: 0.166
+2026-08-31 13:40:35,657: Train batch 7350: loss: 12.35 grad norm: 33.54 time: 0.092
+2026-08-31 13:40:46,081: Train batch 7400: loss: 13.10 grad norm: 36.89 time: 0.108
+2026-08-31 13:40:57,058: Train batch 7450: loss: 15.81 grad norm: 37.90 time: 0.093
+2026-08-31 13:41:07,376: Train batch 7500: loss: 12.09 grad norm: 34.48 time: 0.100
+2026-08-31 13:41:18,069: Train batch 7550: loss: 10.83 grad norm: 33.48 time: 0.098
+2026-08-31 13:41:28,895: Train batch 7600: loss: 13.48 grad norm: 40.16 time: 0.094
+2026-08-31 13:41:40,564: Train batch 7650: loss: 19.74 grad norm: 48.17 time: 0.150
+2026-08-31 13:41:51,699: Train batch 7700: loss: 11.97 grad norm: 52.52 time: 0.095
+2026-08-31 13:42:02,036: Train batch 7750: loss: 15.04 grad norm: 39.29 time: 0.098
+2026-08-31 13:42:12,417: Train batch 7800: loss: 10.32 grad norm: 31.40 time: 0.097
+2026-08-31 13:42:22,555: Train batch 7850: loss: 16.22 grad norm: 53.56 time: 0.103
+2026-08-31 13:42:32,852: Train batch 7900: loss: 11.75 grad norm: 37.85 time: 0.094
+2026-08-31 13:42:42,785: Train batch 7950: loss: 18.40 grad norm: 46.21 time: 0.148
+2026-08-31 13:42:52,867: Train batch 8000: loss: 12.44 grad norm: 38.59 time: 0.095
+2026-08-31 13:42:52,867: Running test after training batch: 8000
+2026-08-31 13:42:55,551: Val batch 8000: PER (avg): 0.2513 CTC Loss (avg): 29.5149 time: 2.685
+2026-08-31 13:42:55,552: t12.2022.04.28 val PER: 0.4116
+2026-08-31 13:42:55,552: t12.2022.05.05 val PER: 0.3483
+2026-08-31 13:42:55,552: t12.2022.05.17 val PER: 0.3099
+2026-08-31 13:42:55,552: t12.2022.05.19 val PER: 0.3799
+2026-08-31 13:42:55,552: t12.2022.05.24 val PER: 0.2063
+2026-08-31 13:42:55,552: t12.2022.05.26 val PER: 0.1935
+2026-08-31 13:42:55,552: t12.2022.06.02 val PER: 0.2289
+2026-08-31 13:42:55,552: t12.2022.06.07 val PER: 0.2727
+2026-08-31 13:42:55,552: t12.2022.06.14 val PER: 0.2191
+2026-08-31 13:42:55,552: t12.2022.06.16 val PER: 0.2733
+2026-08-31 13:42:55,553: t12.2022.06.21 val PER: 0.2502
+2026-08-31 13:42:55,553: t12.2022.06.23 val PER: 0.2739
+2026-08-31 13:42:55,553: t12.2022.06.28 val PER: 0.2630
+2026-08-31 13:42:55,553: t12.2022.07.05 val PER: 0.2322
+2026-08-31 13:42:55,553: t12.2022.07.14 val PER: 0.2275
+2026-08-31 13:42:55,553: t12.2022.07.21 val PER: 0.2283
+2026-08-31 13:42:55,553: t12.2022.07.27 val PER: 0.2095
+2026-08-31 13:42:55,553: t12.2022.07.29 val PER: 0.2606
+2026-08-31 13:42:55,553: t12.2022.08.02 val PER: 0.2095
+2026-08-31 13:42:55,553: t12.2022.08.11 val PER: 0.2122
+2026-08-31 13:42:55,553: t12.2022.08.13 val PER: 0.1879
+2026-08-31 13:42:55,554: t12.2022.08.18 val PER: 0.2296
+2026-08-31 13:42:55,554: t12.2022.08.23 val PER: 0.2308
+2026-08-31 13:42:55,554: t12.2022.08.25 val PER: 0.2802
+2026-08-31 13:42:55,554: New best test PER 0.2624 --> 0.2513
+2026-08-31 13:42:55,554: Checkpointing model
+2026-08-31 13:42:57,620: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 13:43:07,365: Train batch 8050: loss: 12.58 grad norm: 41.54 time: 0.103
+2026-08-31 13:43:17,861: Train batch 8100: loss: 9.38 grad norm: 43.48 time: 0.104
+2026-08-31 13:43:28,339: Train batch 8150: loss: 10.65 grad norm: 32.18 time: 0.103
+2026-08-31 13:43:38,636: Train batch 8200: loss: 10.37 grad norm: 38.62 time: 0.100
+2026-08-31 13:43:49,227: Train batch 8250: loss: 13.10 grad norm: 37.84 time: 0.123
+2026-08-31 13:43:59,640: Train batch 8300: loss: 12.12 grad norm: 47.67 time: 0.102
+2026-08-31 13:44:10,454: Train batch 8350: loss: 17.27 grad norm: 54.29 time: 0.138
+2026-08-31 13:44:20,876: Train batch 8400: loss: 8.39 grad norm: 28.60 time: 0.103
+2026-08-31 13:44:32,428: Train batch 8450: loss: 17.67 grad norm: 46.12 time: 0.159
+2026-08-31 13:44:43,867: Train batch 8500: loss: 10.94 grad norm: 36.99 time: 0.097
+2026-08-31 13:44:55,187: Train batch 8550: loss: 19.92 grad norm: 48.82 time: 0.159
+2026-08-31 13:45:05,610: Train batch 8600: loss: 9.40 grad norm: 31.92 time: 0.083
+2026-08-31 13:45:16,039: Train batch 8650: loss: 19.44 grad norm: 53.84 time: 0.149
+2026-08-31 13:45:26,280: Train batch 8700: loss: 11.50 grad norm: 40.67 time: 0.093
+2026-08-31 13:45:36,679: Train batch 8750: loss: 10.25 grad norm: 43.11 time: 0.100
+2026-08-31 13:45:47,313: Train batch 8800: loss: 11.07 grad norm: 40.39 time: 0.092
+2026-08-31 13:45:57,812: Train batch 8850: loss: 10.76 grad norm: 38.15 time: 0.102
+2026-08-31 13:46:08,371: Train batch 8900: loss: 9.60 grad norm: 39.31 time: 0.130
+2026-08-31 13:46:19,117: Train batch 8950: loss: 10.86 grad norm: 40.78 time: 0.115
+2026-08-31 13:46:29,779: Train batch 9000: loss: 10.17 grad norm: 32.92 time: 0.094
+2026-08-31 13:46:40,472: Train batch 9050: loss: 15.99 grad norm: 46.13 time: 0.146
+2026-08-31 13:46:51,071: Train batch 9100: loss: 22.26 grad norm: 48.03 time: 0.161
+2026-08-31 13:47:01,712: Train batch 9150: loss: 8.22 grad norm: 30.61 time: 0.091
+2026-08-31 13:47:11,939: Train batch 9200: loss: 10.26 grad norm: 46.00 time: 0.101
+2026-08-31 13:47:22,607: Train batch 9250: loss: 12.64 grad norm: 38.44 time: 0.100
+2026-08-31 13:47:33,398: Train batch 9300: loss: 11.09 grad norm: 37.52 time: 0.105
+2026-08-31 13:47:43,899: Train batch 9350: loss: 10.66 grad norm: 40.33 time: 0.107
+2026-08-31 13:47:54,789: Train batch 9400: loss: 18.81 grad norm: 48.97 time: 0.169
+2026-08-31 13:48:05,470: Train batch 9450: loss: 8.30 grad norm: 32.05 time: 0.103
+2026-08-31 13:48:16,428: Train batch 9500: loss: 17.89 grad norm: 45.37 time: 0.152
+2026-08-31 13:48:26,825: Train batch 9550: loss: 17.58 grad norm: 46.49 time: 0.143
+2026-08-31 13:48:37,027: Train batch 9600: loss: 10.82 grad norm: 43.93 time: 0.088
+2026-08-31 13:48:47,729: Train batch 9650: loss: 11.03 grad norm: 35.93 time: 0.111
+2026-08-31 13:48:58,377: Train batch 9700: loss: 8.55 grad norm: 34.94 time: 0.089
+2026-08-31 13:49:08,931: Train batch 9750: loss: 8.03 grad norm: 35.93 time: 0.095
+2026-08-31 13:49:19,015: Train batch 9800: loss: 11.90 grad norm: 37.16 time: 0.110
+2026-08-31 13:49:29,537: Train batch 9850: loss: 10.54 grad norm: 37.72 time: 0.093
+2026-08-31 13:49:39,948: Train batch 9900: loss: 13.56 grad norm: 41.03 time: 0.155
+2026-08-31 13:49:50,575: Train batch 9950: loss: 8.84 grad norm: 37.62 time: 0.107
+2026-08-31 13:50:01,019: Train batch 10000: loss: 12.67 grad norm: 49.21 time: 0.103
+2026-08-31 13:50:01,019: Running test after training batch: 10000
+2026-08-31 13:50:03,948: Val batch 10000: PER (avg): 0.2432 CTC Loss (avg): 29.9662 time: 2.928
+2026-08-31 13:50:03,948: t12.2022.04.28 val PER: 0.3960
+2026-08-31 13:50:03,949: t12.2022.05.05 val PER: 0.3253
+2026-08-31 13:50:03,949: t12.2022.05.17 val PER: 0.3083
+2026-08-31 13:50:03,949: t12.2022.05.19 val PER: 0.3705
+2026-08-31 13:50:03,949: t12.2022.05.24 val PER: 0.1928
+2026-08-31 13:50:03,949: t12.2022.05.26 val PER: 0.1812
+2026-08-31 13:50:03,950: t12.2022.06.02 val PER: 0.2129
+2026-08-31 13:50:03,950: t12.2022.06.07 val PER: 0.2487
+2026-08-31 13:50:03,950: t12.2022.06.14 val PER: 0.2088
+2026-08-31 13:50:03,950: t12.2022.06.16 val PER: 0.2608
+2026-08-31 13:50:03,950: t12.2022.06.21 val PER: 0.2581
+2026-08-31 13:50:03,950: t12.2022.06.23 val PER: 0.2610
+2026-08-31 13:50:03,950: t12.2022.06.28 val PER: 0.2509
+2026-08-31 13:50:03,951: t12.2022.07.05 val PER: 0.2016
+2026-08-31 13:50:03,951: t12.2022.07.14 val PER: 0.2275
+2026-08-31 13:50:03,951: t12.2022.07.21 val PER: 0.2139
+2026-08-31 13:50:03,951: t12.2022.07.27 val PER: 0.2159
+2026-08-31 13:50:03,951: t12.2022.07.29 val PER: 0.2488
+2026-08-31 13:50:03,951: t12.2022.08.02 val PER: 0.2129
+2026-08-31 13:50:03,951: t12.2022.08.11 val PER: 0.2231
+2026-08-31 13:50:03,952: t12.2022.08.13 val PER: 0.2060
+2026-08-31 13:50:03,952: t12.2022.08.18 val PER: 0.2343
+2026-08-31 13:50:03,952: t12.2022.08.23 val PER: 0.2215
+2026-08-31 13:50:03,952: t12.2022.08.25 val PER: 0.2625
+2026-08-31 13:50:03,952: New best test PER 0.2513 --> 0.2432
+2026-08-31 13:50:03,952: Checkpointing model
+2026-08-31 13:50:06,331: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 13:50:16,963: Train batch 10050: loss: 15.71 grad norm: 48.51 time: 0.173
+2026-08-31 13:50:27,634: Train batch 10100: loss: 9.73 grad norm: 43.25 time: 0.113
+2026-08-31 13:50:38,023: Train batch 10150: loss: 12.36 grad norm: 44.41 time: 0.103
+2026-08-31 13:50:48,410: Train batch 10200: loss: 7.00 grad norm: 31.83 time: 0.086
+2026-08-31 13:50:58,860: Train batch 10250: loss: 8.94 grad norm: 33.18 time: 0.092
+2026-08-31 13:51:09,019: Train batch 10300: loss: 9.35 grad norm: 32.79 time: 0.102
+2026-08-31 13:51:19,427: Train batch 10350: loss: 15.28 grad norm: 49.56 time: 0.157
+2026-08-31 13:51:29,450: Train batch 10400: loss: 7.46 grad norm: 32.38 time: 0.085
+2026-08-31 13:51:39,139: Train batch 10450: loss: 8.43 grad norm: 48.27 time: 0.098
+2026-08-31 13:51:49,197: Train batch 10500: loss: 11.75 grad norm: 40.72 time: 0.142
+2026-08-31 13:51:59,547: Train batch 10550: loss: 6.80 grad norm: 31.92 time: 0.099
+2026-08-31 13:52:10,014: Train batch 10600: loss: 11.87 grad norm: 45.48 time: 0.110
+2026-08-31 13:52:21,053: Train batch 10650: loss: 14.05 grad norm: 40.95 time: 0.156
+2026-08-31 13:52:33,025: Train batch 10700: loss: 13.04 grad norm: 39.03 time: 0.154
+2026-08-31 13:52:44,064: Train batch 10750: loss: 10.21 grad norm: 41.92 time: 0.115
+2026-08-31 13:52:54,662: Train batch 10800: loss: 9.91 grad norm: 35.48 time: 0.119
+2026-08-31 13:53:05,027: Train batch 10850: loss: 7.57 grad norm: 32.17 time: 0.092
+2026-08-31 13:53:15,729: Train batch 10900: loss: 5.64 grad norm: 29.18 time: 0.112
+2026-08-31 13:53:26,439: Train batch 10950: loss: 13.94 grad norm: 50.03 time: 0.141
+2026-08-31 13:53:37,358: Train batch 11000: loss: 16.62 grad norm: 44.01 time: 0.153
+2026-08-31 13:53:48,164: Train batch 11050: loss: 9.50 grad norm: 36.63 time: 0.096
+2026-08-31 13:53:59,020: Train batch 11100: loss: 8.50 grad norm: 34.91 time: 0.095
+2026-08-31 13:54:09,465: Train batch 11150: loss: 6.52 grad norm: 32.34 time: 0.126
+2026-08-31 13:54:19,990: Train batch 11200: loss: 7.82 grad norm: 32.48 time: 0.114
+2026-08-31 13:54:30,599: Train batch 11250: loss: 9.57 grad norm: 36.79 time: 0.111
+2026-08-31 13:54:41,443: Train batch 11300: loss: 6.28 grad norm: 27.82 time: 0.099
+2026-08-31 13:54:51,889: Train batch 11350: loss: 6.38 grad norm: 35.26 time: 0.089
+2026-08-31 13:55:02,556: Train batch 11400: loss: 6.22 grad norm: 31.12 time: 0.102
+2026-08-31 13:55:13,182: Train batch 11450: loss: 7.15 grad norm: 30.55 time: 0.094
+2026-08-31 13:55:23,366: Train batch 11500: loss: 8.18 grad norm: 40.67 time: 0.107
+2026-08-31 13:55:33,650: Train batch 11550: loss: 8.78 grad norm: 34.20 time: 0.097
+2026-08-31 13:55:44,273: Train batch 11600: loss: 14.55 grad norm: 49.11 time: 0.147
+2026-08-31 13:55:54,514: Train batch 11650: loss: 8.16 grad norm: 42.97 time: 0.097
+2026-08-31 13:56:04,837: Train batch 11700: loss: 12.36 grad norm: 42.92 time: 0.153
+2026-08-31 13:56:15,051: Train batch 11750: loss: 9.16 grad norm: 43.04 time: 0.098
+2026-08-31 13:56:25,308: Train batch 11800: loss: 7.92 grad norm: 46.85 time: 0.090
+2026-08-31 13:56:35,493: Train batch 11850: loss: 5.26 grad norm: 29.76 time: 0.107
+2026-08-31 13:56:46,448: Train batch 11900: loss: 6.30 grad norm: 34.31 time: 0.115
+2026-08-31 13:56:56,651: Train batch 11950: loss: 7.77 grad norm: 34.77 time: 0.115
+2026-08-31 13:57:06,684: Train batch 12000: loss: 10.68 grad norm: 49.15 time: 0.136
+2026-08-31 13:57:06,684: Running test after training batch: 12000
+2026-08-31 13:57:09,453: Val batch 12000: PER (avg): 0.2414 CTC Loss (avg): 31.1719 time: 2.769
+2026-08-31 13:57:09,453: t12.2022.04.28 val PER: 0.4161
+2026-08-31 13:57:09,453: t12.2022.05.05 val PER: 0.3299
+2026-08-31 13:57:09,453: t12.2022.05.17 val PER: 0.2748
+2026-08-31 13:57:09,454: t12.2022.05.19 val PER: 0.3799
+2026-08-31 13:57:09,454: t12.2022.05.24 val PER: 0.1776
+2026-08-31 13:57:09,454: t12.2022.05.26 val PER: 0.1641
+2026-08-31 13:57:09,454: t12.2022.06.02 val PER: 0.2233
+2026-08-31 13:57:09,454: t12.2022.06.07 val PER: 0.2504
+2026-08-31 13:57:09,454: t12.2022.06.14 val PER: 0.1960
+2026-08-31 13:57:09,454: t12.2022.06.16 val PER: 0.2683
+2026-08-31 13:57:09,454: t12.2022.06.21 val PER: 0.2607
+2026-08-31 13:57:09,454: t12.2022.06.23 val PER: 0.2757
+2026-08-31 13:57:09,454: t12.2022.06.28 val PER: 0.2435
+2026-08-31 13:57:09,455: t12.2022.07.05 val PER: 0.2163
+2026-08-31 13:57:09,455: t12.2022.07.14 val PER: 0.2007
+2026-08-31 13:57:09,455: t12.2022.07.21 val PER: 0.2130
+2026-08-31 13:57:09,455: t12.2022.07.27 val PER: 0.1968
+2026-08-31 13:57:09,455: t12.2022.07.29 val PER: 0.2488
+2026-08-31 13:57:09,455: t12.2022.08.02 val PER: 0.2273
+2026-08-31 13:57:09,455: t12.2022.08.11 val PER: 0.2192
+2026-08-31 13:57:09,455: t12.2022.08.13 val PER: 0.1769
+2026-08-31 13:57:09,455: t12.2022.08.18 val PER: 0.2409
+2026-08-31 13:57:09,456: t12.2022.08.23 val PER: 0.2206
+2026-08-31 13:57:09,456: t12.2022.08.25 val PER: 0.2823
+2026-08-31 13:57:09,456: New best test PER 0.2432 --> 0.2414
+2026-08-31 13:57:09,456: Checkpointing model
+2026-08-31 13:57:10,954: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 13:57:21,210: Train batch 12050: loss: 13.52 grad norm: 59.17 time: 0.137
+2026-08-31 13:57:31,751: Train batch 12100: loss: 9.78 grad norm: 42.94 time: 0.174
+2026-08-31 13:57:42,281: Train batch 12150: loss: 5.82 grad norm: 28.25 time: 0.095
+2026-08-31 13:57:53,453: Train batch 12200: loss: 6.04 grad norm: 43.74 time: 0.118
+2026-08-31 13:58:04,329: Train batch 12250: loss: 8.05 grad norm: 33.82 time: 0.096
+2026-08-31 13:58:15,086: Train batch 12300: loss: 7.52 grad norm: 37.89 time: 0.117
+2026-08-31 13:58:25,659: Train batch 12350: loss: 5.54 grad norm: 30.99 time: 0.117
+2026-08-31 13:58:39,151: Train batch 12400: loss: 7.45 grad norm: 30.10 time: 0.097
+2026-08-31 13:59:06,509: Train batch 12450: loss: 6.13 grad norm: 43.02 time: 0.116
+2026-08-31 14:00:11,882: Train batch 12500: loss: 7.62 grad norm: 35.02 time: 0.107
+2026-08-31 14:00:57,266: Train batch 12550: loss: 6.79 grad norm: 33.92 time: 0.099
+2026-08-31 14:01:28,865: Train batch 12600: loss: 13.03 grad norm: 45.39 time: 0.140
+2026-08-31 14:01:52,924: Train batch 12650: loss: 5.80 grad norm: 38.15 time: 0.093
+2026-08-31 14:02:13,712: Train batch 12700: loss: 8.52 grad norm: 39.08 time: 0.100
+2026-08-31 14:02:30,295: Train batch 12750: loss: 7.05 grad norm: 33.19 time: 0.093
+2026-08-31 14:02:45,025: Train batch 12800: loss: 16.13 grad norm: 54.68 time: 0.145
+2026-08-31 14:02:58,485: Train batch 12850: loss: 11.72 grad norm: 43.44 time: 0.162
+2026-08-31 14:03:12,342: Train batch 12900: loss: 9.67 grad norm: 36.15 time: 0.118
+2026-08-31 14:03:26,862: Train batch 12950: loss: 10.35 grad norm: 41.57 time: 0.158
+2026-08-31 14:03:54,987: Train batch 13000: loss: 9.64 grad norm: 36.97 time: 0.123
+2026-08-31 14:04:58,288: Train batch 13050: loss: 10.90 grad norm: 47.50 time: 0.134
+2026-08-31 14:05:33,357: Train batch 13100: loss: 6.76 grad norm: 33.96 time: 0.103
+2026-08-31 14:05:58,147: Train batch 13150: loss: 6.61 grad norm: 32.99 time: 0.095
+2026-08-31 14:06:17,963: Train batch 13200: loss: 7.25 grad norm: 35.81 time: 0.108
+2026-08-31 14:06:38,066: Train batch 13250: loss: 4.27 grad norm: 27.42 time: 0.113
+2026-08-31 14:06:55,852: Train batch 13300: loss: 6.78 grad norm: 33.63 time: 0.095
+2026-08-31 14:07:12,014: Train batch 13350: loss: 11.54 grad norm: 44.36 time: 0.178
+2026-08-31 14:07:25,792: Train batch 13400: loss: 12.72 grad norm: 48.52 time: 0.172
+2026-08-31 14:07:38,703: Train batch 13450: loss: 6.73 grad norm: 33.17 time: 0.148
+2026-08-31 14:07:51,016: Train batch 13500: loss: 6.78 grad norm: 39.37 time: 0.097
+2026-08-31 14:08:03,086: Train batch 13550: loss: 6.63 grad norm: 34.74 time: 0.129
+2026-08-31 14:08:15,039: Train batch 13600: loss: 9.95 grad norm: 41.02 time: 0.155
+2026-08-31 14:08:26,223: Train batch 13650: loss: 5.16 grad norm: 34.73 time: 0.086
+2026-08-31 14:08:37,714: Train batch 13700: loss: 7.07 grad norm: 40.92 time: 0.094
+2026-08-31 14:08:50,015: Train batch 13750: loss: 9.33 grad norm: 38.01 time: 0.173
+2026-08-31 14:09:02,009: Train batch 13800: loss: 6.28 grad norm: 32.07 time: 0.106
+2026-08-31 14:09:12,792: Train batch 13850: loss: 10.46 grad norm: 45.42 time: 0.165
+2026-08-31 14:09:24,577: Train batch 13900: loss: 5.20 grad norm: 34.64 time: 0.104
+2026-08-31 14:09:35,793: Train batch 13950: loss: 6.04 grad norm: 30.02 time: 0.125
+2026-08-31 14:09:47,140: Train batch 14000: loss: 6.50 grad norm: 35.29 time: 0.089
+2026-08-31 14:09:47,140: Running test after training batch: 14000
+2026-08-31 14:09:56,181: Val batch 14000: PER (avg): 0.2399 CTC Loss (avg): 32.1810 time: 9.041
+2026-08-31 14:09:56,181: t12.2022.04.28 val PER: 0.3971
+2026-08-31 14:09:56,181: t12.2022.05.05 val PER: 0.3253
+2026-08-31 14:09:56,182: t12.2022.05.17 val PER: 0.2939
+2026-08-31 14:09:56,182: t12.2022.05.19 val PER: 0.3830
+2026-08-31 14:09:56,182: t12.2022.05.24 val PER: 0.1928
+2026-08-31 14:09:56,182: t12.2022.05.26 val PER: 0.1803
+2026-08-31 14:09:56,182: t12.2022.06.02 val PER: 0.2025
+2026-08-31 14:09:56,182: t12.2022.06.07 val PER: 0.2496
+2026-08-31 14:09:56,182: t12.2022.06.14 val PER: 0.2016
+2026-08-31 14:09:56,183: t12.2022.06.16 val PER: 0.2608
+2026-08-31 14:09:56,183: t12.2022.06.21 val PER: 0.2476
+2026-08-31 14:09:56,183: t12.2022.06.23 val PER: 0.2730
+2026-08-31 14:09:56,183: t12.2022.06.28 val PER: 0.2444
+2026-08-31 14:09:56,183: t12.2022.07.05 val PER: 0.2050
+2026-08-31 14:09:56,183: t12.2022.07.14 val PER: 0.2061
+2026-08-31 14:09:56,183: t12.2022.07.21 val PER: 0.2202
+2026-08-31 14:09:56,183: t12.2022.07.27 val PER: 0.2053
+2026-08-31 14:09:56,184: t12.2022.07.29 val PER: 0.2527
+2026-08-31 14:09:56,184: t12.2022.08.02 val PER: 0.2073
+2026-08-31 14:09:56,184: t12.2022.08.11 val PER: 0.2073
+2026-08-31 14:09:56,184: t12.2022.08.13 val PER: 0.1729
+2026-08-31 14:09:56,184: t12.2022.08.18 val PER: 0.2306
+2026-08-31 14:09:56,184: t12.2022.08.23 val PER: 0.2280
+2026-08-31 14:09:56,184: t12.2022.08.25 val PER: 0.2812
+2026-08-31 14:09:56,185: New best test PER 0.2414 --> 0.2399
+2026-08-31 14:09:56,185: Checkpointing model
+2026-08-31 14:09:57,828: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 14:10:09,129: Train batch 14050: loss: 8.97 grad norm: 37.78 time: 0.096
+2026-08-31 14:10:20,437: Train batch 14100: loss: 7.85 grad norm: 36.36 time: 0.113
+2026-08-31 14:10:32,452: Train batch 14150: loss: 5.49 grad norm: 31.82 time: 0.114
+2026-08-31 14:10:43,797: Train batch 14200: loss: 11.47 grad norm: 51.02 time: 0.187
+2026-08-31 14:10:55,165: Train batch 14250: loss: 5.58 grad norm: 32.46 time: 0.099
+2026-08-31 14:11:06,268: Train batch 14300: loss: 9.18 grad norm: 35.38 time: 0.148
+2026-08-31 14:11:17,492: Train batch 14350: loss: 4.76 grad norm: 41.06 time: 0.104
+2026-08-31 14:11:28,467: Train batch 14400: loss: 10.15 grad norm: 44.56 time: 0.157
+2026-08-31 14:11:40,174: Train batch 14450: loss: 10.44 grad norm: 40.27 time: 0.154
+2026-08-31 14:11:51,469: Train batch 14500: loss: 6.79 grad norm: 37.17 time: 0.120
+2026-08-31 14:12:02,043: Train batch 14550: loss: 5.06 grad norm: 31.52 time: 0.094
+2026-08-31 14:12:12,764: Train batch 14600: loss: 5.60 grad norm: 36.13 time: 0.107
+2026-08-31 14:12:23,331: Train batch 14650: loss: 4.73 grad norm: 29.59 time: 0.107
+2026-08-31 14:12:34,216: Train batch 14700: loss: 10.39 grad norm: 47.25 time: 0.145
+2026-08-31 14:12:44,955: Train batch 14750: loss: 5.27 grad norm: 34.38 time: 0.098
+2026-08-31 14:12:55,948: Train batch 14800: loss: 4.45 grad norm: 26.83 time: 0.088
+2026-08-31 14:13:06,846: Train batch 14850: loss: 5.71 grad norm: 38.94 time: 0.105
+2026-08-31 14:13:17,533: Train batch 14900: loss: 7.01 grad norm: 42.09 time: 0.111
+2026-08-31 14:13:28,414: Train batch 14950: loss: 6.74 grad norm: 37.07 time: 0.115
+2026-08-31 14:13:39,782: Train batch 15000: loss: 9.38 grad norm: 48.03 time: 0.132
+2026-08-31 14:13:50,893: Train batch 15050: loss: 7.61 grad norm: 48.85 time: 0.141
+2026-08-31 14:14:01,537: Train batch 15100: loss: 5.53 grad norm: 32.31 time: 0.101
+2026-08-31 14:14:12,560: Train batch 15150: loss: 5.11 grad norm: 29.63 time: 0.116
+2026-08-31 14:14:23,202: Train batch 15200: loss: 7.04 grad norm: 44.88 time: 0.102
+2026-08-31 14:14:34,180: Train batch 15250: loss: 4.86 grad norm: 35.64 time: 0.083
+2026-08-31 14:14:44,730: Train batch 15300: loss: 5.00 grad norm: 30.75 time: 0.094
+2026-08-31 14:14:55,743: Train batch 15350: loss: 6.19 grad norm: 38.74 time: 0.089
+2026-08-31 14:15:05,904: Train batch 15400: loss: 5.62 grad norm: 32.25 time: 0.109
+2026-08-31 14:15:16,499: Train batch 15450: loss: 6.70 grad norm: 40.39 time: 0.101
+2026-08-31 14:15:27,375: Train batch 15500: loss: 12.60 grad norm: 47.63 time: 0.153
+2026-08-31 14:15:37,782: Train batch 15550: loss: 4.59 grad norm: 34.56 time: 0.107
+2026-08-31 14:15:48,548: Train batch 15600: loss: 3.62 grad norm: 32.93 time: 0.108
+2026-08-31 14:15:59,324: Train batch 15650: loss: 5.15 grad norm: 35.55 time: 0.106
+2026-08-31 14:16:10,219: Train batch 15700: loss: 3.45 grad norm: 37.91 time: 0.100
+2026-08-31 14:16:21,207: Train batch 15750: loss: 7.63 grad norm: 41.79 time: 0.141
+2026-08-31 14:16:31,964: Train batch 15800: loss: 7.40 grad norm: 45.23 time: 0.140
+2026-08-31 14:16:42,424: Train batch 15850: loss: 4.88 grad norm: 51.34 time: 0.103
+2026-08-31 14:16:53,322: Train batch 15900: loss: 6.36 grad norm: 32.97 time: 0.097
+2026-08-31 14:17:04,510: Train batch 15950: loss: 3.99 grad norm: 29.33 time: 0.103
+2026-08-31 14:17:15,890: Train batch 16000: loss: 9.99 grad norm: 46.82 time: 0.127
+2026-08-31 14:17:15,890: Running test after training batch: 16000
+2026-08-31 14:17:18,724: Val batch 16000: PER (avg): 0.2385 CTC Loss (avg): 33.2664 time: 2.834
+2026-08-31 14:17:18,725: t12.2022.04.28 val PER: 0.3937
+2026-08-31 14:17:18,725: t12.2022.05.05 val PER: 0.3356
+2026-08-31 14:17:18,725: t12.2022.05.17 val PER: 0.2907
+2026-08-31 14:17:18,725: t12.2022.05.19 val PER: 0.3689
+2026-08-31 14:17:18,725: t12.2022.05.24 val PER: 0.1749
+2026-08-31 14:17:18,725: t12.2022.05.26 val PER: 0.1755
+2026-08-31 14:17:18,725: t12.2022.06.02 val PER: 0.2157
+2026-08-31 14:17:18,726: t12.2022.06.07 val PER: 0.2567
+2026-08-31 14:17:18,726: t12.2022.06.14 val PER: 0.2056
+2026-08-31 14:17:18,726: t12.2022.06.16 val PER: 0.2675
+2026-08-31 14:17:18,726: t12.2022.06.21 val PER: 0.2502
+2026-08-31 14:17:18,726: t12.2022.06.23 val PER: 0.2812
+2026-08-31 14:17:18,726: t12.2022.06.28 val PER: 0.2537
+2026-08-31 14:17:18,726: t12.2022.07.05 val PER: 0.2231
+2026-08-31 14:17:18,727: t12.2022.07.14 val PER: 0.2079
+2026-08-31 14:17:18,727: t12.2022.07.21 val PER: 0.2157
+2026-08-31 14:17:18,727: t12.2022.07.27 val PER: 0.1905
+2026-08-31 14:17:18,727: t12.2022.07.29 val PER: 0.2458
+2026-08-31 14:17:18,727: t12.2022.08.02 val PER: 0.2007
+2026-08-31 14:17:18,727: t12.2022.08.11 val PER: 0.2014
+2026-08-31 14:17:18,727: t12.2022.08.13 val PER: 0.1658
+2026-08-31 14:17:18,727: t12.2022.08.18 val PER: 0.2193
+2026-08-31 14:17:18,728: t12.2022.08.23 val PER: 0.2169
+2026-08-31 14:17:18,728: t12.2022.08.25 val PER: 0.2708
+2026-08-31 14:17:18,728: New best test PER 0.2399 --> 0.2385
+2026-08-31 14:17:18,728: Checkpointing model
+2026-08-31 14:17:20,313: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 14:17:31,320: Train batch 16050: loss: 9.25 grad norm: 47.12 time: 0.148
+2026-08-31 14:17:41,746: Train batch 16100: loss: 3.38 grad norm: 25.63 time: 0.116
+2026-08-31 14:17:52,866: Train batch 16150: loss: 5.15 grad norm: 42.42 time: 0.108
+2026-08-31 14:18:03,926: Train batch 16200: loss: 6.43 grad norm: 37.50 time: 0.099
+2026-08-31 14:18:15,027: Train batch 16250: loss: 4.92 grad norm: 35.11 time: 0.115
+2026-08-31 14:18:25,811: Train batch 16300: loss: 3.96 grad norm: 28.79 time: 0.103
+2026-08-31 14:18:36,864: Train batch 16350: loss: 8.81 grad norm: 47.74 time: 0.115
+2026-08-31 14:18:47,896: Train batch 16400: loss: 4.78 grad norm: 35.76 time: 0.098
+2026-08-31 14:18:58,724: Train batch 16450: loss: 4.68 grad norm: 33.26 time: 0.111
+2026-08-31 14:19:09,523: Train batch 16500: loss: 5.11 grad norm: 29.69 time: 0.114
+2026-08-31 14:19:20,206: Train batch 16550: loss: 3.65 grad norm: 27.80 time: 0.103
+2026-08-31 14:19:31,273: Train batch 16600: loss: 8.22 grad norm: 40.00 time: 0.160
+2026-08-31 14:19:42,588: Train batch 16650: loss: 3.87 grad norm: 27.77 time: 0.111
+2026-08-31 14:19:52,881: Train batch 16700: loss: 5.30 grad norm: 33.97 time: 0.109
+2026-08-31 14:20:03,905: Train batch 16750: loss: 7.31 grad norm: 52.70 time: 0.139
+2026-08-31 14:20:15,245: Train batch 16800: loss: 6.04 grad norm: 38.79 time: 0.108
+2026-08-31 14:20:25,956: Train batch 16850: loss: 5.16 grad norm: 32.65 time: 0.114
+2026-08-31 14:20:36,446: Train batch 16900: loss: 6.91 grad norm: 43.45 time: 0.105
+2026-08-31 14:20:46,914: Train batch 16950: loss: 7.64 grad norm: 37.52 time: 0.152
+2026-08-31 14:20:57,626: Train batch 17000: loss: 5.80 grad norm: 33.47 time: 0.116
+2026-08-31 14:21:08,160: Train batch 17050: loss: 7.58 grad norm: 40.21 time: 0.151
+2026-08-31 14:21:18,802: Train batch 17100: loss: 4.96 grad norm: 40.53 time: 0.098
+2026-08-31 14:21:29,300: Train batch 17150: loss: 5.34 grad norm: 31.35 time: 0.100
+2026-08-31 14:21:39,694: Train batch 17200: loss: 4.29 grad norm: 38.59 time: 0.103
+2026-08-31 14:21:50,136: Train batch 17250: loss: 4.32 grad norm: 30.87 time: 0.115
+2026-08-31 14:22:01,716: Train batch 17300: loss: 4.24 grad norm: 29.13 time: 0.102
+2026-08-31 14:22:12,244: Train batch 17350: loss: 5.27 grad norm: 40.32 time: 0.109
+2026-08-31 14:22:23,215: Train batch 17400: loss: 5.38 grad norm: 60.28 time: 0.099
+2026-08-31 14:22:33,754: Train batch 17450: loss: 3.63 grad norm: 35.83 time: 0.117
+2026-08-31 14:22:44,272: Train batch 17500: loss: 4.64 grad norm: 28.89 time: 0.096
+2026-08-31 14:22:54,579: Train batch 17550: loss: 5.85 grad norm: 40.84 time: 0.090
+2026-08-31 14:23:04,666: Train batch 17600: loss: 5.44 grad norm: 33.13 time: 0.087
+2026-08-31 14:23:15,427: Train batch 17650: loss: 4.90 grad norm: 39.47 time: 0.087
+2026-08-31 14:23:26,112: Train batch 17700: loss: 3.78 grad norm: 35.18 time: 0.127
+2026-08-31 14:23:37,187: Train batch 17750: loss: 6.44 grad norm: 37.55 time: 0.183
+2026-08-31 14:23:47,800: Train batch 17800: loss: 3.26 grad norm: 28.87 time: 0.107
+2026-08-31 14:23:58,226: Train batch 17850: loss: 6.07 grad norm: 35.04 time: 0.101
+2026-08-31 14:24:08,868: Train batch 17900: loss: 5.90 grad norm: 39.32 time: 0.108
+2026-08-31 14:24:20,125: Train batch 17950: loss: 3.65 grad norm: 33.42 time: 0.112
+2026-08-31 14:24:30,992: Train batch 18000: loss: 4.29 grad norm: 30.98 time: 0.129
+2026-08-31 14:24:30,992: Running test after training batch: 18000
+2026-08-31 14:24:33,916: Val batch 18000: PER (avg): 0.2359 CTC Loss (avg): 34.0183 time: 2.923
+2026-08-31 14:24:33,916: t12.2022.04.28 val PER: 0.3993
+2026-08-31 14:24:33,917: t12.2022.05.05 val PER: 0.3195
+2026-08-31 14:24:33,917: t12.2022.05.17 val PER: 0.2875
+2026-08-31 14:24:33,917: t12.2022.05.19 val PER: 0.3830
+2026-08-31 14:24:33,917: t12.2022.05.24 val PER: 0.1794
+2026-08-31 14:24:33,917: t12.2022.05.26 val PER: 0.1803
+2026-08-31 14:24:33,917: t12.2022.06.02 val PER: 0.2129
+2026-08-31 14:24:33,917: t12.2022.06.07 val PER: 0.2433
+2026-08-31 14:24:33,917: t12.2022.06.14 val PER: 0.1960
+2026-08-31 14:24:33,917: t12.2022.06.16 val PER: 0.2758
+2026-08-31 14:24:33,917: t12.2022.06.21 val PER: 0.2502
+2026-08-31 14:24:33,918: t12.2022.06.23 val PER: 0.2776
+2026-08-31 14:24:33,918: t12.2022.06.28 val PER: 0.2426
+2026-08-31 14:24:33,918: t12.2022.07.05 val PER: 0.2208
+2026-08-31 14:24:33,918: t12.2022.07.14 val PER: 0.2043
+2026-08-31 14:24:33,918: t12.2022.07.21 val PER: 0.2139
+2026-08-31 14:24:33,918: t12.2022.07.27 val PER: 0.1852
+2026-08-31 14:24:33,918: t12.2022.07.29 val PER: 0.2379
+2026-08-31 14:24:33,918: t12.2022.08.02 val PER: 0.1940
+2026-08-31 14:24:33,918: t12.2022.08.11 val PER: 0.2034
+2026-08-31 14:24:33,919: t12.2022.08.13 val PER: 0.1749
+2026-08-31 14:24:33,919: t12.2022.08.18 val PER: 0.2277
+2026-08-31 14:24:33,919: t12.2022.08.23 val PER: 0.2011
+2026-08-31 14:24:33,919: t12.2022.08.25 val PER: 0.2594
+2026-08-31 14:24:33,919: New best test PER 0.2385 --> 0.2359
+2026-08-31 14:24:33,919: Checkpointing model
+2026-08-31 14:24:35,475: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 14:24:45,979: Train batch 18050: loss: 4.43 grad norm: 37.22 time: 0.098
+2026-08-31 14:24:56,750: Train batch 18100: loss: 4.53 grad norm: 35.72 time: 0.110
+2026-08-31 14:25:07,491: Train batch 18150: loss: 5.25 grad norm: 37.11 time: 0.091
+2026-08-31 14:25:17,854: Train batch 18200: loss: 6.98 grad norm: 40.06 time: 0.151
+2026-08-31 14:25:29,393: Train batch 18250: loss: 5.97 grad norm: 33.76 time: 0.101
+2026-08-31 14:25:40,026: Train batch 18300: loss: 6.55 grad norm: 41.88 time: 0.164
+2026-08-31 14:25:50,880: Train batch 18350: loss: 5.26 grad norm: 44.26 time: 0.091
+2026-08-31 14:26:01,485: Train batch 18400: loss: 3.76 grad norm: 33.99 time: 0.099
+2026-08-31 14:26:11,804: Train batch 18450: loss: 6.30 grad norm: 37.98 time: 0.135
+2026-08-31 14:26:22,216: Train batch 18500: loss: 4.38 grad norm: 69.00 time: 0.086
+2026-08-31 14:26:33,131: Train batch 18550: loss: 7.35 grad norm: 40.00 time: 0.162
+2026-08-31 14:26:43,876: Train batch 18600: loss: 7.14 grad norm: 41.09 time: 0.158
+2026-08-31 14:26:54,436: Train batch 18650: loss: 4.95 grad norm: 32.30 time: 0.122
+2026-08-31 14:27:05,249: Train batch 18700: loss: 5.85 grad norm: 32.68 time: 0.136
+2026-08-31 14:27:15,724: Train batch 18750: loss: 5.23 grad norm: 34.23 time: 0.093
+2026-08-31 14:27:26,109: Train batch 18800: loss: 4.60 grad norm: 35.72 time: 0.097
+2026-08-31 14:27:37,040: Train batch 18850: loss: 5.97 grad norm: 54.45 time: 0.153
+2026-08-31 14:27:47,551: Train batch 18900: loss: 3.72 grad norm: 28.71 time: 0.095
+2026-08-31 14:27:58,137: Train batch 18950: loss: 3.74 grad norm: 34.86 time: 0.124
+2026-08-31 14:28:08,669: Train batch 19000: loss: 3.27 grad norm: 24.93 time: 0.104
+2026-08-31 14:28:20,161: Train batch 19050: loss: 6.32 grad norm: 41.35 time: 0.174
+2026-08-31 14:28:31,319: Train batch 19100: loss: 4.59 grad norm: 34.58 time: 0.086
+2026-08-31 14:28:41,799: Train batch 19150: loss: 5.26 grad norm: 33.10 time: 0.091
+2026-08-31 14:28:52,326: Train batch 19200: loss: 3.21 grad norm: 25.73 time: 0.101
+2026-08-31 14:29:03,298: Train batch 19250: loss: 6.74 grad norm: 36.84 time: 0.154
+2026-08-31 14:29:14,319: Train batch 19300: loss: 4.36 grad norm: 34.14 time: 0.082
+2026-08-31 14:29:24,842: Train batch 19350: loss: 2.40 grad norm: 32.37 time: 0.110
+2026-08-31 14:29:35,780: Train batch 19400: loss: 4.21 grad norm: 32.83 time: 0.118
+2026-08-31 14:29:46,488: Train batch 19450: loss: 3.77 grad norm: 27.78 time: 0.111
+2026-08-31 14:29:57,456: Train batch 19500: loss: 3.11 grad norm: 31.44 time: 0.096
+2026-08-31 14:30:07,923: Train batch 19550: loss: 5.11 grad norm: 42.88 time: 0.096
+2026-08-31 14:30:19,173: Train batch 19600: loss: 2.70 grad norm: 24.11 time: 0.115
+2026-08-31 14:30:30,085: Train batch 19650: loss: 4.77 grad norm: 31.00 time: 0.118
+2026-08-31 14:30:40,887: Train batch 19700: loss: 3.33 grad norm: 27.98 time: 0.092
+2026-08-31 14:30:51,501: Train batch 19750: loss: 4.10 grad norm: 42.29 time: 0.104
+2026-08-31 14:31:02,438: Train batch 19800: loss: 3.62 grad norm: 43.05 time: 0.102
+2026-08-31 14:31:13,226: Train batch 19850: loss: 6.35 grad norm: 37.90 time: 0.147
+2026-08-31 14:31:24,678: Train batch 19900: loss: 3.62 grad norm: 28.91 time: 0.170
+2026-08-31 14:31:35,614: Train batch 19950: loss: 2.81 grad norm: 26.68 time: 0.109
+2026-08-31 14:31:46,731: Train batch 20000: loss: 4.04 grad norm: 29.68 time: 0.105
+2026-08-31 14:31:46,732: Running test after training batch: 20000
+2026-08-31 14:31:49,675: Val batch 20000: PER (avg): 0.2398 CTC Loss (avg): 35.4511 time: 2.943
+2026-08-31 14:31:49,676: t12.2022.04.28 val PER: 0.4105
+2026-08-31 14:31:49,676: t12.2022.05.05 val PER: 0.3310
+2026-08-31 14:31:49,676: t12.2022.05.17 val PER: 0.2764
+2026-08-31 14:31:49,676: t12.2022.05.19 val PER: 0.3815
+2026-08-31 14:31:49,676: t12.2022.05.24 val PER: 0.1830
+2026-08-31 14:31:49,676: t12.2022.05.26 val PER: 0.1869
+2026-08-31 14:31:49,676: t12.2022.06.02 val PER: 0.1930
+2026-08-31 14:31:49,676: t12.2022.06.07 val PER: 0.2478
+2026-08-31 14:31:49,677: t12.2022.06.14 val PER: 0.2032
+2026-08-31 14:31:49,677: t12.2022.06.16 val PER: 0.2758
+2026-08-31 14:31:49,677: t12.2022.06.21 val PER: 0.2458
+2026-08-31 14:31:49,677: t12.2022.06.23 val PER: 0.2849
+2026-08-31 14:31:49,677: t12.2022.06.28 val PER: 0.2574
+2026-08-31 14:31:49,677: t12.2022.07.05 val PER: 0.2084
+2026-08-31 14:31:49,677: t12.2022.07.14 val PER: 0.2105
+2026-08-31 14:31:49,677: t12.2022.07.21 val PER: 0.1986
+2026-08-31 14:31:49,677: t12.2022.07.27 val PER: 0.1989
+2026-08-31 14:31:49,678: t12.2022.07.29 val PER: 0.2458
+2026-08-31 14:31:49,678: t12.2022.08.02 val PER: 0.2162
+2026-08-31 14:31:49,678: t12.2022.08.11 val PER: 0.2113
+2026-08-31 14:31:49,678: t12.2022.08.13 val PER: 0.1769
+2026-08-31 14:31:49,678: t12.2022.08.18 val PER: 0.2240
+2026-08-31 14:31:49,678: t12.2022.08.23 val PER: 0.2169
+2026-08-31 14:31:49,678: t12.2022.08.25 val PER: 0.2771
+2026-08-31 14:32:01,243: Train batch 20050: loss: 5.99 grad norm: 44.17 time: 0.123
+2026-08-31 14:32:12,441: Train batch 20100: loss: 3.73 grad norm: 39.00 time: 0.107
+2026-08-31 14:32:23,366: Train batch 20150: loss: 3.94 grad norm: 47.97 time: 0.116
+2026-08-31 14:32:34,267: Train batch 20200: loss: 7.59 grad norm: 39.91 time: 0.138
+2026-08-31 14:32:45,381: Train batch 20250: loss: 2.65 grad norm: 45.70 time: 0.110
+2026-08-31 14:32:56,658: Train batch 20300: loss: 5.22 grad norm: 32.27 time: 0.161
+2026-08-31 14:33:07,269: Train batch 20350: loss: 5.58 grad norm: 41.22 time: 0.145
+2026-08-31 14:33:18,221: Train batch 20400: loss: 3.56 grad norm: 30.23 time: 0.102
+2026-08-31 14:33:29,778: Train batch 20450: loss: 4.24 grad norm: 32.56 time: 0.149
+2026-08-31 14:33:42,213: Train batch 20500: loss: 6.52 grad norm: 49.15 time: 0.178
+2026-08-31 14:33:56,980: Train batch 20550: loss: 3.73 grad norm: 26.63 time: 0.093
+2026-08-31 14:34:16,650: Train batch 20600: loss: 3.54 grad norm: 30.86 time: 0.109
+2026-08-31 14:35:29,166: Train batch 20650: loss: 3.32 grad norm: 28.02 time: 0.100
+2026-08-31 14:36:04,265: Train batch 20700: loss: 4.77 grad norm: 34.64 time: 0.143
+2026-08-31 14:36:29,669: Train batch 20750: loss: 5.27 grad norm: 42.60 time: 0.144
+2026-08-31 14:37:25,061: Train batch 20800: loss: 3.94 grad norm: 40.29 time: 0.099
+2026-08-31 14:37:42,602: Train batch 20850: loss: 4.13 grad norm: 28.77 time: 0.081
+2026-08-31 14:37:57,894: Train batch 20900: loss: 3.41 grad norm: 31.03 time: 0.104
+2026-08-31 14:38:11,661: Train batch 20950: loss: 3.36 grad norm: 27.24 time: 0.118
+2026-08-31 14:38:24,518: Train batch 21000: loss: 2.46 grad norm: 23.26 time: 0.088
+2026-08-31 14:38:36,518: Train batch 21050: loss: 2.40 grad norm: 31.16 time: 0.099
+2026-08-31 14:38:48,383: Train batch 21100: loss: 3.90 grad norm: 32.77 time: 0.093
+2026-08-31 14:39:00,233: Train batch 21150: loss: 5.02 grad norm: 35.30 time: 0.122
+2026-08-31 14:39:11,847: Train batch 21200: loss: 4.33 grad norm: 41.80 time: 0.111
+2026-08-31 14:39:22,923: Train batch 21250: loss: 3.17 grad norm: 26.76 time: 0.084
+2026-08-31 14:39:34,202: Train batch 21300: loss: 2.93 grad norm: 24.92 time: 0.118
+2026-08-31 14:39:45,447: Train batch 21350: loss: 3.38 grad norm: 28.22 time: 0.088
+2026-08-31 14:39:56,233: Train batch 21400: loss: 2.78 grad norm: 29.22 time: 0.097
+2026-08-31 14:40:07,230: Train batch 21450: loss: 4.96 grad norm: 34.97 time: 0.124
+2026-08-31 14:40:17,925: Train batch 21500: loss: 5.40 grad norm: 36.12 time: 0.156
+2026-08-31 14:40:30,949: Train batch 21550: loss: 3.41 grad norm: 26.79 time: 0.096
+2026-08-31 14:40:42,204: Train batch 21600: loss: 3.87 grad norm: 30.67 time: 0.083
+2026-08-31 14:40:53,746: Train batch 21650: loss: 3.11 grad norm: 33.85 time: 0.098
+2026-08-31 14:41:04,249: Train batch 21700: loss: 4.69 grad norm: 33.12 time: 0.173
+2026-08-31 14:41:15,200: Train batch 21750: loss: 4.56 grad norm: 43.33 time: 0.131
+2026-08-31 14:41:25,966: Train batch 21800: loss: 3.07 grad norm: 41.28 time: 0.094
+2026-08-31 14:41:38,355: Train batch 21850: loss: 4.75 grad norm: 34.69 time: 0.154
+2026-08-31 14:41:49,009: Train batch 21900: loss: 5.67 grad norm: 36.40 time: 0.134
+2026-08-31 14:42:00,023: Train batch 21950: loss: 1.91 grad norm: 27.93 time: 0.090
+2026-08-31 14:42:10,773: Train batch 22000: loss: 6.79 grad norm: 57.91 time: 0.141
+2026-08-31 14:42:10,773: Running test after training batch: 22000
+2026-08-31 14:42:20,387: Val batch 22000: PER (avg): 0.2386 CTC Loss (avg): 36.1654 time: 9.613
+2026-08-31 14:42:20,387: t12.2022.04.28 val PER: 0.4116
+2026-08-31 14:42:20,388: t12.2022.05.05 val PER: 0.3172
+2026-08-31 14:42:20,388: t12.2022.05.17 val PER: 0.3163
+2026-08-31 14:42:20,388: t12.2022.05.19 val PER: 0.3783
+2026-08-31 14:42:20,388: t12.2022.05.24 val PER: 0.1865
+2026-08-31 14:42:20,388: t12.2022.05.26 val PER: 0.1803
+2026-08-31 14:42:20,388: t12.2022.06.02 val PER: 0.2044
+2026-08-31 14:42:20,388: t12.2022.06.07 val PER: 0.2478
+2026-08-31 14:42:20,389: t12.2022.06.14 val PER: 0.1992
+2026-08-31 14:42:20,389: t12.2022.06.16 val PER: 0.2792
+2026-08-31 14:42:20,389: t12.2022.06.21 val PER: 0.2493
+2026-08-31 14:42:20,389: t12.2022.06.23 val PER: 0.2684
+2026-08-31 14:42:20,389: t12.2022.06.28 val PER: 0.2593
+2026-08-31 14:42:20,389: t12.2022.07.05 val PER: 0.2084
+2026-08-31 14:42:20,389: t12.2022.07.14 val PER: 0.2150
+2026-08-31 14:42:20,390: t12.2022.07.21 val PER: 0.2139
+2026-08-31 14:42:20,390: t12.2022.07.27 val PER: 0.1894
+2026-08-31 14:42:20,390: t12.2022.07.29 val PER: 0.2389
+2026-08-31 14:42:20,390: t12.2022.08.02 val PER: 0.2018
+2026-08-31 14:42:20,390: t12.2022.08.11 val PER: 0.1955
+2026-08-31 14:42:20,390: t12.2022.08.13 val PER: 0.1678
+2026-08-31 14:42:20,390: t12.2022.08.18 val PER: 0.2202
+2026-08-31 14:42:20,390: t12.2022.08.23 val PER: 0.2252
+2026-08-31 14:42:20,391: t12.2022.08.25 val PER: 0.2667
+2026-08-31 14:42:31,040: Train batch 22050: loss: 3.41 grad norm: 49.59 time: 0.100
+2026-08-31 14:42:41,960: Train batch 22100: loss: 3.24 grad norm: 29.94 time: 0.139
+2026-08-31 14:42:52,941: Train batch 22150: loss: 4.25 grad norm: 30.80 time: 0.164
+2026-08-31 14:43:03,369: Train batch 22200: loss: 3.74 grad norm: 30.13 time: 0.093
+2026-08-31 14:43:14,124: Train batch 22250: loss: 5.88 grad norm: 43.99 time: 0.181
+2026-08-31 14:43:24,493: Train batch 22300: loss: 3.69 grad norm: 31.89 time: 0.094
+2026-08-31 14:43:35,636: Train batch 22350: loss: 2.12 grad norm: 21.27 time: 0.117
+2026-08-31 14:43:46,454: Train batch 22400: loss: 5.04 grad norm: 34.67 time: 0.174
+2026-08-31 14:43:56,916: Train batch 22450: loss: 2.78 grad norm: 27.53 time: 0.101
+2026-08-31 14:44:06,964: Train batch 22500: loss: 1.93 grad norm: 24.50 time: 0.117
+2026-08-31 14:44:17,596: Train batch 22550: loss: 3.32 grad norm: 32.42 time: 0.087
+2026-08-31 14:44:28,600: Train batch 22600: loss: 4.30 grad norm: 33.06 time: 0.126
+2026-08-31 14:44:39,326: Train batch 22650: loss: 5.06 grad norm: 40.48 time: 0.139
+2026-08-31 14:44:49,905: Train batch 22700: loss: 2.38 grad norm: 27.27 time: 0.108
+2026-08-31 14:45:00,863: Train batch 22750: loss: 3.25 grad norm: 37.06 time: 0.087
+2026-08-31 14:45:11,812: Train batch 22800: loss: 2.26 grad norm: 31.75 time: 0.103
+2026-08-31 14:45:22,044: Train batch 22850: loss: 3.70 grad norm: 30.51 time: 0.091
+2026-08-31 14:45:32,696: Train batch 22900: loss: 1.77 grad norm: 18.69 time: 0.110
+2026-08-31 14:45:43,281: Train batch 22950: loss: 6.08 grad norm: 98.17 time: 0.140
+2026-08-31 14:45:54,120: Train batch 23000: loss: 3.51 grad norm: 33.00 time: 0.125
+2026-08-31 14:46:04,674: Train batch 23050: loss: 3.02 grad norm: 30.81 time: 0.092
+2026-08-31 14:46:15,575: Train batch 23100: loss: 3.05 grad norm: 28.80 time: 0.092
+2026-08-31 14:46:26,512: Train batch 23150: loss: 2.10 grad norm: 26.26 time: 0.086
+2026-08-31 14:46:37,714: Train batch 23200: loss: 2.59 grad norm: 28.80 time: 0.100
+2026-08-31 14:46:49,090: Train batch 23250: loss: 4.14 grad norm: 37.30 time: 0.105
+2026-08-31 14:46:59,708: Train batch 23300: loss: 4.16 grad norm: 54.89 time: 0.117
+2026-08-31 14:47:10,509: Train batch 23350: loss: 5.23 grad norm: 36.92 time: 0.168
+2026-08-31 14:47:21,315: Train batch 23400: loss: 2.34 grad norm: 24.87 time: 0.137
+2026-08-31 14:47:31,979: Train batch 23450: loss: 3.08 grad norm: 36.83 time: 0.080
+2026-08-31 14:47:42,526: Train batch 23500: loss: 5.88 grad norm: 59.33 time: 0.147
+2026-08-31 14:47:53,062: Train batch 23550: loss: 3.26 grad norm: 29.21 time: 0.103
+2026-08-31 14:48:04,014: Train batch 23600: loss: 3.37 grad norm: 32.53 time: 0.148
+2026-08-31 14:48:14,871: Train batch 23650: loss: 5.96 grad norm: 39.71 time: 0.134
+2026-08-31 14:48:25,794: Train batch 23700: loss: 3.53 grad norm: 38.48 time: 0.094
+2026-08-31 14:48:36,384: Train batch 23750: loss: 1.90 grad norm: 42.91 time: 0.102
+2026-08-31 14:48:47,245: Train batch 23800: loss: 2.53 grad norm: 27.17 time: 0.099
+2026-08-31 14:48:58,178: Train batch 23850: loss: 3.45 grad norm: 40.35 time: 0.092
+2026-08-31 14:49:08,826: Train batch 23900: loss: 2.87 grad norm: 29.38 time: 0.088
+2026-08-31 14:49:19,912: Train batch 23950: loss: 6.13 grad norm: 45.48 time: 0.156
+2026-08-31 14:49:30,797: Train batch 24000: loss: 2.74 grad norm: 30.93 time: 0.088
+2026-08-31 14:49:30,797: Running test after training batch: 24000
+2026-08-31 14:49:33,883: Val batch 24000: PER (avg): 0.2385 CTC Loss (avg): 37.3579 time: 3.086
+2026-08-31 14:49:33,883: t12.2022.04.28 val PER: 0.3960
+2026-08-31 14:49:33,883: t12.2022.05.05 val PER: 0.3264
+2026-08-31 14:49:34,024: t12.2022.05.17 val PER: 0.2748
+2026-08-31 14:49:34,024: t12.2022.05.19 val PER: 0.3799
+2026-08-31 14:49:34,024: t12.2022.05.24 val PER: 0.1857
+2026-08-31 14:49:34,024: t12.2022.05.26 val PER: 0.1850
+2026-08-31 14:49:34,024: t12.2022.06.02 val PER: 0.1977
+2026-08-31 14:49:34,024: t12.2022.06.07 val PER: 0.2451
+2026-08-31 14:49:34,024: t12.2022.06.14 val PER: 0.1976
+2026-08-31 14:49:34,024: t12.2022.06.16 val PER: 0.2700
+2026-08-31 14:49:34,024: t12.2022.06.21 val PER: 0.2537
+2026-08-31 14:49:34,024: t12.2022.06.23 val PER: 0.2776
+2026-08-31 14:49:34,025: t12.2022.06.28 val PER: 0.2537
+2026-08-31 14:49:34,025: t12.2022.07.05 val PER: 0.2152
+2026-08-31 14:49:34,025: t12.2022.07.14 val PER: 0.2025
+2026-08-31 14:49:34,025: t12.2022.07.21 val PER: 0.2193
+2026-08-31 14:49:34,025: t12.2022.07.27 val PER: 0.2106
+2026-08-31 14:49:34,025: t12.2022.07.29 val PER: 0.2320
+2026-08-31 14:49:34,025: t12.2022.08.02 val PER: 0.2118
+2026-08-31 14:49:34,025: t12.2022.08.11 val PER: 0.2093
+2026-08-31 14:49:34,025: t12.2022.08.13 val PER: 0.1759
+2026-08-31 14:49:34,025: t12.2022.08.18 val PER: 0.2221
+2026-08-31 14:49:34,026: t12.2022.08.23 val PER: 0.2150
+2026-08-31 14:49:34,026: t12.2022.08.25 val PER: 0.2719
+2026-08-31 14:49:44,678: Train batch 24050: loss: 2.29 grad norm: 31.30 time: 0.097
+2026-08-31 14:49:55,886: Train batch 24100: loss: 2.50 grad norm: 26.70 time: 0.109
+2026-08-31 14:50:06,550: Train batch 24150: loss: 2.98 grad norm: 33.95 time: 0.109
+2026-08-31 14:50:16,966: Train batch 24200: loss: 2.72 grad norm: 24.51 time: 0.105
+2026-08-31 14:50:27,491: Train batch 24250: loss: 4.09 grad norm: 40.54 time: 0.154
+2026-08-31 14:50:38,217: Train batch 24300: loss: 2.83 grad norm: 27.72 time: 0.108
+2026-08-31 14:50:49,010: Train batch 24350: loss: 4.06 grad norm: 31.30 time: 0.168
+2026-08-31 14:50:59,838: Train batch 24400: loss: 3.08 grad norm: 39.03 time: 0.092
+2026-08-31 14:51:10,393: Train batch 24450: loss: 4.19 grad norm: 34.40 time: 0.135
+2026-08-31 14:51:20,941: Train batch 24500: loss: 3.11 grad norm: 37.63 time: 0.098
+2026-08-31 14:51:31,589: Train batch 24550: loss: 4.92 grad norm: 39.07 time: 0.134
+2026-08-31 14:51:42,317: Train batch 24600: loss: 4.72 grad norm: 35.03 time: 0.143
+2026-08-31 14:51:53,217: Train batch 24650: loss: 3.23 grad norm: 36.46 time: 0.135
+2026-08-31 14:52:04,753: Train batch 24700: loss: 2.57 grad norm: 23.44 time: 0.088
+2026-08-31 14:52:16,154: Train batch 24750: loss: 3.42 grad norm: 28.04 time: 0.178
+2026-08-31 14:52:27,375: Train batch 24800: loss: 2.44 grad norm: 22.57 time: 0.100
+2026-08-31 14:52:39,538: Train batch 24850: loss: 2.59 grad norm: 34.76 time: 0.160
+2026-08-31 14:52:51,829: Train batch 24900: loss: 4.18 grad norm: 37.86 time: 0.174
+2026-08-31 14:53:03,983: Train batch 24950: loss: 4.20 grad norm: 47.50 time: 0.167
+2026-08-31 14:53:15,686: Train batch 25000: loss: 2.18 grad norm: 38.91 time: 0.108
+2026-08-31 14:53:27,433: Train batch 25050: loss: 3.34 grad norm: 26.85 time: 0.124
+2026-08-31 14:53:38,561: Train batch 25100: loss: 1.94 grad norm: 28.98 time: 0.095
+2026-08-31 14:53:49,500: Train batch 25150: loss: 4.98 grad norm: 65.86 time: 0.168
+2026-08-31 14:54:00,794: Train batch 25200: loss: 3.96 grad norm: 58.91 time: 0.127
+2026-08-31 14:54:11,679: Train batch 25250: loss: 4.09 grad norm: 44.84 time: 0.155
+2026-08-31 14:54:23,093: Train batch 25300: loss: 2.56 grad norm: 27.24 time: 0.101
+2026-08-31 14:54:34,126: Train batch 25350: loss: 3.66 grad norm: 28.46 time: 0.123
+2026-08-31 14:54:45,052: Train batch 25400: loss: 3.77 grad norm: 29.73 time: 0.172
+2026-08-31 14:54:55,767: Train batch 25450: loss: 2.18 grad norm: 26.42 time: 0.112
+2026-08-31 14:55:06,780: Train batch 25500: loss: 4.17 grad norm: 36.23 time: 0.176
+2026-08-31 14:55:17,600: Train batch 25550: loss: 2.42 grad norm: 26.97 time: 0.095
+2026-08-31 14:55:29,867: Train batch 25600: loss: 1.60 grad norm: 28.61 time: 0.114
+2026-08-31 14:55:41,326: Train batch 25650: loss: 3.21 grad norm: 42.44 time: 0.090
+2026-08-31 14:55:52,282: Train batch 25700: loss: 2.33 grad norm: 24.49 time: 0.113
+2026-08-31 14:56:03,703: Train batch 25750: loss: 3.00 grad norm: 30.65 time: 0.121
+2026-08-31 14:56:14,629: Train batch 25800: loss: 2.84 grad norm: 26.68 time: 0.108
+2026-08-31 14:56:25,436: Train batch 25850: loss: 1.99 grad norm: 25.41 time: 0.094
+2026-08-31 14:56:36,732: Train batch 25900: loss: 4.58 grad norm: 36.13 time: 0.172
+2026-08-31 14:56:47,764: Train batch 25950: loss: 2.91 grad norm: 43.82 time: 0.110
+2026-08-31 14:56:58,977: Train batch 26000: loss: 2.71 grad norm: 29.04 time: 0.094
+2026-08-31 14:56:58,977: Running test after training batch: 26000
+2026-08-31 14:57:01,965: Val batch 26000: PER (avg): 0.2343 CTC Loss (avg): 37.4610 time: 2.988
+2026-08-31 14:57:01,965: t12.2022.04.28 val PER: 0.4016
+2026-08-31 14:57:01,966: t12.2022.05.05 val PER: 0.3092
+2026-08-31 14:57:01,966: t12.2022.05.17 val PER: 0.2923
+2026-08-31 14:57:01,966: t12.2022.05.19 val PER: 0.3799
+2026-08-31 14:57:01,966: t12.2022.05.24 val PER: 0.1865
+2026-08-31 14:57:01,966: t12.2022.05.26 val PER: 0.1765
+2026-08-31 14:57:01,966: t12.2022.06.02 val PER: 0.1968
+2026-08-31 14:57:01,966: t12.2022.06.07 val PER: 0.2531
+2026-08-31 14:57:01,966: t12.2022.06.14 val PER: 0.2000
+2026-08-31 14:57:01,966: t12.2022.06.16 val PER: 0.2725
+2026-08-31 14:57:01,967: t12.2022.06.21 val PER: 0.2345
+2026-08-31 14:57:01,967: t12.2022.06.23 val PER: 0.2684
+2026-08-31 14:57:01,967: t12.2022.06.28 val PER: 0.2407
+2026-08-31 14:57:01,967: t12.2022.07.05 val PER: 0.1993
+2026-08-31 14:57:01,967: t12.2022.07.14 val PER: 0.2087
+2026-08-31 14:57:01,967: t12.2022.07.21 val PER: 0.2103
+2026-08-31 14:57:01,967: t12.2022.07.27 val PER: 0.1947
+2026-08-31 14:57:01,967: t12.2022.07.29 val PER: 0.2310
+2026-08-31 14:57:01,967: t12.2022.08.02 val PER: 0.1984
+2026-08-31 14:57:01,968: t12.2022.08.11 val PER: 0.2043
+2026-08-31 14:57:01,968: t12.2022.08.13 val PER: 0.1839
+2026-08-31 14:57:01,968: t12.2022.08.18 val PER: 0.2184
+2026-08-31 14:57:01,968: t12.2022.08.23 val PER: 0.2085
+2026-08-31 14:57:01,968: t12.2022.08.25 val PER: 0.2625
+2026-08-31 14:57:01,968: New best test PER 0.2359 --> 0.2343
+2026-08-31 14:57:01,968: Checkpointing model
+2026-08-31 14:57:04,696: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 14:57:15,636: Train batch 26050: loss: 3.64 grad norm: 27.78 time: 0.150
+2026-08-31 14:57:26,611: Train batch 26100: loss: 2.68 grad norm: 31.30 time: 0.105
+2026-08-31 14:57:37,727: Train batch 26150: loss: 4.44 grad norm: 36.60 time: 0.135
+2026-08-31 14:57:48,770: Train batch 26200: loss: 2.61 grad norm: 27.23 time: 0.090
+2026-08-31 14:57:59,853: Train batch 26250: loss: 2.59 grad norm: 34.24 time: 0.100
+2026-08-31 14:58:11,025: Train batch 26300: loss: 3.58 grad norm: 28.24 time: 0.119
+2026-08-31 14:58:21,944: Train batch 26350: loss: 2.85 grad norm: 33.91 time: 0.089
+2026-08-31 14:58:32,566: Train batch 26400: loss: 3.35 grad norm: 29.80 time: 0.154
+2026-08-31 14:58:43,467: Train batch 26450: loss: 2.58 grad norm: 24.54 time: 0.103
+2026-08-31 14:58:54,838: Train batch 26500: loss: 1.97 grad norm: 32.55 time: 0.096
+2026-08-31 14:59:05,790: Train batch 26550: loss: 3.00 grad norm: 36.59 time: 0.168
+2026-08-31 14:59:16,761: Train batch 26600: loss: 1.53 grad norm: 20.35 time: 0.089
+2026-08-31 14:59:28,034: Train batch 26650: loss: 2.81 grad norm: 31.65 time: 0.109
+2026-08-31 14:59:39,072: Train batch 26700: loss: 2.33 grad norm: 43.11 time: 0.104
+2026-08-31 14:59:50,044: Train batch 26750: loss: 1.91 grad norm: 19.24 time: 0.100
+2026-08-31 15:00:00,662: Train batch 26800: loss: 3.06 grad norm: 29.83 time: 0.103
+2026-08-31 15:00:11,661: Train batch 26850: loss: 3.14 grad norm: 31.86 time: 0.169
+2026-08-31 15:00:22,534: Train batch 26900: loss: 3.87 grad norm: 30.23 time: 0.115
+2026-08-31 15:00:33,486: Train batch 26950: loss: 3.65 grad norm: 37.44 time: 0.179
+2026-08-31 15:00:45,561: Train batch 27000: loss: 2.25 grad norm: 25.86 time: 0.112
+2026-08-31 15:00:57,550: Train batch 27050: loss: 3.68 grad norm: 42.84 time: 0.159
+2026-08-31 15:01:07,978: Train batch 27100: loss: 2.88 grad norm: 26.66 time: 0.099
+2026-08-31 15:01:19,357: Train batch 27150: loss: 2.23 grad norm: 34.04 time: 0.121
+2026-08-31 15:01:30,897: Train batch 27200: loss: 2.79 grad norm: 28.29 time: 0.115
+2026-08-31 15:01:42,613: Train batch 27250: loss: 2.75 grad norm: 31.93 time: 0.111
+2026-08-31 15:01:53,629: Train batch 27300: loss: 2.16 grad norm: 28.13 time: 0.087
+2026-08-31 15:02:04,925: Train batch 27350: loss: 4.05 grad norm: 38.71 time: 0.147
+2026-08-31 15:02:16,112: Train batch 27400: loss: 3.49 grad norm: 41.60 time: 0.102
+2026-08-31 15:02:27,069: Train batch 27450: loss: 4.02 grad norm: 35.42 time: 0.153
+2026-08-31 15:02:38,155: Train batch 27500: loss: 4.88 grad norm: 38.82 time: 0.158
+2026-08-31 15:02:49,488: Train batch 27550: loss: 2.77 grad norm: 34.30 time: 0.113
+2026-08-31 15:03:00,485: Train batch 27600: loss: 4.04 grad norm: 33.45 time: 0.146
+2026-08-31 15:03:11,302: Train batch 27650: loss: 2.74 grad norm: 30.09 time: 0.096
+2026-08-31 15:03:21,808: Train batch 27700: loss: 1.67 grad norm: 24.95 time: 0.095
+2026-08-31 15:03:32,674: Train batch 27750: loss: 2.36 grad norm: 29.13 time: 0.102
+2026-08-31 15:03:43,465: Train batch 27800: loss: 1.73 grad norm: 20.03 time: 0.110
+2026-08-31 15:03:54,552: Train batch 27850: loss: 1.50 grad norm: 18.65 time: 0.111
+2026-08-31 15:04:05,710: Train batch 27900: loss: 1.94 grad norm: 26.81 time: 0.103
+2026-08-31 15:04:16,370: Train batch 27950: loss: 1.77 grad norm: 27.39 time: 0.097
+2026-08-31 15:04:26,976: Train batch 28000: loss: 3.20 grad norm: 39.10 time: 0.117
+2026-08-31 15:04:26,976: Running test after training batch: 28000
+2026-08-31 15:04:29,768: Val batch 28000: PER (avg): 0.2371 CTC Loss (avg): 39.0243 time: 2.792
+2026-08-31 15:04:29,768: t12.2022.04.28 val PER: 0.4038
+2026-08-31 15:04:29,768: t12.2022.05.05 val PER: 0.3287
+2026-08-31 15:04:29,768: t12.2022.05.17 val PER: 0.2891
+2026-08-31 15:04:29,769: t12.2022.05.19 val PER: 0.3705
+2026-08-31 15:04:29,769: t12.2022.05.24 val PER: 0.1758
+2026-08-31 15:04:29,769: t12.2022.05.26 val PER: 0.1651
+2026-08-31 15:04:29,769: t12.2022.06.02 val PER: 0.2025
+2026-08-31 15:04:29,769: t12.2022.06.07 val PER: 0.2558
+2026-08-31 15:04:29,769: t12.2022.06.14 val PER: 0.2080
+2026-08-31 15:04:29,769: t12.2022.06.16 val PER: 0.2733
+2026-08-31 15:04:29,770: t12.2022.06.21 val PER: 0.2406
+2026-08-31 15:04:29,770: t12.2022.06.23 val PER: 0.2656
+2026-08-31 15:04:29,770: t12.2022.06.28 val PER: 0.2509
+2026-08-31 15:04:29,770: t12.2022.07.05 val PER: 0.2072
+2026-08-31 15:04:29,770: t12.2022.07.14 val PER: 0.2186
+2026-08-31 15:04:29,770: t12.2022.07.21 val PER: 0.2049
+2026-08-31 15:04:29,770: t12.2022.07.27 val PER: 0.1968
+2026-08-31 15:04:29,771: t12.2022.07.29 val PER: 0.2379
+2026-08-31 15:04:29,771: t12.2022.08.02 val PER: 0.1929
+2026-08-31 15:04:29,771: t12.2022.08.11 val PER: 0.2113
+2026-08-31 15:04:29,771: t12.2022.08.13 val PER: 0.1839
+2026-08-31 15:04:29,771: t12.2022.08.18 val PER: 0.2268
+2026-08-31 15:04:29,771: t12.2022.08.23 val PER: 0.2234
+2026-08-31 15:04:29,771: t12.2022.08.25 val PER: 0.2604
+2026-08-31 15:04:40,816: Train batch 28050: loss: 2.44 grad norm: 31.27 time: 0.109
+2026-08-31 15:04:51,329: Train batch 28100: loss: 2.35 grad norm: 26.69 time: 0.096
+2026-08-31 15:05:02,113: Train batch 28150: loss: 1.31 grad norm: 17.74 time: 0.096
+2026-08-31 15:05:12,634: Train batch 28200: loss: 2.36 grad norm: 26.83 time: 0.113
+2026-08-31 15:05:23,441: Train batch 28250: loss: 1.04 grad norm: 15.22 time: 0.089
+2026-08-31 15:05:33,882: Train batch 28300: loss: 1.95 grad norm: 29.14 time: 0.103
+2026-08-31 15:05:44,608: Train batch 28350: loss: 2.88 grad norm: 35.06 time: 0.108
+2026-08-31 15:05:55,038: Train batch 28400: loss: 1.58 grad norm: 24.06 time: 0.094
+2026-08-31 15:06:06,391: Train batch 28450: loss: 2.80 grad norm: 26.11 time: 0.158
+2026-08-31 15:06:16,869: Train batch 28500: loss: 2.68 grad norm: 32.87 time: 0.152
+2026-08-31 15:06:28,025: Train batch 28550: loss: 2.11 grad norm: 23.97 time: 0.119
+2026-08-31 15:06:40,433: Train batch 28600: loss: 2.13 grad norm: 25.19 time: 0.114
+2026-08-31 15:06:53,852: Train batch 28650: loss: 1.88 grad norm: 29.76 time: 0.106
+2026-08-31 15:07:05,043: Train batch 28700: loss: 3.40 grad norm: 40.32 time: 0.107
+2026-08-31 15:07:16,371: Train batch 28750: loss: 2.94 grad norm: 28.99 time: 0.137
+2026-08-31 15:07:28,099: Train batch 28800: loss: 2.81 grad norm: 34.01 time: 0.126
+2026-08-31 15:07:39,202: Train batch 28850: loss: 3.59 grad norm: 36.71 time: 0.171
+2026-08-31 15:07:50,892: Train batch 28900: loss: 2.77 grad norm: 35.05 time: 0.135
+2026-08-31 15:08:02,335: Train batch 28950: loss: 3.56 grad norm: 37.47 time: 0.165
+2026-08-31 15:08:14,220: Train batch 29000: loss: 1.96 grad norm: 24.91 time: 0.110
+2026-08-31 15:08:26,426: Train batch 29050: loss: 2.63 grad norm: 38.60 time: 0.182
+2026-08-31 15:08:38,095: Train batch 29100: loss: 2.03 grad norm: 29.14 time: 0.106
+2026-08-31 15:08:49,237: Train batch 29150: loss: 3.54 grad norm: 40.62 time: 0.176
+2026-08-31 15:09:01,201: Train batch 29200: loss: 3.32 grad norm: 31.64 time: 0.156
+2026-08-31 15:09:12,545: Train batch 29250: loss: 1.01 grad norm: 26.45 time: 0.090
+2026-08-31 15:09:23,689: Train batch 29300: loss: 2.25 grad norm: 29.25 time: 0.101
+2026-08-31 15:09:34,246: Train batch 29350: loss: 3.41 grad norm: 33.17 time: 0.133
+2026-08-31 15:09:46,118: Train batch 29400: loss: 2.09 grad norm: 22.54 time: 0.102
+2026-08-31 15:09:57,716: Train batch 29450: loss: 2.95 grad norm: 30.12 time: 0.186
+2026-08-31 15:10:09,604: Train batch 29500: loss: 3.10 grad norm: 39.52 time: 0.176
+2026-08-31 15:10:21,252: Train batch 29550: loss: 1.79 grad norm: 23.65 time: 0.115
+2026-08-31 15:10:32,800: Train batch 29600: loss: 1.76 grad norm: 21.58 time: 0.139
+2026-08-31 15:10:44,164: Train batch 29650: loss: 2.25 grad norm: 25.80 time: 0.083
+2026-08-31 15:10:55,443: Train batch 29700: loss: 1.46 grad norm: 17.67 time: 0.126
+2026-08-31 15:11:07,615: Train batch 29750: loss: 2.64 grad norm: 28.28 time: 0.099
+2026-08-31 15:11:19,124: Train batch 29800: loss: 1.35 grad norm: 20.31 time: 0.104
+2026-08-31 15:11:31,353: Train batch 29850: loss: 1.67 grad norm: 21.75 time: 0.103
+2026-08-31 15:11:43,342: Train batch 29900: loss: 3.02 grad norm: 30.84 time: 0.174
+2026-08-31 15:11:54,737: Train batch 29950: loss: 2.01 grad norm: 23.70 time: 0.094
+2026-08-31 15:12:05,430: Train batch 30000: loss: 1.78 grad norm: 23.43 time: 0.100
+2026-08-31 15:12:05,431: Running test after training batch: 30000
+2026-08-31 15:12:08,266: Val batch 30000: PER (avg): 0.2371 CTC Loss (avg): 39.9002 time: 2.835
+2026-08-31 15:12:08,267: t12.2022.04.28 val PER: 0.3926
+2026-08-31 15:12:08,267: t12.2022.05.05 val PER: 0.3218
+2026-08-31 15:12:08,267: t12.2022.05.17 val PER: 0.2971
+2026-08-31 15:12:08,267: t12.2022.05.19 val PER: 0.3799
+2026-08-31 15:12:08,267: t12.2022.05.24 val PER: 0.1785
+2026-08-31 15:12:08,267: t12.2022.05.26 val PER: 0.1774
+2026-08-31 15:12:08,268: t12.2022.06.02 val PER: 0.1996
+2026-08-31 15:12:08,268: t12.2022.06.07 val PER: 0.2531
+2026-08-31 15:12:08,268: t12.2022.06.14 val PER: 0.2135
+2026-08-31 15:12:08,268: t12.2022.06.16 val PER: 0.2800
+2026-08-31 15:12:08,268: t12.2022.06.21 val PER: 0.2406
+2026-08-31 15:12:08,268: t12.2022.06.23 val PER: 0.2656
+2026-08-31 15:12:08,269: t12.2022.06.28 val PER: 0.2546
+2026-08-31 15:12:08,269: t12.2022.07.05 val PER: 0.2208
+2026-08-31 15:12:08,269: t12.2022.07.14 val PER: 0.2150
+2026-08-31 15:12:08,269: t12.2022.07.21 val PER: 0.2166
+2026-08-31 15:12:08,269: t12.2022.07.27 val PER: 0.1926
+2026-08-31 15:12:08,269: t12.2022.07.29 val PER: 0.2389
+2026-08-31 15:12:08,269: t12.2022.08.02 val PER: 0.2029
+2026-08-31 15:12:08,270: t12.2022.08.11 val PER: 0.1984
+2026-08-31 15:12:08,270: t12.2022.08.13 val PER: 0.1698
+2026-08-31 15:12:08,270: t12.2022.08.18 val PER: 0.2231
+2026-08-31 15:12:08,270: t12.2022.08.23 val PER: 0.2002
+2026-08-31 15:12:08,270: t12.2022.08.25 val PER: 0.2656
+2026-08-31 15:12:19,064: Train batch 30050: loss: 3.81 grad norm: 33.30 time: 0.125
+2026-08-31 15:12:30,018: Train batch 30100: loss: 2.92 grad norm: 30.82 time: 0.146
+2026-08-31 15:12:40,808: Train batch 30150: loss: 2.19 grad norm: 43.92 time: 0.095
+2026-08-31 15:12:52,471: Train batch 30200: loss: 1.91 grad norm: 24.96 time: 0.108
+2026-08-31 15:13:03,247: Train batch 30250: loss: 2.77 grad norm: 42.12 time: 0.152
+2026-08-31 15:13:14,054: Train batch 30300: loss: 2.20 grad norm: 30.03 time: 0.101
+2026-08-31 15:13:24,580: Train batch 30350: loss: 1.92 grad norm: 24.25 time: 0.104
+2026-08-31 15:13:35,272: Train batch 30400: loss: 2.09 grad norm: 23.86 time: 0.095
+2026-08-31 15:13:46,058: Train batch 30450: loss: 3.08 grad norm: 31.54 time: 0.124
+2026-08-31 15:13:56,908: Train batch 30500: loss: 2.24 grad norm: 28.74 time: 0.107
+2026-08-31 15:14:08,076: Train batch 30550: loss: 1.75 grad norm: 28.12 time: 0.103
+2026-08-31 15:14:18,909: Train batch 30600: loss: 1.49 grad norm: 20.56 time: 0.104
+2026-08-31 15:14:29,536: Train batch 30650: loss: 1.67 grad norm: 20.79 time: 0.115
+2026-08-31 15:14:40,481: Train batch 30700: loss: 1.98 grad norm: 29.72 time: 0.086
+2026-08-31 15:14:51,408: Train batch 30750: loss: 1.03 grad norm: 18.01 time: 0.104
+2026-08-31 15:15:02,616: Train batch 30800: loss: 1.53 grad norm: 31.44 time: 0.111
+2026-08-31 15:15:13,190: Train batch 30850: loss: 2.38 grad norm: 28.26 time: 0.091
+2026-08-31 15:15:24,118: Train batch 30900: loss: 1.49 grad norm: 21.88 time: 0.087
+2026-08-31 15:15:34,988: Train batch 30950: loss: 1.30 grad norm: 31.54 time: 0.111
+2026-08-31 15:15:46,148: Train batch 31000: loss: 0.97 grad norm: 17.78 time: 0.104
+2026-08-31 15:15:57,555: Train batch 31050: loss: 2.29 grad norm: 27.94 time: 0.168
+2026-08-31 15:16:09,161: Train batch 31100: loss: 2.91 grad norm: 30.21 time: 0.154
+2026-08-31 15:16:20,210: Train batch 31150: loss: 2.63 grad norm: 28.48 time: 0.142
+2026-08-31 15:16:31,225: Train batch 31200: loss: 2.29 grad norm: 26.76 time: 0.152
+2026-08-31 15:16:42,121: Train batch 31250: loss: 3.52 grad norm: 46.23 time: 0.161
+2026-08-31 15:16:52,295: Train batch 31300: loss: 1.43 grad norm: 23.03 time: 0.096
+2026-08-31 15:17:03,052: Train batch 31350: loss: 2.54 grad norm: 25.56 time: 0.094
+2026-08-31 15:17:14,323: Train batch 31400: loss: 2.37 grad norm: 29.36 time: 0.116
+2026-08-31 15:17:24,733: Train batch 31450: loss: 2.61 grad norm: 29.76 time: 0.155
+2026-08-31 15:17:35,354: Train batch 31500: loss: 3.19 grad norm: 29.22 time: 0.140
+2026-08-31 15:17:46,231: Train batch 31550: loss: 0.92 grad norm: 31.98 time: 0.104
+2026-08-31 15:17:56,977: Train batch 31600: loss: 2.52 grad norm: 29.28 time: 0.117
+2026-08-31 15:18:07,520: Train batch 31650: loss: 1.09 grad norm: 18.55 time: 0.109
+2026-08-31 15:18:18,446: Train batch 31700: loss: 2.94 grad norm: 32.49 time: 0.147
+2026-08-31 15:18:28,873: Train batch 31750: loss: 2.05 grad norm: 28.46 time: 0.101
+2026-08-31 15:18:39,487: Train batch 31800: loss: 1.82 grad norm: 26.30 time: 0.110
+2026-08-31 15:18:50,206: Train batch 31850: loss: 2.71 grad norm: 31.09 time: 0.154
+2026-08-31 15:19:01,016: Train batch 31900: loss: 1.70 grad norm: 21.94 time: 0.096
+2026-08-31 15:19:12,146: Train batch 31950: loss: 1.73 grad norm: 21.21 time: 0.098
+2026-08-31 15:19:22,739: Train batch 32000: loss: 1.86 grad norm: 23.63 time: 0.083
+2026-08-31 15:19:22,739: Running test after training batch: 32000
+2026-08-31 15:19:25,665: Val batch 32000: PER (avg): 0.2386 CTC Loss (avg): 40.3447 time: 2.926
+2026-08-31 15:19:25,665: t12.2022.04.28 val PER: 0.4083
+2026-08-31 15:19:25,665: t12.2022.05.05 val PER: 0.3391
+2026-08-31 15:19:25,665: t12.2022.05.17 val PER: 0.2764
+2026-08-31 15:19:25,665: t12.2022.05.19 val PER: 0.3893
+2026-08-31 15:19:25,665: t12.2022.05.24 val PER: 0.1874
+2026-08-31 15:19:25,666: t12.2022.05.26 val PER: 0.1774
+2026-08-31 15:19:25,666: t12.2022.06.02 val PER: 0.1921
+2026-08-31 15:19:25,666: t12.2022.06.07 val PER: 0.2576
+2026-08-31 15:19:25,666: t12.2022.06.14 val PER: 0.2088
+2026-08-31 15:19:25,666: t12.2022.06.16 val PER: 0.2808
+2026-08-31 15:19:25,666: t12.2022.06.21 val PER: 0.2450
+2026-08-31 15:19:25,666: t12.2022.06.23 val PER: 0.2702
+2026-08-31 15:19:25,666: t12.2022.06.28 val PER: 0.2546
+2026-08-31 15:19:25,666: t12.2022.07.05 val PER: 0.2039
+2026-08-31 15:19:25,667: t12.2022.07.14 val PER: 0.2230
+2026-08-31 15:19:25,667: t12.2022.07.21 val PER: 0.2076
+2026-08-31 15:19:25,667: t12.2022.07.27 val PER: 0.1862
+2026-08-31 15:19:25,667: t12.2022.07.29 val PER: 0.2448
+2026-08-31 15:19:25,667: t12.2022.08.02 val PER: 0.1896
+2026-08-31 15:19:25,667: t12.2022.08.11 val PER: 0.2063
+2026-08-31 15:19:25,667: t12.2022.08.13 val PER: 0.1779
+2026-08-31 15:19:25,667: t12.2022.08.18 val PER: 0.2343
+2026-08-31 15:19:25,667: t12.2022.08.23 val PER: 0.2113
+2026-08-31 15:19:25,667: t12.2022.08.25 val PER: 0.2542
+2026-08-31 15:19:36,950: Train batch 32050: loss: 1.16 grad norm: 24.60 time: 0.085
+2026-08-31 15:19:47,931: Train batch 32100: loss: 2.08 grad norm: 26.03 time: 0.122
+2026-08-31 15:19:58,993: Train batch 32150: loss: 2.25 grad norm: 44.21 time: 0.161
+2026-08-31 15:20:09,964: Train batch 32200: loss: 3.01 grad norm: 30.34 time: 0.162
+2026-08-31 15:20:20,538: Train batch 32250: loss: 1.82 grad norm: 27.87 time: 0.093
+2026-08-31 15:20:31,074: Train batch 32300: loss: 1.44 grad norm: 23.48 time: 0.113
+2026-08-31 15:20:41,926: Train batch 32350: loss: 1.71 grad norm: 22.61 time: 0.112
+2026-08-31 15:20:52,680: Train batch 32400: loss: 3.38 grad norm: 37.58 time: 0.166
+2026-08-31 15:21:03,584: Train batch 32450: loss: 1.72 grad norm: 33.10 time: 0.110
+2026-08-31 15:21:13,973: Train batch 32500: loss: 1.69 grad norm: 23.49 time: 0.095
+2026-08-31 15:21:24,317: Train batch 32550: loss: 1.45 grad norm: 23.29 time: 0.099
+2026-08-31 15:21:35,110: Train batch 32600: loss: 1.77 grad norm: 27.27 time: 0.117
+2026-08-31 15:21:45,744: Train batch 32650: loss: 1.45 grad norm: 20.17 time: 0.090
+2026-08-31 15:21:56,216: Train batch 32700: loss: 1.74 grad norm: 36.65 time: 0.095
+2026-08-31 15:22:06,975: Train batch 32750: loss: 2.57 grad norm: 27.48 time: 0.137
+2026-08-31 15:22:17,420: Train batch 32800: loss: 1.28 grad norm: 24.70 time: 0.123
+2026-08-31 15:22:28,224: Train batch 32850: loss: 3.41 grad norm: 35.16 time: 0.163
+2026-08-31 15:22:38,954: Train batch 32900: loss: 1.41 grad norm: 28.57 time: 0.101
+2026-08-31 15:22:49,668: Train batch 32950: loss: 1.96 grad norm: 43.62 time: 0.097
+2026-08-31 15:23:00,174: Train batch 33000: loss: 1.36 grad norm: 26.14 time: 0.114
+2026-08-31 15:23:10,530: Train batch 33050: loss: 1.36 grad norm: 46.99 time: 0.098
+2026-08-31 15:23:21,398: Train batch 33100: loss: 1.31 grad norm: 26.15 time: 0.107
+2026-08-31 15:23:32,087: Train batch 33150: loss: 1.37 grad norm: 20.04 time: 0.105
+2026-08-31 15:23:42,733: Train batch 33200: loss: 1.58 grad norm: 22.78 time: 0.108
+2026-08-31 15:23:53,051: Train batch 33250: loss: 2.06 grad norm: 28.72 time: 0.095
+2026-08-31 15:24:03,355: Train batch 33300: loss: 1.74 grad norm: 21.29 time: 0.103
+2026-08-31 15:24:13,986: Train batch 33350: loss: 1.80 grad norm: 23.54 time: 0.158
+2026-08-31 15:24:24,633: Train batch 33400: loss: 2.54 grad norm: 31.54 time: 0.153
+2026-08-31 15:24:35,267: Train batch 33450: loss: 1.80 grad norm: 26.42 time: 0.098
+2026-08-31 15:24:45,687: Train batch 33500: loss: 0.99 grad norm: 18.36 time: 0.106
+2026-08-31 15:24:56,541: Train batch 33550: loss: 2.80 grad norm: 33.40 time: 0.156
+2026-08-31 15:25:07,062: Train batch 33600: loss: 1.87 grad norm: 21.50 time: 0.110
+2026-08-31 15:25:17,799: Train batch 33650: loss: 2.58 grad norm: 31.38 time: 0.150
+2026-08-31 15:25:28,101: Train batch 33700: loss: 2.84 grad norm: 58.40 time: 0.093
+2026-08-31 15:25:38,396: Train batch 33750: loss: 2.55 grad norm: 26.16 time: 0.134
+2026-08-31 15:25:48,694: Train batch 33800: loss: 1.66 grad norm: 28.38 time: 0.103
+2026-08-31 15:25:59,373: Train batch 33850: loss: 2.26 grad norm: 27.71 time: 0.153
+2026-08-31 15:26:10,148: Train batch 33900: loss: 2.07 grad norm: 38.93 time: 0.104
+2026-08-31 15:26:20,392: Train batch 33950: loss: 1.51 grad norm: 21.19 time: 0.109
+2026-08-31 15:26:30,818: Train batch 34000: loss: 1.17 grad norm: 19.07 time: 0.091
+2026-08-31 15:26:30,819: Running test after training batch: 34000
+2026-08-31 15:26:33,544: Val batch 34000: PER (avg): 0.2361 CTC Loss (avg): 41.1099 time: 2.725
+2026-08-31 15:26:33,544: t12.2022.04.28 val PER: 0.4094
+2026-08-31 15:26:33,544: t12.2022.05.05 val PER: 0.3161
+2026-08-31 15:26:33,545: t12.2022.05.17 val PER: 0.2652
+2026-08-31 15:26:33,545: t12.2022.05.19 val PER: 0.3815
+2026-08-31 15:26:33,545: t12.2022.05.24 val PER: 0.1794
+2026-08-31 15:26:33,545: t12.2022.05.26 val PER: 0.1736
+2026-08-31 15:26:33,545: t12.2022.06.02 val PER: 0.1996
+2026-08-31 15:26:33,545: t12.2022.06.07 val PER: 0.2594
+2026-08-31 15:26:33,545: t12.2022.06.14 val PER: 0.2096
+2026-08-31 15:26:33,545: t12.2022.06.16 val PER: 0.2767
+2026-08-31 15:26:33,545: t12.2022.06.21 val PER: 0.2318
+2026-08-31 15:26:33,545: t12.2022.06.23 val PER: 0.2675
+2026-08-31 15:26:33,546: t12.2022.06.28 val PER: 0.2574
+2026-08-31 15:26:33,546: t12.2022.07.05 val PER: 0.2106
+2026-08-31 15:26:33,546: t12.2022.07.14 val PER: 0.2150
+2026-08-31 15:26:33,546: t12.2022.07.21 val PER: 0.1986
+2026-08-31 15:26:33,546: t12.2022.07.27 val PER: 0.2063
+2026-08-31 15:26:33,546: t12.2022.07.29 val PER: 0.2419
+2026-08-31 15:26:33,546: t12.2022.08.02 val PER: 0.1929
+2026-08-31 15:26:33,546: t12.2022.08.11 val PER: 0.2024
+2026-08-31 15:26:33,546: t12.2022.08.13 val PER: 0.1819
+2026-08-31 15:26:33,547: t12.2022.08.18 val PER: 0.2249
+2026-08-31 15:26:33,547: t12.2022.08.23 val PER: 0.2057
+2026-08-31 15:26:33,547: t12.2022.08.25 val PER: 0.2573
+2026-08-31 15:26:44,223: Train batch 34050: loss: 1.85 grad norm: 27.28 time: 0.129
+2026-08-31 15:26:54,530: Train batch 34100: loss: 0.96 grad norm: 18.40 time: 0.101
+2026-08-31 15:27:05,369: Train batch 34150: loss: 1.80 grad norm: 22.98 time: 0.099
+2026-08-31 15:27:16,650: Train batch 34200: loss: 1.61 grad norm: 22.46 time: 0.096
+2026-08-31 15:27:27,860: Train batch 34250: loss: 1.45 grad norm: 18.56 time: 0.102
+2026-08-31 15:27:39,734: Train batch 34300: loss: 1.87 grad norm: 36.14 time: 0.164
+2026-08-31 15:27:51,432: Train batch 34350: loss: 1.72 grad norm: 27.20 time: 0.165
+2026-08-31 15:28:03,940: Train batch 34400: loss: 1.36 grad norm: 30.05 time: 0.112
+2026-08-31 15:28:17,304: Train batch 34450: loss: 2.12 grad norm: 24.64 time: 0.160
+2026-08-31 15:28:29,618: Train batch 34500: loss: 0.94 grad norm: 16.43 time: 0.127
+2026-08-31 15:28:40,736: Train batch 34550: loss: 1.85 grad norm: 21.86 time: 0.122
+2026-08-31 15:28:51,867: Train batch 34600: loss: 1.92 grad norm: 24.76 time: 0.099
+2026-08-31 15:29:03,094: Train batch 34650: loss: 2.11 grad norm: 25.52 time: 0.145
+2026-08-31 15:29:14,039: Train batch 34700: loss: 1.53 grad norm: 21.90 time: 0.146
+2026-08-31 15:29:25,376: Train batch 34750: loss: 1.73 grad norm: 26.20 time: 0.098
+2026-08-31 15:29:37,211: Train batch 34800: loss: 1.98 grad norm: 27.46 time: 0.121
+2026-08-31 15:29:48,356: Train batch 34850: loss: 1.10 grad norm: 17.87 time: 0.121
+2026-08-31 15:29:59,179: Train batch 34900: loss: 0.81 grad norm: 21.56 time: 0.088
+2026-08-31 15:30:10,501: Train batch 34950: loss: 1.34 grad norm: 31.44 time: 0.116
+2026-08-31 15:30:21,154: Train batch 35000: loss: 1.35 grad norm: 23.10 time: 0.091
+2026-08-31 15:30:31,773: Train batch 35050: loss: 1.92 grad norm: 26.44 time: 0.106
+2026-08-31 15:30:42,974: Train batch 35100: loss: 1.44 grad norm: 28.90 time: 0.098
+2026-08-31 15:30:54,172: Train batch 35150: loss: 1.68 grad norm: 21.52 time: 0.111
+2026-08-31 15:31:05,148: Train batch 35200: loss: 2.35 grad norm: 26.99 time: 0.149
+2026-08-31 15:31:16,183: Train batch 35250: loss: 2.77 grad norm: 33.76 time: 0.106
+2026-08-31 15:31:26,934: Train batch 35300: loss: 1.97 grad norm: 53.06 time: 0.164
+2026-08-31 15:31:37,360: Train batch 35350: loss: 1.14 grad norm: 20.64 time: 0.099
+2026-08-31 15:31:48,050: Train batch 35400: loss: 2.22 grad norm: 33.82 time: 0.102
+2026-08-31 15:31:58,593: Train batch 35450: loss: 1.64 grad norm: 21.20 time: 0.143
+2026-08-31 15:32:09,063: Train batch 35500: loss: 1.48 grad norm: 20.42 time: 0.144
+2026-08-31 15:32:20,934: Train batch 35550: loss: 1.94 grad norm: 26.12 time: 0.091
+2026-08-31 15:32:31,585: Train batch 35600: loss: 2.48 grad norm: 27.11 time: 0.142
+2026-08-31 15:32:42,432: Train batch 35650: loss: 1.55 grad norm: 25.47 time: 0.089
+2026-08-31 15:32:53,357: Train batch 35700: loss: 1.18 grad norm: 20.13 time: 0.100
+2026-08-31 15:33:04,111: Train batch 35750: loss: 0.90 grad norm: 20.68 time: 0.110
+2026-08-31 15:33:14,917: Train batch 35800: loss: 1.00 grad norm: 35.11 time: 0.098
+2026-08-31 15:33:25,674: Train batch 35850: loss: 0.99 grad norm: 18.90 time: 0.123
+2026-08-31 15:33:36,229: Train batch 35900: loss: 1.91 grad norm: 27.86 time: 0.097
+2026-08-31 15:33:47,117: Train batch 35950: loss: 1.77 grad norm: 27.81 time: 0.095
+2026-08-31 15:33:58,144: Train batch 36000: loss: 2.20 grad norm: 26.52 time: 0.161
+2026-08-31 15:33:58,145: Running test after training batch: 36000
+2026-08-31 15:34:01,111: Val batch 36000: PER (avg): 0.2363 CTC Loss (avg): 41.5333 time: 2.967
+2026-08-31 15:34:01,111: t12.2022.04.28 val PER: 0.4139
+2026-08-31 15:34:01,112: t12.2022.05.05 val PER: 0.3310
+2026-08-31 15:34:01,112: t12.2022.05.17 val PER: 0.2780
+2026-08-31 15:34:01,112: t12.2022.05.19 val PER: 0.3893
+2026-08-31 15:34:01,112: t12.2022.05.24 val PER: 0.1874
+2026-08-31 15:34:01,112: t12.2022.05.26 val PER: 0.1746
+2026-08-31 15:34:01,112: t12.2022.06.02 val PER: 0.1996
+2026-08-31 15:34:01,113: t12.2022.06.07 val PER: 0.2504
+2026-08-31 15:34:01,113: t12.2022.06.14 val PER: 0.2048
+2026-08-31 15:34:01,113: t12.2022.06.16 val PER: 0.2750
+2026-08-31 15:34:01,113: t12.2022.06.21 val PER: 0.2371
+2026-08-31 15:34:01,113: t12.2022.06.23 val PER: 0.2656
+2026-08-31 15:34:01,113: t12.2022.06.28 val PER: 0.2435
+2026-08-31 15:34:01,113: t12.2022.07.05 val PER: 0.1971
+2026-08-31 15:34:01,114: t12.2022.07.14 val PER: 0.2123
+2026-08-31 15:34:01,114: t12.2022.07.21 val PER: 0.2031
+2026-08-31 15:34:01,114: t12.2022.07.27 val PER: 0.2053
+2026-08-31 15:34:01,114: t12.2022.07.29 val PER: 0.2458
+2026-08-31 15:34:01,114: t12.2022.08.02 val PER: 0.2095
+2026-08-31 15:34:01,114: t12.2022.08.11 val PER: 0.2004
+2026-08-31 15:34:01,114: t12.2022.08.13 val PER: 0.1709
+2026-08-31 15:34:01,115: t12.2022.08.18 val PER: 0.2202
+2026-08-31 15:34:01,115: t12.2022.08.23 val PER: 0.2104
+2026-08-31 15:34:01,115: t12.2022.08.25 val PER: 0.2562
+2026-08-31 15:34:11,867: Train batch 36050: loss: 1.07 grad norm: 37.82 time: 0.146
+2026-08-31 15:34:22,367: Train batch 36100: loss: 1.20 grad norm: 27.32 time: 0.107
+2026-08-31 15:34:32,922: Train batch 36150: loss: 0.79 grad norm: 43.93 time: 0.096
+2026-08-31 15:34:43,472: Train batch 36200: loss: 1.42 grad norm: 22.34 time: 0.118
+2026-08-31 15:34:54,143: Train batch 36250: loss: 1.31 grad norm: 18.52 time: 0.088
+2026-08-31 15:35:04,644: Train batch 36300: loss: 0.80 grad norm: 16.17 time: 0.114
+2026-08-31 15:35:14,874: Train batch 36350: loss: 2.71 grad norm: 35.71 time: 0.121
+2026-08-31 15:35:25,923: Train batch 36400: loss: 1.63 grad norm: 24.50 time: 0.095
+2026-08-31 15:35:36,563: Train batch 36450: loss: 2.41 grad norm: 28.59 time: 0.151
+2026-08-31 15:35:47,110: Train batch 36500: loss: 1.32 grad norm: 21.28 time: 0.119
+2026-08-31 15:35:57,415: Train batch 36550: loss: 3.16 grad norm: 33.17 time: 0.186
+2026-08-31 15:36:07,582: Train batch 36600: loss: 1.71 grad norm: 40.88 time: 0.092
+2026-08-31 15:36:18,338: Train batch 36650: loss: 0.99 grad norm: 17.02 time: 0.115
+2026-08-31 15:36:28,563: Train batch 36700: loss: 1.66 grad norm: 24.43 time: 0.095
+2026-08-31 15:36:39,187: Train batch 36750: loss: 1.54 grad norm: 21.84 time: 0.128
+2026-08-31 15:36:49,445: Train batch 36800: loss: 0.91 grad norm: 14.62 time: 0.101
+2026-08-31 15:36:59,673: Train batch 36850: loss: 1.46 grad norm: 21.20 time: 0.102
+2026-08-31 15:37:09,968: Train batch 36900: loss: 1.97 grad norm: 24.01 time: 0.100
+2026-08-31 15:37:20,394: Train batch 36950: loss: 1.74 grad norm: 35.38 time: 0.080
+2026-08-31 15:37:30,925: Train batch 37000: loss: 1.34 grad norm: 19.37 time: 0.173
+2026-08-31 15:37:41,112: Train batch 37050: loss: 1.20 grad norm: 17.61 time: 0.092
+2026-08-31 15:37:51,467: Train batch 37100: loss: 1.11 grad norm: 17.79 time: 0.090
+2026-08-31 15:38:01,777: Train batch 37150: loss: 1.02 grad norm: 18.50 time: 0.090
+2026-08-31 15:38:12,193: Train batch 37200: loss: 1.02 grad norm: 16.34 time: 0.113
+2026-08-31 15:38:22,843: Train batch 37250: loss: 0.91 grad norm: 16.78 time: 0.088
+2026-08-31 15:38:33,243: Train batch 37300: loss: 0.99 grad norm: 20.56 time: 0.088
+2026-08-31 15:38:43,808: Train batch 37350: loss: 1.10 grad norm: 24.06 time: 0.105
+2026-08-31 15:38:53,978: Train batch 37400: loss: 1.20 grad norm: 23.28 time: 0.093
+2026-08-31 15:39:04,218: Train batch 37450: loss: 1.16 grad norm: 34.41 time: 0.092
+2026-08-31 15:39:14,423: Train batch 37500: loss: 2.88 grad norm: 49.47 time: 0.122
+2026-08-31 15:39:24,709: Train batch 37550: loss: 1.38 grad norm: 20.95 time: 0.165
+2026-08-31 15:39:34,975: Train batch 37600: loss: 2.25 grad norm: 41.43 time: 0.145
+2026-08-31 15:39:45,103: Train batch 37650: loss: 2.08 grad norm: 47.50 time: 0.133
+2026-08-31 15:39:55,340: Train batch 37700: loss: 1.52 grad norm: 32.31 time: 0.098
+2026-08-31 15:40:05,638: Train batch 37750: loss: 0.89 grad norm: 18.03 time: 0.085
+2026-08-31 15:40:15,971: Train batch 37800: loss: 1.16 grad norm: 38.59 time: 0.112
+2026-08-31 15:40:26,854: Train batch 37850: loss: 1.40 grad norm: 24.25 time: 0.133
+2026-08-31 15:40:37,463: Train batch 37900: loss: 2.13 grad norm: 24.90 time: 0.112
+2026-08-31 15:40:47,756: Train batch 37950: loss: 0.96 grad norm: 16.82 time: 0.109
+2026-08-31 15:40:57,844: Train batch 38000: loss: 0.64 grad norm: 15.06 time: 0.091
+2026-08-31 15:40:57,845: Running test after training batch: 38000
+2026-08-31 15:41:00,606: Val batch 38000: PER (avg): 0.2354 CTC Loss (avg): 41.7977 time: 2.762
+2026-08-31 15:41:00,606: t12.2022.04.28 val PER: 0.4105
+2026-08-31 15:41:00,606: t12.2022.05.05 val PER: 0.3379
+2026-08-31 15:41:00,606: t12.2022.05.17 val PER: 0.2939
+2026-08-31 15:41:00,607: t12.2022.05.19 val PER: 0.3846
+2026-08-31 15:41:00,607: t12.2022.05.24 val PER: 0.1722
+2026-08-31 15:41:00,607: t12.2022.05.26 val PER: 0.1812
+2026-08-31 15:41:00,607: t12.2022.06.02 val PER: 0.1939
+2026-08-31 15:41:00,607: t12.2022.06.07 val PER: 0.2442
+2026-08-31 15:41:00,607: t12.2022.06.14 val PER: 0.2104
+2026-08-31 15:41:00,607: t12.2022.06.16 val PER: 0.2800
+2026-08-31 15:41:00,608: t12.2022.06.21 val PER: 0.2450
+2026-08-31 15:41:00,608: t12.2022.06.23 val PER: 0.2592
+2026-08-31 15:41:00,608: t12.2022.06.28 val PER: 0.2444
+2026-08-31 15:41:00,608: t12.2022.07.05 val PER: 0.1982
+2026-08-31 15:41:00,608: t12.2022.07.14 val PER: 0.2203
+2026-08-31 15:41:00,608: t12.2022.07.21 val PER: 0.1995
+2026-08-31 15:41:00,608: t12.2022.07.27 val PER: 0.1989
+2026-08-31 15:41:00,609: t12.2022.07.29 val PER: 0.2359
+2026-08-31 15:41:00,609: t12.2022.08.02 val PER: 0.1962
+2026-08-31 15:41:00,609: t12.2022.08.11 val PER: 0.1955
+2026-08-31 15:41:00,609: t12.2022.08.13 val PER: 0.1779
+2026-08-31 15:41:00,609: t12.2022.08.18 val PER: 0.2165
+2026-08-31 15:41:00,610: t12.2022.08.23 val PER: 0.2187
+2026-08-31 15:41:00,610: t12.2022.08.25 val PER: 0.2469
+2026-08-31 15:41:10,747: Train batch 38050: loss: 2.04 grad norm: 40.76 time: 0.106
+2026-08-31 15:41:21,122: Train batch 38100: loss: 1.61 grad norm: 29.41 time: 0.170
+2026-08-31 15:41:31,761: Train batch 38150: loss: 1.34 grad norm: 27.31 time: 0.129
+2026-08-31 15:41:42,493: Train batch 38200: loss: 1.72 grad norm: 27.14 time: 0.144
+2026-08-31 15:41:53,106: Train batch 38250: loss: 0.79 grad norm: 16.92 time: 0.107
+2026-08-31 15:42:04,653: Train batch 38300: loss: 2.25 grad norm: 26.41 time: 0.147
+2026-08-31 15:42:15,878: Train batch 38350: loss: 1.21 grad norm: 20.39 time: 0.102
+2026-08-31 15:42:26,464: Train batch 38400: loss: 1.35 grad norm: 24.48 time: 0.118
+2026-08-31 15:42:36,874: Train batch 38450: loss: 2.57 grad norm: 33.47 time: 0.144
+2026-08-31 15:42:47,210: Train batch 38500: loss: 0.89 grad norm: 16.78 time: 0.090
+2026-08-31 15:42:57,525: Train batch 38550: loss: 0.85 grad norm: 13.88 time: 0.091
+2026-08-31 15:43:07,819: Train batch 38600: loss: 0.84 grad norm: 16.49 time: 0.091
+2026-08-31 15:43:18,251: Train batch 38650: loss: 2.70 grad norm: 34.67 time: 0.150
+2026-08-31 15:43:28,383: Train batch 38700: loss: 1.15 grad norm: 26.19 time: 0.112
+2026-08-31 15:43:38,950: Train batch 38750: loss: 1.89 grad norm: 24.26 time: 0.145
+2026-08-31 15:43:49,873: Train batch 38800: loss: 0.99 grad norm: 18.64 time: 0.113
+2026-08-31 15:44:00,937: Train batch 38850: loss: 1.47 grad norm: 22.36 time: 0.094
+2026-08-31 15:44:11,141: Train batch 38900: loss: 1.15 grad norm: 18.63 time: 0.092
+2026-08-31 15:44:21,707: Train batch 38950: loss: 1.40 grad norm: 37.72 time: 0.146
+2026-08-31 15:44:32,116: Train batch 39000: loss: 1.51 grad norm: 22.38 time: 0.158
+2026-08-31 15:44:42,277: Train batch 39050: loss: 1.65 grad norm: 26.81 time: 0.089
+2026-08-31 15:44:52,543: Train batch 39100: loss: 1.70 grad norm: 31.23 time: 0.080
+2026-08-31 15:45:02,621: Train batch 39150: loss: 1.80 grad norm: 23.70 time: 0.091
+2026-08-31 15:45:12,854: Train batch 39200: loss: 1.25 grad norm: 20.58 time: 0.128
+2026-08-31 15:45:22,956: Train batch 39250: loss: 1.77 grad norm: 31.48 time: 0.084
+2026-08-31 15:45:33,392: Train batch 39300: loss: 0.98 grad norm: 24.77 time: 0.131
+2026-08-31 15:45:43,895: Train batch 39350: loss: 1.24 grad norm: 22.47 time: 0.144
+2026-08-31 15:45:54,452: Train batch 39400: loss: 1.29 grad norm: 27.87 time: 0.104
+2026-08-31 15:46:04,987: Train batch 39450: loss: 0.86 grad norm: 17.74 time: 0.103
+2026-08-31 15:46:16,283: Train batch 39500: loss: 0.65 grad norm: 17.28 time: 0.105
+2026-08-31 15:46:27,489: Train batch 39550: loss: 1.10 grad norm: 21.79 time: 0.098
+2026-08-31 15:46:37,973: Train batch 39600: loss: 1.54 grad norm: 27.72 time: 0.099
+2026-08-31 15:46:48,714: Train batch 39650: loss: 0.84 grad norm: 18.86 time: 0.099
+2026-08-31 15:47:00,101: Train batch 39700: loss: 1.93 grad norm: 56.44 time: 0.149
+2026-08-31 15:47:11,365: Train batch 39750: loss: 1.37 grad norm: 21.04 time: 0.118
+2026-08-31 15:47:21,896: Train batch 39800: loss: 1.46 grad norm: 30.58 time: 0.161
+2026-08-31 15:47:32,558: Train batch 39850: loss: 1.63 grad norm: 27.23 time: 0.092
+2026-08-31 15:47:43,269: Train batch 39900: loss: 1.04 grad norm: 25.12 time: 0.093
+2026-08-31 15:47:53,796: Train batch 39950: loss: 1.59 grad norm: 26.96 time: 0.163
+2026-08-31 15:48:04,492: Train batch 40000: loss: 1.30 grad norm: 24.28 time: 0.081
+2026-08-31 15:48:04,492: Running test after training batch: 40000
+2026-08-31 15:48:07,390: Val batch 40000: PER (avg): 0.2332 CTC Loss (avg): 42.2338 time: 2.897
+2026-08-31 15:48:07,391: t12.2022.04.28 val PER: 0.3982
+2026-08-31 15:48:07,391: t12.2022.05.05 val PER: 0.3287
+2026-08-31 15:48:07,391: t12.2022.05.17 val PER: 0.2827
+2026-08-31 15:48:07,391: t12.2022.05.19 val PER: 0.3878
+2026-08-31 15:48:07,392: t12.2022.05.24 val PER: 0.1803
+2026-08-31 15:48:07,392: t12.2022.05.26 val PER: 0.1822
+2026-08-31 15:48:07,392: t12.2022.06.02 val PER: 0.1958
+2026-08-31 15:48:07,392: t12.2022.06.07 val PER: 0.2389
+2026-08-31 15:48:07,392: t12.2022.06.14 val PER: 0.2000
+2026-08-31 15:48:07,392: t12.2022.06.16 val PER: 0.2717
+2026-08-31 15:48:07,392: t12.2022.06.21 val PER: 0.2406
+2026-08-31 15:48:07,392: t12.2022.06.23 val PER: 0.2564
+2026-08-31 15:48:07,392: t12.2022.06.28 val PER: 0.2435
+2026-08-31 15:48:07,393: t12.2022.07.05 val PER: 0.1869
+2026-08-31 15:48:07,393: t12.2022.07.14 val PER: 0.2168
+2026-08-31 15:48:07,393: t12.2022.07.21 val PER: 0.2013
+2026-08-31 15:48:07,393: t12.2022.07.27 val PER: 0.1894
+2026-08-31 15:48:07,393: t12.2022.07.29 val PER: 0.2409
+2026-08-31 15:48:07,393: t12.2022.08.02 val PER: 0.1918
+2026-08-31 15:48:07,393: t12.2022.08.11 val PER: 0.2014
+2026-08-31 15:48:07,393: t12.2022.08.13 val PER: 0.1769
+2026-08-31 15:48:07,393: t12.2022.08.18 val PER: 0.2212
+2026-08-31 15:48:07,393: t12.2022.08.23 val PER: 0.2141
+2026-08-31 15:48:07,394: t12.2022.08.25 val PER: 0.2583
+2026-08-31 15:48:07,394: New best test PER 0.2343 --> 0.2332
+2026-08-31 15:48:07,394: Checkpointing model
+2026-08-31 15:48:09,400: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 15:48:20,434: Train batch 40050: loss: 1.18 grad norm: 33.25 time: 0.112
+2026-08-31 15:48:31,333: Train batch 40100: loss: 1.32 grad norm: 22.92 time: 0.144
+2026-08-31 15:48:41,751: Train batch 40150: loss: 2.54 grad norm: 29.95 time: 0.138
+2026-08-31 15:48:52,497: Train batch 40200: loss: 1.47 grad norm: 21.57 time: 0.092
+2026-08-31 15:49:03,459: Train batch 40250: loss: 0.86 grad norm: 20.25 time: 0.092
+2026-08-31 15:49:14,265: Train batch 40300: loss: 1.66 grad norm: 24.12 time: 0.169
+2026-08-31 15:49:25,194: Train batch 40350: loss: 1.30 grad norm: 20.51 time: 0.118
+2026-08-31 15:49:36,160: Train batch 40400: loss: 1.71 grad norm: 22.36 time: 0.172
+2026-08-31 15:49:47,218: Train batch 40450: loss: 1.46 grad norm: 19.32 time: 0.164
+2026-08-31 15:49:58,765: Train batch 40500: loss: 0.88 grad norm: 17.53 time: 0.101
+2026-08-31 15:50:09,661: Train batch 40550: loss: 0.96 grad norm: 16.27 time: 0.091
+2026-08-31 15:50:20,334: Train batch 40600: loss: 0.77 grad norm: 16.95 time: 0.092
+2026-08-31 15:50:31,080: Train batch 40650: loss: 1.02 grad norm: 20.54 time: 0.107
+2026-08-31 15:50:42,228: Train batch 40700: loss: 0.80 grad norm: 25.10 time: 0.099
+2026-08-31 15:50:53,051: Train batch 40750: loss: 1.12 grad norm: 25.17 time: 0.100
+2026-08-31 15:51:03,656: Train batch 40800: loss: 1.39 grad norm: 20.81 time: 0.099
+2026-08-31 15:51:14,804: Train batch 40850: loss: 1.52 grad norm: 26.39 time: 0.098
+2026-08-31 15:51:25,923: Train batch 40900: loss: 1.73 grad norm: 22.98 time: 0.162
+2026-08-31 15:51:37,130: Train batch 40950: loss: 0.83 grad norm: 25.04 time: 0.111
+2026-08-31 15:51:48,123: Train batch 41000: loss: 1.13 grad norm: 19.98 time: 0.111
+2026-08-31 15:51:58,594: Train batch 41050: loss: 1.30 grad norm: 24.30 time: 0.149
+2026-08-31 15:52:09,577: Train batch 41100: loss: 1.84 grad norm: 26.59 time: 0.121
+2026-08-31 15:52:20,105: Train batch 41150: loss: 1.11 grad norm: 17.60 time: 0.081
+2026-08-31 15:52:30,707: Train batch 41200: loss: 1.11 grad norm: 19.15 time: 0.110
+2026-08-31 15:52:41,218: Train batch 41250: loss: 1.08 grad norm: 21.54 time: 0.123
+2026-08-31 15:52:51,688: Train batch 41300: loss: 2.21 grad norm: 31.04 time: 0.138
+2026-08-31 15:53:02,193: Train batch 41350: loss: 1.59 grad norm: 23.34 time: 0.160
+2026-08-31 15:53:12,695: Train batch 41400: loss: 0.97 grad norm: 21.99 time: 0.092
+2026-08-31 15:53:23,503: Train batch 41450: loss: 1.03 grad norm: 42.04 time: 0.083
+2026-08-31 15:53:33,668: Train batch 41500: loss: 1.03 grad norm: 18.61 time: 0.093
+2026-08-31 15:53:44,200: Train batch 41550: loss: 1.58 grad norm: 23.70 time: 0.149
+2026-08-31 15:53:54,550: Train batch 41600: loss: 1.02 grad norm: 16.37 time: 0.108
+2026-08-31 15:54:04,889: Train batch 41650: loss: 1.37 grad norm: 47.87 time: 0.107
+2026-08-31 15:54:15,407: Train batch 41700: loss: 0.65 grad norm: 14.46 time: 0.090
+2026-08-31 15:54:25,479: Train batch 41750: loss: 0.99 grad norm: 21.48 time: 0.107
+2026-08-31 15:54:35,555: Train batch 41800: loss: 0.69 grad norm: 16.64 time: 0.110
+2026-08-31 15:54:45,741: Train batch 41850: loss: 1.63 grad norm: 24.98 time: 0.142
+2026-08-31 15:54:55,822: Train batch 41900: loss: 1.25 grad norm: 34.31 time: 0.109
+2026-08-31 15:55:06,022: Train batch 41950: loss: 2.14 grad norm: 29.11 time: 0.170
+2026-08-31 15:55:16,208: Train batch 42000: loss: 2.12 grad norm: 38.42 time: 0.147
+2026-08-31 15:55:16,208: Running test after training batch: 42000
+2026-08-31 15:55:18,945: Val batch 42000: PER (avg): 0.2342 CTC Loss (avg): 43.0439 time: 2.737
+2026-08-31 15:55:18,945: t12.2022.04.28 val PER: 0.4083
+2026-08-31 15:55:18,945: t12.2022.05.05 val PER: 0.3322
+2026-08-31 15:55:18,945: t12.2022.05.17 val PER: 0.2891
+2026-08-31 15:55:18,946: t12.2022.05.19 val PER: 0.3815
+2026-08-31 15:55:18,946: t12.2022.05.24 val PER: 0.1758
+2026-08-31 15:55:18,946: t12.2022.05.26 val PER: 0.1774
+2026-08-31 15:55:18,946: t12.2022.06.02 val PER: 0.2015
+2026-08-31 15:55:18,946: t12.2022.06.07 val PER: 0.2487
+2026-08-31 15:55:18,946: t12.2022.06.14 val PER: 0.2008
+2026-08-31 15:55:18,947: t12.2022.06.16 val PER: 0.2667
+2026-08-31 15:55:18,947: t12.2022.06.21 val PER: 0.2380
+2026-08-31 15:55:18,947: t12.2022.06.23 val PER: 0.2583
+2026-08-31 15:55:18,947: t12.2022.06.28 val PER: 0.2444
+2026-08-31 15:55:18,947: t12.2022.07.05 val PER: 0.2027
+2026-08-31 15:55:18,947: t12.2022.07.14 val PER: 0.2186
+2026-08-31 15:55:18,947: t12.2022.07.21 val PER: 0.1995
+2026-08-31 15:55:18,948: t12.2022.07.27 val PER: 0.2021
+2026-08-31 15:55:18,948: t12.2022.07.29 val PER: 0.2399
+2026-08-31 15:55:18,948: t12.2022.08.02 val PER: 0.2151
+2026-08-31 15:55:18,948: t12.2022.08.11 val PER: 0.1974
+2026-08-31 15:55:18,948: t12.2022.08.13 val PER: 0.1749
+2026-08-31 15:55:18,948: t12.2022.08.18 val PER: 0.2071
+2026-08-31 15:55:18,948: t12.2022.08.23 val PER: 0.2057
+2026-08-31 15:55:18,949: t12.2022.08.25 val PER: 0.2531
+2026-08-31 15:55:29,157: Train batch 42050: loss: 1.46 grad norm: 24.05 time: 0.140
+2026-08-31 15:55:39,325: Train batch 42100: loss: 1.72 grad norm: 23.26 time: 0.135
+2026-08-31 15:55:49,329: Train batch 42150: loss: 0.60 grad norm: 42.29 time: 0.089
+2026-08-31 15:56:00,074: Train batch 42200: loss: 1.46 grad norm: 25.09 time: 0.100
+2026-08-31 15:56:10,036: Train batch 42250: loss: 0.85 grad norm: 17.41 time: 0.096
+2026-08-31 15:56:20,329: Train batch 42300: loss: 0.83 grad norm: 15.05 time: 0.083
+2026-08-31 15:56:30,643: Train batch 42350: loss: 1.19 grad norm: 21.36 time: 0.105
+2026-08-31 15:56:41,408: Train batch 42400: loss: 1.57 grad norm: 37.12 time: 0.161
+2026-08-31 15:56:52,006: Train batch 42450: loss: 1.00 grad norm: 19.26 time: 0.182
+2026-08-31 15:57:02,680: Train batch 42500: loss: 1.17 grad norm: 24.77 time: 0.141
+2026-08-31 15:57:13,365: Train batch 42550: loss: 1.28 grad norm: 27.43 time: 0.101
+2026-08-31 15:57:23,790: Train batch 42600: loss: 1.74 grad norm: 25.64 time: 0.150
+2026-08-31 15:57:33,707: Train batch 42650: loss: 1.31 grad norm: 18.12 time: 0.094
+2026-08-31 15:57:43,803: Train batch 42700: loss: 1.52 grad norm: 35.38 time: 0.133
+2026-08-31 15:57:54,164: Train batch 42750: loss: 1.19 grad norm: 23.24 time: 0.087
+2026-08-31 15:58:04,347: Train batch 42800: loss: 1.49 grad norm: 42.99 time: 0.108
+2026-08-31 15:58:14,825: Train batch 42850: loss: 1.18 grad norm: 20.15 time: 0.120
+2026-08-31 15:58:24,840: Train batch 42900: loss: 0.91 grad norm: 18.57 time: 0.098
+2026-08-31 15:58:34,976: Train batch 42950: loss: 1.16 grad norm: 21.99 time: 0.109
+2026-08-31 15:58:45,335: Train batch 43000: loss: 1.45 grad norm: 21.74 time: 0.093
+2026-08-31 15:58:55,584: Train batch 43050: loss: 0.68 grad norm: 12.41 time: 0.084
+2026-08-31 15:59:05,794: Train batch 43100: loss: 2.71 grad norm: 64.82 time: 0.148
+2026-08-31 15:59:16,574: Train batch 43150: loss: 1.48 grad norm: 24.41 time: 0.118
+2026-08-31 15:59:27,313: Train batch 43200: loss: 1.12 grad norm: 21.03 time: 0.107
+2026-08-31 15:59:37,718: Train batch 43250: loss: 0.85 grad norm: 21.95 time: 0.084
+2026-08-31 15:59:48,578: Train batch 43300: loss: 0.98 grad norm: 16.97 time: 0.147
+2026-08-31 15:59:59,207: Train batch 43350: loss: 0.86 grad norm: 14.70 time: 0.096
+2026-08-31 16:00:10,096: Train batch 43400: loss: 1.24 grad norm: 17.32 time: 0.120
+2026-08-31 16:00:20,524: Train batch 43450: loss: 1.38 grad norm: 21.10 time: 0.147
+2026-08-31 16:00:31,925: Train batch 43500: loss: 0.87 grad norm: 15.76 time: 0.100
+2026-08-31 16:00:42,602: Train batch 43550: loss: 0.76 grad norm: 18.24 time: 0.093
+2026-08-31 16:00:53,504: Train batch 43600: loss: 1.16 grad norm: 18.74 time: 0.148
+2026-08-31 16:01:03,600: Train batch 43650: loss: 0.54 grad norm: 14.23 time: 0.088
+2026-08-31 16:01:13,723: Train batch 43700: loss: 0.64 grad norm: 12.67 time: 0.085
+2026-08-31 16:01:24,091: Train batch 43750: loss: 2.04 grad norm: 30.76 time: 0.154
+2026-08-31 16:01:33,836: Train batch 43800: loss: 0.65 grad norm: 15.15 time: 0.095
+2026-08-31 16:01:44,225: Train batch 43850: loss: 0.64 grad norm: 13.22 time: 0.088
+2026-08-31 16:01:54,648: Train batch 43900: loss: 1.81 grad norm: 22.81 time: 0.145
+2026-08-31 16:02:04,643: Train batch 43950: loss: 1.35 grad norm: 23.86 time: 0.083
+2026-08-31 16:02:14,839: Train batch 44000: loss: 0.64 grad norm: 17.58 time: 0.107
+2026-08-31 16:02:14,840: Running test after training batch: 44000
+2026-08-31 16:02:17,637: Val batch 44000: PER (avg): 0.2344 CTC Loss (avg): 42.5157 time: 2.797
+2026-08-31 16:02:17,637: t12.2022.04.28 val PER: 0.4004
+2026-08-31 16:02:17,638: t12.2022.05.05 val PER: 0.3276
+2026-08-31 16:02:17,638: t12.2022.05.17 val PER: 0.2939
+2026-08-31 16:02:17,638: t12.2022.05.19 val PER: 0.3893
+2026-08-31 16:02:17,638: t12.2022.05.24 val PER: 0.1776
+2026-08-31 16:02:17,638: t12.2022.05.26 val PER: 0.1717
+2026-08-31 16:02:17,638: t12.2022.06.02 val PER: 0.2015
+2026-08-31 16:02:17,638: t12.2022.06.07 val PER: 0.2415
+2026-08-31 16:02:17,638: t12.2022.06.14 val PER: 0.2072
+2026-08-31 16:02:17,638: t12.2022.06.16 val PER: 0.2692
+2026-08-31 16:02:17,638: t12.2022.06.21 val PER: 0.2432
+2026-08-31 16:02:17,639: t12.2022.06.23 val PER: 0.2537
+2026-08-31 16:02:17,639: t12.2022.06.28 val PER: 0.2463
+2026-08-31 16:02:17,639: t12.2022.07.05 val PER: 0.1959
+2026-08-31 16:02:17,639: t12.2022.07.14 val PER: 0.2203
+2026-08-31 16:02:17,639: t12.2022.07.21 val PER: 0.1968
+2026-08-31 16:02:17,639: t12.2022.07.27 val PER: 0.2000
+2026-08-31 16:02:17,639: t12.2022.07.29 val PER: 0.2369
+2026-08-31 16:02:17,639: t12.2022.08.02 val PER: 0.1951
+2026-08-31 16:02:17,639: t12.2022.08.11 val PER: 0.1955
+2026-08-31 16:02:17,639: t12.2022.08.13 val PER: 0.1899
+2026-08-31 16:02:17,640: t12.2022.08.18 val PER: 0.2231
+2026-08-31 16:02:17,640: t12.2022.08.23 val PER: 0.2085
+2026-08-31 16:02:17,640: t12.2022.08.25 val PER: 0.2542
+2026-08-31 16:02:27,814: Train batch 44050: loss: 1.44 grad norm: 23.66 time: 0.141
+2026-08-31 16:02:38,211: Train batch 44100: loss: 0.77 grad norm: 17.59 time: 0.129
+2026-08-31 16:02:48,688: Train batch 44150: loss: 1.01 grad norm: 33.39 time: 0.098
+2026-08-31 16:02:59,905: Train batch 44200: loss: 1.09 grad norm: 17.75 time: 0.107
+2026-08-31 16:03:10,838: Train batch 44250: loss: 1.06 grad norm: 17.18 time: 0.150
+2026-08-31 16:03:22,114: Train batch 44300: loss: 1.12 grad norm: 29.14 time: 0.099
+2026-08-31 16:03:33,456: Train batch 44350: loss: 1.18 grad norm: 33.29 time: 0.100
+2026-08-31 16:03:44,036: Train batch 44400: loss: 1.05 grad norm: 17.53 time: 0.096
+2026-08-31 16:03:54,157: Train batch 44450: loss: 1.21 grad norm: 25.79 time: 0.089
+2026-08-31 16:04:04,628: Train batch 44500: loss: 1.72 grad norm: 27.06 time: 0.144
+2026-08-31 16:04:14,978: Train batch 44550: loss: 1.38 grad norm: 24.92 time: 0.156
+2026-08-31 16:04:25,276: Train batch 44600: loss: 0.92 grad norm: 16.32 time: 0.100
+2026-08-31 16:04:35,770: Train batch 44650: loss: 0.55 grad norm: 13.96 time: 0.083
+2026-08-31 16:04:46,201: Train batch 44700: loss: 0.99 grad norm: 16.58 time: 0.095
+2026-08-31 16:04:56,440: Train batch 44750: loss: 1.58 grad norm: 23.68 time: 0.149
+2026-08-31 16:05:06,456: Train batch 44800: loss: 2.27 grad norm: 31.44 time: 0.133
+2026-08-31 16:05:16,808: Train batch 44850: loss: 0.75 grad norm: 15.88 time: 0.107
+2026-08-31 16:05:27,311: Train batch 44900: loss: 0.81 grad norm: 22.77 time: 0.080
+2026-08-31 16:05:37,727: Train batch 44950: loss: 0.81 grad norm: 15.02 time: 0.095
+2026-08-31 16:05:48,222: Train batch 45000: loss: 0.82 grad norm: 15.43 time: 0.098
+2026-08-31 16:05:58,761: Train batch 45050: loss: 0.80 grad norm: 15.20 time: 0.094
+2026-08-31 16:06:08,867: Train batch 45100: loss: 2.06 grad norm: 29.67 time: 0.148
+2026-08-31 16:06:19,024: Train batch 45150: loss: 1.58 grad norm: 21.55 time: 0.147
+2026-08-31 16:06:29,323: Train batch 45200: loss: 1.54 grad norm: 25.02 time: 0.147
+2026-08-31 16:06:39,824: Train batch 45250: loss: 1.41 grad norm: 23.06 time: 0.095
+2026-08-31 16:06:49,993: Train batch 45300: loss: 0.73 grad norm: 13.83 time: 0.103
+2026-08-31 16:07:00,238: Train batch 45350: loss: 0.78 grad norm: 14.70 time: 0.098
+2026-08-31 16:07:10,232: Train batch 45400: loss: 1.87 grad norm: 26.03 time: 0.152
+2026-08-31 16:07:20,301: Train batch 45450: loss: 1.39 grad norm: 20.58 time: 0.158
+2026-08-31 16:07:30,461: Train batch 45500: loss: 0.97 grad norm: 17.00 time: 0.110
+2026-08-31 16:07:40,434: Train batch 45550: loss: 0.61 grad norm: 15.68 time: 0.101
+2026-08-31 16:07:51,257: Train batch 45600: loss: 1.57 grad norm: 25.97 time: 0.148
+2026-08-31 16:08:01,419: Train batch 45650: loss: 0.89 grad norm: 16.97 time: 0.099
+2026-08-31 16:08:11,929: Train batch 45700: loss: 0.70 grad norm: 32.25 time: 0.082
+2026-08-31 16:08:22,168: Train batch 45750: loss: 0.89 grad norm: 21.07 time: 0.100
+2026-08-31 16:08:32,414: Train batch 45800: loss: 0.57 grad norm: 13.49 time: 0.123
+2026-08-31 16:08:42,651: Train batch 45850: loss: 1.00 grad norm: 22.56 time: 0.098
+2026-08-31 16:08:52,787: Train batch 45900: loss: 1.17 grad norm: 27.70 time: 0.132
+2026-08-31 16:09:02,967: Train batch 45950: loss: 1.08 grad norm: 26.66 time: 0.093
+2026-08-31 16:09:12,886: Train batch 46000: loss: 1.01 grad norm: 20.76 time: 0.098
+2026-08-31 16:09:12,886: Running test after training batch: 46000
+2026-08-31 16:09:15,666: Val batch 46000: PER (avg): 0.2339 CTC Loss (avg): 42.8492 time: 2.780
+2026-08-31 16:09:15,666: t12.2022.04.28 val PER: 0.4083
+2026-08-31 16:09:15,666: t12.2022.05.05 val PER: 0.3310
+2026-08-31 16:09:15,666: t12.2022.05.17 val PER: 0.2875
+2026-08-31 16:09:15,666: t12.2022.05.19 val PER: 0.3799
+2026-08-31 16:09:15,667: t12.2022.05.24 val PER: 0.1758
+2026-08-31 16:09:15,667: t12.2022.05.26 val PER: 0.1679
+2026-08-31 16:09:15,667: t12.2022.06.02 val PER: 0.1968
+2026-08-31 16:09:15,667: t12.2022.06.07 val PER: 0.2496
+2026-08-31 16:09:15,667: t12.2022.06.14 val PER: 0.2088
+2026-08-31 16:09:15,667: t12.2022.06.16 val PER: 0.2742
+2026-08-31 16:09:15,667: t12.2022.06.21 val PER: 0.2388
+2026-08-31 16:09:15,667: t12.2022.06.23 val PER: 0.2610
+2026-08-31 16:09:15,667: t12.2022.06.28 val PER: 0.2426
+2026-08-31 16:09:15,667: t12.2022.07.05 val PER: 0.1993
+2026-08-31 16:09:15,668: t12.2022.07.14 val PER: 0.2177
+2026-08-31 16:09:15,668: t12.2022.07.21 val PER: 0.1995
+2026-08-31 16:09:15,668: t12.2022.07.27 val PER: 0.2053
+2026-08-31 16:09:15,668: t12.2022.07.29 val PER: 0.2290
+2026-08-31 16:09:15,668: t12.2022.08.02 val PER: 0.1929
+2026-08-31 16:09:15,668: t12.2022.08.11 val PER: 0.2024
+2026-08-31 16:09:15,668: t12.2022.08.13 val PER: 0.1779
+2026-08-31 16:09:15,668: t12.2022.08.18 val PER: 0.2202
+2026-08-31 16:09:15,668: t12.2022.08.23 val PER: 0.2002
+2026-08-31 16:09:15,668: t12.2022.08.25 val PER: 0.2573
+2026-08-31 16:09:26,121: Train batch 46050: loss: 0.81 grad norm: 18.25 time: 0.090
+2026-08-31 16:09:36,778: Train batch 46100: loss: 1.65 grad norm: 26.83 time: 0.151
+2026-08-31 16:09:47,409: Train batch 46150: loss: 1.05 grad norm: 21.52 time: 0.124
+2026-08-31 16:09:57,586: Train batch 46200: loss: 1.30 grad norm: 20.55 time: 0.150
+2026-08-31 16:10:07,832: Train batch 46250: loss: 0.89 grad norm: 17.26 time: 0.083
+2026-08-31 16:10:17,921: Train batch 46300: loss: 0.87 grad norm: 18.20 time: 0.088
+2026-08-31 16:10:28,044: Train batch 46350: loss: 0.51 grad norm: 10.96 time: 0.099
+2026-08-31 16:10:38,265: Train batch 46400: loss: 1.02 grad norm: 19.64 time: 0.093
+2026-08-31 16:10:48,720: Train batch 46450: loss: 1.43 grad norm: 23.78 time: 0.172
+2026-08-31 16:10:59,404: Train batch 46500: loss: 1.24 grad norm: 29.72 time: 0.140
+2026-08-31 16:11:09,936: Train batch 46550: loss: 1.03 grad norm: 17.46 time: 0.121
+2026-08-31 16:11:21,214: Train batch 46600: loss: 1.30 grad norm: 21.20 time: 0.142
+2026-08-31 16:11:32,153: Train batch 46650: loss: 1.04 grad norm: 20.36 time: 0.175
+2026-08-31 16:11:42,775: Train batch 46700: loss: 0.73 grad norm: 16.89 time: 0.131
+2026-08-31 16:11:52,875: Train batch 46750: loss: 0.81 grad norm: 17.76 time: 0.097
+2026-08-31 16:12:03,258: Train batch 46800: loss: 1.07 grad norm: 19.21 time: 0.093
+2026-08-31 16:12:13,714: Train batch 46850: loss: 1.60 grad norm: 34.27 time: 0.147
+2026-08-31 16:12:24,306: Train batch 46900: loss: 0.79 grad norm: 17.30 time: 0.099
+2026-08-31 16:12:34,746: Train batch 46950: loss: 0.52 grad norm: 12.16 time: 0.093
+2026-08-31 16:12:45,527: Train batch 47000: loss: 0.83 grad norm: 16.01 time: 0.095
+2026-08-31 16:12:55,794: Train batch 47050: loss: 0.55 grad norm: 16.69 time: 0.085
+2026-08-31 16:13:05,642: Train batch 47100: loss: 1.64 grad norm: 26.23 time: 0.094
+2026-08-31 16:13:15,831: Train batch 47150: loss: 0.83 grad norm: 13.71 time: 0.118
+2026-08-31 16:13:26,002: Train batch 47200: loss: 0.89 grad norm: 16.73 time: 0.088
+2026-08-31 16:13:35,975: Train batch 47250: loss: 0.62 grad norm: 14.09 time: 0.091
+2026-08-31 16:13:46,128: Train batch 47300: loss: 0.80 grad norm: 20.25 time: 0.101
+2026-08-31 16:13:56,293: Train batch 47350: loss: 1.06 grad norm: 19.95 time: 0.141
+2026-08-31 16:14:06,481: Train batch 47400: loss: 0.89 grad norm: 17.06 time: 0.150
+2026-08-31 16:14:16,434: Train batch 47450: loss: 1.20 grad norm: 26.92 time: 0.087
+2026-08-31 16:14:26,775: Train batch 47500: loss: 1.46 grad norm: 24.26 time: 0.145
+2026-08-31 16:14:36,974: Train batch 47550: loss: 0.76 grad norm: 17.58 time: 0.080
+2026-08-31 16:14:47,401: Train batch 47600: loss: 1.22 grad norm: 25.66 time: 0.093
+2026-08-31 16:14:58,130: Train batch 47650: loss: 0.63 grad norm: 13.37 time: 0.143
+2026-08-31 16:15:08,380: Train batch 47700: loss: 0.83 grad norm: 16.81 time: 0.099
+2026-08-31 16:15:18,484: Train batch 47750: loss: 0.37 grad norm: 16.84 time: 0.085
+2026-08-31 16:15:29,590: Train batch 47800: loss: 1.03 grad norm: 21.67 time: 0.098
+2026-08-31 16:15:41,431: Train batch 47850: loss: 0.76 grad norm: 22.49 time: 0.103
+2026-08-31 16:15:53,016: Train batch 47900: loss: 0.50 grad norm: 10.64 time: 0.132
+2026-08-31 16:16:04,173: Train batch 47950: loss: 0.67 grad norm: 12.26 time: 0.111
+2026-08-31 16:16:15,255: Train batch 48000: loss: 0.57 grad norm: 74.47 time: 0.098
+2026-08-31 16:16:15,256: Running test after training batch: 48000
+2026-08-31 16:16:18,104: Val batch 48000: PER (avg): 0.2329 CTC Loss (avg): 42.9089 time: 2.848
+2026-08-31 16:16:18,104: t12.2022.04.28 val PER: 0.4105
+2026-08-31 16:16:18,104: t12.2022.05.05 val PER: 0.3391
+2026-08-31 16:16:18,104: t12.2022.05.17 val PER: 0.2812
+2026-08-31 16:16:18,104: t12.2022.05.19 val PER: 0.3846
+2026-08-31 16:16:18,104: t12.2022.05.24 val PER: 0.1776
+2026-08-31 16:16:18,104: t12.2022.05.26 val PER: 0.1613
+2026-08-31 16:16:18,104: t12.2022.06.02 val PER: 0.1968
+2026-08-31 16:16:18,104: t12.2022.06.07 val PER: 0.2496
+2026-08-31 16:16:18,106: t12.2022.06.14 val PER: 0.2112
+2026-08-31 16:16:18,106: t12.2022.06.16 val PER: 0.2700
+2026-08-31 16:16:18,106: t12.2022.06.21 val PER: 0.2406
+2026-08-31 16:16:18,106: t12.2022.06.23 val PER: 0.2537
+2026-08-31 16:16:18,106: t12.2022.06.28 val PER: 0.2398
+2026-08-31 16:16:18,106: t12.2022.07.05 val PER: 0.2016
+2026-08-31 16:16:18,106: t12.2022.07.14 val PER: 0.2194
+2026-08-31 16:16:18,106: t12.2022.07.21 val PER: 0.2022
+2026-08-31 16:16:18,106: t12.2022.07.27 val PER: 0.1979
+2026-08-31 16:16:18,106: t12.2022.07.29 val PER: 0.2300
+2026-08-31 16:16:18,107: t12.2022.08.02 val PER: 0.1907
+2026-08-31 16:16:18,107: t12.2022.08.11 val PER: 0.2024
+2026-08-31 16:16:18,107: t12.2022.08.13 val PER: 0.1678
+2026-08-31 16:16:18,107: t12.2022.08.18 val PER: 0.2090
+2026-08-31 16:16:18,107: t12.2022.08.23 val PER: 0.2030
+2026-08-31 16:16:18,107: t12.2022.08.25 val PER: 0.2604
+2026-08-31 16:16:18,107: New best test PER 0.2332 --> 0.2329
+2026-08-31 16:16:18,107: Checkpointing model
+2026-08-31 16:16:20,302: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 16:16:30,226: Train batch 48050: loss: 0.97 grad norm: 16.38 time: 0.137
+2026-08-31 16:16:41,002: Train batch 48100: loss: 0.78 grad norm: 17.45 time: 0.095
+2026-08-31 16:16:52,374: Train batch 48150: loss: 0.75 grad norm: 15.86 time: 0.165
+2026-08-31 16:17:02,980: Train batch 48200: loss: 1.53 grad norm: 41.20 time: 0.161
+2026-08-31 16:17:14,526: Train batch 48250: loss: 0.94 grad norm: 18.98 time: 0.154
+2026-08-31 16:17:25,687: Train batch 48300: loss: 0.95 grad norm: 43.63 time: 0.170
+2026-08-31 16:17:37,868: Train batch 48350: loss: 0.49 grad norm: 25.15 time: 0.095
+2026-08-31 16:17:48,986: Train batch 48400: loss: 1.00 grad norm: 18.74 time: 0.151
+2026-08-31 16:18:00,020: Train batch 48450: loss: 1.17 grad norm: 19.44 time: 0.138
+2026-08-31 16:18:10,596: Train batch 48500: loss: 0.55 grad norm: 14.19 time: 0.109
+2026-08-31 16:18:21,184: Train batch 48550: loss: 0.55 grad norm: 19.48 time: 0.102
+2026-08-31 16:18:31,531: Train batch 48600: loss: 0.52 grad norm: 12.13 time: 0.096
+2026-08-31 16:18:42,211: Train batch 48650: loss: 0.90 grad norm: 20.92 time: 0.112
+2026-08-31 16:18:52,669: Train batch 48700: loss: 0.72 grad norm: 19.83 time: 0.097
+2026-08-31 16:19:03,323: Train batch 48750: loss: 0.94 grad norm: 20.70 time: 0.103
+2026-08-31 16:19:13,961: Train batch 48800: loss: 0.82 grad norm: 24.19 time: 0.099
+2026-08-31 16:19:24,411: Train batch 48850: loss: 1.47 grad norm: 22.09 time: 0.143
+2026-08-31 16:19:34,938: Train batch 48900: loss: 0.93 grad norm: 16.65 time: 0.085
+2026-08-31 16:19:45,521: Train batch 48950: loss: 0.54 grad norm: 16.52 time: 0.094
+2026-08-31 16:19:56,140: Train batch 49000: loss: 0.71 grad norm: 18.03 time: 0.107
+2026-08-31 16:20:06,271: Train batch 49050: loss: 0.68 grad norm: 15.36 time: 0.095
+2026-08-31 16:20:16,502: Train batch 49100: loss: 0.79 grad norm: 21.81 time: 0.092
+2026-08-31 16:20:27,257: Train batch 49150: loss: 1.46 grad norm: 32.83 time: 0.149
+2026-08-31 16:20:37,438: Train batch 49200: loss: 0.70 grad norm: 17.04 time: 0.094
+2026-08-31 16:20:47,694: Train batch 49250: loss: 0.77 grad norm: 39.06 time: 0.099
+2026-08-31 16:20:57,932: Train batch 49300: loss: 1.44 grad norm: 22.31 time: 0.116
+2026-08-31 16:21:08,218: Train batch 49350: loss: 0.80 grad norm: 35.48 time: 0.109
+2026-08-31 16:21:18,371: Train batch 49400: loss: 0.74 grad norm: 13.39 time: 0.084
+2026-08-31 16:21:28,689: Train batch 49450: loss: 0.73 grad norm: 28.05 time: 0.089
+2026-08-31 16:21:38,864: Train batch 49500: loss: 0.62 grad norm: 19.49 time: 0.083
+2026-08-31 16:21:49,086: Train batch 49550: loss: 0.85 grad norm: 17.55 time: 0.093
+2026-08-31 16:21:59,155: Train batch 49600: loss: 0.75 grad norm: 14.37 time: 0.091
+2026-08-31 16:22:09,403: Train batch 49650: loss: 0.80 grad norm: 24.65 time: 0.107
+2026-08-31 16:22:20,049: Train batch 49700: loss: 0.59 grad norm: 25.96 time: 0.100
+2026-08-31 16:22:30,361: Train batch 49750: loss: 1.25 grad norm: 21.50 time: 0.084
+2026-08-31 16:22:41,029: Train batch 49800: loss: 0.75 grad norm: 15.83 time: 0.108
+2026-08-31 16:22:51,738: Train batch 49850: loss: 0.67 grad norm: 16.80 time: 0.090
+2026-08-31 16:23:02,280: Train batch 49900: loss: 1.21 grad norm: 19.37 time: 0.110
+2026-08-31 16:23:12,616: Train batch 49950: loss: 0.45 grad norm: 14.79 time: 0.107
+2026-08-31 16:23:23,548: Train batch 50000: loss: 1.01 grad norm: 22.71 time: 0.147
+2026-08-31 16:23:23,549: Running test after training batch: 50000
+2026-08-31 16:23:26,561: Val batch 50000: PER (avg): 0.2327 CTC Loss (avg): 42.9135 time: 3.012
+2026-08-31 16:23:26,561: t12.2022.04.28 val PER: 0.4116
+2026-08-31 16:23:26,561: t12.2022.05.05 val PER: 0.3391
+2026-08-31 16:23:26,562: t12.2022.05.17 val PER: 0.2764
+2026-08-31 16:23:26,562: t12.2022.05.19 val PER: 0.3987
+2026-08-31 16:23:26,562: t12.2022.05.24 val PER: 0.1740
+2026-08-31 16:23:26,562: t12.2022.05.26 val PER: 0.1632
+2026-08-31 16:23:26,562: t12.2022.06.02 val PER: 0.1977
+2026-08-31 16:23:26,562: t12.2022.06.07 val PER: 0.2549
+2026-08-31 16:23:26,562: t12.2022.06.14 val PER: 0.2032
+2026-08-31 16:23:26,562: t12.2022.06.16 val PER: 0.2758
+2026-08-31 16:23:26,562: t12.2022.06.21 val PER: 0.2336
+2026-08-31 16:23:26,562: t12.2022.06.23 val PER: 0.2500
+2026-08-31 16:23:26,563: t12.2022.06.28 val PER: 0.2444
+2026-08-31 16:23:26,563: t12.2022.07.05 val PER: 0.1971
+2026-08-31 16:23:26,563: t12.2022.07.14 val PER: 0.2141
+2026-08-31 16:23:26,563: t12.2022.07.21 val PER: 0.2022
+2026-08-31 16:23:26,563: t12.2022.07.27 val PER: 0.2011
+2026-08-31 16:23:26,563: t12.2022.07.29 val PER: 0.2261
+2026-08-31 16:23:26,563: t12.2022.08.02 val PER: 0.1863
+2026-08-31 16:23:26,563: t12.2022.08.11 val PER: 0.1984
+2026-08-31 16:23:26,564: t12.2022.08.13 val PER: 0.1759
+2026-08-31 16:23:26,564: t12.2022.08.18 val PER: 0.2109
+2026-08-31 16:23:26,564: t12.2022.08.23 val PER: 0.2048
+2026-08-31 16:23:26,564: t12.2022.08.25 val PER: 0.2604
+2026-08-31 16:23:26,564: New best test PER 0.2329 --> 0.2327
+2026-08-31 16:23:26,564: Checkpointing model
+2026-08-31 16:23:28,618: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 16:23:38,664: Train batch 50050: loss: 1.04 grad norm: 20.01 time: 0.096
+2026-08-31 16:23:49,686: Train batch 50100: loss: 1.00 grad norm: 20.07 time: 0.100
+2026-08-31 16:24:00,334: Train batch 50150: loss: 0.69 grad norm: 17.72 time: 0.090
+2026-08-31 16:24:10,929: Train batch 50200: loss: 0.86 grad norm: 16.27 time: 0.111
+2026-08-31 16:24:22,009: Train batch 50250: loss: 0.39 grad norm: 10.99 time: 0.099
+2026-08-31 16:24:32,612: Train batch 50300: loss: 0.78 grad norm: 23.02 time: 0.107
+2026-08-31 16:24:43,253: Train batch 50350: loss: 1.15 grad norm: 18.06 time: 0.146
+2026-08-31 16:24:53,673: Train batch 50400: loss: 1.02 grad norm: 27.74 time: 0.100
+2026-08-31 16:25:05,282: Train batch 50450: loss: 0.82 grad norm: 15.64 time: 0.098
+2026-08-31 16:25:17,154: Train batch 50500: loss: 0.60 grad norm: 15.19 time: 0.094
+2026-08-31 16:25:28,528: Train batch 50550: loss: 1.29 grad norm: 21.22 time: 0.152
+2026-08-31 16:25:39,488: Train batch 50600: loss: 1.73 grad norm: 24.34 time: 0.168
+2026-08-31 16:25:50,037: Train batch 50650: loss: 0.47 grad norm: 14.12 time: 0.093
+2026-08-31 16:26:00,785: Train batch 50700: loss: 1.27 grad norm: 25.74 time: 0.142
+2026-08-31 16:26:11,829: Train batch 50750: loss: 1.31 grad norm: 23.48 time: 0.163
+2026-08-31 16:26:22,536: Train batch 50800: loss: 1.04 grad norm: 22.87 time: 0.159
+2026-08-31 16:26:33,145: Train batch 50850: loss: 0.60 grad norm: 21.86 time: 0.095
+2026-08-31 16:26:43,862: Train batch 50900: loss: 0.65 grad norm: 37.17 time: 0.111
+2026-08-31 16:26:54,942: Train batch 50950: loss: 1.36 grad norm: 24.91 time: 0.178
+2026-08-31 16:27:05,937: Train batch 51000: loss: 1.08 grad norm: 23.10 time: 0.173
+2026-08-31 16:27:16,799: Train batch 51050: loss: 1.35 grad norm: 23.13 time: 0.113
+2026-08-31 16:27:27,708: Train batch 51100: loss: 1.15 grad norm: 38.31 time: 0.086
+2026-08-31 16:27:38,321: Train batch 51150: loss: 1.20 grad norm: 20.92 time: 0.150
+2026-08-31 16:27:48,714: Train batch 51200: loss: 1.41 grad norm: 19.66 time: 0.143
+2026-08-31 16:27:59,492: Train batch 51250: loss: 1.46 grad norm: 19.44 time: 0.090
+2026-08-31 16:28:09,677: Train batch 51300: loss: 0.69 grad norm: 15.87 time: 0.104
+2026-08-31 16:28:19,942: Train batch 51350: loss: 0.51 grad norm: 10.71 time: 0.087
+2026-08-31 16:28:30,363: Train batch 51400: loss: 0.67 grad norm: 14.84 time: 0.082
+2026-08-31 16:28:40,978: Train batch 51450: loss: 0.77 grad norm: 15.54 time: 0.102
+2026-08-31 16:28:51,396: Train batch 51500: loss: 0.77 grad norm: 33.59 time: 0.088
+2026-08-31 16:29:02,056: Train batch 51550: loss: 0.97 grad norm: 18.08 time: 0.155
+2026-08-31 16:29:12,526: Train batch 51600: loss: 0.72 grad norm: 13.71 time: 0.098
+2026-08-31 16:29:22,613: Train batch 51650: loss: 1.03 grad norm: 17.37 time: 0.099
+2026-08-31 16:29:33,101: Train batch 51700: loss: 0.50 grad norm: 10.66 time: 0.103
+2026-08-31 16:29:43,833: Train batch 51750: loss: 1.29 grad norm: 22.67 time: 0.126
+2026-08-31 16:29:54,300: Train batch 51800: loss: 0.71 grad norm: 14.52 time: 0.098
+2026-08-31 16:30:04,921: Train batch 51850: loss: 0.60 grad norm: 11.51 time: 0.154
+2026-08-31 16:30:16,176: Train batch 51900: loss: 1.71 grad norm: 22.33 time: 0.150
+2026-08-31 16:30:27,001: Train batch 51950: loss: 1.02 grad norm: 27.24 time: 0.095
+2026-08-31 16:30:37,859: Train batch 52000: loss: 0.88 grad norm: 14.94 time: 0.163
+2026-08-31 16:30:37,859: Running test after training batch: 52000
+2026-08-31 16:30:40,676: Val batch 52000: PER (avg): 0.2343 CTC Loss (avg): 43.3288 time: 2.817
+2026-08-31 16:30:40,676: t12.2022.04.28 val PER: 0.4228
+2026-08-31 16:30:40,676: t12.2022.05.05 val PER: 0.3356
+2026-08-31 16:30:40,677: t12.2022.05.17 val PER: 0.2732
+2026-08-31 16:30:40,677: t12.2022.05.19 val PER: 0.3909
+2026-08-31 16:30:40,677: t12.2022.05.24 val PER: 0.1839
+2026-08-31 16:30:40,677: t12.2022.05.26 val PER: 0.1689
+2026-08-31 16:30:40,677: t12.2022.06.02 val PER: 0.1958
+2026-08-31 16:30:40,677: t12.2022.06.07 val PER: 0.2549
+2026-08-31 16:30:40,678: t12.2022.06.14 val PER: 0.2120
+2026-08-31 16:30:40,678: t12.2022.06.16 val PER: 0.2783
+2026-08-31 16:30:40,678: t12.2022.06.21 val PER: 0.2388
+2026-08-31 16:30:40,678: t12.2022.06.23 val PER: 0.2583
+2026-08-31 16:30:40,678: t12.2022.06.28 val PER: 0.2416
+2026-08-31 16:30:40,678: t12.2022.07.05 val PER: 0.1925
+2026-08-31 16:30:40,678: t12.2022.07.14 val PER: 0.2159
+2026-08-31 16:30:40,679: t12.2022.07.21 val PER: 0.2004
+2026-08-31 16:30:40,679: t12.2022.07.27 val PER: 0.2011
+2026-08-31 16:30:40,679: t12.2022.07.29 val PER: 0.2270
+2026-08-31 16:30:40,679: t12.2022.08.02 val PER: 0.1885
+2026-08-31 16:30:40,679: t12.2022.08.11 val PER: 0.1955
+2026-08-31 16:30:40,679: t12.2022.08.13 val PER: 0.1769
+2026-08-31 16:30:40,679: t12.2022.08.18 val PER: 0.2137
+2026-08-31 16:30:40,680: t12.2022.08.23 val PER: 0.2085
+2026-08-31 16:30:40,680: t12.2022.08.25 val PER: 0.2542
+2026-08-31 16:30:51,627: Train batch 52050: loss: 0.60 grad norm: 17.42 time: 0.091
+2026-08-31 16:31:03,020: Train batch 52100: loss: 1.21 grad norm: 20.73 time: 0.143
+2026-08-31 16:31:13,493: Train batch 52150: loss: 0.33 grad norm: 9.18 time: 0.094
+2026-08-31 16:31:23,989: Train batch 52200: loss: 1.35 grad norm: 24.62 time: 0.193
+2026-08-31 16:31:35,121: Train batch 52250: loss: 0.71 grad norm: 27.25 time: 0.107
+2026-08-31 16:31:45,927: Train batch 52300: loss: 0.59 grad norm: 39.31 time: 0.104
+2026-08-31 16:31:56,720: Train batch 52350: loss: 0.87 grad norm: 14.76 time: 0.103
+2026-08-31 16:32:07,444: Train batch 52400: loss: 0.54 grad norm: 12.52 time: 0.105
+2026-08-31 16:32:17,967: Train batch 52450: loss: 0.98 grad norm: 17.01 time: 0.099
+2026-08-31 16:32:28,348: Train batch 52500: loss: 0.46 grad norm: 13.06 time: 0.094
+2026-08-31 16:32:38,619: Train batch 52550: loss: 1.21 grad norm: 19.91 time: 0.108
+2026-08-31 16:32:48,988: Train batch 52600: loss: 0.80 grad norm: 17.68 time: 0.093
+2026-08-31 16:32:59,282: Train batch 52650: loss: 0.66 grad norm: 48.14 time: 0.088
+2026-08-31 16:33:09,902: Train batch 52700: loss: 1.28 grad norm: 20.33 time: 0.163
+2026-08-31 16:33:20,657: Train batch 52750: loss: 1.17 grad norm: 25.77 time: 0.146
+2026-08-31 16:33:31,562: Train batch 52800: loss: 1.26 grad norm: 21.06 time: 0.156
+2026-08-31 16:33:42,290: Train batch 52850: loss: 0.63 grad norm: 13.14 time: 0.114
+2026-08-31 16:33:53,307: Train batch 52900: loss: 0.85 grad norm: 15.92 time: 0.092
+2026-08-31 16:34:03,986: Train batch 52950: loss: 1.60 grad norm: 24.87 time: 0.139
+2026-08-31 16:34:14,576: Train batch 53000: loss: 0.74 grad norm: 16.96 time: 0.093
+2026-08-31 16:34:25,579: Train batch 53050: loss: 0.59 grad norm: 15.17 time: 0.107
+2026-08-31 16:34:36,281: Train batch 53100: loss: 1.17 grad norm: 22.07 time: 0.104
+2026-08-31 16:34:46,861: Train batch 53150: loss: 1.44 grad norm: 22.54 time: 0.157
+2026-08-31 16:34:57,567: Train batch 53200: loss: 0.96 grad norm: 18.04 time: 0.129
+2026-08-31 16:35:08,054: Train batch 53250: loss: 0.83 grad norm: 16.89 time: 0.088
+2026-08-31 16:35:18,800: Train batch 53300: loss: 1.27 grad norm: 34.76 time: 0.167
+2026-08-31 16:35:29,046: Train batch 53350: loss: 0.78 grad norm: 17.69 time: 0.083
+2026-08-31 16:35:39,654: Train batch 53400: loss: 1.27 grad norm: 22.66 time: 0.143
+2026-08-31 16:35:50,405: Train batch 53450: loss: 0.81 grad norm: 18.13 time: 0.105
+2026-08-31 16:36:00,901: Train batch 53500: loss: 0.74 grad norm: 16.79 time: 0.094
+2026-08-31 16:36:11,378: Train batch 53550: loss: 0.47 grad norm: 11.68 time: 0.100
+2026-08-31 16:36:22,042: Train batch 53600: loss: 1.22 grad norm: 21.19 time: 0.092
+2026-08-31 16:36:32,844: Train batch 53650: loss: 0.98 grad norm: 21.59 time: 0.091
+2026-08-31 16:36:43,648: Train batch 53700: loss: 1.72 grad norm: 29.21 time: 0.166
+2026-08-31 16:36:53,944: Train batch 53750: loss: 0.57 grad norm: 19.66 time: 0.088
+2026-08-31 16:37:04,367: Train batch 53800: loss: 0.71 grad norm: 15.80 time: 0.100
+2026-08-31 16:37:14,864: Train batch 53850: loss: 0.62 grad norm: 23.81 time: 0.092
+2026-08-31 16:37:25,041: Train batch 53900: loss: 0.62 grad norm: 15.32 time: 0.087
+2026-08-31 16:37:35,641: Train batch 53950: loss: 1.16 grad norm: 31.79 time: 0.135
+2026-08-31 16:37:46,336: Train batch 54000: loss: 0.92 grad norm: 30.40 time: 0.102
+2026-08-31 16:37:46,336: Running test after training batch: 54000
+2026-08-31 16:37:49,061: Val batch 54000: PER (avg): 0.2332 CTC Loss (avg): 43.1411 time: 2.725
+2026-08-31 16:37:49,061: t12.2022.04.28 val PER: 0.4083
+2026-08-31 16:37:49,061: t12.2022.05.05 val PER: 0.3379
+2026-08-31 16:37:49,061: t12.2022.05.17 val PER: 0.2716
+2026-08-31 16:37:49,061: t12.2022.05.19 val PER: 0.3768
+2026-08-31 16:37:49,062: t12.2022.05.24 val PER: 0.1767
+2026-08-31 16:37:49,062: t12.2022.05.26 val PER: 0.1660
+2026-08-31 16:37:49,062: t12.2022.06.02 val PER: 0.1968
+2026-08-31 16:37:49,062: t12.2022.06.07 val PER: 0.2469
+2026-08-31 16:37:49,062: t12.2022.06.14 val PER: 0.2024
+2026-08-31 16:37:49,062: t12.2022.06.16 val PER: 0.2792
+2026-08-31 16:37:49,062: t12.2022.06.21 val PER: 0.2397
+2026-08-31 16:37:49,063: t12.2022.06.23 val PER: 0.2546
+2026-08-31 16:37:49,063: t12.2022.06.28 val PER: 0.2426
+2026-08-31 16:37:49,063: t12.2022.07.05 val PER: 0.1891
+2026-08-31 16:37:49,063: t12.2022.07.14 val PER: 0.2159
+2026-08-31 16:37:49,063: t12.2022.07.21 val PER: 0.1995
+2026-08-31 16:37:49,063: t12.2022.07.27 val PER: 0.2021
+2026-08-31 16:37:49,063: t12.2022.07.29 val PER: 0.2340
+2026-08-31 16:37:49,064: t12.2022.08.02 val PER: 0.1929
+2026-08-31 16:37:49,064: t12.2022.08.11 val PER: 0.1974
+2026-08-31 16:37:49,064: t12.2022.08.13 val PER: 0.1789
+2026-08-31 16:37:49,064: t12.2022.08.18 val PER: 0.2184
+2026-08-31 16:37:49,064: t12.2022.08.23 val PER: 0.2141
+2026-08-31 16:37:49,064: t12.2022.08.25 val PER: 0.2583
+2026-08-31 16:37:59,412: Train batch 54050: loss: 0.78 grad norm: 17.53 time: 0.098
+2026-08-31 16:38:09,630: Train batch 54100: loss: 1.48 grad norm: 27.16 time: 0.122
+2026-08-31 16:38:20,179: Train batch 54150: loss: 0.72 grad norm: 16.33 time: 0.102
+2026-08-31 16:38:30,808: Train batch 54200: loss: 0.32 grad norm: 11.33 time: 0.105
+2026-08-31 16:38:41,101: Train batch 54250: loss: 0.77 grad norm: 23.71 time: 0.101
+2026-08-31 16:38:51,716: Train batch 54300: loss: 1.24 grad norm: 18.93 time: 0.153
+2026-08-31 16:39:02,301: Train batch 54350: loss: 0.85 grad norm: 17.64 time: 0.129
+2026-08-31 16:39:12,815: Train batch 54400: loss: 0.79 grad norm: 24.82 time: 0.103
+2026-08-31 16:39:23,296: Train batch 54450: loss: 1.25 grad norm: 25.96 time: 0.165
+2026-08-31 16:39:33,632: Train batch 54500: loss: 0.80 grad norm: 17.07 time: 0.175
+2026-08-31 16:39:44,223: Train batch 54550: loss: 0.72 grad norm: 21.61 time: 0.095
+2026-08-31 16:39:54,779: Train batch 54600: loss: 0.52 grad norm: 11.88 time: 0.080
+2026-08-31 16:40:05,574: Train batch 54650: loss: 1.34 grad norm: 49.30 time: 0.161
+2026-08-31 16:40:16,764: Train batch 54700: loss: 0.53 grad norm: 13.84 time: 0.097
+2026-08-31 16:40:27,808: Train batch 54750: loss: 0.80 grad norm: 15.86 time: 0.109
+2026-08-31 16:40:38,687: Train batch 54800: loss: 0.74 grad norm: 17.28 time: 0.135
+2026-08-31 16:40:49,609: Train batch 54850: loss: 0.66 grad norm: 26.69 time: 0.108
+2026-08-31 16:41:00,709: Train batch 54900: loss: 1.06 grad norm: 18.69 time: 0.170
+2026-08-31 16:41:11,922: Train batch 54950: loss: 0.55 grad norm: 11.60 time: 0.100
+2026-08-31 16:41:22,529: Train batch 55000: loss: 0.43 grad norm: 15.30 time: 0.095
+2026-08-31 16:41:32,924: Train batch 55050: loss: 0.70 grad norm: 13.85 time: 0.100
+2026-08-31 16:41:43,714: Train batch 55100: loss: 2.01 grad norm: 26.83 time: 0.163
+2026-08-31 16:41:54,262: Train batch 55150: loss: 1.29 grad norm: 28.09 time: 0.170
+2026-08-31 16:42:04,943: Train batch 55200: loss: 0.59 grad norm: 27.68 time: 0.111
+2026-08-31 16:42:15,690: Train batch 55250: loss: 1.01 grad norm: 27.12 time: 0.098
+2026-08-31 16:42:26,171: Train batch 55300: loss: 0.57 grad norm: 13.79 time: 0.096
+2026-08-31 16:42:36,742: Train batch 55350: loss: 0.96 grad norm: 16.85 time: 0.102
+2026-08-31 16:42:46,955: Train batch 55400: loss: 0.93 grad norm: 16.79 time: 0.163
+2026-08-31 16:42:57,399: Train batch 55450: loss: 0.75 grad norm: 21.29 time: 0.152
+2026-08-31 16:43:07,916: Train batch 55500: loss: 1.15 grad norm: 25.30 time: 0.119
+2026-08-31 16:43:18,734: Train batch 55550: loss: 0.94 grad norm: 25.80 time: 0.095
+2026-08-31 16:43:29,330: Train batch 55600: loss: 0.82 grad norm: 83.19 time: 0.112
+2026-08-31 16:43:39,699: Train batch 55650: loss: 1.74 grad norm: 29.83 time: 0.168
+2026-08-31 16:43:49,967: Train batch 55700: loss: 0.72 grad norm: 17.36 time: 0.094
+2026-08-31 16:44:01,032: Train batch 55750: loss: 0.74 grad norm: 15.37 time: 0.102
+2026-08-31 16:44:11,853: Train batch 55800: loss: 0.84 grad norm: 46.01 time: 0.095
+2026-08-31 16:44:22,660: Train batch 55850: loss: 0.65 grad norm: 20.45 time: 0.104
+2026-08-31 16:44:33,486: Train batch 55900: loss: 0.67 grad norm: 14.05 time: 0.099
+2026-08-31 16:44:44,310: Train batch 55950: loss: 0.89 grad norm: 15.89 time: 0.167
+2026-08-31 16:44:54,530: Train batch 56000: loss: 1.27 grad norm: 23.78 time: 0.111
+2026-08-31 16:44:54,530: Running test after training batch: 56000
+2026-08-31 16:44:57,675: Val batch 56000: PER (avg): 0.2325 CTC Loss (avg): 43.1898 time: 3.145
+2026-08-31 16:44:57,675: t12.2022.04.28 val PER: 0.4128
+2026-08-31 16:44:57,676: t12.2022.05.05 val PER: 0.3379
+2026-08-31 16:44:57,676: t12.2022.05.17 val PER: 0.2716
+2026-08-31 16:44:57,676: t12.2022.05.19 val PER: 0.3846
+2026-08-31 16:44:57,676: t12.2022.05.24 val PER: 0.1731
+2026-08-31 16:44:57,676: t12.2022.05.26 val PER: 0.1641
+2026-08-31 16:44:57,676: t12.2022.06.02 val PER: 0.2006
+2026-08-31 16:44:57,676: t12.2022.06.07 val PER: 0.2478
+2026-08-31 16:44:57,677: t12.2022.06.14 val PER: 0.2072
+2026-08-31 16:44:57,677: t12.2022.06.16 val PER: 0.2817
+2026-08-31 16:44:57,677: t12.2022.06.21 val PER: 0.2362
+2026-08-31 16:44:57,677: t12.2022.06.23 val PER: 0.2509
+2026-08-31 16:44:57,677: t12.2022.06.28 val PER: 0.2426
+2026-08-31 16:44:57,677: t12.2022.07.05 val PER: 0.1914
+2026-08-31 16:44:57,677: t12.2022.07.14 val PER: 0.2141
+2026-08-31 16:44:57,678: t12.2022.07.21 val PER: 0.2004
+2026-08-31 16:44:57,678: t12.2022.07.27 val PER: 0.2032
+2026-08-31 16:44:57,678: t12.2022.07.29 val PER: 0.2280
+2026-08-31 16:44:57,678: t12.2022.08.02 val PER: 0.1874
+2026-08-31 16:44:57,678: t12.2022.08.11 val PER: 0.1935
+2026-08-31 16:44:57,678: t12.2022.08.13 val PER: 0.1719
+2026-08-31 16:44:57,678: t12.2022.08.18 val PER: 0.2146
+2026-08-31 16:44:57,679: t12.2022.08.23 val PER: 0.2095
+2026-08-31 16:44:57,679: t12.2022.08.25 val PER: 0.2615
+2026-08-31 16:44:57,679: New best test PER 0.2327 --> 0.2325
+2026-08-31 16:44:57,679: Checkpointing model
+2026-08-31 16:44:59,680: Saved model to checkpoint: D:\bcirun\btot24\run_60k\checkpoint/best_checkpoint
+2026-08-31 16:45:10,558: Train batch 56050: loss: 0.56 grad norm: 14.67 time: 0.086
+2026-08-31 16:45:21,220: Train batch 56100: loss: 0.32 grad norm: 10.20 time: 0.092
+2026-08-31 16:45:31,830: Train batch 56150: loss: 0.70 grad norm: 16.59 time: 0.103
+2026-08-31 16:45:42,575: Train batch 56200: loss: 0.96 grad norm: 20.69 time: 0.100
+2026-08-31 16:45:53,244: Train batch 56250: loss: 0.84 grad norm: 13.48 time: 0.143
+2026-08-31 16:46:03,578: Train batch 56300: loss: 1.85 grad norm: 33.05 time: 0.102
+2026-08-31 16:46:14,167: Train batch 56350: loss: 0.87 grad norm: 14.01 time: 0.136
+2026-08-31 16:46:24,595: Train batch 56400: loss: 0.87 grad norm: 22.98 time: 0.122
+2026-08-31 16:46:35,371: Train batch 56450: loss: 0.66 grad norm: 31.14 time: 0.110
+2026-08-31 16:46:46,016: Train batch 56500: loss: 0.79 grad norm: 17.69 time: 0.110
+2026-08-31 16:46:56,612: Train batch 56550: loss: 0.95 grad norm: 30.79 time: 0.090
+2026-08-31 16:47:07,227: Train batch 56600: loss: 0.91 grad norm: 20.97 time: 0.097
+2026-08-31 16:47:18,102: Train batch 56650: loss: 0.50 grad norm: 9.91 time: 0.110
+2026-08-31 16:47:28,539: Train batch 56700: loss: 0.76 grad norm: 16.99 time: 0.106
+2026-08-31 16:47:38,879: Train batch 56750: loss: 0.74 grad norm: 16.79 time: 0.091
+2026-08-31 16:47:49,068: Train batch 56800: loss: 0.49 grad norm: 11.81 time: 0.099
+2026-08-31 16:47:59,741: Train batch 56850: loss: 0.62 grad norm: 19.59 time: 0.096
+2026-08-31 16:48:10,185: Train batch 56900: loss: 0.63 grad norm: 32.78 time: 0.097
+2026-08-31 16:48:20,714: Train batch 56950: loss: 0.74 grad norm: 17.62 time: 0.115
+2026-08-31 16:48:31,068: Train batch 57000: loss: 0.61 grad norm: 26.45 time: 0.088
+2026-08-31 16:48:41,622: Train batch 57050: loss: 0.70 grad norm: 16.18 time: 0.087
+2026-08-31 16:48:52,188: Train batch 57100: loss: 1.16 grad norm: 18.40 time: 0.138
+2026-08-31 16:49:02,899: Train batch 57150: loss: 1.13 grad norm: 20.26 time: 0.158
+2026-08-31 16:49:13,855: Train batch 57200: loss: 0.99 grad norm: 18.59 time: 0.119
+2026-08-31 16:49:24,697: Train batch 57250: loss: 0.47 grad norm: 13.19 time: 0.094
+2026-08-31 16:49:35,648: Train batch 57300: loss: 0.92 grad norm: 16.22 time: 0.148
+2026-08-31 16:49:46,790: Train batch 57350: loss: 0.54 grad norm: 13.64 time: 0.105
+2026-08-31 16:49:58,446: Train batch 57400: loss: 0.98 grad norm: 26.52 time: 0.147
+2026-08-31 16:50:09,746: Train batch 57450: loss: 0.52 grad norm: 20.79 time: 0.125
+2026-08-31 16:50:20,744: Train batch 57500: loss: 0.41 grad norm: 12.50 time: 0.088
+2026-08-31 16:50:32,351: Train batch 57550: loss: 0.65 grad norm: 25.28 time: 0.142
+2026-08-31 16:50:43,601: Train batch 57600: loss: 0.97 grad norm: 24.99 time: 0.112
+2026-08-31 16:50:54,376: Train batch 57650: loss: 0.60 grad norm: 20.13 time: 0.090
+2026-08-31 16:51:06,672: Train batch 57700: loss: 0.88 grad norm: 18.68 time: 0.163
+2026-08-31 16:51:18,899: Train batch 57750: loss: 0.63 grad norm: 15.48 time: 0.113
+2026-08-31 16:51:32,354: Train batch 57800: loss: 0.68 grad norm: 16.56 time: 0.125
+2026-08-31 16:51:44,522: Train batch 57850: loss: 0.76 grad norm: 26.23 time: 0.097
+2026-08-31 16:51:55,444: Train batch 57900: loss: 1.40 grad norm: 33.46 time: 0.167
+2026-08-31 16:52:06,087: Train batch 57950: loss: 0.88 grad norm: 20.34 time: 0.091
+2026-08-31 16:52:16,691: Train batch 58000: loss: 1.09 grad norm: 17.75 time: 0.134
+2026-08-31 16:52:16,691: Running test after training batch: 58000
+2026-08-31 16:52:19,406: Val batch 58000: PER (avg): 0.2330 CTC Loss (avg): 43.2313 time: 2.715
+2026-08-31 16:52:19,406: t12.2022.04.28 val PER: 0.4161
+2026-08-31 16:52:19,407: t12.2022.05.05 val PER: 0.3345
+2026-08-31 16:52:19,407: t12.2022.05.17 val PER: 0.2732
+2026-08-31 16:52:19,407: t12.2022.05.19 val PER: 0.3830
+2026-08-31 16:52:19,407: t12.2022.05.24 val PER: 0.1758
+2026-08-31 16:52:19,407: t12.2022.05.26 val PER: 0.1679
+2026-08-31 16:52:19,407: t12.2022.06.02 val PER: 0.2006
+2026-08-31 16:52:19,407: t12.2022.06.07 val PER: 0.2496
+2026-08-31 16:52:19,407: t12.2022.06.14 val PER: 0.2080
+2026-08-31 16:52:19,407: t12.2022.06.16 val PER: 0.2717
+2026-08-31 16:52:19,408: t12.2022.06.21 val PER: 0.2345
+2026-08-31 16:52:19,408: t12.2022.06.23 val PER: 0.2546
+2026-08-31 16:52:19,408: t12.2022.06.28 val PER: 0.2463
+2026-08-31 16:52:19,408: t12.2022.07.05 val PER: 0.1914
+2026-08-31 16:52:19,408: t12.2022.07.14 val PER: 0.2141
+2026-08-31 16:52:19,408: t12.2022.07.21 val PER: 0.1995
+2026-08-31 16:52:19,408: t12.2022.07.27 val PER: 0.1968
+2026-08-31 16:52:19,408: t12.2022.07.29 val PER: 0.2349
+2026-08-31 16:52:19,408: t12.2022.08.02 val PER: 0.1851
+2026-08-31 16:52:19,408: t12.2022.08.11 val PER: 0.1994
+2026-08-31 16:52:19,409: t12.2022.08.13 val PER: 0.1749
+2026-08-31 16:52:19,409: t12.2022.08.18 val PER: 0.2193
+2026-08-31 16:52:19,409: t12.2022.08.23 val PER: 0.2132
+2026-08-31 16:52:19,409: t12.2022.08.25 val PER: 0.2542
+2026-08-31 16:52:30,392: Train batch 58050: loss: 0.71 grad norm: 12.34 time: 0.111
+2026-08-31 16:52:41,722: Train batch 58100: loss: 0.91 grad norm: 23.38 time: 0.091
+2026-08-31 16:52:53,074: Train batch 58150: loss: 1.15 grad norm: 23.44 time: 0.153
+2026-08-31 16:53:03,965: Train batch 58200: loss: 0.65 grad norm: 19.07 time: 0.103
+2026-08-31 16:53:14,460: Train batch 58250: loss: 0.71 grad norm: 17.70 time: 0.178
+2026-08-31 16:53:25,144: Train batch 58300: loss: 0.50 grad norm: 13.44 time: 0.097
+2026-08-31 16:53:36,498: Train batch 58350: loss: 1.32 grad norm: 37.95 time: 0.155
+2026-08-31 16:53:48,029: Train batch 58400: loss: 1.16 grad norm: 21.73 time: 0.170
+2026-08-31 16:53:59,410: Train batch 58450: loss: 0.52 grad norm: 10.98 time: 0.139
+2026-08-31 16:54:11,316: Train batch 58500: loss: 0.78 grad norm: 15.95 time: 0.103
+2026-08-31 16:54:22,614: Train batch 58550: loss: 0.67 grad norm: 19.80 time: 0.104
+2026-08-31 16:54:33,534: Train batch 58600: loss: 0.42 grad norm: 10.65 time: 0.091
+2026-08-31 16:54:44,337: Train batch 58650: loss: 0.68 grad norm: 14.89 time: 0.120
+2026-08-31 16:54:55,320: Train batch 58700: loss: 1.08 grad norm: 17.93 time: 0.156
+2026-08-31 16:55:06,189: Train batch 58750: loss: 0.44 grad norm: 10.25 time: 0.088
+2026-08-31 16:55:16,699: Train batch 58800: loss: 0.92 grad norm: 18.51 time: 0.139
+2026-08-31 16:55:27,286: Train batch 58850: loss: 0.49 grad norm: 12.37 time: 0.104
+2026-08-31 16:55:37,975: Train batch 58900: loss: 0.59 grad norm: 24.90 time: 0.113
+2026-08-31 16:55:49,330: Train batch 58950: loss: 1.11 grad norm: 19.43 time: 0.148
+2026-08-31 16:55:59,913: Train batch 59000: loss: 0.83 grad norm: 18.53 time: 0.096
+2026-08-31 16:56:10,947: Train batch 59050: loss: 1.03 grad norm: 19.66 time: 0.109
+2026-08-31 16:56:21,734: Train batch 59100: loss: 0.89 grad norm: 17.96 time: 0.094
+2026-08-31 16:56:32,407: Train batch 59150: loss: 0.82 grad norm: 20.34 time: 0.098
+2026-08-31 16:56:43,336: Train batch 59200: loss: 0.87 grad norm: 18.62 time: 0.104
+2026-08-31 16:56:54,126: Train batch 59250: loss: 0.93 grad norm: 24.02 time: 0.090
+2026-08-31 16:57:04,820: Train batch 59300: loss: 0.47 grad norm: 12.20 time: 0.092
+2026-08-31 16:57:15,314: Train batch 59350: loss: 0.90 grad norm: 15.55 time: 0.093
+2026-08-31 16:57:25,600: Train batch 59400: loss: 0.57 grad norm: 17.63 time: 0.101
+2026-08-31 16:57:36,239: Train batch 59450: loss: 0.90 grad norm: 17.79 time: 0.090
+2026-08-31 16:57:47,208: Train batch 59500: loss: 1.27 grad norm: 25.78 time: 0.162
+2026-08-31 16:57:57,806: Train batch 59550: loss: 1.13 grad norm: 13.66 time: 0.083
+2026-08-31 16:58:08,748: Train batch 59600: loss: 0.77 grad norm: 25.46 time: 0.078
+2026-08-31 16:58:19,223: Train batch 59650: loss: 0.88 grad norm: 23.53 time: 0.104
+2026-08-31 16:58:30,204: Train batch 59700: loss: 0.56 grad norm: 15.62 time: 0.109
+2026-08-31 16:58:41,156: Train batch 59750: loss: 0.89 grad norm: 15.54 time: 0.103
+2026-08-31 16:58:52,112: Train batch 59800: loss: 1.05 grad norm: 18.51 time: 0.131
+2026-08-31 16:59:02,351: Train batch 59850: loss: 0.57 grad norm: 13.09 time: 0.099
+2026-08-31 16:59:12,876: Train batch 59900: loss: 0.55 grad norm: 10.91 time: 0.105
+2026-08-31 16:59:23,549: Train batch 59950: loss: 0.62 grad norm: 12.68 time: 0.080
+2026-08-31 16:59:33,843: Running test after training batch: 59999
+2026-08-31 16:59:36,604: Val batch 59999: PER (avg): 0.2328 CTC Loss (avg): 43.3548 time: 2.761
+2026-08-31 16:59:36,604: t12.2022.04.28 val PER: 0.4105
+2026-08-31 16:59:36,604: t12.2022.05.05 val PER: 0.3299
+2026-08-31 16:59:36,604: t12.2022.05.17 val PER: 0.2684
+2026-08-31 16:59:36,605: t12.2022.05.19 val PER: 0.3846
+2026-08-31 16:59:36,605: t12.2022.05.24 val PER: 0.1704
+2026-08-31 16:59:36,605: t12.2022.05.26 val PER: 0.1689
+2026-08-31 16:59:36,605: t12.2022.06.02 val PER: 0.1987
+2026-08-31 16:59:36,605: t12.2022.06.07 val PER: 0.2531
+2026-08-31 16:59:36,605: t12.2022.06.14 val PER: 0.2040
+2026-08-31 16:59:36,605: t12.2022.06.16 val PER: 0.2808
+2026-08-31 16:59:36,605: t12.2022.06.21 val PER: 0.2371
+2026-08-31 16:59:36,605: t12.2022.06.23 val PER: 0.2555
+2026-08-31 16:59:36,606: t12.2022.06.28 val PER: 0.2472
+2026-08-31 16:59:36,606: t12.2022.07.05 val PER: 0.1857
+2026-08-31 16:59:36,606: t12.2022.07.14 val PER: 0.2186
+2026-08-31 16:59:36,606: t12.2022.07.21 val PER: 0.1986
+2026-08-31 16:59:36,606: t12.2022.07.27 val PER: 0.2011
+2026-08-31 16:59:36,606: t12.2022.07.29 val PER: 0.2320
+2026-08-31 16:59:36,606: t12.2022.08.02 val PER: 0.1896
+2026-08-31 16:59:36,606: t12.2022.08.11 val PER: 0.2004
+2026-08-31 16:59:36,606: t12.2022.08.13 val PER: 0.1729
+2026-08-31 16:59:36,606: t12.2022.08.18 val PER: 0.2174
+2026-08-31 16:59:36,607: t12.2022.08.23 val PER: 0.2095
+2026-08-31 16:59:36,607: t12.2022.08.25 val PER: 0.2542
+2026-08-31 16:59:36,643: Best avg val PER achieved: 0.23251
+2026-08-31 16:59:36,643: Total training time: 225.70 minutes
+TRAIN EXIT: 0

@@ -18,6 +18,13 @@ Author-online-WER numbers are hardcoded from the recomputation scripts
 (decodedSentenceText / clock-aligned ngram_decoder_final_output), see the
 note 20260901_kunz与jude意图说话数据集_CTC管线实跑记录.html for provenance.
 """
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "shared"))
+from study_paths import study_path
+
 import re
 
 import matplotlib
@@ -48,12 +55,12 @@ def rot_labels(ax):
     plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
 
 # ---------------- data ----------------
-K12 = pd.read_csv(r".\20250821_kunz\data\20250821_kunz\run_t12_mixed\val_greedy_per_trial.csv")
-K15 = pd.read_csv(r".\20250821_kunz\data\20250821_kunz\run_t15_mixed\val_greedy_per_trial.csv")
-K16 = pd.read_csv(r".\20250821_kunz\data\20250821_kunz\run_t16_mixed\val_greedy_per_trial.csv")
-JU = pd.read_csv(r".\20260428_jude\data\20260428_jude\run_25k\val_greedy_per_trial.csv")
-B24 = pd.read_csv(r".\20230831_willett\data\20230616_willett_BtoT24\run_60k\test_partition_greedy_per_trial.csv")
-B25 = pd.read_csv(r".\20240815_card\result\val_greedy_per_trial.csv")  # BtoT25 official-ckpt eval
+K12 = pd.read_csv(study_path("20250821_kunz", 'data/20250821_kunz/run_t12_mixed/val_greedy_per_trial.csv'))
+K15 = pd.read_csv(study_path("20250821_kunz", 'data/20250821_kunz/run_t15_mixed/val_greedy_per_trial.csv'))
+K16 = pd.read_csv(study_path("20250821_kunz", 'data/20250821_kunz/run_t16_mixed/val_greedy_per_trial.csv'))
+JU = pd.read_csv(study_path("20260428_jude", 'data/20260428_jude/run_25k/val_greedy_per_trial.csv'))
+B24 = pd.read_csv(study_path("20230831_willett", 'data/20230616_willett_BtoT24/run_60k/test_partition_greedy_per_trial.csv'))
+B25 = pd.read_csv(study_path("20240815_card", 'result/val_greedy_per_trial.csv'))  # BtoT25 official-ckpt eval
 
 
 def agg(df):
@@ -340,15 +347,15 @@ def trajectory_figure(runs, xlim, title, out_png):
 
 
 trajectory_figure(
-    [("T12 (400 trial)", r".\20250821_kunz\data\20250821_kunz\run_t12_mixed\training_log", "#D55E00"),
-     ("T15 (615 trial)", r".\20250821_kunz\data\20250821_kunz\run_t15_mixed\training_log", "#009E73"),
-     ("T16 (365 trial)", r".\20250821_kunz\data\20250821_kunz\run_t16_mixed\training_log", "#CC79A7")],
+    [("T12 (400 trial)", study_path("20250821_kunz", 'data/20250821_kunz/run_t12_mixed/training_log'), "#D55E00"),
+     ("T15 (615 trial)", study_path("20250821_kunz", 'data/20250821_kunz/run_t15_mixed/training_log'), "#009E73"),
+     ("T16 (365 trial)", study_path("20250821_kunz", 'data/20250821_kunz/run_t16_mixed/training_log'), "#CC79A7")],
     4200,
     "kunz（mixed 臂）：小数据集在 750–1,500 批达最优后过拟合\n（星标 = best_checkpoint 所在批）",
     f"{OUT}\\training_trajectory\\kunz2025_training_trajectories.png")
 
 trajectory_figure(
-    [("T17 (3,107 trial)", r".\20260428_jude\data\20260428_jude\run_25k\training_log", BLUE)],
+    [("T17 (3,107 trial)", study_path("20260428_jude", 'data/20260428_jude/run_25k/training_log'), BLUE)],
     14000,
     "jude T17 意图说话：数据量足够，val 贪心 PER 平稳下降\n（星标 = best_checkpoint 所在批）",
     f"{OUT}\\training_trajectory\\jude2026_training_trajectory.png")

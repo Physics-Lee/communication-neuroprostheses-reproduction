@@ -4,6 +4,13 @@
 Output: D:\\repositories\\shared\\figs\\willett2023_btot24_training_trajectory.png ... willett2023_card2024_headline_anchors.png
 Data sources: run_60k CSVs + val_greedy_per_trial.csv (all reproducible).
 """
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "shared"))
+from study_paths import study_path
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
@@ -29,7 +36,7 @@ def rot_labels(ax):
 
 
 # ---------- A: BtoT24 training trajectory ----------
-curves = pd.read_csv(r".\20230831_willett\data\20230616_willett_BtoT24\run_60k\curves.csv")
+curves = pd.read_csv(study_path("20230831_willett", 'data/20230616_willett_BtoT24/run_60k/curves.csv'))
 va = curves[curves.metric == "val_PER"].sort_values("batch")
 fig, ax = plt.subplots(figsize=(9, 5.5))
 ax.plot(va.batch, 100 * va.value, marker="o", ms=5, color=GREEN, label="val greedy PER")
@@ -44,7 +51,7 @@ fig.tight_layout(); fig.savefig(f"{OUT}/training_trajectory/willett2023_btot24_t
 plt.close(fig)
 
 # ---------- B: BtoT24 per-day test PER ----------
-tdf = pd.read_csv(r".\20230831_willett\data\20230616_willett_BtoT24\run_60k\test_partition_greedy_per_trial.csv")
+tdf = pd.read_csv(study_path("20230831_willett", 'data/20230616_willett_BtoT24/run_60k/test_partition_greedy_per_trial.csv'))
 day = (tdf.groupby("session")
           .apply(lambda g: 100 * g.edit_distance.sum() / g.true_len.sum(),
                  include_groups=False).sort_index().astype(float))
@@ -73,7 +80,7 @@ fig.tight_layout(); fig.savefig(f"{OUT}/session_level/willett2023_btot24_per_day
 plt.close(fig)
 
 # ---------- C: BtoT25 by corpus ----------
-b25 = pd.read_csv(r".\20240815_card\result\val_greedy_per_trial.csv")
+b25 = pd.read_csv(study_path("20240815_card", 'result/val_greedy_per_trial.csv'))
 byc = (b25.groupby("corpus")
           .apply(lambda g: 100 * g.edit_distance.sum() / g.true_len.sum(),
                  include_groups=False).sort_values().astype(float))

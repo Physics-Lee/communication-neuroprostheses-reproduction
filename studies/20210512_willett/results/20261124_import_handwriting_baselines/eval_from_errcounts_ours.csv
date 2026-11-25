@@ -1,0 +1,2 @@
+cvPart,tier,CER,CER_lo,CER_hi,WER,WER_lo,WER_hi,nSentences
+HeldOutBlocks,Raw,7.2896,6.6870,7.9391,25.0229,22.9717,27.1795,228

@@ -1,0 +1,576 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Standalone 4-panel companion figure: error-rate phase diagrams + the
+memory wall.
+
+Panels
+------
+(a) Session-level greedy PER vs. post-LM WER across the phoneme-level
+    speech BCIs (the phase diagram retired from Figure 2 in the
+    2026-11-11 phase-diagram round; reads ``session_per_vs_wer.json``).
+(b) Session-level raw CER (no LM) vs. post-LM WER across the four
+    character-level arms we reproduced (Willett 2021 handwriting bigram,
+    Fan 2023 CORP recalibration, Jude 2026a typing T17/T18; reads
+    ``session_cer_vs_wer.json`` built by ``build_session_cer_vs_wer.py``).
+    The no-LM baseline uses the pooled reference characters-per-word of
+    the plotted corpora (spaces included, matching the CER denominators).
+(c) Peak host RAM per study: our 64 GB consumer PC stack vs. the
+    official / naive stacks (moved out of Figure 2 in the 2026-11-11
+    split).
+(d) Peak GPU VRAM per study: our 16 GB single GPU vs. the official rigs
+    (moved out of Figure 2 in the 2026-11-11 split).
+
+2026-11-11 split round (user: "fig2 is too long to publish -- move RAM
+and VRAM out of fig2 into a new 4-panel figure with WER vs PER and WER
+vs CER"): panels (c)/(d) moved here from ``render_figure2.py``;
+``reproduction_benchmark.yaml`` stays the single source of truth for all
+four panels.
+
+Usage:
+    python render_phase_memory_figure.py
+
+``build_html_svgs`` additionally serialises the same panels as two
+self-contained inline SVGs consumed by ``render_figure2.export_interactive_html``
+(the interactive HTML shows panels (a)+(b) in its "Insights" section and the
+memory-wall panels (c)+(d) in its own "Memory Savings" section, each capped at
+the figure's natural 1210 px CSS width — the ``.pdf``/``.png`` outputs remain
+the single 4-panel figure either way).
+"""
+import argparse
+import io
+import json
+import os
+import re
+
+import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
+import numpy as np
+import yaml
+from matplotlib.lines import Line2D
+
+from render_figure2 import C_NORM, C_SPEECH_I, OPEN_C, check_figure_overlaps, to_rgb
+
+from figure_paths import BENCHMARK, PUBLISHED
+
+# 2026-11-16 interactivity round (user: "给Insights和Memory Savings的四个
+# panel也加上可点击的交互，就像Overview和Limits of CTC-TLG"): every plottable
+# arm / memory row maps onto a study id from the interactive HTML's STUDIES
+# payload, so per-session markers, pooled stars, and ours/official bar pairs
+# can drive selectStudy() cross-highlighting on the page. The ids below must
+# stay in sync with the ``id`` fields decoded in render_figure2.py.
+_ARM_IDS = {
+    "Willett 2023 (T12)":   ("willett2023", "T12"),
+    "Card 2024 (T15)":      ("card2024", "T15"),
+    "Jude 2026 (LIS, T17)": ("jude2026b", "T17"),
+    "Willett 2021 (T5)":    ("willett2021", "T5"),
+    "Fan 2023 (T5)":        ("fan2023", "T5"),
+    "Jude 2026a (T17)":     ("jude2026a", "T17"),
+    "Jude 2026a (T18)":     ("jude2026a", "T18"),
+}
+_CATEGORY_IDS = {
+    "Willett et al., 2021 (T5)":       "willett2021",
+    "Willett et al., 2023 (T12)":      "willett2023",
+    "Fan et al., 2023 (T5)":           "fan2023",
+    "Card et al., 2024 (T15)":         "card2024",
+    "Wairagkar et al., 2025 (T15)":    "wairagkar2025",
+    "Kunz et al., 2025 (T12/15/16)":   "kunz2025",
+    "Jude et al., 2026a (T17/T18)":    "jude2026a",
+    "Jude et al., 2026b (T17)":        "jude2026b",
+}
+
+
+def _stamp_legend_gids(leg, panel, style):
+    """Stamp per-entry gid hooks on a phase-panel legend.
+
+    Parameters
+    ----------
+    leg : matplotlib.legend.Legend
+        Legend returned by ``ax.legend`` (one labeled entry per arm; the
+        legend title is left unhooked).
+    panel : str
+        Panel tag used in the gid, ``"per"`` or ``"cer"``.
+    style : dict
+        Arm style map (``name -> (color, marker, legend label)``); the
+        legend labels map back onto study and participant ids via ``_ARM_IDS``.
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+    2026-11-16 legend round (user: "insights中的两张图的legend也改成可以交
+    互"): matplotlib's SVG backend wraps every gid-bearing artist in its own
+    ``<g id="...">``, so each legend handle gets
+    ``pmLh--<panel>--<sid>--<participant>`` and its label
+    ``pmLt--<panel>--<sid>--<participant>``. The page JS promotes both to
+    ``.pm-leg`` groups with tooltips, participant-specific hover, and a
+    panel-local dim toggle. Gids never reach the PNG or PDF output.
+    """
+    label_ids = {lab: _ARM_IDS[name] for name, (_, _, lab) in style.items()}
+    for handle, text in zip(leg.legend_handles, leg.get_texts()):
+        ids = label_ids.get(text.get_text())
+        if ids is None:
+            continue
+        sid, participant = ids
+        handle.set_gid(f"pmLh--{panel}--{sid}--{participant}")
+        text.set_gid(f"pmLt--{panel}--{sid}--{participant}")
+
+
+def _draw_per_panel(ax, session_path):
+    """Draw panel (a): session-level PER vs. post-LM WER phase diagram.
+
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        Target axes (equal aspect is applied here).
+    session_path : str
+        Path to ``session_per_vs_wer.json``.
+
+    Returns
+    -------
+    None
+    """
+    with open(session_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    style = {
+        "Willett 2023 (T12)":   ("#3C5488", "o", "Willett et al., 2023 (T12)"),
+        "Card 2024 (T15)":      ("#4DBBD5", "s", "Card et al., 2024 (T15)"),
+        "Jude 2026 (LIS, T17)": ("#1B6CA8", "D", "Jude et al., 2026b (T17)"),
+    }
+    lim = 80
+    x_curve = np.linspace(0, 41.0, 200)
+    y_curve = 100.0 * (1.0 - (1.0 - x_curve / 100.0) ** 3.4)
+    ax.plot(x_curve, y_curve, ls="-.", lw=1.3, color="#888888", zorder=1.2)
+    ax.text(1.5, 82.5, "No-LM baseline:\n1 \u2212 (1 \u2212 PER)$^{3.4}$",
+            fontsize=8.0, color="#666666", ha="left", va="top",
+            linespacing=1.12)
+    ax.plot([0, lim], [0, lim], ls="--", lw=1.3, color="#999999", zorder=1)
+    ax.axvline(25.0, color=C_NORM, lw=1.1, linestyle=(0, (4, 2)), zorder=1.5)
+    points = [point for name in style for point in data[name]["sessions"]]
+    at_most = [point for point in points if point["per"] <= 25.0]
+    above = [point for point in points if point["per"] > 25.0]
+    ax.text(26.4, 24.0,
+            "Observed WER < PER\n"
+            f"PER \u2264 25%: {sum(p['wer'] < p['per'] for p in at_most)}/{len(at_most)}\n"
+            f"PER > 25%: {sum(p['wer'] < p['per'] for p in above)}/{len(above)}",
+            fontsize=7.6, color="#555555", ha="left", va="top",
+            linespacing=1.1)
+    ax.text(58.5, 54.0, "WER = PER", fontsize=8.4, color="#777777",
+            ha="left", va="top", rotation=45, rotation_mode="anchor")
+    for name, v in data.items():
+        if name not in style:
+            continue
+        c, m, lab = style[name]
+        sid, participant = _ARM_IDS[name]
+        # One PathCollection per session point: the SVG backend then wraps
+        # each marker in its own <g id="pmS--..."> so the page JS can bind
+        # tooltips / selectStudy() per point. The first point keeps the arm
+        # label so the legend is unchanged.
+        for j, sess in enumerate(v["sessions"]):
+            coll = ax.scatter([sess["per"]], [sess["wer"]],
+                              s=34, marker=m, facecolor="none", edgecolor=c,
+                              lw=1.5, alpha=0.85, zorder=3,
+                              label=lab if j == 0 else None)
+            coll.set_gid(f"pmS--per--{sid}--{participant}--{sess['session']}--"
+                         f"{sess['per']:g}--{sess['wer']:g}--{sess.get('n', '')}")
+        pool = ax.scatter([v["pooled"]["per"]], [v["pooled"]["wer"]], s=120,
+                          marker="*", color=c, edgecolor="white", lw=0.6,
+                          zorder=4)
+        pool.set_gid(f"pmP--per--{sid}--{participant}--{v['pooled']['per']:g}--"
+                     f"{v['pooled']['wer']:g}")
+    leg = ax.legend(fontsize=8.2, frameon=False, loc="lower right",
+                    title="per-session (open)   pooled (star)",
+                    title_fontsize=8.2, borderaxespad=0.3, labelspacing=0.4)
+    _stamp_legend_gids(leg, "per", style)
+    ax.set_xlim(0, lim)
+    ax.set_ylim(0, lim + 3)
+    ax.set_aspect("equal", adjustable="box")
+    ax.set_xlabel("Greedy PER on held-out trials by session (%)")
+    ax.set_ylabel("word error rate after LM stage (%)")
+    ax.set_title("(a) Offline PER vs. post-LM WER by session",
+                 fontsize=11.5, fontweight="bold")
+
+
+def _draw_cer_panel(ax, session_path):
+    """Draw panel (b): session-level raw CER vs. post-LM WER phase diagram.
+
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        Target axes (equal aspect is applied here).
+    session_path : str
+        Path to ``session_cer_vs_wer.json``.
+
+    Returns
+    -------
+    None
+    """
+    with open(session_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    meta = data.pop("_meta")
+    chars_per_word = meta["chars_per_word_pooled"]
+    style = {
+        "Willett 2021 (T5)":  ("#3C5488", "o", "Willett et al., 2021 (T5, bigram)"),
+        "Fan 2023 (T5)":      ("#4DBBD5", "s", "Fan et al., 2023 (T5, character 5-gram)"),
+        "Jude 2026a (T17)":   ("#1B6CA8", "D", "Jude et al., 2026a (T17)"),
+        "Jude 2026a (T18)":   ("#7B9ACC", "^", "Jude et al., 2026a (T18)"),
+    }
+    x_max, y_max = 40, 64
+    x_curve = np.linspace(0, 100.0 * (1.0 - (0.001) ** (1.0 / chars_per_word)), 200)
+    y_curve = 100.0 * (1.0 - (1.0 - x_curve / 100.0) ** chars_per_word)
+    ax.plot(x_curve, y_curve, ls="-.", lw=1.3, color="#888888", zorder=1.2)
+    ax.text(0.8, 57.5,
+            f"no-LM:\n1 \u2212 (1 \u2212 CER)$^{{{chars_per_word:.1f}}}$",
+            fontsize=7.8, color="#666666", ha="left", va="top",
+            linespacing=1.12)
+    ax.plot([0, x_max], [0, x_max], ls="--", lw=1.3, color="#999999", zorder=1)
+    ax.text(30.0, 27.0, "WER = CER", fontsize=8.4, color="#777777",
+            ha="left", va="top", rotation=45, rotation_mode="anchor",
+            transform_rotates_text=True)
+    # 2026-11-11 removal round (user: "把这段话删了，太让人迷惑了"):
+    # the three-line >=5-gram / bigram / no-LM crossover annotation is
+    # retired; the diagonal WER = CER line and the no-LM curve label
+    # carry the reading on their own.
+    for name, v in data.items():
+        if name not in style:
+            continue
+        c, m, lab = style[name]
+        sid, participant = _ARM_IDS[name]
+        # Per-point collections + gids, mirroring panel (a); see the note
+        # in _draw_per_panel.
+        for j, sess in enumerate(v["sessions"]):
+            coll = ax.scatter([sess["cer"]], [sess["wer"]],
+                              s=34, marker=m, facecolor="none", edgecolor=c,
+                              lw=1.5, alpha=0.85, zorder=3,
+                              label=lab if j == 0 else None)
+            coll.set_gid(f"pmS--cer--{sid}--{participant}--{sess['session']}--"
+                         f"{sess['cer']:g}--{sess['wer']:g}--{sess.get('n', '')}")
+        pool = ax.scatter([v["pooled"]["cer"]], [v["pooled"]["wer"]], s=120,
+                          marker="*", color=c, edgecolor="white", lw=0.6,
+                          zorder=4)
+        pool.set_gid(f"pmP--cer--{sid}--{participant}--{v['pooled']['cer']:g}--"
+                     f"{v['pooled']['wer']:g}")
+    leg = ax.legend(fontsize=8.2, frameon=False, loc="upper right",
+                    title="per-session (open)   pooled (star)",
+                    title_fontsize=8.2, borderaxespad=0.3, labelspacing=0.4)
+    _stamp_legend_gids(leg, "cer", style)
+    ax.set_xlim(0, x_max)
+    ax.set_ylim(0, y_max)
+    ax.set_xlabel("Greedy CER on held-out trials by session (%)")
+    ax.set_ylabel("word error rate after LM stage (%)")
+    ax.set_title("(b) Offline CER vs. post-LM WER by session",
+                 fontsize=11.5, fontweight="bold")
+
+
+def _draw_memory_panel(ax, rows, ceiling, title, ylabel, y_max, y_ticks,
+                       label_pad):
+    """Draw panels (c)/(d): ours-vs-official memory bar pairs.
+
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        Target axes.
+    rows : list of dict
+        ``panel_g_host_ram_walls`` / ``panel_h_gpu_vram_walls`` rows with
+        ``category``, ``ours_gb``, and ``official_gb`` keys.
+    ceiling : float
+        Consumer-PC ceiling drawn as a dashed line (64 RAM / 16 VRAM).
+    title, ylabel : str
+        Panel title and y-axis label.
+    y_max : float
+        Upper y limit.
+    y_ticks : list of int
+        Y tick positions.
+    label_pad : float
+        Data-coordinate offset for the value labels.
+
+    Returns
+    -------
+    None
+    """
+    c_off = OPEN_C[2]
+    fc_ours = (*to_rgb(C_SPEECH_I), 0.35)
+    fc_off = (*to_rgb(c_off), 0.35)
+    x = np.arange(len(rows))
+    w = 0.36
+    bars_ours = ax.bar(x - w / 2, [r["ours_gb"] for r in rows], w,
+                       color=fc_ours, edgecolor=C_SPEECH_I, linewidth=0.9)
+    bars_off = ax.bar(x + w / 2, [r["official_gb"] for r in rows], w,
+                      color=fc_off, edgecolor=c_off, linewidth=0.9)
+    # 2026-11-16 interactivity round: gid each bar patch so the page JS can
+    # bind tooltips / selectStudy() exactly like the Figure 2 slots. The
+    # unit tag disambiguates host RAM from GPU VRAM in the tooltip copy.
+    unit = "RAM" if ceiling > 32 else "VRAM"
+    for i, r in enumerate(rows):
+        sid = _CATEGORY_IDS[r["category"]]
+        bars_ours[i].set_gid(f"mmB--{unit}--ours--{sid}--{r['ours_gb']:g}")
+        bars_off[i].set_gid(f"mmB--{unit}--off--{sid}--{r['official_gb']:g}")
+    for i, r in enumerate(rows):
+        o_gb, p_gb = r["ours_gb"], r["official_gb"]
+        o_str = f"{o_gb:.0f}" if o_gb == int(o_gb) else f"{o_gb:.1f}"
+        p_str = f"{p_gb:.0f}" if p_gb == int(p_gb) else f"{p_gb:.1f}"
+        ax.text(i - w / 2 - 0.02, o_gb + label_pad, o_str,
+                ha="center", va="bottom", fontsize=6.8)
+        ax.text(i + w / 2 + 0.02, p_gb + label_pad, p_str,
+                ha="center", va="bottom", fontsize=6.8)
+    ax.set_ylim(0, y_max)
+    ax.set_yticks(y_ticks)
+    ax.axhline(ceiling, color=C_NORM, linewidth=1.1,
+               linestyle=(0, (4, 2)), zorder=2.6)
+    ax.set_xticks(x)
+    ax.set_xticklabels([r["category"] for r in rows], fontsize=7.4,
+                       rotation=75, ha="right", rotation_mode="anchor")
+    ax.set_xlim(-0.65, len(rows) - 0.35)
+    ax.set_ylabel(ylabel)
+    ax.legend(handles=[
+        mpatches.Patch(facecolor=fc_ours, edgecolor=C_SPEECH_I, linewidth=0.9,
+                       label="our reproduction (64 GB RAM PC)"),
+        mpatches.Patch(facecolor=fc_off, edgecolor=c_off, linewidth=0.9,
+                       label="official / naive stack"),
+        Line2D([0], [0], color=C_NORM, linewidth=1.1, linestyle=(0, (4, 2)),
+               label=f"{ceiling:.0f} GB consumer PC "
+                     f"{'RAM' if ceiling > 32 else 'GPU VRAM'} ceiling"),
+    ], frameon=False, fontsize=7.6, loc="upper left", ncol=1,
+        columnspacing=1.0, handlelength=1.4, handletextpad=0.5)
+    ax.set_title(title, fontsize=11.0, fontweight="bold")
+
+
+def _load_yaml():
+    """Load the canonical benchmark YAML shared by all four panels.
+
+    Returns
+    -------
+    dict
+        Parsed ``reproduction_benchmark.yaml`` content.
+    """
+    with open(BENCHMARK, "r",
+              encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+
+def _draw_phase_row(ax_a, ax_b, results_dir):
+    """Draw panels (a)/(b): the two session-level phase diagrams.
+
+    Parameters
+    ----------
+    ax_a, ax_b : matplotlib.axes.Axes
+        Left (PER vs. WER) and right (CER vs. WER) axes of the row.
+    """
+    _draw_per_panel(ax_a, os.path.join(results_dir, "session_per_vs_wer.json"))
+    _draw_cer_panel(ax_b, os.path.join(results_dir, "session_cer_vs_wer.json"))
+
+
+def _draw_memory_row(ax_c, ax_d, data):
+    """Draw panels (c)/(d): the ours-vs-official memory bar pairs.
+
+    Parameters
+    ----------
+    ax_c, ax_d : matplotlib.axes.Axes
+        Left (host RAM) and right (GPU VRAM) axes of the row.
+    data : dict
+        Parsed ``reproduction_benchmark.yaml`` content.
+    """
+    _draw_memory_panel(
+        ax_c, data["panel_g_host_ram_walls"], 64.0,
+        "(c) Host RAM across all 8 studies: our 64 GB PC vs. official stacks",
+        "Peak host RAM (GB)", 445, list(range(0, 401, 100)), 4.5)
+    _draw_memory_panel(
+        ax_d, data["panel_h_gpu_vram_walls"], 16.0,
+        "(d) GPU VRAM across all 8 studies: our 16 GB GPU vs. official rigs",
+        "Peak GPU VRAM (GB)", 118.0, list(range(0, 101, 25)), 1.3)
+
+
+def _build_figure(results_dir):
+    """Assemble the live 4-panel Matplotlib figure.
+
+    Returns
+    -------
+    matplotlib.figure.Figure
+        Unchecked (no overlap verification yet) figure instance; the
+        caller is responsible for ``check_figure_overlaps`` and closing.
+    """
+    data = _load_yaml()
+    fig = plt.figure(figsize=(12.6, 12.2))
+    gs = fig.add_gridspec(2, 2, height_ratios=(1.0, 0.86), hspace=0.34,
+                          wspace=0.24)
+
+    ax_a = fig.add_subplot(gs[0, 0])
+    ax_b = fig.add_subplot(gs[0, 1])
+    _draw_phase_row(ax_a, ax_b, results_dir)
+    ax_c = fig.add_subplot(gs[1, 0])
+    ax_d = fig.add_subplot(gs[1, 1])
+    _draw_memory_row(ax_c, ax_d, data)
+
+    fig.subplots_adjust(left=0.075, right=0.985, top=0.965, bottom=0.09)
+    return fig
+
+
+def _build_phase_figure(results_dir):
+    """Assemble the 1x2 phase-diagram figure (panels a+b only).
+
+    Returns
+    -------
+    matplotlib.figure.Figure
+        Unchecked figure instance for the HTML "Insights" section; the
+        caller is responsible for ``check_figure_overlaps`` and closing.
+    """
+    fig = plt.figure(figsize=(12.6, 6.4))
+    ax_a, ax_b = fig.subplots(1, 2)
+    _draw_phase_row(ax_a, ax_b, results_dir)
+    fig.subplots_adjust(left=0.075, right=0.985, top=0.94, bottom=0.10,
+                        wspace=0.24)
+    return fig
+
+
+def _build_memory_figure():
+    """Assemble the 1x2 memory-wall figure (panels c+d only).
+
+    Returns
+    -------
+    matplotlib.figure.Figure
+        Unchecked figure instance for the HTML "Memory Savings" section;
+        the caller is responsible for ``check_figure_overlaps`` and closing.
+    """
+    data = _load_yaml()
+    fig = plt.figure(figsize=(12.6, 5.4))
+    ax_c, ax_d = fig.subplots(1, 2)
+    _draw_memory_row(ax_c, ax_d, data)
+    fig.subplots_adjust(left=0.075, right=0.985, top=0.92, bottom=0.12,
+                        wspace=0.24)
+    return fig
+
+
+def _checked_svg(fig, svg_id):
+    """Overlap-check a figure and serialise it as a self-contained SVG.
+
+    Parameters
+    ----------
+    fig : matplotlib.figure.Figure
+        Already-drawn figure; ``check_figure_overlaps`` must pass and the
+        figure is closed either way before returning.
+    svg_id : str
+        Root-element ``id`` stamped on the ``<svg>`` tag; Matplotlib's
+        internal ``<style>`` block is scoped under ``#<svg_id>`` so its
+        universal selectors cannot leak into the page-wide CSS.
+
+    Returns
+    -------
+    tuple of (str, int, int)
+        ``(svg_element, vw, vh)`` where ``svg_element`` is a complete
+        ``<svg id="<svg_id>" viewBox="...">...</svg>`` element with the
+        fixed ``width``/``height`` stripped so page CSS scales it.
+    """
+    bad = check_figure_overlaps(fig)
+    if bad:
+        plt.close(fig)
+        msg = "\n".join(f"  {pct:5.1f}%: {a!r} <-> {b!r}" for a, b, pct in bad)
+        raise RuntimeError(f"Overlap check failed:\n{msg}")
+    buf = io.StringIO()
+    fig.savefig(buf, format="svg", bbox_inches="tight")
+    plt.close(fig)
+    svg = buf.getvalue()
+
+    # HTML cannot host the <?xml?> declaration; the generator comment
+    # would render as a bogus comment, so both headers are dropped.
+    svg = re.sub(r"^<\?xml[^>]*\?>\s*", "", svg)
+    svg = re.sub(r"^<!--.*?-->\s*", "", svg, flags=re.DOTALL)
+
+    # Scope Matplotlib's <style> block (e.g. ``*{stroke-linejoin: round}``)
+    # under #<svg_id>: a bare universal selector inside an inline SVG would
+    # apply document-wide and silently restyle the hand-built f2/f6 SVGs.
+    def _scope_style(match):
+        rules = []
+        for rule in match.group(1).split("}"):
+            if "{" not in rule:
+                continue
+            sel, body = rule.split("{", 1)
+            scoped = ", ".join(
+                f"#{svg_id} {s.strip()}" for s in sel.split(",") if s.strip()
+            )
+            rules.append(f"{scoped}{{{body.strip()}}}")
+        return ('<style type="text/css">' + " ".join(rules) + "</style>")
+
+    svg = re.sub(r'<style type="text/css">\s*(.*?)\s*</style>',
+                 _scope_style, svg, count=1, flags=re.DOTALL)
+
+    # Drop the fixed pt width/height on the root tag only and stamp the id
+    # the page CSS (e.g. ``#pm-svg { width: 100%; height: auto; }``) targets.
+    root = re.search(r"<svg\b[^>]*>", svg)
+    if root is None:
+        raise RuntimeError("Matplotlib SVG output has no root <svg> tag")
+    root_tag = root.group(0)
+    vw_m = re.search(r'viewBox="([\d.]+) ([\d.]+)', root_tag)
+    vw, vh = (int(round(float(g))) for g in vw_m.groups()) if vw_m else (0, 0)
+    slim = re.sub(r'\s+(?:width|height)="[^"]*"', "", root_tag)
+    slim = slim.replace("<svg", f'<svg id="{svg_id}"', 1)
+    svg = svg.replace(root_tag, slim, 1)
+    return svg, vw, vh
+
+
+def build_html_svgs(results_dir=PUBLISHED):
+    """Serialise the two HTML section figures as inline SVGs.
+
+    2026-11-12 HTML rounds (user: "把 phase_memory 图加入 html 的 Overview
+    之后"; then "算了，还是新开一个 section 吧，就叫 Insights"; "四个 panel
+    在网页中打开看上去很大，和其他图片不太适应，在 html 中处理一下"):
+    the interactive HTML showed the 4-panel companion in its own "Insights"
+    section. 2026-11-13 split round (user: "把 Insights 拆成两节吧，a b 是
+    insights，c d 是节约"): panels (a)/(b) stay in "Insights" while the
+    memory-wall panels (c)/(d) move to their own "Memory Savings" section,
+    so the exporter needs two in-process SVG serialisations that do not
+    depend on the ``.png``/``.pdf`` files (CI runs ``render_figure2.py``
+    before this script's ``main()``); page CSS caps the rendered width.
+    The standalone 4-panel ``.png``/``.pdf`` outputs are untouched.
+    2026-11-16 interactivity round (user: "给Insights和Memory Savings的
+    四个panel也加上可点击的交互，就像Overview和Limits of CTC-TLG"):
+    per-session markers, pooled stars, and ours/official bar pairs carry
+    ``<g id="pmS--…"> / pmP--… / mmB--…`` gid hooks (see ``_ARM_IDS`` /
+    ``_CATEGORY_IDS``) that the page JS binds to tooltips and
+    ``selectStudy()`` cross-highlighting. Legend round (user:
+    "insights中的两张图的legend也改成可以交互"): the phase panels'
+    legend handles/labels carry ``pmLh--/pmLt--`` gids (see
+    ``_stamp_legend_gids``). The ``.png``/``.pdf`` outputs are
+    pixel-identical (gids only live in the SVG serialisation).
+
+    Returns
+    -------
+    dict of str to tuple of (str, int, int)
+        ``{"phase": (svg_element, vw, vh), "memory": (svg_element, vw,
+        vh)}`` for the panels-(a)+(b) and panels-(c)+(d) 1x2 figures,
+        stamped ``#pm-svg`` and ``#mm-svg`` respectively.
+    """
+    return {
+        "phase": _checked_svg(_build_phase_figure(results_dir), "pm-svg"),
+        "memory": _checked_svg(_build_memory_figure(), "mm-svg"),
+    }
+
+
+def main():
+    """Render the 4-panel figure and save PNG + PDF.
+
+    Returns
+    -------
+    None
+        Writes ``communication_neuroprostheses_phase_memory.{png,pdf}``.
+    """
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--results-dir", default=PUBLISHED,
+                        help="Directory containing the PER and CER session tables")
+    parser.add_argument("--out", help="Output stem, with PNG and PDF extensions appended")
+    args = parser.parse_args()
+    out = args.out or os.path.join(args.results_dir, "figure3")
+    fig = _build_figure(args.results_dir)
+    bad = check_figure_overlaps(fig)
+    if bad:
+        plt.close(fig)
+        msg = "\n".join(f"  {pct:5.1f}%: {a!r} <-> {b!r}" for a, b, pct in bad)
+        raise RuntimeError(f"Overlap check failed:\n{msg}")
+    fig.savefig(out + ".png", bbox_inches="tight")
+    fig.savefig(out + ".pdf", bbox_inches="tight")
+    plt.close(fig)
+    print(f"wrote {out}.png / .pdf")
+
+
+if __name__ == "__main__":
+    main()

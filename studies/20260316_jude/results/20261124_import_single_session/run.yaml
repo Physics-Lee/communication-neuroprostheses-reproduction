@@ -1,0 +1,56 @@
+id: 20261124_import_single_session
+study: 20260316_jude
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261009_reproduce_20260316_jude
+legacy_checkout_head_at_import: a9f8c424e4aa326674084f0be181700142de1eb2
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20260316_jude/results/runs/m1_t18_20241204_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m1_t18_20241204_torch/final_report.json
+  sha256: ea0731822b2eb555d204113f2c16d04cb9c09ddc5f230de5c1d1ad060120fbab
+- old_path: 20260316_jude/results/runs/m3_t1720240425_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t1720240425_torch/final_report.json
+  sha256: e69103793d2ed5f4450783338e491964c5ec5b2efbe6ccc2b5403cd0f030e998
+- old_path: 20260316_jude/results/runs/m3_t1720240605_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t1720240605_torch/final_report.json
+  sha256: ea58fceedd9cebd5354ac5ca1562ef3378e341e21eaa35826df4007384c8836d
+- old_path: 20260316_jude/results/runs/m3_t1720240613_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t1720240613_torch/final_report.json
+  sha256: 6ecaf1f2cdad65a7a35e1b0d75eea58ffe3a347a15c1d8fe5a8d9fdf4fd363c8
+- old_path: 20260316_jude/results/runs/m3_t1720240710_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t1720240710_torch/final_report.json
+  sha256: e70702632ce851dee0a56974d5b2c6963ba6105287ec7d8c64d47f8715d6915c
+- old_path: 20260316_jude/results/runs/m3_t1720240722_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t1720240722_torch/final_report.json
+  sha256: 53f2dcfafbb5fdff5ad77f004a80e46b096f59e97eb14dce4076d2db0feb6a8e
+- old_path: 20260316_jude/results/runs/m3_t17_20240603_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t17_20240603_torch/final_report.json
+  sha256: 04aaf2da37351ca5fb7acd9209b4c357d46956429ad843fdd16f7ca7853044c4
+- old_path: 20260316_jude/results/runs/m3_t17_20240604_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t17_20240604_torch/final_report.json
+  sha256: 039b17dee457a0b89ca01bdfdb8c28d8f0e7611d4ee6bdae1961115c0d3eab96
+- old_path: 20260316_jude/results/runs/m3_t17_20240709_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t17_20240709_torch/final_report.json
+  sha256: 868bf61c9e88cc2ef9fd5ab9bbabd187a143a8b6eee022ee2859541cf7822281
+- old_path: 20260316_jude/results/runs/m3_t18_20241205_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t18_20241205_torch/final_report.json
+  sha256: 39c55fa0469bd0c2f7a2a9b9a433bd4948909d31e86ab83ee5466c01377cd0e7
+- old_path: 20260316_jude/results/runs/m3_t18_20250114_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t18_20250114_torch/final_report.json
+  sha256: c0ffbe8592d3c374c25e2e302414a9c86fe4c9b0c182d4a19d743dbfaa22d401
+- old_path: 20260316_jude/results/runs/m3_t18_20250115_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t18_20250115_torch/final_report.json
+  sha256: e48288f65a41cb3bd22fb6bd7ae1c0267e9b7149632005cf59c1122c8c30fb10
+- old_path: 20260316_jude/results/runs/m3_t18_20250121_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t18_20250121_torch/final_report.json
+  sha256: 70b6c63c0474a8c75e28ea0d1188258f61e4eebd37a431d82e823be291f92d06
+- old_path: 20260316_jude/results/runs/m3_t18_20250122_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t18_20250122_torch/final_report.json
+  sha256: b00a5440efcfea48f328e0e20efb485bb860bf5c5f8c8fefc3e2214499781d35
+- old_path: 20260316_jude/results/runs/m3_t18_20250204_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t18_20250204_torch/final_report.json
+  sha256: e20b79e8910c941b33d258bbd84a128a4c4caf27ebcc5cc4ad23e08e14e46ff4
+- old_path: 20260316_jude/results/runs/m3_t18_20250205_torch/final_report.json
+  path: studies/20260316_jude/results/20261124_import_single_session/m3_t18_20250205_torch/final_report.json
+  sha256: 4667f018484e3b5c4e7d047c9ae30979957a9c1270959889d479108dc685e4aa

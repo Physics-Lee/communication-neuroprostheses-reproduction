@@ -1,0 +1,418 @@
+arm,evaluation_role,session,archive_trial_id,archive_row,reference,figure3_included,source
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,1,They hope I have my nurse.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,2,"No, my nurse is not going outside.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,3,My hope is my faith.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,4,How do you do that right?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,5,I clean my glasses.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,6,How is it good?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,7,You hope my family is good.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,8,I have no need.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,9,Feel it here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,10,I hope I need my faith.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,11,I hope I have my computer.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,12,They are not going up.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,13,What is my need?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,14,You hope they are here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,15,You feel very good.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,16,Help do it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,17,It is that bad.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,18,Is my music bad?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,19,Very right.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,20,"Yes, they do it.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,21,I like how comfortable my nurse is.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,22,I bring it closer.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,23,Hope you are hungry.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,24,Do not clean it up.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,25,Are you it?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,26,How very right.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,27,Family is okay.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,28,I have glasses.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,29,My nurse is not very hungry.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,30,I am not going outside.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,31,Do it like that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,32,You bring it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,33,They have no music.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,34,What do I tell you?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,35,My nurse is very good.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,36,I tell you my family is not thirsty.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,37,It is that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,38,Please do not do that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,39,Is my nurse coming?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.03.26,,40,I tell you my family is not hungry.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,41,Forms for things.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,42,Putting things on the back burner.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,43,I think it's caused a lot.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,44,Measurements of about half a million distant galaxies.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,45,It already costs society much more because of it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,46,That's what we had.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,47,Measuring it is not an exact science.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,48,I hope your baby likes his toy.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,49,Civil things that clog the courts.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,50,I live near a Walmart.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.02,,51,My brother lives.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,52,I'm a real movie buff.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,53,An informal kind of situation.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,54,I mainly leave that up to them.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,55,For a rifle there's no waiting.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,56,Do you watch cartoons a lot?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,57,It seems like he would develop pride.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,58,Both the good and the bad.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,59,We've got two living areas.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,60,This guy's fixing to do something.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,61,I thought about that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,62,It was very nice talking to you.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,63,I think nursing homes can be good.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,64,An economic incentive for people to vote.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,65,Something looks a little nicer.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,66,My parents used to have dogs.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,67,Camping for you in a motor home.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,68,He would get the glory.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,69,In the field that I was in.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,70,Which I thought was interesting.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,71,Can you imagine?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,72,In our little local paper.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,73,Carlos has big decisions to make.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,74,I don't know if I'd want one of those now.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,75,Meet my pleasure.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,76,I mean the Saturday night special stuff.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,77,I think they're getting ready to.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,78,Unless you're playing it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,79,Just a natural fact of life.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,80,The payroll is lower that way.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,81,It's aking profits.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,82,No you don't have to put it down.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,83,I do not like to do that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,84,Image copyright.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,85,My mother was real heavy into crafts.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,86,And you really begin to develop an interest in it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,87,More or less alike.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,88,Are you recycling?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,89,You can do it as long as you want.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,90,I like ice skating.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.15,,91,I was surprised at the ending.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,92,He came to school up here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,93,So do you go to college right now?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,94,If they're above the knee they turn into shorts.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,95,It helped him to have a close relationship.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,96,That gives us special time together too.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,97,And remember how they used poison gas?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,98,Before they draft you.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,99,It think it's Jamaica.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,100,But I've been at companies where people barely work two or three hours a day.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,101,It's kinds of neat.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,102,Some of them are formal two year programs.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,103,I don't know her politics.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,104,I absorbed all of that movie in one sitting.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,105,It's a casual working space.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,106,It's got a rounded front on it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,107,I think that would be a wonderful way to do it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,108,Your tuition reimbursement.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,109,I can't even remember.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,110,Interstate driving.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,111,Humans living on the edge are even more unstable than usual.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,112,My husband didn't like that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,113,It was fun though.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,114,The public puts up with it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,115,Which I never knew existed.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,116,This could be the tipping point for Bolt.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,117,"With everybody in the group so quiet, you could hear a pin drop.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,118,Austin is so pretty.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,119,Prince of Persia.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,120,Survey system.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,121,I don't know what advice I'd give them.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,122,He doesn't really enjoy doing it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,123,Now we start in May.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,124,Probably millions of dollars.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,125,Security measures.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,126,Because the criminals know that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,127,"Drawing, painting and the visual arts.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,128,"Again, our choices are not made in a vacuum.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,129,We're not quite up to that sort of thing.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,130,This guy's beating you up.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.16,,131,His daddy owned a boat shop.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.17,,132,Somebody was telling me.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.17,,133,If someone is ill.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.17,,134,Also swims in college.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.17,,135,It's still pretty rural.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.17,,136,We're a long way away.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.04.17,,137,Some of them are formal two year programs.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,138,It's like shrimp on the Gulf.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,139,The test is a booger.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,140,Just way in the back.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,141,Particularly commercial productivity.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,142,The parents are saying to skip it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,143,That's why I don't do as much as I'd like.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,144,Exercise is not supposed to do that to you.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,145,It depends on whether one is physical or mental.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,146,You know what I would love.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,147,My husband went over and painted it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,148,Regime Change.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,149,It was paid for.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,150,It's over on the other end.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,151,They keep calling back.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,152,I've seen all of this.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,153,They hold it up to the sun God.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,154,"After that season, Alex had a decision to make.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,155,I can remember when our children were small.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,156,I think it's probably more true.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,157,There is no real counter measurement.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,158,Pets can be a lot of trouble.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,159,Then his voice started to get raspy.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,160,I'll do something with the piano.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,161,I took a leave.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,162,The other thing to do.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,163,He kind of has free run of the place.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,164,We didn't really have one.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,165,You learn more about the characters and stuff.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,166,They're affectionate.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,167,It's the reason I get annoyed.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,168,You know meatless meals.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,169,It seems like we pay the state.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,170,We've enjoyed it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,171,Why they don't go with fourteen one.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,172,Studying electronic technology.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,173,I don't know if it's that serious.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,174,As much as I enjoy them.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,175,Do you go by the ads when you look at them?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,176,Now it doesn't bother me at all.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.06,,177,She's the little girl.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,178,It's been a few years.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,179,He said he's been saying one more.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,180,In legislation or in work.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,181,What have you done.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,182,You would like it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,183,I don't know why it's so hard to find.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,184,All of us could use one electric car right now.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,185,They have been touring.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,186,Take a seat and enjoy the ride!,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,187,Garlic is the only thing you're supposed to put in there.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,188,I haven't really priced it out.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,189,It was not Puerto Rican.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,190,What would you buy?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,191,I was reading something in the paper.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,192,They're so young.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,193,I'll probably have to sell the prize I get.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,194,Outside or inside?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,195,And I guess maybe that's the way it is.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,196,It's nice to have another person there.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,197,She acts like she wants to chew their leg off.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,198,It was really enjoyable.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,199,The term was going around.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,200,Vision is one of the foundational blocks for any entrepreneur.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,201,Fortunately I never have had to go in.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,202,Do you have any others?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,203,Don't let them see violence at home.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,204,I've never actually seen her in concert.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,205,Raise my children.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,206,She stilled at the sound of her partner's voice.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,207,I don't really care what it takes to qualify.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,208,The boy's name has not been released.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,209,To ask automakers for more jobs won't work.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,210,Oil prices appear to be spiking on the news.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,211,It's easy to say.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,212,I had heard a couple of people.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,213,Look like jungles.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,214,It's not anything elaborate.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,215,Give people insight and help them make better decisions.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,216,I just got the new issue.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.07,,217,Gathered for the occasion.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,218,It's amazing that people actually believe him.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,219,I'm sort of glad Strawberry went away.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,220,It's just me in the house.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,221,Any latest version of Linux.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,222,The measures already passed a Senate committee.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,223,We had another cat about two years ago.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,224,Well I'm definitely for it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,225,If you ever go in a restaurant.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,226,I see her only once or twice a year.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,227,"Stay safe, and enjoy your time out there.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,228,I just thought of something we have to return.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,229,For the relatives.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,230,Because you're not.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,231,Do you know if Virginia has it?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,232,With the car pollution.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,233,I just see him as trying to squish as much space.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,234,I'll agree with that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,235,Everything else.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,236,I think not normal setting.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,237,It's kind of a depressing topic.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,238,It's good preparation.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,239,Especially in the theater it was contagious.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,240,The door bell rang.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,241,In the rice steamer.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,242,Ten gallon buckets of water.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,243,It's had that orientation for quite some time.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,244,It would depend upon which one you want.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,245,Some old church magazines on the table.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,246,Putting things on the back burner.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,247,We find something we like.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,248,What are you going to do?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,249,Realistically it is.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,250,I really didn't have to.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,251,Proponent of liberal arts education.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,252,I haven't been to a baseball game in years.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,253,Did you actually use drugs at all?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,254,Then you remove it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,255,"An invoice, email, or quotation.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,256,We went through it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.13,,257,I don't buy the newspaper.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,258,It seems quite important to you.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,259,I have changed my mind.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,260,He's turning away from us.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,261,I hope this will look good.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,262,I cannot deal with it right now.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,263,It is never too late for education.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,264,This movie was made on a small budget.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,265,This is really a lot for me.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,266,The story of my life.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,267,She sold me this book and I paid for it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,268,This can be a fun place for kids.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,269,I'll be right back.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,270,The joy of the weekend with family is something else.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,271,People will be here on time.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,272,Call me after a couple of days.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,273,PLEASE SAY ANYTHING YOU WANT,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,274,At the end everything was nice.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,275,It might take a long time.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,276,I don't have time to finish all the work.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,277,She calls him to tell him she can't come.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,278,I really enjoy my work here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,279,It's quite hard work to get this done.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,280,QUESTION: Have you read anything interesting lately?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,281,Listen to this music.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,282,This company went through some changes.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,283,I will code it up soon.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,284,I want to get some early morning sun.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,285,This is my first day at my new job.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,286,Nothing goes past my mother.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,287,What brings you to our company?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,288,Will you use any of this stuff?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,289,I cannot go without reading every day.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,290,"Basically, what will you do for the employees?",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,291,Would you like to come to see our new house?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,292,How often do you see your friends?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,293,I plan to visit my parents soon.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,294,This is our work.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,295,This is far from it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,296,I paid with my usual credit card.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.14,,297,Catch it in your visual field.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,298,Factors that affect earnings of an employee.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,299,The same patterns of behavior.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,300,I think it's gotten just care.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,301,We are seasoned minds.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,302,They're being somewhat protectionist.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,303,It's just so versatile.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,304,A Mexican dinner.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,305,I always get those.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,306,I can hardly wait.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,307,They would let you use it maybe once a year.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,308,I love this country too much.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,309,Our sleeping bags I guess.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,310,The trial is expected to reach a conclusion soon.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,311,One is thirteen and one is eleven.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,312,Twelve different major ski resorts.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,313,The lenses for cameras.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,314,I'd be real concerned.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,315,The most obvious occasion is the celebration of a new home.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,316,The other place is called the Vienna Inn.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,317,Stay there till eight o'clock.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,318,So he's a fan of history.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,319,At the higher echelons.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,320,The beep in the background.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,321,A wide variety.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,322,Now it doesn't bother me at all.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,323,The way the law reads.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,324,Had this dog appear on its front doorstep.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,325,In those situations I don't know how to behave.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,326,That's a lot of people.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,327,It is not something that needs to be avoided.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,328,It can swim away fast enough and go hide.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,329,He's an indoor cat.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,330,I guess I'll get over it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,331,To know what to expect really.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,332,The best teachers and the best students.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,333,She enjoys her thought.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,334,They watch a couple of shows like that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,335,My husband also likes golf.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,336,It's an older home.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.05.28,,337,My family is in Kentucky.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,338,"Not you, please.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,339,I hope you have it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,340,My family is coming here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,341,Is that clean?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,342,Tell my family I am not comfortable.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,343,Do you feel that?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,344,What is not?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,345,I do not hope it is goodbye.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,346,What is it you need?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,347,"Yes, okay.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,348,I have no nurse.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,349,I am going.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,350,"Yes, they do that.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,351,They are not outside.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,352,"Yes, do it.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,353,You do it like that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,354,I have it coming.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,355,Please do it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,356,They are outside.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,357,You need it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,358,Are you closer?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,359,Are you my family?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,360,You do not like my computer.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,361,That is here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,362,How is that right?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,363,Clean up it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,364,It is going outside.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,365,What do they tell you?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,366,I need my nurse right here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,367,They are thirsty.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,368,Like what?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,369,I do it like that.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,370,Do they have my computer?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,371,I hope I do not need my faith.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,372,They have it right.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,373,I hope I do not need my family.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,374,They are not good.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,375,My nurse is outside.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,376,My family is not right.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.12,,377,You need glasses.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,378,Coming up is very good.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,379,I like going outside.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,380,"What, where?",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,381,Need help where?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,382,No help please.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,383,They hope my nurse is going.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,384,Have faith.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,385,"Yes, I have.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,386,Computer is good.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,387,You do it right here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,388,You do you.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,389,"Yes, it is that.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,390,"No, I do not feel hungry.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,391,You hope they are coming.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,392,Please do not feel bad.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,393,They hope my family is here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,394,They are right outside.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,395,Do you like that?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,396,What is what?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,397,Am I coming up?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,398,Do it here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,399,Do you feel?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,400,Here it is.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,401,I bring it right up.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,402,I have no glasses.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,403,They need it right here.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,404,"No, I am not very good.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,405,I have my music.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,406,You need hope.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,407,What do you like here?,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,408,Not like you.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,409,Do not do it.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,410,I need faith.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,411,I help you.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,412,I hope you do.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,413,That you like.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,414,"Yes, it is right.",True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,415,They clean my glasses.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,416,Outside help.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+"Jude 2026 (LIS, T17)",validation,t17.2024.08.13,,417,Have not.,True,studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv

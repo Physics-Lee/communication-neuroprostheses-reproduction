@@ -1,0 +1,9 @@
+study: 20250612_wairagkar
+dataset: https://doi.org/10.5061/dryad.2280gb64f
+dataset_id: dryad_2280gb64f
+release_id: null
+external_input_path: data/raw/dryad_2280gb64f/dryad_2280gb64f__t15_neural_data.zip
+historical_checkout: 20261009_reproduce_20250612_wairagkar
+legacy_commit: 327b4c9e7e23070d77f19dbc7b83ae463752f29e
+checksums: See each run.yaml for archived evidence file checksums. Full release file
+  hashes are unverified.

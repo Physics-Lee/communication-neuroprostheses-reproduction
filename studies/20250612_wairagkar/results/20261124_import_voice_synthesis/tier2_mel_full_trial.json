@@ -1,0 +1,25 @@
+{
+ "days": {
+  "t15_day179": {
+   "model": "brain2voice_t15_day174.h5",
+   "n_scored": 20,
+   "mel_band_r_mean": 0.612,
+   "mel_band_r_sd_trials": 0.05
+  },
+  "t15_day195": {
+   "model": "brain2voice_t15_day193.h5",
+   "n_scored": 20,
+   "mel_band_r_mean": 0.686,
+   "mel_band_r_sd_trials": 0.037
+  }
+ },
+ "protocol": {
+  "v2": "whole-trial synthesis, silence removed at the mel-frame layer (paper-faithful), vs tier-2's feature-chunk concatenation",
+  "n_trials_per_day": 20
+ },
+ "grand_mean": 0.649,
+ "tier2_concat_ref": {
+  "day179": 0.532,
+  "day195": 0.646
+ }
+}

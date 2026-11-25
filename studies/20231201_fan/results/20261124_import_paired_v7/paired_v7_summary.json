@@ -1,0 +1,96 @@
+{
+  "seed": 9,
+  "backend": "torch-cuda",
+  "steps_per_session": 500,
+  "heldout_per_session": 6,
+  "replay_fraction": 0.3,
+  "learning_rate": 5e-05,
+  "gradient_clip": 10.0,
+  "beam": 12,
+  "topk": 9,
+  "alpha": 0.15,
+  "lm_seed_sentences": 629,
+  "adaptation_labels": "authors' online text on the non-holdout pool",
+  "sessions": [
+    {
+      "session": "t5.2022.09.29",
+      "matched_trials": 6,
+      "reference_words": 48,
+      "online_word_errors": 0,
+      "greedy_word_errors": 11,
+      "beam_word_errors": 10
+    },
+    {
+      "session": "t5.2022.10.06",
+      "matched_trials": 6,
+      "reference_words": 50,
+      "online_word_errors": 2,
+      "greedy_word_errors": 26,
+      "beam_word_errors": 24
+    },
+    {
+      "session": "t5.2022.10.18",
+      "matched_trials": 6,
+      "reference_words": 54,
+      "online_word_errors": 2,
+      "greedy_word_errors": 22,
+      "beam_word_errors": 20
+    },
+    {
+      "session": "t5.2022.10.25",
+      "matched_trials": 6,
+      "reference_words": 49,
+      "online_word_errors": 1,
+      "greedy_word_errors": 26,
+      "beam_word_errors": 25
+    },
+    {
+      "session": "t5.2022.10.27",
+      "matched_trials": 6,
+      "reference_words": 43,
+      "online_word_errors": 0,
+      "greedy_word_errors": 22,
+      "beam_word_errors": 22
+    },
+    {
+      "session": "t5.2022.11.01",
+      "matched_trials": 6,
+      "reference_words": 44,
+      "online_word_errors": 0,
+      "greedy_word_errors": 23,
+      "beam_word_errors": 18
+    },
+    {
+      "session": "t5.2022.11.03",
+      "matched_trials": 6,
+      "reference_words": 55,
+      "online_word_errors": 1,
+      "greedy_word_errors": 24,
+      "beam_word_errors": 21
+    },
+    {
+      "session": "t5.2022.12.08",
+      "matched_trials": 6,
+      "reference_words": 58,
+      "online_word_errors": 2,
+      "greedy_word_errors": 23,
+      "beam_word_errors": 20
+    },
+    {
+      "session": "t5.2022.12.15",
+      "matched_trials": 6,
+      "reference_words": 55,
+      "online_word_errors": 0,
+      "greedy_word_errors": 26,
+      "beam_word_errors": 23
+    },
+    {
+      "session": "t5.2023.02.28",
+      "matched_trials": 6,
+      "reference_words": 44,
+      "online_word_errors": 0,
+      "greedy_word_errors": 26,
+      "beam_word_errors": 26
+    }
+  ]
+}

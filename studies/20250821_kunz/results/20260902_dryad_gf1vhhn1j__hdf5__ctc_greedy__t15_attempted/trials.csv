@@ -1,0 +1,106 @@
+session,vocab,sentence_label,pred_phonemes,edit_distance,true_len
+t15.2024.03.03_imagined_50words_eval,50words,They are coming outside,Y UW  |  M  |  M UW  |  M UH NG  |  AH NG  |  AH  | ,13,18
+t15.2024.03.03_imagined_50words_eval,50words,Are you tired?,AA R  |  AY Y UW  |  IH T  | ,5,11
+t15.2024.03.03_imagined_50words_eval,50words,It is right here,IH T  |  IH  |  AY  |  HH R  | ,4,14
+t15.2024.03.03_imagined_50words_eval,50words,I am not okay,AY  |  HH AA R  |  IH T  |  AH NG IY  | ,8,13
+t15.2024.03.03_imagined_50words_eval,50words,My nurse is right outside,Y AY  |  AY S  |  IH Z  |  HH AY  |  HH AH T  | ,10,20
+t15.2024.03.03_imagined_50words_eval,50words,I am not going,HH OW R  |   |  AA T  |  G NG  | ,7,14
+t15.2024.03.03_imagined_50words_eval,50words,Are you going outside?,R  |  Y R  |  R IY NG  |  AH T  |  AW R AH T  | ,11,17
+t15.2024.03.03_imagined_50words_eval,50words,It is okay,N AA T  |  IH T  |  AH T  |  K AY  |  AH R  |  AH R  | ,13,10
+t15.2024.03.03_imagined_50words_eval,50words,Where is it?,IY  |  HH IH Z  |  AA T  | ,5,10
+t15.2024.03.03_imagined_50words_eval,50words,Hello how are you?,AH L IY  |  R  |  AA R AY  |  L  | ,7,14
+t15.2024.03.03_imagined_50words_eval,50words,My glasses are clean,L AH  |  L  | ,13,18
+t15.2024.03.03_imagined_50words_eval,50words,My glasses are comfortable,AY  |  K L IY AH  |  AH AW AY R  |  K AH T AH  | ,14,24
+t15.2024.03.03_imagined_50words_eval,50words,I feel very hungry,AY IY  |  V R IY  |  HH G NG  |  R  | ,7,18
+t15.2024.03.03_imagined_50words_eval,50words,You are not right,Y EY  |  AA R  |  N AA R T  |  W AY T  | ,3,14
+t15.2024.03.03_imagined_50words_eval,50words,Do you feel comfortable?,Y IY R  |  Y UW  |   |  L IY  |  K G AH T  | ,14,21
+t15.2024.03.03_imagined_50words_eval,50words,Please bring my glasses here,L IY  |  L  |  R  |  AA AY  |  L AH  |  AH AW IY  |  R  | ,14,24
+t15.2024.03.03_imagined_50words_eval,50words,I am going outside,HH OW AY  |  IH  |  G R R  |  HH AH T  |  T  | ,12,16
+t15.2024.03.03_imagined_50words_eval,50words,I need my glasses,R  |  N IY T  |  N AY  |  L AH,8,16
+t15.2024.03.03_imagined_50words_eval,50words,Please tell my family,L IY  |  EH  |  AA AY  |  L AH L  | ,9,19
+t15.2024.03.03_imagined_50words_eval,50words,I am okay,M UW  |  M  |  AH P,7,9
+t15.2024.03.03_imagined_50words_eval,50words,How do you like my music?,M Y UW  |  OW  |  P  |  P  |  P  |  Y UW  |  K M UW  |  M UW  |  M M UW IH  | ,17,23
+t15.2024.03.03_imagined_50words_eval,50words,I hope it is clean,Y OW HH OW M UW  |  AE M T  |  AE M Z  |  B D,13,17
+t15.2024.03.03_imagined_50words_eval,50words,What do you do?,D  |  D  |  D UW  |  Y UW  |  Y UW  |  UW  |  D,7,13
+t15.2024.03.03_imagined_50words_eval,50words,Bring my glasses please,UW  |  M UW  |  M ER AH K M D  | ,15,20
+t15.2024.03.03_imagined_50words_eval,50words,How do you feel?,D UW  |  OW UW  |  Y UW  |  F L  | ,4,13
+t15.2024.03.03_imagined_50words_eval,50words,Do not feel bad,Y UW  |  N AA UW D  |  D F D UW  |  F M L D  | ,9,15
+t15.2024.03.03_imagined_50words_eval,50words,That is very clean,Y UW  |  AE Z  |  F M EH ER  |  K L IY  |  D  | ,10,17
+t15.2024.03.03_imagined_50words_eval,50words,They are coming here,UW  |  AA  |  K M UW  |  K K G UH NG  |  F Y UW,13,16
+t15.2024.03.03_imagined_50words_eval,50words,Please clean it,D UW D  |  L D  |  N AA T  | ,9,13
+t15.2024.03.03_imagined_50words_eval,50words,I am thirsty,M UW  |  Y AE M UW  |  F AH T IY  | ,7,11
+t15.2024.03.03_imagined_50words_eval,50words,My computer is clean,P Z  |  AE M AY  |  K M AH ER D  |  IH Z  |  F L  |  D,14,20
+t15.2024.03.03_imagined_50words_eval,50words,They have faith,UW  |  AE M UW  |  D,9,11
+t15.2024.03.03_imagined_50words_eval,50words,Faith is good,AA AW IH Z  | ,8,11
+t15.2024.03.03_imagined_50words_eval,50words,My nurse is outside,AA R  |  HH R  |  IH  |  AW T  | ,9,16
+t15.2024.03.03_imagined_50words_eval,50words,I do not feel comfortable,M P  |   |  D UW  |  Y UW  |  AA T  |  N IY  |  IY  |  W AH T,18,24
+t15.2024.03.03_imagined_50words_eval,50words,Here is my computer,R HH IH  |  K K AH R  | ,13,19
+t15.2024.03.03_imagined_50words_eval,50words,They are going outside,AA R  |  R NG  |  R  |  T  | ,11,17
+t15.2024.03.03_imagined_50words_eval,50words,I am not hungry,AY  |   |  HH  |  AA T  |  HH R,8,16
+t15.2024.03.03_imagined_50words_eval,50words,No, | ,2,3
+t15.2024.03.03_imagined_50words_eval,50words,I like my nurse,IY  |  AY L K  |  AY  | ,8,13
+t15.2024.03.03_imagined_50words_eval,50words,My family is here,DH AY  |  AY L AH  |  IH T  |  HH R  | ,8,17
+t15.2024.03.03_imagined_50words_eval,50words,I feel very comfortable, |  HH IY  |  IY R G AH T AH  | ,14,22
+t15.2024.03.03_imagined_50words_eval,50words,It is comfortable,IH T  |  N IH Z  |  K G T AH R,9,17
+t15.2024.03.03_imagined_50words_eval,50words,My family is outside,AA R  |  HH AH L AH  |  IH T  |  AH HH AH R  | ,12,19
+t15.2024.03.03_imagined_50words_eval,50words,My family is very comfortable,AY  |  K L K IH T  |  R G AH AH,21,29
+t15.2024.03.03_imagined_50words_eval,50words,I am outside,AY  |  HH AA  |  HH AH T  | ,7,11
+t15.2024.03.03_imagined_50words_eval,50words,Bring my glasses here,L  |  AY  |  L K AH  |  IY HH R  | ,11,19
+t15.2024.03.03_imagined_50words_eval,50words,It is good,T  |  T IH  |  K AY G  | ,6,10
+t15.2024.03.03_imagined_50words_eval,50words,Yes,,4,4
+t15.2024.03.03_imagined_50words_eval,50words,I need you,OW IY  |   |  IY  | ,6,9
+t15.2024.12.15_imagined_125kwords_eval,125kwords,Which way is the tourist area?,AH  |  AH K  |  AH  |  K L  |   | ,19,25
+t15.2024.12.15_imagined_125kwords_eval,125kwords,I was raised in New York City.,W AH T  |  K  |   |  OW  |  D  |  G  |  IH,20,27
+t15.2024.12.15_imagined_125kwords_eval,125kwords,When do you leave your job?,OW  |  OW  |  Y UW  |  K OW  |  OW M  |  F M UW  | ,14,22
+t15.2024.12.15_imagined_125kwords_eval,125kwords,That's the only pollution that's been there.,OW  |  K  |  K  |  K OW AH T  |  IH W AH L T  |  K AH OW  |  K OW K  | ,26,34
+t15.2024.12.15_imagined_125kwords_eval,125kwords,They needed a smaller setting.,Y  |  K OW IY  |  HH K L  |  K AH IH AH NG  | ,17,23
+t15.2024.12.15_imagined_125kwords_eval,125kwords,They put it out in a video.,Y UW  |  OW  |  OW  |  K T K  |  K OW  |  K  | ,18,24
+t15.2024.12.15_imagined_125kwords_eval,125kwords,Especially in the winter.,K  |  L  | ,18,20
+t15.2024.12.15_imagined_125kwords_eval,125kwords,You like pets and things.,Y  |  K OW AY  |  K  |  L  |  D  |  Z  | ,13,21
+t15.2024.12.15_imagined_125kwords_eval,125kwords,Like building a house or anything.,AH K  |  K  |  K  |  HH OW  |  K  |  K OW  |  AH IH IY  | ,18,27
+t15.2024.12.15_imagined_125kwords_eval,125kwords,Take a lot of chances.,K  |   |  K L K AH Z  |  Z  | ,13,20
+t15.2024.12.15_imagined_125kwords_eval,125kwords,I don't think I have insurance.,AY  |   |  K  |  K AH T  |  K AH K AH  | ,19,27
+t15.2024.12.15_imagined_125kwords_eval,125kwords,It's up north by Green Bay.,K OW  |  K L  |  L  |  K AH L  |  L K  |  OW  | ,18,23
+t15.2024.12.15_imagined_125kwords_eval,125kwords,I always wanted to go to school for nursing.,AY  |   |  OW  |  OW AH T  |   |  OW K D  |   |  HH OW  |  AH R  | ,28,39
+t15.2024.12.15_imagined_125kwords_eval,125kwords,I make a lot of my Christmas presents every year.,AY  |  K  |   |  K  |  HH AE  |  AW AH R  |  AH IY  |  L IY  |  HH R  |  M,30,44
+t15.2024.12.15_imagined_125kwords_eval,125kwords,I think a lot of the choices are good.,K OW K  |  OW  |   |   |  HH AW  |  L K L  |   |   | ,23,32
+t15.2025.01.05_imagined_125kwords_eval,125kwords,But I'm still going to college.,K  |  K  |  K  |  K  |  K  |  K L K  |  K,19,26
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Our choir is doing this as a money making scheme.,M  |  AH  |   |  OW K  |  AH  |  K  |  K AH  |  AH K  |  K  | ,29,41
+t15.2025.01.05_imagined_125kwords_eval,125kwords,I don't know how familiar you are with Maryland.,K  |  D  |   |  K  |  K  |   |  OW P  |  OW  |   |  AH K NG  | ,29,40
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Because it's her business and everything.,AH K  |  K  |  K L K L K L AH T  |  AH  |  HH  | ,24,32
+t15.2025.01.05_imagined_125kwords_eval,125kwords,You need to be very careful.,K K  |  T  |  AH  |  K  |  K  | ,18,25
+t15.2025.01.05_imagined_125kwords_eval,125kwords,He's in the Herman Method of Reading.,K OW K  |  K  |  AH K  |  K  |  K K IH  |  L R T  |  AH L  |  K  | ,23,31
+t15.2025.01.05_imagined_125kwords_eval,125kwords,They require them to.,K  |  K  |  K  |  K  | ,12,17
+t15.2025.01.05_imagined_125kwords_eval,125kwords,From the community.,AH M  |  K  |  AH K NG  |  G R,13,18
+t15.2025.01.05_imagined_125kwords_eval,125kwords,We didn't understand the culture.,AH  |  AH T  |  R T  |  W T  |  K R K  | ,20,29
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Not be able to be in her apartment on her own.,K T  |  K  |  T  |  T  |  T  |  G T  |   |  HH G  | ,31,43
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Regardless whether it's north Dallas or whatnot.,W AH K  |  IY L  |  AH  |   |  K  |   |  K OW AY  |  K  |   |   |  K  | ,31,40
+t15.2025.01.05_imagined_125kwords_eval,125kwords,You know the family.,K M AY K  |  K  |  K L K  | ,12,16
+t15.2025.01.05_imagined_125kwords_eval,125kwords,I don't care anything about that.,M K  |   |  T  |  K OW  |  AW T  | ,20,27
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Mostly in raised beds so we could keep the deer out.,M AH OW K  |  AH  |  N OW  |  OW AE  |  AH T  |   |  AH  |  T  |  K AY  | ,32,44
+t15.2025.01.05_imagined_125kwords_eval,125kwords,A really good companion for me.,K  |  K AH L  |  K  |  IY  |  HH G  | ,21,28
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Everybody will say that he is for abortion.,K AH P K  |  K  |  OW P T  |  K  |  K K AH K  | ,31,38
+t15.2025.01.05_imagined_125kwords_eval,125kwords,We've got a stone from Austin.,L  |  K AH T  |  T  |  K  |  K AH  |  K  | ,18,26
+t15.2025.01.05_imagined_125kwords_eval,125kwords,They are able to reduce prices.,K  |   |  K T  |  K T  |  K AH K  |  K AH K L  |   | ,20,27
+t15.2025.01.05_imagined_125kwords_eval,125kwords,It's second nature.,K  |  IY R  |  L K  |  AA T R,14,16
+t15.2025.01.05_imagined_125kwords_eval,125kwords,In a different fashion.,K  |   | ,17,19
+t15.2025.01.05_imagined_125kwords_eval,125kwords,It's on the border.,IH AW  |  K  |  AW AH T  |  K AH K  | ,11,16
+t15.2025.01.05_imagined_125kwords_eval,125kwords,That will keep the bugs off them.,K  |  K  |  K  |  K  |   |  K  |   | ,19,27
+t15.2025.01.05_imagined_125kwords_eval,125kwords,It is bad everywhere except for Vietnam.,K  |  K  |  L AH  |  G K  |   | ,31,37
+t15.2025.01.05_imagined_125kwords_eval,125kwords,You're from where?,K  |  K AH K  | ,10,13
+t15.2025.01.05_imagined_125kwords_eval,125kwords,When it came to tax evasion.,HH AH K  |  K  |  K  |  K  | ,20,26
+t15.2025.01.05_imagined_125kwords_eval,125kwords,I saw plenty of jokes.,AW  |  K  |  K  |  K AH  |  AW  |   | ,15,20
+t15.2025.01.05_imagined_125kwords_eval,125kwords,I hadn't thought about that., |  K AH  |  AH L NG  |  K OW  | ,16,22
+t15.2025.01.05_imagined_125kwords_eval,125kwords,The sequence was altered for the international versions.,AH OW P  |  AH K  |  K T  |  OW P  |  K G  |  K  |  L  |  AH NG  |   | ,36,47
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Pay the vet four hundred dollars for surgery.,K OW K  |  K AH K  |  AH T  |  AW  |  AW IY  |  R AH  |  AH  |  R  |  M,28,38
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Food pollution.,AH T  |  K L K AY  |  AY  |  AH  |  AH K  |  AA R  |  K AA UH UW  |  OW  |  AA  | ,23,12
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Twentieth and eighteenth.,AH L K  |  K OW  | ,16,19
+t15.2025.01.05_imagined_125kwords_eval,125kwords,It's more of a police action in itself.,AH OW K OW K  |  K AH  |  K  |  K AH K L K  |  K AH K  |   |  K  |  K  | ,25,35
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Let the voice of the People be heard!,AH  |  K L K  |  AA R  |  AA R  |   |  D  | ,22,30
+t15.2025.01.05_imagined_125kwords_eval,125kwords,We've gone through this over and over again.,AH  |  AH  |  K  |  K AH K  |  K  |  T  |  K AH IH NG  |  K IY  | ,26,33
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Some of the things were available at the border.,AA AY T  |  G UW M T  |  AA R  |  AH K  |  OW  |  K L  |  K T  |  K AW R  |  R  |  R  |  K  | ,29,39
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Public Broadcasting.,R  |  AA  |  AA  |   |  AH K  |  AH  | ,15,18
+t15.2025.01.05_imagined_125kwords_eval,125kwords,That is good that they're like that.,K AH OW K  |  K  |  K  |   | ,22,27
+t15.2025.01.05_imagined_125kwords_eval,125kwords,In the work force as well.,HH OW AW  |  K  |  K  |  AA T  |   |  AA IY AY  |  F AE T  |  AY  |   |  G UW  | ,20,22
+t15.2025.01.05_imagined_125kwords_eval,125kwords,I often sort of wonder how you ended up with him., |  K  |  G R K AH T  |  OW  |  K  |  IH IY  |  AH L  |  L  | ,33,44
+t15.2025.01.05_imagined_125kwords_eval,125kwords,Worship through music kind of things.,W AH K  |  HH OW  |  K  |  K OW K L ER K  |  K ER  | ,21,30

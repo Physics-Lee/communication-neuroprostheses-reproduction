@@ -1,0 +1,38 @@
+id: 20261124_import_btot24
+study: 20230831_willett
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261008_reproduce_20230831_willett
+legacy_checkout_head_at_import: 011f5079193ff8e27012cb0c5a0a32ea84150f59
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20230831_willett/results/decode_outputs/curves.csv
+  path: studies/20230831_willett/results/20261124_import_btot24/curves.csv
+  sha256: e18ec41287fb8bdbda1bc466c914dcebe1f513a22532e68d3012904084829c04
+- old_path: 20230831_willett/results/decode_outputs/test_partition_greedy_per_trial.csv
+  path: studies/20230831_willett/results/20261124_import_btot24/test_partition_greedy_per_trial.csv
+  sha256: c8969b31a34bf89c0a1dc4b972e6a6258b8c2b11b9fbeddf5f5697da0a0ceda5
+- old_path: 20230831_willett/results/decode_outputs/wl_5g_opt_official.tsv
+  path: studies/20230831_willett/results/20261124_import_btot24/wl_5g_opt_official.tsv
+  sha256: 82cd0bf2cd49b6fb20fd80f0fc2c3aad4d038dbe32be8b220610c21b7feb6467
+- old_path: 20230831_willett/results/decode_outputs/wl_5g_opt_official.tsv.wer
+  path: studies/20230831_willett/results/20261124_import_btot24/wl_5g_opt_official.tsv.wer
+  sha256: 85dfe4c1d3dff8fea84b49d9ccfc110912e3ce831ff2f17b37d9a697a4f974d3
+- old_path: 20230831_willett/results/decode_outputs/wl_5g_opt_qwen3base_fx.tsv
+  path: studies/20230831_willett/results/20261124_import_btot24/wl_5g_opt_qwen3base_fx.tsv
+  sha256: 28e0d02cb25d9a3e9b992b7c1b386987395c38ad2cb6d52553e3c96308da1e85
+- old_path: 20230831_willett/results/decode_outputs/wl_5g_qwen.tsv
+  path: studies/20230831_willett/results/20261124_import_btot24/wl_5g_qwen.tsv
+  sha256: 3772352c55fdeb2fc584e76164a8f31e8fcf823936fd5b310da7633e693c11dc
+- old_path: 20230831_willett/results/decode_outputs/wl_final_full.tsv
+  path: studies/20230831_willett/results/20261124_import_btot24/wl_final_full.tsv
+  sha256: fa9d4daf6383c03b044485c8a0be4e8267f6f298ac976cf81f9b016cdf9743db
+- old_path: 20230831_willett/results/decode_outputs/word_decode_joint3gram.csv
+  path: studies/20230831_willett/results/20261124_import_btot24/word_decode_joint3gram.csv
+  sha256: ab21ef4d092a19086e7116b61324b5075c3afc11b2c3f2487eaced1a509cc598
+- old_path: 20230831_willett/results/logs/train_60k.log
+  path: studies/20230831_willett/log/20261124_import_btot24/train_60k.log
+  sha256: ea2a77a767237038a591761f2842877ae46e5df01fb4047c92cb5acaec66d1d6
+- old_path: 20230831_willett/results/logs/train_btot24_resume120k.log
+  path: studies/20230831_willett/log/20261124_import_btot24/train_btot24_resume120k.log
+  sha256: 22549e8b80e418c2928c09dce1aac1257f35ac06a8d5d172bc77a158e975e6eb

@@ -1,0 +1,23 @@
+id: 20261124_import_voice_synthesis
+study: 20250612_wairagkar
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261009_reproduce_20250612_wairagkar
+legacy_checkout_head_at_import: 327b4c9e7e23070d77f19dbc7b83ae463752f29e
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20250612_wairagkar/results/mel_param_scan.json
+  path: studies/20250612_wairagkar/results/20261124_import_voice_synthesis/mel_param_scan.json
+  sha256: 1df8a79c594d4ac3aeaf79bb8f9e39922ad1ff5a50dbc9f1fc209c6fadc148c4
+- old_path: 20250612_wairagkar/results/tier1_official_model_inference.json
+  path: studies/20250612_wairagkar/results/20261124_import_voice_synthesis/tier1_official_model_inference.json
+  sha256: 9c7d844db86a974d43ee6cfc034ee823d93971d5ec74abb37434e8c7fda01512
+- old_path: 20250612_wairagkar/results/tier2_mel_alignment.json
+  path: studies/20250612_wairagkar/results/20261124_import_voice_synthesis/tier2_mel_alignment.json
+  sha256: ae945bee27caeb223051d9b452891608b46def5e78d38c9d38d3fc888cd6a62b
+- old_path: 20250612_wairagkar/results/tier2_mel_full_trial.json
+  path: studies/20250612_wairagkar/results/20261124_import_voice_synthesis/tier2_mel_full_trial.json
+  sha256: 2db8ce0563a3648c575c0d27d3aa1f718e0a8b608aad39d02df53462c8b8ff68
+- path: studies/20250612_wairagkar/log/20261124_import_voice_synthesis/tier1b.log
+  legacy_source: tmp_tier1b.log
+  sha256: 7376a6de29973456d9217ddfe875bc171426bb3e04ad484b3ec3b09a4d5dc340

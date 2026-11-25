@@ -1,0 +1,15 @@
+id: 20261017_bigru48k
+study: 20240815_card
+run_start_date: '2026-10-17'
+model: BiGRU, 48000 batches
+legacy_checkout: 20261008_reproduce_20240815_card
+artifacts:
+- path: studies/20240815_card/results/20261017_bigru48k/bigru_opt_fx.tsv
+  legacy_source: data/20241009_card_BtoT25/run_bigru48k_20261017/bigru_opt_fx.tsv
+  sha256: f06e5648c23c372cda07383baff7448c29eb82d178510e3e0510ed6b9f9e10ba
+- path: studies/20240815_card/results/20261017_bigru48k/train_val_trials.json
+  legacy_source: data/20241009_card_BtoT25/run_bigru48k_20261017/train_val_trials.json
+  sha256: d8355715e3ef4dbce7e85502727e2a956e0109a9b1b32d3bb2efc9b57723b4cb
+- path: studies/20240815_card/log/20261017_bigru48k/training_log
+  legacy_source: data/20241009_card_BtoT25/run_bigru48k_20261017/training_log
+  sha256: 926246bdd2c58710006b2b3c58d3dc6dc98e25d8160984e4e276ca9aacb99ee4

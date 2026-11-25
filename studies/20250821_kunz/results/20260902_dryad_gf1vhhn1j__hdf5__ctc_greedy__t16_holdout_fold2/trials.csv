@@ -1,0 +1,41 @@
+session,fold,block_num,vocab,sentence_label,pred_phonemes,edit_distance,true_len
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,You feel comfortable.,Y UW  |  HH B AE R L  |  K G AH ER T AH B AH L  | ,7,18
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,My nurse is not going.,M AY  |  F B ER AH R  |  IH IH Z  |  B AA T  |  G OW IH NG  | ,6,19
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Where are they not?,W EH R  |  AA R  |  DH EY  |  N L AA AY T  | ,2,14
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,My faith is my success.,M AY  |  F EY NG  |  IH Z  |  M AY  |  AH IH Z  |  S  | ,5,20
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Is my nurse comfortable?,IH Z  |  M AY  |  G B ER IH S NG  |  G AH M ER AH B AH L  | ,7,21
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,They are that good.,DH EY  |  AA R  |  B AE M AH L  | ,6,14
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Tell my nurse they do not feel thirsty.,HH AE M  |  M AY  |  AH M ER S  |  DH EY  |  N OW UW  |  N AA AY T  |  AE M AH L  |  TH ER S  |  IH IY  | ,13,31
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,You are up.,Y UW  |  AA R  |  AH S  | ,1,9
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I need it right here.,AY  |  DH IH IY D  |  IH T  |  R AY  |  B EH R  | ,5,17
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I hope you like my music.,AY  |  HH OW P  |  Y UW  |  L AY K  |  G M AY  |  M Y UW Z IH K  | ,1,23
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I do not have my computer.,AY  |  DH D UW  |  N AA T  |  IH AE V  |  M AY  |  HH AH M AH R L  | ,8,25
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I hope you like my help.,AY  |  HH OW P  |  Y UW  |  L AY K  |  M AY  |  HH AE V L  | ,3,21
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,You clean it up.,Y UW  |  K L IY D  |  IH T  |  HH AE T  | ,4,14
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I hope they are closer.,AY  |  HH OW P  |  DH EY  |  AA R  |  K G OW  |  S ER T  | ,3,18
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I tell you I am thirsty.,AY  |  AY  |  AE EH M  |  Y UW  |  L AY K  |  AE M  |  N ER S  |  S IY  | ,9,20
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,You hope my nurse is going.,Y UW  |  HH OW P  |  M AY  |  N ER S  |  IH T  |  G F OW EY  | ,4,22
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,My family is that good.,M AY  |  F AE M AH L IY  |  IH Z  |  DH AE AY  |  B AH L  | ,4,21
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Do I have my glasses?,DH EY  |  AY  |  HH AE V  |  M AY  |  B AE S  |  S  | ,6,19
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,You hope they are right here.,Y UW  |  L OW P  |  DH EY  |  AA R  |  R AY T  |  HH AE EH R  | ,3,21
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Is it that good?,IH T  |  IH T  |  DH AE T  |  G UH L  | ,2,14
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,"Yes, I am hungry.",IH M  |  L M AY  |  AE M  |  HH AE M AH AY NG  |  AH L  |  AH R IY  | ,13,16
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I am clean.,AY  |  AE M  |  L IY N  | ,1,10
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,"No, you are not going outside.",W DH EY UW  |  Y UW  |  AA R  |  N AA T  |  F OW NG  |  AE  |  K L AY K  | ,11,24
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,How they do it.,HH AW M  |  DH EY  |  G OW P IH T  | ,4,12
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,"No, my family is not going here.",D UW  |  M AY  |  M AH  |  L IY  |  N AA T  |  G OW EY  |  HH IH EH R  | ,12,29
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Bring here.,Y IH NG  |  IH EH R  | ,4,9
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,They like my nurse.,DH EY  |  L AY K  |  M AY  |  N ER S  | ,0,14
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,You feel it.,Y UW  |  DH AE D  |  IH T  | ,3,10
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Family is okay.,AE M  |  AH L IY  |  DH V  |  HH OW P  |  EY  | ,7,14
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Are they very thirsty?,AA AW R  |  DH EY  |  F EH R IY  |  G ER S  |  IH IY  | ,5,17
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I hope you have very good family.,AY  |  HH OW P  |  Y UW  |  AE V  |  DH EY  |  V EH R IY  |  AH L  |  F AE M AH L IY  | ,7,29
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Tell my nurse I do not feel comfortable.,W T EH L  |  L AY  |  N ER S NG  |  AY  |  D UW  |  M AY  |  F AE EH IY L  |  AH M AH B AH L  | ,12,35
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,How do you like?,HH AW  |  G IY UW  |  Y UW  |  L AY K  | ,2,13
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,You do.,Y UW  |  L EY  | ,2,6
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,They are tired.,DH EY  |  AA R  |  R AY ER R  | ,2,11
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I hope they are right here.,AY  |  HH OW P  |  DH EY  |  AA EH R  |  M AY NG  |  HH AH R  | ,4,20
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,I need that.,AY  |  IH Z  |  IH AE T  | ,4,10
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,"Yes, I am very good.",IH T  |  AY  |  AE M  |  V EH R IY  |  G B UH L D  | ,5,18
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,How are you here?,HH AW  |  B AH Y IY  |  IH EH R  | ,6,13
+t16.2024.04.29_attempted_50words_blk4val,2,4,50words,Hope you do it.,HH OW AH P  |  M Y UW  |  L OW TH  |  IH T  | ,5,13

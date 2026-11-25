@@ -1,0 +1,6 @@
+trials: 8489
+evaluation_trials: 1216
+evaluation_days: 9
+listener_random: 90
+listener_video: 38
+exit=0

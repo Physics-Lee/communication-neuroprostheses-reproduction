@@ -1,0 +1,208 @@
+2026-09-02 20:04:34,815: Using device: cuda:0
+2026-09-02 20:04:35,282: Using torch.compile
+2026-09-02 20:04:35,282: Initialized RNN decoding model
+2026-09-02 20:04:35,282: GRUDecoder(
+  (day_layer_activation): Softsign()
+  (day_weights): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 512x512]
+      (1): Parameter containing: [torch.float32 of size 512x512]
+  )
+  (day_biases): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 1x512]
+      (1): Parameter containing: [torch.float32 of size 1x512]
+  )
+  (day_layer_dropout): Dropout(p=0.2, inplace=False)
+  (gru): GRU(7168, 768, num_layers=5, batch_first=True, dropout=0.4)
+  (out): Linear(in_features=768, out_features=41, bias=True)
+)
+2026-09-02 20:04:35,987: Model has 33,020,969 parameters
+2026-09-02 20:04:35,987: Model has 525,312 day-specific parameters | 1.59% of total parameters
+2026-09-02 20:04:36,052: Successfully initialized datasets
+2026-09-02 20:04:36,645: Train batch 0: loss: 197.81 grad norm: 84.44 time: 0.454
+2026-09-02 20:04:36,645: Running test after training batch: 0
+2026-09-02 20:04:36,805: Val batch 0: PER (avg): 0.9577 CTC Loss (avg): 153.8039 time: 0.160
+2026-09-02 20:04:36,805: t16.2024.04.29_attempted_50words_blk6val val PER: 0.9577
+2026-09-02 20:04:36,805: New best test PER inf --> 0.9577
+2026-09-02 20:04:36,805: Checkpointing model
+2026-09-02 20:04:38,278: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:04:47,943: Train batch 50: loss: 148.52 grad norm: 167.86 time: 0.074
+2026-09-02 20:04:57,369: Train batch 100: loss: 56.87 grad norm: 27.13 time: 0.108
+2026-09-02 20:04:57,369: Running test after training batch: 100
+2026-09-02 20:04:57,483: Val batch 100: PER (avg): 1.0000 CTC Loss (avg): 61.2580 time: 0.114
+2026-09-02 20:04:57,483: t16.2024.04.29_attempted_50words_blk6val val PER: 1.0000
+2026-09-02 20:05:07,564: Train batch 150: loss: 54.77 grad norm: 13.77 time: 0.112
+2026-09-02 20:05:16,925: Train batch 200: loss: 47.04 grad norm: 24.35 time: 0.096
+2026-09-02 20:05:16,925: Running test after training batch: 200
+2026-09-02 20:05:17,032: Val batch 200: PER (avg): 0.9942 CTC Loss (avg): 52.1149 time: 0.108
+2026-09-02 20:05:17,033: t16.2024.04.29_attempted_50words_blk6val val PER: 0.9942
+2026-09-02 20:05:26,953: Train batch 250: loss: 48.42 grad norm: 20.98 time: 0.111
+2026-09-02 20:05:36,521: Train batch 300: loss: 35.38 grad norm: 18.59 time: 0.107
+2026-09-02 20:05:36,521: Running test after training batch: 300
+2026-09-02 20:05:36,637: Val batch 300: PER (avg): 0.9300 CTC Loss (avg): 46.0997 time: 0.116
+2026-09-02 20:05:36,637: t16.2024.04.29_attempted_50words_blk6val val PER: 0.9300
+2026-09-02 20:05:36,639: New best test PER 0.9577 --> 0.9300
+2026-09-02 20:05:36,639: Checkpointing model
+2026-09-02 20:05:38,972: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:05:48,413: Train batch 350: loss: 26.49 grad norm: 20.96 time: 0.118
+2026-09-02 20:05:57,790: Train batch 400: loss: 14.08 grad norm: 18.75 time: 0.120
+2026-09-02 20:05:57,790: Running test after training batch: 400
+2026-09-02 20:05:57,882: Val batch 400: PER (avg): 0.5700 CTC Loss (avg): 39.6964 time: 0.092
+2026-09-02 20:05:57,882: t16.2024.04.29_attempted_50words_blk6val val PER: 0.5700
+2026-09-02 20:05:57,882: New best test PER 0.9300 --> 0.5700
+2026-09-02 20:05:57,882: Checkpointing model
+2026-09-02 20:06:00,036: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:06:09,332: Train batch 450: loss: 10.91 grad norm: 20.09 time: 0.088
+2026-09-02 20:06:18,534: Train batch 500: loss: 6.07 grad norm: 15.48 time: 0.095
+2026-09-02 20:06:18,534: Running test after training batch: 500
+2026-09-02 20:06:18,632: Val batch 500: PER (avg): 0.4927 CTC Loss (avg): 36.6580 time: 0.098
+2026-09-02 20:06:18,632: t16.2024.04.29_attempted_50words_blk6val val PER: 0.4927
+2026-09-02 20:06:18,632: New best test PER 0.5700 --> 0.4927
+2026-09-02 20:06:18,632: Checkpointing model
+2026-09-02 20:06:21,052: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:06:30,189: Train batch 550: loss: 4.59 grad norm: 14.92 time: 0.085
+2026-09-02 20:06:39,626: Train batch 600: loss: 2.69 grad norm: 11.99 time: 0.094
+2026-09-02 20:06:39,626: Running test after training batch: 600
+2026-09-02 20:06:39,726: Val batch 600: PER (avg): 0.4388 CTC Loss (avg): 37.2328 time: 0.100
+2026-09-02 20:06:39,726: t16.2024.04.29_attempted_50words_blk6val val PER: 0.4388
+2026-09-02 20:06:39,726: New best test PER 0.4927 --> 0.4388
+2026-09-02 20:06:39,726: Checkpointing model
+2026-09-02 20:06:41,316: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:06:50,838: Train batch 650: loss: 1.23 grad norm: 8.90 time: 0.102
+2026-09-02 20:07:00,385: Train batch 700: loss: 1.06 grad norm: 8.69 time: 0.122
+2026-09-02 20:07:00,385: Running test after training batch: 700
+2026-09-02 20:07:00,484: Val batch 700: PER (avg): 0.4169 CTC Loss (avg): 39.9894 time: 0.100
+2026-09-02 20:07:00,484: t16.2024.04.29_attempted_50words_blk6val val PER: 0.4169
+2026-09-02 20:07:00,484: New best test PER 0.4388 --> 0.4169
+2026-09-02 20:07:00,484: Checkpointing model
+2026-09-02 20:07:02,852: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:07:12,078: Train batch 750: loss: 0.73 grad norm: 6.41 time: 0.103
+2026-09-02 20:07:21,302: Train batch 800: loss: 0.48 grad norm: 4.91 time: 0.119
+2026-09-02 20:07:21,302: Running test after training batch: 800
+2026-09-02 20:07:21,420: Val batch 800: PER (avg): 0.4125 CTC Loss (avg): 41.0828 time: 0.118
+2026-09-02 20:07:21,420: t16.2024.04.29_attempted_50words_blk6val val PER: 0.4125
+2026-09-02 20:07:21,420: New best test PER 0.4169 --> 0.4125
+2026-09-02 20:07:21,420: Checkpointing model
+2026-09-02 20:07:23,432: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:07:32,820: Train batch 850: loss: 0.38 grad norm: 3.84 time: 0.093
+2026-09-02 20:07:42,083: Train batch 900: loss: 0.25 grad norm: 3.44 time: 0.092
+2026-09-02 20:07:42,083: Running test after training batch: 900
+2026-09-02 20:07:42,173: Val batch 900: PER (avg): 0.3994 CTC Loss (avg): 41.4481 time: 0.090
+2026-09-02 20:07:42,173: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3994
+2026-09-02 20:07:42,173: New best test PER 0.4125 --> 0.3994
+2026-09-02 20:07:42,173: Checkpointing model
+2026-09-02 20:07:44,332: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:07:53,635: Train batch 950: loss: 0.27 grad norm: 4.79 time: 0.101
+2026-09-02 20:08:03,034: Train batch 1000: loss: 0.21 grad norm: 3.19 time: 0.076
+2026-09-02 20:08:03,034: Running test after training batch: 1000
+2026-09-02 20:08:03,120: Val batch 1000: PER (avg): 0.4067 CTC Loss (avg): 44.0687 time: 0.086
+2026-09-02 20:08:03,120: t16.2024.04.29_attempted_50words_blk6val val PER: 0.4067
+2026-09-02 20:08:12,490: Train batch 1050: loss: 0.13 grad norm: 2.29 time: 0.093
+2026-09-02 20:08:21,838: Train batch 1100: loss: 0.16 grad norm: 3.52 time: 0.108
+2026-09-02 20:08:21,838: Running test after training batch: 1100
+2026-09-02 20:08:21,952: Val batch 1100: PER (avg): 0.3994 CTC Loss (avg): 44.8726 time: 0.114
+2026-09-02 20:08:21,954: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3994
+2026-09-02 20:08:31,141: Train batch 1150: loss: 0.11 grad norm: 1.86 time: 0.099
+2026-09-02 20:08:40,509: Train batch 1200: loss: 0.11 grad norm: 3.31 time: 0.100
+2026-09-02 20:08:40,509: Running test after training batch: 1200
+2026-09-02 20:08:40,624: Val batch 1200: PER (avg): 0.3776 CTC Loss (avg): 41.8689 time: 0.115
+2026-09-02 20:08:40,626: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3776
+2026-09-02 20:08:40,626: New best test PER 0.3994 --> 0.3776
+2026-09-02 20:08:40,626: Checkpointing model
+2026-09-02 20:08:43,018: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:08:52,543: Train batch 1250: loss: 0.09 grad norm: 2.69 time: 0.088
+2026-09-02 20:09:01,984: Train batch 1300: loss: 0.08 grad norm: 2.04 time: 0.102
+2026-09-02 20:09:01,984: Running test after training batch: 1300
+2026-09-02 20:09:02,094: Val batch 1300: PER (avg): 0.3790 CTC Loss (avg): 45.0217 time: 0.110
+2026-09-02 20:09:02,094: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3790
+2026-09-02 20:09:11,254: Train batch 1350: loss: 0.06 grad norm: 1.49 time: 0.097
+2026-09-02 20:09:20,616: Train batch 1400: loss: 0.07 grad norm: 1.82 time: 0.109
+2026-09-02 20:09:20,616: Running test after training batch: 1400
+2026-09-02 20:09:20,718: Val batch 1400: PER (avg): 0.3819 CTC Loss (avg): 44.1934 time: 0.101
+2026-09-02 20:09:20,718: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3819
+2026-09-02 20:09:30,045: Train batch 1450: loss: 0.06 grad norm: 1.15 time: 0.091
+2026-09-02 20:09:39,256: Train batch 1500: loss: 0.06 grad norm: 1.70 time: 0.104
+2026-09-02 20:09:39,257: Running test after training batch: 1500
+2026-09-02 20:09:39,390: Val batch 1500: PER (avg): 0.3805 CTC Loss (avg): 46.1471 time: 0.133
+2026-09-02 20:09:39,390: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3805
+2026-09-02 20:09:48,752: Train batch 1550: loss: 0.03 grad norm: 0.70 time: 0.098
+2026-09-02 20:09:58,038: Train batch 1600: loss: 0.02 grad norm: 0.69 time: 0.089
+2026-09-02 20:09:58,040: Running test after training batch: 1600
+2026-09-02 20:09:58,152: Val batch 1600: PER (avg): 0.3834 CTC Loss (avg): 46.7307 time: 0.113
+2026-09-02 20:09:58,152: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3834
+2026-09-02 20:10:07,548: Train batch 1650: loss: 0.04 grad norm: 0.77 time: 0.108
+2026-09-02 20:10:16,916: Train batch 1700: loss: 0.04 grad norm: 0.86 time: 0.094
+2026-09-02 20:10:16,916: Running test after training batch: 1700
+2026-09-02 20:10:17,027: Val batch 1700: PER (avg): 0.3746 CTC Loss (avg): 46.1815 time: 0.111
+2026-09-02 20:10:17,027: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3746
+2026-09-02 20:10:17,027: New best test PER 0.3776 --> 0.3746
+2026-09-02 20:10:17,027: Checkpointing model
+2026-09-02 20:10:18,992: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:10:28,192: Train batch 1750: loss: 0.04 grad norm: 0.90 time: 0.091
+2026-09-02 20:10:37,624: Train batch 1800: loss: 0.03 grad norm: 0.67 time: 0.088
+2026-09-02 20:10:37,624: Running test after training batch: 1800
+2026-09-02 20:10:37,744: Val batch 1800: PER (avg): 0.3761 CTC Loss (avg): 47.2634 time: 0.120
+2026-09-02 20:10:37,746: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3761
+2026-09-02 20:10:47,044: Train batch 1850: loss: 0.04 grad norm: 1.26 time: 0.111
+2026-09-02 20:10:56,457: Train batch 1900: loss: 0.02 grad norm: 0.35 time: 0.082
+2026-09-02 20:10:56,457: Running test after training batch: 1900
+2026-09-02 20:10:56,559: Val batch 1900: PER (avg): 0.3819 CTC Loss (avg): 47.9588 time: 0.102
+2026-09-02 20:10:56,559: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3819
+2026-09-02 20:11:05,779: Train batch 1950: loss: 0.02 grad norm: 0.69 time: 0.103
+2026-09-02 20:11:15,075: Train batch 2000: loss: 0.03 grad norm: 2.87 time: 0.106
+2026-09-02 20:11:15,075: Running test after training batch: 2000
+2026-09-02 20:11:15,195: Val batch 2000: PER (avg): 0.3863 CTC Loss (avg): 47.5573 time: 0.120
+2026-09-02 20:11:15,195: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3863
+2026-09-02 20:11:24,617: Train batch 2050: loss: 0.03 grad norm: 0.70 time: 0.104
+2026-09-02 20:11:34,137: Train batch 2100: loss: 0.04 grad norm: 2.12 time: 0.102
+2026-09-02 20:11:34,137: Running test after training batch: 2100
+2026-09-02 20:11:34,259: Val batch 2100: PER (avg): 0.3776 CTC Loss (avg): 47.2195 time: 0.121
+2026-09-02 20:11:34,259: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3776
+2026-09-02 20:11:43,661: Train batch 2150: loss: 0.03 grad norm: 0.67 time: 0.092
+2026-09-02 20:11:53,159: Train batch 2200: loss: 0.03 grad norm: 0.88 time: 0.094
+2026-09-02 20:11:53,160: Running test after training batch: 2200
+2026-09-02 20:11:53,244: Val batch 2200: PER (avg): 0.3761 CTC Loss (avg): 47.0001 time: 0.084
+2026-09-02 20:11:53,246: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3761
+2026-09-02 20:12:02,625: Train batch 2250: loss: 0.02 grad norm: 0.61 time: 0.106
+2026-09-02 20:12:11,942: Train batch 2300: loss: 0.02 grad norm: 0.36 time: 0.107
+2026-09-02 20:12:11,942: Running test after training batch: 2300
+2026-09-02 20:12:12,071: Val batch 2300: PER (avg): 0.3732 CTC Loss (avg): 46.5490 time: 0.129
+2026-09-02 20:12:12,071: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3732
+2026-09-02 20:12:12,071: New best test PER 0.3746 --> 0.3732
+2026-09-02 20:12:12,071: Checkpointing model
+2026-09-02 20:12:13,594: Saved model to checkpoint: D:/bcirun/kunz/run_t16_holdout_fold3\checkpoint/best_checkpoint
+2026-09-02 20:12:22,959: Train batch 2350: loss: 0.02 grad norm: 0.46 time: 0.087
+2026-09-02 20:12:32,466: Train batch 2400: loss: 0.03 grad norm: 0.80 time: 0.087
+2026-09-02 20:12:32,466: Running test after training batch: 2400
+2026-09-02 20:12:32,584: Val batch 2400: PER (avg): 0.3790 CTC Loss (avg): 46.3936 time: 0.118
+2026-09-02 20:12:32,584: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3790
+2026-09-02 20:12:41,881: Train batch 2450: loss: 0.01 grad norm: 0.16 time: 0.079
+2026-09-02 20:12:51,516: Train batch 2500: loss: 0.02 grad norm: 0.40 time: 0.095
+2026-09-02 20:12:51,517: Running test after training batch: 2500
+2026-09-02 20:12:51,617: Val batch 2500: PER (avg): 0.3805 CTC Loss (avg): 46.6428 time: 0.099
+2026-09-02 20:12:51,617: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3805
+2026-09-02 20:13:00,953: Train batch 2550: loss: 0.06 grad norm: 4.08 time: 0.105
+2026-09-02 20:13:10,464: Train batch 2600: loss: 0.02 grad norm: 0.21 time: 0.105
+2026-09-02 20:13:10,464: Running test after training batch: 2600
+2026-09-02 20:13:10,581: Val batch 2600: PER (avg): 0.3819 CTC Loss (avg): 46.8611 time: 0.117
+2026-09-02 20:13:10,581: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3819
+2026-09-02 20:13:20,203: Train batch 2650: loss: 0.02 grad norm: 0.33 time: 0.110
+2026-09-02 20:13:29,775: Train batch 2700: loss: 0.03 grad norm: 1.27 time: 0.112
+2026-09-02 20:13:29,775: Running test after training batch: 2700
+2026-09-02 20:13:29,885: Val batch 2700: PER (avg): 0.3746 CTC Loss (avg): 46.6361 time: 0.109
+2026-09-02 20:13:29,886: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3746
+2026-09-02 20:13:39,392: Train batch 2750: loss: 0.02 grad norm: 0.32 time: 0.092
+2026-09-02 20:13:48,554: Train batch 2800: loss: 0.04 grad norm: 1.14 time: 0.113
+2026-09-02 20:13:48,555: Running test after training batch: 2800
+2026-09-02 20:13:48,661: Val batch 2800: PER (avg): 0.3746 CTC Loss (avg): 46.4970 time: 0.107
+2026-09-02 20:13:48,661: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3746
+2026-09-02 20:13:58,145: Train batch 2850: loss: 0.02 grad norm: 0.32 time: 0.101
+2026-09-02 20:14:07,466: Train batch 2900: loss: 0.03 grad norm: 0.58 time: 0.098
+2026-09-02 20:14:07,466: Running test after training batch: 2900
+2026-09-02 20:14:07,554: Val batch 2900: PER (avg): 0.3746 CTC Loss (avg): 46.4494 time: 0.089
+2026-09-02 20:14:07,554: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3746
+2026-09-02 20:14:16,984: Train batch 2950: loss: 0.02 grad norm: 0.36 time: 0.101
+2026-09-02 20:14:26,164: Running test after training batch: 2999
+2026-09-02 20:14:26,281: Val batch 2999: PER (avg): 0.3761 CTC Loss (avg): 46.4783 time: 0.118
+2026-09-02 20:14:26,281: t16.2024.04.29_attempted_50words_blk6val val PER: 0.3761
+2026-09-02 20:14:26,281: Best avg val PER achieved: 0.37318
+2026-09-02 20:14:26,281: Total training time: 9.84 minutes

@@ -1,0 +1,41 @@
+session,fold,block_num,vocab,sentence_label,pred_phonemes,edit_distance,true_len
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,How are they?,HH AW  |  AA R  |  DH EY IH EY  | ,2,9
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,You are okay.,Y UW  |  AA R  |  HH OW P DH EY  | ,3,10
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,What do you clean?,HH AW T P  |  Y UW  |  Y UW  |  K AH M IH IY  | ,8,15
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Hello you.,HH AW  |  OW P  |  Y UW  | ,3,8
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,What do I tell my nurse?,T  |  Y UW  |  AY  |  HH AE M L  |  M AY  |  N ER S  | ,6,20
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,I do good.,AY  |  G F OW UW  |  HH AH B UH AH L  | ,8,9
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,You do not need faith.,Y UW  |  DH UW  |  N AA T  |  IH NG  |  AH M IH NG  | ,8,18
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,It is what they have.,IH Z  |  DH AE M  |  DH AA R  |  DH EY  |  HH AE V  | ,7,17
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,What is hungry?,EH T S  |  AE M Z  |  R T NG AH Y IY  | ,9,14
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,I hope you like music.,AY  |  HH OW P  |  Y UW  |  L AY K  |  M Y UW Z IH K  | ,0,20
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,How do you like that?, |  AW AE AW  |  Y UW  |  Y UW  |  L AY K  |  DH AE T  | ,4,17
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Tell my family they feel thirsty.,EH  |  M AY  |  F AE M AH L  |  N AA R  |  DH EY  |  DH EY  |  N ER S T Y IY  | ,11,27
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Do you need help here?,D UW  |  Y UW  |  DH EY  |  DH AA T  |  B R  |  AA,10,19
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Do that right.,DH UW  |  DH AE T  |  R AY T  | ,1,11
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,You hope my nurse is here.,Y UW  |  OW P  |  M AY  |  N ER S  |  F AE M  |  V EH R  | ,6,21
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Is it that bad?,IH Z  |  IH Z  |  DH AE V  |  DH AE T  | ,4,14
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,How do you clean?,HH AW  |  Y UW  |  Y UW  |  K L OW IH NG  | ,4,14
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Do I tell my nurse?,D UW  |  AY  |  HH AW T  |  M AY  |  G N ER S  | ,4,16
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,They need it going up.,DH EY  |  N IH IY Z  |  IH T  |  N OW T  |  HH AE T  | ,8,18
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Where is my faith?,EH R  |  IH Z  |  M AY  |  G L OW EY K  | ,5,14
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Family is not okay.,AE M AH  |  L IY  |  IH Z  |  N AA T  |  HH OW P EY  | ,4,18
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,You hope I am right here.,Y UW  |  L OW P  |  AY  |  HH AE T  |  M AY  |  HH F EH R  | ,7,20
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,They hope you are right here.,DH EY  |  HH OW P  |  Y UW  |  AA R  |  R AY T  |  F AE IY R L  | ,3,21
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,I hope they do not need my music.,AY  |  HH OW P  |  DH EY  |  G OW UW  |  N AA T  |  L EY  |  N M AY  |  M UW Z IH K  | ,7,30
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,I am hungry.,AY  |  HH AE M  |  AH M P R IY  | ,4,12
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,What do they have?,T  |  D UW  |  DH EY  |  HH AE M  | ,3,14
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,They need help.,DH EY  |  L EY  |  HH AA AE EH T  | ,7,12
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,What do they do?,AW T  |  DH UW  |  DH EY  |  N OW UW  | ,5,13
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,You are no good.,Y UW  |  AA R  |  DH OW P  |  T L  | ,5,13
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,I hope my family is right here.,AY  |  HH OW P  |  M AY  |  F AE M AH L IY  |  IH Z  |  R AY T  |  HH EH R  | ,1,27
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,It is.,IH Z  |  AE M  | ,3,6
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,They do not have hope.,DH EY  |  D UW  |  N AA T  |  HH AE M  |  OW P  | ,2,18
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Where is it going?,T R  |  IH Z  |  IH T  |  G OW P IH IY  | ,4,15
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,You like it here?,Y UW  |  L AY K  |  AE M R  | ,5,14
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Do what please.,D UW  |  AA T  |  AH IH IY  | ,5,12
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,My glasses.,AY  |  AH M AE S AH Z  | ,3,10
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,Coming outside is very good.,M  |  HH AE V  |  M AY  |  HH AE V  |  V EH R IY  |  G UH D  | ,12,24
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,That is bad.,DH AE T  |  IH Z  |  V AE M  | ,2,11
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,They need not.,DH EY  |  D IH UW  |  N AA T  | ,3,11
+t16.2024.04.29_attempted_50words_blk1val,1,1,50words,You are that bad.,Y UW  |  AA R  |  DH AE T  |  DH AE T  | ,2,14

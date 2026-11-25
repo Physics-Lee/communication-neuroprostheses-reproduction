@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+"""Decode the test logits of multiple sessions in batch with a single TLG load.
+
+Builds the official 5-gram LM decoder (TLG) once, then for every run listed
+in ``s9_runs.json`` (falling back to a single default run) decodes the dumped
+``test_logits.npz`` and reports post-LM CER/WER per session, with
+punctuation stripped before scoring.
+
+Notes
+-----
+Written 2026-10-11 00:40.
+"""
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "shared"))
+from study_paths import study_checkout, study_path
+
+import time
+
+import numpy as np
+
+REF = Path(study_path("20260316_jude", 'open_source_code_for_reference/typingBCI'))
+sys.path.insert(0, str(REF / 'utils'))
+
+from lmutils import build_lm_decoder, lm_decode, calc_wer  # noqa: E402
+
+import json as _json
+from pathlib import Path as _P
+_RJ = _P(study_path("20260316_jude", 'code/pytorch_port/s9_runs.json'))
+RUNS = _json.loads(_RJ.read_text()) if _RJ.exists() else {
+    't18.2024.12.05': str(study_checkout("20260316_jude") / 'result/runs/m3_t18_20241205_torch'),
+}
+LM_PATH = study_path("20260316_jude", 'data/language_models/wfst_5gram')
+
+t0 = time.time()
+decoder = build_lm_decoder(LM_PATH)
+print(f'LM loaded in {time.time()-t0:.0f}s', flush=True)
+
+grand = {}
+
+def strip_punct(s):
+    """Remove trailing punctuation tokens from a decoded sentence.
+
+    Parameters
+    ----------
+    s : str
+        Decoded sentence, possibly containing ``.``, ``?`` or ``,``.
+
+    Returns
+    -------
+    str
+        The sentence with those punctuation characters removed and
+        surrounding whitespace stripped.
+    """
+    return s.replace(".", "").replace("?", "").replace(",", "").strip()
+
+
+for sess, run_dir in RUNS.items():
+    z = np.load(Path(run_dir) / 'test_logits.npz', allow_pickle=True)
+    logits_list, trues = list(z['logits']), [str(s) for s in z['true_sentences']]
+    ce_sum = ch_sum = we_sum = w_sum = 0
+    for i, lg in enumerate(logits_list):
+        lg = np.asarray(lg, dtype=np.float64)
+        rear = np.concatenate([lg[:, -1:], lg[:, :-1]], axis=1)  # blank 挪 index 0（官方 rearrange）
+        dec = lm_decode(decoder, rear, blankPenalty=1.0)
+        dec_c = strip_punct(dec)
+        true_c = strip_punct(trues[i])
+        ce = calc_wer(list(true_c), list(dec_c))
+        we = calc_wer(true_c.split(' '), dec_c.split(' '))
+        ce_sum += ce
+        ch_sum += len(true_c)
+        we_sum += we
+        w_sum += len(true_c.split())
+    cer, wer = ce_sum / max(1, ch_sum), we_sum / max(1, w_sum)
+    grand[sess] = {'n': len(logits_list), 'cer': round(cer, 4), 'wer': round(wer, 4)}
+    print(f"{sess}: n={len(logits_list)} post-LM CER {cer:.4f} WER {wer:.4f}", flush=True)
+
+print('MULTI_DONE', grand, flush=True)

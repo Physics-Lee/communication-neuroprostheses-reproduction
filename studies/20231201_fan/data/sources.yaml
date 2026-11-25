@@ -1,0 +1,10 @@
+study: 20231201_fan
+dataset: https://doi.org/10.5061/dryad.hqbzkh1p6
+dataset_id: dryad_hqbzkh1p6
+release_id: null
+external_input_path: data/extracted/dryad_hqbzkh1p6/CORP_data_release
+required_archive: data/raw/dryad_hqbzkh1p6/dryad_hqbzkh1p6__CORP_data_release.zip
+historical_checkout: 20261022_reproduce_20231201_fan
+legacy_commit: 02e15cb2c5dc805cde9fbe4c8303ef529a230b77
+checksums: See each run.yaml for archived evidence file checksums. Full release file
+  hashes are unverified.

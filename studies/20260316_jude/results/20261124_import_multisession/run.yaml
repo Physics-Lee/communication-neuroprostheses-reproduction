@@ -1,0 +1,71 @@
+id: 20261124_import_multisession
+study: 20260316_jude
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261009_reproduce_20260316_jude
+legacy_checkout_head_at_import: a9f8c424e4aa326674084f0be181700142de1eb2
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20260316_jude/results/runs_multisess/lm_decode_summary.json
+  path: studies/20260316_jude/results/20261124_import_multisession/lm_decode_summary.json
+  sha256: 1fe19dae25e78939eb314db812fd8eeebab3818c323a2ecca06a64f32aa5d598
+- old_path: 20260316_jude/results/runs_multisess/t17/multisession_summary.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t17/multisession_summary.json
+  sha256: 36b4358fa8d693053f3e30745919dd7cb847d405864094e1a36c30fb0b3930ef
+- old_path: 20260316_jude/results/runs_multisess/t17/training_log
+  path: studies/20260316_jude/log/20261124_import_multisession/t17/training_log
+  sha256: ae8b5562a51a7207688c5fe470efbfc84279c6abe4cd9b05279da6d587341c91
+- old_path: 20260316_jude/results/runs_multisess/t18/multisession_summary.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t18/multisession_summary.json
+  sha256: 4b0f74b4654f024a421a7348540fe32021c6a91035e9453394d6d7dc6972e24b
+- old_path: 20260316_jude/results/runs_multisess/t18/training_log
+  path: studies/20260316_jude/log/20261124_import_multisession/t18/training_log
+  sha256: 332ac26a0247c8941bdd7fb0adc44ecbd39819cba86ddff06f78a8d6a86ddf1d
+- old_path: 20260316_jude/results/runs_multisess/t17/t17.2024.04.25/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t17/t17.2024.04.25/final_report.json
+  sha256: 4f5cce9599c1b2d4174173bc9f1b593d061b5e250fe6b1c469ae327a20d3841e
+- old_path: 20260316_jude/results/runs_multisess/t17/t17.2024.06.03/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t17/t17.2024.06.03/final_report.json
+  sha256: 93d0c6295937a0e3964c663ce41b83f812f76e18059937b2a8a1ec36fd0100a4
+- old_path: 20260316_jude/results/runs_multisess/t17/t17.2024.06.04/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t17/t17.2024.06.04/final_report.json
+  sha256: 2d2a8aae85fd9af7ada7a956c5a85a6779f2d4590eb42aa859fb5104053eeff4
+- old_path: 20260316_jude/results/runs_multisess/t17/t17.2024.06.05/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t17/t17.2024.06.05/final_report.json
+  sha256: a05a8692e6efe8f10699517b4287f54dcb6ec44bc3c045273ee6af156cef8fa5
+- old_path: 20260316_jude/results/runs_multisess/t17/t17.2024.06.13/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t17/t17.2024.06.13/final_report.json
+  sha256: aaf4591848fa4bc1064719645861bc9a516f060dba8d2a761a29172c222df827
+- old_path: 20260316_jude/results/runs_multisess/t17/t17.2024.07.09/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t17/t17.2024.07.09/final_report.json
+  sha256: 91c1f485b8131572a1d6779100b039d3cdc60fd45d25606a7f84a9e9335a62bf
+- old_path: 20260316_jude/results/runs_multisess/t17/t17.2024.07.10/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t17/t17.2024.07.10/final_report.json
+  sha256: 0c916c5690677258453383617a0ac0442cf05f25ddc4d76df2686ef0db731678
+- old_path: 20260316_jude/results/runs_multisess/t17/t17.2024.07.22/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t17/t17.2024.07.22/final_report.json
+  sha256: d16a54b708c35bbda43c49b59a4e51d4ecbbd3ebe15e0b6ddc97c7b20088a904
+- old_path: 20260316_jude/results/runs_multisess/t18/t18.2024.12.04/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t18/t18.2024.12.04/final_report.json
+  sha256: 40d9e06078898d55a00b576cf7ef997b5e6a1bf08ab0fffd2ed9f2176ac7fe29
+- old_path: 20260316_jude/results/runs_multisess/t18/t18.2024.12.05/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t18/t18.2024.12.05/final_report.json
+  sha256: e9f62636fbda5add5bae3fed977fc0f64e00a9bd3379af72cb1859b3adc191ef
+- old_path: 20260316_jude/results/runs_multisess/t18/t18.2025.01.14/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t18/t18.2025.01.14/final_report.json
+  sha256: d33bb2d82fee82181fbe1c0335b08a514815f30ce28f9628978b9fdc72ede131
+- old_path: 20260316_jude/results/runs_multisess/t18/t18.2025.01.15/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t18/t18.2025.01.15/final_report.json
+  sha256: ccfd2832ead61c066ccb1c9cfd563fe47a5c70f74e035515556b5f0f8b3d3d93
+- old_path: 20260316_jude/results/runs_multisess/t18/t18.2025.01.21/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t18/t18.2025.01.21/final_report.json
+  sha256: 4c08441cc1bb0af2b0723ac83e37bab432d4ad4e6192d26b9564690c3ae8adf2
+- old_path: 20260316_jude/results/runs_multisess/t18/t18.2025.01.22/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t18/t18.2025.01.22/final_report.json
+  sha256: e430f97d84862f49589c178040e19176abe89e7d0c88114675ce9c4f676417cb
+- old_path: 20260316_jude/results/runs_multisess/t18/t18.2025.02.04/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t18/t18.2025.02.04/final_report.json
+  sha256: fc6308bae4ffeba2ddb4b2756f83b48748cb13072156afa6c6d1002f397f8af9
+- old_path: 20260316_jude/results/runs_multisess/t18/t18.2025.02.05/final_report.json
+  path: studies/20260316_jude/results/20261124_import_multisession/t18/t18.2025.02.05/final_report.json
+  sha256: 385a55fa0db35e20ea72b7ca8363a4b5c1dd340e78ce0c08ecb4cf8980d6d8a5

@@ -1,0 +1,2839 @@
+{
+ "generated_utc": "2026-11-25T01:19:18Z",
+ "source": "files",
+ "studies": [
+  {
+   "study": "20210512_willett",
+   "exporter": "studies/20210512_willett/code/export_sessions.py",
+   "has_exporter": true,
+   "sessions": [
+    {
+     "session": "t5.2019.05.08",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2019-05-08.h5",
+     "size_bytes": 18521320,
+     "state": "exported",
+     "trials": 102,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t5.2019.11.25",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2019-11-25.h5",
+     "size_bytes": 16367701,
+     "state": "exported",
+     "trials": 84,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t5.2019.12.09",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2019-12-09.h5",
+     "size_bytes": 16363099,
+     "state": "exported",
+     "trials": 84,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t5.2019.12.11",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2019-12-11.h5",
+     "size_bytes": 14901121,
+     "state": "exported",
+     "trials": 84,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t5.2019.12.18",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2019-12-18.h5",
+     "size_bytes": 14891542,
+     "state": "exported",
+     "trials": 84,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t5.2019.12.20",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2019-12-20.h5",
+     "size_bytes": 13547171,
+     "state": "exported",
+     "trials": 84,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t5.2020.01.06",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2020-01-06.h5",
+     "size_bytes": 11691474,
+     "state": "exported",
+     "trials": 84,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t5.2020.01.08",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2020-01-08.h5",
+     "size_bytes": 12473370,
+     "state": "exported",
+     "trials": 84,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t5.2020.01.13",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2020-01-13.h5",
+     "size_bytes": 11957559,
+     "state": "exported",
+     "trials": 155,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t5.2020.01.15",
+     "sources": 3,
+     "file": "studies/20210512_willett/data/processed/t5/dryad_wh70rxwmv_2020-01-15.h5",
+     "size_bytes": 12506286,
+     "state": "exported",
+     "trials": 155,
+     "traced": null,
+     "neural": [
+      "neural_activity"
+     ],
+     "targets": [
+      "char_class",
+      "char_class_frame",
+      "char_class_frame_heldoutblocks",
+      "intended_text",
+      "prompt",
+      "sentence"
+     ]
+    }
+   ],
+   "state": "ok"
+  },
+  {
+   "study": "20230831_willett",
+   "exporter": "studies/20230831_willett/code/export_sessions.py",
+   "has_exporter": true,
+   "sessions": [
+    {
+     "session": "t12.2022.04.28",
+     "sources": 2,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-04-28.h5",
+     "size_bytes": 187422553,
+     "state": "exported",
+     "trials": 300,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.05.05",
+     "sources": 2,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-05.h5",
+     "size_bytes": 210842900,
+     "state": "exported",
+     "trials": 380,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.05.17",
+     "sources": 2,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-17.h5",
+     "size_bytes": 179995692,
+     "state": "exported",
+     "trials": 440,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.05.19",
+     "sources": 2,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-19.h5",
+     "size_bytes": 79381232,
+     "state": "exported",
+     "trials": 200,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.05.24",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-24.h5",
+     "size_bytes": 173435704,
+     "state": "exported",
+     "trials": 480,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.05.26",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-26.h5",
+     "size_bytes": 184668554,
+     "state": "exported",
+     "trials": 480,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.06.02",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-06-02.h5",
+     "size_bytes": 175977036,
+     "state": "exported",
+     "trials": 520,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.06.07",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-06-07.h5",
+     "size_bytes": 160272335,
+     "state": "exported",
+     "trials": 480,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.06.14",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-06-14.h5",
+     "size_bytes": 149383433,
+     "state": "exported",
+     "trials": 440,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.06.16",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-06-16.h5",
+     "size_bytes": 159451451,
+     "state": "exported",
+     "trials": 440,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.06.21",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-06-21.h5",
+     "size_bytes": 139391598,
+     "state": "exported",
+     "trials": 440,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.06.23",
+     "sources": 2,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-06-23.h5",
+     "size_bytes": 162660916,
+     "state": "exported",
+     "trials": 520,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.06.28",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-06-28.h5",
+     "size_bytes": 155564953,
+     "state": "exported",
+     "trials": 480,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.07.05",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-07-05.h5",
+     "size_bytes": 154860445,
+     "state": "exported",
+     "trials": 480,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.07.14",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-07-14.h5",
+     "size_bytes": 177902702,
+     "state": "exported",
+     "trials": 520,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.07.21",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-07-21.h5",
+     "size_bytes": 172259752,
+     "state": "exported",
+     "trials": 520,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.07.27",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-07-27.h5",
+     "size_bytes": 172193596,
+     "state": "exported",
+     "trials": 520,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.07.29",
+     "sources": 2,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-07-29.h5",
+     "size_bytes": 79618312,
+     "state": "exported",
+     "trials": 240,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.08.02",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-08-02.h5",
+     "size_bytes": 176886705,
+     "state": "exported",
+     "trials": 520,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.08.11",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-08-11.h5",
+     "size_bytes": 151293134,
+     "state": "exported",
+     "trials": 440,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.08.13",
+     "sources": 3,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-08-13.h5",
+     "size_bytes": 145895630,
+     "state": "exported",
+     "trials": 440,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.08.18",
+     "sources": 2,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-08-18.h5",
+     "size_bytes": 161813557,
+     "state": "exported",
+     "trials": 480,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.08.23",
+     "sources": 2,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-08-23.h5",
+     "size_bytes": 163747145,
+     "state": "exported",
+     "trials": 560,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    },
+    {
+     "session": "t12.2022.08.25",
+     "sources": 2,
+     "file": "studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-08-25.h5",
+     "size_bytes": 177284085,
+     "state": "exported",
+     "trials": 560,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx",
+      "tx2",
+      "tx3",
+      "tx4"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ],
+     "warnings": [
+      "feature names not shared across studies: tx2, tx3, tx4"
+     ]
+    }
+   ],
+   "state": "ok"
+  },
+  {
+   "study": "20231201_fan",
+   "exporter": "studies/20231201_fan/code/export_sessions.py",
+   "has_exporter": true,
+   "sessions": [
+    {
+     "session": "t5.2022.05.18",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-05-18.h5"
+    },
+    {
+     "session": "t5.2022.05.23",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-05-23.h5"
+    },
+    {
+     "session": "t5.2022.05.25",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-05-25.h5"
+    },
+    {
+     "session": "t5.2022.06.01",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-06-01.h5"
+    },
+    {
+     "session": "t5.2022.06.03",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-06-03.h5"
+    },
+    {
+     "session": "t5.2022.06.06",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-06-06.h5"
+    },
+    {
+     "session": "t5.2022.06.08",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-06-08.h5"
+    },
+    {
+     "session": "t5.2022.06.13",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-06-13.h5"
+    },
+    {
+     "session": "t5.2022.06.15",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-06-15.h5"
+    },
+    {
+     "session": "t5.2022.06.22",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-06-22.h5"
+    },
+    {
+     "session": "t5.2022.09.01",
+     "sources": 2,
+     "state": "pending",
+     "file": "dryad_hqbzkh1p6_2022-09-01.h5"
+    },
+    {
+     "session": "t5.2022.09.29",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2022-09-29.h5",
+     "size_bytes": 8040923,
+     "state": "exported",
+     "trials": 60,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t5.2022.10.06",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2022-10-06.h5",
+     "size_bytes": 8117005,
+     "state": "exported",
+     "trials": 60,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t5.2022.10.18",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2022-10-18.h5",
+     "size_bytes": 6783786,
+     "state": "exported",
+     "trials": 60,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t5.2022.10.25",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2022-10-25.h5",
+     "size_bytes": 5844894,
+     "state": "exported",
+     "trials": 57,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t5.2022.10.27",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2022-10-27.h5",
+     "size_bytes": 5556310,
+     "state": "exported",
+     "trials": 60,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t5.2022.11.01",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2022-11-01.h5",
+     "size_bytes": 5915479,
+     "state": "exported",
+     "trials": 60,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t5.2022.11.03",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2022-11-03.h5",
+     "size_bytes": 7025610,
+     "state": "exported",
+     "trials": 60,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t5.2022.12.08",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2022-12-08.h5",
+     "size_bytes": 6790594,
+     "state": "exported",
+     "trials": 60,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t5.2022.12.15",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2022-12-15.h5",
+     "size_bytes": 4564914,
+     "state": "exported",
+     "trials": 39,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t5.2023.02.28",
+     "sources": 2,
+     "file": "studies/20231201_fan/data/processed/t5/dryad_hqbzkh1p6_2023-02-28.h5",
+     "size_bytes": 7810215,
+     "state": "exported",
+     "trials": 60,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "char_class_ids",
+      "char_class_onehot",
+      "sentence",
+      "transcription"
+     ]
+    }
+   ],
+   "state": "ok"
+  },
+  {
+   "study": "20240815_card",
+   "exporter": "studies/20240815_card/code/export_sessions.py",
+   "has_exporter": true,
+   "sessions": [
+    {
+     "session": "t15.2023.08.11",
+     "sources": 1,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-08-11.h5",
+     "size_bytes": 220633692,
+     "state": "exported",
+     "trials": 288,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.08.13",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-08-13.h5",
+     "size_bytes": 399643560,
+     "state": "exported",
+     "trials": 383,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.08.18",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-08-18.h5",
+     "size_bytes": 291342030,
+     "state": "exported",
+     "trials": 246,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.08.20",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-08-20.h5",
+     "size_bytes": 354985885,
+     "state": "exported",
+     "trials": 326,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.08.25",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-08-25.h5",
+     "size_bytes": 125296796,
+     "state": "exported",
+     "trials": 113,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.08.27",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-08-27.h5",
+     "size_bytes": 199354645,
+     "state": "exported",
+     "trials": 175,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.09.01",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-09-01.h5",
+     "size_bytes": 381802388,
+     "state": "exported",
+     "trials": 346,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.09.03",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-09-03.h5",
+     "size_bytes": 389797656,
+     "state": "exported",
+     "trials": 356,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.09.24",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-09-24.h5",
+     "size_bytes": 350678205,
+     "state": "exported",
+     "trials": 280,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.09.29",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-09-29.h5",
+     "size_bytes": 233597466,
+     "state": "exported",
+     "trials": 201,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.10.01",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-10-01.h5",
+     "size_bytes": 272400281,
+     "state": "exported",
+     "trials": 262,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.10.06",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-10-06.h5",
+     "size_bytes": 242629819,
+     "state": "exported",
+     "trials": 210,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.10.08",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-10-08.h5",
+     "size_bytes": 334415920,
+     "state": "exported",
+     "trials": 301,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.10.13",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-10-13.h5",
+     "size_bytes": 217352545,
+     "state": "exported",
+     "trials": 199,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.10.15",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-10-15.h5",
+     "size_bytes": 342622604,
+     "state": "exported",
+     "trials": 283,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.10.20",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-10-20.h5",
+     "size_bytes": 110068295,
+     "state": "exported",
+     "trials": 107,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.10.22",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-10-22.h5",
+     "size_bytes": 229484733,
+     "state": "exported",
+     "trials": 167,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.11.03",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-11-03.h5",
+     "size_bytes": 269616595,
+     "state": "exported",
+     "trials": 199,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.11.04",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-11-04.h5",
+     "size_bytes": 107681508,
+     "state": "exported",
+     "trials": 95,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.11.17",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-11-17.h5",
+     "size_bytes": 189005338,
+     "state": "exported",
+     "trials": 125,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.11.19",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-11-19.h5",
+     "size_bytes": 87376394,
+     "state": "exported",
+     "trials": 80,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.11.26",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-11-26.h5",
+     "size_bytes": 323367394,
+     "state": "exported",
+     "trials": 242,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.12.03",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-12-03.h5",
+     "size_bytes": 362186006,
+     "state": "exported",
+     "trials": 262,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.12.08",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-12-08.h5",
+     "size_bytes": 339175104,
+     "state": "exported",
+     "trials": 248,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.12.10",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-12-10.h5",
+     "size_bytes": 220808054,
+     "state": "exported",
+     "trials": 156,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.12.17",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-12-17.h5",
+     "size_bytes": 221491117,
+     "state": "exported",
+     "trials": 165,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2023.12.29",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2023-12-29.h5",
+     "size_bytes": 329743538,
+     "state": "exported",
+     "trials": 248,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2024.02.25",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2024-02-25.h5",
+     "size_bytes": 235685083,
+     "state": "exported",
+     "trials": 216,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2024.03.03",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_dncjsxm85_2024-03-03.h5"
+    },
+    {
+     "session": "t15.2024.03.08",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2024-03-08.h5",
+     "size_bytes": 230434872,
+     "state": "exported",
+     "trials": 187,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2024.03.15",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2024-03-15.h5",
+     "size_bytes": 417850334,
+     "state": "exported",
+     "trials": 287,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2024.03.17",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2024-03-17.h5",
+     "size_bytes": 397599892,
+     "state": "exported",
+     "trials": 294,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2024.04.25",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_dncjsxm85_2024-04-25.h5"
+    },
+    {
+     "session": "t15.2024.04.28",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_dncjsxm85_2024-04-28.h5"
+    },
+    {
+     "session": "t15.2024.05.10",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2024-05-10.h5",
+     "size_bytes": 169380837,
+     "state": "exported",
+     "trials": 135,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2024.06.14",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2024-06-14.h5",
+     "size_bytes": 141548246,
+     "state": "exported",
+     "trials": 115,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2024.07.19",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2024-07-19.h5",
+     "size_bytes": 221009246,
+     "state": "exported",
+     "trials": 217,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2024.07.21",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2024-07-21.h5",
+     "size_bytes": 307266600,
+     "state": "exported",
+     "trials": 206,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2024.07.28",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2024-07-28.h5",
+     "size_bytes": 285036659,
+     "state": "exported",
+     "trials": 209,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2025.01.10",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2025-01-10.h5",
+     "size_bytes": 147514078,
+     "state": "exported",
+     "trials": 129,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2025.01.12",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2025-01-12.h5",
+     "size_bytes": 273724719,
+     "state": "exported",
+     "trials": 210,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2025.03.14",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2025-03-14.h5",
+     "size_bytes": 92285290,
+     "state": "exported",
+     "trials": 83,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2025.03.16",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2025-03-16.h5",
+     "size_bytes": 147952277,
+     "state": "exported",
+     "trials": 125,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2025.03.30",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2025-03-30.h5",
+     "size_bytes": 224021509,
+     "state": "exported",
+     "trials": 195,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t15.2025.04.13",
+     "sources": 2,
+     "file": "studies/20240815_card/data/processed/t15/dryad_dncjsxm85_2025-04-13.h5",
+     "size_bytes": 110220451,
+     "state": "exported",
+     "trials": 94,
+     "traced": null,
+     "neural": [
+      "input_features"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    }
+   ],
+   "state": "ok"
+  },
+  {
+   "study": "20250612_wairagkar",
+   "exporter": "studies/20250612_wairagkar/code/export_sessions.py",
+   "has_exporter": true,
+   "sessions": [
+    {
+     "session": "t15_day025",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day025.h5"
+    },
+    {
+     "session": "t15_day027",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day027.h5"
+    },
+    {
+     "session": "t15_day032",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day032.h5"
+    },
+    {
+     "session": "t15_day034",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day034.h5"
+    },
+    {
+     "session": "t15_day039",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day039.h5"
+    },
+    {
+     "session": "t15_day041",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day041.h5"
+    },
+    {
+     "session": "t15_day046",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day046.h5"
+    },
+    {
+     "session": "t15_day048",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day048.h5"
+    },
+    {
+     "session": "t15_day067",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day067.h5"
+    },
+    {
+     "session": "t15_day069",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day069.h5"
+    },
+    {
+     "session": "t15_day074",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day074.h5"
+    },
+    {
+     "session": "t15_day076",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day076.h5"
+    },
+    {
+     "session": "t15_day081",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day081.h5"
+    },
+    {
+     "session": "t15_day088",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day088.h5"
+    },
+    {
+     "session": "t15_day090",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day090.h5"
+    },
+    {
+     "session": "t15_day095",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day095.h5"
+    },
+    {
+     "session": "t15_day097",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day097.h5"
+    },
+    {
+     "session": "t15_day102",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day102.h5"
+    },
+    {
+     "session": "t15_day104",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day104.h5"
+    },
+    {
+     "session": "t15_day109",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day109.h5"
+    },
+    {
+     "session": "t15_day110",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day110.h5"
+    },
+    {
+     "session": "t15_day123",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day123.h5"
+    },
+    {
+     "session": "t15_day132",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day132.h5"
+    },
+    {
+     "session": "t15_day137",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day137.h5"
+    },
+    {
+     "session": "t15_day139",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day139.h5"
+    },
+    {
+     "session": "t15_day144",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day144.h5"
+    },
+    {
+     "session": "t15_day146",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day146.h5"
+    },
+    {
+     "session": "t15_day153",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day153.h5"
+    },
+    {
+     "session": "t15_day165",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day165.h5"
+    },
+    {
+     "session": "t15_day172",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day172.h5"
+    },
+    {
+     "session": "t15_day174",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day174.h5"
+    },
+    {
+     "session": "t15_day179",
+     "sources": 1,
+     "file": "studies/20250612_wairagkar/data/processed/t15/dryad_2280gb64f_day179.h5",
+     "size_bytes": 953483148,
+     "state": "exported",
+     "trials": 296,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "lpcnet_syllable",
+      "lpcnet_word",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t15_day181",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day181.h5"
+    },
+    {
+     "session": "t15_day186",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day186.h5"
+    },
+    {
+     "session": "t15_day188",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day188.h5"
+    },
+    {
+     "session": "t15_day193",
+     "sources": 1,
+     "state": "pending",
+     "file": "dryad_2280gb64f_day193.h5"
+    },
+    {
+     "session": "t15_day195",
+     "sources": 1,
+     "file": "studies/20250612_wairagkar/data/processed/t15/dryad_2280gb64f_day195.h5",
+     "size_bytes": 753474595,
+     "state": "exported",
+     "trials": 305,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "lpcnet_syllable",
+      "lpcnet_word",
+      "sentence"
+     ]
+    }
+   ],
+   "state": "ok"
+  },
+  {
+   "study": "20250821_kunz",
+   "exporter": "studies/20250821_kunz/code/export_sessions.py",
+   "has_exporter": true,
+   "sessions": [
+    {
+     "session": "t12.2023.11.28_attempted_50words",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t12/dryad_gf1vhhn1j_2023-11-28_attempted_50words.h5",
+     "size_bytes": 20253255,
+     "state": "exported",
+     "trials": 200,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t12.2023.11.28_imagined_50words",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t12/dryad_gf1vhhn1j_2023-11-28_imagined_50words.h5",
+     "size_bytes": 34213965,
+     "state": "exported",
+     "trials": 200,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t12.2023.11.28_imagined_50words_eval",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t12/dryad_gf1vhhn1j_2023-11-28_imagined_50words_eval.h5",
+     "size_bytes": 23699642,
+     "state": "exported",
+     "trials": 100,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t15.2024.03.03_attempted_50words",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t15/dryad_gf1vhhn1j_2024-03-03_attempted_50words.h5",
+     "size_bytes": 166918441,
+     "state": "exported",
+     "trials": 200,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t15.2024.03.03_imagined_50words",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t15/dryad_gf1vhhn1j_2024-03-03_imagined_50words.h5",
+     "size_bytes": 244910530,
+     "state": "exported",
+     "trials": 200,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t15.2024.03.03_imagined_50words_eval",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t15/dryad_gf1vhhn1j_2024-03-03_imagined_50words_eval.h5",
+     "size_bytes": 54764963,
+     "state": "exported",
+     "trials": 50,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t15.2024.12.15_imagined_125kwords",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t15/dryad_gf1vhhn1j_2024-12-15_imagined_125kwords.h5",
+     "size_bytes": 273090734,
+     "state": "exported",
+     "trials": 121,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t15.2024.12.15_imagined_125kwords_eval",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t15/dryad_gf1vhhn1j_2024-12-15_imagined_125kwords_eval.h5",
+     "size_bytes": 24435571,
+     "state": "exported",
+     "trials": 15,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t15.2025.01.05_imagined_125kwords",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t15/dryad_gf1vhhn1j_2025-01-05_imagined_125kwords.h5",
+     "size_bytes": 183276584,
+     "state": "exported",
+     "trials": 94,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t15.2025.01.05_imagined_125kwords_eval",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t15/dryad_gf1vhhn1j_2025-01-05_imagined_125kwords_eval.h5",
+     "size_bytes": 108311809,
+     "state": "exported",
+     "trials": 40,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t16.2024.04.29_attempted_50words",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t16/dryad_gf1vhhn1j_2024-04-29_attempted_50words.h5",
+     "size_bytes": 31691043,
+     "state": "exported",
+     "trials": 120,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t16.2024.04.29_imagined_50words",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t16/dryad_gf1vhhn1j_2024-04-29_imagined_50words.h5",
+     "size_bytes": 24463912,
+     "state": "exported",
+     "trials": 120,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t16.2024.04.29_imagined_50words_eval",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t16/dryad_gf1vhhn1j_2024-04-29_imagined_50words_eval.h5",
+     "size_bytes": 11104474,
+     "state": "exported",
+     "trials": 50,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t16.2024.12.18_imagined_125kwords",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t16/dryad_gf1vhhn1j_2024-12-18_imagined_125kwords.h5",
+     "size_bytes": 63839453,
+     "state": "exported",
+     "trials": 125,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    },
+    {
+     "session": "t16.2024.12.18_imagined_125kwords_eval",
+     "sources": 1,
+     "file": "studies/20250821_kunz/data/processed/t16/dryad_gf1vhhn1j_2024-12-18_imagined_125kwords_eval.h5",
+     "size_bytes": 24463398,
+     "state": "exported",
+     "trials": 35,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence"
+     ]
+    }
+   ],
+   "state": "ok"
+  },
+  {
+   "study": "20260316_jude",
+   "exporter": "studies/20260316_jude/code/export_sessions.py",
+   "has_exporter": true,
+   "sessions": [
+    {
+     "session": "t17.2024.04.25",
+     "sources": 4,
+     "file": "studies/20260316_jude/data/processed/t17/dryad_cz8w9gjjk_2024-04-25.h5",
+     "size_bytes": 543832031,
+     "state": "exported",
+     "trials": 80,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.06.03",
+     "sources": 7,
+     "file": "studies/20260316_jude/data/processed/t17/dryad_cz8w9gjjk_2024-06-03.h5",
+     "size_bytes": 889195939,
+     "state": "exported",
+     "trials": 140,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.06.04",
+     "sources": 10,
+     "file": "studies/20260316_jude/data/processed/t17/dryad_cz8w9gjjk_2024-06-04.h5",
+     "size_bytes": 821025141,
+     "state": "exported",
+     "trials": 124,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.06.05",
+     "sources": 5,
+     "file": "studies/20260316_jude/data/processed/t17/dryad_cz8w9gjjk_2024-06-05.h5",
+     "size_bytes": 564178595,
+     "state": "exported",
+     "trials": 79,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.06.13",
+     "sources": 2,
+     "file": "studies/20260316_jude/data/processed/t17/dryad_cz8w9gjjk_2024-06-13.h5",
+     "size_bytes": 253248104,
+     "state": "exported",
+     "trials": 40,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.07.09",
+     "sources": 10,
+     "file": "studies/20260316_jude/data/processed/t17/dryad_cz8w9gjjk_2024-07-09.h5",
+     "size_bytes": 641876270,
+     "state": "exported",
+     "trials": 93,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.07.10",
+     "sources": 4,
+     "file": "studies/20260316_jude/data/processed/t17/dryad_cz8w9gjjk_2024-07-10.h5",
+     "size_bytes": 268718094,
+     "state": "exported",
+     "trials": 40,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.07.22",
+     "sources": 5,
+     "file": "studies/20260316_jude/data/processed/t17/dryad_cz8w9gjjk_2024-07-22.h5",
+     "size_bytes": 454678393,
+     "state": "exported",
+     "trials": 76,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t18.2024.12.04",
+     "sources": 5,
+     "file": "studies/20260316_jude/data/processed/t18/dryad_cz8w9gjjk_2024-12-04.h5",
+     "size_bytes": 646623349,
+     "state": "exported",
+     "trials": 184,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t18.2024.12.05",
+     "sources": 6,
+     "file": "studies/20260316_jude/data/processed/t18/dryad_cz8w9gjjk_2024-12-05.h5",
+     "size_bytes": 700301191,
+     "state": "exported",
+     "trials": 78,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t18.2025.01.14",
+     "sources": 11,
+     "file": "studies/20260316_jude/data/processed/t18/dryad_cz8w9gjjk_2025-01-14.h5",
+     "size_bytes": 609286171,
+     "state": "exported",
+     "trials": 102,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t18.2025.01.15",
+     "sources": 13,
+     "file": "studies/20260316_jude/data/processed/t18/dryad_cz8w9gjjk_2025-01-15.h5",
+     "size_bytes": 608012488,
+     "state": "exported",
+     "trials": 130,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t18.2025.01.21",
+     "sources": 11,
+     "file": "studies/20260316_jude/data/processed/t18/dryad_cz8w9gjjk_2025-01-21.h5",
+     "size_bytes": 426230148,
+     "state": "exported",
+     "trials": 110,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t18.2025.01.22",
+     "sources": 13,
+     "file": "studies/20260316_jude/data/processed/t18/dryad_cz8w9gjjk_2025-01-22.h5",
+     "size_bytes": 463038836,
+     "state": "exported",
+     "trials": 130,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t18.2025.02.04",
+     "sources": 14,
+     "file": "studies/20260316_jude/data/processed/t18/dryad_cz8w9gjjk_2025-02-04.h5",
+     "size_bytes": 459089205,
+     "state": "exported",
+     "trials": 142,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t18.2025.02.05",
+     "sources": 16,
+     "file": "studies/20260316_jude/data/processed/t18/dryad_cz8w9gjjk_2025-02-05.h5",
+     "size_bytes": 429829653,
+     "state": "exported",
+     "trials": 160,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "char_class_ids",
+      "sentence",
+      "transcription"
+     ]
+    }
+   ],
+   "state": "ok"
+  },
+  {
+   "study": "20260428_jude",
+   "exporter": "studies/20260428_jude/code/export_sessions.py",
+   "has_exporter": true,
+   "sessions": [
+    {
+     "session": "t17.2024.03.26",
+     "sources": 5,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-03-26.h5",
+     "size_bytes": 187419436,
+     "state": "exported",
+     "trials": 200,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.04.02",
+     "sources": 13,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-04-02.h5",
+     "size_bytes": 567889175,
+     "state": "exported",
+     "trials": 463,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.04.15",
+     "sources": 9,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-04-15.h5",
+     "size_bytes": 298751325,
+     "state": "exported",
+     "trials": 360,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.04.16",
+     "sources": 5,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-04-16.h5",
+     "size_bytes": 174759157,
+     "state": "exported",
+     "trials": 200,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.04.17",
+     "sources": 9,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-04-17.h5",
+     "size_bytes": 230250598,
+     "state": "exported",
+     "trials": 273,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.05.06",
+     "sources": 9,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-05-06.h5",
+     "size_bytes": 461862549,
+     "state": "exported",
+     "trials": 330,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.05.07",
+     "sources": 10,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-05-07.h5",
+     "size_bytes": 587146655,
+     "state": "exported",
+     "trials": 400,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.05.13",
+     "sources": 2,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-05-13.h5",
+     "size_bytes": 105931651,
+     "state": "exported",
+     "trials": 80,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.05.14",
+     "sources": 7,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-05-14.h5",
+     "size_bytes": 402586678,
+     "state": "exported",
+     "trials": 258,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.05.28",
+     "sources": 8,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-05-28.h5",
+     "size_bytes": 434829946,
+     "state": "exported",
+     "trials": 320,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.08.12",
+     "sources": 9,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-08-12.h5",
+     "size_bytes": 417350157,
+     "state": "exported",
+     "trials": 360,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.08.13",
+     "sources": 7,
+     "file": "studies/20260428_jude/data/processed/t17/dryad_vq83bk481_2024-08-13.h5",
+     "size_bytes": 307702143,
+     "state": "exported",
+     "trials": 280,
+     "traced": null,
+     "neural": [
+      "spike_pow",
+      "tx"
+     ],
+     "targets": [
+      "phonemes",
+      "sentence",
+      "transcription"
+     ]
+    },
+    {
+     "session": "t17.2024.03.25",
+     "state": "excluded",
+     "note": "convert_jude.py SENTENCE_BLOCKS has no entry for it: its 14 brain-to-text blocks cue isolated phonemes and orofacial movements (80 single-word cues in blocks 5-13, 34 orofacial instructions in blocks 14-18), no sentences"
+    },
+    {
+     "session": "t17.2024.05.23",
+     "state": "excluded",
+     "note": "convert_jude.py SENTENCE_BLOCKS has no entry for it: reading task of the movement sweep (T17_ReadingTask.yaml) between DO_NOTHING diagnostic blocks"
+    }
+   ],
+   "state": "ok"
+  }
+ ]
+}

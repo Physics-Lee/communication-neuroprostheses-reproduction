@@ -1,0 +1,47 @@
+id: 20261124_import_card_other_baselines
+study: 20240815_card
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261008_reproduce_20240815_card
+legacy_checkout_head_at_import: 49fe9e14be58a645842383bfce192d41e859e208
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20240815_card/results/opt_fx_card.upperhyp.tsv
+  path: studies/20240815_card/results/20261124_import_card_other_baselines/opt_fx_card.upperhyp.tsv
+  sha256: da580d7001fb08c38871b36134fa73cf2826237bc1bf9e5972eab30a0eecec3e
+- old_path: 20240815_card/results/p1_rescore_eval_20261013.txt
+  path: studies/20240815_card/results/20261124_import_card_other_baselines/p1_rescore_eval_20261013.txt
+  sha256: 176f27979ed85cbc4e6ebcecd05642dc227bd7b151fc9330e22dec8789a4314c
+- old_path: 20240815_card/results/p2_decode_eval_20261013.txt
+  path: studies/20240815_card/results/20261124_import_card_other_baselines/p2_decode_eval_20261013.txt
+  sha256: b1f7f6af57bea4b27522ef0732bc0ee50c89bb36aa7fe9ffc34b0184e29d446e
+- old_path: 20240815_card/results/repro_20261013_opt_fx.upperhyp.tsv
+  path: studies/20240815_card/results/20261124_import_card_other_baselines/repro_20261013_opt_fx.upperhyp.tsv
+  sha256: da580d7001fb08c38871b36134fa73cf2826237bc1bf9e5972eab30a0eecec3e
+- old_path: 20240815_card/results/val_greedy_per_trial.csv
+  path: studies/20240815_card/results/20261124_import_card_other_baselines/val_greedy_per_trial.csv
+  sha256: 481c52400a6dd2e8e3df48f17984fd674930cdd857c89417a09fd6c1839e19f4
+- old_path: 20240815_card/results/val_greedy_summary.json
+  path: studies/20240815_card/results/20261124_import_card_other_baselines/val_greedy_summary.json
+  sha256: 919045bdacaf99ebb60db0e9ca9dc4226d0a56e821cee8d15c7b0c548e05feb2
+- old_path: 20240815_card/results/logs/alpha_ext_repro_20261014.log
+  path: studies/20240815_card/log/20261124_import_card_other_baselines/alpha_ext_repro_20261014.log
+  sha256: f93e82a3ac5b73f22a1fb083e2b65763311a9820d64633b1405055e7920caa47
+- old_path: 20240815_card/results/logs/eval_btot25_fromscratch_repro_20261013.log
+  path: studies/20240815_card/log/20261124_import_card_other_baselines/eval_btot25_fromscratch_repro_20261013.log
+  sha256: 89cb1241d0b268a36fa3b7f51ad6943972d3f931ff8470e5774232d6d7bc85c3
+- old_path: 20240815_card/results/logs/eval_val_per_repro_20261013.log
+  path: studies/20240815_card/log/20261124_import_card_other_baselines/eval_val_per_repro_20261013.log
+  sha256: fdf4ea6372225441dc4b883ea8b6f7c4d519cb67bd92cde849544ef42fc261b3
+- old_path: 20240815_card/results/logs/kaggle_btot25_leaderboard.json
+  path: studies/20240815_card/log/20261124_import_card_other_baselines/kaggle_btot25_leaderboard.json
+  sha256: e4f03e52f64a68a12922155f7f21f4289e1a99fd6e0b307952206b0168fcd7c3
+- old_path: 20240815_card/results/logs/p1_rescore_repro_20261013.log
+  path: studies/20240815_card/log/20261124_import_card_other_baselines/p1_rescore_repro_20261013.log
+  sha256: cb8289a8091f71dad3ab020d8d6ffd26e800520af05b8bc85d5ea90c894e2865
+- old_path: 20240815_card/results/logs/train_btot25_120k.log
+  path: studies/20240815_card/log/20261124_import_card_other_baselines/train_btot25_120k.log
+  sha256: 2ab91c1377df45eb39ba439323ea7ca39d62965a44de8b7d5281b8f5725f0a1c
+- old_path: 20240815_card/results/logs/train_btot25_excl5.log
+  path: studies/20240815_card/log/20261124_import_card_other_baselines/train_btot25_excl5.log
+  sha256: b7c3bfadc79d00ec80a32cc8801f6f9feb22548a647a52bee48e24653d319bd7

@@ -1,0 +1,4 @@
+trainer input comparison: {'features_identical': 200, 'labels_identical': 200, 'checked': 200, 'max_feature_difference': 0.0}
+day index 3 | test partition: 20 trials, 245/637 phonemes wrong = 38.46% PER
+archive comparison: 20/20 trials identical row by row; archived total 245/637
+saved: studies\20230831_willett\results\20261124_dryad_x69p8czpq__hdf5__ctc_greedy__session_file_eval

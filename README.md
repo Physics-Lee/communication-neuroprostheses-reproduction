@@ -6,12 +6,12 @@ Reproducing **8 open-data speech, typing, and handwriting neuroprosthesis studie
 
 > **This work is a product of we-linking.** The reproduction suite, model ports, memory-wall mitigations, and benchmark figures were developed and are maintained by **we-linking**.
 
-![Communication Neuroprostheses Reproduction Benchmark](communication_neuroprostheses_reproduction.png)
+![Communication Neuroprostheses Reproduction Benchmark](figures/results/20261124_repository_migration/figure2.png)
 
-- **Vector PDF (TrueType Type-42 embedded)**: [`communication_neuroprostheses_reproduction.pdf`](communication_neuroprostheses_reproduction.pdf)
-- **Figure 2(c,d) online WER and speed**: [English notebook](fig2cd/explore_figure2cd.ipynb) and [methods, daily data, and corrections](fig2cd/README.md).
-- **Phase-diagram & memory-wall companion figure (4 panels)**: [`communication_neuroprostheses_phase_memory.png`](communication_neuroprostheses_phase_memory.png) ([`.pdf`](communication_neuroprostheses_phase_memory.pdf)) — session-level **WER vs PER** and **WER vs CER** phase diagrams (raw CER from our Willett 2021 / Fan 2023 / Jude 2026a reproductions, no-LM baseline 1−(1−CER)^5.1) plus the **Host RAM** and **GPU VRAM** walls moved out of Figure 2 on 2026-11-11; data from `session_cer_vs_wer.json` + `reproduction_benchmark.yaml`.
-- **Interactive HTML edition (single file, no dependencies)**: [`communication_neuroprostheses_reproduction.html`](communication_neuroprostheses_reproduction.html) ([`index.html`](index.html)) — Interactive vector SVG edition combining **Figure 2** (Panels a–g: 32-study vocabulary funnel, open-sourced dataset size, online WER, online speed, consumer-GPU acoustic & full-pipeline WER reproductions, and the 77-session `PER = 25%` phase diagram) and **Figure 6** (Panels a–d: discrete `CTC-TLG` vs. continuous `Brain-to-Voice` decoding cascades and their global linguistic applicability across ~7,000 spoken languages, highlighting the three limits of `CTC-TLG`), plus an interactive 8-study reproduction ledger, selected-study spotlight, and filterable study cards.
+- **Vector PDF (TrueType Type-42 embedded)**: [`figures/results/20261124_repository_migration/figure2.pdf`](figures/results/20261124_repository_migration/figure2.pdf)
+- **Figure 2(c,d) online WER and speed**: [English notebook](figures/tutorial.ipynb) and [methods, daily data, and corrections](figures/docs/20261124_evaluation_protocol/figure2cd.md).
+- **Figure 3 (error rates and memory use)**: [`figures/results/20261124_repository_migration/figure3.png`](figures/results/20261124_repository_migration/figure3.png) ([`.pdf`](figures/results/20261124_repository_migration/figure3.pdf)) — paired held-out-trial WER vs. PER and WER vs. CER by recording session, plus peak host RAM and GPU VRAM. The data come from `figures/results/20261124_repository_migration/session_per_vs_wer.json`, `figures/results/20261124_repository_migration/session_cer_vs_wer.json`, and `figures/reproduction_benchmark.yaml`.
+- **Interactive HTML edition (single file, no dependencies)**: [`figures/results/20261124_repository_migration/figure2.html`](figures/results/20261124_repository_migration/figure2.html) ([`index.html`](index.html)) — Interactive vector SVG edition combining Figure 2 (benchmark), Figure 3 (held-out trial error rates by session and memory use), and Figure 6 (discrete `CTC-TLG` and continuous `Brain-to-Voice` decoding), plus a reproduction ledger and filterable study cards.
 
 ---
 
@@ -21,14 +21,14 @@ Each study directory is named by its **official journal issue publication date (
 
 | Study Directory | Publication | Modality & Participant(s) | Dataset DOI | Official vs. Our Memory Wall Mitigation | Acoustic / Synthesis Stage (Ours vs. Paper) | Full-Pipeline WER (Ours vs. Paper) |
 |---|---|---|---|---|---|---|
-| [`20210512_willett/`](20210512_willett/) | Willett et al., *Nature* 593, 249–254 (2021-05-12) | Handwriting (T5) | [`10.5061/dryad.wh70rxwmv`](https://doi.org/10.5061/dryad.wh70rxwmv) | 56 GB → **26.9 GB RAM** (`mmap` fold assembly + lazy Kaldi FST) | Raw CER: **4.71%** vs. 2.78% | **2.21%** vs. 3.45% (bi-gram + GPT-2) |
-| [`20230831_willett/`](20230831_willett/) | Willett et al., *Nature* 620, 1031–1036 (2023-08-31) | Speech (T12) | [`10.5061/dryad.x69p8czpq`](https://doi.org/10.5061/dryad.x69p8czpq) | 300 GB 5-gram WFST / 80 GB A100 → **1.46 GB KenLM trie** (or 19.6 GB `mmap`) & **13.0 GB VRAM** | Greedy PER: **23.42%** vs. 19.7% | **23.22%** vs. 23.8% (5-gram + OPT-6.7B) |
-| [`20231201_fan/`](20231201_fan/) | Fan et al., *NeurIPS* 36, 42258–42270 (2023-12) | Handwriting CORP (T5) | [`10.5061/dryad.hqbzkh1p6`](https://doi.org/10.5061/dryad.hqbzkh1p6) | 40 GB rig → **4.0 GB VRAM** (seed RNN + 403-day online pseudo-label adaptation) | CORP v6 CER: **6.20%** vs. 6.16% | **6.10%** vs. 6.20% (bi-gram + GPT-2) |
-| [`20240815_card/`](20240815_card/) | Card et al., *N. Engl. J. Med.* 391, 609–618 (2024-08-15) | Speech (T15) | [`10.5061/dryad.dncjsxm85`](https://doi.org/10.5061/dryad.dncjsxm85) | 300 GB 5-gram WFST → **19.6 GB RAM** (`mmap` + `.idx`) & **13.0 GB VRAM** | Greedy PER: **10.19%** vs. 9.54% | **7.02%** vs. 3.40% (10-model ens.) |
-| [`20250612_wairagkar/`](20250612_wairagkar/) | Wairagkar et al., *Nature* 642, 417–424 (2025-06-12) | Voice synthesis (T15) | [`10.5061/dryad.2280gb64f`](https://doi.org/10.5061/dryad.2280gb64f) | 3×24 GB RTX 3090 + A6000 → **1.5 GB VRAM** (causal 40-bin Mel encoder) | Spectral distortion $1-r$: **31.4%** ($r=0.69$) vs. 17.0% ($r=0.83$) | Voice synthesis (acoustic stage only) |
-| [`20250821_kunz/`](20250821_kunz/) | Kunz et al., *Cell* 188, 4658–4673 (2025-08-21) | Inner & attempted speech (T12, T15, T16) | [`10.5061/dryad.gf1vhhn1j`](https://doi.org/10.5061/dryad.gf1vhhn1j) | 48 GB VRAM / 60 GB WFST → **13.0 GB VRAM** & **1.46 GB KenLM** | Greedy PER: **61.4% / 59.7% / 61.5%** | **122.1% / 79.5% / 95.5%** (sparse 1–3 sess. inner-speech subsets) |
-| [`20260316_jude/`](20260316_jude/) | Jude et al., *Nat. Neurosci.* 29, 2613–2622 (2026-03-16) | Touch typing (T17, T18) | [`10.5061/dryad.cz8w9gjjk`](https://doi.org/10.5061/dryad.cz8w9gjjk) | 64+ GB RAM → **22.5 GB RAM** (bypass unpruned FST preload) & **11.5 GB VRAM** | Raw CER: **19.4% ± 5.8% (T17, best 8.2%) / 7.7% ± 2.8% (T18, best 2.6%)** | **11.4% ± 6.9% (T17, best 4.6%) / 6.7% ± 3.7% (T18, best 0.0%)** vs. 12.5% / <7% |
-| [`20260428_jude/`](20260428_jude/) | Jude et al., *Cell Rep.* 45, 117162 (2026-04-28) | Intended speech in LIS (T17) | [`10.5061/dryad.vq83bk481`](https://doi.org/10.5061/dryad.vq83bk481) | 48 GB VRAM / 300 GB WFST → **13.0 GB VRAM** & **19.6 GB RAM** | Greedy PER: **39.97%** vs. 34.0% | **46.47%** vs. ~50% (conversational 125k) |
+| [`studies/20210512_willett/`](studies/20210512_willett) | Willett et al., *Nature* 593, 249–254 (2021-05-12) | Handwriting (T5) | [`10.5061/dryad.wh70rxwmv`](https://doi.org/10.5061/dryad.wh70rxwmv) | 56 GB → **26.9 GB RAM** (`mmap` fold assembly + lazy Kaldi FST) | Raw CER: **4.71%** vs. 2.78% | **2.21%** vs. 3.45% (bi-gram + GPT-2) |
+| [`studies/20230831_willett/`](studies/20230831_willett) | Willett et al., *Nature* 620, 1031–1036 (2023-08-31) | Speech (T12) | [`10.5061/dryad.x69p8czpq`](https://doi.org/10.5061/dryad.x69p8czpq) | 300 GB 5-gram WFST / 80 GB A100 → **1.46 GB KenLM trie** (or 19.6 GB `mmap`) & **13.0 GB VRAM** | Greedy PER: **23.42%** vs. 19.7% | **23.22%** vs. 23.8% (5-gram + OPT-6.7B) |
+| [`studies/20231201_fan/`](studies/20231201_fan) | Fan et al., *NeurIPS* 36, 42258–42270 (2023-12) | Handwriting CORP (T5) | [`10.5061/dryad.hqbzkh1p6`](https://doi.org/10.5061/dryad.hqbzkh1p6) | 40 GB rig → **4.0 GB VRAM** (seed RNN + 403-day online pseudo-label adaptation) | Greedy CER **6.20%** (v6 batch), **12.4%** (v7 held out) | Paper online **6.16%**. Released online subset **4.10%** pooled. Matched full-pipeline reproduction WER unverified. |
+| [`studies/20240815_card/`](studies/20240815_card) | Card et al., *N. Engl. J. Med.* 391, 609–618 (2024-08-15) | Speech (T15) | [`10.5061/dryad.dncjsxm85`](https://doi.org/10.5061/dryad.dncjsxm85) | 300 GB 5-gram WFST → **19.6 GB RAM** (`mmap` + `.idx`) & **13.0 GB VRAM** | Greedy PER: **10.19%** vs. 9.54% | **7.02%** vs. 3.40% (10-model ens.) |
+| [`studies/20250612_wairagkar/`](studies/20250612_wairagkar) | Wairagkar et al., *Nature* 642, 417–424 (2025-06-12) | Voice synthesis (T15) | [`10.5061/dryad.2280gb64f`](https://doi.org/10.5061/dryad.2280gb64f) | 3×24 GB RTX 3090 + A6000 → **1.5 GB VRAM** (causal 40-bin Mel encoder) | Spectral distortion $1-r$: **31.4%** ($r=0.69$) vs. 17.0% ($r=0.83$) | Voice synthesis (acoustic stage only) |
+| [`studies/20250821_kunz/`](studies/20250821_kunz) | Kunz et al., *Cell* 188, 4658–4673 (2025-08-21) | Inner & attempted speech (T12, T15, T16) | [`10.5061/dryad.gf1vhhn1j`](https://doi.org/10.5061/dryad.gf1vhhn1j) | 48 GB VRAM / 60 GB WFST → **13.0 GB VRAM** & **1.46 GB KenLM** | Greedy PER: **61.4% / 59.7% / 61.5%** | **122.1% / 79.5% / 95.5%** (sparse 1–3 sess. inner-speech subsets) |
+| [`studies/20260316_jude/`](studies/20260316_jude) | Jude et al., *Nat. Neurosci.* 29, 2613–2622 (2026-03-16) | Touch typing (T17, T18) | [`10.5061/dryad.cz8w9gjjk`](https://doi.org/10.5061/dryad.cz8w9gjjk) | 64+ GB RAM → **22.5 GB RAM** (bypass unpruned FST preload) & **11.5 GB VRAM** | Raw CER: **19.4% ± 5.8% (T17, best 8.2%) / 7.7% ± 2.8% (T18, best 2.6%)** | **11.4% ± 6.9% (T17, best 4.6%) / 6.7% ± 3.7% (T18, best 0.0%)** vs. 12.5% / <7% |
+| [`studies/20260428_jude/`](studies/20260428_jude) | Jude et al., *Cell Rep.* 45, 117162 (2026-04-28) | Intended speech in LIS (T17) | [`10.5061/dryad.vq83bk481`](https://doi.org/10.5061/dryad.vq83bk481) | 48 GB VRAM / 300 GB WFST → **13.0 GB VRAM** & **19.6 GB RAM** | Greedy PER: **39.97%** vs. 34.0% | **46.47%** vs. ~50% (conversational 125k) |
 
 ---
 
@@ -62,33 +62,31 @@ pip install -r requirements.txt --extra-index-url https://download.pytorch.org/w
 
 ## Repository Structure
 
+See the [common file tree](docs/20261124_repository_migration/README.md#repository-layout) for the release, format, and decoder naming rules. The [eight-study naming map](docs/20261124_repository_migration/naming_map.md) lists the public commands, current input paths, and archived result filenames.
+
+For a full run, follow the download and extraction instructions in the study's `tutorial.ipynb`. Set up the pinned upstream code with `python shared/tools/setup_upstream.py`. By default, scripts read inputs from the study directory under `studies/`. To use a separate disk, set `BCI_DATA_ROOT` to a directory containing the same study IDs and input layout. `BCI_ARCHIVE_ROOT` explicitly selects historical checkout names. Set `BCI_RUN_ID` for a new dated results directory when running the study stages that use default output paths.
+
 ```text
 communication-neuroprostheses-reproduction/
-├── 20210512_willett/                     # Willett et al., 2021 (Nature, handwriting T5)
-├── 20230831_willett/                     # Willett et al., 2023 (Nature, speech T12)
-├── 20231201_fan/                         # Fan et al., 2023 (NeurIPS, 403-day handwriting CORP T5)
-├── 20240815_card/                        # Card et al., 2024 (NEJM, speech & rapid calibration T15)
-├── 20250612_wairagkar/                   # Wairagkar et al., 2025 (Nature, voice synthesis T15)
-├── 20250821_kunz/                        # Kunz et al., 2025 (Cell, inner speech T12/T15/T16)
-├── 20260316_jude/                        # Jude et al., 2026a (Nat. Neurosci., touch typing T17/T18)
-├── 20260428_jude/                        # Jude et al., 2026b (Cell Rep., intended speech in LIS T17)
-├── shared/                               # Shared C++ TLG/WeNet decoders, KenLM/OPT/Qwen rescorers, plots
-├── tutorials/                            # 3 zero-download interactive Jupyter Notebooks for students
-├── docs/CLEANUP_AUDIT.md                 # Per-file audit: what was deleted and why (2026-11-08 cleanup)
-├── AGENTS.md                             # Root + per-directory AI Agent collaboration guides (ZCode / Claude Code)
-├── environment.yml                       # Full Conda environment specification (name: bci-repro)
-├── requirements.txt                      # Full pinned pip package list for bci-repro
-├── reproduction_benchmark.yaml           # Structured dataset for the benchmark overview figure (panels a–f) and the companion figure
-├── reproduction_benchmark.json           # Auto-synced JSON mirror of reproduction_benchmark.yaml
-├── session_per_vs_wer.json               # Session-level (PER, post-LM WER) pairs for the companion figure panel (a)
-├── build_session_per_vs_wer.py           # Recomputes session_per_vs_wer.json from per-trial decode TSVs
-├── communication_neuroprostheses_reproduction.html # Interactive HTML edition (Figure 2 + Figure 6: Limit of CTC-TLG)
-└── render_figure2.py                     # Standalone renderer + overlap verifier for .png, .pdf, and .html
+├── studies/                         # Eight study entrances, named by publication date
+│   └── yyyymmdd_author/
+│       ├── README.md
+│       ├── tutorial.ipynb            # Recompute archived results without downloading data
+│       ├── code/
+│       ├── data/                     # Sources and archived evaluation trial lists
+│       ├── results/yyyymmdd_<run>/
+│       ├── log/yyyymmdd_<run>/
+│       └── docs/yyyymmdd_<topic>/
+├── figures/                         # Cross-study inputs, build code, and dated figure bundles
+├── shared/                          # Shared decoders and scoring tools
+├── tutorials/                       # Cross-study tutorials
+├── docs/                            # Dated governance and migration notes
+└── index.html                       # Interactive benchmark entry point
 ```
 
 Every script carries a numpy-style docstring, and each study's `code/` folder has its
 own `README.md` code guide listing every file's role and the pipeline order — start
-there (e.g. [`20210512_willett/code/README.md`](20210512_willett/code/README.md)).
+there (e.g. [`studies/20210512_willett/code/README.md`](studies/20210512_willett/code/README.md)).
 
 ---
 
@@ -96,7 +94,7 @@ there (e.g. [`20210512_willett/code/README.md`](20210512_willett/code/README.md)
 
 New to intracortical BCIs or exploring with an AI coding agent (**ZCode / Claude Code / Cursor**)?
 
-- **For Students ([`tutorials/`](tutorials/))** — 3 pre-rendered, **zero-download** Jupyter Notebooks in **English** (with Chinese companion versions in [`tutorials/zh/`](tutorials/zh/)) that run out-of-the-box in `bci-repro`:
+- **For Students ([`tutorials/`](tutorials))** — 3 pre-rendered, **zero-download** Jupyter Notebooks in **English** (with Chinese companion versions in [`tutorials/zh/`](tutorials/zh)) that run out-of-the-box in `bci-repro`:
   1. [`01_zero_download_results_playground.ipynb`](tutorials/01_zero_download_results_playground.ipynb) ([中文版](tutorials/zh/01_zero_download_results_playground_zh.ipynb)): Inspect archived per-trial decode outputs across all 8 studies, compare **3-gram KenLM → 125k 5-gram WFST → OPT-6.7B → Qwen3-8B** sentence corrections side-by-side, re-plot the **26% PER language-model phase transition**, and visualize 403-day CORP online recalibration.
   2. [`02_memory_wall_autopsy_16gb_gpu.ipynb`](tutorials/02_memory_wall_autopsy_16gb_gpu.ipynb) ([中文版](tutorials/zh/02_memory_wall_autopsy_16gb_gpu_zh.ipynb)): Hands-on benchmarks showing how `numpy.memmap` + `.idx` state tables and BF16 single-layer cuDNN GRU stacks compress **300 GB RAM & 80 GB VRAM** requirements into **19.6 GB RAM & 13.0 GB VRAM** on a single RTX 5060 Ti (8.1× faster step time, 36% lower VRAM).
   3. [`03_single_session_end_to_end_demo.ipynb`](tutorials/03_single_session_end_to_end_demo.ipynb) ([中文版](tutorials/zh/03_single_session_end_to_end_demo_zh.ipynb)): Train a **41-class ARPAbet phoneme** speech BCI decoder (`39 phonemes + SIL + CTC <blank>`) from scratch on GPU, prove **zero-overlap compositional generalization on strictly unseen test sentences** (`PER: 95.6% → 0.0%`), visualize frame-level phoneme posteriors, and run Viterbi pronunciation-lexicon word decoding (`PER → 0.0% WER`).
@@ -104,15 +102,37 @@ New to intracortical BCIs or exploring with an AI coding agent (**ZCode / Claude
 
 ---
 
+## Figure 3 evaluation splits
+
+Each open marker pools matched evaluation trials within a recording session. Greedy PER or CER divides the summed phoneme or character edit counts by the corresponding reference counts. WER uses the word edits from decoding the same trials with an LM. The evaluation recordings include sessions that also contributed separate training or calibration trials. Several splits served as validation for checkpoint selection, so the plots describe performance on those evaluation splits.
+
+| Panel | Study | Figure 3 evaluation trials per session | Fig. 2(c) online days | Fig. 3 days | Fig. 3 trials |
+|---|---|---|---:|---:|---:|
+| 3(a) | Willett 2023 (T12) | Released labeled test partition, used as validation | 5 | 24 | 880 |
+| 3(a) | Card 2024 (T15) | Released validation partition from the P4 GRU run | 14 | 41 | 1,426 |
+| 3(a) | Jude 2026b (T17) | Last eligible sentence block, used as validation | 4 | 12 | 417 |
+| 3(b) | Willett 2021 (T5) | Released `HeldOutTrials` indices, with bigram 1-best WER | 5 | 10 | 63 |
+| 3(b) | Fan 2023 (T5) | Final six trials withheld from adaptation, decoded with a character 5-gram | 10 | 10 | 60 |
+| 3(b) | Jude 2026a (T17) | Released test trials, used as validation | 6 | 8 | 134 |
+| 3(b) | Jude 2026a (T18) | Released test trials, used as validation, with the one-trial session excluded | 7 | 7 | 140 |
+
+For each study arm listed, its Figure 2(c) dates are included in Figure 3. Figure 2(c) scores selected blocks from the authors' real-time outputs. Figure 3 scores the offline reproduction on the evaluation split. Even when the dates match, the scored trials can differ. For example, Willett 2023 has 400 online trials in Figure 2(c), of which 200 have a matched offline output in Figure 3(a). The [paired trial and day tables](figures/docs/20261124_evaluation_protocol/figure2cd.md#paired-online-and-offline-wer) identify the overlap.
+
+Figure 2 uses study-level comparisons with its own aggregation and run choices. Card's pooled P4 GRU PER appears in Figures 2(e) and 3(a), and its BiGRU WER appears in Figure 2(f). For Fan, Figure 2(e) reports the mean and standard deviation across held-out replay days alongside the paper's online raw CER. Figure 2(f) shows the online WER from panel (c) with an empty reproduction slot. The held-out character-LM replay in Figure 3(b) uses a different decoder from the paper's full pipeline.
+
 ## Quick Verification
 
-All per-trial decode outputs (`*.tsv`, `*.csv`, `*.json`) produced by our single-GPU runs are archived inside each study's `results/` directory. Anyone can recompute the session-level phase diagram (`session_per_vs_wer.json`), verify WERs, and regenerate the benchmark overview figure in seconds:
+See the [figure guide](figures/README.md) for the current release and traceable inputs.
+
+The builders read archived evaluation outputs from the study `results/` directories and regenerate both session tables.
 
 ```bash
 conda activate bci-repro
-python build_session_per_vs_wer.py
-python shared/tools/wer_from_tsv.py 20230831_willett/results/decode_outputs/wl_5g_opt_official.tsv
-python render_figure2.py
+python figures/code/build_session_per_vs_wer.py
+python figures/code/build_session_cer_vs_wer.py
+python shared/tools/wer_from_tsv.py --no-sidecar studies/20230831_willett/results/20261124_import_btot24/wl_5g_opt_official.tsv
+python figures/code/render_figure2.py
+python figures/code/render_figure3.py
 ```
 
 ---

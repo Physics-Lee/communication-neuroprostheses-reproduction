@@ -8,11 +8,14 @@ Usage: compare_rescorers.py
 """
 import csv
 import re
+import sys
+from pathlib import Path
 from collections import defaultdict
 
 import editdistance
 
-ROOT = r".\shared\data"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from study_paths import runtime_path
 
 
 def norm(s):
@@ -95,26 +98,26 @@ def wer_from_tsv(path, meta_csv=None, meta_session=False):
 
 RUNS = [
     # (label, tsv, meta_csv or None)
-    ("Willett 5g",      f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\wl_final_full.tsv",            f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\test_partition_greedy_per_trial.csv"),
-    ("Willett +OPT",    f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\wl_5g_opt_official.tsv",      f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\test_partition_greedy_per_trial.csv"),
-    ("Willett +Qwen",   f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\wl_5g_qwen.tsv",              f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\test_partition_greedy_per_trial.csv"),
-    ("Willett +Qwen(parallel)", f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\wl_5g_opt_qwen.tsv",  f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\test_partition_greedy_per_trial.csv"),
-    ("Willett +Qwen-base", f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\wl_5g_opt_qwenbase.tsv",   f"{ROOT}\\20230616_willett_BtoT24\\run_60k\\test_partition_greedy_per_trial.csv"),
-    ("Card 5g",         f"{ROOT}\\20241009_card_BtoT25\\run_120k\\final_full.tsv",                 f"{ROOT}\\20241009_card_BtoT25\\run_120k\\val_greedy_per_trial.csv"),
-    ("Card +OPT",       f"{ROOT}\\20241009_card_BtoT25\\run_120k\\word_decode_5g_opt_official.tsv", f"{ROOT}\\20241009_card_BtoT25\\run_120k\\val_greedy_per_trial.csv"),
-    ("Card +Qwen",      f"{ROOT}\\20241009_card_BtoT25\\run_120k\\word_decode_5g_qwen.tsv",        f"{ROOT}\\20241009_card_BtoT25\\run_120k\\val_greedy_per_trial.csv"),
-    ("Card +Qwen-base", f"{ROOT}\\20241009_card_BtoT25\\run_120k\\word_decode_5g_opt_qwenbase.tsv", f"{ROOT}\\20241009_card_BtoT25\\run_120k\\val_greedy_per_trial.csv"),
-    ("Jude 5g",         f"{ROOT}\\20260428_jude\\run_25k\\off_final_full.tsv",                     None),
-    ("Jude +OPT",       f"{ROOT}\\20260428_jude\\run_25k\\off_5g_opt_official.tsv",               None),
-    ("Jude +Qwen",      f"{ROOT}\\20260428_jude\\run_25k\\off_5g_qwen.tsv",                       None),
-    ("Jude +Qwen(parallel)", f"{ROOT}\\20260428_jude\\run_25k\\off_5g_opt_qwen.tsv",              None),
-    ("Jude +Qwen-base", f"{ROOT}\\20260428_jude\\run_25k\\off_5g_opt_qwenbase.tsv",              None),
-    ("Kunz T12 +OPT",   f"{ROOT}\\20250821_kunz\\run_t12_mixed\\off_bp1_opt.tsv",                  None),
-    ("Kunz T12 +Qwen",  f"{ROOT}\\20250821_kunz\\run_t12_mixed\\qwen_bp1_opt.tsv",                None),
-    ("Kunz T15 +OPT",   f"{ROOT}\\20250821_kunz\\run_t15_mixed\\off_bp1_opt.tsv",                  None),
-    ("Kunz T15 +Qwen",  f"{ROOT}\\20250821_kunz\\run_t15_mixed\\qwen_bp1_opt.tsv",                None),
-    ("Kunz T16 +OPT",   f"{ROOT}\\20250821_kunz\\run_t16_mixed\\off_bp1_opt.tsv",                  None),
-    ("Kunz T16 +Qwen",  f"{ROOT}\\20250821_kunz\\run_t16_mixed\\qwen_bp1_opt.tsv",                None),
+    ("Willett 5g",      runtime_path("20230831_willett", "run_60k", "wl_final_full.tsv"),            runtime_path("20230831_willett", "run_60k", "test_partition_greedy_per_trial.csv")),
+    ("Willett +OPT",    runtime_path("20230831_willett", "run_60k", "wl_5g_opt_official.tsv"),      runtime_path("20230831_willett", "run_60k", "test_partition_greedy_per_trial.csv")),
+    ("Willett +Qwen",   runtime_path("20230831_willett", "run_60k", "wl_5g_qwen.tsv"),              runtime_path("20230831_willett", "run_60k", "test_partition_greedy_per_trial.csv")),
+    ("Willett +Qwen(parallel)", runtime_path("20230831_willett", "run_60k", "wl_5g_opt_qwen.tsv"),  runtime_path("20230831_willett", "run_60k", "test_partition_greedy_per_trial.csv")),
+    ("Willett +Qwen-base", runtime_path("20230831_willett", "run_60k", "wl_5g_opt_qwenbase.tsv"),   runtime_path("20230831_willett", "run_60k", "test_partition_greedy_per_trial.csv")),
+    ("Card 5g",         runtime_path("20240815_card", "run_120k", "final_full.tsv"),                 runtime_path("20240815_card", "run_120k", "val_greedy_per_trial.csv")),
+    ("Card +OPT",       runtime_path("20240815_card", "run_120k", "word_decode_5g_opt_official.tsv"), runtime_path("20240815_card", "run_120k", "val_greedy_per_trial.csv")),
+    ("Card +Qwen",      runtime_path("20240815_card", "run_120k", "word_decode_5g_qwen.tsv"),        runtime_path("20240815_card", "run_120k", "val_greedy_per_trial.csv")),
+    ("Card +Qwen-base", runtime_path("20240815_card", "run_120k", "word_decode_5g_opt_qwenbase.tsv"), runtime_path("20240815_card", "run_120k", "val_greedy_per_trial.csv")),
+    ("Jude 5g",         runtime_path("20260428_jude", "run_25k", "off_final_full.tsv"),                     None),
+    ("Jude +OPT",       runtime_path("20260428_jude", "run_25k", "off_5g_opt_official.tsv"),               None),
+    ("Jude +Qwen",      runtime_path("20260428_jude", "run_25k", "off_5g_qwen.tsv"),                       None),
+    ("Jude +Qwen(parallel)", runtime_path("20260428_jude", "run_25k", "off_5g_opt_qwen.tsv"),              None),
+    ("Jude +Qwen-base", runtime_path("20260428_jude", "run_25k", "off_5g_opt_qwenbase.tsv"),              None),
+    ("Kunz T12 +OPT",   runtime_path("20250821_kunz", "run_t12_mixed", "off_bp1_opt.tsv"),                  None),
+    ("Kunz T12 +Qwen",  runtime_path("20250821_kunz", "run_t12_mixed", "qwen_bp1_opt.tsv"),                None),
+    ("Kunz T15 +OPT",   runtime_path("20250821_kunz", "run_t15_mixed", "off_bp1_opt.tsv"),                  None),
+    ("Kunz T15 +Qwen",  runtime_path("20250821_kunz", "run_t15_mixed", "qwen_bp1_opt.tsv"),                None),
+    ("Kunz T16 +OPT",   runtime_path("20250821_kunz", "run_t16_mixed", "off_bp1_opt.tsv"),                  None),
+    ("Kunz T16 +Qwen",  runtime_path("20250821_kunz", "run_t16_mixed", "qwen_bp1_opt.tsv"),                None),
 ]
 
 if __name__ == "__main__":

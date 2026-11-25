@@ -1,0 +1,148 @@
+{
+ "sessions": [
+  {
+   "session": "t5.2022.09.29",
+   "n_trials": 40,
+   "label_join_hits": 40,
+   "pre_cer_pct": 17.3,
+   "post_cer_pct": 14.3,
+   "block_last2_cer": [
+    11.1,
+    15.1,
+    10.3,
+    10.9
+   ]
+  },
+  {
+   "session": "t5.2022.10.06",
+   "n_trials": 40,
+   "label_join_hits": 40,
+   "pre_cer_pct": 50.3,
+   "post_cer_pct": 37.3,
+   "block_last2_cer": [
+    51.9,
+    45.7,
+    37.0,
+    30.5
+   ]
+  },
+  {
+   "session": "t5.2022.10.18",
+   "n_trials": 40,
+   "label_join_hits": 40,
+   "pre_cer_pct": 59.8,
+   "post_cer_pct": 110.7,
+   "block_last2_cer": [
+    52.1,
+    71.8,
+    75.0,
+    85.5
+   ]
+  },
+  {
+   "session": "t5.2022.10.25",
+   "n_trials": 37,
+   "label_join_hits": 37,
+   "pre_cer_pct": 61.5,
+   "post_cer_pct": 58.9,
+   "block_last2_cer": [
+    57.3,
+    48.1,
+    40.7,
+    45.5
+   ]
+  },
+  {
+   "session": "t5.2022.10.27",
+   "n_trials": 40,
+   "label_join_hits": 40,
+   "pre_cer_pct": 81.6,
+   "post_cer_pct": 66.9,
+   "block_last2_cer": [
+    80.0,
+    61.8,
+    61.2,
+    51.9
+   ]
+  },
+  {
+   "session": "t5.2022.11.01",
+   "n_trials": 40,
+   "label_join_hits": 40,
+   "pre_cer_pct": 98.8,
+   "post_cer_pct": 85.0,
+   "block_last2_cer": [
+    87.5,
+    69.0,
+    90.6,
+    64.4
+   ]
+  },
+  {
+   "session": "t5.2022.11.03",
+   "n_trials": 40,
+   "label_join_hits": 40,
+   "pre_cer_pct": 129.3,
+   "post_cer_pct": 53.0,
+   "block_last2_cer": [
+    86.0,
+    71.2,
+    60.0,
+    46.9
+   ]
+  },
+  {
+   "session": "t5.2022.12.08",
+   "n_trials": 40,
+   "label_join_hits": 40,
+   "pre_cer_pct": 66.8,
+   "post_cer_pct": 97.7,
+   "block_last2_cer": [
+    71.0,
+    84.7,
+    109.3,
+    94.7
+   ]
+  },
+  {
+   "session": "t5.2022.12.15",
+   "n_trials": 20,
+   "label_join_hits": 20,
+   "pre_cer_pct": 166.3,
+   "post_cer_pct": 387.7,
+   "block_last2_cer": [
+    218.5,
+    207.7
+   ]
+  },
+  {
+   "session": "t5.2023.02.28",
+   "n_trials": 40,
+   "label_join_hits": 40,
+   "pre_cer_pct": 181.7,
+   "post_cer_pct": 956.5,
+   "block_last2_cer": [
+    139.1,
+    140.0,
+    400.0,
+    473.3
+   ]
+  }
+ ],
+ "protocol": {
+  "pseudo": "OFFICIAL lm_decoded labels from the Dryad mats (the exact training signal the paper's CORP consumed online)",
+  "join": "sentence text (verified set-equal per session)",
+  "trainable": "current session input layer only",
+  "block": 10,
+  "steps": 12,
+  "lr": 2e-05,
+  "seed_replay": 8,
+  "rollback": true
+ },
+ "summary": {
+  "mean_pre_cer": 91.3,
+  "mean_post_cer": 186.8,
+  "static_reference_cer": 50.85,
+  "greedy_label_v3_reference": "diverged at session 3"
+ }
+}

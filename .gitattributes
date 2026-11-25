@@ -1,0 +1,3 @@
+# Preserve the exact bytes validated in the migration manifest on every platform.
+studies/*/results/** -text
+studies/*/log/** -text

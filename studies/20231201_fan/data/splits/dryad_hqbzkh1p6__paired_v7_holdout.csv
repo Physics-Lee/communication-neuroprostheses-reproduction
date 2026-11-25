@@ -1,0 +1,577 @@
+session,trial_id,role,order,source_partition,source_index,block,reference
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0000,frozen,0,train,0,2,what does the camping couple do to this set of figures?
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0001,frozen,1,train,1,2,it's out in the northeast section.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0002,frozen,2,train,2,2,alfredo certainly must have enjoyed being alone.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0003,frozen,3,train,3,2,revulsion in the desert
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0004,frozen,4,train,4,2,the line is a pretty good one.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0005,frozen,5,train,5,2,"cases, say, for musical instruments?"
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0006,frozen,6,train,6,2,the remains of the portico of octavia are now in front of you.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0007,frozen,7,train,7,2,i'll do anything for somebody i like.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0008,frozen,8,train,8,2,"it's people of your own kind, a girl remarked."
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0009,frozen,9,train,9,2,"well, get your pa and get that whisky."
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0010,frozen,10,train,10,2,his hand was large and square and heavily tanned.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0011,frozen,11,train,11,2,and a blaring final chord from the jazz group.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0012,frozen,12,train,12,2,he echoed again in soft wonder.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0013,frozen,13,train,13,2,he's got a long beard and picks his teeth with a fork.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0014,frozen,14,train,14,2,it isn't as expensive as most people believe it to be.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0015,frozen,15,train,15,2,"let this boil gently for twenty minutes, then strain."
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0016,frozen,16,train,16,2,and fashion is the real king here.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0017,frozen,17,train,17,2,everything about the clerk was trivial.
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0018,frozen,18,train,18,2,"daniel w. vaughan, and william h. h. clements."
+t5.2022.09.29,t5.2022.09.29/no_recalibration/train/0019,frozen,19,train,19,2,remember to tell that to the next corpse you meet.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0000,adaptation,0,train,0,3,what targets still remain to be hit?
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0001,adaptation,1,train,1,3,"although bob dressed like a slob, he kept a neat office."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0002,adaptation,2,train,2,3,the existing army posts were wholly inadequate.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0003,adaptation,3,train,3,3,preparation for membership
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0004,adaptation,4,train,4,3,"i said i wished we were, too."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0005,adaptation,5,train,5,3,what's he going to do?
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0006,adaptation,6,train,6,3,"he admitted his behavior, and defended it."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0007,adaptation,7,train,7,3,"in a surprisingly short time, dolores appeared."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0008,adaptation,8,train,8,3,it is a dedication which began the moment she met carl.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0009,adaptation,9,train,9,3,"while i worked, nadine sat and cried."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0010,adaptation,10,train,10,3,i'm not trying to worry you.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0011,adaptation,11,train,11,3,' church meets change '
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0012,adaptation,12,train,12,3,sam would be amazed to find him gone.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0013,adaptation,13,train,13,3,the history of the proceeding
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0014,adaptation,14,train,14,3,"a warm breeze played across it, moving it like waves."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0015,adaptation,15,train,15,3,they passed close by the turn to bishopsgate.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0016,adaptation,16,train,16,3,"oh hell no, i'm not in a hospital."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0017,adaptation,17,train,17,3,who says it's going to be published?
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0018,adaptation,18,train,18,3,it's not a joke to be sent to a place like this or to hanover.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0019,adaptation,19,train,19,3,"the toothbrush monsieur, he said, presenting it."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0020,adaptation,20,train,20,4,i been riding train for a ways now.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0021,adaptation,21,train,21,4,they'll get the guys that done it.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0022,adaptation,22,train,22,4,then the nigger boy turned back and he was alone.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0023,adaptation,23,train,23,4,jim had put the thanks in his sister's mouth.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0024,adaptation,24,train,24,4,it was nothing to him if rain fell and nobody came.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0025,adaptation,25,train,25,4,he half woke and rolled over with his face in the cooler grass.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0026,adaptation,26,train,26,4,"if birds don't belong in a square or park, what does?"
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0027,adaptation,27,train,27,4,"two of our men were killed, a third was wounded."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0028,adaptation,28,train,28,4,"shade trees, too, are a big help, so keep them if you can."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0029,adaptation,29,train,29,4,the meeting broke up.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0030,adaptation,30,train,30,4,"you are all right, my brother?"
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0031,adaptation,31,train,31,4,where was the driver now?
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0032,adaptation,32,train,32,4,the dance was of haitian origin.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0033,adaptation,33,train,33,4,"no you won't, big hans said."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0034,holdout,34,train,34,4,but this year prospects may be better.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0035,holdout,35,train,35,4,"hub, you stick by the stage door."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0036,holdout,36,train,36,4,"attica, though important, was not the only teacher of this age."
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0037,holdout,37,train,37,4,i'll see you wednesday.
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0038,holdout,38,train,38,4,"when suitably lighted, what would it look like?"
+t5.2022.09.29,t5.2022.09.29/recalibration/train/0039,holdout,39,train,39,4,"by the time we arrived, the party was already going strong."
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0000,frozen,0,train,0,4,he had brought it along to continue during the voyage.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0001,frozen,1,train,1,4,rev had known all along.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0002,frozen,2,train,2,4,"she didn't tell anyone, even her mother, what was wrong."
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0003,frozen,3,train,3,4,"not this, he said, and gestured toward the madeleine."
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0004,frozen,4,train,4,4,i was afraid of this.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0005,frozen,5,train,5,4,the heavens refused to give up their weeping.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0006,frozen,6,train,6,4,ernie crouched and opened the carpet bag.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0007,frozen,7,train,7,4,"for, in either event, the first possibility is excluded."
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0008,frozen,8,train,8,4,"chiang spoke again, this time at greater length."
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0009,frozen,9,train,9,4,"waiting for what and for whom, only he could tell and would not."
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0010,frozen,10,train,10,4,no doubt such a thing would be considered unpatriotic.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0011,frozen,11,train,11,4,he looked at his watch.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0012,frozen,12,train,12,4,"procurement, research, and construction."
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0013,frozen,13,train,13,4,union policies and collective bargaining issues
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0014,frozen,14,train,14,4,i'll call your mother as soon as i get home.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0015,frozen,15,train,15,4,you're the one that's taking the big chance.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0016,frozen,16,train,16,4,today it is occupied by the french embassy.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0017,frozen,17,train,17,4,then there was the general kissing his wife.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0018,frozen,18,train,18,4,the chief's eyes gleamed.
+t5.2022.10.06,t5.2022.10.06/no_recalibration/train/0019,frozen,19,train,19,4,"among the boys, there is very little bravado about drinking."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0000,adaptation,0,train,0,5,now it would have another death.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0001,adaptation,1,train,1,5,his watch told him he was still early.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0002,adaptation,2,train,2,5,he had long black hair and a wispy beard.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0003,adaptation,3,train,3,5,the arrangement turned out to be excellent.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0004,adaptation,4,train,4,5,but they could turn and escape to the east.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0005,adaptation,5,train,5,5,children need help in learning to control their emotions.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0006,adaptation,6,train,6,5,we've had any number of calls about you.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0007,adaptation,7,train,7,5,how do you know you love somebody enough to get married?
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0008,adaptation,8,train,8,5,she sidled along the booths one step at a time.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0009,adaptation,9,train,9,5,"after all, i didn't know you, pete."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0010,adaptation,10,train,10,5,"trains whistling in the night, the rattle and clatter of cabs."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0011,adaptation,11,train,11,5,"brown eyes, eyebrow mustache."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0012,adaptation,12,train,12,5,"i don't know, she said."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0013,adaptation,13,train,13,5,the second bottle passed a few times.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0014,adaptation,14,train,14,5,either way it sounds like a sizable hunk of money and is.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0015,adaptation,15,train,15,5,"i can remove the ball, can't i?"
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0016,adaptation,16,train,16,5,"tougher than plastic, it wears well."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0017,adaptation,17,train,17,5,he went straight to the presidential box.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0018,adaptation,18,train,18,5,how could he comprehend her need when he himself was innocent?
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0019,adaptation,19,train,19,5,"winslow had musical talents, as had his father before him."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0020,adaptation,20,train,20,6,"after a day at nikko, mrs. kodama put me on the train for kyoto."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0021,adaptation,21,train,21,6,poverty imposes a kind of chastity on the ambitious.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0022,adaptation,22,train,22,6,they appeared to be the enemy.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0023,adaptation,23,train,23,6,"he wanted nothing compressed, tight."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0024,adaptation,24,train,24,6,"got a new one in last night, he said."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0025,adaptation,25,train,25,6,muller was attracted to the lore of mailboxes.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0026,adaptation,26,train,26,6,do not overfill the chamber.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0027,adaptation,27,train,27,6,the result was grace and modesty.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0028,adaptation,28,train,28,6,haney swished the liquor in the bottom of his glass.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0029,adaptation,29,train,29,6,it is not a mess you can make sense of.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0030,adaptation,30,train,30,6,he sized up the situation and shook his head.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0031,adaptation,31,train,31,6,experiment without a fixed number of trials.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0032,adaptation,32,train,32,6,six red lines etched their way into the gray and vanished.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0033,adaptation,33,train,33,6,he declined to name the three.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0034,holdout,34,train,34,6,there wasn't any such thing any more.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0035,holdout,35,train,35,6,"such delicate beauty, such fine flesh."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0036,holdout,36,train,36,6,"she tried to find some way to draw him out, to help him."
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0037,holdout,37,train,37,6,powers was covering the remaining guard.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0038,holdout,38,train,38,6,she is a beautiful filly and likes to trot.
+t5.2022.10.06,t5.2022.10.06/recalibration/train/0039,holdout,39,train,39,6,then there had been another head beside his own.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0000,frozen,0,train,0,6,the new birth is necessary because god is holy.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0001,frozen,1,train,1,6,youngsters do business
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0002,frozen,2,train,2,6,"she's been talking about a picture, winston had told him."
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0003,frozen,3,train,3,6,i am not suggesting that fromm ought to do this kind of work.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0004,frozen,4,train,4,6,camp meals are no great problem.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0005,frozen,5,train,5,6,"warsaw is my city, not tel aviv."
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0006,frozen,6,train,6,6,and now i think we can use the knowledge they passed on to us.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0007,frozen,7,train,7,6,"could he have pen and paper, please?"
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0008,frozen,8,train,8,6,it would be such a relief.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0009,frozen,9,train,9,6,"mike deegan was sitting on the bench, watching."
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0010,frozen,10,train,10,6,that was all he had to say.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0011,frozen,11,train,11,6,nothing there but jews.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0012,frozen,12,train,12,6,he knows that the economy of life in the outback is awful.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0013,frozen,13,train,13,6,he tried again and once more sliced out of bounds.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0014,frozen,14,train,14,6,"we'll grab horses, dean said."
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0015,frozen,15,train,15,6,and determined not to show it.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0016,frozen,16,train,16,6,he asked if there was anything he could do.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0017,frozen,17,train,17,6,"he clutched the staff, and his dark eyes blinked apologetically."
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0018,frozen,18,train,18,6,to honor him is to honor ourselves.
+t5.2022.10.18,t5.2022.10.18/no_recalibration/train/0019,frozen,19,train,19,6,how can you walk maris to get to mantle?
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0000,adaptation,0,train,0,7,that'll get you started.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0001,adaptation,1,train,1,7,he realized that he had no idea where the telephone was.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0002,adaptation,2,train,2,7,and he makes many interesting comments.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0003,adaptation,3,train,3,7,and the tone she commands is always beautiful in sound.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0004,adaptation,4,train,4,7,"but each mile westward, she had hated him the deeper."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0005,adaptation,5,train,5,7,but this goddamn climate.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0006,adaptation,6,train,6,7,joking stopped and everyone gathered around.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0007,adaptation,7,train,7,7,"at least a dozen men, some armed, are never far away from him."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0008,adaptation,8,train,8,7,"the soldier's voice was muffled again, stricken with chagrin."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0009,adaptation,9,train,9,7,"yeah, seems you have a nice package, with all the strings tied."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0010,adaptation,10,train,10,7,you shall see her at dinner.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0011,adaptation,11,train,11,7,they had brandy in the library.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0012,adaptation,12,train,12,7,at the start of her program there were evidences of pique.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0013,adaptation,13,train,13,7,his interpretation was a model of refinement and accuracy.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0014,adaptation,14,train,14,7,how much of an accident could that be?
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0015,adaptation,15,train,15,7,the gun followed her.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0016,adaptation,16,train,16,7,he turned to susan and kissed her on the cheek.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0017,adaptation,17,train,17,7,"i went through and down, into pitch darkness."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0018,adaptation,18,train,18,7,he recognized his jacket and trousers.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0019,adaptation,19,train,19,7,he had always done well.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0020,adaptation,20,train,20,8,i guess i'll find out soon enough.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0021,adaptation,21,train,21,8,the armchair traveler preserves his illusions.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0022,adaptation,22,train,22,8,"we're all god's creatures, aren't we?"
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0023,adaptation,23,train,23,8,that's when he went to professor claude.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0024,adaptation,24,train,24,8,he wiped the blood from his cheek.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0025,adaptation,25,train,25,8,i couldn't face thelma after that night.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0026,adaptation,26,train,26,8,the marriage will be quietly celebrated in early february.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0027,adaptation,27,train,27,8,"no lack of opportunity, presuming she had a gun."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0028,adaptation,28,train,28,8,"it can, in fact, wreck a marriage."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0029,adaptation,29,train,29,8,they would reach him at almost exactly the same instant.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0030,adaptation,30,train,30,8,"hear me out, please, william begged."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0031,adaptation,31,train,31,8,i wish so much someone loved me.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0032,adaptation,32,train,32,8,but are all these works worthy of consideration?
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0033,adaptation,33,train,33,8,it's parked in front.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0034,holdout,34,train,34,8,the secretary was uneasy about the visit.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0035,holdout,35,train,35,8,i followed them in the jeep and now they did not care.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0036,holdout,36,train,36,8,"he had a short, heavy, powerful body."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0037,holdout,37,train,37,8,"they were silent for a little while, each looking glum."
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0038,holdout,38,train,38,8,he was all shoveled up like i thought he'd be.
+t5.2022.10.18,t5.2022.10.18/recalibration/train/0039,holdout,39,train,39,8,don't you and barney ever use your brains?
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0000,frozen,0,train,0,3,we'll take them in the general order of their popularity.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0001,frozen,1,train,1,3,i came up maybe fifty feet before i knew what was happening.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0002,frozen,2,train,2,3,"and it is expressed, at least to their taste, in a perfect form."
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0003,frozen,3,train,3,3,i feel obliged to describe this cubbyhole.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0004,frozen,4,train,4,3,"well, i get it, artie said, still on the ladder."
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0005,frozen,5,train,5,3,meanwhile it looked at the scenery.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0006,frozen,6,train,6,3,"she smiled at me, but it was an awfully sad smile."
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0007,frozen,7,train,7,3,the police were no longer there.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0008,frozen,8,train,8,3,"her mother and father, for instance."
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0009,frozen,9,train,9,3,pamela felt calm and peaceful as she walked along.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0010,frozen,10,train,10,3,"they, on occasion, posed as addicts and peddlers."
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0011,frozen,11,train,11,3,barnett is not expected to be able to withstand the pressure.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0012,frozen,12,train,12,3,he looked out of the tent at the company street.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0013,frozen,13,train,13,3,' i thought it was a human being '.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0014,frozen,14,train,14,3,he would never reach california.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0015,frozen,15,train,15,3,"i've been bursting my lungs for you, mr. jack complained."
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0016,frozen,16,train,16,3,"you are very tactful, do you know, stephen, she remarked."
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0017,frozen,17,train,17,3,clearly what the person brings to the reading is important.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0018,frozen,18,train,18,3,what happened is that negroes want to be treated like men.
+t5.2022.10.25,t5.2022.10.25/no_recalibration/train/0019,frozen,19,train,19,3,predispositions regarding intelligence.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0000,adaptation,0,train,0,4,it is really the funeral day of scholastic science.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0001,adaptation,1,train,1,4,in fact our whole defensive unit did a good job.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0002,adaptation,2,train,2,4,"that is, there is, in the true sense, only a visual space."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0003,adaptation,3,train,3,4,it might have been several months.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0004,adaptation,4,train,4,4,it was merely an attempt to frighten her.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0005,adaptation,5,train,5,4,"he said, turning on what was meant to be charm."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0006,adaptation,6,train,6,4,"but don't try to stop me, either."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0007,adaptation,7,train,7,4,they were personalities.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0008,adaptation,8,train,8,4,so there we were talking around and about it.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0009,adaptation,9,train,9,4,"if a customer wishes a special cut, it will not be available."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0010,adaptation,10,train,10,4,tolley had gone to live in california.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0011,adaptation,11,train,11,4,"he straightened up, alert now as the buffalo hunter came closer."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0012,adaptation,12,train,12,4,surely it would grow there whether i washed myself or not.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0013,adaptation,13,train,13,4,most park planners look to water frontage for basic park areas.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0014,adaptation,14,train,14,4,"lots of sun, lots of rest."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0015,adaptation,15,train,15,4,"what else would i mean, anyways?"
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0016,adaptation,16,train,16,4,then he went back for roberts.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0017,adaptation,17,train,17,4,"no, bari was out of range."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0018,adaptation,18,train,18,4,"pete was down on seven, dick told me, and he'd meet us there."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0019,adaptation,19,train,19,4,"from a man in st. louis, wilson said."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0020,adaptation,20,train,20,6,"having all the guns makes you a big man, don't it, adams?"
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0021,adaptation,21,train,21,6,to his faint surprise russ held up his hand.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0022,adaptation,22,train,22,6,"he was about to get up so i got out, slamming the door."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0023,adaptation,23,train,23,6,if you will promise to make it weak.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0024,adaptation,24,train,24,6,nobody could hear what was going on in this underground vault.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0025,adaptation,25,train,25,6,it is a great spectacle.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0026,adaptation,26,train,26,6,he found the pedersen kid by the crib.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0027,adaptation,27,train,27,6,john then allowed him to come.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0028,adaptation,28,train,28,6,"maybe they'll stop it now, once for all."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0029,adaptation,29,train,29,6,andy bartha and his trio have booked into oceania lounge.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0030,adaptation,30,train,30,6,"you look like you just heard a real gasser, mr. partlow."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0031,holdout,31,train,31,6,spontaneity training theory is unique and relatively new.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0032,holdout,32,train,32,6,the day's rain had been added to the stagnant water.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0033,holdout,33,train,33,6,"once you get the feel of it, there's not much to it."
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0034,holdout,34,train,34,6,they neither liked nor disliked the old man.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0035,holdout,35,train,35,6,he said a fat hell on big hans.
+t5.2022.10.25,t5.2022.10.25/recalibration/train/0036,holdout,36,train,36,6,they actually bristled.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0000,frozen,0,train,0,15,the log was spinning.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0001,frozen,1,train,1,15,"she was silent for a while, then said, why are you so unhappy?"
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0002,frozen,2,train,2,15,there was a great sense of camaraderie.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0003,frozen,3,train,3,15,christ is both unique and universal.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0004,frozen,4,train,4,15,the mortar was three parts sand to two of lime.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0005,frozen,5,train,5,15,so what's this all about?
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0006,frozen,6,train,6,15,place clay pieces on wall board.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0007,frozen,7,train,7,15,in his concept there could be no one else present.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0008,frozen,8,train,8,15,here an important caveat is in order.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0009,frozen,9,train,9,15,she had made no friends.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0010,frozen,10,train,10,15,if the answer to what was that noise?
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0011,frozen,11,train,11,15,they were coming on at reckless speed for such old vehicles.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0012,frozen,12,train,12,15,you're staying right here for a while.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0013,frozen,13,train,13,15,the only way that i can see is through communication.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0014,frozen,14,train,14,15,the pets were a couple of siamese cats.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0015,frozen,15,train,15,15,pitchers of water merely appear on the tables.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0016,frozen,16,train,16,15,this way of describing the matter is unfortunate.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0017,frozen,17,train,17,15,"ain't no sense you eating our dust, rod protested."
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0018,frozen,18,train,18,15,stoneware clay for tiles.
+t5.2022.10.27,t5.2022.10.27/no_recalibration/train/0019,frozen,19,train,19,15,he had become king at fifteen.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0000,adaptation,0,train,0,16,carl was still charles a. sandburg.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0001,adaptation,1,train,1,16,lousiness is a prerequisite for epidemic typhus.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0002,adaptation,2,train,2,16,dozens of seemingly small matters go wrong all over the world.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0003,adaptation,3,train,3,16,"the principal mauler, however, was senator joseph mccarthy."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0004,adaptation,4,train,4,16,travelling home on a late train?
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0005,adaptation,5,train,5,16,eileen was a psychologist all right.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0006,adaptation,6,train,6,16,you will come up with a frightening total.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0007,adaptation,7,train,7,16,i turned and watched him stride down the center of the road.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0008,adaptation,8,train,8,16,"goddamn niggers, lord."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0009,adaptation,9,train,9,16,simmons and crosby jumped the boy and it was all over.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0010,adaptation,10,train,10,16,she was just not able to break the spell.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0011,adaptation,11,train,11,16,"sounds like real love, owen said."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0012,adaptation,12,train,12,16,this was how alexander brandel expressed pure zionism.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0013,adaptation,13,train,13,16,the small car flew on relentlessly.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0014,adaptation,14,train,14,16,"her eyes had opened, she had caught a glimpse of a new faith."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0015,adaptation,15,train,15,16,"that is, when it can preserve economic integration."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0016,adaptation,16,train,16,16,she was getting real dramatic.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0017,adaptation,17,train,17,16,the boost is helpful but inadequate.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0018,adaptation,18,train,18,16,we need joint chiefs of a political general staff.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0019,adaptation,19,train,19,16,their basis seems deeper than mere authority.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0020,adaptation,20,train,20,17,stevie could feel himself toppling.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0021,adaptation,21,train,21,17,"yes, and as tension mounts in this world, fear is increasing."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0022,adaptation,22,train,22,17,this is drama enough.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0023,adaptation,23,train,23,17,"well, we can't have everything."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0024,adaptation,24,train,24,17,and it is to this problem that the republic ultimately returns.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0025,adaptation,25,train,25,17,he was eleven and we had done many things together.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0026,adaptation,26,train,26,17,"he was sure, for he had done as he was told, hadn't he?"
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0027,adaptation,27,train,27,17,she twitched her leg away.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0028,adaptation,28,train,28,17,"in brief, berman played himself and not bolger."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0029,adaptation,29,train,29,17,my grandfather had been stoned because of his editorials.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0030,adaptation,30,train,30,17,it was pierced by a wagon gate built of two wings.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0031,adaptation,31,train,31,17,"i don't work for the government, the american said."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0032,adaptation,32,train,32,17,"and what makes you think you're going to get it, pretty boy?"
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0033,adaptation,33,train,33,17,i have an appointment.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0034,holdout,34,train,34,17,"there the objective sat, brooding over all."
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0035,holdout,35,train,35,17,the question frightened andrei.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0036,holdout,36,train,36,17,his front teeth were missing.
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0037,holdout,37,train,37,17,were you on duty here two weeks ago?
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0038,holdout,38,train,38,17,will you always love me this way?
+t5.2022.10.27,t5.2022.10.27/recalibration/train/0039,holdout,39,train,39,17,"just as it was being hauled inboard, a sea hit the ship."
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0000,frozen,0,train,0,3,place cylinder on a disk of clay slightly larger than cylinder.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0001,frozen,1,train,1,3,you don't hate me any more?
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0002,frozen,2,train,2,3,the car drew up alongside him and stopped.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0003,frozen,3,train,3,3,"lacking specific instructions, he agreed to william's condition."
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0004,frozen,4,train,4,3,leisurely he climbed on to the wagon next to neal brown.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0005,frozen,5,train,5,3,it is screaming at you even in the taxis of london.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0006,frozen,6,train,6,3,"handsome soldier, i have assuaged one hunger with food."
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0007,frozen,7,train,7,3,but then i wasn't her social secretary.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0008,frozen,8,train,8,3,he never knew just what woke him.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0009,frozen,9,train,9,3,she was now enjoying the voyage very much.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0010,frozen,10,train,10,3,expands and contracts
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0011,frozen,11,train,11,3,he started to return it.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0012,frozen,12,train,12,3,need for sound tax policy
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0013,frozen,13,train,13,3,suddenly my reflexes are gone.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0014,frozen,14,train,14,3,how much fallout will we get?
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0015,frozen,15,train,15,3,"joan, did i wake you?"
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0016,frozen,16,train,16,3,but he told wilson to go ahead and try.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0017,frozen,17,train,17,3,the ramifications of the issue are enormous.
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0018,frozen,18,train,18,3,"not surprisingly, this approach did not work."
+t5.2022.11.01,t5.2022.11.01/no_recalibration/train/0019,frozen,19,train,19,3,but he had to follow the light.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0000,adaptation,0,train,0,4,"she had on her easter suit, blue, with lavender binding."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0001,adaptation,1,train,1,4,i think i'm right in that figure.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0002,adaptation,2,train,2,4,"as they watched, jones rode straight for the reef."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0003,adaptation,3,train,3,4,why does this girl keep a sweater in the refrigerator?
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0004,adaptation,4,train,4,4,there was somebody else in the apartment.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0005,adaptation,5,train,5,4,"when the neon sign flashed on, the shadow was still there."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0006,adaptation,6,train,6,4,this is necessary for a sounder collective defense system.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0007,adaptation,7,train,7,4,is anything being done to increase our margin of safety?
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0008,adaptation,8,train,8,4,the car was approaching fast.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0009,adaptation,9,train,9,4,"like the bell at mass, the doorbell was pitched too high."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0010,adaptation,10,train,10,4,he didn't live in a world of perpetual peril like ours.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0011,adaptation,11,train,11,4,"nevertheless, she continued to move upward."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0012,adaptation,12,train,12,4,the purpose was less immediate.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0013,adaptation,13,train,13,4,my cousin works at the labor bureau.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0014,adaptation,14,train,14,4,more private label competition.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0015,adaptation,15,train,15,4,who'd hit you in the head?
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0016,adaptation,16,train,16,4,the stranger ignored him.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0017,adaptation,17,train,17,4,this we can sympathetically understand.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0018,adaptation,18,train,18,4,you won't be needing this.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0019,adaptation,19,train,19,4,has moss no stirling virtues?
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0020,adaptation,20,train,20,6,"dear god, at what a price."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0021,adaptation,21,train,21,6,"shocked speechless, lucy sat there."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0022,adaptation,22,train,22,6,harvey b. stevens of kenilworth will give his niece in marriage.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0023,adaptation,23,train,23,6,some of the letters were pungently expressive.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0024,adaptation,24,train,24,6,"she asked, winking wildly."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0025,adaptation,25,train,25,6,little anne rapidly outdistanced her mother in recovery.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0026,adaptation,26,train,26,6,a woman had it or she didn't.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0027,adaptation,27,train,27,6,but i mustn't start on alice.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0028,adaptation,28,train,28,6,"this, for the liberals i know, would be an understatement."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0029,adaptation,29,train,29,6,the story reflects the way too many people feel.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0030,adaptation,30,train,30,6,"joel knew what he was about, however."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0031,adaptation,31,train,31,6,his eyes burned feverishly.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0032,adaptation,32,train,32,6,"without warning, without giving her a chance to prepare for it."
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0033,adaptation,33,train,33,6,he was mad about stars at the age of nine.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0034,holdout,34,train,34,6,there might be a story in it.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0035,holdout,35,train,35,6,he had not because he was both poor and ambitious.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0036,holdout,36,train,36,6,people talk about the law of the land.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0037,holdout,37,train,37,6,what happened with you?
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0038,holdout,38,train,38,6,his wife didn't give a sign she'd heard.
+t5.2022.11.01,t5.2022.11.01/recalibration/train/0039,holdout,39,train,39,6,at first he could not be sure.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0000,frozen,0,train,0,2,the latter is likely to occur when the thyroid is removed.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0001,frozen,1,train,1,2,"i am with you, of course, tomas."
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0002,frozen,2,train,2,2,told them i can handle this.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0003,frozen,3,train,3,2,it just seemed as if there was nothing else to do.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0004,frozen,4,train,4,2,some churches require more.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0005,frozen,5,train,5,2,geneva must remain a sovereign state.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0006,frozen,6,train,6,2,i thought she'd gone upstairs and expected to hear she had.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0007,frozen,7,train,7,2,"before that, he wanted to talk to the neighbors."
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0008,frozen,8,train,8,2,not where he's froze good.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0009,frozen,9,train,9,2,he was partially uniformed in a cavalry tunic and hat.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0010,frozen,10,train,10,2,be sure it's out when you leave.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0011,frozen,11,train,11,2,and she had the kind of crossed eyes that shocked.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0012,frozen,12,train,12,2,"it was nice then, so peaceful and quiet."
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0013,frozen,13,train,13,2,"in the plastic arts, a very similar situation exists."
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0014,frozen,14,train,14,2,you came well equipped to die.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0015,frozen,15,train,15,2,we'd heard the record together once.
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0016,frozen,16,train,16,2,"since it is important, for the record let's have the full name."
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0017,frozen,17,train,17,2,"another young man, my dear?"
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0018,frozen,18,train,18,2,"then off again, rushing to keep up."
+t5.2022.11.03,t5.2022.11.03/no_recalibration/train/0019,frozen,19,train,19,2,they make us conformists look good.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0000,adaptation,0,train,0,3,news of the project reached the press.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0001,adaptation,1,train,1,3,why the trend to plastics?
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0002,adaptation,2,train,2,3,his supper was nothing.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0003,adaptation,3,train,3,3,the left fielder threw and it was a good one.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0004,adaptation,4,train,4,3,"a. o'banion, in his pistol pocket."
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0005,adaptation,5,train,5,3,there were four principal ones.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0006,adaptation,6,train,6,3,he always kept a few on his personal staff.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0007,adaptation,7,train,7,3,some of the island is sand and is not suitable for living.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0008,adaptation,8,train,8,3,"that could be easily done, but there is little reason in it."
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0009,adaptation,9,train,9,3,i'll keep cathy for two weeks.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0010,adaptation,10,train,10,3,"you mustn't take a fall, or publicly back away."
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0011,adaptation,11,train,11,3,he was trying to smile at her.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0012,adaptation,12,train,12,3,her mother is the former miss stella hayward.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0013,adaptation,13,train,13,3,ma never went near the old man when he was sleeping it off.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0014,adaptation,14,train,14,3,they do symbolically what they once had to do concretely.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0015,adaptation,15,train,15,3,there were two or three colored maids employed there.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0016,adaptation,16,train,16,3,our book of etiquette
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0017,adaptation,17,train,17,3,so i started practicing on it in spring training.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0018,adaptation,18,train,18,3,the anniston manager was coming over to the riverside dugout.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0019,adaptation,19,train,19,3,the game is not worth the ammunition it would cost.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0020,adaptation,20,train,20,4,it will be painted to match the paneling in the room.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0021,adaptation,21,train,21,4,i was leaning too far over.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0022,adaptation,22,train,22,4,but no one was overly optimistic.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0023,adaptation,23,train,23,4,i'll be waiting for you there.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0024,adaptation,24,train,24,4,if mankind could be convinced of that
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0025,adaptation,25,train,25,4,"late in the afternoon, i was up on seven again."
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0026,adaptation,26,train,26,4,from america were the messrs. littlepage and jones.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0027,adaptation,27,train,27,4,he was passing through town and phoned to say hello.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0028,adaptation,28,train,28,4,"my beloved ward, my perennial gadfly, said the whining voice."
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0029,adaptation,29,train,29,4,armed forces medical publication agency
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0030,adaptation,30,train,30,4,"his face was bloated with drugging, redder than normal."
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0031,adaptation,31,train,31,4,the wash wheel is the equipment preferred for the test.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0032,adaptation,32,train,32,4,but this statement is completely unconvincing.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0033,adaptation,33,train,33,4,designs of parts were sought.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0034,holdout,34,train,34,4,he sat down on the bed.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0035,holdout,35,train,35,4,you'll have to go to town to see the doc.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0036,holdout,36,train,36,4,this happened in the middle of a drinking bout with another bum.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0037,holdout,37,train,37,4,he treats her like she was dirt.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0038,holdout,38,train,38,4,he considered opening a can of beer but vetoed that idea too.
+t5.2022.11.03,t5.2022.11.03/recalibration/train/0039,holdout,39,train,39,4,lucy had an idea that myra loved it.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0000,frozen,0,train,0,4,he don't care about nothing else at all.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0001,frozen,1,train,1,4,rourke was talking on the phone when he came back.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0002,frozen,2,train,2,4,i didn't turn it off.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0003,frozen,3,train,3,4,it's perhaps a mile from here where we sit.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0004,frozen,4,train,4,4,the words were hollow.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0005,frozen,5,train,5,4,please get that in your reports.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0006,frozen,6,train,6,4,but there has always been an outdoor air to dartmouth.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0007,frozen,7,train,7,4,the officer had told him that both lists must be checked.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0008,frozen,8,train,8,4,with the machinery went a complete design for the hull.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0009,frozen,9,train,9,4,the street cleaner had not yet been around.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0010,frozen,10,train,10,4,i said i would do it for her.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0011,frozen,11,train,11,4,these were thought to represent regenerating fibers.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0012,frozen,12,train,12,4,is it worth the cost and the risks?
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0013,frozen,13,train,13,4,efficiency of fiber couplers
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0014,frozen,14,train,14,4,"i don't understand, she insisted."
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0015,frozen,15,train,15,4,the lifeboats were stuck fast.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0016,frozen,16,train,16,4,but a great many of the dancers are more or less native.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0017,frozen,17,train,17,4,"if he becomes chancellor, dr. erhart would make few changes."
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0018,frozen,18,train,18,4,madden settled back to read the will.
+t5.2022.12.08,t5.2022.12.08/no_recalibration/train/0019,frozen,19,train,19,4,"i'm awful sorry about what's happened, selena said."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0000,adaptation,0,train,0,5,"i should have stayed at the store, she thought."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0001,adaptation,1,train,1,5,buzz was a tireless instigator who never let his victims rest.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0002,adaptation,2,train,2,5,he said he would have convicted somebody.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0003,adaptation,3,train,3,5,fortunately the hole was found at last and plugged.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0004,adaptation,4,train,4,5,if he ever did such a thing again she'd die of shame.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0005,adaptation,5,train,5,5,and also of english youth and any others.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0006,adaptation,6,train,6,5,"it won't cost you a cent, phil."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0007,adaptation,7,train,7,5,mr. crombie couldn't remember his saying any such thing.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0008,adaptation,8,train,8,5,but we never know how long a scene is going to take.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0009,adaptation,9,train,9,5,in the pity for them his loneliness was gone.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0010,adaptation,10,train,10,5,the images can easily be aligned with a high degree of accuracy.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0011,adaptation,11,train,11,5,"again, one major difficulty is the local focus."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0012,adaptation,12,train,12,5,"how many is that, jim?"
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0013,adaptation,13,train,13,5,"irish catholicism is not attractive, but it is deeper."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0014,adaptation,14,train,14,5,was her name lisa carmody?
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0015,adaptation,15,train,15,5,suggested evaluation and classification
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0016,adaptation,16,train,16,5,you live in the present?
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0017,adaptation,17,train,17,5,i suppose handley knew it.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0018,adaptation,18,train,18,5,"that's the colonel, he said, but i can't see the dogs."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0019,adaptation,19,train,19,5,mary dobbs tuttle was back at the organ.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0020,adaptation,20,train,20,6,we shook hands on it.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0021,adaptation,21,train,21,6,"when police arrived the man was still violent, slate said."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0022,adaptation,22,train,22,6,in the past the club depended largely on van brocklin's aerials.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0023,adaptation,23,train,23,6,is it that they don't care?
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0024,adaptation,24,train,24,6,"let not your heart be troubled, neither let it be afraid."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0025,adaptation,25,train,25,6,to generalize for the entire nation would be absurd.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0026,adaptation,26,train,26,6,the sheriff's swivel chair tilted back.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0027,adaptation,27,train,27,6,it was almost as white as his teeth.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0028,adaptation,28,train,28,6,none of the trujillo family remains.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0029,adaptation,29,train,29,6,it was almost one and i hadn't had lunch.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0030,adaptation,30,train,30,6,"the answer is, of course, yes."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0031,adaptation,31,train,31,6,suspicion wasn't new to him at all.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0032,adaptation,32,train,32,6,are you paying too much for your truck insurance?
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0033,adaptation,33,train,33,6,problems in marketing methods
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0034,holdout,34,train,34,6,you reckon there's two men in this state can shoot like that?
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0035,holdout,35,train,35,6,"and he really feels that way, she thought."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0036,holdout,36,train,36,6,this third choice was in fact made.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0037,holdout,37,train,37,6,it's the same with ron hansen and jim gentile.
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0038,holdout,38,train,38,6,"for one thing, the world that beckett sees is already shattered."
+t5.2022.12.08,t5.2022.12.08/recalibration/train/0039,holdout,39,train,39,6,hub was sitting in a chair that blocked the hall door.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0000,frozen,0,train,0,2,and his conviction is sustained.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0001,frozen,1,train,1,2,"they are just asking too much, he said."
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0002,frozen,2,train,2,2,she was just waking up when we found her at the garage.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0003,frozen,3,train,3,2,hood flies over house
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0004,frozen,4,train,4,2,for some significant new items see the pictures.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0005,frozen,5,train,5,2,it is a splendid structure.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0006,frozen,6,train,6,2,don't hurry too much.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0007,frozen,7,train,7,2,regardless of the decision two facts are clear.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0008,frozen,8,train,8,2,haney hadn't given it much thought at the time.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0009,frozen,9,train,9,2,the wages involved were larger and more regular.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0010,frozen,10,train,10,2,"in all the turmoil, some good legislation was passed."
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0011,frozen,11,train,11,2,i don't know what i'd do without my family.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0012,frozen,12,train,12,2,"one always wakes up, even from one's own dreams."
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0013,frozen,13,train,13,2,individual differences
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0014,frozen,14,train,14,2,"let's see, cousin ada said."
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0015,frozen,15,train,15,2,"i'm not positive, tim."
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0016,frozen,16,train,16,2,something all of them would regret.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0017,frozen,17,train,17,2,i ain't taking no goddamned chances for no jew business.
+t5.2022.12.15,t5.2022.12.15/no_recalibration/train/0018,frozen,18,train,18,2,maris is in line for a big raise.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0000,adaptation,0,train,0,12,"no, really, right as rain."
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0001,adaptation,1,train,1,12,"they were both walking towards each other, unhurried."
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0002,adaptation,2,train,2,12,"who knew, angie might not last long."
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0003,adaptation,3,train,3,12,we are not all great artists.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0004,adaptation,4,train,4,12,not all the concern for health is well directed.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0005,adaptation,5,train,5,12,but chris brightened up like a candle.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0006,adaptation,6,train,6,12,with our growth came expansion into new fields of service.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0007,adaptation,7,train,7,12,jeopardize it now to correct so old a wrong?
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0008,adaptation,8,train,8,12,"he despised parsimony, and particularly of words."
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0009,adaptation,9,train,9,12,shelter in apartment buildings
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0010,adaptation,10,train,10,12,the analyst is apt to be too honest to fit in.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0011,adaptation,11,train,11,12,i'll take you out to dinner.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0012,adaptation,12,train,12,12,"fan it, he told cappy, handing him a sheet of newspaper."
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0013,adaptation,13,train,13,12,"yes, your honor, replied bellows."
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0014,holdout,14,train,14,12,papa was still elated over his afternoon visit downtown.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0015,holdout,15,train,15,12,that helped a great deal.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0016,holdout,16,train,16,12,here he couldn't be seen by blue throat and his gang.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0017,holdout,17,train,17,12,"she collapsed against me, as if everything inside her snapped."
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0018,holdout,18,train,18,12,what one actually remembers is its greenness.
+t5.2022.12.15,t5.2022.12.15/recalibration/train/0019,holdout,19,train,19,12,they chanted a fixed tune in time to the report of the stick.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0000,frozen,0,train,0,6,younger son calls police
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0001,frozen,1,train,1,6,you want me to drop my pot?
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0002,frozen,2,train,2,6,the rancher grunted an acknowledgement but didn't move.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0003,frozen,3,train,3,6,fall river is not a fashionable town.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0004,frozen,4,train,4,6,but with her hand poem again.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0005,frozen,5,train,5,6,how can we have a good city unless we respect morality?
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0006,frozen,6,train,6,6,it was barely possible that his brother was right.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0007,frozen,7,train,7,6,emory is affiliated with the methodist church.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0008,frozen,8,train,8,6,the majority then went to the infant oberlin.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0009,frozen,9,train,9,6,the stem is laminated from four pieces.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0010,frozen,10,train,10,6,you'll have some joy in the life of this city.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0011,frozen,11,train,11,6,the upper part of his packet had stained dark.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0012,frozen,12,train,12,6,these critters went real sudden.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0013,frozen,13,train,13,6,"the house was modern, large, on five acres."
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0014,frozen,14,train,14,6,they will also supply literature on application.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0015,frozen,15,train,15,6,she looked at me provocatively.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0016,frozen,16,train,16,6,"yes, the pope could die and quickly be made a saint."
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0017,frozen,17,train,17,6,all sorts of plans come to life.
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0018,frozen,18,train,18,6,why don't you ask him?
+t5.2023.02.28,t5.2023.02.28/no_recalibration/train/0019,frozen,19,train,19,6,"don't try anything violent, stormy."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0000,adaptation,0,train,0,7,"when alexander brandel rose to speak, the hall became silent."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0001,adaptation,1,train,1,7,there was a slight nervous twitch in the region of her left eye.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0002,adaptation,2,train,2,7,or borrow some money from someone and go home by bus?
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0003,adaptation,3,train,3,7,"i'm not advising you, she said."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0004,adaptation,4,train,4,7,a gnawing and gnashing within him.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0005,adaptation,5,train,5,7,"you're having a miserable time, aren't you?"
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0006,adaptation,6,train,6,7,"to tell you the truth, maris said, mickey don't talk much."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0007,adaptation,7,train,7,7,they had come not to admire but to observe.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0008,adaptation,8,train,8,7,contrast trim provides other touches of color.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0009,adaptation,9,train,9,7,"or do you want to see if i can stand fever, too?"
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0010,adaptation,10,train,10,7,clayton tried to call back the face of the man he had known.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0011,adaptation,11,train,11,7,the phone started ringing.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0012,adaptation,12,train,12,7,they weren't as well paid as they should have been.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0013,adaptation,13,train,13,7,but at the coroner's inquest delphine told a forthright story.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0014,adaptation,14,train,14,7,"this was someone who'd come down in the world, i thought."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0015,adaptation,15,train,15,7,mickey waited with slack arms.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0016,adaptation,16,train,16,7,"don't worry, frankie said."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0017,adaptation,17,train,17,7,"that's authenticity, he said."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0018,adaptation,18,train,18,7,this one was going to be different.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0019,adaptation,19,train,19,7,"i learned that now, i said."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0020,adaptation,20,train,20,8,the guerrillas realized they faced a new problem.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0021,adaptation,21,train,21,8,and he would see her that evening.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0022,adaptation,22,train,22,8,but if you say you managed it the stranger was hooked.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0023,adaptation,23,train,23,8,we had drifted closer.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0024,adaptation,24,train,24,8,purification of the conjugates
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0025,adaptation,25,train,25,8,but she was beyond caring what she said.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0026,adaptation,26,train,26,8,"that is, to show no curiosity whatsoever."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0027,adaptation,27,train,27,8,federal review of state decisions
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0028,adaptation,28,train,28,8,"and unlike other fruits, one cannot eat the skin of the avocado."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0029,adaptation,29,train,29,8,this experimental class represented quite a variety of students.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0030,adaptation,30,train,30,8,and then we shall see.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0031,adaptation,31,train,31,8,how can a man with any degree of common decency charge this?
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0032,adaptation,32,train,32,8,he heard himself chortling.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0033,adaptation,33,train,33,8,"she'd have consulted us, you see."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0034,holdout,34,train,34,8,during his journey palfrey stopped off to see two abolitionists.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0035,holdout,35,train,35,8,"christ in you, your hope of glory."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0036,holdout,36,train,36,8,"oh, i've known him quite a while."
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0037,holdout,37,train,37,8,even the regular democrats disowned him.
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0038,holdout,38,train,38,8,how'd you hear about this one?
+t5.2023.02.28,t5.2023.02.28/recalibration/train/0039,holdout,39,train,39,8,"and hank maguire added, so am i, tom."

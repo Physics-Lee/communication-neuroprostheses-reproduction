@@ -1,0 +1,32 @@
+id: 20261124_import_corp_archive
+study: 20231201_fan
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261022_reproduce_20231201_fan
+legacy_checkout_head_at_import: 02e15cb2c5dc805cde9fbe4c8303ef529a230b77
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20231201_fan/results/rescore_official_outputs.json
+  path: studies/20231201_fan/results/20261124_import_corp_archive/rescore_official_outputs.json
+  sha256: b3d41e1678f71efca510cfa8cb63b45344a513a618a084c94222e68d087c22f7
+- old_path: 20231201_fan/results/tier2_seed_model_inference.json
+  path: studies/20231201_fan/results/20261124_import_corp_archive/tier2_seed_model_inference.json
+  sha256: 5f7309e92e7f505abd94eb7adae7d71a5636c4935ce836cdc4fbff812382847b
+- old_path: 20231201_fan/results/tier3_corp_sim_official_labels.json
+  path: studies/20231201_fan/results/20261124_import_corp_archive/tier3_corp_sim_official_labels.json
+  sha256: a73f7a42844b204158fd716cf3d6c017d7f271125a67136fdadc34ace67b7394
+- old_path: 20231201_fan/results/tier3_corp_sim_v5.json
+  path: studies/20231201_fan/results/20261124_import_corp_archive/tier3_corp_sim_v5.json
+  sha256: d3f582390f8cab0a88e00fd53950a58380a53acc04cc7cc54a0103a7bce6d41f
+- old_path: 20231201_fan/results/tier3_corp_sim_v6.json
+  path: studies/20231201_fan/results/20261124_import_corp_archive/tier3_corp_sim_v6.json
+  sha256: fad7d9ec6425de3788a386d965dcd7fef12e1ada791f8db8f0eb49a18644542f
+- old_path: 20231201_fan/results/tier3_corp_sim_v7.json
+  path: studies/20231201_fan/results/20261124_import_corp_archive/tier3_corp_sim_v7.json
+  sha256: ec20b8658faf656fb4bca38fcc8460025594af7b3465777b921dd10248286a62
+- old_path: 20231201_fan/results/tier3_corp_sim_v8.json
+  path: studies/20231201_fan/results/20261124_import_corp_archive/tier3_corp_sim_v8.json
+  sha256: cf8eef0943ce84f5b071c98f4e510b6bcc639a5ca8d9a7f0a3d51e40827ff04c
+- path: studies/20231201_fan/log/20261124_import_corp_archive/tier3v7.log
+  legacy_source: tmp_tier3v7.log
+  sha256: 323664fbb2af605c64eb265b54dea0df88eb26148d461bbafe0f8ae1a60ddb29

@@ -1,0 +1,99 @@
+{
+ "sessions": [
+  {
+   "session": "t5.2022.09.29",
+   "n": 40,
+   "usable": 40,
+   "pre": 17.6,
+   "mid": 16.6,
+   "post": 13.4
+  },
+  {
+   "session": "t5.2022.10.06",
+   "n": 40,
+   "usable": 40,
+   "pre": 47.1,
+   "mid": 36.9,
+   "post": 29.1
+  },
+  {
+   "session": "t5.2022.10.18",
+   "n": 40,
+   "usable": 40,
+   "pre": 59.0,
+   "mid": 47.9,
+   "post": 39.0
+  },
+  {
+   "session": "t5.2022.10.25",
+   "n": 37,
+   "usable": 37,
+   "pre": 41.2,
+   "mid": 51.2,
+   "post": 37.3
+  },
+  {
+   "session": "t5.2022.10.27",
+   "n": 40,
+   "usable": 40,
+   "pre": 58.6,
+   "mid": 65.1,
+   "post": 52.8
+  },
+  {
+   "session": "t5.2022.11.01",
+   "n": 40,
+   "usable": 40,
+   "pre": 69.2,
+   "mid": 52.1,
+   "post": 43.9
+  },
+  {
+   "session": "t5.2022.11.03",
+   "n": 40,
+   "usable": 40,
+   "pre": 70.6,
+   "mid": 86.6,
+   "post": 31.2
+  },
+  {
+   "session": "t5.2022.12.08",
+   "n": 40,
+   "usable": 40,
+   "pre": 39.0,
+   "mid": 38.4,
+   "post": 39.4
+  },
+  {
+   "session": "t5.2022.12.15",
+   "n": 20,
+   "usable": 20,
+   "pre": 56.0,
+   "mid": 55.7,
+   "post": 50.2
+  },
+  {
+   "session": "t5.2023.02.28",
+   "n": 40,
+   "usable": 40,
+   "pre": 55.2,
+   "mid": 54.8,
+   "post": 65.6
+  }
+ ],
+ "protocol": {
+  "pseudo": "official lm_decoded labels",
+  "steps": 500,
+  "lr": 5e-05,
+  "replay_frac": 0.3
+ },
+ "summary": {
+  "mean_pre": 51.4,
+  "mean_post": 40.2,
+  "static_ref": 50.85,
+  "v4b_ref": {
+   "mean_pre": 91.3,
+   "mean_post": 186.8
+  }
+ }
+}

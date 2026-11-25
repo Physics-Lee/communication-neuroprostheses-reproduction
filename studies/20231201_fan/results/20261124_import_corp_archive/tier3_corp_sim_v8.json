@@ -1,0 +1,104 @@
+{
+ "sessions": [
+  {
+   "session": "t5.2022.09.29",
+   "n": 40,
+   "pool": 34,
+   "pre": 17.6,
+   "mid": 13.3,
+   "post": 15.6
+  },
+  {
+   "session": "t5.2022.10.06",
+   "n": 40,
+   "pool": 34,
+   "pre": 56.1,
+   "mid": 48.7,
+   "post": 45.2
+  },
+  {
+   "session": "t5.2022.10.18",
+   "n": 40,
+   "pool": 34,
+   "pre": 124.5,
+   "mid": 182.6,
+   "post": 183.6
+  },
+  {
+   "session": "t5.2022.10.25",
+   "n": 37,
+   "pool": 31,
+   "pre": 118.8,
+   "mid": 91.1,
+   "post": 109.8
+  },
+  {
+   "session": "t5.2022.10.27",
+   "n": 40,
+   "pool": 34,
+   "pre": 160.2,
+   "mid": 154.8,
+   "post": 157.5
+  },
+  {
+   "session": "t5.2022.11.01",
+   "n": 40,
+   "pool": 34,
+   "pre": 299.6,
+   "mid": 187.7,
+   "post": 206.0
+  },
+  {
+   "session": "t5.2022.11.03",
+   "n": 40,
+   "pool": 34,
+   "pre": 977.0,
+   "mid": 143.1,
+   "post": 153.5
+  },
+  {
+   "session": "t5.2022.12.08",
+   "n": 40,
+   "pool": 34,
+   "pre": 111.3,
+   "mid": 154.9,
+   "post": 206.0
+  },
+  {
+   "session": "t5.2022.12.15",
+   "n": 20,
+   "pool": 14,
+   "pre": 311.1,
+   "mid": 218.9,
+   "post": 169.7
+  },
+  {
+   "session": "t5.2023.02.28",
+   "n": 40,
+   "pool": 24,
+   "pre": 1152.3,
+   "mid": 2697.2,
+   "post": 2524.3
+  }
+ ],
+ "protocol": {
+  "pseudo": "SELF greedy decode of the incoming model (no LM)",
+  "scope": "FULL decoder (per-session input layer + shared backend)",
+  "eval": "final 6 trials per session NEVER trained on",
+  "steps": 500,
+  "lr": 5e-05,
+  "replay_frac": 0.3,
+  "grad_global_norm_clip": 10.0,
+  "backend_vars": 9
+ },
+ "summary": {
+  "mean_pre": 332.9,
+  "mean_post": 377.1,
+  "v7_ref": {
+   "mean_pre": 24.4,
+   "mean_post": 12.4,
+   "pseudo": "official lm_decoded"
+  },
+  "static_ref": 50.85
+ }
+}

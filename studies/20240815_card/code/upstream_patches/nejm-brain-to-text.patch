@@ -1,0 +1,216 @@
+diff --git a/model_training/dataset.py b/model_training/dataset.py
+index 59656a406c3a61ed0bad4c4c49e5c82eb6f6e66a..bcf274fa7409df8d7552171f836ffb4f96d993a1 100644
+--- a/model_training/dataset.py
++++ b/model_training/dataset.py
+@@ -185,8 +185,12 @@ class BrainToTextDataset(Dataset):
+                 days = np.concatenate((self.must_include_days, np.random.choice(non_must_include_days, size = self.days_per_batch - len(self.must_include_days), replace = False)))
+             
+             # Otherwise we will select random days without replacement
+-            else: 
+-                days = np.random.choice(list(self.trial_indicies.keys()), size = self.days_per_batch, replace = False)
++            else:
++                # local patch: skip days without training trials (sessions whose data_train.hdf5
++                # is absent contribute an empty trial list and would crash np.random.choice)
++                train_day_pool = [d for d in self.trial_indicies.keys()
++                                  if len(self.trial_indicies[d]['trials']) > 0]
++                days = np.random.choice(train_day_pool, size = self.days_per_batch, replace = False)
+             
+             # How many trials will be sampled from each day
+             num_trials = math.ceil(self.batch_size / self.days_per_batch) # Use ceiling to make sure we get at least batch_size trials
+@@ -269,7 +273,11 @@ def train_test_split_indicies(file_paths, test_percentage = 0.1, seed = -1, bad_
+     # Get trials in each day
+     trials_per_day = {}
+     for i, path in enumerate(file_paths):
+-        session = [s for s in path.split('/') if (s.startswith('t15.20') or s.startswith('t12.20'))][0]
++        # local patch (Windows): normalize path separators before splitting on '/'
++        # match any session directory of the form t<digits>.<date> (t12./t15./t16./t17....)
++        session = [s for s in path.replace('\\', '/').split('/')
++                   if s.startswith('t') and len(s) > 1 and s[1:3].isdigit()
++                   and '.20' in s][0]
+ 
+         good_trial_indices = []
+ 
+diff --git a/model_training/rnn_trainer.py b/model_training/rnn_trainer.py
+index 8149dc4a404b5e18e819a00886c70282980eefc0..81d0258f86d4cf5ec8c0369b0f9f9df888446680 100644
+--- a/model_training/rnn_trainer.py
++++ b/model_training/rnn_trainer.py
+@@ -199,7 +199,12 @@ class BrainToTextDecoder_Trainer:
+             batch_size = None, # Dataset.__getitem__() already returns batches
+             shuffle = self.args['dataset']['loader_shuffle'],
+             num_workers = self.args['dataset']['num_dataloader_workers'],
+-            pin_memory = True 
++            # local patch: pin_memory=False. With varying padded batch shapes
++            # the pinned-host allocator caches one buffer per shape and never
++            # releases them, growing host commit to >15GB over a long run and
++            # eventually hard-page-thrashing a 32GB machine. The H2D speedup
++            # (~20 ms per 100MB batch) is negligible next to batch compute.
++            pin_memory = False
+         )
+ 
+         # val dataset and dataloader
+@@ -216,9 +221,9 @@ class BrainToTextDecoder_Trainer:
+         self.val_loader = DataLoader(
+             self.val_dataset,
+             batch_size = None, # Dataset.__getitem__() already returns batches
+-            shuffle = False, 
++            shuffle = False,
+             num_workers = 0,
+-            pin_memory = True 
++            pin_memory = False  # local patch: see train_loader note above
+         )
+ 
+         self.logger.info("Successfully initialized datasets")
+@@ -239,7 +244,11 @@ class BrainToTextDecoder_Trainer:
+         else:
+             raise ValueError(f"Invalid learning rate scheduler type: {self.args['lr_scheduler_type']}")
+         
+-        self.ctc_loss = torch.nn.CTCLoss(blank = 0, reduction = 'none', zero_infinity = False)
++        # local patch: zero_infinity=True so trials whose (post-random_cut) input length
++        # falls below the phoneme target length contribute zero loss instead of inf
++        # gradients (kunz T16 has tightly-capped trials; official filter 4n+10 does not
++        # leave margin for the random_cut augmentation)
++        self.ctc_loss = torch.nn.CTCLoss(blank = 0, reduction = 'none', zero_infinity = True)
+ 
+         # If a checkpoint is provided, then load from checkpoint
+         if self.args['init_from_checkpoint']:
+@@ -369,8 +378,13 @@ class BrainToTextDecoder_Trainer:
+         checkpoint = torch.load(load_path, weights_only = False) # checkpoint is just a dict
+ 
+         self.model.load_state_dict(checkpoint['model_state_dict'])
+-        self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+-        self.learning_rate_scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
++        # local patch (rapid calibration): fine-tune checkpoints may omit
++        # optimizer/scheduler state so the fresh (fine-tune LR) schedules built
++        # from args are kept instead of being overwritten by the pretraining
++        # schedule; resume behavior is unchanged when the keys are present
++        if 'optimizer_state_dict' in checkpoint:
++            self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
++            self.learning_rate_scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
+         self.best_val_PER = checkpoint['val_PER'] # best phoneme error rate
+         self.best_val_loss = checkpoint['val_loss'] if 'val_loss' in checkpoint.keys() else torch.inf
+ 
+@@ -507,14 +521,25 @@ class BrainToTextDecoder_Trainer:
+ 
+         train_start_time = time.time()
+ 
++        # local patch: gradient accumulation. The official 64-trial batches of
++        # BtoT25's long copy-task trials (median 845, p99 1806, max 2475 frames)
++        # exceed a 16GB GPU's dedicated memory and trigger WDDM shared-memory
++        # paging (~50x slowdown). Accumulating `gradient_accumulation_steps`
++        # micro-batches of a smaller batch_size with loss divided accordingly
++        # reproduces the full-batch mean gradient exactly when micro-batches
++        # are equal-sized, so optimizer/scheduler step counts stay official.
++        # Set gradient_accumulation_steps=1 (or omit) for official behavior.
++        accum_steps = int(self.args.get('gradient_accumulation_steps', 1))
++
+         # train for specified number of batches
+         for i, batch in enumerate(self.train_loader):
+-            
++
+             self.model.train()
+-            self.optimizer.zero_grad()
+-            
++            if i % accum_steps == 0:
++                self.optimizer.zero_grad()
++
+             # Train step
+-            start_time = time.time() 
++            start_time = time.time()
+ 
+             # Move data to device
+             features = batch['input_features'].to(self.device)
+@@ -543,12 +568,19 @@ class BrainToTextDecoder_Trainer:
+                     )
+                     
+                 loss = torch.mean(loss) # take mean loss over batches
+-            
++                loss = loss / accum_steps
++
+             loss.backward()
+ 
++            # Only clip/step at the end of an accumulation window (one
++            # optimizer step per window; keep batches_per_val_step a multiple
++            # of accum_steps so validation also lands on window boundaries)
++            if (i + 1) % accum_steps != 0:
++                continue
++
+             # Clip gradient
+-            if self.args['grad_norm_clip_value'] > 0: 
+-                grad_norm = torch.nn.utils.clip_grad_norm_(self.model.parameters(), 
++            if self.args['grad_norm_clip_value'] > 0:
++                grad_norm = torch.nn.utils.clip_grad_norm_(self.model.parameters(),
+                                                max_norm = self.args['grad_norm_clip_value'],
+                                                error_if_nonfinite = True,
+                                                foreach = True
+@@ -557,19 +589,27 @@ class BrainToTextDecoder_Trainer:
+             self.optimizer.step()
+             self.learning_rate_scheduler.step()
+             
+-            # Save training metrics 
++            # Save training metrics
+             train_step_duration = time.time() - start_time
+             train_losses.append(loss.detach().item())
+ 
+             # Incrementally log training progress
+-            if i % self.args['batches_per_train_log'] == 0:
++            # local patch (accumulation): log by optimizer-step count (i+1) so
++            # the trigger lands on accumulation-window boundaries; with
++            # accum_steps=1, (i+1) % N == 0 differs from i % N == 0 only by
++            # one micro-batch of cadence
++            if (i + 1) % self.args['batches_per_train_log'] == 0:
+                 self.logger.info(f'Train batch {i}: ' +
+                         f'loss: {(loss.detach().item()):.2f} ' +
+                         f'grad norm: {grad_norm:.2f} '
+                         f'time: {train_step_duration:.3f}')
+ 
+             # Incrementally run a test step
+-            if i % self.args['batches_per_val_step'] == 0 or i == ((self.args['num_training_batches'] - 1)):
++            # local patch (accumulation): trigger by optimizer-step count (i+1)
++            # so validation lands on accumulation-window boundaries; the "final
++            # batch" condition must also hold on a boundary (with accum_steps=1
++            # both reduce to the original i % N == 0 / i == n - 1 forms)
++            if (i + 1) % self.args['batches_per_val_step'] == 0 or (i + accum_steps) >= self.args['num_training_batches']:
+                 self.logger.info(f"Running test after training batch: {i}")
+                 
+                 # Calculate metrics on val data
+@@ -586,6 +626,10 @@ class BrainToTextDecoder_Trainer:
+                 
+                 if self.args['log_individual_day_val_PER']:
+                     for day in val_metrics['day_PERs'].keys():
++                        # local patch: skip days that contribute no val trials (train-only
++                        # sessions) instead of dividing by zero
++                        if val_metrics['day_PERs'][day]['total_seq_length'] == 0:
++                            continue
+                         self.logger.info(f"{self.args['dataset']['sessions'][day]} val PER: {val_metrics['day_PERs'][day]['total_edit_distance'] / val_metrics['day_PERs'][day]['total_seq_length']:0.4f}")
+ 
+                 # Save metrics 
+@@ -640,7 +684,10 @@ class BrainToTextDecoder_Trainer:
+ 
+         # Save final model 
+         if self.args['save_final_model']:
+-            self.save_model_checkpoint(f'{self.args["checkpoint_dir"]}/final_checkpoint_batch_{i}', val_PERs[-1])
++            # local patch (20260924): save_model_checkpoint requires (path, PER, loss);
++            # the original call omitted loss and crashed at the end of training
++            self.save_model_checkpoint(f'{self.args["checkpoint_dir"]}/final_checkpoint_batch_{i}',
++                                       val_PERs[-1], val_losses[-1])
+ 
+         train_stats = {}
+         train_stats['train_losses'] = train_losses
+@@ -699,7 +746,7 @@ class BrainToTextDecoder_Trainer:
+                     self.logger.info(f"Skipping validation on day {day}")
+                 continue
+             
+-            with torch.no_grad():
++            with torch.no_grad(): # Disable gradient calculation for validation
+ 
+                 with torch.autocast(device_type = "cuda", enabled = self.args['use_amp'], dtype = torch.bfloat16):
+                     features, n_time_steps = self.transform_data(features, n_time_steps, 'val')
+@@ -708,7 +755,7 @@ class BrainToTextDecoder_Trainer:
+ 
+                     logits = self.model(features, day_indicies)
+     
+-                    loss = self.ctc_loss(
++                    loss = self.ctc_loss( # Compute the CTC loss for the current batch
+                         torch.permute(logits.log_softmax(2), [1, 0, 2]),
+                         labels,
+                         adjusted_lens,

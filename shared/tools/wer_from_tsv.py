@@ -6,7 +6,7 @@ Ref normalization identical to decode_words_btot24_v2.py.
 """
 import csv
 import re
-import sys
+import argparse
 
 import editdistance
 
@@ -41,11 +41,14 @@ def main():
 
     Notes
     -----
-    Arguments come from ``sys.argv``:
-    ``wer_from_tsv.py <out.tsv> [limit]``.
+    The optional ``--no-sidecar`` flag leaves archived inputs and sidecars intact.
     """
-    path = sys.argv[1]
-    limit = int(sys.argv[2]) if len(sys.argv) > 2 else 0
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("path")
+    parser.add_argument("limit", type=int, nargs="?", default=0)
+    parser.add_argument("--no-sidecar", action="store_true")
+    args = parser.parse_args()
+    path, limit = args.path, args.limit
     tot_ed = tot_ref = n = 0
     rows = []
     with open(path, encoding="utf-8", newline="") as f:
@@ -64,6 +67,8 @@ def main():
                 break
     print(f"WER = {tot_ed}/{tot_ref} = {100*tot_ed/max(1,tot_ref):.2f}% "
           f"over {n} sentences")
+    if args.no_sidecar:
+        return
     with open(path + ".wer", "w", encoding="utf-8", newline="") as fo:
         w = csv.writer(fo)
         w.writerow(["key", "edit_distance", "ref_len"])

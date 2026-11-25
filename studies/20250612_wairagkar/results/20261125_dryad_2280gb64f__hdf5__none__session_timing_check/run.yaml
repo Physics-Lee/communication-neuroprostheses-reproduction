@@ -1,0 +1,11 @@
+study: 20250612_wairagkar
+dataset_id: dryad_2280gb64f
+release_id: null
+input_format: hdf5
+split: null
+decoder: null
+rescorer: null
+vocoder: null
+command: python studies/20250612_wairagkar/code/check_session_timing.py studies/20250612_wairagkar/data/processed/t15/dryad_2280gb64f_day195.h5
+artifacts:
+  summary.json: studies/20250612_wairagkar/results/20261124_dryad_2280gb64f__zip__none__session_timing_check/summary.json

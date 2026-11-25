@@ -1,0 +1,26 @@
+study: 20230831_willett
+dataset_id: dryad_x69p8czpq
+release_id: null
+input_format: hdf5
+split: test
+session: t12.2022.05.19
+decoder: ctc_greedy
+rescorer: null
+vocoder: null
+checkpoint: D:\repositories\20261106_communication_neuroprostheses_reproduction\studies\20230831_willett\data\20230616_willett_BtoT24\run_60k\checkpoint\best_checkpoint
+session_file: D:\repositories\20261106_communication_neuroprostheses_reproduction\studies\20230831_willett\data\processed\t12\dryad_x69p8czpq_2022-05-19.h5
+day_index: 3
+trials: trials.csv
+summary: summary.json
+command:
+- studies/20230831_willett/code/eval_session_file.py
+- studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-19.h5
+- studies/20230831_willett/data/20230616_willett_BtoT24/run_60k
+- --partition
+- test
+- --compare
+- studies/20230831_willett/results/20261124_import_btot24/test_partition_greedy_per_trial.csv
+- --trainer-input
+- studies/20230831_willett/data/derived/dryad_x69p8czpq/hdf5/trainer_input/t12.2022.05.19
+- --output-dir
+- studies/20230831_willett/results/20261124_dryad_x69p8czpq__hdf5__ctc_greedy__session_file_eval

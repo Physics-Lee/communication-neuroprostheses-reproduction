@@ -1,0 +1,45 @@
+loaded studies\20230831_willett\data\20230616_willett_BtoT24\run_60k\checkpoint\best_checkpoint | ckpt val_PER = 0.23250629007816315
+[16:28:14] t12.2022.04.28 done (20 trials, 1s)
+[16:28:15] t12.2022.05.05 done (40 trials, 2s)
+[16:28:16] t12.2022.05.17 done (60 trials, 2s)
+[16:28:16] t12.2022.05.19 done (80 trials, 2s)
+[16:28:17] t12.2022.05.24 done (120 trials, 3s)
+[16:28:17] t12.2022.05.26 done (160 trials, 4s)
+[16:28:18] t12.2022.06.02 done (200 trials, 5s)
+[16:28:19] t12.2022.06.07 done (240 trials, 5s)
+[16:28:20] t12.2022.06.14 done (280 trials, 6s)
+[16:28:20] t12.2022.06.16 done (320 trials, 7s)
+[16:28:21] t12.2022.06.21 done (360 trials, 8s)
+[16:28:22] t12.2022.06.23 done (400 trials, 8s)
+[16:28:23] t12.2022.06.28 done (440 trials, 9s)
+[16:28:23] t12.2022.07.05 done (480 trials, 10s)
+[16:28:24] t12.2022.07.14 done (520 trials, 11s)
+[16:28:25] t12.2022.07.21 done (560 trials, 11s)
+[16:28:25] t12.2022.07.27 done (600 trials, 12s)
+[16:28:26] t12.2022.07.29 done (640 trials, 13s)
+[16:28:27] t12.2022.08.02 done (680 trials, 13s)
+[16:28:27] t12.2022.08.11 done (720 trials, 14s)
+[16:28:28] t12.2022.08.13 done (760 trials, 15s)
+[16:28:29] t12.2022.08.18 done (800 trials, 15s)
+[16:28:30] t12.2022.08.23 done (840 trials, 16s)
+[16:28:30] t12.2022.08.25 done (880 trials, 17s)
+
+=== BtoT24 test-partition greedy PER: 5674/24223 = 23.42% over 880 trials ===
+
+best 5 days:
+session
+t12.2022.05.26    16.89%
+t12.2022.08.13    17.39%
+t12.2022.05.24    17.49%
+t12.2022.07.05    19.14%
+t12.2022.08.11    19.55%
+
+worst 5 days:
+session
+t12.2022.05.17    27.00%
+t12.2022.06.16    28.67%
+t12.2022.05.05    33.56%
+t12.2022.05.19    38.46%
+t12.2022.04.28    41.28%
+
+saved: studies\20230831_willett\results\20261124_checkpoint_eval\trials.csv

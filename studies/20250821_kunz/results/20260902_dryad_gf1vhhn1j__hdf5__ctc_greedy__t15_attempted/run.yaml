@@ -1,0 +1,19 @@
+id: 20260902_dryad_gf1vhhn1j__hdf5__ctc_greedy__t15_attempted
+study: 20250821_kunz
+dataset_id: dryad_gf1vhhn1j
+release_id: null
+input_format: hdf5
+decoder: ctc_greedy
+legacy_directory: studies/20250821_kunz/data/20250821_kunz/run_t15_attempted
+native_files:
+- results/20260902_dryad_gf1vhhn1j__hdf5__ctc_greedy__t15_attempted/runtime/checkpoint/args.yaml
+- results/20260902_dryad_gf1vhhn1j__hdf5__ctc_greedy__t15_attempted/runtime/checkpoint/best_checkpoint
+- results/20260902_dryad_gf1vhhn1j__hdf5__ctc_greedy__t15_attempted/runtime/checkpoint/val_metrics.pkl
+- results/20260902_dryad_gf1vhhn1j__hdf5__ctc_greedy__t15_attempted/runtime/train_val_trials.json
+- log/20260902_dryad_gf1vhhn1j__hdf5__ctc_greedy__t15_attempted/training_log
+- results/20260902_dryad_gf1vhhn1j__hdf5__ctc_greedy__t15_attempted/runtime/val_greedy_per_trial.csv
+split: validation
+trials: trials.csv
+summary: summary.json
+checkpoint: runtime/checkpoint/best_checkpoint
+run_start_date: '2026-09-02'

@@ -1,0 +1,9 @@
+study: 20230831_willett
+dataset: https://doi.org/10.5061/dryad.x69p8czpq
+dataset_id: dryad_x69p8czpq
+release_id: null
+external_input_path: data/extracted/dryad_x69p8czpq/competitionData
+historical_checkout: 20261008_reproduce_20230831_willett
+legacy_commit: 011f5079193ff8e27012cb0c5a0a32ea84150f59
+checksums: See each run.yaml for archived evidence file checksums. Full release file
+  hashes are unverified.

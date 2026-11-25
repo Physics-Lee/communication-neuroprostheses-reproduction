@@ -1,0 +1,59 @@
+id: 20261124_import_p4_archive
+study: 20240815_card
+import_date: '2026-11-24'
+run_start_date: null
+legacy_checkout: 20261008_reproduce_20240815_card
+legacy_checkout_head_at_import: 49fe9e14be58a645842383bfce192d41e859e208
+source_baseline: SHA-256 hashes of the main worktree before migration
+artifacts:
+- old_path: 20240815_card/results/archive_20261013_val_greedy_per_trial.csv
+  path: studies/20240815_card/results/20261124_import_p4_archive/archive_20261013_val_greedy_per_trial.csv
+  sha256: 481c52400a6dd2e8e3df48f17984fd674930cdd857c89417a09fd6c1839e19f4
+- old_path: 20240815_card/results/archive_20261013_val_greedy_summary.json
+  path: studies/20240815_card/results/20261124_import_p4_archive/archive_20261013_val_greedy_summary.json
+  sha256: 7a01f8c59177082e76d8a4060e3d2f5dc1ee2ddd465e8ac461014f27dd6090c6
+- old_path: 20240815_card/results/p4_decode_eval_20261014.txt
+  path: studies/20240815_card/results/20261124_import_p4_archive/p4_decode_eval_20261014.txt
+  sha256: aa9974ab4088a12a2c03996ea15d8edac447fc49317622582a3ac9c6ec836cec
+- old_path: 20240815_card/results/p4_opt_fx.upperhyp.tsv
+  path: studies/20240815_card/results/20261124_import_p4_archive/p4_opt_fx.upperhyp.tsv
+  sha256: 63bcbf3eb3fa6dd2472521db487382a7b0911fa1f0f6725b5b072068844e1d39
+- old_path: 20240815_card/results/p4_rescore_eval_20261014.txt
+  path: studies/20240815_card/results/20261124_import_p4_archive/p4_rescore_eval_20261014.txt
+  sha256: 38e47a9dd35f530bb324477d7443b459d57277ceb9da6ef774e93c704799e60e
+- old_path: 20240815_card/results/p4_vs_run120k_trajectory.csv
+  path: studies/20240815_card/results/20261124_import_p4_archive/p4_vs_run120k_trajectory.csv
+  sha256: 78fd09683a63b26be3cc31a564676c307e2ba2bf6fbe5c49fd4d9e9a8e708a04
+- old_path: 20240815_card/results/decode_outputs/p4_fixed_final_full.tsv
+  path: studies/20240815_card/results/20261124_import_p4_archive/p4_fixed_final_full.tsv
+  sha256: cce52c4af99d1529cbf202100ef5d7d2ed240080b342f193b12cf2bb5a770304
+- old_path: 20240815_card/results/decode_outputs/p4_fixed_opt_fx.tsv
+  path: studies/20240815_card/results/20261124_import_p4_archive/p4_fixed_opt_fx.tsv
+  sha256: a7482191d4c159d4d5f218aff1537a1cced19995260fc748ceba4346c4786e24
+- old_path: 20240815_card/results/decode_outputs/p4_opt_fx.tsv
+  path: studies/20240815_card/results/20261124_import_p4_archive/p4_opt_fx.tsv
+  sha256: 7ac7f651b41547c00336723a156a59e8105e3763f84fde5079f7f4f173e436ea
+- old_path: 20240815_card/results/decode_outputs/val_greedy_per_trial.csv
+  path: studies/20240815_card/results/20261124_import_p4_archive/val_greedy_per_trial.csv
+  sha256: aa48da474d455ff20865ff7567fb0746eae82dd5aff5d289e9367948129895be
+- old_path: 20240815_card/results/logs/calib_20261016_dumpfixed_p4.log
+  path: studies/20240815_card/log/20261124_import_p4_archive/calib_20261016_dumpfixed_p4.log
+  sha256: 89ec11257137d5a33d2d9b04af7373630ef667806630d7afa444b6622b53e6ea
+- old_path: 20240815_card/results/logs/calib_20261016_optfixed_p4.log
+  path: studies/20240815_card/log/20261124_import_p4_archive/calib_20261016_optfixed_p4.log
+  sha256: 1716b6b2f5698b573837117a1ce7d4fa8139da58cd9a25364c800a70f5aae37f
+- old_path: 20240815_card/results/logs/calib_20261017_bigru48k_train.log
+  path: studies/20240815_card/log/20261124_import_p4_archive/calib_20261017_bigru48k_train.log
+  sha256: 837d3265ebbc8c96f0ad0be16113e4eb4a55e991de8d7eeb70a4f7bfbd49e834
+- old_path: 20240815_card/results/logs/dump_p4_logits_20261014.log
+  path: studies/20240815_card/log/20261124_import_p4_archive/dump_p4_logits_20261014.log
+  sha256: ad5fe14b6c3bc06994ff707c6600a286223338a2aa8fc00d8e6d5511f9807ff7
+- old_path: 20240815_card/results/logs/eval_p4_retrain_20261014.log
+  path: studies/20240815_card/log/20261124_import_p4_archive/eval_p4_retrain_20261014.log
+  sha256: c6d41f7db200f2fb0893da11f12b1c2a04f65c4a5e490d009ab717787d6df051
+- old_path: 20240815_card/results/logs/p4_opt_rescore_20261014.log
+  path: studies/20240815_card/log/20261124_import_p4_archive/p4_opt_rescore_20261014.log
+  sha256: 078849e9c5ee0036b114d5ac1c4532af71ddafb68bec41b5079f2b45ef982c8d
+- old_path: 20240815_card/results/logs/train_p4_20261013.log
+  path: studies/20240815_card/log/20261124_import_p4_archive/train_p4_20261013.log
+  sha256: b3abbde8cd08147631c6cb0d665ed5d1986c318ee778971e9fd3b8436ddb4bea
