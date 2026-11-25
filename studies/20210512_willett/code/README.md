@@ -24,6 +24,8 @@ The export command writes `data/processed/t5/<release>_<date>.h5` for one sessio
 
 `prepare_data.py` writes snippet libraries to `data/derived/dryad_wh70rxwmv/pkl/synthetic_snippets/<partition>/` and memory-mapped folds to `data/derived/dryad_wh70rxwmv/npy/synthetic_sentences/<partition>/`. Generation and training can read existing inputs in the former Step 3 directory.
 
+The trainer writes new checkpoints to `results/<run_id>/runtime/`. The decoder uses graph text under `data/derived/dryad_wh70rxwmv/txt/wfst_bigram/` and stores parsed graph caches under `data/derived/dryad_wh70rxwmv/pkl/wfst_bigram/`.
+
 ## Pipeline order
 
 ```text

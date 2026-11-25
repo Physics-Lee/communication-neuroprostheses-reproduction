@@ -25,6 +25,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
 from study_paths import run_output, study_path
+from handwriting_runs import handwriting_run
 
 import os
 import subprocess
@@ -32,8 +33,8 @@ import time
 
 PY = r'/c/Users/user\.conda\envs\reproduce_20210512_willett\python.exe'
 REPO = study_path("20210512_willett")
-RUNS = os.path.join(REPO, 'data', '20210512_willett', 'runs')
-BLOCKS_CKPT = os.path.join(RUNS, 'HeldOutBlocks_synth', 'model_step100000.pt')
+BLOCKS_RUN = handwriting_run('HeldOutBlocks_synth')
+BLOCKS_CKPT = os.path.join(BLOCKS_RUN, 'model_step100000.pt')
 PROGRESS = os.path.join(run_output("20210512_willett"), 'PROGRESS.md')
 BLOCKS_LOG = os.path.join(run_output("20210512_willett"), 'train_HeldOutBlocks.log')
 INFER_LOG = os.path.join(run_output("20210512_willett"), 'infer_HeldOutBlocks.log')
@@ -199,19 +200,19 @@ def main():
     beat('GPU 空闲：开始 infer.py（HeldOutBlocks 推理）')
     rc = run_step([PY, os.path.join(study_path("20210512_willett", "code"), 'torch_port', 'infer.py'),
                    '--partition', 'HeldOutBlocks',
-                   '--runDir', os.path.join(RUNS, 'HeldOutBlocks_synth')], INFER_LOG)
+            '--runDir', BLOCKS_RUN], INFER_LOG)
     beat(f'infer.py 退出码 {rc}（日志 result/infer_HeldOutBlocks.log）')
     if rc != 0:
         beat('推理失败，看门狗退出，等会话介入')
         return
 
     rc = run_step([PY, os.path.join(study_path("20210512_willett", "code"), 'step5_eval_from_errcounts.py'),
-                   os.path.join(RUNS, 'HeldOutBlocks_synth', 'step5_inference'), 'HeldOutBlocks'],
+            os.path.join(BLOCKS_RUN, 'step5_inference'), 'HeldOutBlocks'],
                   os.path.join(run_output("20210512_willett"), 'eval_blocks_watchdog.log'))
     beat(f'step5 汇总退出码 {rc}（日志 result/eval_blocks_watchdog.log）')
 
     rc = run_step([PY, os.path.join(study_path("20210512_willett", "code"), 'step6_make_kaldimat.py'),
-                   '--inferDir', os.path.join(RUNS, 'HeldOutBlocks_synth', 'step5_inference'),
+            '--inferDir', os.path.join(BLOCKS_RUN, 'step5_inference'),
                    '--cvPart', 'HeldOutBlocks'],
                   os.path.join(run_output("20210512_willett"), 'kaldimat_blocks_watchdog.log'))
     beat(f'kaldiMat 生成退出码 {rc}')

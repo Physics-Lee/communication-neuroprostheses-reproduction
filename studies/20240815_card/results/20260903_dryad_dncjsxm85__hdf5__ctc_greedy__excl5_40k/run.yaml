@@ -1,0 +1,15 @@
+id: 20260903_dryad_dncjsxm85__hdf5__ctc_greedy__excl5_40k
+study: 20240815_card
+dataset_id: dryad_dncjsxm85
+release_id: null
+input_format: hdf5
+decoder: ctc_greedy
+legacy_directory: studies/20240815_card/data/20241009_card_BtoT25/run_excl5_40k
+native_files:
+- results/20260903_dryad_dncjsxm85__hdf5__ctc_greedy__excl5_40k/runtime/checkpoint/args.yaml
+- results/20260903_dryad_dncjsxm85__hdf5__ctc_greedy__excl5_40k/runtime/checkpoint/best_checkpoint
+- results/20260903_dryad_dncjsxm85__hdf5__ctc_greedy__excl5_40k/runtime/checkpoint/val_metrics.pkl
+- results/20260903_dryad_dncjsxm85__hdf5__ctc_greedy__excl5_40k/runtime/train_val_trials.json
+- log/20260903_dryad_dncjsxm85__hdf5__ctc_greedy__excl5_40k/training_log
+checkpoint: runtime/checkpoint/best_checkpoint
+run_start_date: '2026-09-03'

@@ -2,7 +2,7 @@
 """Rapid-calibration Step 3 prep (notes/20260903_rapid_calibration_plan.html).
 
 Builds, for one target (excluded) day and an N-trial budget:
-  D:\\repositories\\20240815_card\\data\\20241009_card_BtoT25\\ft_<day>_N<N>\\
+  data/derived/<release>/hdf5/rapid_calibration/ft_<day>_N<N>/
     t15.* session dirs:
       - 40 kept days: EMPTY data_train.hdf5 (0 trials; empty-day patch skips them)
       - target day:   data_train.hdf5 = first N trials, data_val.hdf5 = full val
@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
-from study_paths import study_path
+from study_paths import derived_data_path, study_path
 
 import os
 import shutil
@@ -31,7 +31,7 @@ from omegaconf import OmegaConf
 
 SRC_DATA = study_path("20240815_card", 'data/extracted/hdf5_data_final')
 STEP2 = study_path("20240815_card", 'data/20241009_card_BtoT25/run_excl5_40k')
-FT_BASE = study_path("20240815_card", 'data/20241009_card_BtoT25')
+FT_BASE = derived_data_path("20240815_card", "hdf5/rapid_calibration")
 EXCLUDE = ["t15.2025.01.12", "t15.2025.03.14", "t15.2025.03.16",
            "t15.2025.03.30", "t15.2025.04.13"]
 

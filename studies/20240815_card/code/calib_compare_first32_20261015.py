@@ -29,7 +29,7 @@ import numpy as np
 import pandas as pd
 
 REPO = study_path("20240815_card")
-P4 = os.path.join(REPO, r"data\20241009_card_BtoT25\run_p4_20261013")
+P4 = study_path("20240815_card", "data/20241009_card_BtoT25/run_p4_20261013")
 OUT_CSV = os.path.join(REPO, r"result\calib_20261015_paper_vs_ours_first32.csv")
 OUT_FIG = os.path.join(REPO, r"result\figs\summary\card24_first32_paper_vs_ours.png")
 

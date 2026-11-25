@@ -1,0 +1,18 @@
+{
+  "aggregate_PER": 0.10306339389253961,
+  "aggregate_PCT": 10.306339389253962,
+  "total_edit_distance": 4266,
+  "total_true_len": 41392,
+  "n_trials": 1426,
+  "n_sessions_with_val": 41,
+  "per_by_corpus": {
+    "Freq words": 0.03974706413730804,
+    "Switchboard": 0.10672074970277642,
+    "Openwebtext": 0.15038033937975423,
+    "Random": 0.15136876006441224,
+    "Harvard": 0.16621983914209115
+  },
+  "checkpoint_saved_val_PER": 0.10219365358352661,
+  "greedy_spec": "argmax->unique_consecutive->drop blank; agg=sum(ed)/sum(len)",
+  "timestamp": "2026-10-14 07:26:19"
+}

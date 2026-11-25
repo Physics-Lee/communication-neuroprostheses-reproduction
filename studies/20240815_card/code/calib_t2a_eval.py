@@ -21,12 +21,13 @@ from omegaconf import OmegaConf
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from calib_online_sim import (  # noqa: E402
-    REPO, P4, DATA_DIR, load_trials, collate, train_transform, decode_trial,
+    P4, DATA_DIR, load_trials, collate, train_transform, decode_trial,
     make_optimizer, build_model,
 )
 import editdistance  # noqa: E402
+from study_paths import release_prefix, study_path  # noqa: E402
 
-T2A = os.path.join(REPO, "data", "20241009_card_BtoT25", "run_t2a_excl0110_20261016")
+T2A = study_path("20240815_card", f"data/checkpoints/{release_prefix('20240815_card')}/run_t2a_excl0110_20261016")
 TARGET = "t15.2025.01.10"
 
 

@@ -1,0 +1,418 @@
+session,vocab,loop,sentence_label,pred_phonemes,edit_distance,true_len
+t17.2024.03.26,50w,CL,They hope I have my nurse.,DH EY  |  HH OW  |  Y UW  |  HH AE M AH L IY  |  N ER S  | ,7,20
+t17.2024.03.26,50w,CL,"No, my nurse is not going outside.",D UW  |  M AY  |  N ER S  |  IH Z  |  G AA T  | ,14,28
+t17.2024.03.26,50w,CL,My hope is my faith.,AY  |  HH OW P  |  IH Z  |  N AE  |  B EY TH  | ,4,17
+t17.2024.03.26,50w,CL,How do you do that right?,AY  |  N IY D  |  Y UW  |  D EH  |  HH IY R IY  | ,12,20
+t17.2024.03.26,50w,CL,I clean my glasses.,AY  |  G L IY N S  |  M AY  |  G L AE S AH Z  | ,2,17
+t17.2024.03.26,50w,CL,How is it good?,DH EY  |  D UW  |  IY Z  |  T  |  G UH D  | ,7,13
+t17.2024.03.26,50w,CL,You hope my family is good.,Y UW HH OW L  |  HH M OW  |  F AE AH L IY  |  IH Z  |  G UH D  | ,5,24
+t17.2024.03.26,50w,CL,I have no need.,AY  |  HH AE V  |  N OW T  |  N IY D  | ,1,13
+t17.2024.03.26,50w,CL,Feel it here.,F AE M AH L IY  |  IH T  |  HH AA IY R  | ,5,11
+t17.2024.03.26,50w,CL,I hope I need my faith.,AY  |  HH OW P  |  AY  |  N AE  |  M AY  |  F EY TH  | ,2,19
+t17.2024.03.26,50w,CL,I hope I have my computer.,AY  |  HH OW P  |  AY  |  HH AE V  |  M AY  |  K AH M NG  |  IH T  | ,4,24
+t17.2024.03.26,50w,CL,They are not going up.,DH EY  |  AA R  |  N OW  |  G OW IH NG  | ,5,18
+t17.2024.03.26,50w,CL,What is my need?,W AH T  |  IH Z  |  N IY  |  N IY D  | ,2,14
+t17.2024.03.26,50w,CL,You hope they are here.,Y UW  |  HH OW P  |  P  |  DH EY  |  AA  |  AA R  |  HH IY R  | ,4,17
+t17.2024.03.26,50w,CL,You feel very good.,Y UW  |  F IY L  |  V EH R IY  |  G UH D  | ,0,16
+t17.2024.03.26,50w,CL,Help do it.,AY P  |  DH IH  |  IH T  | ,5,11
+t17.2024.03.26,50w,CL,It is that bad.,AY  |  IH Z  |  D UW  |  P L IY D  | ,8,14
+t17.2024.03.26,50w,CL,Is my music bad?,IH Z  |  M AY  |  M Y UW T  |  P B AE N  | ,5,17
+t17.2024.03.26,50w,CL,Very right.,V EH R  |  R AY T  | ,1,9
+t17.2024.03.26,50w,CL,"Yes, they do it.",Y EH Z  |  N EY  |  N AA T  |  IH Z  | ,6,13
+t17.2024.03.26,50w,CL,I like how comfortable my nurse is.,AY  |  L AY K  |  AY  |  K AH M F ER T AH B AH L  |  M AY  |  N ER,7,30
+t17.2024.03.26,50w,CL,I bring it closer.,AY  |  M Y IY IH NG  |  AW T  |  G L AE S  | ,7,16
+t17.2024.03.26,50w,CL,Hope you are hungry.,HH OW  |  Y UW  |  AA R  |  HH AH NG R IY  | ,2,17
+t17.2024.03.26,50w,CL,Do not clean it up.,D UW  |  N AA T  |  K G L OW IH N NG  |  IH T  |  AH P  | ,4,18
+t17.2024.03.26,50w,CL,Are you it?,AY R  |  Y UW  |  IH T  | ,1,9
+t17.2024.03.26,50w,CL,How very right.,AY  |  HH V EH R IY  |  R AY T  | ,3,12
+t17.2024.03.26,50w,CL,Family is okay.,F IY L  |  T EH L IY  |  IH Z  |  OW K  | ,6,14
+t17.2024.03.26,50w,CL,I have glasses.,AY  |  HH AE V  |  G L AE Z  | ,2,13
+t17.2024.03.26,50w,CL,My nurse is not very hungry.,M AY  |  N ER S  |  IH Z  |  N AA T  |  V EH IY R IY  |  HH AH NG G R IY  | ,1,26
+t17.2024.03.26,50w,CL,I am not going outside.,AY  |  HH AE L  |  N AA T  |  K AH M IH NG  |  AW T  | ,8,20
+t17.2024.03.26,50w,CL,Do it like that.,DH EY  |  IH T  |  AY K  |  DH AE T  | ,3,14
+t17.2024.03.26,50w,CL,You bring it.,Y UW  |  V EH R IY  |  IH T  | ,4,11
+t17.2024.03.26,50w,CL,They have no music.,DH EY  |  HH AE V  |  N AA T  |  M Y UW Z  | ,4,17
+t17.2024.03.26,50w,CL,What do I tell you?,W AH T  |  D UW  |  UW T  |  IH T  |  T EH L  |  Y UW  | ,5,16
+t17.2024.03.26,50w,CL,My nurse is very good.,M AY  |  N ER S  |  T AY T  |  V EH R IY  |  G UH D  | ,3,19
+t17.2024.03.26,50w,CL,I tell you my family is not thirsty.,AY  |  N OW  |  Y UW  |  M AY  |  F AE M AH L IY  |   |  IH Z  |  N AA T  | ,10,32
+t17.2024.03.26,50w,CL,It is that.,IH T  |  IH Z  |  DH AE T  | ,0,10
+t17.2024.03.26,50w,CL,Please do not do that.,P L IY T  |  D UW  |  N AA T  |  N IY D  |  DH AE T  | ,4,19
+t17.2024.03.26,50w,CL,Is my nurse coming?,IH T Z  |  M AY  |  R ER D  |  K AH M IH NG  | ,3,16
+t17.2024.03.26,50w,CL,I tell you my family is not hungry.,AY  |  D UW L  |  Y UW  |  Y UW  |  HH AE V  |  F AE M AH L IY  |  IH Z  |  IH Z  |  N AA T  |  HH AH R IY  | ,13,33
+t17.2024.04.02,125k,CL,Forms for things.,M R  |  ER  |  TH IH NG Z  | ,7,15
+t17.2024.04.02,125k,CL,Putting things on the back burner.,W AH T TH IH NG  |  DH IY K  |   |  AA N  |  DH AH  |  B IH G  |  M AO R  | ,12,26
+t17.2024.04.02,125k,CL,I think it's caused a lot.,AY  |  TH IH NG K  |  IH T S  |  G EH T AH D  |  AO L W AH N  | ,9,22
+t17.2024.04.02,125k,CL,Measurements of about half a million distant galaxies.,SH IY  |  EH Z  |  AH V  |  AH N  |  N UW T  |  AH V M EH N T L IY  |  L AE D  |  T UW  |  K L AH K N D  | ,33,48
+t17.2024.04.02,125k,CL,It already costs society much more because of it.,IH F V  |  L AO R D  |  L AH K AH S T  |  M AY D  |  AH M SH AH N  |  W AH  |  DH AH  |  IH N  | ,30,44
+t17.2024.04.02,125k,CL,That's what we had.,DH AE T S  |  W AA T IY  |  W IY  |  HH AW D  | ,3,16
+t17.2024.04.02,125k,CL,Measuring it is not an exact science.,M EH ZH IH NG  |  AW T S  |  IH Z  |  N AA T  |  AH N  |  AE K S AH K S  |  T AW UW  | ,14,33
+t17.2024.04.02,125k,CL,I hope your baby likes his toy.,AY  |  HH OW P  |  Y UW  |  R IH B L B  |  L IH K S  |  HH IH Z  |  T AY  | ,7,27
+t17.2024.04.02,125k,CL,Civil things that clog the courts.,T AH F ER S IH NG K Z  |  DH AE T  |  K AH K  |  DH AH  |  G EH S  | ,14,29
+t17.2024.04.02,125k,CL,I live near a Walmart.,AY  |  EH V  |  N EH R  |  AH  |  L AO L  |  M AO R D  | ,7,20
+t17.2024.04.02,125k,CL,My brother lives.,W AH  |  B AA TH ER  |  L EH IH V Z  | ,6,14
+t17.2024.04.15,125k,OL,I'm a real movie buff.,AY M  |  AH  |  R IH L  |  B OW V IY  |  AH V  | ,5,18
+t17.2024.04.15,125k,OL,An informal kind of situation.,IH Z  |  AH N V AO R D  |  K L AY N  |  AH V  |  S AH JH AH N  | ,14,29
+t17.2024.04.15,125k,OL,I mainly leave that up to them.,W AY W EH L T L  |  L AY V  |  DH AE T  |  AH V AH T  |  T UW  |  DH EH  | ,11,26
+t17.2024.04.15,125k,OL,For a rifle there's no waiting.,AO R  |  AH  |  R EY F  |  IH R  |  IH Z  |  N OW N  |  W EY T IY  | ,11,26
+t17.2024.04.15,125k,OL,Do you watch cartoons a lot?,S OW  |  Y UW  |  W AH CH  |  G R AH N Z  |  AH  |  L AA D  | ,8,24
+t17.2024.04.15,125k,OL,It seems like he would develop pride.,HH S OW M  |  L AY K  |  Y UW  |  B AA D  |  D EH V AH L AH  |  B R AY D  | ,13,32
+t17.2024.04.15,125k,OL,Both the good and the bad.,B AH T  |  DH AH  |  G UH D  |  AE N D  |  DH AH  |  B IH D  | ,4,22
+t17.2024.04.15,125k,OL,We've got two living areas.,IY V  |  G UH D  |  T UW N  |  AH V  |  R IY R N Z  | ,11,23
+t17.2024.04.15,125k,OL,This guy's fixing to do something.,DH AE T S  |  G AE N Z  |  B AE K IH NG  |  T UW  |  D UW  |  S AW N TH IY  |   | ,11,28
+t17.2024.04.15,125k,OL,I thought about that.,AY TH  |  AH B AW T  |  DH AE T  | ,3,15
+t17.2024.04.15,125k,OL,It was very nice talking to you.,IH Z  |  OY  |  T AY Z  |  K AY K  |  T UW  |  S AH P  | ,17,28
+t17.2024.04.15,125k,OL,I think nursing homes can be good.,AY  |  TH NG K  |  AH T  |  HH OW M  |  K N V  |  G UH D Z  | ,12,29
+t17.2024.04.15,125k,OL,An economic incentive for people to vote.,G OW T  |  IH K N AH S P AE K  |  IH IH S IH F  |  F AO  |  P IY P AH L  |  T UW  |  OW V  | ,17,38
+t17.2024.04.15,125k,OL,Something looks a little nicer.,S AH B TH IH NG  |  L AO K K S  |  AH  |  L IH T AH L  |  N IH N V ZH IH R  | ,9,25
+t17.2024.04.15,125k,OL,My parents used to have dogs.,B AY  |  EH R AH N T  |  Y UW Z D  |  T UW  |  HH OW V  |  T EY K S Z  | ,8,28
+t17.2024.04.15,125k,OL,Camping for you in a motor home.,G AH B  |  IH N T  |  F AO R  |  Y UW  |  IH N  |  AH  |  B OW D T ER  |  W OW  | ,10,28
+t17.2024.04.15,125k,OL,He would get the glory.,HH IY  |  W AA N T  |  EY K T  |  DH AH  |  K L AO ZH ER  | ,8,20
+t17.2024.04.15,125k,OL,In the field that I was in.,IH N  |  D AH B OY L  |  DH AE T  |  AY  |  AH  |  TH AW N  | ,10,24
+t17.2024.04.15,125k,OL,Which I thought was interesting.,CH EY CH JH  |  IH DH  |  DH AE T  |  UW  |  W AA Z  |  IH N T ER AH T IH NG  | ,11,24
+t17.2024.04.15,125k,OL,Can you imagine?,K AE T  |  Y UW Z  |  AH V IH JH R AH N  | ,6,14
+t17.2024.04.15,125k,OL,In our little local paper.,AY  |  AW AO ER  |  W IH DH  |  L AO N  |  K D  |  P EH R  | ,14,23
+t17.2024.04.15,125k,OL,Carlos has big decisions to make.,R IH L  |  AO D  |  T IH Z  |  B AE K  |  D IH S IH ZH R AH N T AH UW D  |  B AE K  | ,17,31
+t17.2024.04.15,125k,OL,I don't know if I'd want one of those now.,AY  |  D N T  |  N AH  |  B AY  |  HH W OW N D  |  AH V  |  DH IH  |  N AW  | ,15,35
+t17.2024.04.15,125k,OL,Meet my pleasure.,B IY T  |  B IH  |  L AH N JH  | ,7,13
+t17.2024.04.15,125k,OL,I mean the Saturday night special stuff.,IH  |  W EH N D  |  S AO R T ER  |  S EY  |  S IH K R AH L D AH  | ,20,32
+t17.2024.04.15,125k,OL,I think they're getting ready to.,AY  |  TH IH NG K  |  DH EH R  |  K AH T  |  R EY  |  T AW N  | ,9,25
+t17.2024.04.15,125k,OL,Unless you're playing it.,AH L  |  IY Z DH ER R  |  F UH L  |  AH  |  N T  | ,12,19
+t17.2024.04.15,125k,OL,Just a natural fact of life.,JH AH S  |  AH  |  EH L OW JH R AH L  |  F IH K T  |  AH V  |  L AY F  | ,7,26
+t17.2024.04.15,125k,OL,The payroll is lower that way.,DH AH  |  P EH R AH L  |  L IH  |  L AO L ER D  |  D  |  W EY  | ,10,23
+t17.2024.04.15,125k,OL,It's aking profits.,IH T  |  AH  |  K G AE F AH S  | ,10,17
+t17.2024.04.15,125k,OL,No you don't have to put it down.,AY Y UW  |  D OW N T  |  HH AE V  |  T UW  |  P UH T  |  IH T  |  N AW T  | ,5,29
+t17.2024.04.15,125k,OL,I do not like to do that.,AY  |  D OW N T  |  L AY EY K  |  T AH  |   |  N  | ,10,23
+t17.2024.04.15,125k,OL,Image copyright.,D AE P  |  AH B OY R IY  | ,10,13
+t17.2024.04.15,125k,OL,My mother was real heavy into crafts.,AY EH N D  |  DH ER  |  AH D  |  R IH L IY  |  HH AE V  |  IH  |  K AH Z  | ,20,33
+t17.2024.04.15,125k,OL,And you really begin to develop an interest in it.,AY  |  Y UW  |  R IH L IY  |  B IH NG  |  T UW  |  S AH V AH B  |  N  |  EH N JH R IY  |  N  |  IH T  | ,18,46
+t17.2024.04.15,125k,OL,More or less alike.,F AO R  |  AO K L OW S Z  |  AO K  | ,8,16
+t17.2024.04.15,125k,OL,Are you recycling?,R AY  |  Y UW  |  R IY L K IY NG  | ,7,16
+t17.2024.04.15,125k,OL,You can do it as long as you want.,Y UW  |  K AE N  |  D UW  |  IH Z  |  AE T  |  L AY NG  |  IH Z  |  W AA T  | ,8,31
+t17.2024.04.15,125k,OL,I like ice skating.,AY  |  L AY K  |  IH N S S IH K IH NG  | ,6,16
+t17.2024.04.15,125k,OL,I was surprised at the ending.,DH Y  |  W AA Z  |  D IH P R AH D Z  |  AE T  |  DH AH  |  AA N IH NG  | ,9,26
+t17.2024.04.16,125k,OL,He came to school up here.,AY  |  K AH M  |  DH UW  |  K AO R L  |  B IY IH R  | ,12,22
+t17.2024.04.16,125k,OL,So do you go to college right now?,N OW  |  D UW  |  Y UW  |  G AA T  |  K AA L AH R IY  |  T AH M  | ,12,28
+t17.2024.04.16,125k,OL,If they're above the knee they turn into shorts.,V IY V  |  DH R  |  B AH V AY D  |  DH IH  |  AY  |  AE Z  |  DH EY  |  D R AH N L  |  AA  |  R AH T  | ,23,36
+t17.2024.04.16,125k,OL,It helped him to have a close relationship.,AY  |  HH AE V N D  |  AY M  |  T UW  |  HH AE V  |  IH K L IH D T  |  R L EY ZH AH N SH UW P  | ,16,38
+t17.2024.04.16,125k,OL,That gives us special time together too., |  G IH V Z  |  AA N D  |  EH R AH L IH  |  T AA G EH DH ER  |  T UW  | ,14,33
+t17.2024.04.16,125k,OL,And remember how they used poison gas?,R EH EH V ER HH AW  |  DH EY  |  Y UW  |  P AY Z K AE Z  | ,17,33
+t17.2024.04.16,125k,OL,Before they draft you.,B IH F AO R  |  DH EY  |  HH JH AE S UW  | ,6,18
+t17.2024.04.16,125k,OL,It think it's Jamaica.,S EH L  |  TH IH NG K  |  IH T S  |  R AH M EH  | ,7,19
+t17.2024.04.16,125k,OL,But I've been at companies where people barely work two or three hours a day.,M AY  |  HH AE V  |  S AH N  |  K AH M AY N  |  IH Z  |  EH R  |  R IY L  |  AA EH R  |  L IY  |  W ER K  |  DH EH R EH N Z TH ER  |  AH ER S  |  DH AH  |  T UW  | ,33,62
+t17.2024.04.16,125k,OL,It's kinds of neat.,IH T S  |  AE Z  |  AH V  |  N IY T  | ,4,17
+t17.2024.04.16,125k,OL,Some of them are formal two year programs.,S UW M  |  V  |  S EH M  |  AA R  |  F AO R M AH L  |  AY  |  Y IH R  |  F AO R AW M Z  | ,10,37
+t17.2024.04.16,125k,OL,I don't know her politics.,AY  |  D OW N T  |  N UW  |  HH EH  |  P AA L T AH  |  M IH K S  | ,5,22
+t17.2024.04.16,125k,OL,I absorbed all of that movie in one sitting.,AY  |  B AE N S IH L R D  |  AO L  |  AH V  |  DH AE T  |  M AY V IY  |  Y UW N  |  W OW N  |  S IH IH NG  | ,12,38
+t17.2024.04.16,125k,OL,It's a casual working space.,IH T S  |  AH  |  AE ZH AH W AH L  |  W AA R K IH  |  S P EH N S  | ,6,25
+t17.2024.04.16,125k,OL,It's got a rounded front on it.,IH Z  |  AH AH  |  R IH T AH L  |  R IH T  |  AH N  |  IH T  | ,14,29
+t17.2024.04.16,125k,OL,I think that would be a wonderful way to do it.,DH IY  |  TH IH NG K  |  DH AE T  |  W AH T  |  AH V P IY  |  AH  |  W AO R IY F AH L  |  T W EY  |  T UW  |  D UW  |  IH T  | ,12,41
+t17.2024.04.16,125k,OL,Your tuition reimbursement.,Y AO R  |  D OW N T  |  R IH T AH B AO T M AH N T  | ,12,24
+t17.2024.04.16,125k,OL,I can't even remember.,AY  |  G AE N T  |  IY V  |  R IH B F ER  | ,7,20
+t17.2024.04.16,125k,OL,Interstate driving.,IH N  |  JH R OY L IY  |  T R EY V IH NG  | ,8,16
+t17.2024.04.16,125k,OL,Humans living on the edge are even more unstable than usual.,HH IY  |  M AE N  |  IH V  |  AH N DH AH  |  CH JH  |  AH  |  F Y UW  |  M AO R  |  AH N  |  S EY B AH L  |  DH AH N  |  D IH ZH L  | ,24,56
+t17.2024.04.16,125k,OL,My husband didn't like that.,M AY  |  HH EH M AH N T  |  DH AE T  |  L AY K  |  DH AE T  | ,9,26
+t17.2024.04.16,125k,OL,It was fun though.,IH T  |  T EH L  |  V OW T  |  DH AE T  | ,8,14
+t17.2024.04.16,125k,OL,The public puts up with it.,DH EY  |  B IH B L IH K  |  B EH T  |  AH P  |  AW N IH T  | ,10,25
+t17.2024.04.16,125k,OL,Which I never knew existed.,ER  |  AY  |  L EH V ER IH NG  |  N AA IH K S EH S T AH D  | ,11,23
+t17.2024.04.16,125k,OL,This could be the tipping point for Bolt.,DH IH T S  |  G AA T  |  B IY  |  DH AH  |  D EY B IY  |  P EY  |  F AO R  |  B AH L T  | ,13,34
+t17.2024.04.16,125k,OL,"With everybody in the group so quiet, you could hear a pin drop.",AH DH  |  EH V ER IY  |  B AA T IY  |  IH N  |  JH R  |  T DH AE  |  K R EY T  |  Y UW  |  JH AO R  |  Y EH R D  |  AH  |  B IH N R UW P  | ,27,55
+t17.2024.04.16,125k,OL,Austin is so pretty.,W AH N Z  |  DH AH  |  D EY  |  P R IH T IY  | ,8,18
+t17.2024.04.16,125k,OL,Prince of Persia.,P R IH T  |  W AH  |  D EH ER  | ,8,14
+t17.2024.04.16,125k,OL,Survey system.,Y EH V  |  T UW T AH M  | ,6,12
+t17.2024.04.16,125k,OL,I don't know what advice I'd give them.,AY  |  D N OW N T  |  Z  |  AY N D  |  B AY OY D  |  DH AE  |  G EY F  |  DH EH M  | ,15,31
+t17.2024.04.16,125k,OL,He doesn't really enjoy doing it.,HH IY  |  D OW N T  |  R AH R  |  R AH L IY  |  L IH N JH OY  |  D UW IH NG  |  IH T  | ,10,28
+t17.2024.04.16,125k,OL,Now we start in May.,D UW  |  W AH  |  W EY  |  S T AA R  |  AH N  |  B EY  | ,9,18
+t17.2024.04.16,125k,OL,Probably millions of dollars.,P R EH B L IY  |  M IH L IY T  |  AH V  |  DH EH R Z  | ,11,26
+t17.2024.04.16,125k,OL,Security measures.,D AH  |  K EY D  |  M EH JH IY Z  | ,11,16
+t17.2024.04.16,125k,OL,Because the criminals know that.,B IH K EH Z  |  DH AH  |  R AH B EH L Z  |  DH AE T  | ,9,26
+t17.2024.04.16,125k,OL,"Drawing, painting and the visual arts.",JH IY IH NG  |  P OY T IH NG  |  EH N  |  DH AH  |  V IH R ZH AH W AH L  |  K AA Z  | ,12,33
+t17.2024.04.16,125k,OL,"Again, our choices are not made in a vacuum.",G OW  |  AW ER  |  CH AY N T  |   |  AA R  |  N AW  |  B AY N T  |  IH N  |  AH V  |  B IH K T UW M  | ,17,37
+t17.2024.04.16,125k,OL,We're not quite up to that sort of thing.,W IY R  |  T AA D  |  W EY T  |  AH B AH T  |  DH AE T  |  S T R UW D  |  AH V TH IH NG  | ,11,35
+t17.2024.04.16,125k,OL,This guy's beating you up.,DH AH  |  G AY Z  |  B EH T IH NG  |  Y UW  |  AH P  | ,3,20
+t17.2024.04.16,125k,OL,His daddy owned a boat shop.,IH Z  |  N AA T IY  |  W AH N Z  |  AH  |  B OW T SH R OW  | ,10,23
+t17.2024.04.17,125k,CL,Somebody was telling me.,S B OW T  |  AH S T AO IH NG  |  M IY  | ,11,21
+t17.2024.04.17,125k,CL,If someone is ill.,AH V  |  S AH W AA N T  |  DH AH  |  IH L  | ,7,16
+t17.2024.04.17,125k,CL,Also swims in college.,IH T  |  S T AH M Z  |  IH N  |  K AH L EY  | ,9,20
+t17.2024.04.17,125k,CL,It's still pretty rural.,IH T S  |  DH AH  |  B EH T IY  |  R UH AH L  | ,8,21
+t17.2024.04.17,125k,CL,We're a long way away.,W UH R  |  AH  |  L AO K  |  W EY N  |  AH W EY EY  | ,4,17
+t17.2024.04.17,125k,CL,Some of them are formal two year programs.,IH P  |  AH V  |  DH EH S  |  B AH V  |  DH EH M  |  AA EH R  |  AH IH ER R M OW L D  |  IH N  |  Y IH ZH  |  P R ER M T  | ,23,37
+t17.2024.05.06,125k,OL,It's like shrimp on the Gulf.,IH N S  |  L AO K CH IH P  |  DH AH  |  K AH V  | ,12,25
+t17.2024.05.06,125k,OL,The test is a booger.,DH AH  |  AH T S  |  AH Z AH  |  B IH G R  | ,7,18
+t17.2024.05.06,125k,OL,Just way in the back.,JH AH S  |  AY  |  T UW  |  B AE K  | ,8,18
+t17.2024.05.06,125k,OL,Particularly commercial productivity.,M AO R  |  K IH K S AH L ER R L IY  |  K AH N D EY ZH AH L  |  B IH N IH K S V S T  | ,19,34
+t17.2024.05.06,125k,OL,The parents are saying to skip it.,DH AH  |  P EH N T  |  AA ER  |  TH IH NG  |  T UW  |  S K AH V IH T  | ,9,30
+t17.2024.05.06,125k,OL,That's why I don't do as much as I'd like.,DH AE T S  |  W AY  |  AY  |  D UW  |  D UW  |  AE Z  |  AH CH  |  AE Z  |  AY D  |  L AY K  | ,4,35
+t17.2024.05.06,125k,OL,Exercise is not supposed to do that to you.,K IY Z  |  W AE Z IH N  |  AA N D  |  S IH F AO D  |  DH IH T  |  DH AE T  |  T UW  |  Y UW  | ,20,38
+t17.2024.05.06,125k,OL,It depends on whether one is physical or mental.,IH T  |  S AH P AW N Z  |  W AA N Z  |  AH  |  DH UW  |  W AH T  |  AH F  |  F AH  |  G OW  |  W AO R  |  M AE AH L  | ,22,44
+t17.2024.05.06,125k,OL,You know what I would love.,Y UW  |  N OW N D  |  EY  |  L IH V  | ,10,20
+t17.2024.05.06,125k,OL,My husband went over and painted it.,M AY  |  HH AE P AH D  |  W AH Z  |  AH V  |  AH B F AW N D  |  IH T  | ,16,34
+t17.2024.05.06,125k,OL,Regime Change.,R IY SH AH M  |  S T EY N JH  | ,5,11
+t17.2024.05.06,125k,OL,It was paid for.,IH T  |  W AA Z  |  F AY N D  |  F AO R  | ,3,15
+t17.2024.05.06,125k,OL,It's over on the other end.,IH T S  |  OW V ER  |  IH N  |  DH AH  |  AH DH ER AH N T  | ,4,22
+t17.2024.05.06,125k,OL,They keep calling back.,DH AE  |  G UW  |  G L OW IH NG  |  B EY K  | ,8,17
+t17.2024.05.06,125k,OL,I've seen all of this.,AY V  |  N EY D  |  IH L  |  AH V  |  DH IH Z  | ,5,17
+t17.2024.05.06,125k,OL,They hold it up to the sun God.,DH EY  |  HH OW D  |  IH T  |  AH V  |  T UW  |  DH AH  |  S UW N  |  K AA D  | ,4,28
+t17.2024.05.06,125k,OL,"After that season, Alex had a decision to make.",AH V  |   |  DH AE  |  S IY AH NG  |  HH AE K S  |  AE Z  |  AH  |  D N AH CH AH N  |  T UW  |  AO K  | ,18,42
+t17.2024.05.06,125k,OL,I can remember when our children were small.,AY  |  K AE S  |  P R IH M EH B IY ER  |  W AH N  |  EH  |  AH  |  T R AH N T  |  R IH S P AO L  | ,16,37
+t17.2024.05.06,125k,OL,I think it's probably more true.,AY  |  TH IH NG K  |  IH T S  |  R AA B AH B L IY  |  M AO R  |  T R UW  | ,1,28
+t17.2024.05.06,125k,OL,There is no real counter measurement.,DH EH R Z  |  D UW  |  R IH L  |  K UW D AH D  |  AH CH M AH N  | ,14,29
+t17.2024.05.06,125k,OL,Pets can be a lot of trouble.,B AH T  |  G N  |  B IY  |  AH  |  L AA T  |  AH V  |  D R AH P AH L  | ,7,28
+t17.2024.05.06,125k,OL,Then his voice started to get raspy.,DH IH T  |  HH IH Z  |  B AY  |  T EH R AH D  |  T UW  |  G EH T  |  T R AE S M IY  | ,10,33
+t17.2024.05.06,125k,OL,I'll do something with the piano.,AY L  |  D OW  |  D AH TH IH NG  |  AA L DH  |  DH AH  |  B IY G  | ,9,26
+t17.2024.05.06,125k,OL,I took a leave.,AY  |  L UH K  |  AH  |  L IY V  | ,1,12
+t17.2024.05.06,125k,OL,The other thing to do.,DH AH  |  AH N ER  |  DH IY N  |  UW UW  | ,7,17
+t17.2024.05.06,125k,OL,He kind of has free run of the place.,HH IY  |  K AE N D  |  AH V  |  B AE T  |  HH IH Z AH  |  AH  |  AH V  |  DH AH L EY Z  | ,12,34
+t17.2024.05.06,125k,OL,We didn't really have one.,W IY  |  D EY D T  |  R IH L IY  |  HH AE V  |  AH N  | ,4,23
+t17.2024.05.06,125k,OL,You learn more about the characters and stuff.,Y UW  |  L T ER R N  |  M  |  M AO R  |  AH B AW T  |  DH AH  |  K ER R Z  |  AH D AH F  | ,13,37
+t17.2024.05.06,125k,OL,They're affectionate.,DH EH  |  AH  |  AE K AH N AH T  | ,4,14
+t17.2024.05.06,125k,OL,It's the reason I get annoyed.,IH T S  |  DH AH  |  R IY AH  |  AY  |  G EH S T  |  IH N L OY  | ,6,24
+t17.2024.05.06,125k,OL,You know meatless meals.,Y UW  |  N OW  |  M EY L AH S AH  |  M AO L Z  | ,4,18
+t17.2024.05.06,125k,OL,It seems like we pay the state.,IH T  |  S IH M Z  |  L AY K  |  W IY  |  P AH P B  |  DH AH  |  S AO T  | ,6,26
+t17.2024.05.06,125k,OL,We've enjoyed it.,W AY  |  AH N D JH OY D AH D T  |  IH T  | ,7,13
+t17.2024.05.06,125k,OL,Why they don't go with fourteen one.,W AY  |  DH EY  |  D UW  |  G OW  |  W IH DH  |  F AO R N IY  |  W AA N  | ,6,29
+t17.2024.05.06,125k,OL,Studying electronic technology.,AH T IY IH NG  |  L EH K CH AH L IY  |  T EH K AH L IH ZH IY AH  | ,15,29
+t17.2024.05.06,125k,OL,I don't know if it's that serious.,AY  |  D OW N T  |  N OW  |  AH V  |  IH T S  |  D AA N  |  N EH R IY AH L Z  | ,9,28
+t17.2024.05.06,125k,OL,As much as I enjoy them.,IH T  |  M AH CH SH  |  AE Z  |  AH  |  EH N JH OY  |  DH EH M  | ,4,21
+t17.2024.05.06,125k,OL,Do you go by the ads when you look at them?,IH  |  T UW  |  K EH  |  B IY  |  DH IY  |  AH N Z  |  W AH N  |  W IY  |  L AY K N  |  DH EH M  | ,16,37
+t17.2024.05.06,125k,OL,Now it doesn't bother me at all.,DH EY  |  W IH T  |  D UW AH  |  W AA DH  |  M IY  |  AH N D  |  EH L  | ,13,27
+t17.2024.05.06,125k,OL,She's the little girl.,CH IY N D  |  DH AH  |  L EY T  |  K ER L  | ,7,17
+t17.2024.05.07,125k,CL,It's been a few years.,IH T S  |  B AY N  |  AH  |  B OY  |  Y IH R Z  | ,4,19
+t17.2024.05.07,125k,CL,He said he's been saying one more.,HH IY  |  D AA D  |  HH IY Z  |  B AH N  |  S EY  |  W AA Z  |  M AO R  | ,7,28
+t17.2024.05.07,125k,CL,In legislation or in work.,IH N  |  L IH L EY ZH SH AH N  |  AO R  |  N OW N  |  AO R K  | ,9,24
+t17.2024.05.07,125k,CL,What have you done.,W AH T  |  HH AE V  |  Y UW  |  D OW N T  | ,2,15
+t17.2024.05.07,125k,CL,You would like it.,Y UW  |  W AA D  |  L AY K  |  IH T  | ,1,14
+t17.2024.05.07,125k,CL,I don't know why it's so hard to find.,AY  |  D OW N T  |  N OW  |  W  |  IH T  |  S AH  |  K AA R D  |  T UW  |  B OY N T  | ,7,33
+t17.2024.05.07,125k,CL,All of us could use one electric car right now.,AO L  |  AH V  |  AE T  |  K AA N D  |  Y UW  |  W AA N  |  L IH S K JH R  |  R AY T  |  T UW  | ,16,41
+t17.2024.05.07,125k,CL,They have been touring.,DH EY  |  HH AE V  |  N  |  S T AO R IH NG  | ,4,17
+t17.2024.05.07,125k,CL,Take a seat and enjoy the ride!,T EY K  |  AH  |  S IY N  |  AH N T  |  AH N JH T R OY  |  DH AH  |  G R AY D  | ,6,26
+t17.2024.05.07,125k,CL,Garlic is the only thing you're supposed to put in there.,K R AE B L IH K  |  IH Z  |  DH AH  |  AO L  |  TH IH NG  |  Y AO R  |  S AH B D T  |  T UW  |  B IH T  |  IH N  |  DH EH R  | ,14,47
+t17.2024.05.07,125k,CL,I haven't really priced it out.,AY  |  HH AE V  |  R IH D B P R EY S T AH  |  IH T  | ,11,26
+t17.2024.05.07,125k,CL,It was not Puerto Rican.,IH T  |  W AA Z  |  N AA T  |  P AO R IY  |  P R EY K AH G AH N  | ,8,24
+t17.2024.05.07,125k,CL,What would you buy?,W AH T  |  W UH D  |  Y UW  |  B AY  | ,0,14
+t17.2024.05.07,125k,CL,I was reading something in the paper.,AY  |  W AA Z  |  R EH D IH NG  |  S AH M TH IH NG  |  IH N  |  DH AH  |  B EY B ER  | ,2,30
+t17.2024.05.07,125k,CL,They're so young.,DH EH R  |  S OW  |  Y IH NG  | ,1,11
+t17.2024.05.07,125k,CL,I'll probably have to sell the prize I get.,AY L  |  B R AH B AH B L IY  |  HH AE V  |  T UW  |  S EY  |  DH AH  |  P R OY N Z  |  AY  |  K G IH T  | ,8,37
+t17.2024.05.07,125k,CL,Outside or inside?,AW T S AY D  |  F AO R  |  IH N T AY T  | ,3,15
+t17.2024.05.07,125k,CL,And I guess maybe that's the way it is.,IH N T  |  AY  |  G EH Z  |  B EY B AH  |  DH AE T  |  DH AH  |  W EY  |  IH T  |  IH S  | ,7,32
+t17.2024.05.07,125k,CL,It's nice to have another person there.,IH T S  |  L AY Z  |  T UW  |  HH AE V  |  AA N DH ER  |  P EY S AH N  |  DH EH R  | ,5,31
+t17.2024.05.07,125k,CL,She acts like she wants to chew their leg off.,SH R IY  |  AE K S L AY K  |  SH IY  |  W AA N T  |  T UW  |  SH OW  |  DH EH R  |  L AY K  |  AH V  | ,10,38
+t17.2024.05.07,125k,CL,It was really enjoyable.,IH T S  |  W AA Z  |  R IH L IY  |  EH JH OY AH B AH L  | ,2,21
+t17.2024.05.07,125k,CL,The term was going around.,DH AH  |  S T R AY M  |  B AE Z  |  G OW IH NG  |  R AH N T  | ,8,21
+t17.2024.05.07,125k,CL,Vision is one of the foundational blocks for any entrepreneur.,F IH ZH AH N  |  IH Z  |  W AA N  |  AH V  |  DH AH  |  M AH N T EY SH AH N AH L  |  B L AO K S  |  F AO R  |  AH N D IY  |  EH JH P R IY N Y AO R  | ,17,55
+t17.2024.05.07,125k,CL,Fortunately I never have had to go in.,F W EH N AH L IY  |  AH  |  HH AE V  |  HH AE V  |  AE T  |  T UW  |  K AO  |  IH N  | ,13,35
+t17.2024.05.07,125k,CL,Do you have any others?,D UW  |  Y UW  |  HH AE V  |  AH N IY  |  AH DH ER Z  | ,1,19
+t17.2024.05.07,125k,CL,Don't let them see violence at home.,T UW L  |  L AY T  |  DH EH M  |  S T IY D  |  F IH AH L AH T  |  AE T  |  HH OW M  | ,11,31
+t17.2024.05.07,125k,CL,I've never actually seen her in concert.,AY V  |  S EH V ER  |  AE K CH AH W AH L  |  S IY AH  |  AA R  |  IH N  |  K AA N S ER Z  | ,6,34
+t17.2024.05.07,125k,CL,Raise my children.,JH R IH Z  |  M AY  |  CH EH L D ZH AH N  | ,4,15
+t17.2024.05.07,125k,CL,She stilled at the sound of her partner's voice.,SH IY  |  S T EH L D  |  AE T  |  D AW N  |  AH V  |  HH ER  |  P AA R N D ER Z  |  B OY S  | ,9,38
+t17.2024.05.07,125k,CL,I don't really care what it takes to qualify.,AA  |  N OW N  |  G R EY L IY  |  HH IY R  |  W AA T  |  IH T  |  T EY K S  |  T UW  |  EH L AH F IY  | ,12,39
+t17.2024.05.07,125k,CL,The boy's name has not been released.,DH AH DH AH  |  B EY Z  |  T AY M  |  W AE Z  |  D UW  |  B IY  |  R IH L EY D  | ,15,30
+t17.2024.05.07,125k,CL,To ask automakers for more jobs won't work.,T UW  |  UH K  |  OW L IY  |  M EY K G ER Z  |  F AO R  |  M AH  |  SH AA M  |  AH T  |  W ER K  | ,15,38
+t17.2024.05.07,125k,CL,Oil prices appear to be spiking on the news.,AY L  |  P R IH Z AH S  |  AH P IH R  |  T UW  |  B IY  |  S T EY K IH NG  |  AA N  |  DH AH  |  T UW Z  | ,7,38
+t17.2024.05.07,125k,CL,It's easy to say.,IH T S  |  IY S IY  |  T UW  |  S T EY  | ,2,14
+t17.2024.05.07,125k,CL,I had heard a couple of people.,W AH D  |  D AA EH R D  |  AH G AH P AH L  |  AH V  |  P UW P AH L  | ,10,27
+t17.2024.05.07,125k,CL,Look like jungles.,T AO K  |  T EY K  |  JH AH N L AO Z  | ,8,16
+t17.2024.05.07,125k,CL,It's not anything elaborate.,IH T  |  EH L  |  AH N IY  |  TH IH NG  |  L EH V ER AH N T  | ,11,23
+t17.2024.05.07,125k,CL,Give people insight and help them make better decisions.,K AH V  |  UW B AH L  |  L EH N S AH  |  AH N D  |  HH AE V  |  DH EH M  |  B AE K  |  M EH T ER  |  D IH IH AH N Z  | ,17,47
+t17.2024.05.07,125k,CL,I just got the new issue.,AY  |  JH AH S T  |  G D  |  DH AH  |  Y UW Z  |  JH IY  | ,7,21
+t17.2024.05.07,125k,CL,Gathered for the occasion.,G AE S ER N  |  F AO R  |  DH AH  |  K AH K EY ZH AH N  | ,3,20
+t17.2024.05.13,125k,OL,It's amazing that people actually believe him.,AY D  |  AH M B EY D  |  DH AH  |  M EY  |  IH D  |  P AY L V  |  AE M  | ,27,40
+t17.2024.05.13,125k,OL,I'm sort of glad Strawberry went away.,AH M P  |  D UW R  |  AH P L EY D  |  R UW M  |  W IH N  |  W IY  | ,20,34
+t17.2024.05.13,125k,OL,It's just me in the house.,IY Z  |  R AH N  |  P AY  |  IH N  |  DH AH  |  HH AW D S  | ,9,22
+t17.2024.05.13,125k,OL,Any latest version of Linux.,AY  |  L OW D Z  |  B R ER CH JH JH SH AH N L  |  L IY N G IH IH T  | ,21,27
+t17.2024.05.13,125k,OL,The measures already passed a Senate committee.,DH AH  |  M R IH N JH AH D  |  AY L  |  IH  |  B UH  |  P R EY  |  Y UW N L  |  K IH P  | ,25,36
+t17.2024.05.13,125k,OL,We had another cat about two years ago.,W IY  |  W AA D  |  AH M OW TH  |  K IY N  |  AH V OY T  |  AH  |  Y IH R  |  AH,16,34
+t17.2024.05.13,125k,OL,Well I'm definitely for it.,W IY L  |  AH M P  |  S EH V AH L IY  |  F AO R  |  IH T  | ,8,24
+t17.2024.05.13,125k,OL,If you ever go in a restaurant.,IH F  |  Y UW  |  HH AE V  |  G OW N  |  N IH  |  K R AO ER W AH N T  | ,13,27
+t17.2024.05.13,125k,OL,I see her only once or twice a year.,AY  |  S EH CH ER  |  W OW L  |  AH N  |  W AO R  |  T UW Z  |  AH  |  Y IH R  | ,12,32
+t17.2024.05.13,125k,OL,"Stay safe, and enjoy your time out there.",T UW  |  HH EH V  |  IH N AH N JH OY  |  AH R  |  N OW  |  P AH N D  |  DH AH EH R  | ,19,32
+t17.2024.05.13,125k,OL,I just thought of something we have to return.,AY  |  JH AH S  |  TH T AE Z  |  AH V  |  S EH N TH IH NG  |  AY  |  HH AE V  |  T UW  |  R IH Z CH ER AH N  | ,11,37
+t17.2024.05.13,125k,OL,For the relatives.,W EH R  |  DH AH  |  CH AA L D V IY V  | ,8,16
+t17.2024.05.13,125k,OL,Because you're not.,B EY K  |  IH N  |  AH R  |  N EY S  | ,8,14
+t17.2024.05.13,125k,OL,Do you know if Virginia has it?,T AH  |  Y UW  |  L IY S  |  AH V  |  F EH R SH AH N  |  AE T  |  IH Z  | ,17,27
+t17.2024.05.13,125k,OL,With the car pollution.,W EH DH  |  DH AH  |  G EH R  |  P AH L IY EY EY AH N  | ,6,19
+t17.2024.05.13,125k,OL,I just see him as trying to squish as much space.,AY  |  JH AH S T  |  HH IH Z  |  HH OW M  |   |  R OY IH NG  |  T UW  |  Y UW R Z  |  AY T  |  M UH  |  CH AE CH  |  M AH Z  | ,23,44
+t17.2024.05.13,125k,OL,I'll agree with that.,IY L  |  OW R IY Z  |  DH EY  |  DH AH T  | ,8,16
+t17.2024.05.13,125k,OL,Everything else.,EH V R D TH  |  TH IH NG  |  AA L Z  | ,5,12
+t17.2024.05.13,125k,OL,I think not normal setting.,AY  |  TH IH NG K  |  L AA Z  |  OW R AH M AH L  |  AE N T  | ,9,24
+t17.2024.05.13,125k,OL,It's kind of a depressing topic.,IH T S  |  G EH N D  |  AH V  |  AH D P R OY N IH NG  |  K AH P IH K  | ,8,29
+t17.2024.05.13,125k,OL,It's good preparation.,EH S  |  G UH D  |  R EH M AE T  |  CH EY AH N  | ,9,18
+t17.2024.05.13,125k,OL,Especially in the theater it was contagious.,AH  |  P AA R AH L IY  |  EH N  |  DH AH  |  S T EH ER  |  IH  |  W OW Z  |  K AH N IH T  | ,16,36
+t17.2024.05.13,125k,OL,The door bell rang.,DH AH  |  D IH R AH M  |  B AO L  |  TH R AE NG  | ,5,15
+t17.2024.05.13,125k,OL,In the rice steamer.,IH N  |  DH AH  |  R AY D Z  |  K AH D M  | ,6,16
+t17.2024.05.13,125k,OL,Ten gallon buckets of water.,EH S EH N  |  G L OW  |  B EH K T IY  |  AH V  |  AY D ER  | ,11,25
+t17.2024.05.13,125k,OL,It's had that orientation for quite some time.,AY D Z  |  HH AE D  |  DH EH T  |  W R IY N  |  F EY JH  |  M AO R  |  K M IY T  |  T AY M  |  S T EH M  | ,18,40
+t17.2024.05.13,125k,OL,It would depend upon which one you want.,AY T  |  AH  |  W OY N D  |  T AH M  |  AH B IY N T  |  JH AH S  |  W AH T  |  Y UW  |  HH Y IH D  | ,22,35
+t17.2024.05.13,125k,OL,Some old church magazines on the table.,T EH M  |  AO L D  |  AA R JH  |  M AH K AH T EY T  |  AW T  |  DH AH  |  D IH  |  B AO L  | ,18,33
+t17.2024.05.13,125k,OL,Putting things on the back burner.,P AH T IH NG  |  TH IH NG  |  AA  |  DH AH  |  B AE K  |  F AO R T  | ,6,26
+t17.2024.05.13,125k,OL,We find something we like.,W IY  |  F OY N D  |  M EH M TH IH NG  |  W IY  |  L EH S IH K  | ,6,22
+t17.2024.05.13,125k,OL,What are you going to do?,W AH N  |  ER  |  Y UW  |  G EH IH NG T  |  T IY IY,9,21
+t17.2024.05.13,125k,OL,Realistically it is.,K W R IY  |  AY Z  |  IH K AH L IY  |  IH T  |  IH T  |  IH Z  | ,11,18
+t17.2024.05.13,125k,OL,I really didn't have to.,AY  |  W ER L S  |  N EH S EH  |  HH IH Z  |  HH EH V  |  T UW  | ,12,21
+t17.2024.05.13,125k,OL,Proponent of liberal arts education.,B AH F R IH N T  |  AH V  |  L IH S ER AH L IH NG  |  HH AA R D  |  IH  |  IH N K S T UW OW  |  K EY S T AH N  | ,23,34
+t17.2024.05.13,125k,OL,I haven't been to a baseball game in years.,AY  |  HH AE V AW N T  |  B IY  |  Y UW  |  AH  |  W UH T  |  W AH L  |  K EY N  |  IH  |  HH IY R Z  | ,15,37
+t17.2024.05.13,125k,OL,Did you actually use drugs at all?,DH AE T  |  Y UW  |  AE K CH AH W AH L IY  |  T UW  |  D R EH NG T  |  AH  |  EH L  | ,11,32
+t17.2024.05.13,125k,OL,Then you remove it.,DH AE  |  Y UW  |  K AH N D M AH M EH V IH Z  | ,11,16
+t17.2024.05.13,125k,OL,"An invoice, email, or quotation.",AH T  |  AH N N IY N D  |  T AY  |  EH N IY IY Z  |  T D  |  K IY AH T IY SH AH N  | ,20,26
+t17.2024.05.13,125k,OL,We went through it.,W IY  |  W AA T  |  EH S OW  |  IH T  | ,5,15
+t17.2024.05.13,125k,OL,I don't buy the newspaper.,AY T  |  D UW AH T  |  B IY  |  DH AH T  |  S AY S Z M IY B ER IY  | ,12,21
+t17.2024.05.14,125k,CL,It seems quite important to you.,IH T  |  DH EY M Z  |  G W EY T  |  IH P R AH N  |  T UW  |  Y UW  | ,8,29
+t17.2024.05.14,125k,CL,I have changed my mind.,HH AE V  |  CH EY JH  |  M AY  |  M OY N D  | ,5,20
+t17.2024.05.14,125k,CL,He's turning away from us.,HH IY Z  |  D AH N IH NG  |  W UW  |  T AH M  |  IH S  | ,7,22
+t17.2024.05.14,125k,CL,I hope this will look good.,AY  |  HH OW P  |  DH AH  |  Y L UW L  |  T UH K  |  G AA D  | ,7,22
+t17.2024.05.14,125k,CL,I cannot deal with it right now.,AY  |  K AH N N OW T  |  S IH NG  |  W IH DH  |  IH T  |  R AY T  |  N AW  | ,6,26
+t17.2024.05.14,125k,CL,It is never too late for education.,IH T  |  IY  |  HH AH V ER  |  L OW AH T  |  F AO R  |  AH N OY EY EY AH N  | ,14,31
+t17.2024.05.14,125k,CL,This movie was made on a small budget.,DH EY  |  M UW V IY  |  W EH N Z  |  M AH D  |  W UW  |  S M UH L  |  V EH ZH JH ER  | ,15,33
+t17.2024.05.14,125k,CL,This is really a lot for me.,DH IH T  |  IH  |  K R UW L  |  AH  |  L EY T  |  F AO R  |  M IY  | ,6,25
+t17.2024.05.14,125k,CL,The story of my life.,DH AH  |  S T AA R IY  |  AH V  |  P L EY L IH V  | ,6,19
+t17.2024.05.14,125k,CL,She sold me this book and I paid for it.,R IY  |  T UW L D  |  M AY  |  T EH T  |  B UH K  |  AH N D  |  EY  |  B EY D  |  F AO R  |  HH IH T  | ,10,36
+t17.2024.05.14,125k,CL,This can be a fun place for kids.,IH Z  |  K IH N  |  M IY  |  AH V  |  F SH R AO N  |  W L EY T  |  F AO R  |  K AH S T  | ,13,31
+t17.2024.05.14,125k,CL,I'll be right back.,AO L  |  B IY  |  R AY T  |  B AE K  | ,1,14
+t17.2024.05.14,125k,CL,The joy of the weekend with family is something else.,DH AH  |  CH R AO S Z  |  AH V  |  DH AH  |  W EY K AH N  |  IH Z  |  F AH L  |  AE Z  |  W UW N T IH NG  |  EH T S  | ,19,44
+t17.2024.05.14,125k,CL,People will be here on time.,P IY P AH L  |  T EH L  |  B IY  |  HH IY R  |  AA N  |  T AY M  | ,2,24
+t17.2024.05.14,125k,CL,Call me after a couple of days.,AE L  |  M IY  |  AH V ER  |  AH AH P OW L D  |  AH V  |  T OW Z  | ,11,27
+t17.2024.05.14,125k,CL,PLEASE SAY ANYTHING YOU WANT,HH AO R  |  AH Z T IY  |  W AA  |  R EH CH AH L AH T  | ,18,23
+t17.2024.05.14,125k,CL,At the end everything was nice.,AY  |  DH AH  |  AH N T  |  AA R IY AH TH IH NG  |  W AA Z  |  HH UH D  | ,10,26
+t17.2024.05.14,125k,CL,It might take a long time.,AY  |  M AY D  |  TH T IH NG K  |  AH  |  L AO NG  |  T AY M  | ,6,21
+t17.2024.05.14,125k,CL,I don't have time to finish all the work.,AY  |  D OW N D T  |  HH AE V  |  HH IH M  |  T UW  |  F AH D  |   |  DH AH  |  W AA K  | ,10,34
+t17.2024.05.14,125k,CL,She calls him to tell him she can't come.,SH R IY  |  G OW S  |  AH M  |  T D UW  |  D EH L  |  HH EH M  |  SH IY  |  K AE N T  |  Y UW M  | ,12,35
+t17.2024.05.14,125k,CL,I really enjoy my work here.,AY  |  R IH L IY  |  EH N JH OY  |  M AY  |  W ER K  |  HH IY R  | ,0,23
+t17.2024.05.14,125k,CL,It's quite hard work to get this done.,IH T S  |  K W IY N T  |  K HH AA N D  |  W EH K  |  T UW  |  G EH  |  DH AE S T S S AO N D  | ,12,33
+t17.2024.05.14,125k,CL,QUESTION: Have you read anything interesting lately?,D AH  |  DH AH TH  |  K R IH L IY  | ,33,42
+t17.2024.05.14,125k,CL,Listen to this music.,IH V F D T AH  |  K AH M K AY D K  | ,14,20
+t17.2024.05.14,125k,CL,This company went through some changes.,DH AE T S  |  K AH M P OW N D IY  |  W AA N T  |  T UW R  |  S AH  |  R EY JH AH S  | ,12,32
+t17.2024.05.14,125k,CL,I will code it up soon.,AY  |  W UH L  |  G IH D  |  IH T  |  AH P OW  |  T OW N  | ,6,20
+t17.2024.05.14,125k,CL,I want to get some early morning sun.,AY  |  W AA N D  |  T UW  |  K AE N  |  S AH M  |  R IH L IY  |  M AO R D IH NG  |  T AW N  | ,9,33
+t17.2024.05.14,125k,CL,This is my first day at my new job.,DH IH T S  |  IH  |  M EY  |  F R AO D T  |  T EY D  |  AE T  |  M AY  |  S UW  |  T R UW  | ,12,31
+t17.2024.05.14,125k,CL,Nothing goes past my mother.,DH AH NG  |  G IH Z  |  P AE T  |  M AE  |  M AH DH ER  | ,6,23
+t17.2024.05.14,125k,CL,What brings you to our company?,HH AH T D  |  B IY NG  |  Y UW  |  T AH  |  AW R AH P AH T IY  | ,11,27
+t17.2024.05.14,125k,CL,Will you use any of this stuff?,W IH L  |  Y UW  |  EH D  |  AH N D  |  AH V  |  DH IH T  |  EH V  | ,10,27
+t17.2024.05.14,125k,CL,I cannot go without reading every day.,AY  |  K EH N AH S T  |  K OW  |  AH AH M  |  P R IH T IH NG  |  IH V ER R AH  |  T D AE N  | ,18,31
+t17.2024.05.14,125k,CL,"Basically, what will you do for the employees?",B AH IH K L T IY  |  W AH N  |  W IY  |  OW  |  T EY  |  F AO R  |  DH UW  |  P L N T S  | ,16,37
+t17.2024.05.14,125k,CL,Would you like to come to see our new house?,W AH T D  |  Y UW  |  L AY K  |  T UW  |  K ER M  |  DH UW  |  S IY  |  IY R ER  |  L N AY  |  HH IH T  | ,10,34
+t17.2024.05.14,125k,CL,How often do you see your friends?,HH AW  |  AH V OW N  |  T UW  |  HH Y UW  |  IY  |  AW  |  R AH N S T  | ,13,28
+t17.2024.05.14,125k,CL,I plan to visit my parents soon.,AY  |  P L EH L  |  T UW  |  V IH Z S  |  M AY  |  P EH AH N S  |  S AH N  | ,7,31
+t17.2024.05.14,125k,CL,This is our work.,DH EY S  |  AE N  |  AW ER  |  F EH R  | ,6,14
+t17.2024.05.14,125k,CL,This is far from it.,DH IH  |  DH AH  |  F AO R  |  R IH M  |  IH T  | ,6,19
+t17.2024.05.14,125k,CL,I paid with my usual credit card.,AY  |  P EY N D Z  |  W IH DH  |  M AY  |  EH AH L  |  K IH T AH,17,33
+t17.2024.05.14,125k,CL,Catch it in your visual field.,G AH CH  |  IH T  |  IH N  |  W EH R  |  F AO R AH L T  |  F EH L D  | ,11,27
+t17.2024.05.28,125k,CL,Factors that affect earnings of an employee.,B AE K CH ER Z  |  DH IH Z  |  IH F EH K AH  |  AH  |  IH NG K N S  |  AH V  |  AY N D  |  M AY  | ,18,36
+t17.2024.05.28,125k,CL,The same patterns of behavior.,DH AE T  |  S AH M  |  B EH R AH S  |  AO F  |  F AY  |  HH Y UW V R  | ,18,25
+t17.2024.05.28,125k,CL,I think it's gotten just care.,AY  |  TH IH NG K  |  IH T  |  IH N S  |  SH UH D  |  AE  |  AH N  |  K EH R  | ,11,26
+t17.2024.05.28,125k,CL,We are seasoned minds.,W IY  |  CH ER  |  D AH N S  |  M AH N D  | ,8,19
+t17.2024.05.28,125k,CL,They're being somewhat protectionist.,DH EH  |  AA R  |  B IH N IH NG  |  HH IH M EY D  |  P R AA N T IH K SH ER AH N IH N  | ,15,29
+t17.2024.05.28,125k,CL,It's just so versatile.,T  |  JH AH S T  |  T UW  |  F EH T  |  AH L  | ,9,20
+t17.2024.05.28,125k,CL,A Mexican dinner.,AE  |  P W EH K S ER N  |  DH EH R  | ,10,16
+t17.2024.05.28,125k,CL,I always get those.,AH  |  AO L W M AY  |  G EH T  |  DH IH T S  | ,6,16
+t17.2024.05.28,125k,CL,I can hardly wait.,AY  |  AE N D  |  IH L  |  K ER L IY  |  EH V N  | ,10,17
+t17.2024.05.28,125k,CL,They would let you use it maybe once a year.,N OW  |  W UW Z  |  L IY D IY  |  Y UW  |  Y UW  |  IH T  |  B IY  |  AA N D  |  AH  |  Y IY R  | ,14,37
+t17.2024.05.28,125k,CL,I love this country too much.,AY T S  |  L AH V  |  DH AH N  |  D AH N CH JH R AH  |  T UW  |  M AH CH  | ,8,24
+t17.2024.05.28,125k,CL,Our sleeping bags I guess.,AY  |  HH AE ER  |  S AH B IY IH NG  |  AE K S  |   |  AY  |  G EH Z  | ,12,21
+t17.2024.05.28,125k,CL,The trial is expected to reach a conclusion soon.,DH AH  |  T R IY AH L IH Z  |  IH K S B AE K T  |  UW  |  R AY T  |  AH  |  K L UW S UW UW EY ZH JH N  |  T AW N  | ,17,45
+t17.2024.05.28,125k,CL,One is thirteen and one is eleven.,AH N  |  AE T  |  ER T IY  |  AA N  |  M IY S  |  CH OY S  |  AH V AH N T  | ,17,31
+t17.2024.05.28,125k,CL,Twelve different major ski resorts.,N OW V  |  S AH V ER AH N  |  B IH ER AH IH K  |  T AO R S  | ,18,31
+t17.2024.05.28,125k,CL,The lenses for cameras.,DH AH  |  L AA N S IY  |  F AO R  |  K R M AH Z  | ,6,21
+t17.2024.05.28,125k,CL,I'd be real concerned.,AH  |   |  B IY  |  R EH L  |  IH N S R IY N  | ,8,18
+t17.2024.05.28,125k,CL,The most obvious occasion is the celebration of a new home.,DH AY AE T  |  B AH S T  |  IH V IY D AH  |  S EY K EY AH N  |  AA T  |  IH N  |  DH AH  |  T EH L B IH ER T  |  AH  |  AY  |  T UW  |  HH AH M  | ,27,51
+t17.2024.05.28,125k,CL,The other place is called the Vienna Inn.,AY  |  AH DH ER  |  B AE T  |  IH Z  |  K AE N  |  T UW  |  F R IY N  |   | ,17,32
+t17.2024.05.28,125k,CL,Stay there till eight o'clock.,S EY T  |  OW N  |  DH EY ER  |  IH Z  |  L OW  |  IH T  |  UW  |  W UH K  | ,15,21
+t17.2024.05.28,125k,CL,So he's a fan of history.,S OW  |  S OW Z  |  B AY N T  |  AH V  |  S AH S T IY R IY AH N  | ,13,23
+t17.2024.05.28,125k,CL,At the higher echelons.,AE N  |  DH AH  |  HH IY R AH  |  AA R JH AH L IH NG K Z  | ,10,18
+t17.2024.05.28,125k,CL,The beep in the background.,DH AH  |  B IY P B  |  IH N Z  |  DH AH  |  P B EY K AH D  | ,8,22
+t17.2024.05.28,125k,CL,A wide variety.,EH  |  W EY N T  |  F EH R IY L AH N T  | ,11,13
+t17.2024.05.28,125k,CL,Now it doesn't bother me at all.,N OW  |  W IH Z  |  S OW AH AH  |  M AY TH ER  |  M IY  |  L,16,27
+t17.2024.05.28,125k,CL,The way the law reads.,DH AE T  |  P IY K  |  T UW  |  L IH AH L  |  R IY N  | ,12,17
+t17.2024.05.28,125k,CL,Had this dog appear on its front doorstep.,HH OW  |  T EH D  |  DH IH Z  |  T EY K S  |  P AO R  |  AA N  |  EH  |  F EH V F R AH N T  |  S T AO R Z  |  S AH M  | ,23,38
+t17.2024.05.28,125k,CL,In those situations I don't know how to behave.,IH T  |  S OW Z TH  |  S IH T AH JH Z  |   |  D UW  |  T EY  |  P IY T  |  T UW  |  B IY F  | ,21,39
+t17.2024.05.28,125k,CL,That's a lot of people.,AY  |  D OW Z S  |  AH  |  L AY D  |  B AO F  |  P IY P AH L  | ,10,20
+t17.2024.05.28,125k,CL,It is not something that needs to be avoided.,DH AE T S  |  AE T  |  N AY T  |  S AH M TH IH NG  |  T EY  |  EH T  |  N OW D  |  T UW  |  B IY  |  OW V F AO R D AH D  | ,16,39
+t17.2024.05.28,125k,CL,It can swim away fast enough and go hide.,AY  |  G EH N  |  S T AH M  |  IH D L IY  |  IH F AE T  |  AH N IY V  |  AY  |  Y UW EY  |  HH AW N D  | ,23,37
+t17.2024.05.28,125k,CL,He's an indoor cat.,HH IY N  |  AW N  |  EH N T AH W EH R  |  G AW T  | ,9,17
+t17.2024.05.28,125k,CL,I guess I'll get over it.,AY  |  G AE N Z  |  AH  |  G AO T  |  EH V ER T  |  IH T  | ,8,20
+t17.2024.05.28,125k,CL,To know what to expect really.,T OW  |  N OW  |  W EY T  |  T UW  |  IH K S P EY K T S  |  ER  |  AW M  | ,8,26
+t17.2024.05.28,125k,CL,The best teachers and the best students.,DH AH  |  B AE N D  |  D EY ER Z  |  AH AW N  |  DH AH  |  B EY  |  R EY S EH N Z  | ,18,35
+t17.2024.05.28,125k,CL,She enjoys her thought.,R IY  |  AO N D V OY N D Z  |  HH ER R N  |  TH AE T  | ,9,16
+t17.2024.05.28,125k,CL,They watch a couple of shows like that.,DH EY  |  W AA CH JH  |  AH  |  K AH P AH L  |  B AH  |  JH AO Z  |  T AO K  |  DH AE T  | ,7,30
+t17.2024.05.28,125k,CL,My husband also likes golf.,B AY  |  HH AE M AE N D  |  AE S L  |  L AY NG  |  G EY B  | ,13,26
+t17.2024.05.28,125k,CL,It's an older home.,IH T S  |  AH  |  L OW ER  |  AH M  | ,6,16
+t17.2024.05.28,125k,CL,My family is in Kentucky.,M AY  |  F AA L AH L IY  |  IH N  |  IH N AE K T AH T  |  T IH K  | ,9,24
+t17.2024.08.12,50w,CL,"Not you, please.",N AA T  |  Y UW  |  P L IY Z  | ,0,12
+t17.2024.08.12,50w,CL,I hope you have it.,AY  |  HH OW P  |  Y UW  |  HH AE V  |  IH T  | ,0,16
+t17.2024.08.12,50w,CL,My family is coming here.,M AY  |  M AY  |  F AE M AH L IY  |  Z  |  G OW IH NG  |  HH IY R  | ,7,23
+t17.2024.08.12,50w,CL,Is that clean?,DH UW  |   |  N AA T  |  OW  | ,9,12
+t17.2024.08.12,50w,CL,Tell my family I am not comfortable.,EH  |  AY  |  M AY  |  F AE M IY L  |  IH  |  AE M  |  N AA T  |  F IY B L  | ,13,34
+t17.2024.08.12,50w,CL,Do you feel that?,D UW  |  Y UW  |  F IY L  |  AW T  | ,2,14
+t17.2024.08.12,50w,CL,What is not?,OW P T  |  IH Z  |  N AA T  | ,2,11
+t17.2024.08.12,50w,CL,I do not hope it is goodbye.,AY  |  D UW  |  N AA T  |  HH OW P  |  IH T  |  IH Z  |  G UH B AY  | ,1,25
+t17.2024.08.12,50w,CL,What is it you need?,OW P  |  W EH Z  |  N AA Z  |  AA T  |  Y UW  |  UW  |  N IY D  | ,10,17
+t17.2024.08.12,50w,CL,"Yes, okay.",AY  |  UH  |   | ,6,8
+t17.2024.08.12,50w,CL,I have no nurse.,AY  |  HH AE V  |  Y AA T  |  N IY D  | ,5,13
+t17.2024.08.12,50w,CL,I am going.,AY  |  HH AE M P  |  G OW IH NG  |  IH NG  | ,5,10
+t17.2024.08.12,50w,CL,"Yes, they do that.",UW  |  S EH S  |  AY  |  N UW  |  DH AE T  | ,6,14
+t17.2024.08.12,50w,CL,They are not outside.,DH EY  |  AA R  |  N AA T  |  AW T  | ,3,16
+t17.2024.08.12,50w,CL,"Yes, do it.",D UW  |  AY D  | ,6,10
+t17.2024.08.12,50w,CL,You do it like that.,Y UW  |  D UW  |  IH Z  |  IH T  |  K L OW IH  |  DH AE T  | ,6,17
+t17.2024.08.12,50w,CL,I have it coming.,AY  |  AE  |  V  |  T  |  G L AH M IH NG  | ,5,15
+t17.2024.08.12,50w,CL,Please do it.,P L IY  |  DH AE T  |  IH T  | ,4,11
+t17.2024.08.12,50w,CL,They are outside.,DH EY  |  AA R AA R  |  AY D  | ,4,12
+t17.2024.08.12,50w,CL,You need it.,HH UW  |  N AA T  |  IH,5,10
+t17.2024.08.12,50w,CL,Are you closer?,AA R  |  Y UW  |  OW K S ER  | ,3,12
+t17.2024.08.12,50w,CL,Are you my family?,HH IY R  |  Y UW F AE L  | ,9,16
+t17.2024.08.12,50w,CL,You do not like my computer.,Y UW  |   |  N AA  |  N T EH T  |  L AY K  |  M  |  AH M P T ER  | ,9,26
+t17.2024.08.12,50w,CL,That is here.,N EY  |  N AA T  |  AH T  |  HH IY R  | ,7,11
+t17.2024.08.12,50w,CL,How is that right?,HH AW  |  IH Z  |  DH AE T T  |  V EH R T  | ,4,14
+t17.2024.08.12,50w,CL,Clean up it.,AY K  |   |  HH OW P  |  AW T  | ,7,11
+t17.2024.08.12,50w,CL,It is going outside.,DH IH T  |  AY  |  G L OW IH NG  |  AW T S AY D  | ,4,17
+t17.2024.08.12,50w,CL,What do they tell you?,HH EH T  |  Y UW  |  DH EY  |  HH IY IH NG  |  M AY  | ,9,17
+t17.2024.08.12,50w,CL,I need my nurse right here.,AY  |  N IY D  |  M AY  |  N ER S T  |  HH R  |  HH IY R  | ,4,21
+t17.2024.08.12,50w,CL,They are thirsty.,DH EY  |  AA R  |  TH ER T  | ,2,12
+t17.2024.08.12,50w,CL,Like what?,L AY M AY  | ,5,8
+t17.2024.08.12,50w,CL,I do it like that.,M AY  |  D UW  |  IH T  |  L AY K  |  DH AE T  | ,1,16
+t17.2024.08.12,50w,CL,Do they have my computer?,D UW  |  Y  |  HH AE V  |  M AY  |  F AH M P UW T ER  | ,4,22
+t17.2024.08.12,50w,CL,I hope I do not need my faith.,AY  |  HH OW P  |  AY  |  D UW  |  N AA T  |  N AY T  |  M AY  |  F IY  | ,4,26
+t17.2024.08.12,50w,CL,They have it right.,DH EY  |  M AY  |  IH T  |  R AY T  | ,3,14
+t17.2024.08.12,50w,CL,I hope I do not need my family.,M AY HH OW P  |  IH  |  D UW  |  N AA T T  |  AY  |  M AY  |  F AE M AH L IY  | ,7,29
+t17.2024.08.12,50w,CL,They are not good.,DH EY  |  AA  |  AA R  |  R  |  N AA T  |  S OW D  | ,6,14
+t17.2024.08.12,50w,CL,My nurse is outside.,M AY  |  N AA R  |  IH Z  |  G AW T AY D  | ,4,16
+t17.2024.08.12,50w,CL,My family is not right.,M AY  |  F AE M AH L IY  |  AA Z  |  N AA T  |  R EH AY T T  | ,3,21
+t17.2024.08.12,50w,CL,You need glasses.,Y UW  |  N AA T  |  G L OW  |  DH AE T  | ,7,14
+t17.2024.08.13,50w,CL,Coming up is very good.,AH  |  Y UW  |   |  AY  |  G UH D  | ,12,21
+t17.2024.08.13,50w,CL,I like going outside.,AY  |  HH OW P  |  IH AW AW T S AY D  | ,7,17
+t17.2024.08.13,50w,CL,"What, where?",T EH D  |  IY R  | ,5,8
+t17.2024.08.13,50w,CL,Need help where?,L AY T  |  AY  |  Y UW  | ,10,13
+t17.2024.08.13,50w,CL,No help please.,Y UW  |  AY  | ,11,13
+t17.2024.08.13,50w,CL,They hope my nurse is going.,DH EY  |  HH AE P  |  L AY  |  N AA T IH Z  |  OW R IY  | ,8,22
+t17.2024.08.13,50w,CL,Have faith.,HH IY  |  B AE  |  F EY TH  | ,4,8
+t17.2024.08.13,50w,CL,"Yes, I have.",T AY  |  Y IY  |  HH AE P  | ,6,10
+t17.2024.08.13,50w,CL,Computer is good.,L IY EY M P  |  D UW  |  AY  |  AE  |  G UH D D  | ,10,16
+t17.2024.08.13,50w,CL,You do it right here.,Y UW  |  UW  |  L AY  |  K L AH IH NG  | ,10,17
+t17.2024.08.13,50w,CL,You do you.,Y UW  |  D UW  |  Y UW  | ,0,9
+t17.2024.08.13,50w,CL,"Yes, it is that.",DH EH  |  IH Z  |  IH T  |  N AW T AY D  | ,8,14
+t17.2024.08.13,50w,CL,"No, I do not feel hungry.",AY  |  Y UW  |  AY  |  N IY D  |  AA T  |  M IY  |  HH AH NG K EY  | ,13,23
+t17.2024.08.13,50w,CL,You hope they are coming.,HH Y OW  |  AY  |  DH EY T  |  R K  |  AE NG  | ,11,19
+t17.2024.08.13,50w,CL,Please do not feel bad.,T EY  |  UW  |  N IY  |  P B AE D  | ,11,20
+t17.2024.08.13,50w,CL,They hope my family is here.,DH EY  |  OW P  |  Y AY  |  M AE  |  AY  |  AE Z AY R  | ,11,24
+t17.2024.08.13,50w,CL,They are right outside.,Y UW  |  AY R  |  AE T  |  AW T  | ,8,16
+t17.2024.08.13,50w,CL,Do you like that?,DH EY  |  T EH  |  L AY K  |  AE T  | ,5,14
+t17.2024.08.13,50w,CL,What is what?,HH AW AH T  |  IH Z  |  B AA T  | ,4,11
+t17.2024.08.13,50w,CL,Am I coming up?,AY  |  M AY Z  |  K AH M IH NG  |  P  | ,5,14
+t17.2024.08.13,50w,CL,Do it here.,Y UW  |  D UW  |  OW T  | ,6,10
+t17.2024.08.13,50w,CL,Do you feel?,DH EY  |  Y UW  |  P L IY L  | ,4,10
+t17.2024.08.13,50w,CL,Here it is.,AY  |  AE M  |  N AA T  |  OW  |  S EH S  | ,11,10
+t17.2024.08.13,50w,CL,I bring it right up.,AY  |  G L IY IH  |  IH  |  L AY  |  HH  | ,9,17
+t17.2024.08.13,50w,CL,I have no glasses.,AY  |  HH AE V  |  N OW  |  K AH K T  | ,6,16
+t17.2024.08.13,50w,CL,They need it right here.,AY  |  N IY D  |  M DH AE T  |  HH AH K  |  D,10,18
+t17.2024.08.13,50w,CL,"No, I am not very good.",S EH  |  AY  |  AE M  |  N AA T  |  V AY  |  G UH P D  | ,6,21
+t17.2024.08.13,50w,CL,I have my music.,AY  |  HH AE V  |  AE M  |  Y UW K  | ,5,16
+t17.2024.08.13,50w,CL,You need hope.,AY  |  L IY K  |  AE P  | ,6,11
+t17.2024.08.13,50w,CL,What do you like here?,M AY  |  IH T  |  Y UW M  |  OW K  |  IY R  | ,9,18
+t17.2024.08.13,50w,CL,Not like you.,D UW  |  T EH  | ,9,11
+t17.2024.08.13,50w,CL,Do not do it.,IH T  |  IH Z  |  AW  | ,9,13
+t17.2024.08.13,50w,CL,I need faith.,AY T  |  N AW T  |  Y UW Z D  |  W AH  | ,10,10
+t17.2024.08.13,50w,CL,I help you.,HH OW P  |  Y UW,5,10
+t17.2024.08.13,50w,CL,I hope you do.,HH  |  HH  |  T UW  | ,7,12
+t17.2024.08.13,50w,CL,That you like.,IH  |  OW K IY  | ,9,11
+t17.2024.08.13,50w,CL,"Yes, it is right.",IH  |  IH T  |  IH Z  |  L EH S D  | ,7,14
+t17.2024.08.13,50w,CL,They clean my glasses.,IH  |  IH K  |  K L AY D  |  M AY  |  F ER IY T IY  | ,12,18
+t17.2024.08.13,50w,CL,Outside help.,AY  |  N IY  |  N EH  |  HH EH R  | ,9,11
+t17.2024.08.13,50w,CL,Have not.,M EH R  |  N AA D  | ,4,8

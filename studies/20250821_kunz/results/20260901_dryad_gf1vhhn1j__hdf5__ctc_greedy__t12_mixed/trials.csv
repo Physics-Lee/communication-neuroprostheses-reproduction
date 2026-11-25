@@ -1,0 +1,101 @@
+session,vocab,sentence_label,pred_phonemes,edit_distance,true_len
+t12.2023.11.28_imagined_50words_eval,50words,I need success.,UW  |  N D  |  AH S L  | ,6,13
+t12.2023.11.28_imagined_50words_eval,50words,Bad music.,AE IH  |  M T  |  K  | ,6,11
+t12.2023.11.28_imagined_50words_eval,50words,Hope you are comfortable., |  AA UW  |  HH R  |  AH  | ,14,21
+t12.2023.11.28_imagined_50words_eval,50words,You are good., |  R  |  G UH  | ,4,10
+t12.2023.11.28_imagined_50words_eval,50words,Do you feel that?,Y UW  |  UW  |  AA R  |  AA T  | ,7,14
+t12.2023.11.28_imagined_50words_eval,50words,It is very bad., |   |  IY  |  M AH  | ,10,15
+t12.2023.11.28_imagined_50words_eval,50words,Tell my nurse I feel comfortable.,AY L  |  F M AH IY  |  IY  |  IH  |  OW P  |  AE M  |  F AH L  | ,19,28
+t12.2023.11.28_imagined_50words_eval,50words,Is my music very bad?, |  M  |   |  D  | ,16,22
+t12.2023.11.28_imagined_50words_eval,50words,Clean up., |   |  OW P  | ,5,8
+t12.2023.11.28_imagined_50words_eval,50words,Hope you like it.,HH OW P  |   |  Y R  |  UW  |  AH K  |  IH T  | ,5,14
+t12.2023.11.28_imagined_50words_eval,50words,Tell my family goodbye., |  M R  |   |  AE M L IY G AH NG,12,20
+t12.2023.11.28_imagined_50words_eval,50words,Please do it., |  AA  |  AE D  | ,8,11
+t12.2023.11.28_imagined_50words_eval,50words,I am not okay.,Y N AE  |  M AA T  |  AA R  | ,7,13
+t12.2023.11.28_imagined_50words_eval,50words,They tell you I am hungry.,AY  |   |   |  UW  |  M AY  |   |  AE  |  AE M  |   |  AH IY  |   | ,14,22
+t12.2023.11.28_imagined_50words_eval,50words,I need my nurse right here., |  N D  |   |  M IY  |  G D  |  AA ER UW  |  IY  |  R  | ,12,21
+t12.2023.11.28_imagined_50words_eval,50words,I hope you do that.,AY HH OW  |   |  DH UW  |  DH EY  | ,7,16
+t12.2023.11.28_imagined_50words_eval,50words,Need it?,Y IH T  | ,4,7
+t12.2023.11.28_imagined_50words_eval,50words,Tell my nurse hello., |  M R  |  N D  |  ER IY  |  IY  |  OW IY  | ,11,16
+t12.2023.11.28_imagined_50words_eval,50words,I am not hungry.,AY AE  |  AE  |   |  N AA T  |  IH AH R IY  | ,5,16
+t12.2023.11.28_imagined_50words_eval,50words,They do have.,Y  |  D  |  AE  | ,5,10
+t12.2023.11.28_imagined_50words_eval,50words,Here that is.,R  |  T  |  DH AE T  |   | ,5,11
+t12.2023.11.28_imagined_50words_eval,50words,I like my faith.,AY  |  EH  |  AY  |  R  |  TH  | ,6,13
+t12.2023.11.28_imagined_50words_eval,50words,Tell my family I do not feel comfortable., |  OW T  |  AE M S IY  |  DH EY  |  R  |   |  N AA  |  N AA T  |   |  IY  |  AA D  |  AH IY AH AH D  | ,25,38
+t12.2023.11.28_imagined_50words_eval,50words,They clean my glasses.,AY EY L  |  N  |   |  R  |  G S IY  | ,10,18
+t12.2023.11.28_imagined_50words_eval,50words,I tell you I do not feel comfortable.,AY  |  R  |  L  |  IY D  |  AA R  |  AE  |  AA T  |  T  |  IY  |  G R  |  ER  |  AH L IY  |  L  | ,20,33
+t12.2023.11.28_imagined_50words_eval,50words,"Yes, I feel very thirsty.", |  AE AY  |  R  |  F L  |  F ER IY  |   |  N ER S  |   | ,12,21
+t12.2023.11.28_imagined_50words_eval,50words,I hope I need my music.,AY  |   |  AA  |  AA R  |   |  N ER D  |  M AY  |  F TH T,14,22
+t12.2023.11.28_imagined_50words_eval,50words,Tell my nurse I am not thirsty., |  M R  |  S  |  N T  |   |  R  |  AE  |   |  N AA T  |  IH  |  IY R  | ,14,26
+t12.2023.11.28_imagined_50words_eval,50words,I do not clean it up.,AY  |   |  N T  |  D  |  T  |  N IY  |  T  |  AH P  | ,9,20
+t12.2023.11.28_imagined_50words_eval,50words,Faith is not good.,AY  |  AE  |  N AA T  |  G IY  | ,7,15
+t12.2023.11.28_imagined_50words_eval,50words,"No, they do not clean it up.",Y  |  DH EY  |  N AA  |  AA T R  |  L IH  |  AA T  |  OW P  | ,11,24
+t12.2023.11.28_imagined_50words_eval,50words,I hope they help you.,Y UW  |  UW  |  OW P  |  DH TH T  |  HH OW P  |  R  | ,10,17
+t12.2023.11.28_imagined_50words_eval,50words,My nurse is not hungry.,AY  |  IY  |  N ER S  |   |  AE IH  |  T  |  T  |  AH  | ,13,21
+t12.2023.11.28_imagined_50words_eval,50words,I hope they have faith.,T  |  OW P  |  DH DH EY  |  AE T  | ,9,17
+t12.2023.11.28_imagined_50words_eval,50words,They hope my family is closer.,EY  |  OW  |  AH L  |  R  |   |  AE ER TH S  |  IY R  |  F TH IY  | ,19,26
+t12.2023.11.28_imagined_50words_eval,50words,They clean it.,Y  |  T  |  IH T  | ,6,11
+t12.2023.11.28_imagined_50words_eval,50words,Do you have it right?,AY  |  R  |  R  |  AE IH  |  IH  |  AE T  |  IH T  |  T R  | ,13,17
+t12.2023.11.28_imagined_50words_eval,50words,I hope you are right.,Y  |  AE P  |  L T  |  R  |  R  |  R AA R  | ,9,16
+t12.2023.11.28_imagined_50words_eval,50words,They need you.,EY  |  F IY  |  D D UW  | ,5,10
+t12.2023.11.28_imagined_50words_eval,50words,Is it okay?,IH  |  HH AE T  |  T  |  G R IY  | ,8,10
+t12.2023.11.28_imagined_50words_eval,50words,It is up.,AY  |  T  |  V  |  IY Z  |  HH OW P  | ,7,9
+t12.2023.11.28_imagined_50words_eval,50words,Faith is okay.,AY TH  |  IY  |  IY  |  G R  | ,8,11
+t12.2023.11.28_imagined_50words_eval,50words,Do not do that.,Y AA R  |  N AA T  |  T  |  AA  |   |  T  | ,8,14
+t12.2023.11.28_imagined_50words_eval,50words,Hope you are not hungry.,AY  |  OW P  |   |  AA R  |  AA S  |  IY  |  AA T  |  IH T  |  AH R IY  | ,12,21
+t12.2023.11.28_imagined_50words_eval,50words,I hope they have.,AY  |  D  |  OW  |  P  |  DH IY  |  IY  | ,7,13
+t12.2023.11.28_imagined_50words_eval,50words,I have it up.,AY  |  AE AY  |  V  |   |  IH T  |  IY  |  OW T  | ,8,12
+t12.2023.11.28_imagined_50words_eval,50words,I feel hope.,AY  |  R  |  F L  |  D UW  |  R  | ,7,10
+t12.2023.11.28_imagined_50words_eval,50words,I have it like that.,IY  |  V  |   |  IH  |  T  |  IH  |  L  |  DH T  | ,9,17
+t12.2023.11.28_imagined_50words_eval,50words,They are not hungry., |  R N ER S  |  G IH Z  |  AH R IY  | ,11,17
+t12.2023.11.28_imagined_50words_eval,50words,What is good?,IH  |  R  |  D  | ,7,11
+t12.2023.11.28_imagined_50words_eval,50words,Do you feel comfortable?, |  Y UW  |  F IY  |  IH  |  M R IY  |   | ,12,21
+t12.2023.11.28_imagined_50words_eval,50words,My nurse is right outside,IY  |  N AA  |  AE IY  |  R T  |   |  OW T  |  IH  | ,12,20
+t12.2023.11.28_imagined_50words_eval,50words,I hope it is clean, |  HH OW P  |  T  |   |  IH  |  L IY  | ,6,17
+t12.2023.11.28_imagined_50words_eval,50words,It is okay,AE  |  V IY  |  IH  |  G R  | ,8,10
+t12.2023.11.28_imagined_50words_eval,50words,I need you,AY  |  T  |  AE T  |  AA R  | ,6,9
+t12.2023.11.28_imagined_50words_eval,50words,Bring my glasses please,L  |  M  |  M R  |  ER S  | ,15,20
+t12.2023.11.28_imagined_50words_eval,50words,What do you do?,AY OW T  |  T  |  AA R  |  Y R  |  AA D  |  T  | ,10,13
+t12.2023.11.28_imagined_50words_eval,50words,Hello how are you?, |  UW  |  HH R  |  R  | ,9,14
+t12.2023.11.28_imagined_50words_eval,50words,They are coming outside,AY AY  |  R  |  AE  |  IH  |  HH R  |  IH T  | ,12,18
+t12.2023.11.28_imagined_50words_eval,50words,I am okay, |  AE M  |  AH L  | ,4,9
+t12.2023.11.28_imagined_50words_eval,50words,It is comfortable,AE  |  AA T  |  M AH IY  |   | ,12,17
+t12.2023.11.28_imagined_50words_eval,50words,It is right here,AY T  |  V  |  T  |  G IY  |  IH  |  R  | ,9,14
+t12.2023.11.28_imagined_50words_eval,50words,My glasses are clean, |  M R IY  |  AA R  |  IH  |  EY IY  |  D  | ,13,18
+t12.2023.11.28_imagined_50words_eval,50words,Please clean it,S  |  AE T  |  AE T  | ,9,13
+t12.2023.11.28_imagined_50words_eval,50words,How do you feel?,Y R  |  AA R  |  R  | ,10,13
+t12.2023.11.28_imagined_50words_eval,50words,They have faith,AY EY  |  HH AE V  |  AE EY  | ,3,11
+t12.2023.11.28_imagined_50words_eval,50words,Faith is good,DH EY  |   |  DH EY  |  T  |  D  |  UH D  | ,8,11
+t12.2023.11.28_imagined_50words_eval,50words,It is good,AY IH  |  IH  |  EH  |  G UH G UH D  |  G UH D  | ,10,10
+t12.2023.11.28_imagined_50words_eval,50words,My family is here, |  F AE M AH IY  |  IY ER  |  D  |  R  | ,7,17
+t12.2023.11.28_imagined_50words_eval,50words,No, | ,2,3
+t12.2023.11.28_imagined_50words_eval,50words,My family is very comfortable, |  F AE M AH L IY  |  AE EY  |  AE V R  |  IY  |  F R ER IY  |  F AE AH T  |  AH L  | ,16,29
+t12.2023.11.28_imagined_50words_eval,50words,I am outside,Y OW  |  AE NG  |  T  | ,7,11
+t12.2023.11.28_imagined_50words_eval,50words,I like my nurse, |  OW L P  |  AY  |  G M R IH  |  R  |   | ,11,13
+t12.2023.11.28_imagined_50words_eval,50words,Bring my glasses here, |  T R  |  IH D  |  G IY  |  HH R,13,19
+t12.2023.11.28_imagined_50words_eval,50words,Yes, | ,3,4
+t12.2023.11.28_imagined_50words_eval,50words,That is very clean,L  |  IH Z  |  AE T  |   |  IY R  |  M IY  | ,11,17
+t12.2023.11.28_imagined_50words_eval,50words,I need my glasses,Y  |  N L  |  N T  |  M R EY IY  | ,11,16
+t12.2023.11.28_imagined_50words_eval,50words,Please bring my glasses here, |  M K  |  K  |  M ER IY  |  L  |  R  | ,17,24
+t12.2023.11.28_imagined_50words_eval,50words,I am not okay,AY AY  |  AE  |  IH  |  N AA T  |  D  |  T  |  HH OW T P  | ,10,13
+t12.2023.11.28_imagined_50words_eval,50words,I am going outside, |  M  |  N AA T  |   | ,11,16
+t12.2023.11.28_imagined_50words_eval,50words,My glasses are comfortable, |  N S  |   |  IY  |  AA R  |  R  |  HH F M ER AH  |  AH L  | ,14,24
+t12.2023.11.28_imagined_50words_eval,50words,I do not feel comfortable,AY  |  N AA  |  N AA T  |  IH  |  EH R  |  AH L  | ,13,24
+t12.2023.11.28_imagined_50words_eval,50words,Do not feel bad,Y  |  AA T  |  AA T  |  EH L  |  M T  | ,10,15
+t12.2023.11.28_imagined_50words_eval,50words,My computer is clean, |  AE P  |   |  UW  |  AE S  |  AE IY  | ,14,20
+t12.2023.11.28_imagined_50words_eval,50words,I am thirsty,AY  |   |  AE P  |  DH  |  T  | ,6,11
+t12.2023.11.28_imagined_50words_eval,50words,Are you tired?,AY R  |  UW  |  D  |  AA T R  | ,7,11
+t12.2023.11.28_imagined_50words_eval,50words,How do you like my music?,UW  |  AE T  |  AA UW  |  AA L  |  AH L K  |  IH K  |  M L  |   |  F Y ER K,18,23
+t12.2023.11.28_imagined_50words_eval,50words,They are going outside, |  AA R  |   |  G UH D  |  Z  |  AA T  | ,11,17
+t12.2023.11.28_imagined_50words_eval,50words,Please tell my family,AY ER S  |  L  |  N  |  N L  |  AA T R  |  AH M AH IY,15,19
+t12.2023.11.28_imagined_50words_eval,50words,They are coming here,L  |  AA R  |  N AH M AH IH IH  |  R  | ,7,16
+t12.2023.11.28_imagined_50words_eval,50words,I am not hungry,AY  |  AE  |   |  N AA T  |  AH IY  | ,5,16
+t12.2023.11.28_imagined_50words_eval,50words,You are not right,R  |   |  AA R  |  D  |  AA  |   |  R  | ,7,14
+t12.2023.11.28_imagined_50words_eval,50words,Are you going outside?,Y  |   |  Y L  |  AA R  |  IH NG  |  R IY  |   | ,11,17
+t12.2023.11.28_imagined_50words_eval,50words,I am not going,AY  |  AE IY  |  AA  |  N AA T  |  D  |  R  | ,7,14
+t12.2023.11.28_imagined_50words_eval,50words,I feel very hungry,AY  |  F L  |  AE M  |  AA R  |   |  AH  | ,11,18
+t12.2023.11.28_imagined_50words_eval,50words,Here is my computer,AY EH R  |  AE V IY  |  M  |  M AY  |  G D IY  |  F AH L  |  ER D  | ,16,19
+t12.2023.11.28_imagined_50words_eval,50words,Where is it?,Y N AA T  |  R  | ,8,10
+t12.2023.11.28_imagined_50words_eval,50words,My family is outside, |  F M L  |  TH S  |  AE S  |  AH  | ,11,19
+t12.2023.11.28_imagined_50words_eval,50words,My nurse is outside,OW L  |  T  |  N AA S  |   |  IY  |  D  |  G S D  |   | ,12,16
+t12.2023.11.28_imagined_50words_eval,50words,I feel very comfortable,Y  |  Y UW  |  K R  |   |  F M AH IY  |  AH IY  | ,15,22

@@ -10,14 +10,20 @@ issues. Usage: vac_error_ops.py (run from repo root)
 import csv
 import re
 
-GREEDY = r"data\20241009_card_BtoT25\run_120k\val_greedy_per_trial.csv"
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from study_paths import runtime_path
+
+GREEDY = runtime_path("20240815_card", "run_120k", "val_greedy_per_trial.csv")
 SETS = {
-    "willett": r"data\20230616_willett_BtoT24\run_60k\wl_final_full.tsv",
-    "card":    r"data\20241009_card_BtoT25\run_120k\final_full.tsv",
-    "jude":    r"data\20260428_jude\run_25k\off_final_full.tsv",
-    "kunz_t12": r"data\20250821_kunz\vac\t12_bp1_a0.325_final.tsv",
-    "kunz_t15": r"data\20250821_kunz\vac\t15_bp1_a0.5_final.tsv",
-    "kunz_t16": r"data\20250821_kunz\vac\t16_bp1_a0.325_final.tsv",
+    "willett": runtime_path("20230831_willett", "run_60k", "wl_final_full.tsv"),
+    "card":    runtime_path("20240815_card", "run_120k", "final_full.tsv"),
+    "jude":    runtime_path("20260428_jude", "run_25k", "off_final_full.tsv"),
+    "kunz_t12": runtime_path("20250821_kunz", "vac", "t12_bp1_a0.325_final.tsv"),
+    "kunz_t15": runtime_path("20250821_kunz", "vac", "t15_bp1_a0.5_final.tsv"),
+    "kunz_t16": runtime_path("20250821_kunz", "vac", "t16_bp1_a0.325_final.tsv"),
 }
 
 

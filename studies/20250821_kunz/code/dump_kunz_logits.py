@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
-from study_paths import study_path
+from study_paths import runtime_path, study_path
 
 import os
 import time
@@ -25,7 +25,7 @@ from evaluate_model_helpers import runSingleDecodingStep  # noqa: E402
 
 REPO = study_path("20250821_kunz")
 RUN = sys.argv[1]
-MODEL_PATH = RUN if Path(RUN).is_dir() else os.path.join(REPO, "data", "20250821_kunz", "run_" + RUN)
+MODEL_PATH = RUN if Path(RUN).is_dir() else str(runtime_path("20250821_kunz", "run_" + RUN.removeprefix("run_")))
 DATA_DIR = study_path("20250821_kunz", "data/processed/hdf5")
 OUT = os.path.join(MODEL_PATH, "kunz_logits.hdf5")
 

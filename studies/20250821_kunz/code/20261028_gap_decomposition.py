@@ -13,10 +13,12 @@
 import csv
 import os
 import re
+import sys
+from datetime import date
+from pathlib import Path
 
-R = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-K = os.path.join(R, "data", "20250821_kunz")
-OUT = os.path.join(R, "result", "20261028_gap_decomposition.tsv")
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
+from study_paths import release_prefix, run_output, runtime_path
 
 
 def rows(path, delim=","):
@@ -106,7 +108,7 @@ def ed(hyp, ref):
 def analyze(part):
     """Aggregate per-session PER and per-LM-tier WER for one implant part.
 
-    Reads the decoding artifacts under ``data/20250821_kunz/run_<part>_mixed``
+    Reads the decoding artifacts from the participant's mixed-training run
     (per-trial greedy PER, 3-gram / TLG 5-gram / final-full word decodes,
     and the bp1+OPT / bp1+OPT+Qwen subsets) and pools them per session and
     per LM tier, both on the full key set and on the bp1 subset.
@@ -123,7 +125,7 @@ def analyze(part):
         ``"per_session_wer_final"``, ``"tiers_full"``, and ``"tiers_bp1"``
         mapping tier names to ``(wer_pct, n)`` tuples.
     """
-    rd = os.path.join(K, f"run_{part}_mixed")
+    rd = runtime_path("20250821_kunz", f"run_{part}_mixed")
     per = rows(os.path.join(rd, "val_greedy_per_trial.csv"))
     hdr, body = per[0], per[1:]
     sess = [r[0] for r in body]
@@ -262,9 +264,14 @@ def main():
         print("  WER/session:", o["per_session_wer_final"])
         print("  WER tiers full:", tf)
         print("  WER tiers bp1 :", tb)
-    with open(OUT, "w", encoding="utf-8", newline="\n") as f:
+    study = "20250821_kunz"
+    run_id = f"{date.today():%Y%m%d}_{release_prefix(study)}__tsv__wfst_5gram__gap_decomposition"
+    out = Path(run_output(study, default_id=run_id)) / "runtime"
+    out.mkdir(exist_ok=True)
+    output = out / "20261028_gap_decomposition.tsv"
+    with output.open("w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(lines) + "\n")
-    print("\nwrote", OUT)
+    print("\nwrote", output)
 
 
 if __name__ == "__main__":

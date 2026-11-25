@@ -21,7 +21,7 @@ import torch
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from calib_online_sim import (  # noqa: E402
     build_model, load_trials, collate, train_transform, decode_trial,
-    make_optimizer, REPO, P4, DATA_DIR,
+    make_optimizer, OUT_ROOT, P4, DATA_DIR,
 )
 from omegaconf import OmegaConf  # noqa: E402
 import editdistance  # noqa: E402
@@ -139,7 +139,7 @@ def main():
            "delta": per1 - per0, "final_batch_loss": float(np.mean(losses[-50:])),
            "first_batch_loss": float(np.mean(losses[:20])), "wall_min": (time.time() - t0) / 60}
     print(json.dumps(out, indent=2), flush=True)
-    outdir = os.path.join(REPO, "data", "20241009_card_BtoT25", "run_calib_20261014")
+    outdir = OUT_ROOT
     os.makedirs(outdir, exist_ok=True)
     with open(os.path.join(outdir, f"t1_perdayft_{session.split('.')[-2]}{session.split('.')[-1]}_lr{lr}.json"), "w") as f:
         json.dump(out, f, indent=2)

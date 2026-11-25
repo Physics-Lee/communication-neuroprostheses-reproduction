@@ -14,6 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
 from study_paths import run_output, study_path
+from handwriting_runs import handwriting_run
 
 import argparse
 import csv
@@ -26,7 +27,6 @@ REPO = study_path("20210512_willett")
 sys.path.insert(0, os.path.join(REPO, 'code'))
 import step5_eval_from_errcounts as ev  # noqa: E402
 
-RUNS = os.path.join(REPO, 'data', '20210512_willett', 'runs')
 
 # ---- 已验证常量（出处见各 docs/ 文档）----
 M1A_NOTE = '六行指标 0.00pp 对齐（docs/20261018_数据盘点与评测链对齐.md）'
@@ -62,7 +62,7 @@ def raw_summary(cv):
     Mutates the module-global ``ev.ROOT`` as a side effect to point at the
     requested run directory before calling ``summarize``.
     """
-    d = os.path.join(RUNS, cv + '_synth', 'step5_inference')
+    d = os.path.join(handwriting_run(cv + '_synth'), 'step5_inference')
     ev.ROOT = d
     return ev.summarize(cv, 0, np.random.RandomState(ev.SEED), flat=True)
 
@@ -123,7 +123,7 @@ def main():
     ap.add_argument('--dryRun', action='store_true', help='只渲染到 stdout，不写报告/README/PROGRESS')
     cli = vars(ap.parse_args())
 
-    blocks_ok = os.path.isdir(os.path.join(RUNS, 'HeldOutBlocks_synth', 'step5_inference')) \
+    blocks_ok = os.path.isdir(os.path.join(handwriting_run('HeldOutBlocks_synth'), 'step5_inference')) \
         and os.path.isfile(os.path.join(run_output("20210512_willett"), 'm3_own_decode_HeldOutBlocks.csv'))
     if not blocks_ok and not cli['skipMissing']:
         print('Blocks 产物缺失，拒绝出报告（--skipMissing 可强制）')
@@ -209,7 +209,7 @@ def main():
 1. **句首伪字符**：自训模型在句起始（t≈0）多冒一个 charStart 尖峰——raw 档句首多 1–2 个伪字符，bigram 档被 LM 翻译为合法标点（'s / , / q）。官方模型无此尖峰。这是自训模型残差（raw 档差距）的主因；除此以外错误模式与官方几乎逐字相同（mle/frrrom/waas/standng 同错），表明映射学习本身高度一致。
 2. **GPT-2 档未对自训模型运行**：该档需解码器输出 128-best 候选，自研解码器仅 1-best（扩为 lattice n-best 工作量大、风险高）；该档的逐句级精确复现已由 M1c（官方 n-best + 我们的打分代码）完成，不影响六数结论的完整性。
 3. **HeldOutTrials 的 M2 标签直比差异**在官方标签侧（我们确定性重跑自证），不影响训练（训练用我们自己的重标注产物）。
-4. 官方包内 Step4 官方 checkpoint 未用于自训指标（仅 M1 用其输出做对照）；自训模型权重在 `data/20210512_willett/runs/`（不入库）。
+4. 官方包内 Step4 官方 checkpoint 未用于自训指标（仅 M1 用其输出做对照）；自训模型权重在 `results/<run_id>/runtime/`（不入库）。
 
 ## 6. 工件清单
 

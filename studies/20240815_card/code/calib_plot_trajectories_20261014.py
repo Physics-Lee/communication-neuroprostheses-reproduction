@@ -26,8 +26,8 @@ import numpy as np
 import pandas as pd
 
 REPO = study_path("20240815_card")
-CAL = os.path.join(REPO, r"data\20241009_card_BtoT25\run_calib_20261014")
-P4CSV = os.path.join(REPO, r"data\20241009_card_BtoT25\run_p4_20261013\val_greedy_per_trial.csv")
+CAL = study_path("20240815_card", "data/20241009_card_BtoT25/run_calib_20261014")
+P4CSV = study_path("20240815_card", "data/20241009_card_BtoT25/run_p4_20261013/val_greedy_per_trial.csv")
 OUT = os.path.join(REPO, r"result\figs\session_level\calib_20261014_trajectories.png")
 
 DAYS = ["t15.2025.01.10", "t15.2025.01.12", "t15.2025.03.14",

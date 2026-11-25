@@ -28,7 +28,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
-from study_paths import study_path
+from study_paths import derived_data_path, study_path
 
 import argparse
 import heapq
@@ -41,7 +41,8 @@ import scipy.io
 REPO = study_path("20210512_willett")
 ROOT = study_path("20210512_willett", "data/extracted/handwritingBCIData")
 LM_DIR = os.path.join(ROOT, 'BigramLM')
-CACHE = os.path.join(REPO, 'data', '20210512_willett', 'decode_cache')
+GRAPH_CACHE = derived_data_path("20210512_willett", "pkl/wfst_bigram")
+LEGACY_GRAPH = Path("data/20210512_willett/decode_cache")
 
 SESSIONS = ['t5.2019.05.08', 't5.2019.11.25', 't5.2019.12.09', 't5.2019.12.11', 't5.2019.12.18',
             't5.2019.12.20', 't5.2020.01.06', 't5.2020.01.08', 't5.2020.01.13', 't5.2020.01.15']
@@ -723,8 +724,15 @@ def main():
     tid2pdf, TID2PHONE, tid_lp = load_model(os.path.join(LM_DIR, 'model'))
     chars = load_symbols(os.path.join(LM_DIR, 'chars.txt'))
     chars_by_id = {v: k for k, v in chars.items()}
-    hcl = load_graph_cached(os.path.join(CACHE, 'HCL.txt'), 'HCL', os.path.join(CACHE, 'HCL.pkl'))
-    g = load_graph_cached(os.path.join(CACHE, 'G.txt'), 'G', os.path.join(CACHE, 'G.pkl'))
+    GRAPH_CACHE.mkdir(parents=True, exist_ok=True)
+    hcl = load_graph_cached(
+        str(derived_data_path("20210512_willett", "txt/wfst_bigram/HCL.txt", legacy=LEGACY_GRAPH / "HCL.txt")),
+        "HCL", str(derived_data_path("20210512_willett", "pkl/wfst_bigram/HCL.pkl", legacy=LEGACY_GRAPH / "HCL.pkl")),
+    )
+    g = load_graph_cached(
+        str(derived_data_path("20210512_willett", "txt/wfst_bigram/G.txt", legacy=LEGACY_GRAPH / "G.txt")),
+        "G", str(derived_data_path("20210512_willett", "pkl/wfst_bigram/G.pkl", legacy=LEGACY_GRAPH / "G.pkl")),
+    )
     dec = LazyDecoder(hcl, g, tid2pdf, tid_lp)
 
     sessions = cli['sessions'].split(',') if cli['sessions'] else SESSIONS

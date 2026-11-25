@@ -27,7 +27,7 @@ Run from the repository root with `bci-repro` active.
 ```text
 python studies/20230831_willett/code/export_sessions.py --session t12.2022.05.19
 python shared/tools/validate_session.py studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-19.h5 --source trials
-python studies/20230831_willett/code/eval_session_file.py studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-19.h5 studies/20230831_willett/data/20230616_willett_BtoT24/run_60k --partition test --compare studies/20230831_willett/results/20261124_import_btot24/test_partition_greedy_per_trial.csv --trainer-input studies/20230831_willett/data/derived/dryad_x69p8czpq/hdf5/trainer_input/t12.2022.05.19 --output-dir <new-results-directory>
+python studies/20230831_willett/code/eval_session_file.py studies/20230831_willett/data/processed/t12/dryad_x69p8czpq_2022-05-19.h5 studies/20230831_willett/results/20260831_dryad_x69p8czpq__hdf5__ctc_greedy__run_60k/runtime --partition test --compare studies/20230831_willett/results/20261124_import_btot24/test_partition_greedy_per_trial.csv --trainer-input studies/20230831_willett/data/derived/dryad_x69p8czpq/hdf5/trainer_input/t12.2022.05.19 --output-dir <new-results-directory>
 python studies/20230831_willett/code/build_split_manifest.py
 ```
 

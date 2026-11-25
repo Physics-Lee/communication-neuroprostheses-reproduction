@@ -17,6 +17,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "shared"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from handwriting_runs import handwriting_run
 from study_paths import derived_data_path, study_path
 
 import argparse
@@ -32,7 +34,6 @@ import scipy.io
 import torch
 
 STUDY = "20210512_willett"
-REPO = study_path(STUDY)
 OFFICIAL_REPO = study_path(STUDY, "open_source_code_for_reference/handwritingBCI")
 sys.path.insert(0, OFFICIAL_REPO)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -76,7 +77,7 @@ def build_default_args(partition, synth_batch_size):
         'nBatchesToTrain': 100000, 'timeSteps': 1200, 'batchSize': 64,
         'synthBatchSize': synth_batch_size, 'inputScale': 1.0,
         'inferenceOutputFileName': 'None', 'inferenceInputLayer': 0,
-        'outputDir': os.path.join(REPO, 'data', '20210512_willett', 'runs', partition + ('_synth' if synth_batch_size else '_real')),
+        'outputDir': handwriting_run(partition + ('_synth' if synth_batch_size else '_real')),
         'randomWalkAxisMode': 'official',  # 本移植新增：'official'(照抄 cumsum 特征轴) / 'time'(直觉修正)
     }
     for x, sess in enumerate(SESSIONS):
@@ -456,6 +457,9 @@ def main():
         args['nBatchesToTrain'] = cli['nBatches']
     if cli['outputDir']:
         args['outputDir'] = cli['outputDir']
+    elif not cli['argsFile']:
+        name = cli['partition'] + ('_synth' if cli['synth'] else '_real')
+        args['outputDir'] = handwriting_run(name, for_write=True)
 
     os.makedirs(args['outputDir'], exist_ok=True)
     seed = args['seed'] if args['seed'] != -1 else datetime.now().microsecond

@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 
 REPO = study_path("20240815_card")
-P4 = os.path.join(REPO, r"data\20241009_card_BtoT25\run_p4_20261013")
+P4 = study_path("20240815_card", "data/20241009_card_BtoT25/run_p4_20261013")
 LOGITS = os.path.join(P4, "t15_logits.hdf5")
 
 SESSIONS_2025 = ["t15.2025.01.10", "t15.2025.01.12", "t15.2025.03.14",

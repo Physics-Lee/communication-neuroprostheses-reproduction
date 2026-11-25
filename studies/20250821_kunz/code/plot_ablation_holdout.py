@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
-from study_paths import study_path
+from study_paths import runtime_path, study_path
 
 import re
 
@@ -28,7 +28,6 @@ import pandas as pd  # noqa: E402
 INK = "#172033"; BLUE = "#2457c5"; GREEN = "#009E73"; RED = "#a83232"
 AMBER = "#E69F00"; MUTED = "#5c667a"; PURPLE = "#6d3fa4"
 OUT = study_path("20250821_kunz", 'result/figs')
-KUNZ = study_path("20250821_kunz", 'data/20250821_kunz')
 
 plt.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei"]
 plt.rcParams["axes.unicode_minus"] = False
@@ -108,7 +107,7 @@ def arm_df(subj, arm):
     pandas.DataFrame
         Contents of ``run_<subj>_<arm>/val_greedy_per_trial.csv``.
     """
-    return pd.read_csv(rf"{KUNZ}\run_{subj}_{arm}\val_greedy_per_trial.csv")
+    return pd.read_csv(runtime_path("20250821_kunz", f"run_{subj}_{arm}", "val_greedy_per_trial.csv"))
 
 
 # ---------------- ablation arms ----------------
@@ -151,7 +150,7 @@ ax.grid(axis="y", alpha=0.3)
 for k, subj in enumerate(SUBJ):
     ax2 = fig.add_subplot(gs[1, k])
     for j, arm in enumerate(arms):
-        path = rf"{KUNZ}\run_{subj}_{arm}\training_log"
+        path = runtime_path("20250821_kunz", f"run_{subj}_{arm}", "training_log")
         batches, pers = [], []
         for line in open(path, encoding="utf-8", errors="ignore"):
             m = re.search(r"Val batch (\d+): PER \(avg\): ([\d.]+)", line)
@@ -176,7 +175,7 @@ B24 = pd.read_csv(study_path("20230831_willett", 'data/20230616_willett_BtoT24/r
 B25 = pd.read_csv(study_path("20240815_card", 'result/val_greedy_per_trial.csv'))
 JU = pd.read_csv(study_path("20260428_jude", 'data/20260428_jude/run_25k/val_greedy_per_trial.csv'))
 K = {s: {a: arm_df(s, a) for a in arms} for s in SUBJ}
-HO = pd.concat([pd.read_csv(rf"{KUNZ}\run_t16_holdout_fold{f}\val_greedy_per_trial.csv")
+HO = pd.concat([pd.read_csv(runtime_path("20250821_kunz", f"run_t16_holdout_fold{f}", "val_greedy_per_trial.csv"))
                 for f in (1, 2, 3)], ignore_index=True)
 
 # paper-side PER anchors, only where the paper itself reports a PER value
@@ -272,5 +271,5 @@ for subj in SUBJ:
 print("\n=== T16 attempted holdout (3-fold CV pooled) ===")
 print(f"n={len(HO)}  {agg(HO):6.2f}%  ed/len={HO.edit_distance.sum()}/{HO.true_len.sum()}")
 for f in (1, 2, 3):
-    d = pd.read_csv(rf"{KUNZ}\run_t16_holdout_fold{f}\val_greedy_per_trial.csv")
+    d = pd.read_csv(runtime_path("20250821_kunz", f"run_t16_holdout_fold{f}", "val_greedy_per_trial.csv"))
     print(f"fold{f}: n={len(d)}  {agg(d):6.2f}%  ed/len={d.edit_distance.sum()}/{d.true_len.sum()}")

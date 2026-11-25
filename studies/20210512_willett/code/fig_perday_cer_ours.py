@@ -14,6 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
 from study_paths import run_output, study_path
+from handwriting_runs import handwriting_run
 
 import os
 
@@ -25,7 +26,6 @@ import matplotlib.pyplot as plt  # noqa: E402
 
 REPO = study_path("20210512_willett")
 ROOT = study_path("20210512_willett", "data/extracted/handwritingBCIData")
-RUNS = os.path.join(REPO, 'data', '20210512_willett', 'runs')
 
 SESSIONS = ['t5.2019.05.08', 't5.2019.11.25', 't5.2019.12.09', 't5.2019.12.11', 't5.2019.12.18',
             't5.2019.12.20', 't5.2020.01.06', 't5.2020.01.08', 't5.2020.01.13', 't5.2020.01.15']
@@ -87,7 +87,7 @@ def main():
     fig, axes = plt.subplots(1, 2, figsize=(14, 4.6), sharey=True)
     for ax, cv in zip(axes, ['HeldOutBlocks', 'HeldOutTrials']):
         off = per_session_cer(os.path.join(ROOT, 'RNNTrainingSteps', 'Step5_RNNInference'), cv, flat=False)
-        ours = per_session_cer(os.path.join(RUNS, cv + '_synth', 'step5_inference'), cv, flat=True)
+        ours = per_session_cer(os.path.join(handwriting_run(cv + '_synth'), 'step5_inference'), cv, flat=True)
         sess = [s for s in SESSIONS if s in off and s in ours]
         x = np.arange(len(sess))
         ax.bar(x - 0.2, [off[s] for s in sess], width=0.4, color='#3b6fb6', label='official ckpt')

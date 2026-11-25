@@ -15,6 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
 from study_paths import run_output, study_path
+from handwriting_runs import handwriting_run
 
 import argparse
 import csv
@@ -58,7 +59,7 @@ def main():
     cli = vars(ap.parse_args())
     cv = cli['cvPart']
 
-    mats_root = os.path.join(REPO, 'data', '20210512_willett', 'runs', cli['runName'], 'step6_kaldimat', cv)
+    mats_root = os.path.join(handwriting_run(cli['runName']), 'step6_kaldimat', cv)
     part = scipy.io.loadmat(os.path.join(ROOT, 'RNNTrainingSteps', 'trainTestPartitions_' + cv + '.mat'))
 
     rows = []

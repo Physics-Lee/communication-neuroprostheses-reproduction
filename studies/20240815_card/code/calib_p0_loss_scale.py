@@ -28,7 +28,7 @@ import torch
 from omegaconf import OmegaConf
 
 REPO = study_path("20240815_card")
-P4 = os.path.join(REPO, r"data\20241009_card_BtoT25\run_p4_20261013")
+P4 = study_path("20240815_card", "data/20241009_card_BtoT25/run_p4_20261013")
 DATA_DIR = study_path("20240815_card", "data/extracted/hdf5_data_final")
 
 sys.path.insert(0, study_path("20240815_card", "open_source_code_for_reference/nejm-brain-to-text/model_training"))

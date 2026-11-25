@@ -1,0 +1,41 @@
+session,fold,block_num,vocab,sentence_label,pred_phonemes,edit_distance,true_len
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,You are bad.,Y OW NG  |  AA AH R IY  | ,7,10
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I hope they are comfortable.,W AH NG  |  HH OW P  |  DH EY  |  AA R  |  G AH M F ER T AH L  | ,6,23
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Hope you like music.,W OW NG  |  Y UW  |  L AY K  |  G Y UW Z  | ,5,18
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,"No, I am not hungry.",OW  |  AY AE M  |  N AA T  |  G AH NG R IY  | ,4,19
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I hope they do not need my family.,AY  |  HH OW  |  DH EY  |  D UW  |  N AA T  |  IH IY Z  |  G AY K S AE M AH L IY  | ,6,30
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Do you have that?,DH Y EY NG  |  Y IH NG  |  IH T  |  V B AE S D  | ,13,14
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,You have it here.,Y UW  |  AE EH Z  |  IY R  | ,6,14
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Are you coming closer?,AA R  |  Y UW Z  |  K AH M EY NG  |  G F OW EY TH ER  | ,6,18
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Hope they feel thirsty.,HH OW P  |  Y EY  |  HH EH L  |  TH ER S T  | ,4,17
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Where is that?,W EH R  |  IH Z  |  DH AE T  | ,0,11
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,It is bad.,IH  |  IH Z  |  B AE D  | ,1,10
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,That is okay.,T AH  |  L K EY  | ,6,11
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,It is my hope that you are comfortable.,T  |  IH AE AY  |  HH OW L P  |  DH AE AY T IY  |  R S ER T AH  | ,18,34
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I hope they need my nurse.,HH OW K EY  |  N IY Z  |  M AY  |  HH AH Z  | ,9,20
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,My family is not very tired.,M AY  |  F AE M AH L IY  |  IH Z  |  N AA AY T  |  G EH R IY  |  S ER  | ,5,27
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Is it?,IH T S D  | ,4,6
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I like how comfortable I am.,AY L M AY  |  HH AE V  |  S M AH B AH L IY  |  IH AE M AH D  | ,15,25
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,My hope is my success.,M AY  |  OW P  |  IH Z  |  M AY  |  HH IH AH K  |  DH EH S  | ,5,20
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Do they have my glasses?,Y UW  |  DH EY  |  M AY  |  G AH M S  | ,9,20
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,How thirsty are you?,W AH W ER S NG  |  HH AA R IY  | ,10,15
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Bring it.,W AH IH NG IH NG  | ,4,8
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I hope you have family.,AY  |  HH OW EY  |  F AE M AH L IY  | ,8,20
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I hope they do not need it.,AY  |  HH OW EY  |  DH EY  |  F Y UW  |  N AA AH T  |  M IH Z  | ,9,23
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Am I?,M AY  | ,2,5
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I like that here.,AY  |  F AE M AH R  | ,9,14
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,My nurse is very tired.,M AY  |  N ER S  |  IH EH R IY  |  HH R AY ER  | ,6,20
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,You hope my family is good.,Y UW  |  OW M AY  |  F AE M AH L IY  |  IH T  |  T G UH D  | ,5,24
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,They like it.,DH EY  |  L AY K  |  IH AH Z  | ,2,10
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,You coming?,Y UW NG IH NG  | ,4,9
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I do not have.,AY  |  D UW  |  N AA T  |  HH AE V  | ,0,13
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,"Yes, I am very hungry.",Y EH L  |  AY  |  V B EH R IY  |  G IH IY  | ,9,21
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,How tired are they?,HH EH AW  |  W AH IH R  |  AA R T DH EY  | ,6,14
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,How do they do it right?,DH EY  |   |  HH OW EY IH  |  M AY  | ,13,19
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,How do you do it please?,W OW EY NG  |  IH  |  AH L IY  | ,14,20
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Is that it you?,IH Z  |  DH AE T  |  IH Z  |  HH Y IY UW  | ,3,13
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Where is my music?,W EH R  |  IH T  |  M AY  |  M Y UW Z IH K  | ,1,17
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I have no family.,AY  |  DH T  |  DH EY  |  F AE AH L IY  | ,6,16
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,Do you like music?,DH EY  |  Y UW  |  L AY  |  M Y Z IH K  | ,4,17
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I hope I have very good family.,AY  |  HH OW K  |  AY  |  AE M  |  TH ER EH R IY  |  G UH D  |  F AE M AH L  |  IY Z  | ,7,28
+t16.2024.04.29_attempted_50words_blk6val,3,6,50words,I have it good.,AY  |  N AE T  |  M  |  G UH ER D  | ,5,13

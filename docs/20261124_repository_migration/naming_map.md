@@ -45,6 +45,15 @@ Seven studies have a trial list named `data/splits/<release>__archived_evaluatio
 
 ## Result names
 
+The dated runtime packages replace local `data/<old-study-name>/run_*` workspaces. The `runtime/` directory holds trainer-native files, and `log/<run_id>/training_log` holds the training log. Existing code can resolve both through `runtime_path` or the original alias passed to `study_path`.
+
+| Study | Migrated runs |
+| --- | --- |
+| Willett 2023 | `results/20260831_dryad_x69p8czpq__hdf5__ctc_greedy__run_60k/` |
+| Card 2024 | `results/20260902_dryad_dncjsxm85__hdf5__ctc_greedy__run_120k/`, `results/20260903_dryad_dncjsxm85__hdf5__ctc_greedy__excl5_40k/`, and `results/20261013_dryad_dncjsxm85__hdf5__ctc_greedy__p4/` |
+| Kunz 2025 | Twelve HDF5 training runs for the participant arms and holdout folds, plus `results/20261001_dryad_gf1vhhn1j__npy__wfst_5gram__decoder_sweep/` |
+| Jude 2026b | `results/20260901_dryad_vq83bk481__hdf5__ctc_greedy__run_25k/` and `results/20261002_dryad_vq83bk481__npy__wfst_5gram__decoder_sweep/` |
+
 For a new run, use `results/<yyyymmdd>_<release>__<format>__<decoder>__<experiment>/` with `run.yaml` for provenance, `trials.csv` for scored trials, and `summary.json` for aggregate results. Where a historical run exposes an aggregate only, use `summary.json` when repackaging that run. The published figures and tutorials continue to cite their exact archived filenames.
 
 The [result recording command](../../shared/tools/record_study_run.py) can build this path from the source manifest, `--input-format`, `--decoder`, and `--label`. For example, from the repository root:
