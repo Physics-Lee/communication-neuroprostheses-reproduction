@@ -39,8 +39,8 @@ The two `LanguageModels` archives are only needed for fresh word decodes; every 
 
 Two things work on plain Windows with nothing else installed beyond step 1:
 
-1. **All eight notebooks' archive-scoring cells** recompute the published metrics from the files shipped with the repository. Total time for all eight: about a minute and a half.
-2. **Greedy metrics from fresh short runs**: each "Reproduce and score" train command at the Notebook's documented reader length (1000–2000 batches) plus `evaluate.py` needs nothing but this environment. Fresh word-level WER from fresh logits needs step 4.
+1. **All eight notebooks' archive-scoring cells** recompute the published metrics — greedy error rates *and* the archived word-level WERs — from the files shipped with the repository. Total time for all eight: about a minute and a half.
+2. **Greedy metrics from fresh short runs**: each "Reproduce and score" train command at the Notebook's documented reader length (1000–2000 batches) plus `evaluate.py` needs nothing but this environment. The fresh post-LM WER needs the step-4 toolchain.
 
 For example, scoring an archived decode TSV directly:
 
@@ -48,14 +48,16 @@ For example, scoring an archived decode TSV directly:
 python shared/tools/wer_from_tsv.py --no-sidecar studies/20230831_willett/results/20261124_import_btot24/wl_5g_opt_official.tsv
 ```
 
-## 4. WSL toolchain for fresh word decodes (optional, slowest to build)
+## 4. WSL toolchain for the word-level WER (required for the headline metric, slowest to build — start it early)
 
-Only the 5-gram/bigram/typing decodes and LPCNet synthesis need WSL. Install Ubuntu, then build the pieces in [reader_workflow.md](reader_workflow.md): Kaldi + OpenFST (then `wenet_lattice` and `latgen_lazy2`), [LPCNet](reader_workflow.md#voice-synthesis), and the typing decoder's `py310lm` + `lm_decoder` (including the eight `runtime/server/x86` symlink relinks and the CMake 4 / GCC 15 flags documented there).
+The word error rates are the studies' headline metrics: every per-study "Calculate metrics" section ends by scoring a fresh word decode, and the benchmark figures pair post-LM WER with raw PER/CER. Greedy error rates come out on Windows (step 3), but **fresh post-LM WER does not exist without this toolchain**: only the 5-gram/bigram/typing decodes and LPCNet synthesis run in WSL.
+
+It is the slowest piece to build (hours, dominated by Kaldi), so start the WSL install below while the Windows passes of step 5 run, rather than after them. Install Ubuntu, then build the pieces in [reader_workflow.md](reader_workflow.md): Kaldi + OpenFST (then `wenet_lattice` and `latgen_lazy2`), [LPCNet](reader_workflow.md#voice-synthesis), and the typing decoder's `py310lm` + `lm_decoder` (including the eight `runtime/server/x86` symlink relinks and the CMake 4 / GCC 15 flags documented there).
 
 For Kaldi itself, follow the upstream `tools/INSTALL` and `src/INSTALL` (clone, `extras/check_dependencies.sh` and its `apt-get` line, `make` in `tools/`, then `./configure --shared && make` in `src/`). Two honest notes from the acceptance run:
 
 - The reference machine carries a **prebuilt** tree (`~/kaldi` with `tools/openfst` and `tools/openfst-1.8.4`); the reader commands point at those paths. If your Kaldi builds a different OpenFST version, adjust the two compile commands' `-I`/`-L` paths to match.
-- The acceptance run **did not build Kaldi from scratch**; it only compiled `lm_decoder` (GCC 15 needed `-Wno-template-body`, documented in the reader guide). On a brand-new Ubuntu whose compiler rejects older Kaldi sources, a slightly older GCC via `apt install g++-12` with `CC/CXX` pointing at it is the usual remedy — untested here. Until the toolchain is ready, step 3 keeps every study scorable.
+- The acceptance run **did not build Kaldi from scratch**; it only compiled `lm_decoder` (GCC 15 needed `-Wno-template-body`, documented in the reader guide). On a brand-new Ubuntu whose compiler rejects older Kaldi sources, a slightly older GCC via `apt install g++-12` with `CC/CXX` pointing at it is the usual remedy — untested here. Until the toolchain is ready, step 3 covers every study's greedy and archived metrics, including the archived WERs.
 
 Two graph-placement rules that the acceptance run measured the hard way (details in the reader guide):
 
@@ -64,9 +66,11 @@ Two graph-placement rules that the acceptance run measured the hard way (details
 
 ## 5. Suggested first-pass order (times measured on the acceptance run)
 
+Start the step-4 WSL build in a side terminal before pass 1; the order below assumes it finishes during the Windows passes.
+
 | Pass | What | Wall time measured |
 | --- | --- | --- |
-| 1 | All eight notebooks' archive-scoring cells (zero download) | 3–25 s each |
+| 1 | All eight notebooks' archive-scoring cells, including the archived WER tables (zero download) | 3–25 s each |
 | 2 | Fan one-session replay (released model, 6 held-out trials) | minutes |
 | 3 | W2023 reader train 1000 batches → infer 880 → greedy eval | 6 min + <1 min + <1 min |
 | 4 | Kunz t12-mixed reader train 1000 batches → infer/eval 100 | 3.5 min + <1 min |
@@ -74,8 +78,8 @@ Two graph-placement rules that the acceptance run measured the hard way (details
 | 6 | W2021 synth train 2000 batches → infer → bigram decode 63 | ≈22 min + minutes + 17.7 min |
 | 7 | Wairagkar Tier-1 released-encoder inference (2 days, CPU) → LPCNet Mel eval | ≈48 min + ≈20 min |
 | 8 | Card reader train 1000 batches | ≈6 min at the archived rate (87 min measured while three other jobs shared the disk) |
-| 9 | First 5-gram decode after `~/tg5` copy + `.idx`: W2023 880 / Card 1426 / Jude26b 417 / Kunz 100 | 23 / 19 / 17 / 6 min |
-| 10 | Typing decode: graph load ≈2–3 min per process, then seconds per session | — |
+| 9 | Fresh post-LM WER — first 5-gram decode after `~/tg5` copy + `.idx`: W2023 880 / Card 1426 / Jude26b 417 / Kunz 100 | 23 / 19 / 17 / 6 min |
+| 10 | Typing post-LM decode: graph load ≈2–3 min per process, then seconds per session | — |
 
 One-time costs: `.idx` index build ≈22 min for the speech graph; large-graph copies to the WSL home filesystem ≈20–30 min each.
 
