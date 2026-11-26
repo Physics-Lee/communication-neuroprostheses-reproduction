@@ -115,7 +115,16 @@ Fresh post-LM WER is the one metric that does not exist without the WSL toolchai
 
 The machine check is how the acceptance run itself confirmed trial-level equality (e.g. Jude 2026b: 417/417 rows identical in session and reference text). Each `data/splits/README.md` documents its study's columns, and each study's evaluation protocol (`studies/<study>/docs/20261124_evaluation_protocol/`) states which trials the paper's figure scores.
 
-Short answer to the rest: **the paper's split ships inside its data release, the reproduction reuses it by construction, and the two WERs are comparable when the trial lists and the training length match.** The three sub-questions, each with where the answer lives:
+**Which paper WER are you comparing against?** Every paper here reports two word error rates, and the trial-level guarantee above covers only the first:
+
+| Paper number | Trials it covers | Can a reproduction score the same trials? |
+| --- | --- | --- |
+| **Offline evaluation WER** | the labeled test partition **shipped inside the data release** (the per-study table below) | **Yes — this is exactly what the checks above verify.** The archived score and a fresh full run both score these trials row for row (Willett 2023: 880, Card: 1426, Jude 2026b: 417). |
+| **Online (real-time demo) WER** | the paper's live demo sessions, reported in its figures | **No — except Kunz 2025**, whose closed-loop evaluation days *are* the released blocks (100/55/35 trials match exactly). The other releases do not ship the online trial sets: on the online dates their offline archives hold only Willett 2021 33 of 163, Willett 2023 200 of 400, Card 514 of 1628, Jude 2026a 104 of 161 (T17) and 140 of 580 (T18), and Jude 2026b 131 of 469. |
+
+For the online number, the repository does what the releases permit: Figure 2f restricts each archived offline arm to exactly the online evaluation dates and averages the daily WERs with equal weight, [`figure2cd_paired_trials.csv`](figures/results/20261124_repository_migration/figure2cd_paired_trials.csv) records the trial-level intersection (online trial ↔ archive trial, with both sides' error counts), and the [Figure 2(c,d,f) protocol](figures/docs/20261124_evaluation_protocol/figure2cd.md) states that trial sets within a date still differ. **When you quote a paper WER, name which of the two numbers you mean.**
+
+Short answer to the rest: **the paper's split ships inside its data release, the reproduction reuses it by construction, and your WER is comparable with the paper's offline WER when the trial lists and the training length match.** The three sub-questions, each with where the answer lives:
 
 | Sub-question | Answer | Where to look |
 | --- | --- | --- |
@@ -123,7 +132,7 @@ Short answer to the rest: **the paper's split ships inside its data release, the
 | How does my run split? | Identically — each release ships its partition, and convert/export/train/infer read it; you never create a split. `train.py` writes the exact train/eval trial IDs it used into `train_val_trials.json`; `infer.py` scores only the eval side | your run's `train_val_trials.json`; rebuild/verify with `build_split_manifest.py` |
 | How do the WERs compare? | Only on the **same sessions *and* the same trials in the same order** (rule 1 below), at the same convergence (rule 2) | each study's `docs/20261124_evaluation_protocol/README.md` |
 
-**The paper's split, per study** (all recorded in the partition CSVs named above):
+**The paper's offline evaluation split, per study** (all recorded in the partition CSVs named above):
 
 | Study | The paper's held-out evaluation (the exact trials, not just the days) |
 | --- | --- |
