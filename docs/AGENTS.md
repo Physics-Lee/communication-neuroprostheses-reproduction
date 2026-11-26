@@ -8,10 +8,10 @@ This directory contains repository-level engineering audits and maintenance docu
 
 | File | Description |
 |---|---|
+| [`../fresh_machine_setup.md`](../fresh_machine_setup.md) | Root-level one-page fresh-machine map: all eight studies' downloads and raw paths, the no-WSL metric path, WSL toolchain prerequisites, and measured first-pass timings and disk budget. |
 | [`20261124_repository_migration/README.md`](20261124_repository_migration/README.md) | Study and figure migration plan and verification record. |
 | [`20261124_repository_migration/naming_map.md`](20261124_repository_migration/naming_map.md) | Public commands, data paths, and result names across the eight studies. |
 | [`20261124_repository_migration/reader_workflow.md`](20261124_repository_migration/reader_workflow.md) | Fresh-clone instructions and shared Windows and WSL requirements for all eight study Notebooks. |
-| [`20261124_repository_migration/fresh_machine_setup.md`](20261124_repository_migration/fresh_machine_setup.md) | One-page fresh-machine map: all eight studies' downloads and raw paths, the no-WSL metric path, WSL toolchain prerequisites, and measured first-pass timings and disk budget. |
 | [`20261124_repository_migration/overnight_reader_acceptance_plan.md`](20261124_repository_migration/overnight_reader_acceptance_plan.md) | Twelve-hour clean-checkout acceptance plan for the eight study Notebooks. |
 | [`20261124_repository_migration/overnight_reader_acceptance_report.md`](20261124_repository_migration/overnight_reader_acceptance_report.md) | Results of that acceptance run: per-study pass/blocked rows, fresh metrics vs archived baselines, fixes made, and known residuals. |
 | [`20261124_repository_migration/overnight_plan.md`](20261124_repository_migration/overnight_plan.md) | Bilingual 16-hour plan for naming verification, HDF5 pilots, and study onboarding. |

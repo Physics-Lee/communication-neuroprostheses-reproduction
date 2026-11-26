@@ -1,6 +1,6 @@
 # Reproduce a study from a fresh clone
 
-First time on this machine? [fresh_machine_setup.md](fresh_machine_setup.md) maps all eight studies' downloads and paths on one page, with the WSL toolchain and a suggested first-pass order.
+First time on this machine? [fresh_machine_setup.md](../../fresh_machine_setup.md) maps all eight studies' downloads and paths on one page, with the WSL toolchain and a suggested first-pass order.
 
 Clone the repository and register its Python environment as a Notebook kernel.
 
