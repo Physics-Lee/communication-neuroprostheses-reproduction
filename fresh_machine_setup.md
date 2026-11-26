@@ -107,13 +107,13 @@ Short answer: **the paper's split ships inside its data release, the reproductio
 
 | Sub-question | Answer | Where to look |
 | --- | --- | --- |
-| How did the paper split? | Recorded trial by trial in tracked CSVs: an `archived_evaluation.csv` (which trials each archived score covered, with reference text) + a partition manifest (the paper's own train/test rows) | each `data/splits/` + its `README.md` |
-| How does my run split? | Identically — each release ships its partition, and convert/export/train/infer read it; you never create a split. `train.py` writes the split it used into `train_val_trials.json` | your run's `train_val_trials.json`; rebuild/verify with `build_split_manifest.py` |
-| How do the WERs compare? | Compare on the same trials at the same convergence (rules below) | each study's `docs/20261124_evaluation_protocol/README.md` |
+| How did the paper split? | Recorded **trial by trial** in tracked CSVs: an `archived_evaluation.csv` (which trials each archived score covered, with reference text) + a partition manifest (the paper's own train/test rows with `trial_id`s) | each `data/splits/` + its `README.md` |
+| How does my run split? | Identically — each release ships its partition, and convert/export/train/infer read it; you never create a split. `train.py` writes the exact train/eval trial IDs it used into `train_val_trials.json`; `infer.py` scores only the eval side | your run's `train_val_trials.json`; rebuild/verify with `build_split_manifest.py` |
+| How do the WERs compare? | Only on the **same sessions *and* the same trials in the same order** (rule 1 below), at the same convergence (rule 2) | each study's `docs/20261124_evaluation_protocol/README.md` |
 
 **The paper's split, per study** (all recorded in the partition CSVs named above):
 
-| Study | The paper's held-out evaluation |
+| Study | The paper's held-out evaluation (the exact trials, not just the days) |
 | --- | --- |
 | Willett 2021 | released `HeldOutTrials` / `HeldOutBlocks` MAT partitions (63 held-out test sentences in `HeldOutTrials`) |
 | Willett 2023 | the release's `test` partition — 880 labeled validation trials across 24 sessions |
@@ -126,7 +126,7 @@ Short answer: **the paper's split ships inside its data release, the reproductio
 
 **Three rules for comparing your WER with the paper's:**
 
-1. **Same trials.** A fresh decode scores exactly the trials the archived score did (counts in Q3). `data/splits/<release>__archived_evaluation.csv` is the audited row-for-row list — check a fresh `trials.csv` against it.
+1. **Same sessions *and same trials* — check row by row, not by day.** A fresh decode scores exactly the trials the archived score did, and "same" means identical trial lists, not the same recording dates. Verify it with the pair of tracked CSVs: `data/splits/<release>__archived_evaluation.csv` is the audited row-for-row list of the trials each archived score covered (one row per trial, with reference text and archive row number), and the partition manifest (e.g. `validation_blocks.csv`) lists the same trials with their `trial_id`s. Compare a fresh `trials.csv` against the archived list — session and reference text must match row for row and in order. This is checked for you in one place: each study's `build_split_manifest.py` fails unless the export's evaluation trials equal the archived evaluation rows in content and order (verified again in the acceptance run, e.g. Jude 2026b: 417/417 rows identical).
 2. **Same convergence.** The 1000–2000-batch reader runs are smoke-length: they prove the chain but land far above the paper. Real comparisons, as measured in the acceptance run:
 
 | Study | Smoke-length WER (this chain) | Paper-comparable WER | How the comparable number was obtained |
