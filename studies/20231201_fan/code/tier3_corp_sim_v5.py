@@ -33,7 +33,6 @@ from tier3_corp_sim_official_labels import (  # noqa: E402
     forward_logits, greedy_decode, editdist, ctc_loss, EVAL_SESSIONS)
 from neuralDecoder.neuralSequenceDecoder import NeuralSequenceDecoder  # noqa: E402
 
-OUT = (study_path("20231201_fan", 'result/tier3_corp_sim_v5.json'))
 N_PRE = 6
 N_POST = 6
 STEPS = 500
@@ -136,7 +135,8 @@ def main():
         "mean_post": round(float(np.mean(posts)), 1),
         "static_ref": 50.85,
         "v4b_ref": {"mean_pre": 91.3, "mean_post": 186.8}}
-    with open(OUT, "w", encoding="utf-8") as f:
+    output = study_path("20231201_fan", 'result/tier3_corp_sim_v5.json')
+    with open(output, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
     print("SUMMARY:", report["summary"])
 

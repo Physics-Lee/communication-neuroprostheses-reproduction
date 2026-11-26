@@ -30,7 +30,7 @@ from tier2_mel_alignment import synth, mel_bands  # noqa: E402
 
 ZIP = (study_path("20250612_wairagkar", 'data/raw/t15_neural_data.zip'))
 OUT = (study_path("20250612_wairagkar", 'result/tier2_mel_full_trial.json'))
-WORK = study_path("20250612_wairagkar", 'tmp_mel2')
+WORK = Path(OUT).parent / "runtime"
 ALIGN = 63
 N_TRIALS = 20
 DAYS = {"t15_day179": "brain2voice_t15_day174.h5",
@@ -113,12 +113,8 @@ def main():
                 mask = np.ones(n, dtype=bool)
             if mask.sum() < 30:
                 continue
-            try:
-                wav_p = synth(p, f"{day}_full_pred_{tr}")
-                wav_t = synth(tt, f"{day}_full_tgt_{tr}")
-            except Exception as e:  # noqa: BLE001
-                print(tr, "synth fail", e, flush=True)
-                continue
+            wav_p = synth(p, f"{day}_full_pred_{tr}", WORK)
+            wav_t = synth(tt, f"{day}_full_tgt_{tr}", WORK)
             mp = mel_bands(wav_p)   # hop 160 = 10 ms -> frame k ~ mask[k]
             mt = mel_bands(wav_t)
             nb = min(mp.shape[1], mt.shape[1], len(mask))
@@ -134,6 +130,8 @@ def main():
             done += 1
             print(f"{day} trial {tr}: r={rs[-1] if rs else float('nan'):.3f}"
                   f" ({done}/{N_TRIALS})", flush=True)
+        if not rs:
+            raise ValueError(f"No Mel correlations could be computed for {day}")
         report["days"][day] = {
             "model": model_name, "n_scored": len(rs),
             "mel_band_r_mean": round(float(np.mean(rs)), 3),

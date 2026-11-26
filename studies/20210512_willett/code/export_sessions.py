@@ -77,7 +77,7 @@ def _relative(path):
         POSIX-style path such as
         ``data/extracted/dryad_wh70rxwmv/handwritingBCIData/Datasets/t5.2019.05.08/sentences.mat``.
     """
-    return Path(path).resolve().relative_to(Path(study_checkout(STUDY)).resolve()).as_posix()
+    return Path(path).absolute().relative_to(Path(study_checkout(STUDY)).absolute()).as_posix()
 
 
 def _sentences_file(session):

@@ -21,6 +21,7 @@ from pathlib import Path
 import editdistance
 import numpy as np
 import tensorflow as tf
+import yaml
 from scipy.io import loadmat
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
@@ -233,12 +234,18 @@ def reproduce(study, output, seed, sessions, steps, backend):
         gauss_smooth_np, greedy_decode, norm, text_to_ids,
     )
     from tier3_corp_sim_v6 import make_args
-    from tier3_corp_sim_v9_lm_labels import ctc_beam_lm, train_lm_from_seed_sessions
+    from corp_char_lm import ctc_beam_lm, train_lm_from_seed_sessions
 
     sys.path.insert(0, str(FIGURE_CODE))
     from extract_online_trials import display_text, words
 
     output.mkdir(parents=True, exist_ok=False)
+    run = {
+        "id": output.name, "study": "20231201_fan", "dataset_id": "dryad_hqbzkh1p6",
+        "release_id": None, "input_format": "tfrecord", "decoder": "char_5gram",
+        "split": "final_six_trials_per_session", "backend": backend,
+    }
+    (output / "run.yaml").write_text(yaml.safe_dump(run, sort_keys=False), encoding="utf-8")
     args = make_args()
     args.outputDir = str(output / "runtime")
     data = study_data_path("20231201_fan", "data/extracted/CORP_data_release", checkout=study)
@@ -275,7 +282,7 @@ def reproduce(study, output, seed, sessions, steps, backend):
         "adaptation_labels": "authors' online text on the non-holdout pool",
         "sessions": [],
     }
-    with zipfile.ZipFile(raw) as archive, (output / "trial_transcripts.csv").open(
+    with zipfile.ZipFile(raw) as archive, (output / "trials.csv").open(
         "x", encoding="utf-8", newline="",
     ) as stream:
         writer = csv.DictWriter(stream, fieldnames=FIELDS, lineterminator="\n")
@@ -331,6 +338,11 @@ def reproduce(study, output, seed, sessions, steps, backend):
                       "reference_words": denominators, "online_word_errors": online_errors,
                       "greedy_word_errors": greedy_errors, "beam_word_errors": beam_errors}
             summary["sessions"].append(record)
+            reference_words = sum(day["reference_words"] for day in summary["sessions"])
+            summary["pooled_wer"] = {
+                decoder: sum(day[f"{decoder}_word_errors"] for day in summary["sessions"]) / reference_words
+                for decoder in ("online", "greedy", "beam")
+            }
             stream.flush()
             (output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
             print(record, flush=True)
@@ -339,8 +351,8 @@ def reproduce(study, output, seed, sessions, steps, backend):
 def main():
     """Run the paired trial reproduction with a configurable seed."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--study", type=Path, required=True, help="Original Fan reproduction checkout")
-    parser.add_argument("--output", type=Path, required=True, help="Unused output directory")
+    parser.add_argument("--study", type=Path, required=True, help="Fan study directory")
+    parser.add_argument("--output", type=Path, required=True, help="New output directory")
     parser.add_argument("--seed", type=int, default=9)
     parser.add_argument("--sessions", type=int, choices=range(1, 11), default=10)
     parser.add_argument("--steps", type=int, default=500)

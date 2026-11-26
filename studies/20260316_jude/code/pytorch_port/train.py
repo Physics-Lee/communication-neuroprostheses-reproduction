@@ -17,7 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "shared"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from study_paths import study_path
+from study_paths import run_output, study_path
 from typing_data import typing_npz_path
 
 import argparse
@@ -131,12 +131,18 @@ def main():
     ap.add_argument('--npz', default=str(NPZ))
     ap.add_argument('--n-features', type=int, default=768, help='T18=768, T17=512')
     ap.add_argument('--patience', type=int, default=HP['early_stop_batches'], help='早停耐心（批数）；CER 长期不降的会话可调大')
-    ap.add_argument('--out', default=study_path("20260316_jude", 'result/runs/m1_t18_20241204_torch'))
+    ap.add_argument('--out', type=Path)
     args = ap.parse_args()
     npz_path = Path(args.npz)
-    out_dir = Path(args.out)
+    study = "20260316_jude"
+    if args.out is None:
+        out_dir = Path(study_path(study, "result/runs/m1_t18_20241204_torch"))
+        log_dir = Path(run_output(study, workflow=("npz", "ctc_greedy", "single_session"), log=True))
+    else:
+        out_dir = log_dir = args.out
     out_dir.mkdir(parents=True, exist_ok=True)
-    log_f = open(out_dir / 'training_log', 'a', encoding='utf-8')
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_f = open(log_dir / 'training_log', 'a', encoding='utf-8')
 
     def log(msg):
         """Print a message to stdout and append it to the training_log file.
@@ -173,7 +179,7 @@ def main():
     opt = torch.optim.Adam(params, lr=HP['learn_rate_start'], betas=(0.9, 0.999), eps=HP['adam_eps'])
 
     n_batches = args.smoke if args.smoke > 0 else args.batches
-    best_cer = 1.0
+    best_cer = float('inf')
     batches_since_improved = 0
     rng = np.random.default_rng(HP['seed'])
     t0 = time.time()
@@ -232,6 +238,10 @@ def main():
         log(f'SMOKE_DONE: {n_batches} 批均耗时 {per_batch:.2f}s/批 -> 10000 批预计 {per_batch * 10000 / 3600:.2f} 小时')
     else:
         cer = validate(model, input_net, val_ds, device)
+        if cer < best_cer:
+            best_cer = cer
+            torch.save({'model': model.state_dict(), 'input_net': input_net.state_dict(),
+                        'step': step, 'cer': cer}, out_dir / 'best.pt')
         log(f'FINAL val CER {cer:.4f} | best {best_cer:.4f} | total {(time.time() - t0) / 3600:.2f} h')
         with open(out_dir / 'final_report.json', 'w', encoding='utf-8') as f:
             json.dump({'final_cer': cer, 'best_cer': best_cer,

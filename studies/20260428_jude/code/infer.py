@@ -10,5 +10,5 @@ from study_commands import run_command
 if __name__ == "__main__":
     raise SystemExit(run_command(
         __file__, "dump_jude_logits.py",
-        "[run the existing 25k-step model]",
+        "[RUN_DIRECTORY [LOGITS_FILE]]",
     ))

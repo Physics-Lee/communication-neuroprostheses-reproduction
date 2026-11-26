@@ -42,6 +42,7 @@ shared/
 │   ├── setup_upstream.py                # Installs the pinned upstream checkouts under studies/*/open_source_code_for_reference/
 │   ├── record_study_run.py              # Names and records a scored run under results/<yyyymmdd>_<release>__<format>__<decoder>__<experiment>/
 │   ├── decode_wfst.py                   # Public decode command behind Card, Kunz, and Jude 2026b (WSL OpenFST decoder driver)
+│   ├── export_wfst_trials.py            # Export 41-class speech HDF5 logits for the indexed decoder
 │   ├── validate_session.py              # Checks common session files and traces every trial to its publisher file
 │   ├── session_export_inventory.py      # Lists the state of every session of every study; --write updates the inventory document
 │   ├── check_study_tutorials.py          # Checks that each study tutorial names existing scripts, accepted flags, and accounted-for paths

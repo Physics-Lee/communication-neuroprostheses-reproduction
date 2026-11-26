@@ -3760,33 +3760,30 @@ document.documentElement.classList.add('js');</script>
   </div>
   <div id="reprobox" class="rv">
     <p class="cohort-sub">
-      <b>Table 2. Numerical lookup for Figure 2 across eight open-data datasets.</b>
-      The table shows mean ± SD across evaluation days where applicable. Sent. and Days count released sentences and sessions.
-      No-LM denotes PER, CER, or the 1 − <i>r</i> mel-correlation gap for Wairagkar. LM denotes post-language-model WER.
-      † marks an online paper benchmark. RAM and VRAM are in GB and list the official stack first.
-      Click a row to inspect the study.
+      <b>Table 2. Released data and decoding performance across eight open-data datasets (11 participant splits).</b>
+      Online evaluation days follow the manuscript's Figure 2c; reproduced WER is offline after language modeling. Values are mean ± SD where applicable.
     </p>
     <table class="cohort-tbl" aria-label="Table 2: Reproduction benchmark values">
       <thead>
         <tr>
-          <th scope="col">Study</th><th scope="col">ID</th><th scope="col">Sent.</th><th scope="col">Days</th>
-          <th scope="col">Online<br>WER</th><th scope="col">Speed<br>(wpm)</th>
-          <th scope="col">Paper<br>(no-LM)</th><th scope="col">Ours<br>(no-LM)</th><th scope="col">Ours<br>(LM)</th>
-          <th scope="col">RAM</th><th scope="col">VRAM</th>
+          <th scope="col">Study</th><th scope="col">Participant</th><th scope="col">Released<br>sentences</th>
+          <th scope="col">Total<br>recording days</th><th scope="col">Online<br>evaluation days</th>
+          <th scope="col">Online speed<br>(words/min)</th><th scope="col">Online WER<br>(%)</th>
+          <th scope="col">Reproduced<br>WER (%)</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="repro-row" data-id="willett2021"><td>Willett et al., 2021 [9]</td><td>T5</td><td>1,000</td><td>10</td><td>25.1±8.6</td><td>15.4±2.2</td><td>2.78±1.43<sup>†</sup></td><td>4.71±1.88</td><td>10.0±3.58</td><td>56 / 26.9</td><td>44 / 4.0</td></tr>
-        <tr class="repro-row" data-id="willett2023"><td>Willett et al., 2023 [4]</td><td>T12</td><td>9,680</td><td>24</td><td>23.9±1.8</td><td>65.3±0.9</td><td>19.7<sup>†</sup></td><td>23.42±3.18</td><td>23.58±5.25</td><td>300 / 19.6</td><td>80 / 13.0</td></tr>
-        <tr class="repro-row" data-id="fan2023"><td>Fan et al., 2023 [10]</td><td>T5</td><td>1,315</td><td>21</td><td>4.0±1.2</td><td>14.6±2.2</td><td>6.35±1.75</td><td>12.39±3.33</td><td>—</td><td>40 / 18.4</td><td>40 / 4.0</td></tr>
-        <tr class="repro-row" data-id="card2024"><td>Card et al., 2024 [1]</td><td>T15</td><td>9,498</td><td>45</td><td>4.9±3.3</td><td>32.5±2.7</td><td>9.54±2.76</td><td>10.31±6.39</td><td>6.25±6.54</td><td>300 / 19.6</td><td>48 / 13.0</td></tr>
-        <tr class="repro-row" data-id="wairagkar2025"><td>Wairagkar et al., 2025 [6]</td><td>T15</td><td>8,489</td><td>37</td><td>43.8</td><td>—</td><td>17.0±4.0</td><td>31.4±5.23</td><td>—</td><td>24 / 1.8</td><td>72 / 1.5</td></tr>
-        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T12</td><td>500</td><td>1</td><td>23.7±0.0</td><td>—</td><td>24.0±0.0<sup>†</sup></td><td>61.4±0.0</td><td>94.35±0.0</td><td>300 / 19.6</td><td>48 / 13.0</td></tr>
-        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T15</td><td>720</td><td>3</td><td>51.3±33.1</td><td>—</td><td>54.0±33.2<sup>†</sup></td><td>59.7±8.38</td><td>78.07±0.59</td><td>300 / 19.6</td><td>48 / 13.0</td></tr>
-        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T16</td><td>450</td><td>2</td><td>46.6±0.0</td><td>—</td><td>52.0±0.0<sup>†</sup></td><td>61.5±12.1</td><td>82.38±0.0</td><td>300 / 19.6</td><td>48 / 13.0</td></tr>
-        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T17</td><td>668</td><td>8</td><td>12.5±2.5</td><td>6.8±1.8</td><td>18.6±5.75<sup>†</sup></td><td>19.42±5.80</td><td>11.41±6.85</td><td>64 / 22.5</td><td>24 / 11.5</td></tr>
-        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T18</td><td>1,033</td><td>9</td><td>3.4±0.8</td><td>14.0±4.5</td><td>12.0±2.41<sup>†</sup></td><td>7.69±2.79</td><td>6.66±3.67</td><td>64 / 22.5</td><td>24 / 11.5</td></tr>
-        <tr class="repro-row" data-id="jude2026b"><td>Jude et al., 2026b [7]</td><td>T17</td><td>3,674</td><td>13</td><td>66.5±18.1</td><td>34.1±7.7</td><td>34.0±6.22</td><td>39.97±9.15</td><td>44.37±16.0</td><td>300 / 19.6</td><td>48 / 13.0</td></tr>
+        <tr class="repro-row" data-id="willett2021"><td>Willett et al., 2021 [9]</td><td>T5</td><td>1,000</td><td>10</td><td>5</td><td>15.4±2.2</td><td>23.9±8.4</td><td>10.0±3.58</td></tr>
+        <tr class="repro-row" data-id="willett2023"><td>Willett et al., 2023 [4]</td><td>T12</td><td>9,680</td><td>24</td><td>5</td><td>65.3±0.9</td><td>23.8±1.8</td><td>23.58±5.25</td></tr>
+        <tr class="repro-row" data-id="fan2023"><td>Fan et al., 2023 [10]</td><td>T5</td><td>1,315</td><td>21</td><td>10</td><td>14.6±2.2</td><td>4.0±1.2</td><td>—</td></tr>
+        <tr class="repro-row" data-id="card2024"><td>Card et al., 2024 [1]</td><td>T15</td><td>9,498</td><td>45</td><td>14</td><td>32.5±2.7</td><td>4.9±3.3</td><td>6.25±6.54</td></tr>
+        <tr class="repro-row" data-id="wairagkar2025"><td>Wairagkar et al., 2025 [6]</td><td>T15</td><td>8,489</td><td>37</td><td>8</td><td>—</td><td>43.8</td><td>—</td></tr>
+        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T12</td><td>500</td><td>1</td><td>1</td><td>—</td><td>22.9</td><td>94.35±0.0</td></tr>
+        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T15</td><td>720</td><td>3</td><td>2</td><td>—</td><td>43.3±23.8</td><td>78.07±0.59</td></tr>
+        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T16</td><td>450</td><td>2</td><td>1</td><td>—</td><td>44.4</td><td>82.38±0.0</td></tr>
+        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T17</td><td>668</td><td>8</td><td>6</td><td>6.8±1.8</td><td>10.5±3.1</td><td>11.41±6.85</td></tr>
+        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T18</td><td>1,033</td><td>9</td><td>7</td><td>14.0±4.5</td><td>3.5±0.6</td><td>6.66±3.67</td></tr>
+        <tr class="repro-row" data-id="jude2026b"><td>Jude et al., 2026b [7]</td><td>T17</td><td>3,674</td><td>13</td><td>4</td><td>34.1±7.7</td><td>66.5±18.1</td><td>44.37±16.0</td></tr>
       </tbody>
     </table>
   </div>

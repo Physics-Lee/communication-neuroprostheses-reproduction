@@ -43,7 +43,6 @@ from neuralDecoder.neuralSequenceDecoder import NeuralSequenceDecoder  # noqa: E
 from omegaconf import OmegaConf  # noqa: E402
 
 DATA = (study_path("20231201_fan", 'data/extracted/CORP_data_release/'))
-OUT = (study_path("20231201_fan", 'result/tier3_corp_sim_v6.json'))
 STEPS = 500
 LR = 5e-5
 REPLAY_FRAC = 0.3
@@ -196,7 +195,8 @@ def main():
         "mean_post": round(float(np.mean(posts)), 1),
         "v5_ref": {"mean_pre": 51.4, "mean_post": 40.2},
         "static_ref": 50.85}
-    with open(OUT, "w", encoding="utf-8") as f:
+    output = study_path("20231201_fan", 'result/tier3_corp_sim_v6.json')
+    with open(output, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
     print("SUMMARY:", report["summary"])
 

@@ -36,7 +36,6 @@ NSD_ROOT = os.path.abspath(os.path.join(
 sys.path.insert(0, NSD_ROOT)
 DATA = (study_path("20231201_fan", 'data/extracted/CORP_data_release/'))
 ZIP = (study_path("20231201_fan", 'data/raw/CORP_data_release.zip'))
-OUT = (study_path("20231201_fan", 'result/tier3_corp_sim_official_labels.json'))
 
 SEED_SESSIONS = [
     "t5.2022.05.18", "t5.2022.05.23", "t5.2022.05.25", "t5.2022.06.01",
@@ -519,7 +518,8 @@ def main():
         "mean_post_cer": round(float(np.mean(posts)), 1),
         "static_reference_cer": 50.85,
         "greedy_label_v3_reference": "diverged at session 3"}
-    with open(OUT, "w", encoding="utf-8") as f:
+    output = study_path("20231201_fan", 'result/tier3_corp_sim_official_labels.json')
+    with open(output, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
     print("SUMMARY:", report["summary"])
 

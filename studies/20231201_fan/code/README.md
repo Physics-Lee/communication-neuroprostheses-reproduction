@@ -63,7 +63,7 @@ see `docs/20261108_cleanup_audit/CLEANUP_AUDIT.md`.
 
 ## Matched-trial WER
 
-`reproduce_paired_wer.py` replays the v7 adaptation and exports the online, greedy, and character-LM transcripts for the final six held-out trials per session. Adaptation uses the released seed checkpoint and recorded online pseudo-labels from the training portion of each session. Evaluation uses the same released reference for both outputs. The v9 character 5-gram decoder supplies the beam-search output and fits only seed-session text.
+`reproduce_paired_wer.py` replays the v7 adaptation and exports the online, greedy, and character-LM transcripts for the final six held-out trials per session. Adaptation uses the released seed checkpoint and recorded online pseudo-labels from the training portion of each session. Evaluation uses the same released reference for both outputs. [`corp_char_lm.py`](corp_char_lm.py) contains the v9 character 5-gram decoder, which fits only seed-session text.
 
 The [archived transcripts](../results/20261124_import_paired_v7/paired_v7_trial_transcripts.csv) and [run summary](../results/20261124_import_paired_v7/paired_v7_summary.json) cover 60 trials across ten sessions. The [paired benchmark tables](../../../figures/docs/20261124_evaluation_protocol/figure2cd.md#fan-corp-held-out-replay) report the beam-search result alongside the released online output on those trials.
 

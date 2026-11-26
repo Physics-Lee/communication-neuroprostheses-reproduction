@@ -275,8 +275,8 @@ def run_output(study_id, *, default_id=None, workflow=None, log=False):
     target = ROOT / "studies" / study_id / ("log" if log else "results") / run_id
     target.mkdir(parents=True, exist_ok=True)
     if not log:
-        manifest = (target.parent.parent / "data" / "sources.yaml")
-        source = yaml.safe_load(manifest.read_text(encoding="utf-8")) if manifest.is_file() else {}
+        manifest = target.parent.parent / "data" / "sources.yaml"
+        source = (yaml.safe_load(manifest.read_text(encoding="utf-8")) or {}) if manifest.is_file() else {}
         record = {
             "id": run_id,
             "study": study_id,
@@ -460,23 +460,30 @@ def study_path(study_id, relative=""):
     if parts and parts[0] == "result":
         tail = parts[1:]
         workflow = None
+        separate_run = not os.environ.get("BCI_RUN_ID")
         if tail and study_id == "20250612_wairagkar" and tail[0].endswith(".json"):
             workflow = ("zip", "none", Path(tail[0]).stem)
-            tail = ("summary.json", *tail[1:])
+            if separate_run:
+                tail = ("summary.json", *tail[1:])
         elif tail and study_id == "20231201_fan" and tail[0].endswith(".json"):
             stage = Path(tail[0]).stem
             if stage == "tier2_seed_model_inference":
                 workflow = ("tfrecord", "ctc_greedy", stage)
             elif stage == "rescore_official_outputs":
-                workflow = ("mat", "char_5gram_beam", stage)
+                workflow = ("zip", "char_5gram_beam", stage)
             else:
                 workflow = ("tfrecord", "char_5gram_beam", stage)
-            tail = ("summary.json", *tail[1:])
+            if separate_run:
+                tail = ("summary.json", *tail[1:])
         elif tail and study_id == "20240815_card":
             if tail[0] == "val_greedy_per_trial.csv":
                 tail = ("trials.csv", *tail[1:])
             elif tail[0] == "val_greedy_summary.json":
                 tail = ("summary.json", *tail[1:])
+        elif tail and study_id == "20260316_jude" and tail[0] in {"runs", "runs_multisess"}:
+            experiment = "single_session" if tail[0] == "runs" else "multisession"
+            workflow = ("npz", "ctc_greedy", experiment)
+            tail = ("runtime", *tail)
         return str(Path(run_output(study_id, workflow=workflow)).joinpath(*tail))
     if parts and parts[0] == "data":
         return str(study_data_path(study_id, relative))

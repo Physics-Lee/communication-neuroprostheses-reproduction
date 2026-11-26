@@ -1,0 +1,198 @@
+{
+  "panel_e_repro_acoustic": [
+    {
+      "label": "Willett et al., 2021 (T5)",
+      "metric": "cer",
+      "ours": 4.71,
+      "ours_sd": 1.88,
+      "paper": 2.78,
+      "paper_sd": 1.43,
+      "note": null
+    },
+    {
+      "label": "Willett et al., 2023 (T12)",
+      "metric": "per",
+      "ours": 23.42,
+      "ours_sd": 3.18,
+      "paper": 19.7,
+      "paper_sd": null,
+      "note": null
+    },
+    {
+      "label": "Fan et al., 2023 (T5, CORP v6)",
+      "metric": "cer",
+      "ours": 6.2,
+      "ours_sd": 3.26,
+      "paper": 6.16,
+      "paper_sd": 2.28,
+      "note": "seed: 2.65"
+    },
+    {
+      "label": "Card et al., 2024 (T15)",
+      "metric": "per",
+      "ours": 10.19,
+      "ours_sd": 4.25,
+      "paper": 9.54,
+      "paper_sd": 2.76,
+      "note": null
+    },
+    {
+      "label": "Wairagkar et al., 2025 (T15)",
+      "metric": "mel1r",
+      "ours": 31.4,
+      "ours_sd": 5.23,
+      "paper": 17,
+      "paper_sd": 4,
+      "note": "r: 0.69 vs 0.83"
+    },
+    {
+      "label": "Kunz et al., 2025 (T12)",
+      "metric": "per",
+      "ours": 61.4,
+      "ours_sd": 0,
+      "paper": 24,
+      "paper_sd": 0,
+      "note": "50-w sess."
+    },
+    {
+      "label": "Kunz et al., 2025 (T15)",
+      "metric": "per",
+      "ours": 59.7,
+      "ours_sd": 8.38,
+      "paper": 54,
+      "paper_sd": 33.15,
+      "note": "3-sess. subset"
+    },
+    {
+      "label": "Kunz et al., 2025 (T16)",
+      "metric": "per",
+      "ours": 61.5,
+      "ours_sd": 12.13,
+      "paper": 52,
+      "paper_sd": 0,
+      "note": "2-sess. subset"
+    },
+    {
+      "label": "Jude et al., 2026a (T17)",
+      "metric": "cer",
+      "ours": 19.42,
+      "ours_sd": 5.8,
+      "paper": 18.6,
+      "paper_sd": 5.75,
+      "note": "best 8.2%"
+    },
+    {
+      "label": "Jude et al., 2026a (T18)",
+      "metric": "cer",
+      "ours": 7.69,
+      "ours_sd": 2.79,
+      "paper": 12,
+      "paper_sd": 2.41,
+      "note": "best 2.6%; <12%"
+    },
+    {
+      "label": "Jude et al., 2026b (T17)",
+      "metric": "per",
+      "ours": 39.97,
+      "ours_sd": 9.15,
+      "paper": 34,
+      "paper_sd": 6.22,
+      "note": null
+    }
+  ],
+  "panel_f_repro_full_wer": [
+    {
+      "label": "Willett et al., 2021 (T5)",
+      "ours": 10,
+      "ours_sd": 3.58,
+      "paper": 3.64,
+      "paper_sd": 3.19,
+      "note": "bigram; 63-tr. pool"
+    },
+    {
+      "label": "Willett et al., 2023 (T12)",
+      "ours": 23.58,
+      "ours_sd": 5.25,
+      "paper": 23.8,
+      "paper_sd": 4.01,
+      "note": "day med.; 5-gram"
+    },
+    {
+      "label": "Fan et al., 2023 (T5)",
+      "ours": 4.1,
+      "ours_sd": 1.2,
+      "paper": 6.16,
+      "paper_sd": null,
+      "note": "recal. arm; 10 sess."
+    },
+    {
+      "label": "Card et al., 2024 (T15)",
+      "ours": 6.25,
+      "ours_sd": 6.54,
+      "paper": 6.7,
+      "paper_sd": 6.63,
+      "note": "41-s pool; biGRU-48k"
+    },
+    {
+      "label": "Wairagkar et al., 2025 (T15)",
+      "ours": null,
+      "ours_sd": null,
+      "paper": null,
+      "paper_sd": null,
+      "note": "no reproduction WER for the voice arm"
+    },
+    {
+      "label": "Kunz et al., 2025 (T12)",
+      "ours": 94.35,
+      "ours_sd": 0,
+      "paper": 24.0,
+      "paper_sd": 0.0,
+      "note": "50-w sess.; gap attr."
+    },
+    {
+      "label": "Kunz et al., 2025 (T15)",
+      "ours": 78.07,
+      "ours_sd": 0.59,
+      "paper": 54.0,
+      "paper_sd": 33.15,
+      "note": "125k; gap attr."
+    },
+    {
+      "label": "Kunz et al., 2025 (T16)",
+      "ours": 82.38,
+      "ours_sd": 0,
+      "paper": 52.0,
+      "paper_sd": 0.0,
+      "note": "125k; gap attr."
+    },
+    {
+      "label": "Jude et al., 2026a (T17)",
+      "ours": 11.41,
+      "ours_sd": 6.85,
+      "paper": 12.5,
+      "paper_sd": 2.49,
+      "note": "best 4.6%"
+    },
+    {
+      "label": "Jude et al., 2026a (T18)",
+      "ours": 6.66,
+      "ours_sd": 3.67,
+      "paper": 7.0,
+      "paper_sd": 2.38,
+      "note": "best 0.0%; <7%"
+    },
+    {
+      "label": "Jude et al., 2026b (T17)",
+      "ours": 44.37,
+      "ours_sd": 15.96,
+      "paper": 50.0,
+      "paper_sd": 18.1,
+      "note": "conv. day-68"
+    }
+  ],
+  "_meta": {
+    "source": "latex/source_data/SourceData_Figure2.xlsx",
+    "source_sha256": "cfbfa8f046c540a3ffb39ead87bb2f23bcc5e58d5ea1765ef55cc1e3b0ecf74a",
+    "scope": "Reproduction bars preserved from the published manuscript figure during the online-WER calculation update; historical provenance issues remain under separate review."
+  }
+}

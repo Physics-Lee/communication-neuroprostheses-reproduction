@@ -1,3 +1,6 @@
 # Preserve the exact bytes validated in the migration manifest on every platform.
 studies/*/results/** -text
 studies/*/log/** -text
+
+# Keep bash entry points runnable in WSL from a Windows checkout.
+*.sh text eol=lf

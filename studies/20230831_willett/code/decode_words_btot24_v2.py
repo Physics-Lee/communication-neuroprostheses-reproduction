@@ -499,7 +499,7 @@ def main():
     --limit subset or decodes the full test set once, printing WER and
     optionally writing a per-trial csv via --out.
     """
-    global TRIALS, DEC
+    global TRIALS, DEC, LM_DIR
     ap = argparse.ArgumentParser()
     ap.add_argument("--alpha", type=float, default=0.6)
     ap.add_argument("--beta", type=float, default=0.3)
@@ -510,8 +510,11 @@ def main():
     ap.add_argument("--grid", default="",
                     help="alpha:beta,alpha:beta,... sweep on --limit subset")
     ap.add_argument("--out", default="")
+    ap.add_argument("--logits", type=Path, default=Path(H5_PATH))
+    ap.add_argument("--lm-dir", type=Path, default=Path(LM_DIR))
     args = ap.parse_args()
 
+    LM_DIR = str(args.lm_dir)
     print("building trie...", flush=True)
     root, n_lines = build_trie()
     print(f"trie built from {n_lines} lexicon lines", flush=True)
@@ -519,7 +522,7 @@ def main():
     print("kenlm loaded", flush=True)
 
     TRIALS = []
-    with h5py.File(H5_PATH, "r") as f:
+    with h5py.File(args.logits, "r") as f:
         for sess in sorted(f.keys()):
             for key in sorted(f[sess].keys()):
                 g = f[sess][key]

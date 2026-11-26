@@ -7,11 +7,12 @@ decodes ``test_logits.npz`` for all 8 T17 and 8 T18 sessions from
 per-session raw CER, post-LM CER, and post-LM WER.
 """
 
+import argparse
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "shared"))
-from study_paths import study_checkout, study_path
+from study_paths import run_output, study_checkout, study_path
 
 import json
 import time
@@ -24,7 +25,6 @@ sys.path.insert(0, str(REF / 'utils'))
 from lmutils import build_lm_decoder, calc_wer, lm_decode  # noqa: E402
 
 LM_PATH = study_path("20260316_jude", 'data/language_models/wfst_5gram')
-MULTISESS_ROOT = Path(study_path("20260316_jude", 'result/runs_multisess'))
 SINGLE_ROOT = study_checkout("20260316_jude") / "result" / "runs"
 
 SINGLE_MAP = {
@@ -87,6 +87,15 @@ def decode_npz(decoder, npz_path):
 
 
 def main():
+    """Run the typing LM on a joint-session training directory."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input-dir", type=Path, help="Directory containing t17 and/or t18")
+    args = parser.parse_args()
+    input_dir = args.input_dir or Path(study_path("20260316_jude", 'result/runs_multisess'))
+    if not any(input_dir.glob("*/*/test_logits.npz")):
+        parser.error(f"No multi-session logits under {input_dir}")
+    if (Path(LM_PATH) / "G_no_prune.fst").exists():
+        parser.error("Use the pruned typing graph directory with TLG.fst and words.txt only")
     t0 = time.time()
     print('Loading 5-gram TLG decoder...', flush=True)
     decoder = build_lm_decoder(LM_PATH)
@@ -94,7 +103,7 @@ def main():
 
     results = {'t17': {}, 't18': {}}
     for part in ['t17', 't18']:
-        part_dir = MULTISESS_ROOT / part
+        part_dir = input_dir / part
         if not part_dir.exists():
             continue
         for s_dir in sorted(part_dir.iterdir()):
@@ -117,12 +126,13 @@ def main():
 
             results[part][sess] = res_ms
             print(
-                f'{sess}: raw_CER={res_ms["raw_cer"]:.4f} (single={res_ms["single_session_raw_cer"]}) '
+                f'{sess}: raw_CER={res_ms["raw_cer"]} (single={res_ms["single_session_raw_cer"]}) '
                 f'| post-LM CER={res_ms["post_lm_cer"]:.4f} | post-LM WER={res_ms["post_lm_wer"]:.4f}',
                 flush=True,
             )
 
-    out_file = MULTISESS_ROOT / 'lm_decode_summary.json'
+    out_file = Path(run_output(
+        "20260316_jude", workflow=("npz", "wfst_5gram", "multisession_decode"))) / "summary.json"
     out_file.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding='utf-8')
     print(f'SAVED: {out_file}', flush=True)
 

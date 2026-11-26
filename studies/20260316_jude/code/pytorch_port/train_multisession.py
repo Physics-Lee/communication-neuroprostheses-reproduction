@@ -22,7 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "shared"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from study_paths import study_checkout, study_path
+from study_paths import run_output, study_checkout, study_path
 from typing_data import typing_npz_path
 
 import argparse
@@ -167,7 +167,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--participant', choices=['t17', 't18'], required=True)
     ap.add_argument('--data-root', type=Path, help='Override the root containing the participant NPZ directories')
-    ap.add_argument('--out-root', default=study_path("20260316_jude", 'result/runs_multisess'))
+    ap.add_argument('--out-root', type=Path)
     ap.add_argument('--batches', type=int, default=10000)
     ap.add_argument('--ft-batches', type=int, default=1500)
     ap.add_argument('--patience', type=int, default=2000)
@@ -192,9 +192,15 @@ def main():
     lr_end = 0.0
     adam_eps = 1e-1
 
-    out_root = Path(args.out_root) / args.participant
+    study = "20260316_jude"
+    if args.out_root is None:
+        out_root = Path(study_path(study, "result/runs_multisess")) / args.participant
+        log_root = Path(run_output(study, log=True)) / args.participant
+    else:
+        out_root = log_root = args.out_root / args.participant
     out_root.mkdir(parents=True, exist_ok=True)
-    log_f = open(out_root / 'training_log', 'a', encoding='utf-8')
+    log_root.mkdir(parents=True, exist_ok=True)
+    log_f = open(log_root / 'training_log', 'a', encoding='utf-8')
 
     def log(msg):
         print(msg, flush=True)

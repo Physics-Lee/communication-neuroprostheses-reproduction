@@ -1,0 +1,154 @@
+[
+  {
+    "label": "Willett et al., 2021 (T5)",
+    "mean": 23.856230721351423,
+    "sd": 8.383983976146865,
+    "days": 5,
+    "dates": [
+      "2019-12-11",
+      "2019-12-18",
+      "2019-12-20",
+      "2020-01-06",
+      "2020-01-08"
+    ],
+    "note": "Equal-day mean; sample SD across days; 5 of 10 days; daily WER = 100 * word edits / reference words"
+  },
+  {
+    "label": "Willett et al., 2023 (T12)",
+    "mean": 23.841040653570122,
+    "sd": 1.7945886796790445,
+    "days": 5,
+    "dates": [
+      "2022-07-21",
+      "2022-07-27",
+      "2022-08-02",
+      "2022-08-11",
+      "2022-08-13"
+    ],
+    "note": "Equal-day mean; sample SD across days; 5 of 24 days; daily WER = 100 * word edits / reference words"
+  },
+  {
+    "label": "Fan et al., 2023 (T5)",
+    "mean": 4.0181914674499195,
+    "sd": 1.198611886242901,
+    "days": 10,
+    "dates": [
+      "2022-09-29",
+      "2022-10-06",
+      "2022-10-18",
+      "2022-10-25",
+      "2022-10-27",
+      "2022-11-01",
+      "2022-11-03",
+      "2022-12-08",
+      "2022-12-15",
+      "2023-02-28"
+    ],
+    "note": "Equal-day mean; sample SD across days; 10 of 21 days; daily WER = 100 * word edits / reference words"
+  },
+  {
+    "label": "Card et al., 2024 (T15)",
+    "mean": 4.873551646842313,
+    "sd": 3.287549006045797,
+    "days": 14,
+    "dates": [
+      "2023-08-13",
+      "2023-08-20",
+      "2023-09-01",
+      "2023-09-03",
+      "2023-09-24",
+      "2023-09-29",
+      "2023-10-01",
+      "2023-10-06",
+      "2023-10-08",
+      "2023-10-13",
+      "2023-10-15",
+      "2023-10-20",
+      "2024-02-25",
+      "2024-03-17"
+    ],
+    "note": "Equal-day mean; sample SD across days; 14 of 45 days; daily WER = 100 * word edits / reference words"
+  },
+  {
+    "label": "Wairagkar et al., 2025 (T15)",
+    "mean": 43.75,
+    "sd": null,
+    "days": 8,
+    "note": "Published listener-transcription median; not a daily text-decoder WER"
+  },
+  {
+    "label": "Kunz et al., 2025 (T12)",
+    "mean": 22.85012285012285,
+    "sd": null,
+    "days": 1,
+    "dates": [
+      "2023-11-28"
+    ],
+    "note": "Single day; 1 of 1 days; daily WER = 100 * word edits / reference words"
+  },
+  {
+    "label": "Kunz et al., 2025 (T15)",
+    "mean": 43.34498739734938,
+    "sd": 23.779117383425973,
+    "days": 2,
+    "dates": [
+      "2024-12-15",
+      "2025-01-05"
+    ],
+    "note": "Equal-day mean; sample SD across days; 2 of 3 days; daily WER = 100 * word edits / reference words"
+  },
+  {
+    "label": "Kunz et al., 2025 (T16)",
+    "mean": 44.39252336448598,
+    "sd": null,
+    "days": 1,
+    "dates": [
+      "2024-12-18"
+    ],
+    "note": "Single day; 1 of 2 days; daily WER = 100 * word edits / reference words"
+  },
+  {
+    "label": "Jude et al., 2026a (T17)",
+    "mean": 10.517220558960716,
+    "sd": 3.110311652605213,
+    "days": 6,
+    "dates": [
+      "2024-06-03",
+      "2024-06-04",
+      "2024-06-05",
+      "2024-07-09",
+      "2024-07-10",
+      "2024-07-22"
+    ],
+    "note": "Equal-day mean; sample SD across days; 6 of 8 days; daily WER = 100 * word edits / reference words"
+  },
+  {
+    "label": "Jude et al., 2026a (T18)",
+    "mean": 3.509747068899593,
+    "sd": 0.6490983995037024,
+    "days": 7,
+    "dates": [
+      "2024-12-05",
+      "2025-01-14",
+      "2025-01-15",
+      "2025-01-21",
+      "2025-01-22",
+      "2025-02-04",
+      "2025-02-05"
+    ],
+    "note": "Equal-day mean; sample SD across days; 7 of 9 days; daily WER = 100 * word edits / reference words"
+  },
+  {
+    "label": "Jude et al., 2026b (T17)",
+    "mean": 66.4803839360672,
+    "sd": 18.12429021064479,
+    "days": 4,
+    "dates": [
+      "2024-04-02",
+      "2024-05-07",
+      "2024-05-14",
+      "2024-05-28"
+    ],
+    "note": "Equal-day mean; sample SD across days; 4 of 13 days; daily WER = 100 * word edits / reference words"
+  }
+]

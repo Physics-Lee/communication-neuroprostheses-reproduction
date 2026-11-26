@@ -8,6 +8,7 @@ attrs: sentence_label, seq_len, ...).
 Run with the Brain2Qwerty venv python (torch+cuda).
 """
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -28,7 +29,6 @@ from evaluate_model_helpers import runSingleDecodingStep  # noqa: E402
 
 MODEL_PATH = study_path("20260428_jude", 'data/20260428_jude/run_25k')
 DATA_DIR = study_path("20260428_jude", 'data/processed/hdf5')
-OUT = study_path("20260428_jude", 'data/20260428_jude/run_25k/jude_logits.hdf5')
 
 
 def main():
@@ -38,14 +38,21 @@ def main():
     the best checkpoint, decodes each ``data_val.hdf5`` trial through
     ``runSingleDecodingStep`` (same AMP path as eval), and stores the
     log-softmax probabilities plus labels under ``<session>/<trial>`` groups
-    in one output hdf5 (OUT).
+    in one output HDF5 file.
 
     Returns
     -------
     None
         Writes the logits hdf5 file and prints progress per session.
     """
-    model_args = OmegaConf.load(os.path.join(MODEL_PATH, "checkpoint/args.yaml"))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("run_directory", type=Path, nargs="?", default=Path(MODEL_PATH))
+    parser.add_argument("logits_file", type=Path, nargs="?")
+    args = parser.parse_args()
+    run = args.run_directory
+    output = args.logits_file or run / "jude_logits.hdf5"
+    output.parent.mkdir(parents=True, exist_ok=True)
+    model_args = OmegaConf.load(run / "checkpoint/args.yaml")
     ds = model_args["dataset"]
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = GRUDecoder(
@@ -59,7 +66,7 @@ def main():
         patch_size=model_args["model"]["patch_size"],
         patch_stride=model_args["model"]["patch_stride"],
     )
-    ckpt = torch.load(os.path.join(MODEL_PATH, "checkpoint/best_checkpoint"),
+    ckpt = torch.load(run / "checkpoint/best_checkpoint",
                       weights_only=False, map_location="cpu")
     sd = ckpt["model_state_dict"]
     for key in list(sd.keys()):
@@ -68,14 +75,14 @@ def main():
     model.to(device).eval()
     print(f"checkpoint loaded | val_PER in ckpt: {ckpt.get('val_PER')}")
 
-    sessions = [s for s in ds["sessions"]
-                if os.path.exists(os.path.join(DATA_DIR, s, "data_val.hdf5"))]
+    sessions = [(index, session) for index, session in enumerate(ds["sessions"])
+                if os.path.exists(os.path.join(DATA_DIR, session, "data_val.hdf5"))]
     print(f"{len(sessions)} sessions with val")
 
     n = 0
     t0 = time.time()
-    with h5py.File(OUT, "w") as out:
-        for si, session in enumerate(sessions):
+    with h5py.File(output, "w") as out:
+        for si, session in sessions:
             with h5py.File(os.path.join(DATA_DIR, session, "data_val.hdf5"),
                            "r") as f:
                 for key in sorted(f.keys()):
@@ -97,7 +104,7 @@ def main():
                     n += 1
             print(f"[{time.strftime('%H:%M:%S')}] {session} done ({n} trials, "
                   f"{time.time()-t0:.0f}s)", flush=True)
-    print(f"saved {OUT} ({n} trials)")
+    print(f"saved {output} ({n} trials)")
 
 
 if __name__ == "__main__":

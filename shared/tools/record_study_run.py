@@ -3,16 +3,14 @@
 import argparse
 import csv
 import json
-import re
 import shutil
 import sys
-from datetime import date
 from pathlib import Path
 
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from study_paths import ROOT, study_path
+from study_paths import ROOT, build_run_id, study_path
 
 
 def provenance_path(path):
@@ -63,13 +61,14 @@ def main():
     source = ROOT / "studies" / args.study / "data" / "sources.yaml"
     study_path(args.study)
     dataset = yaml.safe_load(source.read_text(encoding="utf-8"))
-    release = dataset.get("release_id") or dataset["dataset_id"]
     output_dir = args.output_dir
     if output_dir is None:
-        components = (release, args.input_format, args.decoder or "none", args.label)
-        if not all(part and re.fullmatch(r"[a-z0-9]+(?:_[a-z0-9]+)*", part) for part in components):
-            parser.error("Automatic run naming requires lowercase --input-format and --label, and a valid decoder if supplied")
-        run_id = date.today().strftime("%Y%m%d_") + "__".join(components)
+        if not args.input_format or not args.label:
+            parser.error("Automatic run naming requires --input-format and --label")
+        try:
+            run_id = build_run_id(args.study, args.input_format, args.decoder or "none", args.label)
+        except ValueError as error:
+            parser.error(str(error))
         output_dir = source.parents[1] / "results" / run_id
     output_dir.mkdir(parents=True)
 
@@ -88,6 +87,7 @@ def main():
         shutil.copyfile(args.summary, destination)
         artifacts[destination.name] = provenance_path(args.summary)
     run = {
+        "id": output_dir.name,
         "study": args.study, "dataset_id": dataset["dataset_id"],
         "release_id": dataset.get("release_id"), "input_format": args.input_format,
         "split": args.split,

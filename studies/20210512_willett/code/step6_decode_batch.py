@@ -18,6 +18,7 @@ from study_paths import run_output, study_path
 import argparse
 import csv
 import os
+import shlex
 import subprocess
 
 import numpy as np
@@ -158,15 +159,20 @@ def decode_one(mat_path):
     subprocess.TimeoutExpired
         If the WSL decoder exceeds its 300 s timeout.
     """
-    cmd = ['wsl.exe', '-e', 'bash', '-c',
-           '~/bin/latgen_lazy2 %s/HCL.fst %s/G.fst %s/model %s --graphw 2.0 2>/dev/null'
-           % (LM.replace('\\', '/').replace('D:', '/mnt/d'),
-              LM.replace('\\', '/').replace('D:', '/mnt/d'),
-              LM.replace('\\', '/').replace('D:', '/mnt/d'),
-              mat_path.replace('\\', '/').replace('D:', '/mnt/d'))]
-    r = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+    paths = [Path(LM) / name for name in ('HCL.fst', 'G.fst', 'model')]
+    paths.append(Path(mat_path))
+    if os.name == 'nt':
+        paths = [subprocess.check_output(['wsl.exe', '--exec', 'wslpath', '-a', '-u', str(path.resolve())],
+                                         text=True).strip() for path in paths]
+        command = 'exec "$HOME/bin/latgen_lazy2" ' + shlex.join([*paths, '--graphw', '2.0'])
+        cmd = ['wsl.exe', '--exec', 'bash', '-c', command]
+    else:
+        cmd = [Path.home() / 'bin/latgen_lazy2', *paths, '--graphw', '2.0']
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, check=False)
     line = r.stdout.strip()
-    if not line:
+    if r.returncode != 0 or not line:
+        # The lazy decoder exits non-zero (e.g. "no endpoint") when the beam
+        # finds no complete path; count that sentence as a failed decode.
         return None
     parts = line.split('\t')
     tids = [int(x) for x in parts[2].split()]

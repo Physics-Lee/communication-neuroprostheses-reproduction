@@ -7,3 +7,5 @@ The [dryad_cz8w9gjjk__archived_evaluation.csv](dryad_cz8w9gjjk__archived_evaluat
 [dryad_cz8w9gjjk__test_trials.csv](dryad_cz8w9gjjk__test_trials.csv) lists every exported trial with the role the official conversion gives it. The cues the conversion keeps are shuffled with seed 9: the last `num_test_trials` of them are `test` and the rest are `train`. A cue it leaves out has the role `excluded` and the reason in `exclusion_reason`. Rows are keyed by `trial_id`.
 
 Build the file with `python studies/20260316_jude/code/build_split_manifest.py`. It writes nothing unless the exported trials agree with the TFRecords of each existing conversion.
+
+[dryad_cz8w9gjjk__typing_conversion.csv](dryad_cz8w9gjjk__typing_conversion.csv) records the selected blocks, test trial counts, and manual trial exclusions for all 16 TFRecord conversions. The study Notebook uses these settings to regenerate the NPZ inputs for both joint-session models.

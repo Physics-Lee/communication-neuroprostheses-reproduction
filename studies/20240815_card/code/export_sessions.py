@@ -97,7 +97,7 @@ def _relative(path):
         POSIX-style path such as
         ``data/extracted/dryad_dncjsxm85/hdf5_data_final/t15.2023.08.11/data_train.hdf5``.
     """
-    return Path(path).resolve().relative_to(Path(study_checkout(STUDY)).resolve()).as_posix()
+    return Path(path).absolute().relative_to(Path(study_checkout(STUDY)).absolute()).as_posix()
 
 
 def _open(path):

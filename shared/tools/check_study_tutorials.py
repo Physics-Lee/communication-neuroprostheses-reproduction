@@ -21,6 +21,7 @@ reported as ``produced`` instead of failing.
 import argparse
 import json
 import re
+import shlex
 import subprocess
 import sys
 from pathlib import Path
@@ -29,7 +30,7 @@ ROOT = Path(__file__).resolve().parents[2]
 PUBLIC_COMMANDS = ("prepare_data.py", "export_sessions.py", "train.py", "infer.py", "decode.py",
                    "evaluate.py")
 PATH_RE = re.compile(r"studies/[A-Za-z0-9_./\-]+")
-COMMAND_RE = re.compile(r"^python (\S+\.py)([^\n]*)", re.M)
+COMMAND_RE = re.compile(r'''^[ \t]*python (?P<quote>["']?)([^\s"']+\.py)(?P=quote)([^\n]*)''', re.M)
 FLAG_RE = re.compile(r"(--?[A-Za-z][\w-]*)")
 LINK_RE = re.compile(r"\[[^\]]*\]\(([^)#\s]+)(?:#[^)]*)?\)")
 WRAPPER_RE = re.compile(r'run_command\(\s*__file__,\s*"([^"]+)",\s*"([^"]+)"')
@@ -138,16 +139,14 @@ def positional_arguments(arguments):
     Parameters
     ----------
     arguments : str
-        Text following the script name.
+        Text following the script name, including quoted paths.
 
     Returns
     -------
     int
-        Number of tokens that are neither flags nor quoted strings. Only
-        meaningful for commands that use no flags.
+        Number of positional tokens. Only meaningful for commands that use no flags.
     """
-    stripped = re.sub(r"\"[^\"]*\"", "", arguments)
-    return len([token for token in stripped.split() if not token.startswith("-")])
+    return sum(not token.startswith("-") for token in shlex.split(arguments))
 
 
 def usage_bounds(usage):
@@ -199,7 +198,9 @@ def check_study(study, run):
         report["paths"][path] = classify(path, produced)
         if report["paths"][path] == "missing":
             report["problems"].append(f"path is missing: {path}")
-    for name, arguments in COMMAND_RE.findall(text):
+    for _, name, arguments in COMMAND_RE.findall(text):
+        if name.startswith("$study/"):
+            name = f"studies/{study}/{name.removeprefix('$study/')}"
         script = ROOT / name
         if not script.is_file():
             report["problems"].append(f"script not found: {name}")

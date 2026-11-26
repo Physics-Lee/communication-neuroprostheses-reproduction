@@ -101,7 +101,7 @@ def _relative(path):
         POSIX-style path such as
         ``data/extracted/dryad_hqbzkh1p6/CORP_data_release/seed_model_training_data/tfrecords/t5.2022.05.18/train/chunk_0.tfrecord``.
     """
-    return Path(path).resolve().relative_to(Path(study_checkout(STUDY)).resolve()).as_posix()
+    return Path(path).absolute().relative_to(Path(study_checkout(STUDY)).absolute()).as_posix()
 
 
 def _shards(directory):

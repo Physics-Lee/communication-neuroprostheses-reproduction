@@ -62,6 +62,8 @@ pip install -r requirements.txt --extra-index-url https://download.pytorch.org/w
 
 ## Repository Structure
 
+Start with the [reader guide](docs/20261124_repository_migration/reader_workflow.md). It links the eight study Notebooks and covers downloading the releases, generating the first session HDF5, running the models, setting up WSL where needed, and calculating the metrics.
+
 See the [common file tree](docs/20261124_repository_migration/README.md#repository-layout) for the release, format, and decoder naming rules. The [eight-study naming map](docs/20261124_repository_migration/naming_map.md) lists the public commands, current input paths, and archived result filenames.
 
 For a full run, follow the download and extraction instructions in the study's `tutorial.ipynb`. Set up the pinned upstream code with `python shared/tools/setup_upstream.py`. By default, scripts read inputs from the study directory under `studies/`. To use a separate disk, set `BCI_DATA_ROOT` to a directory containing the same study IDs and input layout. `BCI_ARCHIVE_ROOT` explicitly selects historical checkout names. Set `BCI_RUN_ID` for a new dated results directory when running the study stages that use default output paths.
@@ -71,7 +73,7 @@ communication-neuroprostheses-reproduction/
 ├── studies/                         # Eight study entrances, named by publication date
 │   └── yyyymmdd_author/
 │       ├── README.md
-│       ├── tutorial.ipynb            # Recompute archived results without downloading data
+│       ├── tutorial.ipynb            # Prepare data, reproduce the study, and score new or archived results
 │       ├── code/
 │       ├── data/                     # Sources and archived evaluation trial lists
 │       ├── results/yyyymmdd_<run>/

@@ -83,7 +83,7 @@ def _relative(path):
         POSIX-style path such as
         ``data/extracted/dryad_cz8w9gjjk/Data/t17/t17.2024.04.25/Typing/RedisMat/20240425_135520_(1).mat``.
     """
-    return Path(path).resolve().relative_to(Path(study_checkout(STUDY)).resolve()).as_posix()
+    return Path(path).absolute().relative_to(Path(study_checkout(STUDY)).absolute()).as_posix()
 
 
 def _load(path, variables=VARIABLES):

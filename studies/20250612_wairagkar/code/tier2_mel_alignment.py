@@ -26,6 +26,7 @@ from study_paths import study_path
 import io
 import json
 import os
+import shlex
 import subprocess
 import zipfile
 
@@ -39,9 +40,6 @@ import yaml  # noqa: E402
 from lib import data_utils, inference_utils  # noqa: E402
 
 ZIP = (study_path("20250612_wairagkar", 'data/raw/t15_neural_data.zip'))
-OUT = (study_path("20250612_wairagkar", 'result/tier2_mel_alignment.json'))
-WORK = study_path("20250612_wairagkar", 'tmp_mel')
-WSL_SYNTH = "cd ~/lpcnet && ./lpcnet_demo -synthesis"
 
 ALIGN = 63  # frame alignment found by the tier-1 diagnosis
 N_TRIALS = 20
@@ -74,7 +72,7 @@ def mel_bands(pcm, sr=16000, n_mels=40):
     return librosa.power_to_db(m, ref=1.0)
 
 
-def synth(feat, tag):
+def synth(feat, tag, work):
     """feat (T,20) float32 -> waveform via WSL lpcnet_demo.
 
     Writes the frame sequence to ``<WORK>/<tag>.f32``, invokes the official
@@ -87,7 +85,9 @@ def synth(feat, tag):
         Shape (T, 20) float32 LPCNet feature frames to vocode.
     tag : str
         Base filename (without extension) for the intermediate ``.f32``
-        and output ``.pcm`` files inside ``WORK``.
+        and output ``.pcm`` files.
+    work : pathlib.Path
+        Run's runtime directory.
 
     Returns
     -------
@@ -99,19 +99,20 @@ def synth(feat, tag):
     subprocess.CalledProcessError
         If the WSL ``lpcnet_demo`` subprocess exits non-zero.
     """
-    f32 = os.path.join(WORK, f"{tag}.f32")
-    pcm = os.path.join(WORK, f"{tag}.pcm")
+    f32 = work / f"{tag}.f32"
+    pcm = work / f"{tag}.pcm"
     feat = np.asarray(feat, dtype="<f4")
     with open(f32, "wb") as f:
         f.write(feat.tobytes())
-    wsl_f32 = subprocess.run(["wslpath", "-w", f32], capture_output=True,
-                             text=True).stdout if False else None
-    # path translation: D:/... -> /mnt/d/...
-    p = f32.replace("D:/", "/mnt/d/").replace("\\", "/")
-    po = pcm.replace("D:/", "/mnt/d/").replace("\\", "/")
-    subprocess.run(["wsl", "-e", "bash", "-c",
-                    f"{WSL_SYNTH} {p} {po}"], check=True,
-                   capture_output=True)
+    if os.name == "nt":
+        paths = [subprocess.check_output(["wsl.exe", "--exec", "wslpath", "-a", "-u", str(path.resolve())],
+                                         text=True).strip() for path in (f32, pcm)]
+        command = 'cd "$HOME/lpcnet" && exec ./lpcnet_demo -synthesis ' + shlex.join(paths)
+        subprocess.run(["wsl.exe", "--exec", "bash", "-c", command], check=True)
+    else:
+        lpcnet = Path.home() / "lpcnet"
+        subprocess.run([lpcnet / "lpcnet_demo", "-synthesis", f32.resolve(), pcm.resolve()],
+                       check=True, cwd=lpcnet)
     return np.fromfile(pcm, dtype=np.int16)
 
 
@@ -129,7 +130,9 @@ def main():
         Per-trial and per-day correlations are printed to stdout and the
         report is written to ``result/tier2_mel_alignment.json``.
     """
-    os.makedirs(WORK, exist_ok=True)
+    OUT = Path(study_path("20250612_wairagkar", 'result/tier2_mel_alignment.json'))
+    WORK = OUT.parent / "runtime"
+    WORK.mkdir(parents=True, exist_ok=True)
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
     import tensorflow as tf  # noqa: F401
     from keras.models import load_model
@@ -198,8 +201,8 @@ def main():
             pf = p[mask]
             tf_ = tt[mask]
             try:
-                wav_p = synth(pf, f"{day}_pred_{tr}")
-                wav_t = synth(tf_, f"{day}_tgt_{tr}")
+                wav_p = synth(pf, f"{day}_pred_{tr}", WORK)
+                wav_t = synth(tf_, f"{day}_tgt_{tr}", WORK)
             except Exception as e:  # noqa: BLE001
                 print(tr, "synth fail", e, flush=True)
                 continue

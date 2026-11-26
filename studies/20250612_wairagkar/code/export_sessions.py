@@ -59,7 +59,7 @@ def _relative(path):
         POSIX-style path such as
         ``data/raw/dryad_2280gb64f/dryad_2280gb64f__t15_neural_data.zip``.
     """
-    return Path(path).resolve().relative_to(Path(study_checkout(STUDY)).resolve()).as_posix()
+    return Path(path).absolute().relative_to(Path(study_checkout(STUDY)).absolute()).as_posix()
 
 
 def _member(day, suffix):

@@ -10,5 +10,5 @@ from study_commands import run_command
 if __name__ == "__main__":
     raise SystemExit(run_command(
         __file__, "pytorch_port/decode_multisession_lm.py",
-        "[run in the py310lm WSL environment]",
+        "[--input-dir DIRECTORY] (run in the py310lm WSL environment)",
     ))
