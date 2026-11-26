@@ -27,3 +27,6 @@ env/
 
 .DS_Store
 Thumbs.db
+
+# npm dependencies (never track)
+node_modules/
