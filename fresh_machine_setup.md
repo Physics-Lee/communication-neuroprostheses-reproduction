@@ -116,36 +116,30 @@ For Figure 2, the intended comparison uses **every online trial selected for Fig
 
 Online evaluation scores the output produced during the experiment. Its training and calibration history belongs to the online protocol; it need not coincide with a later offline `train`/`test` split. For an adapting decoder, preserve the original predict/update order: adapting after a trial is different from training on it before scoring it.
 
-The first table separates counts from matching status; the second lists the selection rules. Study links lead to the split guides. **Offline trial counts refer to the Figure 2f archive on the online dates, not all recordings the publisher released.** A dash means no corresponding full-pipeline reproduction WER is available.
+The table combines trial selection, offline split rules, and coverage. Study links lead to the available split lists and their definitions.
 
-| Study | Participant | Online trials | Offline trials | Test-set match |
-| --- | --- | ---: | ---: | --- |
-| [Willett 2021](studies/20210512_willett/data/splits/README.md) | T5 | 163 | 33 | Different |
-| [Willett 2023](studies/20230831_willett/data/splits/README.md) | T12 | 400 | 200 | Different |
-| [Fan 2023](studies/20231201_fan/data/splits/README.md) | T5 | 377 | — | Unavailable |
-| [Card 2024](studies/20240815_card/data/splits/README.md) | T15 | 1,628 | 514 | Different |
-| [Wairagkar 2025](studies/20250612_wairagkar/data/splits/README.md) | T15 | — | — | Unavailable |
-| [Kunz 2025](studies/20250821_kunz/data/splits/README.md) | T12 | 100 | 100 | Matched |
-| [Kunz 2025](studies/20250821_kunz/data/splits/README.md) | T15 | 55 | 55 | Matched |
-| [Kunz 2025](studies/20250821_kunz/data/splits/README.md) | T16 | 35 | 35 | Matched |
-| [Jude 2026a](studies/20260316_jude/data/splits/README.md) | T17 | 161 | 104 | Different |
-| [Jude 2026a](studies/20260316_jude/data/splits/README.md) | T18 | 580 | 140 | Different |
-| [Jude 2026b](studies/20260428_jude/data/splits/README.md) | T17 | 469 | 131 | Different |
+- **Fig2c WER trials:** released trials actually included in our Figure 2c WER calculation, not the paper's total online trials or all trials in the release.
+- **Fig2f WER trials:** archived offline trials included in Figure 2f on those online dates, not the number of raw recordings available. The two counts are not an overlap fraction.
 
-**Matched** means trial identity has been verified, not just equal counts. **Different** means the current sets differ; the two counts are not an overlap fraction. **Unavailable** means no corresponding offline WER comparison is available; it does not establish that recordings are missing. Wairagkar's online benchmark reports listener-median WER rather than the trial-count cohort tabulated for the text decoders.
+| Study | Participant | Fig2c selection | Fig2c WER trials | Offline split | Fig2f WER trials | Trial match |
+| --- | --- | --- | ---: | --- | ---: | --- |
+| [Willett 2021](studies/20210512_willett/data/splits/README.md) | T5 | Closed-loop copy typing; 5 days | 163 | `HeldOutTrials` | 33 | Different |
+| [Willett 2023](studies/20230831_willett/data/splits/README.md) | T12 | Switchboard Stage 2; attempted speaking; 5 days | 400 | Released `test`; used for validation | 200 | Different |
+| [Fan 2023](studies/20231201_fan/data/splits/README.md) | T5 | Recalibration sessions; 10 days | 377 | Replay: final 6 trials/session | — | Unavailable |
+| [Card 2024](studies/20240815_card/data/splits/README.md) | T15 | 125k-word copy task; 14 Table S3 dates | 1,628 | Released validation HDF5; BiGRU arm | 514 | Different |
+| [Wairagkar 2025](studies/20250612_wairagkar/data/splits/README.md) | T15 | Listener-transcription benchmark | — | Acoustic evaluation; separate listener indices | — | Unavailable |
+| [Kunz 2025](studies/20250821_kunz/data/splits/README.md) | T12 | Closed-loop inner speech; 50 words; 1 day | 100 | Condition-specific `_eval` inputs | 100 | Matched |
+| [Kunz 2025](studies/20250821_kunz/data/splits/README.md) | T15 | Closed-loop inner speech; 125k words; 2 days | 55 | Condition-specific `_eval` inputs | 55 | Matched |
+| [Kunz 2025](studies/20250821_kunz/data/splits/README.md) | T16 | Closed-loop inner speech; 125k words; 1 day | 35 | Condition-specific `_eval` inputs | 35 | Matched |
+| [Jude 2026a](studies/20260316_jude/data/splits/README.md) | T17 | Figure 3b,c blocks; 6 days | 161 | Seed-9 shuffle; last `num_test_trials` | 104 | Different |
+| [Jude 2026a](studies/20260316_jude/data/splits/README.md) | T18 | Figure 3b,c blocks; 7 days | 580 | Seed-9 shuffle; last `num_test_trials` | 140 | Different |
+| [Jude 2026b](studies/20260428_jude/data/splits/README.md) | T17 | Unconstrained-vocabulary blocks; 4 days | 469 | Last eligible sentence block/day | 131 | Different |
 
-| Study | Online selection for Figure 2c | Existing offline split rule |
-| --- | --- | --- |
-| Willett 2021 | Closed-loop copy typing; five days | Publisher's `HeldOutTrials` or `HeldOutBlocks`; Figure 2f uses `HeldOutTrials` |
-| Willett 2023 | Closed-loop Switchboard Stage 2; attempted speaking; five days | Release's labeled `test` partition, used for validation here |
-| Fan 2023 | Released recalibration sessions; ten days | Replay holds out the final six trials per session before adaptation |
-| Card 2024 | 125k-word copy task; 14 Table S3 dates | Released validation HDF5 inputs; Figure 2f uses the BiGRU arm |
-| Wairagkar 2025 | Listener-transcription benchmark | Released acoustic evaluation roles and separate listener indices |
-| Kunz 2025 | Closed-loop inner speech; T12: 50 words; T15/T16: 125k words | Condition-specific `_eval` inputs, with conversion exclusions retained |
-| Jude 2026a | Paper Figure 3b,c blocks; T17: six days; T18: seven days | Eligible cues shuffled with seed 9; last `num_test_trials` held out |
-| Jude 2026b | Unconstrained-vocabulary blocks; four days | Highest-numbered eligible sentence block per day held out |
+**Matched** means the same individual trials have been verified. **Different** means the current trial sets differ. **Unavailable** means there is no corresponding offline WER comparison. For Wairagkar, the online count is left as a dash because its listener-median benchmark is handled separately; the offline dash indicates no reproduced listener WER.
 
-Details that affect how to interpret these tables:
+For example, the selected Jude 2026a T17 blocks contain **165 released trials**, but **161 contribute to Figure 2c WER**: four have no recoverable decoder output. The table reports 161, not 165. Counts for the selected released blocks and the scored trials are recorded separately as `released_trials` and `wer_trials` in the [daily source CSV](figures/results/20261124_repository_migration/figure2cd_daily.csv).
+
+Details that affect how to interpret this table:
 
 - **Willett 2021:** `HeldOutTrials` has 63 archived trials overall; only five of its 33 trials on the online dates match online trials. The separate `HeldOutBlocks` partition assigns all 163 online trials to test, and its decode archive already matches 158 of them.
 - **Offline archive totals:** Willett 2023 has 880 trials over 24 sessions; Card has 1,426 trials; Jude 2026b has 417 trials. These totals span a different cohort from the online-date counts above. All 469 Jude 2026b online recordings are present in the local exported data: our split assigns 131 to validation and 338 to training.
