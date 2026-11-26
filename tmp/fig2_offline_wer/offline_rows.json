@@ -1,0 +1,871 @@
+[
+  {
+    "label": "Willett et al., 2021 (T5)",
+    "ours": 7.085387832430646,
+    "ours_sd": 2.8181771799087656,
+    "paper": 3.64,
+    "paper_sd": 3.19,
+    "note": "Released HeldOutTrials; bigram output; all archived recording days",
+    "ours_days": 10,
+    "ours_trials": 63,
+    "ours_daily": [
+      {
+        "day": "2019-05-08",
+        "trials": 10,
+        "word_errors": 7,
+        "reference_words": 136,
+        "wer_pct": 5.147058823529412
+      },
+      {
+        "day": "2019-11-25",
+        "trials": 7,
+        "word_errors": 8,
+        "reference_words": 78,
+        "wer_pct": 10.256410256410257
+      },
+      {
+        "day": "2019-12-09",
+        "trials": 7,
+        "word_errors": 4,
+        "reference_words": 69,
+        "wer_pct": 5.797101449275362
+      },
+      {
+        "day": "2019-12-11",
+        "trials": 7,
+        "word_errors": 5,
+        "reference_words": 51,
+        "wer_pct": 9.803921568627452
+      },
+      {
+        "day": "2019-12-18",
+        "trials": 7,
+        "word_errors": 5,
+        "reference_words": 86,
+        "wer_pct": 5.813953488372093
+      },
+      {
+        "day": "2019-12-20",
+        "trials": 7,
+        "word_errors": 1,
+        "reference_words": 73,
+        "wer_pct": 1.36986301369863
+      },
+      {
+        "day": "2020-01-06",
+        "trials": 5,
+        "word_errors": 5,
+        "reference_words": 50,
+        "wer_pct": 10.0
+      },
+      {
+        "day": "2020-01-08",
+        "trials": 7,
+        "word_errors": 4,
+        "reference_words": 68,
+        "wer_pct": 5.882352941176471
+      },
+      {
+        "day": "2020-01-13",
+        "trials": 3,
+        "word_errors": 2,
+        "reference_words": 22,
+        "wer_pct": 9.090909090909092
+      },
+      {
+        "day": "2020-01-15",
+        "trials": 3,
+        "word_errors": 2,
+        "reference_words": 26,
+        "wer_pct": 7.6923076923076925
+      }
+    ],
+    "ours_pooled": 6.525037936267071
+  },
+  {
+    "label": "Willett et al., 2023 (T12)",
+    "ours": 24.554395693241762,
+    "ours_sd": 12.243931775554943,
+    "paper": 23.8,
+    "paper_sd": 4.01,
+    "note": "5-gram + OPT; all 24 labeled test-partition days used for validation; equal-day mean",
+    "ours_days": 24,
+    "ours_trials": 880,
+    "ours_daily": [
+      {
+        "day": "2022-04-28",
+        "trials": 20,
+        "word_errors": 101,
+        "reference_words": 171,
+        "wer_pct": 59.06432748538012
+      },
+      {
+        "day": "2022-05-05",
+        "trials": 20,
+        "word_errors": 59,
+        "reference_words": 172,
+        "wer_pct": 34.30232558139535
+      },
+      {
+        "day": "2022-05-17",
+        "trials": 20,
+        "word_errors": 34,
+        "reference_words": 134,
+        "wer_pct": 25.37313432835821
+      },
+      {
+        "day": "2022-05-19",
+        "trials": 20,
+        "word_errors": 80,
+        "reference_words": 133,
+        "wer_pct": 60.150375939849624
+      },
+      {
+        "day": "2022-05-24",
+        "trials": 40,
+        "word_errors": 38,
+        "reference_words": 258,
+        "wer_pct": 14.728682170542635
+      },
+      {
+        "day": "2022-05-26",
+        "trials": 40,
+        "word_errors": 31,
+        "reference_words": 243,
+        "wer_pct": 12.757201646090534
+      },
+      {
+        "day": "2022-06-02",
+        "trials": 40,
+        "word_errors": 39,
+        "reference_words": 243,
+        "wer_pct": 16.049382716049383
+      },
+      {
+        "day": "2022-06-07",
+        "trials": 40,
+        "word_errors": 66,
+        "reference_words": 251,
+        "wer_pct": 26.294820717131476
+      },
+      {
+        "day": "2022-06-14",
+        "trials": 40,
+        "word_errors": 54,
+        "reference_words": 274,
+        "wer_pct": 19.708029197080293
+      },
+      {
+        "day": "2022-06-16",
+        "trials": 40,
+        "word_errors": 81,
+        "reference_words": 274,
+        "wer_pct": 29.562043795620436
+      },
+      {
+        "day": "2022-06-21",
+        "trials": 40,
+        "word_errors": 60,
+        "reference_words": 258,
+        "wer_pct": 23.25581395348837
+      },
+      {
+        "day": "2022-06-23",
+        "trials": 40,
+        "word_errors": 75,
+        "reference_words": 250,
+        "wer_pct": 30.0
+      },
+      {
+        "day": "2022-06-28",
+        "trials": 40,
+        "word_errors": 67,
+        "reference_words": 242,
+        "wer_pct": 27.68595041322314
+      },
+      {
+        "day": "2022-07-05",
+        "trials": 40,
+        "word_errors": 32,
+        "reference_words": 214,
+        "wer_pct": 14.953271028037383
+      },
+      {
+        "day": "2022-07-14",
+        "trials": 40,
+        "word_errors": 47,
+        "reference_words": 258,
+        "wer_pct": 18.217054263565892
+      },
+      {
+        "day": "2022-07-21",
+        "trials": 40,
+        "word_errors": 50,
+        "reference_words": 254,
+        "wer_pct": 19.68503937007874
+      },
+      {
+        "day": "2022-07-27",
+        "trials": 40,
+        "word_errors": 50,
+        "reference_words": 229,
+        "wer_pct": 21.83406113537118
+      },
+      {
+        "day": "2022-07-29",
+        "trials": 40,
+        "word_errors": 37,
+        "reference_words": 231,
+        "wer_pct": 16.017316017316016
+      },
+      {
+        "day": "2022-08-02",
+        "trials": 40,
+        "word_errors": 46,
+        "reference_words": 213,
+        "wer_pct": 21.5962441314554
+      },
+      {
+        "day": "2022-08-11",
+        "trials": 40,
+        "word_errors": 49,
+        "reference_words": 229,
+        "wer_pct": 21.397379912663755
+      },
+      {
+        "day": "2022-08-13",
+        "trials": 40,
+        "word_errors": 31,
+        "reference_words": 242,
+        "wer_pct": 12.809917355371901
+      },
+      {
+        "day": "2022-08-18",
+        "trials": 40,
+        "word_errors": 43,
+        "reference_words": 251,
+        "wer_pct": 17.131474103585656
+      },
+      {
+        "day": "2022-08-23",
+        "trials": 40,
+        "word_errors": 48,
+        "reference_words": 256,
+        "wer_pct": 18.75
+      },
+      {
+        "day": "2022-08-25",
+        "trials": 40,
+        "word_errors": 61,
+        "reference_words": 218,
+        "wer_pct": 27.98165137614679
+      }
+    ],
+    "ours_pooled": 23.26300472899236
+  },
+  {
+    "label": "Fan et al., 2023 (T5)",
+    "ours": null,
+    "ours_sd": null,
+    "paper": 6.16,
+    "paper_sd": null,
+    "note": "Full-pipeline reproduction unavailable; released online output is not a reproduction",
+    "ours_days": 0,
+    "ours_trials": 0,
+    "ours_daily": [],
+    "ours_pooled": null
+  },
+  {
+    "label": "Card et al., 2024 (T15)",
+    "ours": 6.549670191388481,
+    "ours_sd": 6.535258273203537,
+    "paper": 6.7,
+    "paper_sd": 6.63,
+    "note": "BiGRU-48k + OPT; all 41 archived validation days; equal-day mean",
+    "ours_days": 41,
+    "ours_trials": 1426,
+    "ours_daily": [
+      {
+        "day": "2023-08-13",
+        "trials": 35,
+        "word_errors": 8,
+        "reference_words": 230,
+        "wer_pct": 3.4782608695652173
+      },
+      {
+        "day": "2023-08-18",
+        "trials": 49,
+        "word_errors": 13,
+        "reference_words": 277,
+        "wer_pct": 4.693140794223827
+      },
+      {
+        "day": "2023-08-20",
+        "trials": 48,
+        "word_errors": 7,
+        "reference_words": 292,
+        "wer_pct": 2.3972602739726026
+      },
+      {
+        "day": "2023-08-25",
+        "trials": 25,
+        "word_errors": 3,
+        "reference_words": 159,
+        "wer_pct": 1.8867924528301887
+      },
+      {
+        "day": "2023-08-27",
+        "trials": 25,
+        "word_errors": 12,
+        "reference_words": 138,
+        "wer_pct": 8.695652173913043
+      },
+      {
+        "day": "2023-09-01",
+        "trials": 49,
+        "word_errors": 12,
+        "reference_words": 299,
+        "wer_pct": 4.013377926421405
+      },
+      {
+        "day": "2023-09-03",
+        "trials": 34,
+        "word_errors": 7,
+        "reference_words": 183,
+        "wer_pct": 3.8251366120218577
+      },
+      {
+        "day": "2023-09-24",
+        "trials": 35,
+        "word_errors": 12,
+        "reference_words": 196,
+        "wer_pct": 6.122448979591836
+      },
+      {
+        "day": "2023-09-29",
+        "trials": 48,
+        "word_errors": 16,
+        "reference_words": 349,
+        "wer_pct": 4.584527220630372
+      },
+      {
+        "day": "2023-10-01",
+        "trials": 44,
+        "word_errors": 19,
+        "reference_words": 313,
+        "wer_pct": 6.0702875399361025
+      },
+      {
+        "day": "2023-10-06",
+        "trials": 36,
+        "word_errors": 6,
+        "reference_words": 222,
+        "wer_pct": 2.7027027027027026
+      },
+      {
+        "day": "2023-10-08",
+        "trials": 17,
+        "word_errors": 14,
+        "reference_words": 150,
+        "wer_pct": 9.333333333333334
+      },
+      {
+        "day": "2023-10-13",
+        "trials": 44,
+        "word_errors": 56,
+        "reference_words": 242,
+        "wer_pct": 23.140495867768596
+      },
+      {
+        "day": "2023-10-15",
+        "trials": 44,
+        "word_errors": 13,
+        "reference_words": 336,
+        "wer_pct": 3.869047619047619
+      },
+      {
+        "day": "2023-10-20",
+        "trials": 9,
+        "word_errors": 12,
+        "reference_words": 71,
+        "wer_pct": 16.901408450704224
+      },
+      {
+        "day": "2023-10-22",
+        "trials": 33,
+        "word_errors": 13,
+        "reference_words": 213,
+        "wer_pct": 6.103286384976526
+      },
+      {
+        "day": "2023-11-03",
+        "trials": 50,
+        "word_errors": 42,
+        "reference_words": 342,
+        "wer_pct": 12.280701754385966
+      },
+      {
+        "day": "2023-11-04",
+        "trials": 15,
+        "word_errors": 0,
+        "reference_words": 80,
+        "wer_pct": 0.0
+      },
+      {
+        "day": "2023-11-17",
+        "trials": 25,
+        "word_errors": 2,
+        "reference_words": 168,
+        "wer_pct": 1.1904761904761905
+      },
+      {
+        "day": "2023-11-19",
+        "trials": 20,
+        "word_errors": 1,
+        "reference_words": 130,
+        "wer_pct": 0.7692307692307693
+      },
+      {
+        "day": "2023-11-26",
+        "trials": 44,
+        "word_errors": 30,
+        "reference_words": 278,
+        "wer_pct": 10.79136690647482
+      },
+      {
+        "day": "2023-12-03",
+        "trials": 34,
+        "word_errors": 7,
+        "reference_words": 212,
+        "wer_pct": 3.30188679245283
+      },
+      {
+        "day": "2023-12-08",
+        "trials": 50,
+        "word_errors": 7,
+        "reference_words": 333,
+        "wer_pct": 2.1021021021021022
+      },
+      {
+        "day": "2023-12-10",
+        "trials": 25,
+        "word_errors": 1,
+        "reference_words": 168,
+        "wer_pct": 0.5952380952380952
+      },
+      {
+        "day": "2023-12-17",
+        "trials": 30,
+        "word_errors": 6,
+        "reference_words": 233,
+        "wer_pct": 2.575107296137339
+      },
+      {
+        "day": "2023-12-29",
+        "trials": 50,
+        "word_errors": 15,
+        "reference_words": 333,
+        "wer_pct": 4.504504504504505
+      },
+      {
+        "day": "2024-02-25",
+        "trials": 23,
+        "word_errors": 3,
+        "reference_words": 164,
+        "wer_pct": 1.829268292682927
+      },
+      {
+        "day": "2024-03-08",
+        "trials": 24,
+        "word_errors": 6,
+        "reference_words": 161,
+        "wer_pct": 3.7267080745341614
+      },
+      {
+        "day": "2024-03-15",
+        "trials": 48,
+        "word_errors": 47,
+        "reference_words": 362,
+        "wer_pct": 12.98342541436464
+      },
+      {
+        "day": "2024-03-17",
+        "trials": 48,
+        "word_errors": 7,
+        "reference_words": 336,
+        "wer_pct": 2.0833333333333335
+      },
+      {
+        "day": "2024-05-10",
+        "trials": 25,
+        "word_errors": 6,
+        "reference_words": 156,
+        "wer_pct": 3.8461538461538463
+      },
+      {
+        "day": "2024-06-14",
+        "trials": 25,
+        "word_errors": 9,
+        "reference_words": 151,
+        "wer_pct": 5.960264900662252
+      },
+      {
+        "day": "2024-07-19",
+        "trials": 48,
+        "word_errors": 22,
+        "reference_words": 350,
+        "wer_pct": 6.285714285714286
+      },
+      {
+        "day": "2024-07-21",
+        "trials": 46,
+        "word_errors": 3,
+        "reference_words": 345,
+        "wer_pct": 0.8695652173913043
+      },
+      {
+        "day": "2024-07-28",
+        "trials": 48,
+        "word_errors": 8,
+        "reference_words": 305,
+        "wer_pct": 2.622950819672131
+      },
+      {
+        "day": "2025-01-10",
+        "trials": 23,
+        "word_errors": 37,
+        "reference_words": 173,
+        "wer_pct": 21.387283236994218
+      },
+      {
+        "day": "2025-01-12",
+        "trials": 47,
+        "word_errors": 2,
+        "reference_words": 298,
+        "wer_pct": 0.6711409395973155
+      },
+      {
+        "day": "2025-03-14",
+        "trials": 24,
+        "word_errors": 42,
+        "reference_words": 162,
+        "wer_pct": 25.925925925925927
+      },
+      {
+        "day": "2025-03-16",
+        "trials": 24,
+        "word_errors": 6,
+        "reference_words": 172,
+        "wer_pct": 3.488372093023256
+      },
+      {
+        "day": "2025-03-30",
+        "trials": 30,
+        "word_errors": 40,
+        "reference_words": 204,
+        "wer_pct": 19.607843137254903
+      },
+      {
+        "day": "2025-04-13",
+        "trials": 25,
+        "word_errors": 18,
+        "reference_words": 159,
+        "wer_pct": 11.320754716981131
+      }
+    ],
+    "ours_pooled": 6.246691371095818
+  },
+  {
+    "label": "Wairagkar et al., 2025 (T15)",
+    "ours": null,
+    "ours_sd": null,
+    "paper": null,
+    "paper_sd": null,
+    "note": "Continuous voice synthesis with acoustic metrics in Figure 2e",
+    "ours_days": 0,
+    "ours_trials": 0,
+    "ours_daily": [],
+    "ours_pooled": null
+  },
+  {
+    "label": "Kunz et al., 2025 (T12)",
+    "ours": 94.34889434889435,
+    "ours_sd": null,
+    "paper": 24.0,
+    "paper_sd": 0.0,
+    "note": "OPT rescoring; weight selected on the archived evaluation set",
+    "ours_days": 1,
+    "ours_trials": 100,
+    "ours_daily": [
+      {
+        "day": "2023-11-28",
+        "trials": 100,
+        "word_errors": 384,
+        "reference_words": 407,
+        "wer_pct": 94.34889434889435
+      }
+    ],
+    "ours_pooled": 94.34889434889435
+  },
+  {
+    "label": "Kunz et al., 2025 (T15)",
+    "ours": 91.64769493454753,
+    "ours_sd": 1.7104176551182921,
+    "paper": 54.0,
+    "paper_sd": 33.15,
+    "note": "125k-word sessions only; OPT weight selected on the archived evaluation set",
+    "ours_days": 2,
+    "ours_trials": 55,
+    "ours_daily": [
+      {
+        "day": "2024-12-15",
+        "trials": 15,
+        "word_errors": 91,
+        "reference_words": 98,
+        "wer_pct": 92.85714285714286
+      },
+      {
+        "day": "2025-01-05",
+        "trials": 40,
+        "word_errors": 227,
+        "reference_words": 251,
+        "wer_pct": 90.43824701195219
+      }
+    ],
+    "ours_pooled": 91.11747851002865
+  },
+  {
+    "label": "Kunz et al., 2025 (T16)",
+    "ours": 105.60747663551402,
+    "ours_sd": null,
+    "paper": 52.0,
+    "paper_sd": 0.0,
+    "note": "125k-word sessions only; OPT weight selected on the archived evaluation set",
+    "ours_days": 1,
+    "ours_trials": 35,
+    "ours_daily": [
+      {
+        "day": "2024-12-18",
+        "trials": 35,
+        "word_errors": 226,
+        "reference_words": 214,
+        "wer_pct": 105.60747663551402
+      }
+    ],
+    "ours_pooled": 105.60747663551402
+  },
+  {
+    "label": "Jude et al., 2026a (T17)",
+    "ours": 11.276757435292911,
+    "ours_sd": 6.672001224579808,
+    "paper": 12.5,
+    "paper_sd": 2.49,
+    "note": "Multisession test-partition output on the online evaluation dates; trial sets differ",
+    "ours_days": 6,
+    "ours_trials": 104,
+    "ours_daily": [
+      {
+        "day": "2024-06-03",
+        "trials": 20,
+        "word_errors": 4,
+        "reference_words": 87,
+        "wer_pct": 4.597701149425287
+      },
+      {
+        "day": "2024-06-04",
+        "trials": 20,
+        "word_errors": 4,
+        "reference_words": 84,
+        "wer_pct": 4.761904761904762
+      },
+      {
+        "day": "2024-06-05",
+        "trials": 20,
+        "word_errors": 15,
+        "reference_words": 101,
+        "wer_pct": 14.851485148514852
+      },
+      {
+        "day": "2024-07-09",
+        "trials": 20,
+        "word_errors": 22,
+        "reference_words": 122,
+        "wer_pct": 18.0327868852459
+      },
+      {
+        "day": "2024-07-10",
+        "trials": 4,
+        "word_errors": 2,
+        "reference_words": 30,
+        "wer_pct": 6.666666666666667
+      },
+      {
+        "day": "2024-07-22",
+        "trials": 20,
+        "word_errors": 24,
+        "reference_words": 128,
+        "wer_pct": 18.75
+      }
+    ],
+    "ours_pooled": 12.86231884057971
+  },
+  {
+    "label": "Jude et al., 2026a (T18)",
+    "ours": 7.609094693176562,
+    "ours_sd": 2.6944679825858175,
+    "paper": 7.0,
+    "paper_sd": 2.38,
+    "note": "Multisession test-partition output on the online evaluation dates; trial sets differ",
+    "ours_days": 7,
+    "ours_trials": 140,
+    "ours_daily": [
+      {
+        "day": "2024-12-05",
+        "trials": 20,
+        "word_errors": 10,
+        "reference_words": 116,
+        "wer_pct": 8.620689655172415
+      },
+      {
+        "day": "2025-01-14",
+        "trials": 20,
+        "word_errors": 12,
+        "reference_words": 125,
+        "wer_pct": 9.6
+      },
+      {
+        "day": "2025-01-15",
+        "trials": 20,
+        "word_errors": 11,
+        "reference_words": 133,
+        "wer_pct": 8.270676691729323
+      },
+      {
+        "day": "2025-01-21",
+        "trials": 20,
+        "word_errors": 7,
+        "reference_words": 121,
+        "wer_pct": 5.785123966942149
+      },
+      {
+        "day": "2025-01-22",
+        "trials": 20,
+        "word_errors": 3,
+        "reference_words": 123,
+        "wer_pct": 2.4390243902439024
+      },
+      {
+        "day": "2025-02-04",
+        "trials": 20,
+        "word_errors": 11,
+        "reference_words": 135,
+        "wer_pct": 8.148148148148149
+      },
+      {
+        "day": "2025-02-05",
+        "trials": 20,
+        "word_errors": 13,
+        "reference_words": 125,
+        "wer_pct": 10.4
+      }
+    ],
+    "ours_pooled": 7.6309794988610475
+  },
+  {
+    "label": "Jude et al., 2026b (T17)",
+    "ours": 47.90725283915996,
+    "ours_sd": 15.678282782438925,
+    "paper": 50.0,
+    "paper_sd": 18.1,
+    "note": "5-gram + OPT; all 12 archived validation days; equal-day mean",
+    "ours_days": 12,
+    "ours_trials": 417,
+    "ours_daily": [
+      {
+        "day": "2024-03-26",
+        "trials": 40,
+        "word_errors": 70,
+        "reference_words": 184,
+        "wer_pct": 38.04347826086956
+      },
+      {
+        "day": "2024-04-02",
+        "trials": 11,
+        "word_errors": 41,
+        "reference_words": 64,
+        "wer_pct": 64.0625
+      },
+      {
+        "day": "2024-04-15",
+        "trials": 40,
+        "word_errors": 115,
+        "reference_words": 232,
+        "wer_pct": 49.56896551724138
+      },
+      {
+        "day": "2024-04-16",
+        "trials": 40,
+        "word_errors": 126,
+        "reference_words": 252,
+        "wer_pct": 50.0
+      },
+      {
+        "day": "2024-04-17",
+        "trials": 6,
+        "word_errors": 14,
+        "reference_words": 29,
+        "wer_pct": 48.275862068965516
+      },
+      {
+        "day": "2024-05-06",
+        "trials": 40,
+        "word_errors": 90,
+        "reference_words": 243,
+        "wer_pct": 37.03703703703704
+      },
+      {
+        "day": "2024-05-07",
+        "trials": 40,
+        "word_errors": 67,
+        "reference_words": 257,
+        "wer_pct": 26.070038910505836
+      },
+      {
+        "day": "2024-05-13",
+        "trials": 40,
+        "word_errors": 152,
+        "reference_words": 233,
+        "wer_pct": 65.23605150214593
+      },
+      {
+        "day": "2024-05-14",
+        "trials": 40,
+        "word_errors": 74,
+        "reference_words": 269,
+        "wer_pct": 27.509293680297397
+      },
+      {
+        "day": "2024-05-28",
+        "trials": 40,
+        "word_errors": 156,
+        "reference_words": 234,
+        "wer_pct": 66.66666666666667
+      },
+      {
+        "day": "2024-08-12",
+        "trials": 40,
+        "word_errors": 56,
+        "reference_words": 169,
+        "wer_pct": 33.13609467455621
+      },
+      {
+        "day": "2024-08-13",
+        "trials": 40,
+        "word_errors": 106,
+        "reference_words": 153,
+        "wer_pct": 69.28104575163398
+      }
+    ],
+    "ours_pooled": 46.01121172919362
+  }
+]

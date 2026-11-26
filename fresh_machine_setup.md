@@ -19,7 +19,7 @@ studies/yyyymmdd_author/            # eight of these, structurally identical
 │   ├── extracted/<release>/        # unmodified extraction
 │   ├── derived/<release>/...      # converted trainer inputs (study-specific format)
 │   ├── processed/<participant>/    # common session files (one .h5 per recording session)
-│   └── splits/                     # tracked CSVs: the papers' train/test assignments (see Q5)
+│   └── splits/                     # tracked CSVs: source partitions and reproduction split rules (see Q5)
 ├── results/<run_id>/               # run.yaml + trials.csv (+ summary.json) per dated run
 ├── log/<run_id>/
 └── docs/                           # per-study evaluation protocol and code guide
@@ -93,7 +93,7 @@ Then `infer.py` exports only the evaluation split's predictions (880 trials for 
 | Jude 2026a | CER (`final_report.json` / `multisession_summary.json`) | WSL typing 5-gram (`decode.py`, py310lm) |
 | Jude 2026b | greedy PER (CL/OL) | WSL 5-gram decode + `wer_from_tsv.py` |
 
-Two things compute on plain Windows before any of the WSL pieces exist: the eight notebooks' archive-scoring cells recompute the published metrics — greedy rates *and* the archived WERs — from files shipped with the repository (3–25 s each, ~1.5 min for all eight), and the fresh greedy metrics of the table above. Scoring any decode TSV is one shared command:
+Two things compute on plain Windows before any of the WSL pieces exist: the eight notebooks' archive-scoring cells recompute the archived metrics — greedy rates *and* the archived WERs — from files shipped with the repository (3–25 s each, ~1.5 min for all eight), and the fresh greedy metrics of the table above. Scoring any decode TSV is one shared command:
 
 ```text
 python shared/tools/wer_from_tsv.py --no-sidecar <any final.tsv>
@@ -101,66 +101,85 @@ python shared/tools/wer_from_tsv.py --no-sidecar <any final.tsv>
 
 Fresh post-LM WER is the one metric that does not exist without the WSL toolchain — see Q6 for why and how, and Q5 for comparing it with the paper.
 
-## 5. How did the paper split the test set, how does my reproduction split it, and how do the two WERs compare?
+## 5. How do I use the same test trials as the paper to compare WER?
 
-> **⚠️ Before quoting any paper-vs-reproduction WER comparison: "same test set" means same sessions *and* same trials — every individual trial, in the same order. Matching recording dates alone is NOT enough.** Verify the trial lists below first.
+**Use the same individual neural recordings for both results.** The same dates, the same number of trials, or even the same sentence texts are insufficient. Each reference and prediction must be linked to the original recording by session, source file, block/partition, and trial index. A sentence can have been recorded more than once.
 
-**Where to verify, per study — two tracked CSVs under `data/splits/`, plus one machine check:**
+Two tasks must be distinguished:
 
-| Check | Where | What to compare |
+- **Reproduce an archived offline score:** run on the trials that a saved offline result used. This checks your implementation against our archive.
+- **Compare offline reproduction with the paper's online decoding:** run on the trials used for that particular online result. Matching our offline archive does not establish this second comparison.
+
+For Figure 2, the intended comparison uses **every online trial selected for Figure 2c**. This released-data cohort is not automatically identical to every trial behind the paper's printed headline WER. State which result and cohort you are reproducing before quoting a comparison.
+
+**A. How the online and offline evaluation sets differ, study by study**
+
+Online evaluation scores the output produced during the experiment. Its training and calibration history belongs to the online protocol; it need not coincide with a later offline `train`/`test` split. For an adapting decoder, preserve the original predict/update order: adapting after a trial is different from training on it before scoring it.
+
+The first table separates counts from matching status; the second lists the selection rules. Study links lead to the split guides. **Offline trial counts refer to the Figure 2f archive on the online dates, not all recordings the publisher released.** A dash means no corresponding full-pipeline reproduction WER is available.
+
+| Study | Participant | Online trials | Offline trials | Test-set match |
+| --- | --- | ---: | ---: | --- |
+| [Willett 2021](studies/20210512_willett/data/splits/README.md) | T5 | 163 | 33 | Different |
+| [Willett 2023](studies/20230831_willett/data/splits/README.md) | T12 | 400 | 200 | Different |
+| [Fan 2023](studies/20231201_fan/data/splits/README.md) | T5 | 377 | — | Unavailable |
+| [Card 2024](studies/20240815_card/data/splits/README.md) | T15 | 1,628 | 514 | Different |
+| [Wairagkar 2025](studies/20250612_wairagkar/data/splits/README.md) | T15 | — | — | Unavailable |
+| [Kunz 2025](studies/20250821_kunz/data/splits/README.md) | T12 | 100 | 100 | Matched |
+| [Kunz 2025](studies/20250821_kunz/data/splits/README.md) | T15 | 55 | 55 | Matched |
+| [Kunz 2025](studies/20250821_kunz/data/splits/README.md) | T16 | 35 | 35 | Matched |
+| [Jude 2026a](studies/20260316_jude/data/splits/README.md) | T17 | 161 | 104 | Different |
+| [Jude 2026a](studies/20260316_jude/data/splits/README.md) | T18 | 580 | 140 | Different |
+| [Jude 2026b](studies/20260428_jude/data/splits/README.md) | T17 | 469 | 131 | Different |
+
+**Matched** means trial identity has been verified, not just equal counts. **Different** means the current sets differ; the two counts are not an overlap fraction. **Unavailable** means no corresponding offline WER comparison is available; it does not establish that recordings are missing. Wairagkar's online benchmark reports listener-median WER rather than the trial-count cohort tabulated for the text decoders.
+
+| Study | Online selection for Figure 2c | Existing offline split rule |
 | --- | --- | --- |
-| Trials the archived score covered | `<release>__archived_evaluation.csv` (one row per scored trial: session, trial id, archive row, reference text) | your fresh `trials.csv` — session + reference text must match **row for row, in order** |
-| The paper's own train/test assignment | the study's partition manifest (e.g. `<release>__validation_blocks.csv`, `__train_test_partitions.csv`; names listed in that folder's `README.md`), keyed by `trial_id` | your run's `train_val_trials.json` — its eval trial IDs must be this manifest's eval rows |
-| **Automated check (use this)** | `python studies/<study>/code/build_split_manifest.py` | **fails** unless the exported evaluation trials equal the archived evaluation rows in content and order — run it instead of eyeballing |
+| Willett 2021 | Closed-loop copy typing; five days | Publisher's `HeldOutTrials` or `HeldOutBlocks`; Figure 2f uses `HeldOutTrials` |
+| Willett 2023 | Closed-loop Switchboard Stage 2; attempted speaking; five days | Release's labeled `test` partition, used for validation here |
+| Fan 2023 | Released recalibration sessions; ten days | Replay holds out the final six trials per session before adaptation |
+| Card 2024 | 125k-word copy task; 14 Table S3 dates | Released validation HDF5 inputs; Figure 2f uses the BiGRU arm |
+| Wairagkar 2025 | Listener-transcription benchmark | Released acoustic evaluation roles and separate listener indices |
+| Kunz 2025 | Closed-loop inner speech; T12: 50 words; T15/T16: 125k words | Condition-specific `_eval` inputs, with conversion exclusions retained |
+| Jude 2026a | Paper Figure 3b,c blocks; T17: six days; T18: seven days | Eligible cues shuffled with seed 9; last `num_test_trials` held out |
+| Jude 2026b | Unconstrained-vocabulary blocks; four days | Highest-numbered eligible sentence block per day held out |
 
-The machine check is how the acceptance run itself confirmed trial-level equality (e.g. Jude 2026b: 417/417 rows identical in session and reference text). Each `data/splits/README.md` documents its study's columns, and each study's evaluation protocol (`studies/<study>/docs/20261124_evaluation_protocol/`) states which trials the paper's figure scores.
+Details that affect how to interpret these tables:
 
-**Which paper WER are you comparing against?** Every paper here reports two word error rates, and the trial-level guarantee above covers only the first:
+- **Willett 2021:** `HeldOutTrials` has 63 archived trials overall; only five of its 33 trials on the online dates match online trials. The separate `HeldOutBlocks` partition assigns all 163 online trials to test, and its decode archive already matches 158 of them.
+- **Offline archive totals:** Willett 2023 has 880 trials over 24 sessions; Card has 1,426 trials; Jude 2026b has 417 trials. These totals span a different cohort from the online-date counts above. All 469 Jude 2026b online recordings are present in the local exported data: our split assigns 131 to validation and 338 to training.
+- **Separate experiments:** Fan's 60-trial replay uses a character LM; Card rapid calibration and Kunz T16 three-fold block holdout are separate experiments. Wairagkar's Mel correlation is not listener-transcription WER.
+- **Selection exposure:** Jude 2026a's held-out cues were used for checkpoint validation. Kunz's OPT weights were selected on the scored evaluation trials. Matching trial identities does not make these untouched test benchmarks.
 
-| Paper number | Trials it covers | Can a reproduction score the same trials? |
-| --- | --- | --- |
-| **Offline evaluation WER** | the labeled test partition **shipped inside the data release** (the per-study table below) | **Yes — this is exactly what the checks above verify.** The archived score and a fresh full run both score these trials row for row (Willett 2023: 880, Card: 1426, Jude 2026b: 417). |
-| **Online (real-time demo) WER** | the paper's live demo sessions, reported in its figures | **No — except Kunz 2025**, whose closed-loop evaluation days *are* the released blocks (100/55/35 trials match exactly). The other releases do not ship the online trial sets: on the online dates their offline archives hold only Willett 2021 33 of 163, Willett 2023 200 of 400, Card 514 of 1628, Jude 2026a 104 of 161 (T17) and 140 of 580 (T18), and Jude 2026b 131 of 469. |
+For the six unmatched groups, Figure 2f and Table 2 currently have date alignment only. They do **not** yet supply an identical-test-set performance comparison. The [online daily counts](figures/results/20261124_repository_migration/figure2cd_daily.csv), [offline daily counts](figures/results/20261124_repository_migration/figure2f_daily.csv), and [trial-pair records](figures/results/20261124_repository_migration/figure2cd_paired_trials.csv) document the current coverage. Trial-pair records can refer to a different model or decoder from the plotted arm; they are not a complete online test manifest. See the [evaluation protocol](figures/docs/20261124_evaluation_protocol/figure2cd.md) for source selections and known release-versus-paper differences.
 
-For the online number, the repository does what the releases permit: Figure 2f restricts each archived offline arm to exactly the online evaluation dates and averages the daily WERs with equal weight, [`figure2cd_paired_trials.csv`](figures/results/20261124_repository_migration/figure2cd_paired_trials.csv) records the trial-level intersection (online trial ↔ archive trial, with both sides' error counts), and the [Figure 2(c,d,f) protocol](figures/docs/20261124_evaluation_protocol/figure2cd.md) states that trial sets within a date still differ. **When you quote a paper WER, name which of the two numbers you mean.**
+**B. How to prepare the correct test split for a new run**
 
-Short answer to the rest: **the paper's split ships inside its data release, the reproduction reuses it by construction, and your WER is comparable with the paper's offline WER when the trial lists and the training length match.** The three sub-questions, each with where the answer lives:
+1. **Identify the target online trials first.** Use the original session/block/trial identifiers and references for the selected online result. The selection rules and source fields are in [extract_online_trials.py](figures/code/extract_online_trials.py). That script exports daily totals; a daily CSV alone is not a trial list. Freeze the complete target list before training. Do not reduce it to the predictions already in our archive and call it the original test set.
+2. **Map those trials to the neural inputs.** Use the common session files from Q2 and their `trial_id`, `source_file`, `source_block` where present, and `source_index` attributes. Establish an unambiguous source mapping across formats; IDs from two different formats may have different strings. Repeated prompt text alone cannot identify a recording.
+3. **Assign training, validation, and test roles explicitly.** The target trials must be test trials for the offline run, excluded from offline fitting, checkpoint selection, and LM parameter tuning. Use suitable other data for training and validation, and document differences from the original online training/calibration protocol. If an existing checkpoint used target trials for fitting or selection, scoring it again does not create an independent test result: a suitable new training/selection run is needed.
+4. **Infer and decode every target trial.** Verify exactly one offline prediction and the same reference for each online test trial. Check missing, extra, and duplicate source IDs; all three counts must be zero. Preserve the trial/reference/prediction mapping and any chronological order needed for adaptation. If predictions are missing, distinguish missing recordings, preprocessing exclusions, missing inference, and missing decoding before deciding what to rerun.
 
-| Sub-question | Answer | Where to look |
-| --- | --- | --- |
-| How did the paper split? | Recorded **trial by trial** in tracked CSVs: an `archived_evaluation.csv` (which trials each archived score covered, with reference text) + a partition manifest (the paper's own train/test rows with `trial_id`s) | each `data/splits/` + its `README.md` |
-| How does my run split? | Identically — each release ships its partition, and convert/export/train/infer read it; you never create a split. `train.py` writes the exact train/eval trial IDs it used into `train_val_trials.json`; `infer.py` scores only the eval side | your run's `train_val_trials.json`; rebuild/verify with `build_split_manifest.py` |
-| How do the WERs compare? | Only on the **same sessions *and* the same trials in the same order** (rule 1 below), at the same convergence (rule 2) | each study's `docs/20261124_evaluation_protocol/README.md` |
+The repository's current default offline splits do **not** implement all these changes automatically. For the unmatched groups, a newcomer can reproduce the existing archive using the tutorial, but cannot yet obtain a complete Figure 2c trial-matched comparison just by running that tutorial unchanged.
 
-**The paper's offline evaluation split, per study** (all recorded in the partition CSVs named above):
+**C. What the existing split checks prove**
 
-| Study | The paper's held-out evaluation (the exact trials, not just the days) |
-| --- | --- |
-| Willett 2021 | released `HeldOutTrials` / `HeldOutBlocks` MAT partitions (63 held-out test sentences in `HeldOutTrials`) |
-| Willett 2023 | the release's `test` partition — 880 labeled validation trials across 24 sessions |
-| Fan 2023 | the final six trials of each session, withheld from CORP adaptation |
-| Card 2024 | the release's validation split — 1426 labeled trials; calibration days in file order |
-| Wairagkar 2025 | the released evaluation-day blocks (days 179/195 scored here; 20 trials per day for Mel eval) |
-| Kunz 2025 | per-condition evaluation blocks (e.g. the T12 mixed eval: 100 trials); T16 uses 3 folds |
-| Jude 2026a | the conversion manifest's held-out blocks (20 test trials per session × 8 sessions) |
-| Jude 2026b | the release's validation partition — 417 sentences (highest-numbered block of each day) |
+After Q2's session export, inspect the study's `data/splits/README.md`. Its partition manifest records trial roles; `<release>__archived_evaluation.csv` records a particular archived offline evaluation. Neither file should be assumed to be the paper's complete online test list.
 
-**Three rules for comparing your WER with the paper's:**
+For example, run from the repository root:
 
-1. **Same sessions *and same trials* — check row by row, not by day.** A fresh decode scores exactly the trials the archived score did, and "same" means identical trial lists, not the same recording dates. Verify it with the pair of tracked CSVs: `data/splits/<release>__archived_evaluation.csv` is the audited row-for-row list of the trials each archived score covered (one row per trial, with reference text and archive row number), and the partition manifest (e.g. `validation_blocks.csv`) lists the same trials with their `trial_id`s. Compare a fresh `trials.csv` against the archived list — session and reference text must match row for row and in order. This is checked for you in one place: each study's `build_split_manifest.py` fails unless the export's evaluation trials equal the archived evaluation rows in content and order (verified again in the acceptance run, e.g. Jude 2026b: 417/417 rows identical).
-2. **Same convergence.** The 1000–2000-batch reader runs are smoke-length: they prove the chain but land far above the paper. Real comparisons, as measured in the acceptance run:
+```text
+python studies/20260428_jude/code/build_split_manifest.py --require-all
+```
 
-| Study | Smoke-length WER (this chain) | Paper-comparable WER | How the comparable number was obtained |
-| --- | --- | --- | --- |
-| Willett 2023 | 48.4% greedy PER @1000 batches | 24.9% | decode the archived **60k-batch checkpoint** (archived first-pass: 25.7%) |
-| Card 2024 | 40.0% val PER @1000 batches | **8.47%** WER | decode the **released checkpoint** (archived: 8.70%) |
-| Jude 2026b | 83.3% WER @1000 batches | 50.6% | the archived **full-training** decode (25k batches) |
-| Kunz 2025 (T12 mixed) | 138.6% WER @1000 batches | 106.9% | the archived full-training decode (this arm is insertion-heavy even at full training) |
-| Fan 2023 | — | 0.0–43.8% | released seed model replays score directly (6/60 held-out trials for the one-session check) |
+This checks exported **offline validation references against the offline archive**, including coverage of every archived session. A successful 417-row check does not prove equality with the 469 online trials. Willett 2023 and Fan also support `--require-all`. Jude 2026a checks the conversion's TFRecords and archived references for covered sessions. Willett 2021 writes publisher partition assignments; Card writes rapid-calibration roles; Kunz writes condition/fold assignments and checks fold inputs when present; Wairagkar writes evaluation roles and checks listener-index interpretation. Run those scripts without `--require-all` and read their coverage or skip messages. **There is no existing single command that certifies complete online/offline test equality for all eight studies.**
 
-3. **Two studies headline a different metric, compared the same way**: Wairagkar correlates predicted vs target Mel bands on the released evaluation days (paper r ≈ 0.83 after removing silences; this suite's day-level means 0.47–0.69), and its listener-transcription WER is a separate archived Figure 2c value the notebook recomputes from the released listening-test data.
+**D. How to compare the two WERs after the test trials match**
 
-The [acceptance report](docs/20261124_repository_migration/overnight_reader_acceptance_report.md) tabulates the fresh WER next to the archived WER for every study.
+Score both outputs against the same references with the same text normalization. For each day, calculate `WER (%) = 100 * total word edits / total reference words`. Across the common evaluation days, report the equally weighted mean and sample SD (denominator `N - 1`); omit SD for a single day. Label pooled WER separately. PER, CER, and Mel correlation are not WER.
+
+Record the actual test list, training/validation roles, checkpoint, decoder, word-error counts, and reference-word counts alongside the result. A printed paper WER is a direct numerical comparator only when its test coverage and calculation match; otherwise report the online WER recomputed on the stated released cohort and identify it as such. The [acceptance report](docs/20261124_repository_migration/overnight_reader_acceptance_report.md) verifies pipeline runs and fresh-versus-archive scores, not completion of the trial matching above.
 
 ## 6. Why does part of this run in WSL — and how do I use it?
 

@@ -1,0 +1,1560 @@
+\documentclass[11pt]{article}
+
+% ---------------------------------------------------------------
+% arXiv-style preprint
+% ---------------------------------------------------------------
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+% v26.3: pentagon glyphs for the Fig. 1 decoded-output marking, from
+% DejaVuSans.ttf -- the figure's own font (local file, Bitstream-Vera
+% licensed; newtx has no pentagon and this bundle's wasysym has only
+% the hollow \pentagon with no filled variant). ORDER MATTERS: the
+% family must be defined BEFORE newtxtext, which clobbers fontspec's
+% file-based font lookup when loaded first (bisected, pent_test11).
+\usepackage{fontspec}
+\newfontfamily\DejaVuSansGlyphs{DejaVuSans.ttf}
+\newcommand{\varpentagon}{\text{\DejaVuSansGlyphs\symbol{"2B1F}}}
+\newcommand{\openpentagon}{\text{\DejaVuSansGlyphs\symbol{"2B20}}}
+\usepackage{newtxtext,newtxmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\providecommand{\urlprefix}{}
+\usepackage{enumitem}
+
+\graphicspath{{../figures/}} % single source of truth: read figures/ directly, no copies in latex/figures (abolished 2026-10-22)
+
+% float parameters: fig1 (image + long caption) exceeds the default
+% \topfraction (0.7) of the text height, which blocked its [t] placement
+% and queued every subsequent figure behind it, dumping all floats after
+% the references. Allow tall top floats and fuller float pages.
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\floatpagefraction}{0.85}
+\renewcommand{\dblfloatpagefraction}{0.85}
+\renewcommand{\textfraction}{0.05}
+
+\newcommand{\wpm}{words/min}
+\newcommand{\cpm}{chars/min}
+
+\title{\bfseries Speech, Typing, and Handwriting
+Neuroprostheses for People with Paralysis:\\
+Data Openness, Independent Reproduction, and Clinical Maturity}
+
+\author{we-linking}
+\date{October 12, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Severe paralysis from amyotrophic lateral sclerosis (ALS), brainstem
+stroke, or spinal cord injury can leave a person fully alert yet unable
+to speak or type, restricting communication with conventional assistive
+devices such as eye trackers to a few words per minute. Implanted
+communication neuroprostheses aim to restore natural-rate expression by
+recording brain activity directly from the sensorimotor cortex while a
+person attempts to speak, touch-type, or handwrite, and using artificial
+intelligence decoders to translate those neural signals into text or
+synthesized voice in real time. Here we review the 2021--2026 clinical
+literature across all three modalities, supported by an open milestone
+database and independent, from-scratch reproductions of all eight
+publicly available datasets. We organize our assessment around three
+questions:
+\emph{(i)~Data openness:} Which studies openly share their human brain
+recordings? Since 2023, studies using penetrating microelectrode arrays
+have broadly released processed neural features on public repositories,
+whereas studies using surface electrode grids (electrocorticography,
+ECoG) and home-use recordings remain largely restricted, and no study
+has released raw broadband voltages.
+\emph{(ii)~Independent reproduction:} Can an outside laboratory
+reproduce these landmark results on everyday hardware? Using a
+modernized, lightweight decoding stack on a single 16\,GB consumer GPU,
+we retrain and evaluate all eight open datasets from scratch, matching
+or approaching published benchmarks on attempted speech, typing, and
+handwriting and documenting larger gaps for inner speech. Session-level
+analyses show when language modeling offsets neural decoding errors,
+and memory profiling identifies what lets the pipelines run on a
+consumer PC.
+\emph{(iii)~Clinical maturity:} How many patients have actually
+benefited, and how close is the field to a medical product? Across five
+years of clinical trials and company demonstrations worldwide, only 20
+people with paralysis have used a communication neuroprosthesis in real
+time, and only one has used a system independently at home as a primary
+communication device. Early systems collected thousands of training
+trials from each participant. Recent studies have demonstrated daily
+recalibration with tens of sentences and adaptation to a new user with
+90 trials. Finally, we outline the clinical trial and
+hardware durability requirements still needed for regulatory approval,
+and explain how communication neuroprostheses must be redesigned to move
+beyond English to tonal, character-based languages such as Mandarin
+Chinese.
+\end{abstract}
+
+\section{Introduction and scope}
+\label{sec:intro}
+
+People who lose both limb movement and speech (anarthria or severe
+dysarthria) after late-stage amyotrophic lateral sclerosis (ALS) or
+brainstem stroke often retain normal cognition and language, yet can
+communicate at only single-digit words per minute using conventional
+augmentative and alternative communication (AAC) devices such as eye
+trackers or head-tracking mice.
+In the clinical study of Card et al., 2024, for example, participant
+T15's residual speech delivered $6.8\pm5.6$ correct words per minute
+(\wpm{}) and his head-mouse typing $6.3\pm1.3$ \wpm{}, compared with a
+natural conversational pace of roughly 160 \wpm{} \cite{card2024}.
+Implanted communication neuroprostheses bypass the paralyzed muscles by
+recording neural activity directly from the brain's sensorimotor
+cortex---the region that normally controls the vocal tract, hands, and
+fingers---while the user attempts to speak, type on a keyboard, or write
+letters by hand. Two classes of surgically implanted sensors are used in
+current clinical trials: \emph{intracortical microelectrode arrays}
+(such as the Utah array), which penetrate 1.5\,mm into the cortex to
+record action potentials (spikes) from small populations of neurons, and
+\emph{subdural electrocorticography (ECoG) grids}, which rest on the
+surface of the brain beneath the dura to record pooled electrical
+signals across a wider cortical area. Sequence-to-sequence neural
+network decoders combined with language models then translate those
+brain signals into on-screen text or synthesized speech.
+
+Between 2021 and 2026, three communication modalities crossed the threshold
+into \emph{online closed-loop} operation---meaning that brain signals
+are decoded in real time so the user sees or hears the output as they
+attempt to communicate, rather than having their recordings analyzed
+\emph{offline} after the session ends: decoding attempted \emph{speech}
+\cite{card2024, moses2021, metzger2023, willett2023, angrick2024, wairagkar2025, jude2026lis},
+attempted \emph{touch-typing} \cite{jude2026typing}, and attempted
+\emph{handwriting} \cite{willett2021, fan2023}. Two additional studies have
+tested \emph{inner speech}---silently imagining words in one's head
+without trying to move the mouth or vocal tract---as their primary task
+\cite{wandelt2024, kunz2025}. Figure~\ref{fig:timeline} charts when and
+at what performance level each milestone was reported. Despite dramatic
+reductions in word error rate (WER, word substitutions, deletions, and
+insertions divided by the reference word count) and daily setup time, major gaps remain between headline
+demonstrations and routine medical care: clinical evidence still comes
+from small single-center studies, public data sharing is uneven across
+research groups, and almost all systems have been built exclusively for
+English. This review evaluates the 2021--2026 literature around three
+questions designed to be accessible across neuroscience, artificial
+intelligence, and clinical medicine: First, which studies openly release
+their neural recordings, and under what restrictions
+(\S\ref{sec:openness})? Second, can an independent group reproduce the
+published benchmarks from scratch on a single consumer-grade GPU, and
+what limits performance and hardware feasibility
+(\S\S\ref{sec:repro}--\ref{sec:feasibility})? Third, how many patients have benefited
+in daily life, and what clinical and engineering milestones remain
+before regulatory approval (\S\ref{sec:maturity})? We close with
+the clinical and linguistic design choices for Mandarin speech
+neuroprostheses (\S\ref{sec:chinese}).
+
+\paragraph{Why this review includes only patients with paralysis.} We
+include only studies enrolling participants with paralysis or severe
+speech loss of neurological origin. Dozens of research groups worldwide
+study speech decoding in able-bodied patients who have surface ECoG
+grids or deep stereoelectroencephalography (sEEG) electrodes implanted
+for a few days to localize seizures before epilepsy surgery or during
+brain-tumor resection. By contrast, only a handful of clinical programs
+worldwide implant chronic communication neuroprostheses in people with
+paralysis. We exclude epilepsy and tumor monitoring studies because
+their participants have intact speech and movement, their implants last
+days rather than years, and combining those acute recordings with
+chronic paralysis trials would distort every comparison of speed, error
+rate, and device longevity. For the same reason, sEEG depth-electrode
+studies are excluded outright: no clinical team implants penetrating
+depth electrodes into deep brain structures in paralyzed patients to
+build a communication device \cite{fogg2026}. Non-invasive recordings in
+healthy volunteers (such as scalp electroencephalography [EEG] or
+magnetoencephalography [MEG] \cite{levy2026}) are cited only as boundary
+references. Finally, using brain signals to move a two-dimensional
+computer cursor to click letters on an on-screen keyboard---from early
+intracortical demonstrations \cite{hochberg2006} to peak speeds near 40
+characters per minute (\cpm{}) \cite{pandarinath2017}---is a continuous
+cursor-control problem rather than a language sequence-decoding problem,
+and is included solely as a communication-speed baseline.
+
+\paragraph{Relation to prior reviews.} Recent reviews have surveyed the
+clinical milestones of speech neuroprostheses \cite{silva2024review},
+the algorithmic evolution of neural speech decoding \cite{stavisky2025},
+and the broader clinical landscape of invasive communication interfaces
+\cite{khan2025}. Here we complement those syntheses in four ways:
+(i)~a study-by-study audit of neural data openness (open, available on
+request, or closed); (ii)~matched-scope independent reproductions of all
+eight public datasets on a single consumer GPU, with transparent
+accounting of where reproductions succeed or fall short; (iii)~a strict
+patient-level maturity ledger that separates \emph{real-time closed-loop
+participants} (twenty, including two company demonstrations) from
+\emph{independent home users} (one); and (iv)~a unified comparison of
+speech, touch-typing, and handwriting as three applications of a single
+decoding pipeline borrowed from automatic speech recognition (ASR).
+
+\section{Clinical milestones in speech, typing, and handwriting}
+\label{sec:modalities}
+
+Figure~\ref{fig:timeline} places speech, typing, and handwriting on a
+common timeline. It records the tasks participants were instructed to
+perform, the type of output produced, and whether they received
+real-time feedback. These distinctions matter when interpreting the
+reported vocabulary, speed, and error rates.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{main_fig_1.pdf}
+\caption{\textbf{Timeline of speech, typing, and handwriting
+neuroprostheses for people with paralysis, 2021--2026.} Markers sit at
+each entry's publication, preprint, or announcement date along the
+speech, typing, and handwriting tracks (open-data markers on the track
+line; others offset toward their cards). Marker color (neural-data
+availability; \S\ref{sec:openness}), fill (online closed-loop
+vs.\ offline decoding), shape (electrode type), and card symbols for
+speech ability ($\blacktriangle$/$\triangle$, after Silva et al., 2024a
+\cite{silva2024review}), task instruction ($\blacklozenge$/$\lozenge$;
+\S\ref{sec:defs}), and decoded output ($\varpentagon$/$\openpentagon$;
+both on Metzger et al., 2023) follow the top legend. A $\star$ prefixes
+the two studies meeting every term of the starred criterion---open
+data, online closed-loop decoding, vocabulary $>$ 71.4k word forms,
+online WER $<$ 12.8\%, and vocal-paralysis participants (Card et al.,
+2024 \cite{card2024}; Jude et al., 2026a \cite{jude2026typing})---keyed
+at the figure's bottom left. Each card states
+its leading descriptor, speed, error rate (\texttt{n/r}: not reported),
+vocabulary size, and participant IDs ($n$ counts all participants whose
+recordings the study used; right-end totals count unique participants
+per track). Section~\ref{sec:intro} gives the inclusion criteria.
+Section~\ref{sec:cohorts} explains the counts and plotted exceptions.}
+\label{fig:timeline}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.6pt}
+\renewcommand{\arraystretch}{1.12}
+\caption{\textbf{The twenty participants of the
+communication-neuroprosthesis literature and company reports.}
+\textbf{Ch.\ (impl.)} = total implanted channels;
+\textbf{Ch.\ (dec.)} = channels fed into the communication decoder;
+\textbf{Interval} = symptom onset or diagnosis to implantation;
+\textbf{Home use} = independent daily use.}
+\label{tab:cohort}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.045\textwidth}>{\raggedright\arraybackslash}p{0.102\textwidth}>{\raggedright\arraybackslash}p{0.060\textwidth}>{\raggedright\arraybackslash}p{0.075\textwidth}>{\raggedright\arraybackslash}p{0.062\textwidth}>{\raggedright\arraybackslash}p{0.065\textwidth}>{\raggedright\arraybackslash}p{0.04\textwidth}>{\raggedright\arraybackslash}p{0.092\textwidth}>{\raggedright\arraybackslash}p{0.058\textwidth}>{\raggedright\arraybackslash}p{0.078\textwidth}>{\raggedright\arraybackslash}p{0.088\textwidth}@{}}
+\toprule
+ID & Institute & Etiology & Electrode & Ch.\newline (impl.) & Ch.\newline (dec.) & Side & Modality & Interval & Implanted & Home use \\
+\midrule
+T5 & BrainGate2 & SCI & Utah & 192 & 192 & L & handwriting & 9 y & 2016-08 & n/a \\
+T12 & BrainGate2 & ALS & Utah & 256 & 128\newline 128 & L & speech\newline handwriting & 9 y & 2022-03 & Not yet \\
+T15 & BrainGate2 & ALS & Utah & 256 & 256\newline 256 & L & speech & 5 y & 2023-07 & 3{,}800 h, 444 d \cite{card2026} \\
+T16 & BrainGate2 & stroke & Utah & 256 & 64 & L & speech & 19 y & 2023-12 & Promising \cite{fogg2026} \\
+T17 & BrainGate2 & ALS & Utah & 384 & 256\newline 256 & L & speech\newline typing & 3 y & 2024-02 & Promising \cite{jude2026typing} \\
+T18 & BrainGate2 & SCI & Utah & 384 & 384\newline 384 & bi & typing\newline handwriting & 1.5 y & \mbox{2024-10}$^{\dagger}$ & n/a \\
+T21 & BrainGate2 & ALS & Utah & 384 & 384 & bi & speech & 3 y & $<$2026-07 & Promising \cite{fogg2026} \\
+T22 & BrainGate2 & stroke & Utah & 384 & 256 & L & speech & 3 y & $<$2026-07 & Promising \cite{fogg2026} \\
+B1 & UCSF & stroke & ECoG & 128\newline 253 & 128\newline 253 & L & speech\newline speech & 16 y\newline 21 y & 2019-02\newline 2024-04 & Not yet \\
+B3 & UCSF & stroke & ECoG & 253 & 253 & L & speech & 17 y & 2022-09 & Not yet \\
+B6 & UCSF & ALS & ECoG & 253 & 253\newline 253 & L & speech & 4 y & 2025-03 & Not yet \\
+CC01 & JHU & ALS & ECoG & 128 & 64 & L & speech & 8 y & 2022-07 & Not yet \\
+P1 & Caltech & SCI & Utah & 288 & 96 & L & speech & 1.5 y & 2016-11 & n/a \\
+P2 & Caltech & SCI & Utah & 320 & 64 & L & speech & 3 y & 2022-10 & n/a \\
+Z1 & ZJU & SCI & Utah & 192 & 96 & L & handwriting & $\sim$3 y & 2019-08 & n/a \\
+V1 & Neuralink & ALS & N1 & 1{,}020 & \emph{n/r} & L & speech & \emph{n/r} & $<$2026-10 & Not yet \\
+V2 & Neuralink & ALS & N1 & 1{,}020 & \emph{n/r} & L & speech & \emph{n/r} & $<$2026-10 & Promising \cite{pouratian2026} \\
+V3 & Neuralink & ALS & N1 & 3{,}072 & \emph{n/r} & L & speech & \emph{n/r} & $<$2026-10 & Promising \cite{pouratian2026} \\
+P7 & Neuralink & ALS & N1 & \emph{n/r} & \emph{n/r} & \emph{n/r} & typing & \emph{n/r} & \mbox{$\sim$2025-06$^{\S}$} & n/a \\
+C1 & Paradromics & MND & Connexus & \emph{n/r} & \emph{n/r} & \emph{n/r} & speech & \emph{n/r} & 2026-06$^{\ddagger}$ & Not yet \\
+\bottomrule
+\end{tabular}
+
+\vspace{2pt}
+Z1, V1--V3, C1 coined IDs $\cdot$ $^{\dagger}$derived from post-implant day $\cdot$ $^{\ddagger}$company report $\cdot$ $^{\S}$estimated from a \href{https://x.com/PairedWith_P7/status/2003575695663059181}{six-month follow-up post} $\cdot$ \emph{n/r} = not reported $\cdot$ n/a = not applicable $\cdot$ Not yet = performance below the Promising criteria $\cdot$ Promising = online, vocab $>$ 71.4k, WER $<$ 12.8\%, vocal paralysis.
+\end{table}
+
+\subsection{Tasks and representative studies}
+\label{sec:defs}
+
+\paragraph{Speech.} The standard paradigm is an instructed-delay copy
+task: a sentence appears on screen, and after a go cue the participant
+\emph{attempts to speak} it. ``Attempt'' covers a spectrum that must be
+checked against each paper's operational definition rather than its
+label: (1)~overt attempted speech (vocalized, possibly severely
+dysarthric); (2)~mouthing (articulating without phonation);
+(3)~intended speech (initiating articulation that the paralyzed
+periphery cannot execute) \cite{metzger2023}; and (4)~inner speech
+(covert verbalization with no articulation intent) \cite{kunz2025}.
+Fig.~\ref{fig:timeline} separates this last, non-articulatory category
+(filled $\blacklozenge$) from every articulation-engaging task (open
+$\lozenge$); papers decoding under both instructions carry both
+diamonds (Wandelt et al., 2024 \cite{wandelt2024}, internal and
+vocalized speech; Kunz et al., 2025 \cite{kunz2025}, attempted and
+inner speech; Jude et al., 2026b \cite{jude2026lis}, a three-phased
+reading, internal-speech, and attempted-speech task).
+On the vocabulary and speed axes, early closed-vocabulary systems
+decoded 50 isolated words (Moses et al., 2021 \cite{moses2021}) or
+1{,}152 words via silent NATO-codeword spelling (Metzger et al., 2022
+\cite{metzger2022}). In 2023, open-vocabulary decoding arrived on the
+intracortical line with the 125{,}000-word decoder of Willett et al.,
+2023 (62 \wpm{} at 23.8\% WER \cite{willett2023}), while the ECoG line
+demonstrated a 1{,}024-word talking avatar with synthesized voice
+(Metzger et al., 2023; 78 \wpm{} at median 25.5\% WER
+\cite{metzger2023}). Rapid daily recalibration then brought the
+intracortical stack to 31.6 \wpm{} at a 9.8\% session-2 WER (2.5\% in
+late sessions; Card et al., 2024 \cite{card2024}). Most recently, the
+six-participant multi-user Transformer of Fogg et al., 2026 cut online
+closed-loop WER to 3.9--8.0\% across three new users (a 55.9\% average
+relative reduction over single-user models), rescued the locked-in user
+T17 from a single-user 65.6\% WER (95\% CI 63.9--67.4) to 23.1\% (95\%
+CI 21.5--24.7), and reduced new-user calibration to 90--200 sentences
+\cite{fogg2026}, while Yoon et al., 2026 kept a deep-ensemble stack
+running in real time on newly collected bilateral six-array recordings
+from T12 (post-implant day 1{,}185 onward) \cite{yoon2026}.
+
+On the voice-output track, Angrick et al., 2024 synthesized a six-word
+vocabulary online from the Johns Hopkins CortiCom grid in a man with ALS
+(naive listeners recognizing 80\% of the words with his voice profile
+preserved \cite{angrick2024}), and Littlejohn et al., 2025 streamed a
+personalized voice synthesizer continuously from Bravo-3's grid
+(recurrent neural-network transducer [RNN-T] decoding in 80-ms steps,
+synthesizing the participant's pre-injury voice at 58.8\% median
+listener WER and 31.9\% text WER over a 1{,}024-word vocabulary
+\cite{littlejohn2025}). On the intracortical side, Wairagkar et al.,
+2025 achieved instantaneous synthesis in T15 across 8{,}489
+cued-sentence trials. Naive listeners transcribed the synthesized audio
+with a median WER of 43.75\% \cite{wairagkar2025}. An offline evaluation
+of Brain2voice 2.0 on held-out trials from those recordings yielded a
+mean listener WER of 5.24\% \cite{wairagkar2026}. Extending beyond voice
+alone, Brosler et al., 2026 drove a personalized avatar with
+simultaneous real-time attempted speech and covert (imagined) facial
+gesture decoding from a single high-density grid per participant (online
+simultaneous copy-task accuracies 70.0\% speech / 66.0\% gesture in
+Bravo-6, and conversational blocks up to a median 100.0\% in Bravo-1r)
+\cite{brosler2026}. Separately, Hou et al., 2025 showed that speech
+motor cortex encodes decodable error signals during prosthesis use
+(self-error decoding up to 86\%) \cite{hou2025}.
+
+Beyond overt attempts, inner speech decodes online at 26--54\% WER (Kunz
+et al., 2025 \cite{kunz2025}), and intended speech in a person with
+locked-in syndrome reaches conversational WER $\sim$50\% over a
+125{,}000-word vocabulary at 45--60 \wpm{} (Jude et al., 2026b
+\cite{jude2026lis}). The first commercially manufactured entry, the
+fully implanted wireless N1 of the Neuralink VOICE first-in-human trial
+(NCT07224256), reported three adults with ALS decoding attempted speech
+online: on a structured 125{,}000-word evaluation, the second and third
+participants reached 54 \wpm{} at 6.6\% WER and 75 \wpm{} at 5.8\% WER
+(the first participant, on the earliest electrode design, reached 45
+\wpm{} at 7\% WER over a 220-word set) \cite{pouratian2026}. Two
+mechanistic preprints from the BrainGate program map the planning code
+these decoders read out: preparatory activity encodes diverse features
+of intended movement \cite{rigotti2025}, and premotor cortex composes
+phoneme-level representations into whole-word plans
+\cite{abramovich2026}. Across the six BrainGate speech participants,
+per-array ablations and 20-array whole-body mapping \cite{deo2026}
+converge on the same anatomical gate (Fig.~\ref{fig:clinical}a):
+speech decodes from ventral precentral area~6v (plus middle precentral
+area~55b and primary motor area~BA4 in T15, T17, T21, and T22, including
+T21's two right-hemisphere 6v/55b arrays, which alone decode at 48.0\%
+offline multi-user WER), whereas Broca's area~44 (T12, and excluded a
+priori in T22), the premotor eye field (T16), and dorsal hand-knob
+area~6d (T16, T17, and T22) stay at or near chance for speech
+\cite{willett2023, jude2026lis, kunz2025, fogg2026, deo2026}.
+
+\paragraph{Typing.} The participant attempts to touch-type on a (real or
+on-screen) QWERTY keyboard; the decoded object is the keystroke sequence
+itself, not a cursor and not dictated speech. Jude et al., 2026a (typing)
+is the anchor:
+T18 reached 110 \cpm{} (22 \wpm{}) at 1.6\% WER---81\% of the
+age-matched able-bodied smartphone-typing rate of 27.3 \wpm{}
+\cite{palin2019}---with 30 calibration
+sentences, drifting only to 12\% WER after a week without recalibration
+\cite{jude2026typing}. Its technical ancestry (bimanual RNN control,
+finger decoding, premotor geometry; BRAND real-time platform) is
+documented in the typing-neuroprosthesis literature
+\cite{deo2024, willsey2025, shah2025, ali2024}; a preprint from the same
+program traces how typing skill consolidated in dorsal premotor cortex
+over practice \cite{hashimoto2026}. A Neuralink company update shows
+P7 (``Jake'', its seventh implant recipient, who has ALS and retains
+speech) typing online by imagining movements of all ten fingers. The
+company describes decoding signals for both hands from a unilateral N1
+implant and says Jake uses the system for everyday computer tasks.
+Neuralink reports speeds of up to 40 \wpm{} among participants and
+provides no WER \cite{neuralink2026, schneider2025}.
+
+\paragraph{Handwriting.} The participant attempts to handwrite
+characters; BrainGate's T5 (C4 spinal cord injury) is the only
+participant ever to run this modality online. Willett et al., 2021: 90
+\cpm{} at
+94.1\% raw online accuracy (5.9\% character error rate, CER; 25.1\% raw
+online WER), 0.89\% CER (3.4\% WER)
+after offline language-model correction, and 73.8 \cpm{} free-text copy
+at 8.54\% CER---against an age-matched smartphone-typing reference of
+115 \cpm{} \cite{willett2021}. Fan et al., 2023 demonstrated plug-and-play
+stability across 403 days of monthly evaluation sessions (15 in total;
+73.2 $\pm$ 11.0 \cpm{}, 6.16\% online WER over
+a 130{,}000-word vocabulary) \cite{fan2023}.
+Notably, the 2021 handwriting architecture has since been absorbed by
+the speech stack: Levin et al., 2026 retrained handwriting data with the
+GRU+CTC speech pipeline and reached 2\% CER in a single session (and
+23--40\% speech PER with cross-brain transfer at 50--84 target-user
+sentences, evaluated without a language model)
+\cite{levin2026}. Cross-participant generalization is also the explicit
+target of second-hand reanalyses---cross-subject pretraining
+\cite{boccato2026} and adversarial session alignment \cite{align2026}---
+which point the same direction at lower cost
+(Table~\ref{tab:crosssubject}). A parallel Chinese
+trajectory-decoding line
+(stroke-level trajectories rather than character sequences, with
+video-guided per-stroke supervision) started offline and has now
+reached online closed-loop operation: Xu et al., 2025
+reach 91.1\% closed-set recognition over a 1{,}000-character template
+library by multi-day-fused DTW matching (plotted on the handwriting
+lane of Fig.~\ref{fig:timeline}), and the follow-up Yang et al., 2026
+closes the loop on the same participant---an LSTM decoder writes
+trajectories in real time and a handwriting-BERT classifier, pre-trained
+on 6{,}825 character classes from 122 human writers (HIT-OR3C), reports
+94.45\% online accuracy over a 295-character vocabulary at 8.55 $\pm$
+2.77 \cpm{} (plotted on the same lane) \cite{xu2025, yang2026}; the
+companion study of Wang et
+al., 2026 maps the cortical representation of multidimensional
+handwriting movement \cite{wang2026}.
+
+\subsection{Clinical programs and participant counts}
+\label{sec:cohorts}
+
+Table~\ref{tab:cohort} lists all twenty individuals with paralysis who
+participated in the studies or company demonstrations covered through
+2026. Eighteen participants appear in peer-reviewed papers or preprints.
+The studies span several clinical trial programs, including the multi-site BrainGate2 intracortical consortium (T5, T12,
+T15, T16, T17, T18, T21, and T22), the University of California, San
+Francisco (UCSF) ECoG program (B1, B3, and B6; the bilingual study of
+Silva et al., 2024b \cite{silva2024} and the high-density re-implant of
+Brosler et al., 2026 \cite{brosler2026} both involve B1, first reported
+by Moses et al., 2021 \cite{moses2021}), the Johns Hopkins CortiCom ECoG
+trial (CC01 \cite{angrick2024, luo2023}), the Caltech supramarginal gyrus
+intracortical trial (P1 and P2 \cite{wandelt2024}), the Zhejiang
+University Chinese handwriting trial (Z1 \cite{xu2025, yang2026}), and the
+wireless N1 intracortical implant of the Neuralink VOICE clinical trial
+(V1--V3 \cite{pouratian2026}). The remaining two entries are
+company-reported demonstrations without peer-reviewed papers or published
+error rates: Neuralink's seventh implant recipient, P7 (``Jake''), who
+performs imagined ten-finger typing \cite{neuralink2026, schneider2025},
+and Paradromics' first Connect-One participant, C1, who decodes
+attempted speech in real time using the Connexus cortical module
+\cite{perkins2025, paradromics2026}. All twenty received their implants
+under registered clinical trials (seven on ClinicalTrials.gov and one in
+the China Clinical Trial Registry). Alongside these first-hand patient
+studies and two preprints introducing new participant recordings
+\cite{yoon2026, levin2026}, Figure~\ref{fig:timeline} also tracks nine
+reanalyses of openly released datasets. Four date from 2024--2025
+\cite{feng2024, falcon2024, li2025dcond, feghhi2025} and five from 2026
+\cite{wairagkar2026, boccato2026, align2026, bit2026, feghhi2026}.
+The original study team carried out the Brain2voice 2.0 reanalysis.
+
+The timeline counts participants once per modality and includes those
+whose recordings were decoded offline. Of the twenty unique
+participants, 16 contributed to speech, 3 to typing, and 4 to handwriting,
+with T12, T17, and T18 contributing to two modalities. Six participants
+retain natural speech---the five with spinal cord injury (SCI; T5, T18,
+P1, P2, Z1) plus P7---and fourteen have vocal paralysis
+\cite{silva2024review}.
+
+Twenty unique participants qualified for the online closed-loop count:
+sixteen in speech, three in typing, and two in handwriting (T5 and Z1),
+with T17 counted in both speech and typing. This total includes two
+company-reported demonstrations (P7 and C1)
+\cite{neuralink2026, paradromics2026}. Several participants returned for
+multiple studies over years, so a new publication can mark a technical
+advance without adding a new participant. Evidence for independent home
+use is considered in \S\ref{sec:home_use}.
+
+\section{Public datasets and decoding benchmarks}
+
+Figure~\ref{fig:vocab} starts with vocabulary coverage across the
+field (a), then narrows to the public datasets and their reported online
+performance (b--d). The final two panels use those releases to compare
+independent reproductions with published benchmarks
+(\S\ref{sec:repro}).
+
+\begin{figure}[tp]
+\centering
+\includegraphics[width=\linewidth]{main_fig_2.pdf}
+\captionsetup{singlelinecheck=false,font=footnotesize,skip=2pt}
+\caption{\textbf{Our reanalysis of the open-sourced datasets: vocabulary
+funnel to independent reproduction on one 16\,GB consumer GPU.}
+(a) Maximum decoder vocabulary size (inflected forms; dashed:
+open-ended output, no fixed lexicon; \cite{xu2025} omitted) against
+native-speaker tiers \cite{brysbaert2016}. (b) Labeled sentences
+across the 8 open-data studies, 11 splits. (c) Equal-day mean online WER (whiskers: sample SD; voice: listener median). (d) Online
+speed against able-bodied speech, typing, dwell
+eye-typing, and point-and-click BCI references
+\cite{card2024, willett2021, pandarinath2017, palin2019, dhakal2018, hamid2024}.
+(e) Before language modeling, our offline reproduction (blue) versus
+paper benchmarks (teal; gray tags indicate online or offline origin):
+greedy CTC PER, raw CER, or $1-r$ mel gap for the Wairagkar voice arm.
+(f) Offline reproduced WER (blue) versus online WER from (c) (teal);
+no reproduced WER for voice synthesis.
+Values and SDs for (b)--(f): Source Data file.}
+\label{fig:vocab}
+\label{fig:repro}
+\end{figure}
+
+\subsection{Vocabulary coverage and data availability}
+\label{sec:openness}
+
+Across the studies in Fig.~\ref{fig:vocab}a, the decoded sets span 6--50
+word forms in the early ECoG demonstrations
+(Angrick et al., 2024; Wandelt et al., 2024; Moses et al., 2021) and
+1{,}024 word forms in the 2023 avatar and 2025 voice work (Metzger et
+al., 2023; Littlejohn et al., 2025), while the 125{,}000-word $n$-gram
+language model of Willett et al., 2023 has been the workhorse of
+open-vocabulary decoding ever since (ten studies in
+Fig.~\ref{fig:timeline}). Four studies go further and decode open-ended
+output with no fixed lexicon at all: the
+handwriting systems of Willett et al., 2021
+\cite{willett2021} and Levin et al., 2026 \cite{levin2026}, and the
+voice synthesis of Wairagkar et al., 2025 (online) and 2026 (offline)
+\cite{wairagkar2025, wairagkar2026} (Box~1 explains how machine word-form
+lexicons compare against human vocabulary benchmarks).
+
+\vspace{4pt}
+\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\small\textbf{Box 1 $|$ Counting vocabulary size: word forms, lemmas,
+and word families.}\\[2pt]
+What a reported vocabulary size means depends on what counts as a word,
+and the three conventions in play differ by multiples. Take the six
+spellings \emph{walk, walks, walked, walking, walker, walkers}: a
+machine lexicon counts every distinct spelling (word forms)---six
+entries; a dictionary counts lemmas, one headword per meaning with its
+inflections merged (\emph{walk} covers the first four, \emph{walker} the
+last two)---two; and psycholinguistic vocabulary studies typically count
+word families, one entry per root regardless of derivation---one. Every
+fixed vocabulary in Fig.~\ref{fig:vocab} is a flat word-form list: the
+shared 125{,}000-word language model literally lists \textsc{walk,
+walks, walked, walking} as four separate entries \cite{jude2026typing}.
+The like-for-like human anchor is thus the word-form tier of Brysbaert
+et al.\ \cite{brysbaert2016}: an average 20-year-old native speaker of
+American English knows 71{,}400 inflected word forms ($1.7\times$ their
+42{,}000 lemmas, rooted in 11{,}100 word families)---so the
+125{,}000-word decoder lexicon already exceeds a native speaker's
+repertoire under the same counting unit.
+\end{minipage}}
+\vspace{4pt}
+
+Figures~\ref{fig:timeline} and~\ref{fig:vocab}a distinguish public
+neural recordings, recordings available on request, and closed data.
+Eight public releases underpin the reproduction benchmarks in
+\S\ref{sec:repro}. First, \emph{the intracortical line went
+broadly open from 2023 onward}: Willett et al., 2023 (Brain-to-Text~'24
+benchmark; Dryad, $\sim$37\,GB), Fan et al., 2023 (handwriting
+plug-and-play; Dryad, 3.57\,GB), Card et al., 2024 (Brain-to-Text~'25;
+Dryad, 11\,GB), Wairagkar et al., 2025 (26\,GB), Kunz et al., 2025,
+Jude et al., 2026a (typing; 35.4\,GiB), and Jude et al., 2026b
+(locked-in syndrome) are all directly downloadable
+\cite{card2024, willett2023, wairagkar2025, jude2026lis, jude2026typing, fan2023, kunz2025}, alongside the earlier Willett et al., 2021
+handwriting dataset (1.31\,GiB \cite{willett2021}), the Caltech
+supramarginal gyrus internal-speech dataset of Wandelt et al., 2024 on
+Zenodo \cite{wandelt2024}, and the one fully open ECoG dataset in our
+cohort, Angrick et al., 2024 (Johns Hopkins subdural grids; OSF neural
+data and audio) \cite{angrick2024}. The exception on the intracortical
+side is the Chinese handwriting line: both Xu et al., 2025 and the
+online follow-up Yang et al., 2026 gate their neural recordings behind
+request procedures, citing clinical-trial protocol and participant
+privacy \cite{xu2025, yang2026}. Second, \emph{the UCSF ECoG line and
+home-use neural recordings remain restricted or closed}: Moses et al.,
+2021, Metzger et al., 2022/2023, Silva et al., 2024b, Littlejohn et al.,
+2025, and Brosler et al., 2026 gate their neural recordings behind
+application procedures or restricted-access repositories (or release
+only figure-level summary data)
+\cite{moses2021, metzger2023, metzger2022, littlejohn2025, brosler2026, silva2024}, and the home-use neural recordings of Card
+et al., 2026 are withheld for participant privacy, with summary CSVs
+released \cite{card2026}. Third, \emph{every publicly released neural
+dataset consists of derived features}---binned threshold-crossing counts
+and spike-band power---never raw wideband voltages or spike-sorted
+units; de-identification at the feature level means the pre-processing
+stage cannot be audited post hoc.
+
+``Open'' also comes in degrees that matter for reproduction: the
+Brain-to-Text~'25 test labels remain unreleased at the time of writing;
+Wairagkar et al., 2026 reuse the public Dryad recordings of Wairagkar et
+al., 2025 \cite{wairagkar2026}; and the 2026 preprints have not yet
+released their newly collected neural recordings---including the 20 new
+sessions in Levin et al., 2026, the six-array T12 recordings in Yoon et
+al., 2026, the six-user corpus in Fogg et al., 2026, and the recordings
+in Nason-Tomaszewski et al., 2026
+\cite{fogg2026, yoon2026, levin2026, nason2026} (whereas Hahn et al., 2025
+released their dataset on Dryad upon publication \cite{hahn2025}).
+
+\subsection{Released corpus sizes}
+\label{sec:corpus_size}
+
+Figure~\ref{fig:vocab}b counts labeled sentences in the eight public
+releases used in our reproductions. Willett et al., 2021 released
+1{,}000 sentences (8{,}198 word tokens) across 10 of 11 sessions.
+Card et al., 2024 released 45 sessions comprising 9{,}498 transcribed
+training or validation trials (60{,}091 word tokens) and 1{,}450
+unlabeled test trials, for 10{,}948 trials in total. Jude et al., 2026b
+released 3{,}674 sentences (20{,}237 word tokens) across 13 of 14
+sessions. We casefolded tokens, removed punctuation, and counted only
+trials with reference transcripts. This excludes 1{,}200 blind
+hold-out trials in Brain-to-Text~'24 and 1{,}450 in Brain-to-Text~'25.
+
+Amounts collected over a study and amounts released in a public
+dataset describe different things. Table~2 of Fogg et al., 2026
+quantifies the intracortical corpus per participant
+(Supplementary Fig.~S2c): T12
+10{,}880 copy-task trials; T15 19{,}557 copy trials \emph{plus} 260{,}424
+self-generated sentences accumulated across independent home use
+(278{,}531 training trials over 748 days); T15's public
+Brain-to-Text~'25 subset 10{,}948 trials; T16 11{,}274, T17 3{,}763,
+T21 2{,}942, and T22 4{,}508 \cite{fogg2026}. In task time, the copy
+corpus of Card et al., 2024 alone spans 67.4\,h of attempted speech
+(248.3\,h including self-generated conversation). For
+reference, Moses et al., 2021 collected 22.5\,h of isolated words
+(9{,}800 trials) plus 2.1\,h of sentences \cite{moses2021}, and Metzger
+et al., 2023 about 1.6\,h/day for 14 days (9{,}506 trials)
+\cite{metzger2023}.
+
+The 10{,}850 sentences reported by Willett et al., 2023, for example,
+correspond to an 8{,}800+880 split in the release cited here. Card et al.,
+2024 reported 10{,}481 copy sentences across 50 sessions, while the
+public release contains 10{,}948 trials across 45 sessions. Task hours
+offer a more consistent measure of recording burden across studies
+because isolated-word and sentence trials differ in duration.
+
+\subsection{Online error and communication speed}
+
+Panels c and d of Figure~\ref{fig:vocab} summarize day-level online
+WER and communication speed. Handwriting and typing have reached
+78--81\% of
+age-matched able-bodied smartphone-typing speeds (90 vs.\ 115 \cpm{}
+for T5 \cite{willett2021, palin2019}; 22 vs.\ 27.3 \wpm{} for T18
+\cite{jude2026typing, palin2019}), and 35--61\% of the population-wide
+anchors (36.2 \wpm{} smartphone, 51.6 \wpm{} keyboard
+\cite{palin2019, dhakal2018}),
+while open-vocabulary speech remains a factor 2--3 below conversational
+pace but roughly an order of magnitude above the patients' own AAC
+baselines. Error rates describe modality-specific tasks. For example,
+the 1.6\% typing WER was measured with a 30-symbol output set, built-in
+word segmentation, and templated test sentences \cite{jude2026typing}.
+
+Raw speed counts output that users may need to correct.
+Converting each headline result
+to \emph{correct words per minute}, $\text{rate}\times(1-\text{error})$,
+using each paper's own paired speed--error anchor (with character-rate
+systems converted at the five-characters-per-word convention of
+Jude et al., 2026a, typing \cite{jude2026typing}),
+tightens the ranking: the best speech systems deliver 47--71 correct \wpm{}
+(the fully implanted Neuralink system reaching 70.7 in a conference
+abstract \cite{pouratian2026}; Metzger et al., 2023 reaching 58.1
+\cite{metzger2023}; Card et al., 2026 home use reaching 48.0 silent and
+$\gtrsim$30 vocalized \cite{card2026}; Willett et al., 2023 reaching
+47.2 \cite{willett2023}; Card et al., 2024 session~2 reaching 28.5
+within its 2.5--9.8\% online WER range \cite{card2024}; Moses et al.,
+2021 reaching 11.3 \cite{moses2021}),
+handwriting and typing deliver
+13.7--21.6 (Jude et al., 2026a: 21.6 \cite{jude2026typing}; Willett et
+al., 2021: 16.9 \cite{willett2021}; Fan et al., 2023: 13.7 from 73.2
+\cpm{} at WER 6.2\%
+\cite{fan2023}), and every BCI system still clears T15's own 6.3--6.8 correct
+\wpm{} AAC baselines by $2\times$ to $11\times$---none reaches half
+of able-bodied conversational pace, and among open-vocabulary systems only
+the Neuralink row crosses the able-bodied keyboard anchor (51.6 \wpm{}).
+
+\paragraph{Public benchmark competitions.} Two public releases also
+supported competitive benchmarks.
+Brain-to-Text~'24 ran on EvalAI with the
+T12 data: a private 1{,}200-sentence hold-out scored by aggregate WER, a
+declared baseline of 9.7\% (RNN CTC $\to$ 5-gram $\to$ LLM rescoring),
+and a winning entry at 5.77\% that decoded diphones ($\sim$1{,}600
+classes) and merged ten RNNs with a fine-tuned LLM; all top-three
+entries relied on LLM-merged ensembles, Mamba and Transformer entries
+did not beat the RNN baseline, and the benchmark itself remains open
+\cite{btot24lessons}---its EvalAI board listed 49 teams as of
+2026-10-16, with post-close submissions pushing the open-board best to
+3.34\%, ahead of the closed competition's 5.77\% \cite{evalai24board}.
+Its successor, Brain-to-Text~'25, moved to Kaggle
+with the T15 data and cash prizes (2025-07-07 through 2026-01-01;
+\$5{,}000/\$3{,}000/\$1{,}000 most-innovative, sponsored by Blackrock
+Neurotech): \mbox{576 entrants} and 466~leaderboard teams competed on the
+1{,}450-sentence test partition, against a declared baseline of 6.70\%
+WER and a final private-leaderboard best of 1.54\% \cite{btot25kaggle}.
+These are offline numbers, earned with unlimited compute and ensembling
+on a static test set---Card et al., 2024's online session-2 anchor of
+9.8\% remains the clinical reference \cite{card2024}---but as
+standardized external yardsticks they are exactly what the post-2024
+open-data turn was for. The hosts then closed the loop themselves:
+Yoon et al., 2026---authored by the organizers (Stanford-NPTL +
+UCD-NPL, with Emory/GaTech and Brown)---ran the boards' winning
+recipe, LLM-merged deep ensembles, as the first real-time closed-loop
+test on T12's 2025 bilateral six-array re-implant recordings, cutting
+online WER from 33.7\% to 26.0\% at 65.4 wpm
+\cite{yoon2026} (Fig.~\ref{fig:clinical}c).
+
+\section{Independent reproduction of published benchmarks}
+\label{sec:repro}
+
+Figure~\ref{fig:vocab}e compares the neural stage before language
+modeling, and panel f shows our offline end-to-end word error alongside
+the online results in panel c. We retrained on each public release
+and matched dataset splits, decoding stages, and evaluation statistics
+to the extent the releases allowed. Table~\ref{tab:repro} gives the
+online results and the offline reproduction values.
+
+\subsection{Shared decoding pipeline}
+
+Text decoders across the three modalities share a cascade adapted from
+automatic speech recognition (ASR). On the sensor side, the intracortical line
+froze its core front end in 2021: no spike sorting; threshold crossings in
+20\,ms bins (handwriting \cite{willett2021, fan2023}, $1\times N_{\text{ch}}$)
+concatenated from 2023 onward with spike-band power (speech and typing
+\cite{card2024, willett2023, jude2026typing}, $2\times N_{\text{ch}}$),
+Gaussian-smoothed, blockwise $z$-scored, with a
+day-specific affine input layer absorbing cross-day nonstationarity. The ECoG line
+instead uses high-gamma envelopes \cite{moses2021}. Decoding then walks
+the ASR textbook: a stacked GRU (five layers of 512--768 units;
+Transformer variants from 2026 \cite{fogg2026, card2026}) trained with
+connectionist temporal classification (CTC) \cite{graves2006} emits
+frame-level label probabilities; a beam search over a lexicon-constrained
+$n$-gram language model turns them into words; and an n-best list is
+rescored by a large language model. Early text decoders used cross-entropy classification
+\cite{moses2021, willett2021, metzger2022, silva2024}. CTC became common in
+text decoding from 2023 onward
+\cite{card2024, metzger2023, willett2023, jude2026lis, jude2026typing, kunz2025, fogg2026, nason2026}.
+For streaming voice synthesis, Littlejohn et al., 2025 used an
+RNN-Transducer (RNN-T) \cite{littlejohn2025}.
+Jude et al., 2026a adapted the speech stack for typing with a 30-key
+output head, and Levin et al., 2026 used the stack for handwriting
+\cite{levin2026}. By 2026 the text-decoding stacks shared much of their architecture,
+with modality-specific front ends and output units (Box~2).
+
+\vspace{4pt}
+\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\small\textbf{Box 2 $|$ What communication neuroprostheses borrowed from automatic speech recognition.}\\[2pt]
+The neuroprosthesis decoding cascade borrows almost everything from its
+industrial source. The language-model decoding engine is not
+merely ASR-inspired: it is a literal code fork of the \texttt{wenet}
+toolkit \cite{wenet} (Mobvoi, 2020; Apache-2.0), whose C++ runtime,
+weighted finite-state transducer (WFST) beam search, and bundled SRILM
+scripts were carried through \texttt{handwritingBCI} (2021),
+\texttt{speechBCI} (2023), and \texttt{nejm-brain-to-text} (2024) with
+roughly 2{,}578 files shared and about nine modified---the C++ decoder
+input was simply swapped from acoustic features to recurrent neural
+network (RNN) phoneme probabilities. The shared text decoder uses
+CTC, one of the two training paths in \texttt{wenet}'s U2 architecture.
+Where production ASR trains on corpora such as WenetSpeech's 10{,}000+ hours
+of multi-domain web speech \cite{wenetspeech}, the neuroprosthesis stack
+trains on 22.5--67.4\,h from a single speaker, for whom per-day
+recording nonstationarity, not data volume, dominates the engineering.
+\end{minipage}}
+\vspace{4pt}
+
+\subsection{Reproduction protocol and engineering choices}
+
+All of our reproductions run on a single Windows consumer PC (RTX 5060
+Ti, 16\,GB VRAM; 64\,GB RAM) with WSL, directly on the public Dryad
+releases (SHA-256 verified file by file) and the official code
+repositories. Two engineering substitutions define the effort, both of
+which the field itself made in 2026:
+
+\emph{KenLM instead of Kaldi/WFST as the default decoding engine.} The
+official $n$-gram stack is a \texttt{wenet} C++ fork whose composed
+token--lexicon--grammar (TLG) graph for the Willett 5-gram spans
+$\sim$44\,GB; direct loading exhausts a 20\,GB WSL allocation in 26
+seconds, so anchor-reproduction runs use memory-mapped access to the
+official graph (for scope comparability), while new analysis uses KenLM
++ Flashlight-Text---the same substitution the field itself made in 2026
+(\S\ref{sec:memory}) \cite{fogg2026}.
+
+\emph{Qwen-class instead of GPT/OPT rescorers.} OPT-6.7B in 16-bit
+($\sim$13\,GB) barely fits a 16\,GB card; Qwen3.5-4B in bfloat16
+(8--10\,GB) is the field's own replacement \cite{fogg2026}, and local
+Qwen3-4B serving has replaced remote GPT-4.1-mini calls in the ensemble
+literature \cite{yoon2026}.
+
+A third, unplanned substitution became necessary: the official TF1
+codebases of Willett et al., 2021 and of Jude et al., 2026a (typing)
+offer no Windows GPU path, so we ported them to PyTorch; the Jude port
+runs $47\times$ faster with data conversion byte-identical to the
+official pipeline, and both ports have since been retrained from
+scratch (Table~\ref{tab:repro}).
+For scale, the complete 1{,}426-trial, 41-session evaluation of the
+official Card checkpoint (greedy PER 10.19\%) re-runs end to end in
+about 80 seconds on this GPU---acoustic inference is no longer the
+bottleneck of the stack.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\caption{\textbf{Released data and decoding performance across eight
+open-data datasets (11 participant splits).}
+Text WERs are equal-day means $\pm$ sample SD of daily WERs
+($100\times$ word edits/reference words; SD denominator $N-1$ for $N$ days).
+Single-day SD is omitted. Online and reproduced WERs use the same evaluation
+dates; trial sets differ. Reproduced WER is after language modeling.
+Voice WER is a listener median.}
+\label{tab:repro}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.50cm}lrrrlll@{}}
+\toprule
+Study & Participant & \shortstack[r]{Released\\sentences} & \shortstack[r]{Total\\recording\\days} & \shortstack[r]{Online\\evaluation\\days} & \shortstack[l]{Online speed\\(words/min)} & \shortstack[l]{Online WER\\(\%)} & \shortstack[l]{Reproduced\\WER (\%)} \\
+\midrule
+Willett et al., 2021 \cite{willett2021} & T5 & 1{,}000 & 10 & 5 & $15.4{\pm}2.2$ & $23.9{\pm}8.4$ & $6.57{\pm}3.55$ \\
+Willett et al., 2023 \cite{willett2023} & T12 & 9{,}680 & 24 & 5 & $65.3{\pm}0.9$ & $23.8{\pm}1.8$ & $19.46{\pm}3.82$ \\
+Fan et al., 2023 \cite{fan2023} & T5 & 1{,}315 & 21 & 10 & $14.6{\pm}2.2$ & $4.0{\pm}1.2$ & --- \\
+Card et al., 2024 \cite{card2024} & T15 & 9{,}498 & 45 & 14 & $32.5{\pm}2.7$ & $4.9{\pm}3.3$ & $6.45{\pm}6.20$ \\
+Wairagkar et al., 2025 \cite{wairagkar2025} & T15 & 8{,}489 & 37 & 8 & --- & 43.8 & --- \\
+Kunz et al., 2025 \cite{kunz2025} & T12 & 500 & 1 & 1 & --- & 22.9 & 94.35 \\
+Kunz et al., 2025 \cite{kunz2025} & T15 & 720 & 3 & 2 & --- & $43.3{\pm}23.8$ & $91.65{\pm}1.71$ \\
+Kunz et al., 2025 \cite{kunz2025} & T16 & 450 & 2 & 1 & --- & 44.4 & 105.61 \\
+Jude et al., 2026a \cite{jude2026typing} & T17 & 668 & 8 & 6 & $6.8{\pm}1.8$ & $10.5{\pm}3.1$ & $11.28{\pm}6.67$ \\
+Jude et al., 2026a \cite{jude2026typing} & T18 & 1{,}033 & 9 & 7 & $14.0{\pm}4.5$ & $3.5{\pm}0.6$ & $7.61{\pm}2.69$ \\
+Jude et al., 2026b \cite{jude2026lis} & T17 & 3{,}674 & 13 & 4 & $34.1{\pm}7.7$ & $66.5{\pm}18.1$ & $46.08{\pm}22.30$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Offline reproduction results}
+
+Our reruns approached published benchmarks for attempted speech,
+typing, and handwriting. The remaining gaps were larger for inner
+speech and voice synthesis, and the original handwriting model was
+closer to its matched held-out benchmark before language modeling than
+after it (see the handwriting comparison below).
+
+\paragraph{Evaluation scope and session indexing.} Our initial Card et al.,
+2024 decoding pipeline indexed the 45-session day-specific input layers
+with the 41-session validation subset enumeration, silently routing
+every validation session through an earlier day's affine layer (off by
+one session in 2023 and up to four sessions in 2024--2025) and inflating
+all-41-session pooled WER to 21.5--22.2\% (and 2025 follow-up sessions
+to 67.3\%). Fixing \texttt{day\_idx} to the full 45-session index and aligning
+study-day calendars against Table~S2 of Card et al., 2024 cut all-41-session
+pooled WER by 13.5 percentage points to \textbf{7.02\%} with 5-gram +
+OPT rescoring (8.70\% before rescoring, and \textbf{6.25\%} with a
+bidirectional GRU encoder at 48k steps), matching the 6.70\%
+Brain-to-Text~'25 baseline; across the 12 paired evaluation days in
+their Table~S3 (sessions 2--17), our median WER is \textbf{5.58\%} against the
+paper's online median of 4.49\% (with our WER lower on 4 of 12 days and
+\textbf{3.48\%} on session~2, 2023-08-13, inside the paper's 9.8\%, CI
+4.1--16.0). Figure~\ref{fig:vocab}f restricts every available offline reproduction
+to exactly the online evaluation dates in panel c. On those dates, the
+BiGRU gives $6.45\pm6.20$\% over 14 days, Willett et al., 2023
+5-gram + OPT gives $19.46\pm3.82$\% over five days, and Jude et al.,
+2026b gives $46.08\pm22.30$\% over four days. Trial sets within those
+dates can differ; their counts and selections are recorded in Source Data.
+Figure~\ref{fig:vocab}c uses one word-count convention for the released
+online text outputs: within each recording day, sum substitutions,
+deletions, and insertions and divide by the total reference words.
+The bar is the equal-day mean and the whisker is one sample SD;
+single-day results have no whisker. Text is case-folded and punctuation
+is stripped within whitespace-delimited words, retaining apostrophes.
+For Kunz et al., 2025, the selected inner-speech conditions give 22.9\%
+(T12, one day), $43.3\pm23.8$\% (T15, two days), and 44.4\%
+(T16, one day). Jude et al., 2026a gives $10.5\pm3.1$\% over T17's
+six days and $3.5\pm0.6$\% over T18's seven days; Jude et al., 2026b
+gives $66.5\pm18.1$\% over four days. Willett et al., 2021 gives
+$23.9\pm8.4$\% over five days. Wairagkar et al., 2025 remains a
+separate listener-transcription median (43.8\%), without a daily SD.
+
+\paragraph{Session variability and release coverage.} After the
+indexing fix, two-thirds of the apparent ``late-2025 collapse'' proved
+to be an indexing artifact: the six 2025 follow-up sessions pool at
+13.27\% WER (+OPT; 2023: 6.52\%, 2024: 5.15\%), with residual difficulty
+concentrated in four specific sessions (2023-10-13, 2025-01-10,
+2025-03-14, and 2025-03-30 at 20.2--26.0\% WER). Moreover, cross-checking
+Table~S2 of Card et al., 2024 shows that the public release contains 32
+of the paper's 84 in-window sessions ($\sim$38\%, plus 13 post-window
+sessions in 2024--2025). Fine-tuning from a saturated 45-session
+checkpoint on a hard day fails (near-zero gradient), whereas training a
+44-session model that excludes 2025-01-10 and then cross-fitting on that
+day's 106 training sentences drops its validation PER from 61.29\%
+(zero-shot) to \textbf{26.03\%} (matching the 24.38\% full-soup baseline)---confirming
+that fresh per-day supervision is worth $\sim$35 PER points on hard days.
+The Fan et al., 2023 release shows the same coverage gap from the other
+side: its two released evaluation arms (10 of 15 sessions, 20--40
+sentences per session against the paper's average 58.3) give
+4.10\%/15.46\% pooled WER when scoring the authors' released online
+outputs. These are online results, not our independent reproduction;
+the full-pipeline reproduction entry is therefore left unavailable.
+
+\paragraph{Attempted and inner speech.} Our offline greedy-CTC runs
+show higher phoneme error for inner speech within participants (T15
+10.2$\to$59.7\% PER from overt copy to inner, T12 23.4$\to$61.4\%,
+with T17 intended speech at 40.0\% and T16 inner speech at 61.5\%
+landing in the same band, Fig.~\ref{fig:vocab}e), with the caveat
+that our inner-speech arms train on hundreds of sentences against the
+overt runs' full cumulative checkpoints. The remaining gap to
+Kunz et al.'s online benchmark also reflects the language-model
+substitution (the Willett 5-gram) and offline evaluation
+(Table~\ref{tab:repro}). Section~\ref{sec:home_use} discusses the
+within-participant online comparisons. The Kunz offline WERs use
+only the plotted vocabulary conditions; their OPT weights were selected
+on the archived evaluation set and are validation-selected results.
+
+\paragraph{The original handwriting decoder.} We retrained the Willett
+et al., 2021 decoder from scratch in PyTorch. The original pre-CTC
+pipeline used labels from HMM forced alignment, a GRU frame
+classifier, and a bigram language model. On the same held-out trials,
+our raw CER was 4.71\% versus 2.78\% for the official checkpoint
+(+1.93 percentage points, within the $\pm$2-point tolerance).
+Using the same text normalization and five evaluation dates as online
+WER, our bigram output gives $6.57\pm3.55$\% on 33 held-out trials.
+The earlier 10.00\% pooled value used ten days and counted
+punctuation-only tokens as words. The common calculation removes those
+tokens and collapses repeated whitespace before computing word edits.
+
+\section{When language models help and what hardware reproduction requires}
+\label{sec:feasibility}
+
+Figure~\ref{fig:phase_memory} relates word errors after language
+modeling to errors at the neural decoding stage (a,b) and shows the
+memory needed to run the reproduced pipelines (c,d).
+
+\begin{figure}[tp]
+\centering
+\includegraphics[width=\linewidth]{main_fig_3.pdf}
+\captionsetup{singlelinecheck=false,font=footnotesize,skip=2pt}
+\caption{\textbf{Reproduction feasibility: error-rate phase diagrams and
+the memory wall.} (a) Session-level greedy phoneme error rate (PER)
+versus post-LM WER across 77 attempted/intended-speech sessions in
+three studies (Willett et al., 2023, T12; Card et al., 2024, T15;
+Jude et al., 2026b, T17; open markers: sessions, stars: pooled;
+dash-dotted: no-LM baseline $1-(1-\text{PER})^{3.4}$; dashed:
+$\text{WER}=\text{PER}$). WER falls below PER in 45/57 sessions (79\%)
+below the 25\% PER crossover and 4/20 (20\%) above it. (b) The same diagram for raw character error
+rate (CER, no LM) versus post-LM WER across the four character-level
+arms we reproduced (Willett et al., 2021, T5; Fan et al., 2023, T5;
+Jude et al., 2026a, T17/T18; no-LM baseline exponent 5.1). (c, d) Peak
+host RAM (c) and GPU VRAM (d) of the official stacks versus our
+memory-mapped/KenLM single-GPU stack across the eight open studies
+(dashed: 64\,GB RAM and 16\,GB VRAM consumer-PC ceilings): ours peaks
+at 26.9\,GB RAM and 13\,GB VRAM versus 300\,GB and 80\,GB
+official---every reproduction fits on one consumer PC (widest gap:
+Wairagkar et al., 2025, 1.5 vs.\ 72\,GB VRAM).}
+\label{fig:phase_memory}
+\label{fig:pervswer}
+\end{figure}
+
+\subsection{Neural decoding errors and language-model gains}
+
+Figure~\ref{fig:phase_memory}a plots, for every research session in our
+three attempted- or intended-speech reproductions (77 sessions; Kunz
+et al., 2025 omitted as inner speech), the session-level greedy PER
+(acoustic stage only) against the session-level WER after the full
+$n$-gram + rescoring pipeline. Two reference curves separate
+granularity inflation from language-model correction. An English word
+in these evaluation corpora averages $L = 3.4$ pure phonemes, so a
+single phoneme error corrupts an entire word: under independent
+phoneme errors a zero-LM decoder would follow the upper dash-dotted
+curve $\text{WER}_{\text{no-LM}} = 1 - (1 - \text{PER})^{3.4}$
+(greedy CTC decodes cluster errors within words, giving the
+empirically milder $1 - (1 - \text{PER})^{2.3}$), while the
+$45^\circ$ diagonal $\text{WER} = \text{PER}$ marks where word errors
+after language modeling equal the raw phoneme error rate. All 77 sessions lie below the
+modeled no-LM curve. Post-LM WER falls below raw PER at a crossover
+near $\text{PER} \approx 25\%$ (logistic fit: 24.97\%; vertical gray
+line). Below it, 45 of 57 sessions (79\%) reach
+$\text{WER} < \text{PER}$: the Card et al., 2024 corpus drops from
+10.3\% PER (21.8\% no-LM word error) to 7.02\% pooled WER, and
+Willett et al., 2023 reaches a pooled 23.26\% WER from 23.4\% PER
+(43.0\% without a language model). Above the crossover, 4 of 20 sessions
+reach $\text{WER} < \text{PER}$. Large word errors can remain after
+language modeling (Jude et al., 2026b pooled 40.0\% PER and 46.0\% WER;
+Kunz et al., 2025 pooled WER 81--122\%).
+
+Figure~\ref{fig:phase_memory}b compares raw character error rate (CER)
+with post-LM WER for the reproduced handwriting and typing arms. Its
+reference curve uses an average word length of 5.1 characters. Each
+panel relates unit-level errors to word errors within its own set of
+decoding tasks.
+
+\subsection{RAM and GPU memory requirements}
+\label{sec:memory}
+
+Figure~\ref{fig:phase_memory}c,d compares peak host RAM and GPU
+memory across the eight public studies. Our memory-mapped and KenLM
+implementations peaked at 26.9\,GB RAM and 13\,GB VRAM across the
+reproductions, compared with 300\,GB RAM and 80\,GB VRAM for the
+official stacks. All eight reproductions fit within the 64\,GB RAM and
+16\,GB VRAM limits of our PC.
+
+Two 2026 preprints replaced a \texttt{wenet} fork of Kaldi/OpenFST
+weighted finite-state transducers (WFST) and its $\sim$350\,GB
+composed search graphs with KenLM \cite{heafield2011} behind Flashlight-Text, holding
+WER constant (9.08\% $\to$ 9.03\% on the same 5-gram) while cutting RAM
+to under 10\,GB, load time from $\sim$15 minutes to under 10 seconds,
+and decoding latency by $3.11\times$ \cite{fogg2026, yoon2026}; the
+rescoring LLM shrank from OPT-6.7B \cite{opt} to Qwen3.5-4B, and the
+ensemble merger from a remote GPT-4.1-mini API to a locally served
+Qwen3-4B \cite{fogg2026, yoon2026}. Two further preprints push the same
+direction from outside the trial labs: LightBeam, a non-WFST CTC
+decoder, cuts decoding RAM from $\sim$320\,GB to $\sim$10\,GB while
+matching benchmark state of the art, by folding an LLM into beam search
+through delayed fusion \cite{feghhi2026}; and an end-to-end decoder
+with a cross-species pretrained encoder halves the prior end-to-end
+WER on the open benchmarks, from 24.69\% to 10.22\% \cite{bit2026}.
+
+\section{From laboratory demonstrations to independent home use}
+\label{sec:maturity}
+
+Figure~\ref{fig:clinical} follows three requirements for home use:
+recording from appropriate sites over time (a--c), keeping setup and
+recalibration manageable (d--f), and supporting the tasks users need
+in everyday communication (g--j).
+
+\begin{figure}[tp]
+\centering
+\includegraphics[width=\linewidth]{main_fig_4.pdf}
+\captionsetup{singlelinecheck=false,font=footnotesize,skip=2pt}
+\caption{\textbf{Clinical translation: the barriers between laboratory
+demonstrations and a durable home device, grouped into three rows---
+surgery-related (a--c), decoding technology (d--f), and patient
+paradigm (g--j)---separated by dashed rules.}
+(a) Non-speech cortical sites carry
+no usable speech signal (paired bars: word-decoding accuracy from the
+speech-capable site (solid) versus the non-speech site (hatched) of the
+same participant): T12's ventral 6v arrays decode the 50-word task at
+94\%, Broca's area~44 at 5.8\% (its movement/phoneme/sentence
+accuracies: 11.5\%/9.6\%/$\sim$0\%) \cite{willett2023}; T16's i6v decodes
+7-word attempted speech at 80.0\%, while the PEF/55b-border and 6d
+hand-knob arrays stay at the $1/7$ word chance across all seven verbal
+behaviors and were excluded from decoding \cite{kunz2025}; T17's 6v
+reaches 51.1\% (95\% CI 48.0--54.2) on the 50-word vocabulary, dorsal
+6d only 2.0\% (95\% CI 1.1--2.9) \cite{jude2026lis}. Ventral orofacial
+6v/i6v decodes far above chance in all three cohorts; mid-precentral
+55b only partially (T17) \cite{jude2026lis, deo2026}. (b) Chronic
+Utah-array retention across 14 users ordered by implant duration
+(0.8--7.4\,yr; hatched: $<1.5$\,yr, $n=7$; solid: $\ge 1.5$\,yr,
+$n=7$) \cite{hahn2025}. (c) Channel counts across two craniotomies
+(Table~\ref{tab:cohort}): B1 128 ch (4\,mm) in Moses et al., 2021
+$\to$ 253 ch (3\,mm) in Brosler et al., 2026 (Bravo-1's
+higher-density re-implant); T12 256 ch (L6v$+$L44, Willett et al.,
+2023) $\to$ 512 ch (L6v$+$L44$+$R6v$+$R55b) after the 2025 bilateral
+re-implant tested by Yoon et al., 2026
+\cite{moses2021, willett2023, yoon2026, brosler2026}---when
+yield decays beyond what (b) retains, the only current answer is more
+surgery. (d) Cross-subject: single-user
+vs.\ six-user-pretrained offline WER across the six BrainGate speech
+users (digitized from Fogg et al., 2026 \cite{fogg2026}; relative WER
+reductions, left to right: $-$31\% for T16, $-$57\% for T22, $-$50\%
+for T12, $-$14\% for T15L, $-$30\% for T15S, $-$65\% for T17, and
+$-$73\% for T21; open reanalysis T12, T15-S, T17; closed T15-L;
+preprint T16, T21, T22; dashed line: 12.8\% Whisper large-v2
+zero-shot WER averaged over 14 test sets (Radford et al., 2022,
+Table~2) \cite{radford2022}; bars ordered
+stroke (T16, T22) left and ALS (T12, T15L, T15S,
+T17, T21) right of a central dashed divider). (e) New-user few-shot
+calibration (Fogg et al., 2026, Fig.~5): first-day offline WER from
+one session---single-user from scratch (light) vs.\ few-shot
+adaptation of a frozen four-user pretrained decoder (dark; 95\%
+CIs): at 90 sentences, T21 87.0\% vs.\ 11.2\% and T22 76.9\% vs.\
+10.2\%; dashed line as in (d) \cite{fogg2026}. (f) Daily calibration
+sentence requirements from 2021 to 2026, ordered
+stroke (T22) / ALS (T12, T21, T17, T15) / SCI (T5, T18) around dashed
+dividers, with T17 and T18 split from their shared 30-sentence
+calibration condition
+\cite{card2024, jude2026typing, willett2021, fan2023, fogg2026, card2026}.
+(g) Copy-task benchmark (3.5\% WER at 49.7 \wpm{}, silent strategy)
+versus self-generated free-use disagreement rate (46.7\%) during T15's
+home use \cite{card2026} (home-use versus laboratory
+corpora in Supplementary Fig.~S2c). (h) Online attempted vs.\ inner
+speech at matched vocabularies
+\cite{card2024, willett2023, kunz2025, nason2026}. (i) Online
+within-participant comparison in the locked-in T17: attempted speech
+$66.5\pm18.1$\% online WER over 3{,}674 released sentences
+\cite{jude2026lis} vs.\ touch-typing $12.5\pm2.5$\% over 668 sentences
+\cite{jude2026typing}. (j) Online output modality in T15:
+brain-to-voice 43.8\% WER without a sentence-level LM
+\cite{wairagkar2025} vs.\ brain-to-text 2.5\% with LM and LLM
+\cite{card2024}; dashed line: offline Brain2voice 2.0 at 5.24\%
+\cite{wairagkar2026}.}
+\label{fig:clinical}
+\end{figure}
+
+\subsection{Implant placement and long-term recording}
+\label{sec:implant_durability}
+
+The within-participant comparisons in Fig.~\ref{fig:clinical}a show
+that placement matters. Ventral orofacial sites (6v/i6v) decoded
+attempted or intended speech substantially better than the comparison
+sites in the same participants \cite{willett2023, jude2026lis, kunz2025}.
+
+Across 14 BrainGate participants followed for up to 7.4 years, the fraction of
+Utah-array electrodes recording clear neural spikes averaged 35.6\%,
+declining from 41\% in months 1--3 to 34\% in the final months
+(Fig.~\ref{fig:clinical}b) \cite{hahn2025}. Day-to-day stabilization can help compensate for
+signal drift \cite{pun2024, karpowicz2025stab, wilson2025, hosman2023}, and
+surface ECoG grids have supported a small command set over three
+months without recalibration \cite{luo2023}.
+
+A second operation increased channel counts in both B1 and T12
+(Fig.~\ref{fig:clinical}c), through higher-density ECoG in B1 and
+bilateral array coverage in T12
+\cite{moses2021, willett2023, yoon2026, brosler2026}. These cases illustrate
+the surgical burden of replacing or expanding implanted recording
+hardware.
+
+\subsection{Cross-user transfer and calibration}
+\label{sec:calibration}
+
+For new-user setup, early decoders relied on larger participant-specific
+training corpora (\S\ref{sec:corpus_size}). Jude et al., 2026a
+demonstrated first calibration for typing with 30 sentences
+\cite{jude2026typing}. For speech, Fogg et al., 2026 used a multi-user
+model to reach 10.2\% offline WER for a new user after 90 trials
+($\sim$17 minutes; Fig.~\ref{fig:clinical}e) and 6.5\% after 200
+\cite{fogg2026}. Figure~\ref{fig:clinical}d shows offline comparisons
+between individual and pooled models.
+
+Daily recalibration addresses changes in recordings from a user whose
+decoder is already trained (Fig.~\ref{fig:clinical}f). Card et al., 2024
+demonstrated rapid recalibration in 20 sentences (7.5 minutes)
+\cite{card2024}. During T15's later home use, start-of-day speech
+calibration used 0--20 optional sentences, with continued fine-tuning on
+user-confirmed utterances and 9.2--16.9\,min/day of cursor calibration
+\cite{card2026}.
+
+Table~\ref{tab:crosssubject} places cross-user transfer for intracortical
+decoders alongside related work on other interfaces. Peripheral interfaces set the scale
+ceiling: a wristband sEMG decoder trained on 6{,}627 users works
+zero-calibration on held-out users, while the fully open 108-user
+emg2qwerty typing corpus quantifies how wide the cross-person domain
+gap remains (55.4\% zero-shot CER against 6.95\% after $\sim$2.5\,h of
+personal fine-tuning) \cite{kaifosh2025, sivakumar2024}. The
+plausibility of pooling spike-resolution data across brains was built
+in animals first---intracortical motor foundation models pretrained
+across monkeys, human participants, and mice
+\cite{azabou2023, ye2023, ye2025, zhang2025ned, fang2026}---but on motor
+benchmarks whose metrics say nothing about communication, so
+Table~\ref{tab:crosssubject} tracks only human studies. For
+intracranial speech, cross-patient work on bulk field potentials has
+so far been confined to overt speech and small vocabularies
+\cite{makin2020, singh2025, spalding2026}; at action-potential
+resolution in paralyzed participants, open-data reanalyses came first
+\cite{boccato2026, bit2026}, and the six-user joint training of Fogg et
+al., 2026 is the first in which every training participant benefited
+and a held-out user crossed the high-accuracy line from 90 calibration
+sentences \cite{fogg2026}. The bracketing domains also expose the
+openness gradient: the largest pools---6{,}627 sEMG users, the
+six-user intracortical corpus---are exactly the ones outsiders cannot
+inspect, and the largest fully open human corpus remains a 108-user
+sEMG typing set \cite{fogg2026, kaifosh2025, sivakumar2024}.
+
+\begin{table}[tp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\renewcommand{\arraystretch}{1.14}
+\caption{\textbf{Cross-subject generalization across human
+communication interfaces: pool, new-user adaptation, headline outcome,
+and data release.}
+Groups run from the peripheral engineering reference to intracortical
+communication BCIs in paralyzed participants (whose IDs refer to
+Table~\ref{tab:cohort}). \textbf{N} = users or animals in the training
+pool (n/r = not reported); \textbf{Population} = who they are; \textbf{Pool} = training
+corpus; \textbf{New-user data} = what a held-out
+user must supply; \textbf{Zero-shot} = usable decoding for a new user
+with none of their own data (yes/no; emg2qwerty's zero-shot CER of
+55.4\% exists but is not usable, hence no); \textbf{Few-shot} = the
+new user contributes some of their own labeled data---more than none,
+at most one recording hour ($0 < \text{data} \le 1$\,h)---converted
+at each task's own pace (yes = a $\le$1\,h adaptation of a held-out
+individual is demonstrated; unreported amounts count as no);
+\textbf{Headline outcome}
+= one metric per study---WER for large-vocabulary speech, CER for
+typing/handwriting, PER for phonemes, accuracy for closed
+sets---modality-specific and \emph{not} comparable across rows,
+offline unless noted; \textbf{Data} = release status of the neural
+data itself (open / partial: some data or code public / closed).}
+\label{tab:crosssubject}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.45cm}>{\centering\arraybackslash}p{0.65cm}>{\raggedright\arraybackslash}p{1.50cm}>{\raggedright\arraybackslash}p{1.45cm}>{\raggedright\arraybackslash}p{1.70cm}>{\centering\arraybackslash}p{0.75cm}>{\centering\arraybackslash}p{0.75cm}>{\raggedright\arraybackslash}p{3.60cm}>{\centering\arraybackslash}p{0.75cm}@{}}
+\toprule
+Study & $N$ & Population & Pool & New-user data & \shortstack[c]{Zero-\\shot} & \shortstack[c]{Few-\\shot} & Headline outcome & Data \\
+\midrule
+\multicolumn{9}{@{}l}{\emph{Automatic speech recognition (engineering reference)}} \\
+Radford et al., 2022; Baevski et al., 2020 \cite{radford2022, baevski2020} & n/r & speakers (audio) & internet-scale & none & yes & no & speaker-independent transcription (deployed) & partial \\
+\midrule
+\multicolumn{9}{@{}l}{\emph{Surface EMG, able-bodied users}} \\
+Sivakumar et al., 2024 \cite{sivakumar2024} & 108 & able-bodied & 346\,h & fine-tune, $\sim$2.5\,h & no & no & CER 55.4\%$\to$6.95\% (offline) & open \\
+Kaifosh \& Reardon, 2025 \cite{kaifosh2025} & 6{,}627 & able-bodied & proprietary corpus & none & yes & no & 20.9 \wpm{} air-writing (closed-loop) & partial \\
+\midrule
+\multicolumn{9}{@{}l}{\emph{Bulk-field intracranial, clinical cohorts (overt speech)}} \\
+Makin et al., 2020 \cite{makin2020} & 4 & epilepsy & 30--50 sentences & $\le$40\,min & no & yes & WER 3\% (offline, closed set) & partial \\
+Singh et al., 2025 \cite{singh2025} & 25 & epilepsy & tongue twisters & $\sim$1\,h & no & yes & PER 57\%$\to$45\% (offline) & closed \\
+Spalding et al., 2026 \cite{spalding2026} & 8 & surgery & 52 non-words & $\sim$5\% of data & no & yes & acc.\ 0.31 $>$ 0.24 within-patient (offline) & partial \\
+\midrule
+\multicolumn{9}{@{}l}{\emph{Intracortical communication BCIs, paralyzed participants}} \\
+Boccato et al., 2026 \cite{boccato2026} & 2 & BCI users & T12+T15 corpora & linear fit, 12\,min--3\,h & no & yes & matches within-subject (offline) & open \\
+Y.~Zhang et al., 2026 (BIT) \cite{bit2026} & 2 & ALS users & cross-species & thousands of sentences & no & no & WER 24.69\%$\to$10.22\% (offline) & open \\
+Levin et al., 2026 \cite{levin2026} & 5 & BCI users & 5 public corpora & $<$200 sentences & no & yes & PER 23--40\% with transfer (offline, no LM) & partial \\
+Fogg et al., 2026 \cite{fogg2026} & 6 & BCI users & joint 6-user corpora & 90 sentences & no & yes & $-$51.1\% rel.\ WER (offline) & partial \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Communication in everyday use}
+\label{sec:home_use}
+
+Of the participants in Table~\ref{tab:cohort}, \textbf{one} has
+documented independent use at home. BrainGate participant T15 adopted a
+combined speech-and-cursor neuroprosthesis as his \emph{primary}
+communication device and computer interface in daily life over 22.6
+months, logging more than 3{,}800 hours of use across 444 of 653 days
+(averaging 9.5\,h/day once his care partners could connect and start the
+system without research staff) and producing 183{,}060 self-rated
+sentences \cite{card2026}. During structured sentence-copy tests, his
+system achieved $>$99\% accuracy when vocalizing (30.6 \wpm{}) and
+96.5\% accuracy when speaking silently (49.7 \wpm{}, 3.5\% WER).
+In unscripted daily conversation, 46.7\% of decoded utterances required
+some user edit or differed from a post-hoc transcript. The two
+conditions in Fig.~\ref{fig:clinical}g use different measures: word
+error for sentence copying and utterance-level disagreement for free
+use \cite{card2026}. T5's 403-day
+plug-and-play handwriting demonstration took place during monthly,
+researcher-supervised laboratory sessions rather than independent home
+use \cite{fan2023}, and Neuralink's statement that P7 uses decoded
+ten-finger typing for everyday computer control \cite{neuralink2026}
+is not yet accompanied by a quantitative usage log. Every other result
+in the literature is a supervised laboratory demonstration.
+
+\paragraph{Attempted and inner speech.} Figure~\ref{fig:clinical}h
+pairs online inner-speech WER with an articulation-engaging benchmark
+for each participant. On the same 50-word sentence set, T12 reached
+9.1\% WER when trying to vocalize \cite{willett2023} and 23.7\% with
+inner speech \cite{kunz2025}. At matched vocabulary sizes, T15
+reached 4.9$\pm$3.3\% with attempted speech \cite{card2024} and
+51.3$\pm$33.1\% with inner speech across two 125k sessions. T16
+reached 19.6\% with mimed speech \cite{nason2026} and 46.6\% with
+inner speech \cite{kunz2025}. Kunz et al. also interleaved
+attempted-vocalized and inner-speech conditions within experimental
+blocks \cite{kunz2025}.
+
+\paragraph{Comparing the three modalities for clinical readiness.}
+\emph{Speech decoding} has been demonstrated in the largest number of
+participants ($n=16$). Performance varies across users and recording
+conditions (\S\ref{sec:defs}). Multi-user pretraining brought the
+locked-in participant T17 to 23.1\% WER \cite{fogg2026}. In a conference
+abstract, the Neuralink VOICE trial reported 5.8--6.6\% WER at
+54--75 \wpm{} with fully implanted wireless arrays
+\cite{pouratian2026}. \emph{Touch-typing decoding} reached
+1.6\% WER after 30 calibration sentences and 81\% of able-bodied
+smartphone typing speed in a task with 30 discrete output keys
+\cite{jude2026typing}. The published study includes two participants,
+with a third reported by a company. Typing speed was lower in the
+participant with ALS (T17, 47
+\cpm{}) than in the participant with spinal cord injury (T18, 110
+\cpm{}), suggesting that typing accuracy depends on how well finger
+representations are preserved in the motor cortex. \emph{Handwriting
+decoding} achieved 90 \cpm{} in T5 \cite{willett2021}, but its original
+two-stage character-recognition algorithm has now been replaced by the
+same sequence-decoding architecture used for speech and typing
+\cite{levin2026}. Across these demonstrations, modality choice depends
+on what movements the participant can attempt and how the interface
+fits their communication needs.
+
+\subsection{Evidence for regulatory approval}
+
+Every study reviewed
+here was conducted under an investigational clinical-trial exemption
+(such as FDA Investigational Device Exemption NCT00912041 for
+BrainGate2, whose interim safety data are published \cite{rubin2023});
+no implanted communication neuroprosthesis has received commercial
+medical-device approval anywhere in the world. Five practical barriers
+still separate current feasibility studies from a regulatable medical
+product:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+\item \emph{Multicenter clinical trials beyond single-lab case series.}
+All published evidence comes from small single-center cohorts, and even
+the largest cross-patient speech decoder has been trained on only six
+human brains \cite{fogg2026} (well below the tens of subjects used in
+animal neural-foundation models \cite{ye2025}). Regulatory approval will
+require prospectively powered, multi-site trials enrolling tens of
+patients stratified by disease cause (ALS vs.\ brainstem stroke vs.\
+spinal cord injury).
+\item \emph{Long-term implant durability standards.} Electrode
+retention and reimplantation results (\S\ref{sec:implant_durability})
+motivate a quantitative standard for how long a patient can rely on the
+device before surgical replacement is needed.
+\item \emph{Minimal daily calibration and caregiver independence.}
+Asking a paralyzed patient to spend hours recalibrating a decoder every
+morning is incompatible with home care. As shown in
+\S\ref{sec:calibration}, daily calibration has dropped to 20--30
+sentences (or optional zero-calibration days with background updating on
+user-confirmed sentences during T15's home use \cite{card2026}),
+demonstrating that low-burden daily operation is achievable.
+\item \emph{Fully implanted wireless hardware and compact computing.}
+Moving out of the laboratory requires replacing percutaneous head
+pedestals and server racks with wireless implants \cite{pouratian2026, simeral2021}
+and portable processors. Both the field's recent switch to lightweight
+language models \cite{fogg2026, yoon2026} and our single-GPU
+reproductions show that the entire decoding software stack now fits on a
+single consumer graphics card.
+\item \emph{Safe handling of decoding failures in daily life.} When a
+user switches between vocalized and silent speech strategies or skips
+calibration across several days, decoder accuracy can drop sharply---a
+failure mode seen both in clinical trials and in our reproductions. A
+commercial medical device will need automated quality monitoring and
+graceful fallback modes, potentially aided by decoding neural
+error-detection signals directly from the user's motor cortex
+\cite{hou2025}.
+\end{enumerate}
+Coordinated multicenter trials would allow these requirements to be
+evaluated across diagnoses, implant configurations, and home-use
+settings.
+
+\section{Designing speech neuroprostheses for Mandarin}
+\label{sec:chinese}
+
+Nearly every communication neuroprosthesis to date has been built for
+English, yet roughly 7{,}000 spoken languages worldwide remain
+unaddressed, and China alone has the world's largest patient population
+living with severe speech paralysis. Extending communication
+neuroprostheses to Mandarin Chinese requires rethinking both the
+clinical target population and the linguistic design of the decoder
+(Fig.~\ref{fig:mandarin}a--e).
+
+\begin{figure}[tp]
+\centering
+\includegraphics[width=\linewidth]{main_fig_5.pdf}
+\captionsetup{singlelinecheck=false,font=footnotesize,skip=2pt}
+\caption{\textbf{Future of Chinese: our insights toward Mandarin speech
+neuroprostheses.}
+(a) Annual
+survivors in China: brainstem stroke vs.\ ALS
+($\sim$240{,}000--280{,}000/yr chronic brainstem stroke survivors vs.\
+$\sim$20{,}000--30{,}000/yr ALS survivors)---ALS progresses within
+2--5 years while brainstem stroke is non-progressive with 10--20+ year
+survival, so stroke dominates the addressable population and sets a
+10-year-plus chronic-durability requirement on the implant. (b) Phoneme
+count: English's 39 ARPAbet phonemes (24
+consonants $+$ 15 vowels; 41 CTC classes with silence and blank) vs.\
+Mandarin's 57 phonological initials $+$ finals (21 $+$ 36, derived
+from the 39-final inventory of the standard \emph{Xiandai Hanyu}
+textbook \cite{huangliao2017} by dropping marginal \^{e}, \emph{er},
+and \emph{ueng}; the 47
+literal Pinyin letters, 23 $+$ 24, conflate the three \emph{i}-vowels
+and [u]/[y])---the decoder's output inventory should follow the
+phonological count, not the orthographic one. (c) Native
+vocabulary count: 3{,}500 Tier-1 common characters (Chinese standard,
+$>$99\% character token coverage) and the full 8{,}105-character 2013
+official standard (Table of General Standard Chinese Characters; three
+tiers $3{,}500 + 3{,}000 + 1{,}605$; $\geq$99.9\% token coverage)
+against the three English tiers of Brysbaert et al., 2016
+\cite{brysbaert2016}---11{,}100 word families, 42{,}000 lemmas,
+71{,}400 inflected word forms ($1.7\times$ the lemma count);
+character-level composition compresses the lexicon a Chinese decoder
+must map. (d) The
+Mandarin Pinyin trap (midsagittal vocal-tract kinematics): one letter
+\emph{i} labels three opposite gestures---\emph{ji} (tongue body raised
+toward the hard palate, lips spread, $F_2 \approx 2{,}200$--$2{,}500$
+Hz), \emph{si} (apical vowel, tongue tip flat against the alveolar
+ridge, $F_2 < 1{,}200$ Hz, the lowest of the three), and \emph{shi}
+(retroflex vowel, tongue tip curled up and back, $F_2 \approx
+1{,}200$--$1{,}600$ Hz); literal-Pinyin labels would force three
+distinct motor plans into one class, so a Mandarin speech BCI requires
+articulatory-faithful initial/final variant labels. (e) Mandarin 4
+lexical tones: Standard Mandarin has four lexical
+tones (other spoken Chinese varieties such as Cantonese or Min
+differ); curves follow measured time-normalized F0 contours
+\cite{tupper2020, shiwang2006}---Tone 2 dips before rising, the Tone 3
+trough sits mid-syllable with only a partial final rise, and Tone 4
+holds its high onset before an accelerating fall---and this four-tone
+axis is already decoded in Mandarin speech
+BCIs---93\% tone accuracy (chance 25\%) from onset--syllable--tone
+decomposition over five ECoG participants \cite{zhangd2024}, and a
+real-time dual-stream decoder of 394 syllables $\times$ 4 tones on a
+flexible 256-channel micro-ECoG array at 71.2\% median syllable
+accuracy \cite{qian2025}.}
+\label{fig:mandarin}
+\end{figure}
+
+\subsection{Clinical population and implant durability}
+
+In both China and
+the United States, brainstem stroke causes roughly ten times as many new
+cases of severe speech paralysis each year as ALS ($\sim$300{,}000--350{,}000
+vs.\ $\sim$20{,}000--30{,}000 annual cases in China;
+$\sim$70{,}000--80{,}000 vs.\ $\sim$5{,}000--6{,}000 in the US;
+Fig.~\ref{fig:mandarin}a). Moreover, whereas ALS is a progressive disease
+with a typical survival of 2--5 years, brainstem stroke is
+non-progressive and survivors often live for 10--20 years or longer.
+Brainstem stroke is therefore the largest clinical indication for a
+long-term communication neuroprosthesis, making decade-scale hardware
+durability essential. Patient demographics also shape which movement
+modality works best: while 80.72\% of people in China speak standard
+Mandarin (Putonghua) \cite{moe2022lang} and 97.3\% are literate (and
+thus learned handwriting in school), we estimate that only about 57.1\%
+type Chinese using a Pinyin keyboard (calculated from national internet
+adoption multiplied by the share of Pinyin input-method users
+\cite{cnnic2025, iimedia2022}, as many older or rural users rely on voice
+messaging or handwriting input on touchscreens; Supplementary Fig.~S10).
+For older stroke survivors who never touch-typed on a QWERTY keyboard,
+attempted speech and handwriting are far more natural targets than
+touch-typing.
+
+\subsection{Articulation, lexical tone, and character output}
+
+\paragraph{Vocabulary and syllable structure.} At the language-model
+stage, Chinese actually simplifies vocabulary coverage compared with
+English (Fig.~\ref{fig:mandarin}c). Because Chinese words are composed
+from a compact set of characters, the 3{,}500 Tier-1 standard characters
+already cover $>$99\% of everyday written text, and the full
+8{,}105-character national standard (Table of General Standard Chinese
+Characters) covers $\geq$99.9\%---an order of magnitude smaller than the
+71{,}400 inflected word forms known by an average English speaker
+\cite{brysbaert2016}. At the acoustic-decoding stage, Mandarin's regular
+syllable structure ($\sim$400 base syllables formed by combining 21
+initial consonants with 36 final vowel/nasal rhymes
+\cite{huangliao2017}, compared with English's 39 ARPAbet phonemes;
+Fig.~\ref{fig:mandarin}b) naturally favors decoding initials, finals,
+and lexical tones. Standard Mandarin uses four lexical tones (pitch
+contours that distinguish word meaning, whereas other Chinese varieties
+such as Cantonese use more; Fig.~\ref{fig:mandarin}e and Supplementary
+Fig.~S11). Early studies in presurgical epilepsy patients with intact
+speech have already shown that cortical surface recordings can decode
+Mandarin tones at 93\% accuracy (chance 25\%) \cite{zhangd2024} and
+stream 394 syllables $\times$ 4 tones in real time from a 256-channel
+flexible ECoG grid \cite{qian2025}, confirming that pitch-contour
+commands are represented in human sensorimotor cortex.
+
+\paragraph{Articulatory labels for Pinyin finals.} A critical
+pitfall for Mandarin speech BCIs is confusing romanized Pinyin spelling
+with actual vocal-tract movements (Fig.~\ref{fig:mandarin}d). In Pinyin,
+the single letter \emph{i} is used to write the vowel in three
+completely different tongue postures: \emph{ji} (tongue body raised high
+against the hard palate with spread lips), \emph{si} (tongue tip pressed
+flat behind the front teeth), and \emph{shi} (tongue tip curled upward
+and backward). Because the speech motor cortex encodes the physical
+movement of the tongue and lips rather than how a word is spelled,
+training a neural decoder to predict literal Pinyin letters would force
+three distinct brain signals into a single label. A Mandarin speech
+neuroprosthesis must therefore label its output units by true phonetic
+articulation (21 initials $+$ 36 articulatory finals $+$ 4 tones) rather
+than orthographic Pinyin letters.
+
+\section{Limitations of the evidence}
+\label{sec:limitations}
+
+Four limitations should be kept in mind when interpreting our findings:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+\item \emph{Small, single-center clinical cohorts.} Nearly all patient
+data in this field come from a few academic medical centers (primarily
+the BrainGate consortium and UCSF). Because we synthesize published
+studies without adding new clinical participants of our own, our
+maturity assessment inherits the enrollment criteria of those trials
+(such as selecting motivated participants with strong family support and
+favorable cortical anatomy).
+\item \emph{Reproduction coverage is limited to open intracortical
+data.} We could independently reproduce only the studies that released
+public datasets. Because the UCSF ECoG studies, the T15 home-use
+recordings \cite{card2026}, and the six-patient corpus of Fogg et al.,
+2026 \cite{fogg2026} are not publicly available, our reproduction audit
+tests the open intracortical literature rather than the closed surface-ECoG
+literature. Furthermore, where our inner-speech reproduction fell short
+of the published online benchmark (Kunz et al., 2025 \cite{kunz2025};
+Table~\ref{tab:repro}), the gap reflects a combination of smaller
+training sets, language-model substitution, and offline evaluation.
+\item \emph{Public datasets contain processed features, not raw brain
+signals.} To protect patient privacy and reduce file size, every public
+dataset releases pre-computed neural features (20\,ms bins of spike
+counts and high-frequency band power) rather than raw broadband voltage
+waveforms. Our reproductions therefore validate the machine-learning
+decoding pipelines, but cannot independently audit the upstream signal
+filtering or spike detection.
+\item \emph{Cross-study differences in test protocols.} Even when we
+match evaluation statistics (such as comparing per-day medians in
+Willett et al., 2023 \cite{willett2023} or single-session benchmarks in
+Card et al., 2024 \cite{card2024}), different studies still use
+different sentence prompts, vocabulary sizes, and online versus offline
+scoring rules. Finally, several 2026 advances reviewed here are
+currently preprints on bioRxiv or medRxiv, and their exact numbers may
+be refined during peer review.
+\end{enumerate}
+
+\section{Conclusion}
+
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+\item \emph{Algorithmic convergence:} Speech, touch-typing, and
+handwriting neuroprostheses have converged on one decoding pipeline
+adapted from automatic speech recognition (binned motor-cortex activity,
+a recurrent or Transformer neural network trained with connectionist
+temporal classification, $n$-gram beam search, and large-language-model
+rescoring), while replacing memory-heavy speech-recognition toolkits
+with lightweight decoders in 2026.
+\item \emph{Two-track data openness:} Intracortical microelectrode
+studies since 2023 have broadly shared processed neural features on
+public repositories (Dryad and Zenodo), whereas surface ECoG studies and
+home-use recordings remain restricted, and no study has released raw
+voltage waveforms.
+\item \emph{Independent reproducibility on everyday hardware:} All eight
+publicly available datasets can be retrained and evaluated from scratch
+on a single 16\,GB consumer GPU, matching or approaching published
+benchmarks on attempted speech, typing, and handwriting while confirming
+that language models amplify usable neural signals rather than rescuing
+noisy ones.
+\item \emph{Calibration and transfer:} Early decoders trained on
+thousands of trials from an individual participant. Recent studies
+demonstrate daily recalibration with tens of sentences and new-user
+speech adaptation with 90 trials after multi-user pretraining.
+\item \emph{Clinical reality and path to approval:} Across five years
+worldwide, 20 people with paralysis have used a communication
+neuroprosthesis in real time (including two in company demonstrations),
+and only one patient (T15) has used a system independently at home as a
+primary communication device. Moving from laboratory feasibility to
+regulatory approval now depends on multicenter clinical trials and
+long-term implant durability standards.
+\item \emph{Mandarin decoder design:} The clinical population in China
+motivates decade-scale implant durability. The decoder must represent
+articulatory distinctions and lexical tone and generate character-based
+text.
+\end{enumerate}
+
+\clearpage
+\section*{Data and code availability}
+
+{\setlength{\leftskip}{1.2pt}\setlength{\rightskip}{1.2pt}\relax
+All neural datasets analyzed in this review are publicly available from
+the Dryad, Zenodo, and OSF repositories cited in \S\ref{sec:openness}
+\cite{card2024, willett2023, wairagkar2025, jude2026lis, jude2026typing, willett2021, fan2023, kunz2025, btot}. Our reproduction code and per-trial
+decode outputs are available at
+\url{https://github.com/Physics-Lee/communication-neuroprostheses-reproduction},
+and the milestone timeline database and rendering code for
+Fig.~\ref{fig:timeline} are available at
+\url{https://github.com/Physics-Lee/communication-neuroprostheses-timeline}.\par}
+
+\section*{Acknowledgments}
+
+We thank the twenty clinical trial participants, their families, and
+their care partners, as well as the clinical research teams that
+publicly shared their datasets.
+
+\section*{Abbreviations}
+
+\noindent
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{5.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{5.6cm}@{}}
+AAC & augmentative and alternative communication & PER & phoneme error rate \\
+ALS & amyotrophic lateral sclerosis & RNN-T & recurrent neural-network transducer \\
+BCI & brain--computer interface & SCI & spinal cord injury \\
+cpm & characters per minute & sEEG & stereoelectroencephalography \\
+CTC & connectionist temporal classification & TLG & token--lexicon--grammar (WFST composition) \\
+ECoG & electrocorticography & vPCG & ventral precentral gyrus (speech motor cortex) \\
+GRU & gated recurrent unit & WER & word error rate \\
+IDE & investigational device exemption & WFST & weighted finite-state transducer \\
+LIS & locked-in syndrome & wpm & words per minute \\
+LLM & large language model & & \\
+\end{tabular}
+
+\bibliographystyle{naturemag}%
+\nocite{silva2025,candrea2025,barrow2025,neuralink2025e,seide2011,hinton2012,hannun2014,graves2012,he2019,chan2016,gulati2020,hsu2021,chu2023,rubenstein2023,tang2023,amodei2016,jiemian2020,cyd2013}%
+\begingroup\footnotesize\sloppy\emergencystretch=1.5em
+\microtypesetup{protrusion=false}%
+\bibliography{refs}
+\endgroup
+
+
+\end{document}
