@@ -52,6 +52,14 @@ python shared/tools/wer_from_tsv.py --no-sidecar studies/20230831_willett/result
 
 The word error rates are the studies' headline metrics: every per-study "Calculate metrics" section ends by scoring a fresh word decode, and the benchmark figures pair post-LM WER with raw PER/CER. Greedy error rates come out on Windows (step 3), but **fresh post-LM WER does not exist without this toolchain**: only the 5-gram/bigram/typing decodes and LPCNet synthesis run in WSL.
 
+**Why WSL at all?** Three concrete reasons, not preference:
+
+1. **The word decoders are Linux-native C++ linked against Kaldi/OpenFST.** The speech 5-gram path is `wenet_lattice.cc` (mmap + `.idx` decoder built on Kaldi libraries); the handwriting bigram is `latgen_lazy2`; the typing 5-gram is the authors' `lm_decoder` (built against their pinned `speechBCI`, PyTorch 1.13.1). The upstream `speechBCI`/`LPCNet` build systems only support Linux — LPCNet has no Windows build at all.
+2. **The papers' graphs exceed Windows-friendly tooling.** The speech `TLG.fst` is a 42 GB OpenFST binary the decoder must mmap with random access; the typing graph is 16 GB. The repository's memory-wall design keeps them on disk (never loaded whole), and that mmap machinery lives in the Linux binaries above.
+3. **The Windows GPU environment stays clean.** Acoustic training/inference run natively on Windows CUDA; keeping the C++ decoders in WSL means one environment never bloats the other. `wsl.exe` calls them straight from PowerShell, and the decoders write plain TSVs back to the shared checkout.
+
+**How to use it day-to-day**: everything runs from the Windows repository root — PowerShell scripts call `wsl.exe` for you (e.g. `step6_decode_ours.py` shells out to `latgen_lazy2`; `decode_wfst.py` wraps `wenet_lattice`). You only enter WSL yourself to build the toolchain once and to run the shared decoder/typing decode commands in [reader_workflow.md](reader_workflow.md) (both checkouts are visible at `/mnt/<drive>/...`, verified to read and write the same files).
+
 It is the slowest piece to build (hours, dominated by Kaldi), so start the WSL install below while the Windows passes of step 5 run, rather than after them. Install Ubuntu, then build the pieces in [reader_workflow.md](reader_workflow.md): Kaldi + OpenFST (then `wenet_lattice` and `latgen_lazy2`), [LPCNet](reader_workflow.md#voice-synthesis), and the typing decoder's `py310lm` + `lm_decoder` (including the eight `runtime/server/x86` symlink relinks and the CMake 4 / GCC 15 flags documented there).
 
 For Kaldi itself, follow the upstream `tools/INSTALL` and `src/INSTALL` (clone, `extras/check_dependencies.sh` and its `apt-get` line, `make` in `tools/`, then `./configure --shared && make` in `src/`). Two honest notes from the acceptance run:
@@ -82,6 +90,18 @@ Start the step-4 WSL build in a side terminal before pass 1; the order below ass
 | 10 | Typing post-LM decode: graph load ≈2–3 min per process, then seconds per session | — |
 
 One-time costs: `.idx` index build ≈22 min for the speech graph; large-graph copies to the WSL home filesystem ≈20–30 min each.
+
+## 6. Test splits: what the paper held out, what you hold out, and how the WERs compare
+
+Every study ships its evaluation split as a tracked CSV under `data/splits/` (one `archived_evaluation.csv` per study, plus per-study partition manifests), a per-study [`docs/20261124_evaluation_protocol/README.md`](docs/20261124_evaluation_protocol/README.md) (one folder up from each tutorial) stating which trials the paper's figure scores, and per-trial reference text inside those CSVs. Three facts connect them:
+
+1. **The reproduction reuses the paper's own held-out trials — it does not invent a new split.** Each publisher release carries its partition: the released `HeldOutTrials`/`HeldOutBlocks` MAT files (Willett 2021), the release's `test`/`validation` partition (Willett 2023, Card, Jude 2026b), the withheld last-six-trials of each session (Fan), the per-day evaluation blocks (Kunz, Wairagkar), and the conversion manifest's held-out blocks (Jude 2026a). The conversion and export commands read those partitions, so the `train_val_trials.json` your `train.py` writes and the trials your `infer.py` scores are the paper's trials by construction. The per-study `data/splits/README.md` documents each column.
+2. **To compare against the paper's WER, decode and score exactly those trials.** The per-study "Read the archived results" notebook cell shows the reference WER for the paper's evaluation arm; a fresh run replaces its input logits, not its split. Concretely: `infer.py`/`dump_logits` exports only the split's trials (W2023: 880 validation; Card: 1426 validation; Jude 2026b: 417 validation; Kunz T12-mixed eval: 100; Willett 2021: the 63 `HeldOutTrials` sentences), the WSL decode scores that same TSV, and `wer_from_tsv.py` prints the comparable number. `data/splits/<release>__archived_evaluation.csv` is the audited row-for-row list of what each archived score covered — check a fresh `trials.csv` against it when in doubt.
+3. **Match convergence before comparing numbers.** The documented 1000–2000-batch reader runs are smoke-length: they verify the chain end-to-end and land far above the paper (e.g. Jude 2026b at 1000 batches decodes to WER 83.3% where the archived full training reaches 50.6%; Kunz's 1000-batch decode even exceeds 100%, as insertion-heavy unconverged CTC can). The paper-comparable WER comes from the score-bearing run lengths named in each [evaluation protocol](docs/20261124_evaluation_protocol/README.md) — e.g. W2023's archived 60k-batch checkpoint (WER 25.7% first-pass; 24.9% re-decoded on this chain) and Card's released checkpoint (8.47% vs its archived 8.70%). Reproduce those lengths (or load the released/`runtime/` checkpoints) when the comparison is the point; keep the reader-length runs for pipeline checks.
+
+Two studies use a different headline metric and are compared the same way: Wairagkar correlates predicted vs target Mel bands on the released evaluation days (paper r ≈ 0.83 after removing silences; this suite's day-level means: 0.47–0.69), and the paper's listener-transcription WER is a separate archived Figure 2c value that the notebook recomputes from the released listening-test data.
+
+The acceptance report ([overnight_reader_acceptance_report.md](docs/20261124_repository_migration/overnight_reader_acceptance_report.md)) tabulates, per study, the fresh WER next to the archived WER for exactly this comparison.
 
 ## Disk and memory budget
 
