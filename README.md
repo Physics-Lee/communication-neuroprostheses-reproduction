@@ -62,7 +62,7 @@ pip install -r requirements.txt --extra-index-url https://download.pytorch.org/w
 
 ## Repository Structure
 
-**First time on a new machine?** Start with [`fresh_machine_setup.md`](fresh_machine_setup.md): one page mapping all eight studies' downloads and raw paths, the metrics computable with no WSL toolchain, the WSL prerequisites for word decodes, and measured run times and disk budget.
+**First time on a new machine?** Start with [`fresh_machine_setup.md`](fresh_machine_setup.md): it answers a new reader's six questions in order — the unified file tree, where to download/extract/convert each of the eight datasets, which code runs the converted data, which code computes the metrics, how the papers' test splits carry over for WER comparison, and why and how to use WSL — with measured run times and a disk budget.
 
 Then use the [reader guide](docs/20261124_repository_migration/reader_workflow.md). It links the eight study Notebooks and covers downloading the releases, generating the first session HDF5, running the models, setting up WSL where needed, and calculating the metrics.
 

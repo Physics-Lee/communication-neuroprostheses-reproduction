@@ -1,24 +1,44 @@
-# Fresh machine setup
+# Fresh-machine setup
 
-Everything a new reader needs between `git clone` and the first metric, in one place. The per-study commands live in each study's `tutorial.ipynb` (all eight follow the same four-step "Prepare the data" structure); this page maps what to do first, in what order, and what each piece costs in time and disk.
+A new reader cloning this repository has six questions. This page answers them in order — one section per question — so the page doubles as an acceptance checklist: if every section below leads you to a command you can run, the repository is ready for a new machine. All times and sizes come from the 2026-11-25/26 clean-checkout acceptance run ([report](docs/20261124_repository_migration/overnight_reader_acceptance_report.md)).
 
-The per-study path and command reference is [naming_map.md](naming_map.md); the shared reader guide with all Windows/WSL command details is [reader_workflow.md](reader_workflow.md).
+Three companions hold the details this page maps to: the [reader guide](docs/20261124_repository_migration/reader_workflow.md) (shared Windows/WSL commands), the [naming map](docs/20261124_repository_migration/naming_map.md) (every public command, path, and archived result per study), and each study's `tutorial.ipynb` (the canonical per-study commands).
 
-## 1. Windows environment (once, ~30 minutes)
+**Before question 1: the environment (once, ~30 minutes).** Follow [the reader guide](docs/20261124_repository_migration/reader_workflow.md): `conda env create -f environment.yml`, activate `bci-repro`, register the notebook kernel, install the pronunciation resources (`python -m nltk.downloader cmudict averaged_perceptron_tagger averaged_perceptron_tagger_eng`), and install the upstream checkouts with `python shared/tools/setup_upstream.py`. When testing the documented default paths, clear `BCI_DATA_ROOT`, `BCI_ARCHIVE_ROOT`, and `BCI_RUN_ID` first; the tutorials assume them unset.
 
-Follow [the reader guide](reader_workflow.md): `conda env create -f environment.yml`, activate `bci-repro`, register the notebook kernel, and install the pronunciation resources for the three speech conversions:
+## 1. Will I see a unified file tree?
 
-```powershell
-python -m nltk.downloader cmudict averaged_perceptron_tagger averaged_perceptron_tagger_eng
+Yes — all eight studies use one layout, so everything you learn in one study transfers to the next seven:
+
+```text
+studies/yyyymmdd_author/            # eight of these, structurally identical
+├── tutorial.ipynb                  # THE per-study guide: prepare data → reproduce → score
+├── code/                           # train.py · infer.py · decode.py · evaluate.py (same names everywhere)
+├── data/
+│   ├── raw/<release>/              # publisher archives land here, never modified
+│   ├── extracted/<release>/        # unmodified extraction
+│   ├── derived/<release>/...      # converted trainer inputs (study-specific format)
+│   ├── processed/<participant>/    # common session files (one .h5 per recording session)
+│   └── splits/                     # tracked CSVs: the papers' train/test assignments (see Q5)
+├── results/<run_id>/               # run.yaml + trials.csv (+ summary.json) per dated run
+├── log/<run_id>/
+└── docs/                           # per-study evaluation protocol and code guide
 ```
 
-Then install the upstream reference checkouts once with `python shared/tools/setup_upstream.py` (or per study with `--study <id>`; `--check` verifies existing ones offline).
+Two facts make the tree predictable: every directory is named from the same `<yyyymmdd>_<author>` + `<release>` + `<format>` + `<decoder>` scheme ([naming rules](docs/20261124_repository_migration/README.md#repository-layout)), and every new result you generate goes into a dated `results/<run_id>/` with a `run.yaml` that records what produced it. Nothing a fresh run writes ever overwrites an archived baseline.
 
-When testing the documented default paths, clear `BCI_DATA_ROOT`, `BCI_ARCHIVE_ROOT`, and `BCI_RUN_ID` first; the tutorials assume them unset.
+## 2. Where do I download the data, where do I unpack it, and which code converts it?
 
-## 2. What to download and where it goes
+Each tutorial's **"Prepare the data"** is the same four steps, and every command writes into the directories above — download → extract → convert → export:
 
-All eight studies keep publisher archives at `studies/<study>/data/raw/<release>/<release>__<publisher_filename>`, extract to `data/extracted/<release>/`, convert to `data/derived/...`, and export session files to `data/processed/<participant>/`. The exact commands are each Notebook's "Prepare the data" section; the table is the one-page view.
+| Step | Command family | Reads → writes |
+| --- | --- | --- |
+| 1. Download | manual, from the publisher DOI | → `data/raw/<release>/<release>__<publisher_filename>` |
+| 2. Extract | `tar -xzf` / `python -m zipfile -e` (exact command in each tutorial) | → `data/extracted/<release>/` |
+| 3. Convert | `code/prepare_data.py` (Card and Wairagkar read the release directly and skip this) | → `data/derived/<release>/<format>/...` |
+| 4. Export sessions | `code/export_sessions.py --session <id>` | → `data/processed/<participant>/<release>_<session>.h5` |
+
+The eight downloads (all Dryad; the tutorial's step 1 names the same files):
 
 | Study | Download (Dryad) | Save as (under `data/raw/<release>/`) | Size measured |
 | --- | --- | --- | --- |
@@ -33,48 +53,86 @@ All eight studies keep publisher archives at `studies/<study>/data/raw/<release>
 | Jude 2026a | `Data.zip` + `LanguageModels.zip` ([10.5061/dryad.cz8w9gjjk](https://doi.org/10.5061/dryad.cz8w9gjjk)) | `dryad_cz8w9gjjk__<name>.zip` | graph inside ≈18 GB |
 | Jude 2026b | `Data.zip` ([10.5061/dryad.vq83bk481](https://doi.org/10.5061/dryad.vq83bk481)) | `dryad_vq83bk481__Data.zip` | — |
 
-The two `LanguageModels` archives are only needed for fresh word decodes; every study's greedy metric and every archived metric runs without them.
-
-## 3. Metrics without any WSL toolchain
-
-Two things work on plain Windows with nothing else installed beyond step 1:
-
-1. **All eight notebooks' archive-scoring cells** recompute the published metrics — greedy error rates *and* the archived word-level WERs — from the files shipped with the repository. Total time for all eight: about a minute and a half.
-2. **Greedy metrics from fresh short runs**: each "Reproduce and score" train command at the Notebook's documented reader length (1000–2000 batches) plus `evaluate.py` needs nothing but this environment. The fresh post-LM WER needs the step-4 toolchain.
-
-For example, scoring an archived decode TSV directly:
+The two `LanguageModels` archives are only needed for fresh word decodes (Q6); every study's greedy metric and every archived metric runs without them. After step 4, verify the export with one command — it re-reads every trial from its publisher file and compares:
 
 ```text
-python shared/tools/wer_from_tsv.py --no-sidecar studies/20230831_willett/results/20261124_import_btot24/wl_5g_opt_official.tsv
+python shared/tools/validate_session.py <study>/data/processed/<participant>/<file>.h5 --source trials
 ```
 
-## 4. WSL toolchain for the word-level WER (required for the headline metric, slowest to build — start it early)
+## 3. Which code runs the converted data?
 
-The word error rates are the studies' headline metrics: every per-study "Calculate metrics" section ends by scoring a fresh word decode, and the benchmark figures pair post-LM WER with raw PER/CER. Greedy error rates come out on Windows (step 3), but **fresh post-LM WER does not exist without this toolchain**: only the 5-gram/bigram/typing decodes and LPCNet synthesis run in WSL.
+`code/train.py` reads the converted input and `code/infer.py` exports per-trial predictions — the same two command names in all eight studies (the [naming map](docs/20261124_repository_migration/naming_map.md) lists the mapping to each underlying script). The reader-length form of each, as documented in the tutorials and measured in the acceptance run:
 
-**Why WSL at all?** Three concrete reasons, not preference:
+| Study | `train.py` reads | Reader-length command (measured time) |
+| --- | --- | --- |
+| Willett 2021 | synthetic `.npy` folds | `train.py --partition HeldOutTrials --synth --nBatches 2000` (≈22 min) |
+| Willett 2023 | trainer HDF5 | `train.py 1000 RUN 1000` (6 min) |
+| Fan 2023 | released seed TFRecords — no fresh training | replay runs the released model directly |
+| Card 2024 | released HDF5 directly | `train.py 1000 RUN 1000` (≈6 min at archived rate) |
+| Wairagkar 2025 | released ZIP directly | released Keras encoders run via `infer.py` (no training) |
+| Kunz 2025 | trainer HDF5 | `train.py t12 mixed 1000 RUN 500` (3.5 min) |
+| Jude 2026a | per-session NPZ | `train.py --participant t17` (joint) or `pytorch_port/train.py --npz FILE` (single) |
+| Jude 2026b | trainer HDF5 | `train.py 1000 RUN 500` (21 min) |
 
-1. **The word decoders are Linux-native C++ linked against Kaldi/OpenFST.** The speech 5-gram path is `wenet_lattice.cc` (mmap + `.idx` decoder built on Kaldi libraries); the handwriting bigram is `latgen_lazy2`; the typing 5-gram is the authors' `lm_decoder` (built against their pinned `speechBCI`, PyTorch 1.13.1). The upstream `speechBCI`/`LPCNet` build systems only support Linux — LPCNet has no Windows build at all.
+Then `infer.py` exports only the evaluation split's predictions (880 trials for W2023, 1426 for Card, 417 for Jude 2026b, 100 for Kunz, 63 sentences for W2021 — see Q5 for why those exact counts). Full arguments for every command are each tutorial's "Reproduce and score" section.
+
+## 4. Which code computes the metrics?
+
+`code/evaluate.py` — again the same name everywhere. What it prints and what else each study needs:
+
+| Study | `evaluate.py` prints | Fresh WER comes from |
+| --- | --- | --- |
+| Willett 2021 | raw CER/WER from errCounts | WSL bigram decode (`step6_decode_ours.py` → `latgen_lazy2`) |
+| Willett 2023 | pooled greedy PER | WSL 5-gram decode + `wer_from_tsv.py` |
+| Fan 2023 | pooled WER (greedy / char-5gram / online) directly | built in — Windows CPU |
+| Card 2024 | PER during training | WSL 5-gram decode + `wer_from_tsv.py` |
+| Wairagkar 2025 | Mel-band correlations (Tier-1) | `evaluate.py` → WSL LPCNet synthesis + Mel r |
+| Kunz 2025 | greedy PER by vocab | WSL 5-gram decode + `wer_from_tsv.py` |
+| Jude 2026a | CER (`final_report.json` / `multisession_summary.json`) | WSL typing 5-gram (`decode.py`, py310lm) |
+| Jude 2026b | greedy PER (CL/OL) | WSL 5-gram decode + `wer_from_tsv.py` |
+
+Two things compute on plain Windows before any of the WSL pieces exist: the eight notebooks' archive-scoring cells recompute the published metrics — greedy rates *and* the archived WERs — from files shipped with the repository (3–25 s each, ~1.5 min for all eight), and the fresh greedy metrics of the table above. Scoring any decode TSV is one shared command:
+
+```text
+python shared/tools/wer_from_tsv.py --no-sidecar <any final.tsv>
+```
+
+Fresh post-LM WER is the one metric that does not exist without the WSL toolchain — see Q6 for why and how, and Q5 for comparing it with the paper.
+
+## 5. How did the paper split the test set, how does my reproduction split it, and how do the two WERs compare?
+
+**What the paper did** is recorded trial by trial in tracked CSVs under each `data/splits/`: one `archived_evaluation.csv` listing exactly which trials each archived score covered (with reference text), plus a **partition manifest with the paper's own train/test assignment** (`train_test_partitions.csv`, `source_partitions.csv`, `paired_v7_holdout.csv`, `calibration_order.csv`, `conditions.csv`/`t16_folds.csv`, `validation_blocks.csv`, `test_trials.csv`, `evaluation_trials.csv` — named per study in each `data/splits/README.md`). Both are rebuilt and cross-verified by the study's `build_split_manifest.py`, not hand-copied. The per-study [evaluation protocol](studies/20230831_willett/docs/20261124_evaluation_protocol/README.md) (each study has one at `studies/<study>/docs/20261124_evaluation_protocol/`) states which of those trials the paper's figure scores.
+
+**What the reproduction does**: it reuses the paper's split — it never invents one. Each release ships its partition (W2021's released `HeldOutTrials`/`HeldOutBlocks` MAT files; the `test`/`validation` partitions of W2023, Card, Jude 2026b; Fan's withheld final six trials per session; Kunz's and Wairagkar's evaluation-day blocks; Jude 2026a's held-out blocks), and the conversion/export/train/infer commands read those partitions by construction. You do nothing to "create" the split: `train.py` writes a `train_val_trials.json` naming the paper's train and eval trials, and `infer.py` exports only the eval side.
+
+**How the WERs compare** — three rules:
+
+1. **Same trials.** The fresh decode scores exactly the trials the archived score did (the counts in Q3; `data/splits/<release>__archived_evaluation.csv` is the audited row-for-row list to check a fresh `trials.csv` against).
+2. **Same convergence.** The 1000–2000-batch reader runs are smoke-length: they prove the chain but land far above the paper (Jude 2026b at 1000 batches → WER 83.3%; the archived full training → 50.6%; Kunz's short decode even exceeds 100%, as unconverged CTC can). For the paper comparison, use the score-bearing run lengths named in each study's evaluation protocol (`studies/<study>/docs/20261124_evaluation_protocol/README.md`), or load the released/`runtime/` checkpoint — e.g. Card's released checkpoint decodes to 8.47% against its archived 8.70%, and W2023's archived 60k checkpoint re-decodes to 24.9% against its archived 25.7%.
+3. **Two studies headline a different metric, compared the same way**: Wairagkar correlates predicted vs target Mel bands on the released evaluation days (paper r ≈ 0.83 after removing silences; this suite's day-level means 0.47–0.69), and the paper's listener-transcription WER is a separate archived Figure 2c value the notebook recomputes from the released listening-test data.
+
+The [acceptance report](docs/20261124_repository_migration/overnight_reader_acceptance_report.md) tabulates the fresh WER next to the archived WER for every study.
+
+## 6. Why does part of this run in WSL — and how do I use it?
+
+The word error rates are the headline metrics (Q5), and **fresh post-LM WER exists only in WSL**: the 5-gram/bigram/typing decodes and LPCNet synthesis are Linux-native. Three concrete reasons, not preference:
+
+1. **The word decoders are Linux-native C++ linked against Kaldi/OpenFST.** The speech 5-gram path is `wenet_lattice.cc` (mmap + `.idx` decoder on Kaldi libraries); the handwriting bigram is `latgen_lazy2`; the typing 5-gram is the authors' `lm_decoder` (their pinned `speechBCI`, PyTorch 1.13.1). Upstream `speechBCI`/`LPCNet` build systems support Linux only — LPCNet has no Windows build at all.
 2. **The papers' graphs exceed Windows-friendly tooling.** The speech `TLG.fst` is a 42 GB OpenFST binary the decoder must mmap with random access; the typing graph is 16 GB. The repository's memory-wall design keeps them on disk (never loaded whole), and that mmap machinery lives in the Linux binaries above.
-3. **The Windows GPU environment stays clean.** Acoustic training/inference run natively on Windows CUDA; keeping the C++ decoders in WSL means one environment never bloats the other. `wsl.exe` calls them straight from PowerShell, and the decoders write plain TSVs back to the shared checkout.
+3. **The Windows GPU environment stays clean.** Acoustic training/inference run natively on Windows CUDA; the C++ decoders live in WSL, so neither environment bloats the other.
 
-**How to use it day-to-day**: everything runs from the Windows repository root — PowerShell scripts call `wsl.exe` for you (e.g. `step6_decode_ours.py` shells out to `latgen_lazy2`; `decode_wfst.py` wraps `wenet_lattice`). You only enter WSL yourself to build the toolchain once and to run the shared decoder/typing decode commands in [reader_workflow.md](reader_workflow.md) (both checkouts are visible at `/mnt/<drive>/...`, verified to read and write the same files).
+**How to use it day-to-day**: everything runs from the Windows repository root — the PowerShell scripts call `wsl.exe` for you (`step6_decode_ours.py` shells out to `latgen_lazy2`; `decode_wfst.py` wraps `wenet_lattice`). You enter WSL yourself only to build the toolchain once and to run the shared decoder/typing commands in the [reader guide](docs/20261124_repository_migration/reader_workflow.md); both sides see the same checkout at `/mnt/<drive>/...` (verified to read and write the same files).
 
-It is the slowest piece to build (hours, dominated by Kaldi), so start the WSL install below while the Windows passes of step 5 run, rather than after them. Install Ubuntu, then build the pieces in [reader_workflow.md](reader_workflow.md): Kaldi + OpenFST (then `wenet_lattice` and `latgen_lazy2`), [LPCNet](reader_workflow.md#voice-synthesis), and the typing decoder's `py310lm` + `lm_decoder` (including the eight `runtime/server/x86` symlink relinks and the CMake 4 / GCC 15 flags documented there).
+It is the slowest piece to build (hours, dominated by Kaldi), so start it in a side terminal while the Windows passes below run. Build order and the pitfalls the acceptance run hit (all documented in the reader guide): Kaldi + OpenFST (then `wenet_lattice`, `latgen_lazy2`), [LPCNet](docs/20261124_repository_migration/reader_workflow.md#voice-synthesis), and the typing decoder's `py310lm` + `lm_decoder` (eight `runtime/server/x86` symlink relinks; CMake 4 needs `CMAKE_POLICY_VERSION_MINIMUM=3.5`; GCC 15 needs `-Wno-template-body`). For Kaldi itself, follow the upstream `tools/INSTALL` and `src/INSTALL`. Two honest notes from the acceptance run:
 
-For Kaldi itself, follow the upstream `tools/INSTALL` and `src/INSTALL` (clone, `extras/check_dependencies.sh` and its `apt-get` line, `make` in `tools/`, then `./configure --shared && make` in `src/`). Two honest notes from the acceptance run:
+- The reference machine carries a **prebuilt** tree (`~/kaldi` with `tools/openfst` and `tools/openfst-1.8.4`); the reader commands point at those paths. A different Kaldi build means adjusting the compile commands' `-I`/`-L` paths to match.
+- The acceptance run **did not build Kaldi from scratch**; it only compiled `lm_decoder`. On a brand-new Ubuntu whose compiler rejects older Kaldi sources, an older GCC (`apt install g++-12`, `CC`/`CXX` pointing at it) is the usual remedy — untested here. Until the toolchain is ready, every greedy and archived metric — including the archived WERs — is still computable on Windows (Q4).
 
-- The reference machine carries a **prebuilt** tree (`~/kaldi` with `tools/openfst` and `tools/openfst-1.8.4`); the reader commands point at those paths. If your Kaldi builds a different OpenFST version, adjust the two compile commands' `-I`/`-L` paths to match.
-- The acceptance run **did not build Kaldi from scratch**; it only compiled `lm_decoder` (GCC 15 needed `-Wno-template-body`, documented in the reader guide). On a brand-new Ubuntu whose compiler rejects older Kaldi sources, a slightly older GCC via `apt install g++-12` with `CC/CXX` pointing at it is the usual remedy — untested here. Until the toolchain is ready, step 3 covers every study's greedy and archived metrics, including the archived WERs.
+Two graph-placement rules measured the hard way: copy each decoding graph to the WSL home filesystem first (`~/tg5` for speech, `~/typing_tg` for typing) — random graph reads through `/mnt/<drive>` are effectively unusable — and run decodes serially (the speech graph's page cache is ~20 GB, up to ~60 GB with both graphs resident; `wsl --shutdown` returns it to Windows at once).
 
-Two graph-placement rules that the acceptance run measured the hard way (details in the reader guide):
+## Suggested first evening (measured order)
 
-- Copy each decoding graph to the WSL home filesystem first (`~/tg5` for speech, `~/typing_tg` for typing); random graph reads through `/mnt/<drive>` are effectively unusable.
-- Run decodes serially; the shared speech graph's page cache (~20 GB, up to ~60 GB with both graphs resident) is per-host. `wsl --shutdown` returns it to Windows immediately.
-
-## 5. Suggested first-pass order (times measured on the acceptance run)
-
-Start the step-4 WSL build in a side terminal before pass 1; the order below assumes it finishes during the Windows passes.
+Start the Q6 WSL build in a side terminal before pass 1; the order assumes it finishes during the Windows passes.
 
 | Pass | What | Wall time measured |
 | --- | --- | --- |
@@ -90,18 +148,6 @@ Start the step-4 WSL build in a side terminal before pass 1; the order below ass
 | 10 | Typing post-LM decode: graph load ≈2–3 min per process, then seconds per session | — |
 
 One-time costs: `.idx` index build ≈22 min for the speech graph; large-graph copies to the WSL home filesystem ≈20–30 min each.
-
-## 6. Test splits: what the paper held out, what you hold out, and how the WERs compare
-
-Every study ships its evaluation split as tracked CSVs under `data/splits/` — an `archived_evaluation.csv` listing exactly which trials each archived score covered (with reference text), plus a **partition manifest recording the paper's own train/test assignment trial by trial** (`train_test_partitions.csv`, `source_partitions.csv`, `paired_v7_holdout.csv`, `calibration_order.csv`, `conditions.csv`/`t16_folds.csv`, `validation_blocks.csv`, `test_trials.csv`, `evaluation_trials.csv` — one or two per study, named in each `data/splits/README.md`). Both kinds are rebuilt and re-verified by each study's `build_split_manifest.py`, not hand-copied. A per-study [`docs/20261124_evaluation_protocol/README.md`](docs/20261124_evaluation_protocol/README.md) (one folder up from each tutorial) states which trials the paper's figure scores. Three facts connect them:
-
-1. **The reproduction reuses the paper's own held-out trials — it does not invent a new split.** Each publisher release carries its partition: the released `HeldOutTrials`/`HeldOutBlocks` MAT files (Willett 2021), the release's `test`/`validation` partition (Willett 2023, Card, Jude 2026b), the withheld last-six-trials of each session (Fan), the per-day evaluation blocks (Kunz, Wairagkar), and the conversion manifest's held-out blocks (Jude 2026a). The conversion and export commands read those partitions, so the `train_val_trials.json` your `train.py` writes and the trials your `infer.py` scores are the paper's trials by construction. The per-study `data/splits/README.md` documents each column.
-2. **To compare against the paper's WER, decode and score exactly those trials.** The per-study "Read the archived results" notebook cell shows the reference WER for the paper's evaluation arm; a fresh run replaces its input logits, not its split. Concretely: `infer.py`/`dump_logits` exports only the split's trials (W2023: 880 validation; Card: 1426 validation; Jude 2026b: 417 validation; Kunz T12-mixed eval: 100; Willett 2021: the 63 `HeldOutTrials` sentences), the WSL decode scores that same TSV, and `wer_from_tsv.py` prints the comparable number. `data/splits/<release>__archived_evaluation.csv` is the audited row-for-row list of what each archived score covered — check a fresh `trials.csv` against it when in doubt.
-3. **Match convergence before comparing numbers.** The documented 1000–2000-batch reader runs are smoke-length: they verify the chain end-to-end and land far above the paper (e.g. Jude 2026b at 1000 batches decodes to WER 83.3% where the archived full training reaches 50.6%; Kunz's 1000-batch decode even exceeds 100%, as insertion-heavy unconverged CTC can). The paper-comparable WER comes from the score-bearing run lengths named in each [evaluation protocol](docs/20261124_evaluation_protocol/README.md) — e.g. W2023's archived 60k-batch checkpoint (WER 25.7% first-pass; 24.9% re-decoded on this chain) and Card's released checkpoint (8.47% vs its archived 8.70%). Reproduce those lengths (or load the released/`runtime/` checkpoints) when the comparison is the point; keep the reader-length runs for pipeline checks.
-
-Two studies use a different headline metric and are compared the same way: Wairagkar correlates predicted vs target Mel bands on the released evaluation days (paper r ≈ 0.83 after removing silences; this suite's day-level means: 0.47–0.69), and the paper's listener-transcription WER is a separate archived Figure 2c value that the notebook recomputes from the released listening-test data.
-
-The acceptance report ([overnight_reader_acceptance_report.md](docs/20261124_repository_migration/overnight_reader_acceptance_report.md)) tabulates, per study, the fresh WER next to the archived WER for exactly this comparison.
 
 ## Disk and memory budget
 

@@ -8,7 +8,7 @@ This directory contains repository-level engineering audits and maintenance docu
 
 | File | Description |
 |---|---|
-| [`../fresh_machine_setup.md`](../fresh_machine_setup.md) | Root-level one-page fresh-machine map: all eight studies' downloads and raw paths, the no-WSL metric path, WSL toolchain prerequisites, and measured first-pass timings and disk budget. |
+| [`../fresh_machine_setup.md`](../fresh_machine_setup.md) | Root-level fresh-machine guide organized around a new reader's six questions: unified tree, download/extract/convert for all eight studies, which code runs the data, which code computes metrics, paper test splits and WER comparison, and why/how WSL — with measured timings and disk budget. |
 | [`20261124_repository_migration/README.md`](20261124_repository_migration/README.md) | Study and figure migration plan and verification record. |
 | [`20261124_repository_migration/naming_map.md`](20261124_repository_migration/naming_map.md) | Public commands, data paths, and result names across the eight studies. |
 | [`20261124_repository_migration/reader_workflow.md`](20261124_repository_migration/reader_workflow.md) | Fresh-clone instructions and shared Windows and WSL requirements for all eight study Notebooks. |
