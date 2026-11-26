@@ -36,7 +36,9 @@ from matplotlib.text import Text
 import numpy as np
 import yaml
 
-from build_figure2_data import apply_daily_metrics, apply_online_wer_anchors
+from build_figure2_data import (
+    apply_daily_metrics, apply_online_wer_anchors, apply_reproduction_metrics,
+)
 from figure_paths import BENCHMARK, PUBLISHED
 
 os.environ.setdefault("SOURCE_DATE_EPOCH", "946684800")
@@ -1043,6 +1045,7 @@ def render_figure2(yaml_path=None, session_json_path=None, out_stem="communicati
 
     apply_daily_metrics(data, yaml_path)
     apply_online_wer_anchors(data)
+    apply_reproduction_metrics(data)
 
     # Auto-sync the resolved benchmark alongside the rendered figures.
     json_mirror = os.path.join(os.path.dirname(os.path.abspath(out_stem)), "reproduction_benchmark.json")
@@ -3761,7 +3764,8 @@ document.documentElement.classList.add('js');</script>
   <div id="reprobox" class="rv">
     <p class="cohort-sub">
       <b>Table 2. Released data and decoding performance across eight open-data datasets (11 participant splits).</b>
-      Online evaluation days follow the manuscript's Figure 2c; reproduced WER is offline after language modeling. Values are mean ± SD where applicable.
+      Text WERs are equal-day means ± sample SD of daily WERs (100 × word edits/reference words; SD denominator N − 1 for N days). Single-day SD is omitted.
+      Online and reproduced WERs use the same evaluation dates; trial sets differ. Reproduced WER is after language modeling. Voice WER is a listener median.
     </p>
     <table class="cohort-tbl" aria-label="Table 2: Reproduction benchmark values">
       <thead>
@@ -3773,17 +3777,17 @@ document.documentElement.classList.add('js');</script>
         </tr>
       </thead>
       <tbody>
-        <tr class="repro-row" data-id="willett2021"><td>Willett et al., 2021 [9]</td><td>T5</td><td>1,000</td><td>10</td><td>5</td><td>15.4±2.2</td><td>23.9±8.4</td><td>10.0±3.58</td></tr>
-        <tr class="repro-row" data-id="willett2023"><td>Willett et al., 2023 [4]</td><td>T12</td><td>9,680</td><td>24</td><td>5</td><td>65.3±0.9</td><td>23.8±1.8</td><td>23.58±5.25</td></tr>
+        <tr class="repro-row" data-id="willett2021"><td>Willett et al., 2021 [9]</td><td>T5</td><td>1,000</td><td>10</td><td>5</td><td>15.4±2.2</td><td>23.9±8.4</td><td>6.57±3.55</td></tr>
+        <tr class="repro-row" data-id="willett2023"><td>Willett et al., 2023 [4]</td><td>T12</td><td>9,680</td><td>24</td><td>5</td><td>65.3±0.9</td><td>23.8±1.8</td><td>19.46±3.82</td></tr>
         <tr class="repro-row" data-id="fan2023"><td>Fan et al., 2023 [10]</td><td>T5</td><td>1,315</td><td>21</td><td>10</td><td>14.6±2.2</td><td>4.0±1.2</td><td>—</td></tr>
-        <tr class="repro-row" data-id="card2024"><td>Card et al., 2024 [1]</td><td>T15</td><td>9,498</td><td>45</td><td>14</td><td>32.5±2.7</td><td>4.9±3.3</td><td>6.25±6.54</td></tr>
+        <tr class="repro-row" data-id="card2024"><td>Card et al., 2024 [1]</td><td>T15</td><td>9,498</td><td>45</td><td>14</td><td>32.5±2.7</td><td>4.9±3.3</td><td>6.45±6.20</td></tr>
         <tr class="repro-row" data-id="wairagkar2025"><td>Wairagkar et al., 2025 [6]</td><td>T15</td><td>8,489</td><td>37</td><td>8</td><td>—</td><td>43.8</td><td>—</td></tr>
-        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T12</td><td>500</td><td>1</td><td>1</td><td>—</td><td>22.9</td><td>94.35±0.0</td></tr>
-        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T15</td><td>720</td><td>3</td><td>2</td><td>—</td><td>43.3±23.8</td><td>78.07±0.59</td></tr>
-        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T16</td><td>450</td><td>2</td><td>1</td><td>—</td><td>44.4</td><td>82.38±0.0</td></tr>
-        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T17</td><td>668</td><td>8</td><td>6</td><td>6.8±1.8</td><td>10.5±3.1</td><td>11.41±6.85</td></tr>
-        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T18</td><td>1,033</td><td>9</td><td>7</td><td>14.0±4.5</td><td>3.5±0.6</td><td>6.66±3.67</td></tr>
-        <tr class="repro-row" data-id="jude2026b"><td>Jude et al., 2026b [7]</td><td>T17</td><td>3,674</td><td>13</td><td>4</td><td>34.1±7.7</td><td>66.5±18.1</td><td>44.37±16.0</td></tr>
+        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T12</td><td>500</td><td>1</td><td>1</td><td>—</td><td>22.9</td><td>94.35</td></tr>
+        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T15</td><td>720</td><td>3</td><td>2</td><td>—</td><td>43.3±23.8</td><td>91.65±1.71</td></tr>
+        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T16</td><td>450</td><td>2</td><td>1</td><td>—</td><td>44.4</td><td>105.61</td></tr>
+        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T17</td><td>668</td><td>8</td><td>6</td><td>6.8±1.8</td><td>10.5±3.1</td><td>11.28±6.67</td></tr>
+        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T18</td><td>1,033</td><td>9</td><td>7</td><td>14.0±4.5</td><td>3.5±0.6</td><td>7.61±2.69</td></tr>
+        <tr class="repro-row" data-id="jude2026b"><td>Jude et al., 2026b [7]</td><td>T17</td><td>3,674</td><td>13</td><td>4</td><td>34.1±7.7</td><td>66.5±18.1</td><td>46.08±22.30</td></tr>
       </tbody>
     </table>
   </div>

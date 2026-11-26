@@ -48,13 +48,19 @@ def export_tables(output, benchmark):
         for row in resolved[key]:
             evidence = benchmark.get("figure2_bar_sources", {}).get(panel, {}).get(row["label"], {})
             bars.append({
-                "panel": panel, **row,
+                "panel": panel, **{key: value for key, value in row.items()
+                                  if key != "ours_daily"},
                 "reproduction_source": evidence.get("reproduction_source", ""),
                 "reproduction_selection": evidence.get("selection", ""),
                 "comparison_source": benchmark["panel_cd_daily_csv"] if panel == "2f"
                 else evidence.get("paper_source", ""),
             })
     write_table(output / "figure2ef_bars.csv", bars)
+    write_table(output / "figure2f_daily.csv", [
+        {"label": row["label"], **day}
+        for row in resolved["panel_f_repro_full_wer"]
+        for day in row.get("ours_daily", [])
+    ])
     points = []
     for axis, panel in (("per", "3a"), ("cer", "3b")):
         sessions = json.loads((output / (f"session_{axis}_vs_wer.json")).read_text(encoding="utf-8"))

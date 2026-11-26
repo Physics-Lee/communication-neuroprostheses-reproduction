@@ -764,19 +764,99 @@
   "panel_f_repro_full_wer": [
     {
       "label": "Willett et al., 2021 (T5)",
-      "ours": 10.0,
-      "ours_sd": 3.58,
+      "ours": 6.574018202374929,
+      "ours_sd": 3.5464403795860955,
       "paper": 23.856230721351423,
       "paper_sd": 8.383983976146865,
-      "note": "bigram\n63-tr. pool"
+      "note": "HeldOutTrials bigram; same five online evaluation dates; trial sets differ",
+      "ours_days": 5,
+      "ours_trials": 33,
+      "ours_daily": [
+        {
+          "day": "2019-12-11",
+          "trials": 7,
+          "word_errors": 5,
+          "reference_words": 51,
+          "wer_pct": 9.803921568627452
+        },
+        {
+          "day": "2019-12-18",
+          "trials": 7,
+          "word_errors": 5,
+          "reference_words": 86,
+          "wer_pct": 5.813953488372093
+        },
+        {
+          "day": "2019-12-20",
+          "trials": 7,
+          "word_errors": 1,
+          "reference_words": 73,
+          "wer_pct": 1.36986301369863
+        },
+        {
+          "day": "2020-01-06",
+          "trials": 5,
+          "word_errors": 5,
+          "reference_words": 50,
+          "wer_pct": 10.0
+        },
+        {
+          "day": "2020-01-08",
+          "trials": 7,
+          "word_errors": 4,
+          "reference_words": 68,
+          "wer_pct": 5.882352941176471
+        }
+      ],
+      "ours_pooled": 6.097560975609756
     },
     {
       "label": "Willett et al., 2023 (T12)",
-      "ours": 23.58,
-      "ours_sd": 5.25,
+      "ours": 19.464528380988195,
+      "ours_sd": 3.815340271749951,
       "paper": 23.841040653570122,
       "paper_sd": 1.7945886796790445,
-      "note": "day med.\n5-gram"
+      "note": "5-gram + OPT; same five online evaluation dates; labeled test partition used for validation",
+      "ours_days": 5,
+      "ours_trials": 200,
+      "ours_daily": [
+        {
+          "day": "2022-07-21",
+          "trials": 40,
+          "word_errors": 50,
+          "reference_words": 254,
+          "wer_pct": 19.68503937007874
+        },
+        {
+          "day": "2022-07-27",
+          "trials": 40,
+          "word_errors": 50,
+          "reference_words": 229,
+          "wer_pct": 21.83406113537118
+        },
+        {
+          "day": "2022-08-02",
+          "trials": 40,
+          "word_errors": 46,
+          "reference_words": 213,
+          "wer_pct": 21.5962441314554
+        },
+        {
+          "day": "2022-08-11",
+          "trials": 40,
+          "word_errors": 49,
+          "reference_words": 229,
+          "wer_pct": 21.397379912663755
+        },
+        {
+          "day": "2022-08-13",
+          "trials": 40,
+          "word_errors": 31,
+          "reference_words": 242,
+          "wer_pct": 12.809917355371901
+        }
+      ],
+      "ours_pooled": 19.365895458440445
     },
     {
       "label": "Fan et al., 2023 (T5)",
@@ -784,15 +864,122 @@
       "ours_sd": null,
       "paper": 4.0181914674499195,
       "paper_sd": 1.198611886242901,
-      "note": "Full-pipeline reproduction unavailable"
+      "note": "Full-pipeline reproduction unavailable; released online output is not a reproduction",
+      "ours_days": 0,
+      "ours_trials": 0,
+      "ours_daily": [],
+      "ours_pooled": null
     },
     {
       "label": "Card et al., 2024 (T15)",
-      "ours": 6.25,
-      "ours_sd": 6.54,
+      "ours": 6.453634930122295,
+      "ours_sd": 6.1958729201816745,
       "paper": 4.873551646842313,
       "paper_sd": 3.287549006045797,
-      "note": "41-s pool\nbiGRU-48k"
+      "note": "BiGRU-48k + OPT; same 14 online evaluation dates; trial sets differ",
+      "ours_days": 14,
+      "ours_trials": 514,
+      "ours_daily": [
+        {
+          "day": "2023-08-13",
+          "trials": 35,
+          "word_errors": 8,
+          "reference_words": 230,
+          "wer_pct": 3.4782608695652173
+        },
+        {
+          "day": "2023-08-20",
+          "trials": 48,
+          "word_errors": 7,
+          "reference_words": 292,
+          "wer_pct": 2.3972602739726026
+        },
+        {
+          "day": "2023-09-01",
+          "trials": 49,
+          "word_errors": 12,
+          "reference_words": 299,
+          "wer_pct": 4.013377926421405
+        },
+        {
+          "day": "2023-09-03",
+          "trials": 34,
+          "word_errors": 7,
+          "reference_words": 183,
+          "wer_pct": 3.8251366120218577
+        },
+        {
+          "day": "2023-09-24",
+          "trials": 35,
+          "word_errors": 12,
+          "reference_words": 196,
+          "wer_pct": 6.122448979591836
+        },
+        {
+          "day": "2023-09-29",
+          "trials": 48,
+          "word_errors": 16,
+          "reference_words": 349,
+          "wer_pct": 4.584527220630372
+        },
+        {
+          "day": "2023-10-01",
+          "trials": 44,
+          "word_errors": 19,
+          "reference_words": 313,
+          "wer_pct": 6.0702875399361025
+        },
+        {
+          "day": "2023-10-06",
+          "trials": 36,
+          "word_errors": 6,
+          "reference_words": 222,
+          "wer_pct": 2.7027027027027026
+        },
+        {
+          "day": "2023-10-08",
+          "trials": 17,
+          "word_errors": 14,
+          "reference_words": 150,
+          "wer_pct": 9.333333333333334
+        },
+        {
+          "day": "2023-10-13",
+          "trials": 44,
+          "word_errors": 56,
+          "reference_words": 242,
+          "wer_pct": 23.140495867768596
+        },
+        {
+          "day": "2023-10-15",
+          "trials": 44,
+          "word_errors": 13,
+          "reference_words": 336,
+          "wer_pct": 3.869047619047619
+        },
+        {
+          "day": "2023-10-20",
+          "trials": 9,
+          "word_errors": 12,
+          "reference_words": 71,
+          "wer_pct": 16.901408450704224
+        },
+        {
+          "day": "2024-02-25",
+          "trials": 23,
+          "word_errors": 3,
+          "reference_words": 164,
+          "wer_pct": 1.829268292682927
+        },
+        {
+          "day": "2024-03-17",
+          "trials": 48,
+          "word_errors": 7,
+          "reference_words": 336,
+          "wer_pct": 2.0833333333333335
+        }
+      ],
+      "ours_pooled": 5.675436003547148
     },
     {
       "label": "Wairagkar et al., 2025 (T15)",
@@ -800,55 +987,236 @@
       "ours_sd": null,
       "paper": null,
       "paper_sd": null,
-      "note": "WER n/r\n(voice; see e)"
+      "note": "WER n/r\n(voice; see e)",
+      "ours_days": 0,
+      "ours_trials": 0,
+      "ours_daily": [],
+      "ours_pooled": null
     },
     {
       "label": "Kunz et al., 2025 (T12)",
-      "ours": 94.35,
-      "ours_sd": 0.0,
+      "ours": 94.34889434889435,
+      "ours_sd": null,
       "paper": 22.85012285012285,
       "paper_sd": null,
-      "note": "50-w sess.\ngap attr."
+      "note": "OPT rescoring; weight selected on the archived evaluation set",
+      "ours_days": 1,
+      "ours_trials": 100,
+      "ours_daily": [
+        {
+          "day": "2023-11-28",
+          "trials": 100,
+          "word_errors": 384,
+          "reference_words": 407,
+          "wer_pct": 94.34889434889435
+        }
+      ],
+      "ours_pooled": 94.34889434889435
     },
     {
       "label": "Kunz et al., 2025 (T15)",
-      "ours": 78.07,
-      "ours_sd": 0.59,
+      "ours": 91.64769493454753,
+      "ours_sd": 1.7104176551182921,
       "paper": 43.34498739734938,
       "paper_sd": 23.779117383425973,
-      "note": "125k\ngap attr."
+      "note": "125k-word sessions only; OPT weight selected on the archived evaluation set",
+      "ours_days": 2,
+      "ours_trials": 55,
+      "ours_daily": [
+        {
+          "day": "2024-12-15",
+          "trials": 15,
+          "word_errors": 91,
+          "reference_words": 98,
+          "wer_pct": 92.85714285714286
+        },
+        {
+          "day": "2025-01-05",
+          "trials": 40,
+          "word_errors": 227,
+          "reference_words": 251,
+          "wer_pct": 90.43824701195219
+        }
+      ],
+      "ours_pooled": 91.11747851002865
     },
     {
       "label": "Kunz et al., 2025 (T16)",
-      "ours": 82.38,
-      "ours_sd": 0.0,
+      "ours": 105.60747663551402,
+      "ours_sd": null,
       "paper": 44.39252336448598,
       "paper_sd": null,
-      "note": "125k\ngap attr."
+      "note": "125k-word sessions only; OPT weight selected on the archived evaluation set",
+      "ours_days": 1,
+      "ours_trials": 35,
+      "ours_daily": [
+        {
+          "day": "2024-12-18",
+          "trials": 35,
+          "word_errors": 226,
+          "reference_words": 214,
+          "wer_pct": 105.60747663551402
+        }
+      ],
+      "ours_pooled": 105.60747663551402
     },
     {
       "label": "Jude et al., 2026a (T17)",
-      "ours": 11.41,
-      "ours_sd": 6.85,
+      "ours": 11.276757435292911,
+      "ours_sd": 6.672001224579808,
       "paper": 10.517220558960716,
       "paper_sd": 3.110311652605213,
-      "note": "best 4.6%"
+      "note": "Multisession test-partition output on the online evaluation dates; trial sets differ",
+      "ours_days": 6,
+      "ours_trials": 104,
+      "ours_daily": [
+        {
+          "day": "2024-06-03",
+          "trials": 20,
+          "word_errors": 4,
+          "reference_words": 87,
+          "wer_pct": 4.597701149425287
+        },
+        {
+          "day": "2024-06-04",
+          "trials": 20,
+          "word_errors": 4,
+          "reference_words": 84,
+          "wer_pct": 4.761904761904762
+        },
+        {
+          "day": "2024-06-05",
+          "trials": 20,
+          "word_errors": 15,
+          "reference_words": 101,
+          "wer_pct": 14.851485148514852
+        },
+        {
+          "day": "2024-07-09",
+          "trials": 20,
+          "word_errors": 22,
+          "reference_words": 122,
+          "wer_pct": 18.0327868852459
+        },
+        {
+          "day": "2024-07-10",
+          "trials": 4,
+          "word_errors": 2,
+          "reference_words": 30,
+          "wer_pct": 6.666666666666667
+        },
+        {
+          "day": "2024-07-22",
+          "trials": 20,
+          "word_errors": 24,
+          "reference_words": 128,
+          "wer_pct": 18.75
+        }
+      ],
+      "ours_pooled": 12.86231884057971
     },
     {
       "label": "Jude et al., 2026a (T18)",
-      "ours": 6.66,
-      "ours_sd": 3.67,
+      "ours": 7.609094693176562,
+      "ours_sd": 2.6944679825858175,
       "paper": 3.509747068899593,
       "paper_sd": 0.6490983995037024,
-      "note": "best 0.0%; <7%"
+      "note": "Multisession test-partition output on the online evaluation dates; trial sets differ",
+      "ours_days": 7,
+      "ours_trials": 140,
+      "ours_daily": [
+        {
+          "day": "2024-12-05",
+          "trials": 20,
+          "word_errors": 10,
+          "reference_words": 116,
+          "wer_pct": 8.620689655172415
+        },
+        {
+          "day": "2025-01-14",
+          "trials": 20,
+          "word_errors": 12,
+          "reference_words": 125,
+          "wer_pct": 9.6
+        },
+        {
+          "day": "2025-01-15",
+          "trials": 20,
+          "word_errors": 11,
+          "reference_words": 133,
+          "wer_pct": 8.270676691729323
+        },
+        {
+          "day": "2025-01-21",
+          "trials": 20,
+          "word_errors": 7,
+          "reference_words": 121,
+          "wer_pct": 5.785123966942149
+        },
+        {
+          "day": "2025-01-22",
+          "trials": 20,
+          "word_errors": 3,
+          "reference_words": 123,
+          "wer_pct": 2.4390243902439024
+        },
+        {
+          "day": "2025-02-04",
+          "trials": 20,
+          "word_errors": 11,
+          "reference_words": 135,
+          "wer_pct": 8.148148148148149
+        },
+        {
+          "day": "2025-02-05",
+          "trials": 20,
+          "word_errors": 13,
+          "reference_words": 125,
+          "wer_pct": 10.4
+        }
+      ],
+      "ours_pooled": 7.6309794988610475
     },
     {
       "label": "Jude et al., 2026b (T17)",
-      "ours": 44.37,
-      "ours_sd": 15.96,
+      "ours": 46.07712481436748,
+      "ours_sd": 22.30434033727806,
       "paper": 66.4803839360672,
       "paper_sd": 18.12429021064479,
-      "note": "conv. day-68"
+      "note": "5-gram + OPT; same four online evaluation dates; trial sets differ",
+      "ours_days": 4,
+      "ours_trials": 131,
+      "ours_daily": [
+        {
+          "day": "2024-04-02",
+          "trials": 11,
+          "word_errors": 41,
+          "reference_words": 64,
+          "wer_pct": 64.0625
+        },
+        {
+          "day": "2024-05-07",
+          "trials": 40,
+          "word_errors": 67,
+          "reference_words": 257,
+          "wer_pct": 26.070038910505836
+        },
+        {
+          "day": "2024-05-14",
+          "trials": 40,
+          "word_errors": 74,
+          "reference_words": 269,
+          "wer_pct": 27.509293680297397
+        },
+        {
+          "day": "2024-05-28",
+          "trials": 40,
+          "word_errors": 156,
+          "reference_words": 234,
+          "wer_pct": 66.66666666666667
+        }
+      ],
+      "ours_pooled": 41.019417475728154
     }
   ],
   "panel_g_host_ram_walls": [
@@ -1069,47 +1437,76 @@
     "2f": {
       "Willett et al., 2021 (T5)": {
         "reproduction_source": "studies/20210512_willett/results/20261124_import_handwriting_baselines/m3_own_decode_HeldOutTrials.csv",
-        "selection": "HeldOutTrials with bigram decode"
+        "selection": "HeldOutTrials bigram; same five online evaluation dates; trial sets differ",
+        "format": "handwriting_csv",
+        "online_series": "willett21_t5"
       },
       "Willett et al., 2023 (T12)": {
-        "reproduction_source": null,
-        "selection": "Historical day median from the 5-gram pipeline, recorded in the benchmark"
+        "reproduction_source": "studies/20230831_willett/results/20261124_import_btot24/wl_5g_opt_official.tsv",
+        "selection": "5-gram + OPT; same five online evaluation dates; labeled test partition used for validation",
+        "metadata_source": "studies/20230831_willett/results/20261124_import_btot24/test_partition_greedy_per_trial.csv",
+        "format": "decode_tsv",
+        "online_series": "willett23_t12"
       },
       "Fan et al., 2023 (T5)": {
         "reproduction_source": null,
-        "selection": "Full-pipeline reproduction unavailable"
+        "selection": "Full-pipeline reproduction unavailable; released online output is not a reproduction"
       },
       "Card et al., 2024 (T15)": {
         "reproduction_source": "studies/20240815_card/results/20261017_bigru48k/bigru_opt_fx.tsv",
-        "selection": "BiGRU-48k, 41-session pooled WER"
+        "selection": "BiGRU-48k + OPT; same 14 online evaluation dates; trial sets differ",
+        "format": "decode_tsv",
+        "metadata_source": "studies/20240815_card/results/20261124_import_p4_archive/val_greedy_per_trial.csv",
+        "online_series": "card24_t15"
       },
       "Wairagkar et al., 2025 (T15)": {
         "reproduction_source": null,
-        "selection": "Continuous voice synthesis with acoustic metrics in Figure 2e"
+        "selection": "Continuous voice synthesis with acoustic metrics in Figure 2e",
+        "display_note": "WER n/r\n(voice; see e)"
       },
       "Kunz et al., 2025 (T12)": {
         "reproduction_source": "studies/20250821_kunz/results/20261124_import_opt_selected/t12_opt_fx.tsv",
-        "selection": "Archived subset; OPT weight was selected on its full evaluation set"
+        "selection": "OPT rescoring; weight selected on the archived evaluation set",
+        "format": "decode_tsv",
+        "metadata_source": "studies/20250821_kunz/results/20261124_import_t12_mixed/val_greedy_per_trial.csv",
+        "online_series": "kunz25_t12"
       },
       "Kunz et al., 2025 (T15)": {
         "reproduction_source": "studies/20250821_kunz/results/20261124_import_opt_selected/t15_opt_fx.tsv",
-        "selection": "Archived subset; OPT weight was selected on its full evaluation set"
+        "selection": "125k-word sessions only; OPT weight selected on the archived evaluation set",
+        "format": "decode_tsv",
+        "metadata_source": "studies/20250821_kunz/results/20261124_import_t15_mixed/val_greedy_per_trial.csv",
+        "vocab": "125kwords",
+        "online_series": "kunz25_t15"
       },
       "Kunz et al., 2025 (T16)": {
         "reproduction_source": "studies/20250821_kunz/results/20261124_import_opt_selected/t16_opt_fx.tsv",
-        "selection": "Archived subset; OPT weight was selected on its full evaluation set"
+        "selection": "125k-word sessions only; OPT weight selected on the archived evaluation set",
+        "format": "decode_tsv",
+        "metadata_source": "studies/20250821_kunz/results/20261124_import_t16_mixed/val_greedy_per_trial.csv",
+        "vocab": "125kwords",
+        "online_series": "kunz25_t16"
       },
       "Jude et al., 2026a (T17)": {
         "reproduction_source": "studies/20260316_jude/results/20261124_import_multisession/lm_decode_summary.json",
-        "selection": "Multisession typing decoder, T17"
+        "selection": "Multisession test-partition output on the online evaluation dates; trial sets differ",
+        "format": "typing_json",
+        "participant": "t17",
+        "online_series": "jude26a_t17"
       },
       "Jude et al., 2026a (T18)": {
         "reproduction_source": "studies/20260316_jude/results/20261124_import_multisession/lm_decode_summary.json",
-        "selection": "Multisession typing decoder, T18"
+        "selection": "Multisession test-partition output on the online evaluation dates; trial sets differ",
+        "format": "typing_json",
+        "participant": "t18",
+        "online_series": "jude26a_t18"
       },
       "Jude et al., 2026b (T17)": {
         "reproduction_source": "studies/20260428_jude/results/20261124_import_lis_decode/off_5g_opt_official.tsv",
-        "selection": "Conversational day-68 comparison"
+        "selection": "5-gram + OPT; same four online evaluation dates; trial sets differ",
+        "format": "decode_tsv",
+        "metadata_source": "studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv",
+        "online_series": "jude26b_t17"
       }
     }
   }

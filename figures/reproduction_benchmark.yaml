@@ -466,35 +466,29 @@ panel_e_repro_acoustic:
   note: null
 panel_f_repro_full_wer:
 - label: Willett et al., 2021 (T5)
-  ours: 10.0
-  ours_sd: 3.58
+  ours: 6.57
+  ours_sd: 3.55
   paper: 3.64
   paper_sd: 3.19
-  note: 'bigram
-
-    63-tr. pool'
+  note: HeldOutTrials bigram; same five online evaluation dates; trial sets differ
 - label: Willett et al., 2023 (T12)
-  ours: 23.58
-  ours_sd: 5.25
+  ours: 19.46
+  ours_sd: 3.82
   paper: 23.8
   paper_sd: 4.01
-  note: 'day med.
-
-    5-gram'
+  note: 5-gram + OPT; same five online evaluation dates; labeled test partition used for validation
 - label: Fan et al., 2023 (T5)
   ours: null
   ours_sd: null
   paper: 6.16
   paper_sd: null
-  note: 'Full-pipeline reproduction unavailable'
+  note: Full-pipeline reproduction unavailable; released online output is not a reproduction
 - label: Card et al., 2024 (T15)
-  ours: 6.25
-  ours_sd: 6.54
+  ours: 6.45
+  ours_sd: 6.2
   paper: 6.7
   paper_sd: 6.63
-  note: '41-s pool
-
-    biGRU-48k'
+  note: BiGRU-48k + OPT; same 14 online evaluation dates; trial sets differ
 - label: Wairagkar et al., 2025 (T15)
   ours: null
   ours_sd: null
@@ -505,46 +499,40 @@ panel_f_repro_full_wer:
     (voice; see e)'
 - label: Kunz et al., 2025 (T12)
   ours: 94.35
-  ours_sd: 0.0
+  ours_sd: null
   paper: 24.0
   paper_sd: 0.0
-  note: '50-w sess.
-
-    gap attr.'
+  note: OPT rescoring; weight selected on the archived evaluation set
 - label: Kunz et al., 2025 (T15)
-  ours: 78.07
-  ours_sd: 0.59
+  ours: 91.65
+  ours_sd: 1.71
   paper: 54.0
   paper_sd: 33.15
-  note: '125k
-
-    gap attr.'
+  note: 125k-word sessions only; OPT weight selected on the archived evaluation set
 - label: Kunz et al., 2025 (T16)
-  ours: 82.38
-  ours_sd: 0.0
+  ours: 105.61
+  ours_sd: null
   paper: 52.0
   paper_sd: 0.0
-  note: '125k
-
-    gap attr.'
+  note: 125k-word sessions only; OPT weight selected on the archived evaluation set
 - label: Jude et al., 2026a (T17)
-  ours: 11.41
-  ours_sd: 6.85
+  ours: 11.28
+  ours_sd: 6.67
   paper: 12.5
   paper_sd: 2.49
-  note: best 4.6%
+  note: Multisession test-partition output on the online evaluation dates; trial sets differ
 - label: Jude et al., 2026a (T18)
-  ours: 6.66
-  ours_sd: 3.67
+  ours: 7.61
+  ours_sd: 2.69
   paper: 7.0
   paper_sd: 2.38
-  note: best 0.0%; <7%
+  note: Multisession test-partition output on the online evaluation dates; trial sets differ
 - label: Jude et al., 2026b (T17)
-  ours: 44.37
-  ours_sd: 15.96
+  ours: 46.08
+  ours_sd: 22.3
   paper: 50.0
   paper_sd: 18.1
-  note: conv. day-68
+  note: 5-gram + OPT; same four online evaluation dates; trial sets differ
 panel_g_host_ram_walls:
 - category: Willett et al., 2021 (T5)
   official_gb: 56.0
@@ -708,34 +696,65 @@ figure2_bar_sources:
   2f:
     Willett et al., 2021 (T5):
       reproduction_source: studies/20210512_willett/results/20261124_import_handwriting_baselines/m3_own_decode_HeldOutTrials.csv
-      selection: HeldOutTrials with bigram decode
+      selection: HeldOutTrials bigram; same five online evaluation dates; trial sets differ
+      format: handwriting_csv
+      online_series: willett21_t5
     Willett et al., 2023 (T12):
-      reproduction_source: null
-      selection: Historical day median from the 5-gram pipeline, recorded in the benchmark
+      reproduction_source: studies/20230831_willett/results/20261124_import_btot24/wl_5g_opt_official.tsv
+      selection: 5-gram + OPT; same five online evaluation dates; labeled test partition used for validation
+      metadata_source: studies/20230831_willett/results/20261124_import_btot24/test_partition_greedy_per_trial.csv
+      format: decode_tsv
+      online_series: willett23_t12
     Fan et al., 2023 (T5):
       reproduction_source: null
-      selection: Full-pipeline reproduction unavailable
+      selection: Full-pipeline reproduction unavailable; released online output is not a reproduction
     Card et al., 2024 (T15):
       reproduction_source: studies/20240815_card/results/20261017_bigru48k/bigru_opt_fx.tsv
-      selection: BiGRU-48k, 41-session pooled WER
+      selection: BiGRU-48k + OPT; same 14 online evaluation dates; trial sets differ
+      format: decode_tsv
+      metadata_source: studies/20240815_card/results/20261124_import_p4_archive/val_greedy_per_trial.csv
+      online_series: card24_t15
     Wairagkar et al., 2025 (T15):
       reproduction_source: null
       selection: Continuous voice synthesis with acoustic metrics in Figure 2e
+      display_note: 'WER n/r
+
+        (voice; see e)'
     Kunz et al., 2025 (T12):
       reproduction_source: studies/20250821_kunz/results/20261124_import_opt_selected/t12_opt_fx.tsv
-      selection: Archived subset; OPT weight was selected on its full evaluation set
+      selection: OPT rescoring; weight selected on the archived evaluation set
+      format: decode_tsv
+      metadata_source: studies/20250821_kunz/results/20261124_import_t12_mixed/val_greedy_per_trial.csv
+      online_series: kunz25_t12
     Kunz et al., 2025 (T15):
       reproduction_source: studies/20250821_kunz/results/20261124_import_opt_selected/t15_opt_fx.tsv
-      selection: Archived subset; OPT weight was selected on its full evaluation set
+      selection: 125k-word sessions only; OPT weight selected on the archived evaluation set
+      format: decode_tsv
+      metadata_source: studies/20250821_kunz/results/20261124_import_t15_mixed/val_greedy_per_trial.csv
+      vocab: 125kwords
+      online_series: kunz25_t15
     Kunz et al., 2025 (T16):
       reproduction_source: studies/20250821_kunz/results/20261124_import_opt_selected/t16_opt_fx.tsv
-      selection: Archived subset; OPT weight was selected on its full evaluation set
+      selection: 125k-word sessions only; OPT weight selected on the archived evaluation set
+      format: decode_tsv
+      metadata_source: studies/20250821_kunz/results/20261124_import_t16_mixed/val_greedy_per_trial.csv
+      vocab: 125kwords
+      online_series: kunz25_t16
     Jude et al., 2026a (T17):
       reproduction_source: studies/20260316_jude/results/20261124_import_multisession/lm_decode_summary.json
-      selection: Multisession typing decoder, T17
+      selection: Multisession test-partition output on the online evaluation dates; trial sets differ
+      format: typing_json
+      participant: t17
+      online_series: jude26a_t17
     Jude et al., 2026a (T18):
       reproduction_source: studies/20260316_jude/results/20261124_import_multisession/lm_decode_summary.json
-      selection: Multisession typing decoder, T18
+      selection: Multisession test-partition output on the online evaluation dates; trial sets differ
+      format: typing_json
+      participant: t18
+      online_series: jude26a_t18
     Jude et al., 2026b (T17):
       reproduction_source: studies/20260428_jude/results/20261124_import_lis_decode/off_5g_opt_official.tsv
-      selection: Conversational day-68 comparison
+      selection: 5-gram + OPT; same four online evaluation dates; trial sets differ
+      format: decode_tsv
+      metadata_source: studies/20260428_jude/results/20261124_import_lis_decode/val_greedy_per_trial.csv
+      online_series: jude26b_t17

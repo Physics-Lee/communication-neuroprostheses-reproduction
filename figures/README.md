@@ -6,7 +6,7 @@ The [published bundle](results/20261124_repository_migration/) contains the figu
 | --- | --- |
 | 2a–b | Vocabulary estimates, released data counts, and their study annotations in the benchmark configuration. |
 | 2c–d | [Selected trials from the authors' online outputs](docs/20261124_evaluation_protocol/figure2cd.md), grouped by recording day. The voice-synthesis listener result is a paper-reported median. |
-| 2e–f | [Acoustic and full-pipeline comparison values](results/20261124_repository_migration/figure2ef_bars.csv). Check the selection and source columns before comparing results with Figure 3. |
+| 2e–f | [Acoustic and full-pipeline comparison values](results/20261124_repository_migration/figure2ef_bars.csv). The [daily reproduction counts](results/20261124_repository_migration/figure2f_daily.csv) reproduce the equal-day WER means and sample SDs in 2f. Check selection and source columns before comparing with Figure 3. |
 | 3a–b | [Matched offline evaluation points](results/20261124_repository_migration/figure3ab_session_points.csv). Each marker uses the same trials for greedy PER or CER and post-language-model WER. The table includes the available raw counts and the source of both axes. |
 | 3c–d | [Host RAM and GPU VRAM values](results/20261124_repository_migration/figure3cd_memory.csv) from the benchmark annotations. Per-run monitor records are still unlinked for historical values without a verified log. |
 

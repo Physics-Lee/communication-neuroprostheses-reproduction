@@ -14,6 +14,7 @@ from collections import defaultdict
 from datetime import date
 from math import isfinite
 from pathlib import Path
+import re
 from statistics import mean, stdev
 
 
@@ -248,6 +249,131 @@ def apply_online_wer_anchors(data):
             raise ValueError(f"Figure 2(c) is missing online WER for {source['label']}")
         target["paper"] = source["wer_mean"]
         target["paper_sd"] = source["wer_sd"]
+
+
+def _reproduction_trials(source):
+    """Read archived references and reproduced transcripts with session IDs.
+
+    Parameters
+    ----------
+    source : dict
+        Archive format, repository-relative paths, and optional participant
+        or vocabulary selection from the benchmark configuration.
+
+    Yields
+    ------
+    tuple of str
+        Recording session, reference text, and reproduced text. TSV rows
+        are linked to metadata only after checking their reference order.
+    """
+    from build_session_per_vs_wer import norm_words
+
+    path = ROOT / source["reproduction_source"]
+    if source["format"] == "typing_json":
+        with path.open(encoding="utf-8") as stream:
+            sessions = json.load(stream)[source["participant"]]
+        for session, record in sessions.items():
+            if len(record["trials"]) != record["n_trials"]:
+                raise ValueError(f"Typing trial-count mismatch in {session}")
+            for trial in record["trials"]:
+                yield session, trial["ref"], trial["hyp"]
+    elif source["format"] == "handwriting_csv":
+        seen = set()
+        with path.open(encoding="utf-8", newline="") as stream:
+            for row in csv.DictReader(stream):
+                key = row["session"], row["sidx"]
+                if key in seen:
+                    raise ValueError(f"Duplicate handwriting trial {key}")
+                seen.add(key)
+                yield row["session"], row["trueText"], row["decText"]
+    elif source["format"] == "decode_tsv":
+        metadata = ROOT / source["metadata_source"]
+        with path.open(encoding="utf-8", newline="") as decoded, metadata.open(
+            encoding="utf-8", newline=""
+        ) as meta:
+            seen = set()
+            for row, trial in zip(csv.DictReader(decoded, delimiter="\t"),
+                                  csv.DictReader(meta), strict=True):
+                if row["key"] in seen:
+                    raise ValueError(f"Duplicate decode key {row['key']} in {path}")
+                seen.add(row["key"])
+                if norm_words(row["ref"]) != norm_words(trial["sentence_label"]):
+                    raise ValueError(f"Reproduction/reference order mismatch in {path}")
+                if source.get("vocab") and trial["vocab"] != source["vocab"]:
+                    continue
+                yield trial["session"], row["ref"], row["hyp"]
+    else:
+        raise ValueError(f"Unknown Figure 2f archive format: {source['format']}")
+
+
+def apply_reproduction_metrics(data):
+    """Recompute Figure 2f offline WER from archived word-error counts.
+
+    Parameters
+    ----------
+    data : dict
+        Benchmark configuration with ``figure2_bar_sources['2f']`` and
+        ``panel_f_repro_full_wer``. Reproduction values are updated in place.
+
+    Notes
+    -----
+    References and hypotheses use the same normalization as online WER.
+    Word errors are pooled within each day; bars and whiskers are equal-day
+    means and sample SDs. A single day has no SD. Each available reproduction
+    must cover exactly the online evaluation dates; trial sets may differ.
+    Missing full-pipeline reproductions remain unavailable.
+    Daily counts, dates, and pooled WER are retained for source inspection.
+    """
+    from build_session_per_vs_wer import norm_words, word_ed
+
+    sources = data.get("figure2_bar_sources", {}).get("2f")
+    if sources is None:
+        return
+    online = summarize_daily(ROOT / data["panel_cd_daily_csv"])
+    for row in data["panel_f_repro_full_wer"]:
+        source = sources[row["label"]]
+        if not source["reproduction_source"]:
+            row.update(ours=None, ours_sd=None, ours_days=0, ours_trials=0,
+                       ours_daily=[], ours_pooled=None,
+                       note=source.get("display_note", source["selection"]))
+            continue
+        if not source.get("online_series"):
+            raise ValueError(f"Missing online evaluation date binding for {row['label']}")
+        selected_dates = set(online[source["online_series"]]["wer_dates"])
+        counts = defaultdict(lambda: {"trials": 0, "word_errors": 0,
+                                      "reference_words": 0})
+        for session, reference, hypothesis in _reproduction_trials(source):
+            match = re.search(r"(\d{4})[.-](\d{2})[.-](\d{2})", session)
+            if match is None:
+                raise ValueError(f"Missing recording date in {session}")
+            day = "-".join(match.groups())
+            if day not in selected_dates:
+                continue
+            if not norm_words(reference):
+                raise ValueError(f"Empty normalized reproduction reference in {session}")
+            errors, words = word_ed(reference, hypothesis)
+            count = counts[day]
+            count["trials"] += 1
+            count["word_errors"] += errors
+            count["reference_words"] += words
+        if not counts:
+            raise ValueError(f"No selected reproduction trials for {row['label']}")
+        if set(counts) != selected_dates:
+            missing = sorted(selected_dates - set(counts))
+            raise ValueError(f"Reproduction dates do not match online dates for "
+                             f"{row['label']}; missing: {missing}")
+        daily = [{"day": day, **count,
+                  "wer_pct": 100 * count["word_errors"] / count["reference_words"]}
+                 for day, count in sorted(counts.items())]
+        rates = [day["wer_pct"] for day in daily]
+        row.update(
+            ours=mean(rates), ours_sd=stdev(rates) if len(rates) > 1 else None,
+            ours_days=len(daily), ours_trials=sum(d["trials"] for d in daily),
+            ours_daily=daily,
+            ours_pooled=100 * sum(d["word_errors"] for d in daily)
+            / sum(d["reference_words"] for d in daily),
+            note=source["selection"],
+        )
 
 
 def main():

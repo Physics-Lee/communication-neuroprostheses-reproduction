@@ -132,3 +132,12 @@ The research archive’s `vac/t12_opt_fx.tsv`, `vac/t15_opt_fx.tsv`, and `vac/t1
 | T16 | 332 / 403 words = 82.38% (85 trials) | 35 | 105.61% |
 
 The earlier T15 and T16 pooled totals each include 50 trials from an additional 50-word session. The paired results use the large-vocabulary blocks selected for panel (c). A second T15 rescoring file, `t15a0325_opt_fx.tsv`, ties at 420 / 538 words on the full archive. The comparison here uses the original report’s 0.55-weight configuration saved in `t15_opt_fx.tsv`.
+
+
+## Figure 2(f) reproduced WER
+
+The reproduction bars now use the same word normalization and aggregation as online WER: case-fold and remove token punctuation except apostrophes, sum word edits and reference words within a recording date, then take the equal-day mean and sample SD. Single-day results have no SD. The daily reproduction counts are exported as `figure2f_daily.csv`; the source files, metadata joins, vocabulary filters, and date selections are configured in `figure2_bar_sources.2f` in the benchmark YAML. Rendering recomputes the values from those archives.
+
+Every available offline arm is restricted to exactly the online evaluation dates from panel (c). The `online_series` binding is mandatory, and the renderer raises an error if any selected date is missing. Trial sets within a date can still differ. Willett 2021 uses five dates (33 HeldOutTrials), Willett 2023 five dates (200 trials), Card 14 dates (514 BiGRU trials), and Jude 2026b four dates (131 trials). Jude 2026a uses six T17 dates (104 trials) and seven T18 dates (140 trials). Kunz T12 uses one 50-word date (100 trials), while T15 and T16 use their two and one 125k-word dates (55 and 35 trials). The archived Kunz OPT weights were selected on the scored evaluation set, so those results are validation-selected. The source counts retain every actual date, rather than checking only the number of days.
+
+Fan's former 4.10% entry scored the authors' online output and is unavailable as an independent full-pipeline reproduction. Wairagkar has no reproduced text WER. The historical Willett 2023 and Jude 2026b values have been replaced with explicitly linked 5-gram + OPT archives filtered to the online dates. The common text normalization also removes punctuation-only tokens from the Willett 2021 archive. The T17 typing archive also counted an empty token from repeated whitespace; the common normalization removes that inconsistency.
