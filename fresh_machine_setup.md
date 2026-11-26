@@ -103,7 +103,19 @@ Fresh post-LM WER is the one metric that does not exist without the WSL toolchai
 
 ## 5. How did the paper split the test set, how does my reproduction split it, and how do the two WERs compare?
 
-Short answer: **the paper's split ships inside its data release, the reproduction reuses it by construction, and the two WERs are comparable when the trials and the training length match.** The three sub-questions, each with where the answer lives:
+> **⚠️ Before quoting any paper-vs-reproduction WER comparison: "same test set" means same sessions *and* same trials — every individual trial, in the same order. Matching recording dates alone is NOT enough.** Verify the trial lists below first.
+
+**Where to verify, per study — two tracked CSVs under `data/splits/`, plus one machine check:**
+
+| Check | Where | What to compare |
+| --- | --- | --- |
+| Trials the archived score covered | `<release>__archived_evaluation.csv` (one row per scored trial: session, trial id, archive row, reference text) | your fresh `trials.csv` — session + reference text must match **row for row, in order** |
+| The paper's own train/test assignment | the study's partition manifest (e.g. `<release>__validation_blocks.csv`, `__train_test_partitions.csv`; names listed in that folder's `README.md`), keyed by `trial_id` | your run's `train_val_trials.json` — its eval trial IDs must be this manifest's eval rows |
+| **Automated check (use this)** | `python studies/<study>/code/build_split_manifest.py` | **fails** unless the exported evaluation trials equal the archived evaluation rows in content and order — run it instead of eyeballing |
+
+The machine check is how the acceptance run itself confirmed trial-level equality (e.g. Jude 2026b: 417/417 rows identical in session and reference text). Each `data/splits/README.md` documents its study's columns, and each study's evaluation protocol (`studies/<study>/docs/20261124_evaluation_protocol/`) states which trials the paper's figure scores.
+
+Short answer to the rest: **the paper's split ships inside its data release, the reproduction reuses it by construction, and the two WERs are comparable when the trial lists and the training length match.** The three sub-questions, each with where the answer lives:
 
 | Sub-question | Answer | Where to look |
 | --- | --- | --- |
