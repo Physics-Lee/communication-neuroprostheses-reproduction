@@ -1,0 +1,46 @@
+study: "20240815_card"
+source: https://doi.org/10.5061/dryad.dncjsxm85
+scope: Offline end-to-end reproduction on mapped Figure 2 recordings only
+input: native Dryad neural HDF5 features
+trial_linkage: Unique cue and chronology anchors; otherwise forced frame-count and chronology matches
+target_trials: 1628
+mapped_trials: 1617
+unresolved_trials: 11
+training:
+  architecture: upstream five-layer GRU with day-specific input layers
+  checkpoint_initialization: random
+  training_trials: 7007
+  checkpoint_selection_trials: 1085
+  selection_metric: Lowest validation PER, breaking ties by loss
+  split: Exclude whole anchor blocks and blocks containing unlabeled candidates from train and validation
+  optimizer_steps: 12000
+  measured_training_minutes: 179.43
+  best_validation_per: 0.13827
+  validation_interval: 1000
+  micro_batch_size: 16
+  gradient_accumulation_steps: 4
+  seed: 10
+  adaptation: none
+  chronology: Offline training includes dates later than the evaluation dates
+decoder:
+  implementation: shared/tools/wenet_lattice.cc
+  graph: indexed 125k-word Brain-to-Text 5-gram TLG.fst
+  acoustic_scale: 0.325
+  blank_penalty: 90
+  beam: 17
+  lattice_beam: 8
+  max_active: 7000
+  min_active: 200
+  nbest: 1
+  skip_threshold: 1
+  rescoring: none
+  measured_decode_seconds: 1210.0
+artifacts:
+  test_manifest: cohort.csv
+  unresolved_online_trials: unresolved.csv
+  train_and_validation_roles: partitions.csv
+  split_counts: split_summary.json
+  decoder_output: final.tsv
+  scored_trials: trials.csv
+  daily_counts: daily.csv
+  metrics: summary.json

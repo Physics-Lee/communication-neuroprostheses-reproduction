@@ -10,5 +10,5 @@ from study_commands import run_command
 if __name__ == "__main__":
     raise SystemExit(run_command(
         __file__, "dump_logits_fixed.py",
-        "RUN_DIRECTORY [gru|bigru]",
+        "RUN_DIRECTORY [gru|bigru] [--manifest CSV --manifest-output PATH] [--neural-root PATH]",
     ))

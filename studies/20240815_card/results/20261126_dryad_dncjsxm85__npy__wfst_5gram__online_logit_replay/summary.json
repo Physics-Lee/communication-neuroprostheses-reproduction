@@ -1,0 +1,17 @@
+{
+  "trials": 1628,
+  "days": 14,
+  "reference_words": 10337,
+  "authors_online": {
+    "edits": 465,
+    "pooled_wer_pct": 4.498403792202767,
+    "mean_daily_wer_pct": 4.873551646842313,
+    "sample_sd_pp": 3.287549006045797
+  },
+  "wfst_replay": {
+    "edits": 586,
+    "pooled_wer_pct": 5.668956176840476,
+    "mean_daily_wer_pct": 5.692262936908288,
+    "sample_sd_pp": 1.69738991115415
+  }
+}

@@ -10,5 +10,5 @@ from study_commands import run_command
 if __name__ == "__main__":
     raise SystemExit(run_command(
         __file__, "train_btot25.py",
-        "BATCHES RUN_DIRECTORY [VALIDATION_INTERVAL [ACCUMULATION_STEPS]]",
+        "BATCHES RUN_DIRECTORY [VALIDATION_INTERVAL [ACCUMULATION_STEPS]] [--split-view PATH]",
     ))

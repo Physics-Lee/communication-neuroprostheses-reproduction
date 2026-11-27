@@ -18,6 +18,7 @@ Usage: train_btot25.py <optimizer_batches> <output_root> [val_every_opt_steps=20
 """
 
 import sys
+import argparse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "shared"))
@@ -61,9 +62,15 @@ def main():
         If the official 45-session / 41-val-day split is not found in the
         yaml, or if ``accum`` does not divide the official batch size 64.
     """
-    n_opt_batches, out_root = int(sys.argv[1]), sys.argv[2]
-    val_every = int(sys.argv[3]) if len(sys.argv) > 3 else 2000
-    accum = int(sys.argv[4]) if len(sys.argv) > 4 else 2
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("n_opt_batches", type=int)
+    parser.add_argument("out_root")
+    parser.add_argument("val_every", type=int, nargs="?", default=2000)
+    parser.add_argument("accum", type=int, nargs="?", default=2)
+    parser.add_argument("--split-view", type=Path, help="Isolated train/val HDF5 directory")
+    cli = parser.parse_args()
+    n_opt_batches, out_root, val_every, accum = (
+        cli.n_opt_batches, cli.out_root, cli.val_every, cli.accum)
 
     args = OmegaConf.load(study_path("20240815_card", 'open_source_code_for_reference/nejm-brain-to-text/model_training/rnn_args.yaml'))
     args.gpu_number = "0"
@@ -79,7 +86,11 @@ def main():
     args.save_val_logits = False
     args.gradient_accumulation_steps = accum
     args.dataset.dataset_dir = DATA_DIR
-    # sessions / dataset_probability_val stay from the official yaml
+    if cli.split_view is not None:
+        view = cli.split_view.resolve(strict=True)
+        args.dataset.dataset_dir = str(view)
+        args.dataset.dataset_probability_val = [
+            int((view / s / "data_val.hdf5").is_file()) for s in args.dataset.sessions]
     args.dataset.num_dataloader_workers = 0
     args.dataset.batch_size = 64 // accum
 
@@ -88,7 +99,7 @@ def main():
     print(f"sessions: {n_sess} (val days: {n_val}) | optimizer batches: {n_opt_batches}"
           f" | micro-batch {args.dataset.batch_size} x accum {accum}"
           f" | val every {val_every} opt-steps")
-    assert n_sess == 45 and n_val == 41, "official 45-session split not found"
+    assert n_sess == 45 and (n_val > 0 if cli.split_view else n_val == 41), "invalid split"
     assert 64 % accum == 0, "accum must divide the official batch size 64"
     trainer = BrainToTextDecoder_Trainer(args)
     trainer.train()

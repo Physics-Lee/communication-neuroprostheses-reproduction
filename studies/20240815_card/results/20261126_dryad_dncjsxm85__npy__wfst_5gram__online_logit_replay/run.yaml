@@ -1,0 +1,30 @@
+study: "20240815_card"
+source: https://doi.org/10.5061/dryad.dncjsxm85
+input: t15_copyTask.pkl
+cohort: Released 125000-word copy-task trials on the 14 Figure 2 / Table S3 dates
+trial_key: Zero-based row of the authors' pickle
+acoustic_model: Authors' released online logits; no new acoustic training or selection
+decoder:
+  implementation: shared/tools/wenet_lattice.cc
+  graph: Willett Brain-to-Text 5-gram TLG.fst (indexed, mmap)
+  acoustic_scale: 0.325
+  blank_penalty: 90
+  beam: 17
+  lattice_beam: 8
+  max_active: 7000
+  min_active: 200
+  nbest: 1
+  skip_threshold: 1
+  rescoring: none
+evaluation:
+  references: Released cue_sentence, checked against each re-decoded row
+  comparator: Released decoded_sentence
+  normalization: figures/code/extract_online_trials.py words()
+  aggregation: Within-day total edits divided by words; equal-day mean and sample SD; pooled WER separately
+artifacts:
+  cohort: cohort.csv
+  neural_linkage_audit: neural_linkage.csv
+  decoder_output: final.tsv
+  scored_trials: trials.csv
+  daily_counts: daily.csv
+  metrics: summary.json

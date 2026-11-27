@@ -104,6 +104,8 @@ Figures: plot_btot25.py, plot_card24_figs.py, plot_card24_scopes.py,
 | `tools/prep_rescore_for_wereval.py` | Uppercases the hyp column of `opt_rescore` TSVs so `wer_eval_card.py` scores them correctly. |
 | `tools/p4_track.py` | Live tracker comparing the P4 from-scratch run against `run_120k` (parses trainer logs; safe to re-run). |
 | `wer_eval_card.py` | Paper-style WER evaluation of word-decode TSVs (pooled + bootstrap CI, session/corpus breakdowns). |
+| `replay_online_wer.py` | Exports the authors' Figure 2 acoustic logits for same-trial WFST replay, audits linkage to the neural release, and scores both decoders. |
+| `reproduce_neural_wer.py` | Freezes a Figure 2 neural trial manifest and builds a block-disjoint HDF5 train/validation view for a from-scratch GRU run. |
 | `tools/p4_runbook_20261013.md` | Runbook for the P4 endpoint decode. |
 
 ### Figures
