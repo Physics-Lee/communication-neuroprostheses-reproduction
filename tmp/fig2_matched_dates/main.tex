@@ -796,24 +796,24 @@ open-data datasets (11 participant splits).}
 Text WERs are equal-day means $\pm$ sample SD of daily WERs
 ($100\times$ word edits/reference words; SD denominator $N-1$ for $N$ days).
 Single-day SD is omitted. Online and reproduced WERs use the same evaluation
-dates; trial sets differ. Reproduced WER is after language modeling.
-Voice WER is a listener median.}
+dates; the eval-sent columns quantify how the evaluated sentence sets differ (Kunz rows coincide). Reproduced WER is after language modeling.
+Voice WER is a listener median. Released blocks counts the experimental blocks in each release (---, none defined). Online eval sents counts the released sentences scored behind the online columns (voice: the 90 listener-transcription trials); reproduced eval sents counts archived offline sentences on the same dates (---, none).}
 \label{tab:repro}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.50cm}lrrrlll@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.50cm}lrrrrlllrr@{}}
 \toprule
-Study & Participant & \shortstack[r]{Released\\sentences} & \shortstack[r]{Total\\recording\\days} & \shortstack[r]{Online\\evaluation\\days} & \shortstack[l]{Online speed\\(words/min)} & \shortstack[l]{Online WER\\(\%)} & \shortstack[l]{Reproduced\\WER (\%)} \\
+Study & Participant & \shortstack[r]{Released\\sentences} & \shortstack[r]{Released\\blocks} & \shortstack[r]{Released\\recording\\days} & \shortstack[r]{Released\\online eval\\days} & \shortstack[l]{Online speed\\(words/min)} & \shortstack[l]{Online WER\\(\%)} & \shortstack[l]{Reproduced\\WER (\%)} & \shortstack[r]{Online eval\\sents} & \shortstack[r]{Reproduced eval\\sents} \\
 \midrule
-Willett et al., 2021 \cite{willett2021} & T5 & 1{,}000 & 10 & 5 & $15.4{\pm}2.2$ & $23.9{\pm}8.4$ & $6.57{\pm}3.55$ \\
-Willett et al., 2023 \cite{willett2023} & T12 & 9{,}680 & 24 & 5 & $65.3{\pm}0.9$ & $23.8{\pm}1.8$ & $19.46{\pm}3.82$ \\
-Fan et al., 2023 \cite{fan2023} & T5 & 1{,}315 & 21 & 10 & $14.6{\pm}2.2$ & $4.0{\pm}1.2$ & --- \\
-Card et al., 2024 \cite{card2024} & T15 & 9{,}498 & 45 & 14 & $32.5{\pm}2.7$ & $4.9{\pm}3.3$ & $6.45{\pm}6.20$ \\
-Wairagkar et al., 2025 \cite{wairagkar2025} & T15 & 8{,}489 & 37 & 8 & --- & 43.8 & --- \\
-Kunz et al., 2025 \cite{kunz2025} & T12 & 500 & 1 & 1 & --- & 22.9 & 94.35 \\
-Kunz et al., 2025 \cite{kunz2025} & T15 & 720 & 3 & 2 & --- & $43.3{\pm}23.8$ & $91.65{\pm}1.71$ \\
-Kunz et al., 2025 \cite{kunz2025} & T16 & 450 & 2 & 1 & --- & 44.4 & 105.61 \\
-Jude et al., 2026a \cite{jude2026typing} & T17 & 668 & 8 & 6 & $6.8{\pm}1.8$ & $10.5{\pm}3.1$ & $11.28{\pm}6.67$ \\
-Jude et al., 2026a \cite{jude2026typing} & T18 & 1{,}033 & 9 & 7 & $14.0{\pm}4.5$ & $3.5{\pm}0.6$ & $7.61{\pm}2.69$ \\
-Jude et al., 2026b \cite{jude2026lis} & T17 & 3{,}674 & 13 & 4 & $34.1{\pm}7.7$ & $66.5{\pm}18.1$ & $46.08{\pm}22.30$ \\
+Willett et al., 2021 \cite{willett2021} & T5 & 1{,}000 & 95 & 10 & 5 & $15.4{\pm}2.2$ & $23.9{\pm}8.4$ & $6.57{\pm}3.55$ & 163 & 33 \\
+Willett et al., 2023 \cite{willett2023} & T12 & 9{,}680 & 275 & 24 & 5 & $65.3{\pm}0.9$ & $23.8{\pm}1.8$ & $19.46{\pm}3.82$ & 400 & 200 \\
+Fan et al., 2023 \cite{fan2023} & T5 & 1{,}315 & 105 & 21 & 10 & $14.6{\pm}2.2$ & $4.0{\pm}1.2$ & --- & 377 & --- \\
+Card et al., 2024 \cite{card2024} & T15 & 9{,}498 & 265 & 45 & 14 & $32.5{\pm}2.7$ & $4.9{\pm}3.3$ & $6.45{\pm}6.20$ & 1{,}628 & 514 \\
+Wairagkar et al., 2025 \cite{wairagkar2025} & T15 & 8{,}489 & --- & 37 & 8 & --- & 43.8 & --- & 90 & --- \\
+Kunz et al., 2025 \cite{kunz2025} & T12 & 500 & 12 & 1 & 1 & --- & 22.9 & 94.35 & 100 & 100 \\
+Kunz et al., 2025 \cite{kunz2025} & T15 & 720 & 18 & 3 & 2 & --- & $43.3{\pm}23.8$ & $91.65{\pm}1.71$ & 55 & 55 \\
+Kunz et al., 2025 \cite{kunz2025} & T16 & 450 & 14 & 2 & 1 & --- & 44.4 & 105.61 & 35 & 35 \\
+Jude et al., 2026a \cite{jude2026typing} & T17 & 668 & 47 & 8 & 6 & $6.8{\pm}1.8$ & $10.5{\pm}3.1$ & $11.28{\pm}6.67$ & 161 & 104 \\
+Jude et al., 2026a \cite{jude2026typing} & T18 & 1{,}033 & 89 & 9 & 7 & $14.0{\pm}4.5$ & $3.5{\pm}0.6$ & $7.61{\pm}2.69$ & 580 & 140 \\
+Jude et al., 2026b \cite{jude2026lis} & T17 & 3{,}674 & 96 & 13 & 4 & $34.1{\pm}7.7$ & $66.5{\pm}18.1$ & $46.08{\pm}22.30$ & 469 & 131 \\
 \bottomrule
 \end{tabular}
 \end{table}

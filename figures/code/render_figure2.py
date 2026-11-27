@@ -3028,33 +3028,29 @@ def _build_fig6_svg(verify_overlaps=True):
     # 2026-11-16 supp_fig_1 sync: "v1.0 Voiceformer"/"v2.0 Transformer" block
     # titles rewritten as plain "2-block Transformer"/"8-layer Transformer"
     # (version identity moved to the row-head labels "Brain-to-Voice 1.0
-    # (2025)"/"2.0 (2026)"; the cryptic right-edge "1.0"/"2.0" tags removed)
-    # and the input merge-bus replaced by four explicit TX/SBP elbow mappings
-    # so each row visibly receives both inputs.
+    # (2025)"/"2.0 (2026)"; the cryptic right-edge "1.0"/"2.0" tags removed).
     svg_block(ax_b, 0.4, 19.6, 17.3, 7.6, "Threshold Crossings", "10-ms bins",
               title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
               tip="Tier 1 (language-agnostic): 10-ms binned threshold crossings + spike-band power from ventral precentral gyrus (vPCG, 256 channels, T15).")
     svg_block(ax_b, 0.4, 9.3, 17.3, 7.6, "Spike Band Power", "10-ms bins",
               title_fs=8.0, sub_fs=6.7, tier="1", f6_map="d",
               tip="Tier 1 (language-agnostic): 10-ms binned threshold crossings + spike-band power from ventral precentral gyrus (vPCG, 256 channels, T15).")
-    # Four explicit input mappings: the two feature streams each feed BOTH
-    # rows -- v1.0 has two inputs, v2.0 the same two -- drawn as four
-    # individually traceable elbow lines (a single forced TX x SBP crossing)
+    # Four explicit input arrows (2026-11-27): each feature stream feeds BOTH
+    # rows, drawn as four individually traceable arrows instead of the former
+    # shared vertical trunks (user: "画四个箭头：左上->右上, 左上->右下,
+    # 左下->右上, 左下->右下"). The same-row arrows (TX -> 1.0, SBP -> 2.0)
+    # run straight into their same-height entries; the two cross-row arrows
+    # form one symmetric TX x SBP crossing in the gap between the columns:
+    #   top-left -> top-right, top-left -> bottom-right,
+    #   bottom-left -> top-right, bottom-left -> bottom-right
     x_in_b = 0.4 + 17.3 + pad
-    x_trunk_tx, x_trunk_sbp = 19.6, 20.6
     x_dst_b = 22.8 - pad
-    y_v1_hi, y_v1_lo = 25.1, 21.7   # two entry heights on the 1.0 row block
-    y_v2_hi, y_v2_lo = 14.5, 11.7   # two entry heights on the 2.0 row block
-    # Threshold Crossings -> upper entry of both rows
-    svg_poly(ax_b, [(x_in_b, y_v1), (x_trunk_tx, y_v1)])
-    svg_poly(ax_b, [(x_trunk_tx, y_v2_hi), (x_trunk_tx, y_v1_hi)])
-    svg_arr(ax_b, (x_trunk_tx, y_v1_hi), (x_dst_b, y_v1_hi))
-    svg_arr(ax_b, (x_trunk_tx, y_v2_hi), (x_dst_b, y_v2_hi))
-    # Spike Band Power -> lower entry of both rows
-    svg_poly(ax_b, [(x_in_b, y_v2), (x_trunk_sbp, y_v2)])
-    svg_poly(ax_b, [(x_trunk_sbp, y_v2_lo), (x_trunk_sbp, y_v1_lo)])
-    svg_arr(ax_b, (x_trunk_sbp, y_v1_lo), (x_dst_b, y_v1_lo))
-    svg_arr(ax_b, (x_trunk_sbp, y_v2_lo), (x_dst_b, y_v2_lo))
+    y_v1_hi, y_v1_lo = 25.1, 21.7   # entry heights on the 1.0 row block
+    y_v2_hi, y_v2_lo = 14.5, 11.7   # entry heights on the 2.0 row block
+    svg_arr(ax_b, (x_in_b, y_v1_hi), (x_dst_b, y_v1_hi))   # TX -> v1.0
+    svg_arr(ax_b, (x_in_b, y_v1_lo), (x_dst_b, y_v2_hi))   # TX -> v2.0
+    svg_arr(ax_b, (x_in_b, y_v2_hi), (x_dst_b, y_v1_lo))   # SBP -> v1.0
+    svg_arr(ax_b, (x_in_b, y_v2_lo), (x_dst_b, y_v2_lo))   # SBP -> v2.0
 
     # Top row: v1.0 (2025) separate pipeline
     # Acoustic Head = Tier 2 worst-case (needs recorded audio for DTW training when TTS is absent)
@@ -3765,29 +3761,32 @@ document.documentElement.classList.add('js');</script>
     <p class="cohort-sub">
       <b>Table 2. Released data and decoding performance across eight open-data datasets (11 participant splits).</b>
       Text WERs are equal-day means ± sample SD of daily WERs (100 × word edits/reference words; SD denominator N − 1 for N days). Single-day SD is omitted.
-      Online and reproduced WERs use the same evaluation dates; trial sets differ. Reproduced WER is after language modeling. Voice WER is a listener median.
+      Online and reproduced WERs use the same evaluation dates; the eval-sent columns quantify how the evaluated sentence sets differ (Kunz rows coincide). Reproduced WER is after language modeling. Voice WER is a listener median.
+      Released blocks counts the experimental blocks in each release (—, none defined). Online eval sents counts the released sentences scored behind the online columns (voice: the 90 listener-transcription trials); reproduced eval sents counts archived offline sentences on the same dates (—, none).
     </p>
+    <!-- Eval-sent counts: per-study sums of figure2cd_daily.csv (wer_trials) and figure2f_daily.csv (trials), audited 2026-11-27; Wairagkar's 90 is the published listener-transcription cohort. -->
     <table class="cohort-tbl" aria-label="Table 2: Reproduction benchmark values">
       <thead>
         <tr>
-          <th scope="col">Study</th><th scope="col">Participant</th><th scope="col">Released<br>sentences</th>
-          <th scope="col">Total<br>recording days</th><th scope="col">Online<br>evaluation days</th>
+          <th scope="col">Study</th><th scope="col">Participant</th><th scope="col">Released<br>sentences</th><th scope="col">Released<br>blocks</th>
+          <th scope="col">Released<br>recording days</th><th scope="col">Released<br>online eval days</th>
           <th scope="col">Online speed<br>(words/min)</th><th scope="col">Online WER<br>(%)</th>
           <th scope="col">Reproduced<br>WER (%)</th>
+          <th scope="col">Online eval<br>sents</th><th scope="col">Reproduced eval<br>sents</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="repro-row" data-id="willett2021"><td>Willett et al., 2021 [9]</td><td>T5</td><td>1,000</td><td>10</td><td>5</td><td>15.4±2.2</td><td>23.9±8.4</td><td>6.57±3.55</td></tr>
-        <tr class="repro-row" data-id="willett2023"><td>Willett et al., 2023 [4]</td><td>T12</td><td>9,680</td><td>24</td><td>5</td><td>65.3±0.9</td><td>23.8±1.8</td><td>19.46±3.82</td></tr>
-        <tr class="repro-row" data-id="fan2023"><td>Fan et al., 2023 [10]</td><td>T5</td><td>1,315</td><td>21</td><td>10</td><td>14.6±2.2</td><td>4.0±1.2</td><td>—</td></tr>
-        <tr class="repro-row" data-id="card2024"><td>Card et al., 2024 [1]</td><td>T15</td><td>9,498</td><td>45</td><td>14</td><td>32.5±2.7</td><td>4.9±3.3</td><td>6.45±6.20</td></tr>
-        <tr class="repro-row" data-id="wairagkar2025"><td>Wairagkar et al., 2025 [6]</td><td>T15</td><td>8,489</td><td>37</td><td>8</td><td>—</td><td>43.8</td><td>—</td></tr>
-        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T12</td><td>500</td><td>1</td><td>1</td><td>—</td><td>22.9</td><td>94.35</td></tr>
-        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T15</td><td>720</td><td>3</td><td>2</td><td>—</td><td>43.3±23.8</td><td>91.65±1.71</td></tr>
-        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T16</td><td>450</td><td>2</td><td>1</td><td>—</td><td>44.4</td><td>105.61</td></tr>
-        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T17</td><td>668</td><td>8</td><td>6</td><td>6.8±1.8</td><td>10.5±3.1</td><td>11.28±6.67</td></tr>
-        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T18</td><td>1,033</td><td>9</td><td>7</td><td>14.0±4.5</td><td>3.5±0.6</td><td>7.61±2.69</td></tr>
-        <tr class="repro-row" data-id="jude2026b"><td>Jude et al., 2026b [7]</td><td>T17</td><td>3,674</td><td>13</td><td>4</td><td>34.1±7.7</td><td>66.5±18.1</td><td>46.08±22.30</td></tr>
+        <tr class="repro-row" data-id="willett2021"><td>Willett et al., 2021 [9]</td><td>T5</td><td>1,000</td><td>95</td><td>10</td><td>5</td><td>15.4±2.2</td><td>23.9±8.4</td><td>6.57±3.55</td><td>163</td><td>33</td></tr>
+        <tr class="repro-row" data-id="willett2023"><td>Willett et al., 2023 [4]</td><td>T12</td><td>9,680</td><td>275</td><td>24</td><td>5</td><td>65.3±0.9</td><td>23.8±1.8</td><td>19.46±3.82</td><td>400</td><td>200</td></tr>
+        <tr class="repro-row" data-id="fan2023"><td>Fan et al., 2023 [10]</td><td>T5</td><td>1,315</td><td>105</td><td>21</td><td>10</td><td>14.6±2.2</td><td>4.0±1.2</td><td>—</td><td>377</td><td>—</td></tr>
+        <tr class="repro-row" data-id="card2024"><td>Card et al., 2024 [1]</td><td>T15</td><td>9,498</td><td>265</td><td>45</td><td>14</td><td>32.5±2.7</td><td>4.9±3.3</td><td>6.45±6.20</td><td>1,628</td><td>514</td></tr>
+        <tr class="repro-row" data-id="wairagkar2025"><td>Wairagkar et al., 2025 [6]</td><td>T15</td><td>8,489</td><td>—</td><td>37</td><td>8</td><td>—</td><td>43.8</td><td>—</td><td>90</td><td>—</td></tr>
+        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T12</td><td>500</td><td>12</td><td>1</td><td>1</td><td>—</td><td>22.9</td><td>94.35</td><td>100</td><td>100</td></tr>
+        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T15</td><td>720</td><td>18</td><td>3</td><td>2</td><td>—</td><td>43.3±23.8</td><td>91.65±1.71</td><td>55</td><td>55</td></tr>
+        <tr class="repro-row" data-id="kunz2025"><td>Kunz et al., 2025 [12]</td><td>T16</td><td>450</td><td>14</td><td>2</td><td>1</td><td>—</td><td>44.4</td><td>105.61</td><td>35</td><td>35</td></tr>
+        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T17</td><td>668</td><td>47</td><td>8</td><td>6</td><td>6.8±1.8</td><td>10.5±3.1</td><td>11.28±6.67</td><td>161</td><td>104</td></tr>
+        <tr class="repro-row" data-id="jude2026a"><td>Jude et al., 2026a [8]</td><td>T18</td><td>1,033</td><td>89</td><td>9</td><td>7</td><td>14.0±4.5</td><td>3.5±0.6</td><td>7.61±2.69</td><td>580</td><td>140</td></tr>
+        <tr class="repro-row" data-id="jude2026b"><td>Jude et al., 2026b [7]</td><td>T17</td><td>3,674</td><td>96</td><td>13</td><td>4</td><td>34.1±7.7</td><td>66.5±18.1</td><td>46.08±22.30</td><td>469</td><td>131</td></tr>
       </tbody>
     </table>
   </div>
