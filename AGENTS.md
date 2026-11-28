@@ -36,7 +36,7 @@ This repository reproduces **8 open-data intracortical speech, typing, and handw
 | [`figures/`](figures) | Benchmark configuration, figure notebook, renderers, and dated release bundles. |
 | [`shared/`](shared) | Cross-study C++ `mmap` OpenFST decoders (`tlg_viterbi.cc`, `wenet_lattice.cc`), LLM rescorers (`opt_rescore.py`), WER evaluator (`wer_from_tsv.py`), `vacation_tlg/` ablations, `finetune_chain/`, and `plots/`. |
 | [`tutorials/`](tutorials) | 3 zero-download interactive Jupyter Notebooks in English (`tutorials/*.ipynb`) and Chinese (`tutorials/zh/*_zh.ipynb`) for students. |
-| [`docs/`](docs) | Repository governance and cleanup audit logs ([`docs/20261108_cleanup_audit/CLEANUP_AUDIT.md`](docs/20261108_cleanup_audit/CLEANUP_AUDIT.md)). |
+| [`docs/`](docs) | Repository governance and cleanup audit logs ([`docs/20261108_cleanup_audit/CLEANUP_AUDIT.md`](docs/20261108_cleanup_audit/CLEANUP_AUDIT.md)), and the fig. 2 / Table 2 cross-repository reconciliation workfiles ([`docs/20261126_fig2_reconciliation/README.md`](docs/20261126_fig2_reconciliation/README.md)): the three reproduced-WER protocol candidates synced against the paper manuscript (adopted: `fig2_matched_dates`), migrated from `tmp/` on 2026-11-28. |
 | `figures/reproduction_benchmark.yaml` | Single source of truth for all benchmark panels: Figure 2 panels (a)–(f) and the 4-panel phase/memory companion figure. |
 | `figures/results/20261124_repository_migration/reproduction_benchmark.json` | Auto-synced JSON mirror of `figures/reproduction_benchmark.yaml` written by `figures/code/render_figure2.py`. |
 | `figures/code/build_session_per_vs_wer.py` | Recomputes session-level `(PER, post-LM WER)` pairs from archived per-trial CSVs and TSVs across the 4 speech studies. |

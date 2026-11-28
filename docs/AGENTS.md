@@ -23,6 +23,7 @@ This directory contains repository-level engineering audits and maintenance docu
 | [`20261124_repository_migration/onboarding_a_study.md`](20261124_repository_migration/onboarding_a_study.md) | Six steps for adding a study: register the source, write an exporter, export one session, and validate it with the shared command. |
 | [`20261124_repository_migration/session_export_inventory.md`](20261124_repository_migration/session_export_inventory.md) | State of every session file of every study: exported, invalid, pending, or excluded. Written by `shared/tools/session_export_inventory.py --write`. |
 | [`CLEANUP_AUDIT.md`](20261108_cleanup_audit/CLEANUP_AUDIT.md) | Per-file audit report from the 2026-11-08 repository cleanup: documents all 147 tracked `.py` files, cites the exact evidence (module docstrings, `diff` output, import graphs) for the 22 superseded/one-shot scripts and 3 duplicate tool files that were removed, and lists the canonical role of every retained file. |
+| [`20261126_fig2_reconciliation/README.md`](20261126_fig2_reconciliation/README.md) | Fig. 2 / Table 2 cross-repository reconciliation workfiles (migrated from `tmp/` on 2026-11-28): three reproduced-WER protocol candidates (`fig2_matched_dates` adopted, the other two retained as runners-up records), paper-snapshot LaTeX, source-data workbook copies with write-back receipts, and row data traceable to `studies/*/results/`. The paper manuscript itself lives in a separate repository. |
 
 ---
 
